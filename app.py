@@ -16,6 +16,5 @@ if status:
     st.info("Brug menuen i venstre side 👈")
 elif status is False:
     st.error("Forkert login")
-else:
-    st.warning("Indtast loginoplysninger")
+
 

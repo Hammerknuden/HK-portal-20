@@ -33,17 +33,11 @@ def login():
     if status:
         authenticator.logout('Logout', 'sidebar')
         return True
-    elif status is False:
-        st.error("Forkert brugernavn eller password")
+
+    if status is False:
         return False
-    else:
-        st.warning("Indtast brugernavn og password")
-        return None
 
-import streamlit as st
-import streamlit_authenticator as stauth
-
-
+    return None
 
 
 def require_login():
