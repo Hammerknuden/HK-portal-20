@@ -8,8 +8,8 @@ def login():
     usernames = ['finn', 'naja', 'admin']
     passwords = ['pc0012', 'pc0012nb', '0012']
 
-    hashed_passwords = [stauth.Hasher().hash(passwords)
-    print(hashed_passwords)]
+    hashed_passwords = [stauth.Hasher().hash(pw) for pw
+    in passwords]
     #hashed_passwords = [
     #'$2b$12$abc...',
     #'$2b$12$def...',
@@ -34,7 +34,11 @@ def login():
         cookie_expiry_days=30
     )
 
-    name, authentication_status, username = authenticator.login('Login', 'main')
+    authenticator.login(location=main)
+
+    names = st.session_state.get("name")
+    authentication_status = st.session_state.get("authentication-status")
+    usernames = st.session_state.get("username")
 
     if authentication_status:
         authenticator.logout('Logout', 'sidebar')

@@ -1,6 +1,7 @@
 import streamlit as st
 from auth import login
 
+
 st.set_page_config(
     page_title="Hammerknuden Booking",
     layout="wide"
