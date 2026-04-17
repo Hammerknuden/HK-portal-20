@@ -1,6 +1,5 @@
 import streamlit as st
 import streamlit_authenticator as stauth
-st.text('hello')
 
 
 def login():
@@ -8,13 +7,7 @@ def login():
     usernames = ['finn', 'naja', 'admin']
     passwords = ['pc0012', 'pc0012nb', '0012']
 
-    hashed_passwords = [stauth.Hasher().hash(pw) for pw
-    in passwords]
-    #hashed_passwords = [
-    #'$2b$12$abc...',
-    #'$2b$12$def...',
-    #'$2b$12$ghi...'
-    #]
+    hashed_passwords = [stauth.Hasher().hash(pw) for pw in passwords]
 
     credentials = {
         "usernames": {
