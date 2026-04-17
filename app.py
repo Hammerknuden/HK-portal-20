@@ -15,14 +15,15 @@ status = login()
 if status:
     st.success(f"Velkommen {st.session_state['name']} 👋")
     st.write("Vælg en side i menuen 👈")
+    page = st.sidebar.selectbox("Vælg side", ["Booking", "Setup"])
 elif status is False:
     st.stop()
 else:
     st.stop()
 
-page = st.sidebar.selectbox("Vælg side", ["Booking", "Setup"])
+#page = st.sidebar.selectbox("Vælg side", ["Booking", "Setup"])
 
-if page == "Booking":
-    page: 1
-elif page == "Setup":
-    page: 2
+#if page == "Booking":
+#    page: 1
+#elif page == "Setup":
+#    page: 2

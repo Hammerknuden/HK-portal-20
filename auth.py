@@ -26,7 +26,6 @@ def login():
         }
     }
 
-
     authenticator = stauth.Authenticate(
         credentials,
         'hk_portal',
