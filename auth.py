@@ -28,9 +28,9 @@ def login():
 
     authenticator.login(location='main')
 
-    names = st.session_state.get("name")
-    authentication_status = st.session_state.get("authentication-status")
-    usernames = st.session_state.get("username")
+    name = st.session_state.get("name")
+    authentication_status = st.session_state.get("authentication_status")
+    username = st.session_state.get("username")
 
     if authentication_status:
         authenticator.logout('Logout', 'sidebar')

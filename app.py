@@ -3,7 +3,7 @@ from auth import login
 
 
 st.set_page_config(
-    page_title="Hammerknuden Booking",
+    page_title="main",
     layout="wide"
 )
 
