@@ -13,13 +13,13 @@ st.title("HAMMERKNUDEN SOMMERPENSION")
 status = login()
 
 if status:
-    st.success(f"Velkommen {st.session_state['name']} 👋")
+    st.success(f"Velkommen {st.session_state.get('name')} 👋")
     st.write("Vælg en side i menuen 👈")
-    page = st.sidebar.selectbox("Vælg side", ["Booking", "Setup"])
 elif status is False:
-    st.stop()
+    st.error("Forkert login")
 else:
-    st.stop()
+    st.info("Indtast loginoplysninger")
+
 
 #page = st.sidebar.selectbox("Vælg side", ["Booking", "Setup"])
 
