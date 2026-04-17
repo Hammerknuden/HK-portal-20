@@ -28,19 +28,22 @@ def login():
 
     authenticator.login(location='main')
 
-    name = st.session_state.get("name")
-    authentication_status = st.session_state.get("authentication_status")
-    username = st.session_state.get("username")
+    status = st.session_state.get("authentication_status")
 
-    if authentication_status:
+    if status:
         authenticator.logout('Logout', 'sidebar')
         return True
-    elif authentication_status is False:
+    elif status is False:
         st.error("Forkert brugernavn eller password")
         return False
     else:
         st.warning("Indtast brugernavn og password")
         return None
+
+import streamlit as st
+import streamlit_authenticator as stauth
+
+
 
 
 def require_login():
