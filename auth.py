@@ -7,12 +7,14 @@ def login():
     names = ['Finn', 'Naja', 'Admin']
     usernames = ['finn', 'naja', 'admin']
     passwords = ['pc0012', 'pc0012nb', '0012']
-    print(stauth.Hasher(passwords).generate())
-    hashed_passwords = [
-    '$2b$12$abc...',
-    '$2b$12$def...',
-    '$2b$12$ghi...'
-    ]
+
+    hashed_passwords = [stauth.Hasher().hash(passwords)
+    print(hashed_passwords)]
+    #hashed_passwords = [
+    #'$2b$12$abc...',
+    #'$2b$12$def...',
+    #'$2b$12$ghi...'
+    #]
 
     credentials = {
         "usernames": {
