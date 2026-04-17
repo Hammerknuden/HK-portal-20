@@ -34,7 +34,7 @@ def login():
         cookie_expiry_days=30
     )
 
-    authenticator.login(location=main)
+    authenticator.login(location='main')
 
     names = st.session_state.get("name")
     authentication_status = st.session_state.get("authentication-status")
