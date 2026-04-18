@@ -43,12 +43,11 @@ st.markdown(f"**Antal dage denne booking**  {days.days}")
 
 if year == '2026':
     if bruger == "Finn" and network == "local":
-        file_name = '2026_BOOKING 10.xlsx'
+        file_name = "2026_BOOKING 10.xlsx"
     elif bruger == "Finn" and network == "URL":
         file_name = 'https://drive.usercontent.google.com/download?id=1MmfCR70RlDt3EIQ6eAIrf9OULon2OD_H&export=download&authuser=0&confirm=t&uuid=6021d22c-fa0f-45f4-9e61-2d99b296fcf1&at=AKSUxGMOeGtFihvrcKgymyTxiynP:1762359003826'
     else:
         st.text("file nor found")
-
 
     df = pd.read_excel(file_name, sheet_name='book_simp')
     new_data = df[(df['dato'].dt.date >= checkin_date) & (df['dato'].dt.date < checkout_date)]
