@@ -4,9 +4,6 @@ st.set_page_config(page_title="Setup", layout="wide")
 require_login()
 require_admin()
 
-
-
-
 st.title("Setup ⚙️")
 
 st.write("Her kan du styre systemet")
