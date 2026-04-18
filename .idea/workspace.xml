@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="updatering af bookinfane">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025_BOOKING_ 2_0.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2026_BOOKING 10.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2027_BOOKING 10.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -249,7 +252,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776532278769</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="updatering af bookinfane">
+      <option name="closed" value="true" />
+      <created>1776546021862</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1776546021862</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
