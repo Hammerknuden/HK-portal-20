@@ -43,7 +43,7 @@ st.markdown(f"**Antal dage denne booking**  {days.days}")
 
 if year == '2026':
     if bruger == "Finn" and network == "local":
-        BASE_DIR = Path(__file__).resolve().parent.parent  # går op fra pages/
+        BASE_DIR = Path.cwd()
         file_path = BASE_DIR / "data" / "2026_BOOKING 10.xlsx"
         #file_name = "data/2026_BOOKING 10.xlsx"
     elif bruger == "Finn" and network == "URL":
