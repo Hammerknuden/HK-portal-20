@@ -4,6 +4,7 @@ import pandas as pd
 import openpyxl
 import requests
 from datetime import datetime, date
+import sys
 from pathlib import Path
 import numpy as np
 #from confirmation_email import (
@@ -32,7 +33,6 @@ year = st.selectbox("booking år", ["2026", "2027"])
 now = st.date_input("booking dato")
 booking_number = st.text_input("booking nummer")
 
-st.write(st.session_state.prices)
 bruger = "Finn"
 network = st.selectbox("vælg lokal eller web ", options=["local", "URL"])
 
@@ -55,6 +55,15 @@ if year == '2026':
         BASE_DIR = Path.cwd()
         file_path = BASE_DIR / "data" / "2026_BOOKING 10.xlsx"
         #file_name = "data/2026_BOOKING 10.xlsx"
+    elif bruger == "Finn" and network == "URL":
+        file_path = 'http://gofile.me/2UxBN/PTz0N4NfV'
+    else:
+        st.text("file nor found")
+
+if year == '2027':
+    if bruger == "Finn" and network == "local":
+        BASE_DIR = Path.cwd()
+        file_path = BASE_DIR / "data" / "2027_BOOKING 10.xlsx"
     elif bruger == "Finn" and network == "URL":
         file_path = 'http://gofile.me/2UxBN/PTz0N4NfV'
     else:
@@ -164,3 +173,202 @@ if year == '2026':
     st.markdown(f"**High season** {high_season_price}")
     st.markdown(f"**Low season** {low_season_price}")
     st.markdown('year 2026')
+if year == '2027':
+    if single_room and (web == 'bc' or web == 'web'):
+        high_season_price = st.session_state.prices["Sing-Room-HS-27"]
+        low_season_price = st.session_state.prices["Sing-Room-LS-27"]
+        single_room = "Y"
+        print(low_season_price)
+        print(high_season_price)
+    else:
+        low_season_price = st.session_state.prices["Dobb-Room-LS-27"]
+        high_season_price = st.session_state.prices["Dobb-Room-HS-27"]
+        if web == "FM":
+            high_season_price = st.session_state.prices["Dobb-Room-HS-27"]
+            low_season_price = st.session_state.prices["Dobb-Room-HS-27"]
+            single_room = "N"
+            print(low_season_price)
+            print(high_season_price)
+        else:
+            high_season_price = st.session_state.prices["Dobb-Room-HS-27"]
+            low_season_price = st.session_state.prices["Dobb-Room-LS-27"]
+            single_room = "N"
+            print(low_season_price)
+            print(high_season_price)
+
+    st.markdown(f"**High season** {high_season_price}")
+    st.markdown(f"**Low season** {low_season_price}")
+    st.markdown('year 2027')
+if year == '2026':
+    bf_price = st.session_state.prices["Breakfirst-26"]  #100
+if year == '2027':
+    bf_price = st.session_state.prices["Breakfirst-27"] #100
+
+Sprog = st.selectbox("Sprog - email confirmation dk uk D", options=["DK", "UK", "D"])
+
+breakfast = st.checkbox("Morgenmad")
+breakfast_alt = st.checkbox("begrænset morgenmad bestilles direkte ved ankomst mod beregning  ")
+breakfast_rabat = st.checkbox("Der beregnes ikke rabat på morgenmad")
+
+if breakfast:
+    br_f = int(bf_price * int(num_guests) * int(days.days))
+    BF = "Y"
+    if Sprog == "DK":
+        text_bf = "Morgenmad er inkluderet i prisen"
+    if Sprog == "UK":
+        text_bf = "Breakfast is included "
+    if Sprog == "D":
+        text_bf = "Das Frühstück ist im Preis inbegriffen"
+else:
+    br_f = 0
+    BF = "N"
+    if Sprog == "DK":
+        text_bf = "Morgenmad er ikke inkluderet i prisen"
+    if Sprog == "UK":
+        text_bf = " Breakfast is not included "
+    if Sprog == "D":
+        text_bf = "Frühstück ist nicht mit enthalten"
+
+if breakfast and breakfast_alt:
+    br_f = 0
+    BF = "A"
+    if Sprog == "DK":
+        text_bf = "Morgenmad kan tilkøbes alle dage undtagen Søndag"
+    if Sprog == "UK":
+        text_bf = "Breakfast can be purchased every day except Sunday. "
+    if Sprog == "D":
+        text_bf = "Frühstück kann täglich außer sonntags erworben werden."
+if year == '2026':
+    high_season_start = datetime.strptime("28-06-26", _format := "%d-%m-%y").date()
+    high_season_end = datetime.strptime("15-08-26", _format := "%d-%m-%y").date()
+    st.markdown(f"**Højsæson starter** {high_season_start}")
+    st.markdown(f"**Højsæson slutter** {high_season_end}")
+if year == '2027':
+    high_season_start = datetime.strptime("22-06-27", _format := "%d-%m-%y").date()
+    high_season_end = datetime.strptime("17-08-27", _format := "%d-%m-%y").date()
+    st.markdown(f"**Højsæson starter** {high_season_start}")
+    st.markdown(f"**Højsæson slutter** {high_season_end}")
+
+days = checkout_date - checkin_date
+
+high_season_days = high_season_end - high_season_start
+high_booking = (checkin_date >= high_season_start) and (checkout_date <= high_season_end)
+low_booking = ((checkin_date <= high_season_start) and (checkout_date < high_season_start)) or (checkin_date >
+                                                                                                    high_season_end)
+mixbooking_early = (checkin_date < high_season_start) and (checkout_date > high_season_start)
+mixbooking_end = (checkout_date > high_season_end) and (high_season_start < checkin_date) and (checkin_date <
+                                                                                                   high_season_end)
+
+high_season_days = high_season_end - high_season_start
+mixearly = checkout_date - high_season_start
+mixearly_b = high_season_start - checkin_date
+mixend = high_season_end - checkin_date
+mixend_b = checkout_date - high_season_end
+
+if web == "FM":
+    pris = (high_season_price * int(days.days)) * int(num_rooms)
+else:
+    if high_booking:
+        pris = (high_season_price * int(days.days)) * int(num_rooms)
+    if low_booking:
+        pris = (low_season_price * int(days.days)) * int(num_rooms)
+    if mixbooking_early:
+        pris = (((int(mixearly.days) * high_season_price) + (int(mixearly_b.days) * low_season_price)) * int(num_rooms))
+    if mixbooking_end:
+        pris = (high_season_price * (int(mixend.days)) + (int(mixend_b.days) * low_season_price)) * int(num_rooms)
+
+st.markdown(f"**Værelsespris** {pris:.2f} kr".replace(".", ","))
+print(pris)
+
+
+def dkk(value):
+    return f"{value:.2f}".replace(".",",")
+
+
+prismed = float(pris + br_f)
+formatted_prismed = dkk(prismed)
+st.markdown(f"**Pris incl breakfast** {formatted_prismed} kr")
+print(prismed)
+
+if breakfast_rabat and web == "web":
+
+    formatted_prismed = (f"{prismed:.2f}".replace(".",","))
+    rabat_a = (int(rabat) / 100)
+    rabat_rm = pris * rabat_a
+    rabat_t = rabat_rm
+    formatted_rabat_t = f"{rabat_t:.2f}"
+    st.markdown(f"**Rabat** {formatted_rabat_t} kr".replace(".",","))
+    pristotal = prismed - rabat_t
+    formatted_pristotal = f"{pristotal:.2f}".replace(".",",")
+
+elif web == "web":
+    formatted_prismed = (f"{prismed:.2f}".replace(".",","))
+    rabat_a = (int(rabat) / 100)
+    rabat_mm = br_f * rabat_a
+    rabat_rm = pris * rabat_a
+    rabat_t = rabat_mm + rabat_rm
+    formatted_rabat_t = f"{rabat_t:.2f}"
+    st.markdown(f"**Rabat** {formatted_rabat_t}kr".replace(".",","))
+    pristotal = prismed - rabat_t
+    formatted_pristotal = f"{pristotal:.2f}".replace(".",",")
+    print("formatted_prismed:", formatted_prismed)
+    print("type:", type(formatted_prismed))
+elif web == "FM":
+    formatted_prismed = f"{prismed:.2f}".replace(".",",")
+    pris_add_a = (int(FM_add) / 100)
+    pris_add_t = (prismed + br_f) * pris_add_a
+    formatted_pris_add_t = f"{pris_add_t:.2f}"
+    st.markdown(f"**Tiilæg** {formatted_pris_add_t} kr".replace(".",","))
+    pristotal = prismed + pris_add_t
+    formatted_pristotal = f"{pristotal:.2f}".replace(".",",")
+else:
+    rabat_a = 0
+    formatted_prismed = f"{prismed:.2f}".replace(".",",")
+    formatted_pristotal = formatted_prismed
+
+    print(formatted_pristotal)
+st.markdown(f"**Den totale pris** {formatted_pristotal}kr".replace(".",","))
+
+st.subheader("Kontakt information")
+
+name = st.text_input("Navn ")
+fam_name = st.text_input("Efternavn (kun til søgning ellers blank)  ")
+telefon = st.text_input(" Kontakt telefon")
+email_address = st.text_input("email")
+
+nationalitet = st.text_input("Nationalitet - DK S N NL etc")
+
+known_guest = st.checkbox("check for known person")
+if known_guest and 'local':
+    BASE_DIR = Path.cwd()
+    file_path = BASE_DIR / "data" / 'Database hammerknuden.xlsx'
+    df = pd.read_excel(file_path, sheet_name='Dtb', dtype={'familienavn': str})
+    search_value = fam_name
+    pd.set_option("display.max_columns", None, )
+    rows1 = df[df['Familienavn'] == search_value]
+    df = pd.read_excel(file_path, sheet_name='Dtb', dtype={'telefon': str})
+    search_value = telefon
+    pd.set_option("display.max_columns", None,)
+    rows2 = df[df['telefon'] == search_value]
+    df = pd.read_excel(file_path, sheet_name="Dtb", dtype={'Email': str})
+    search_value = email_address
+    pd.set_option("display.max_columns", None)
+    rows3 = df[df['Email'] == search_value]
+
+    if fam_name:
+        st.dataframe(rows1)
+    if telefon:
+        st.dataframe(rows2)
+        known = "Y"
+    elif email_address:
+        st.dataframe(rows3)
+        known = "YY"
+else:
+    known = "N"
+
+spouse = st.text_input("Spouce  ")
+comments = st.text_input("yderligere info til Dtb  ")
+
+
+
+
