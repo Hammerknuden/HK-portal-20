@@ -103,3 +103,10 @@ ledige_rum = ledige_rum_1 + ledige_rum_2 + ledige_rum_3 + ledige_rum_4 + ledige_
 print(unique_values)
 st.markdown(f"**Antal ledige rum**  {ledige_rum}")  # "ledige} rum ", {ledige_rum})
 print(df)
+
+def highlight_cells(val):
+
+    color = 'background-color: #66FF66' if val == 'va' else ''  # Grøn for 'va'
+    return color
+styled_data = new_data[['dato', '1-I', '2-I', '3-I', '4-I', '5-I']].style.map(highlight_cells)
+st.dataframe(styled_data)
