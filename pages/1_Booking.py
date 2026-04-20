@@ -110,3 +110,48 @@ def highlight_cells(val):
     return color
 styled_data = new_data[['dato', '1-I', '2-I', '3-I', '4-I', '5-I']].style.map(highlight_cells)
 st.dataframe(styled_data)
+
+if single_room:
+    num_guests = st.number_input("max en gæst", value=1, step=0)
+else:
+    num_guests = st.number_input("Antal gæster", value=2, step=1)
+
+num_rooms = st.number_input("Antal rum", value=1, step=1)
+web = st.selectbox("booking via web bc eller FM folkemøde ( ikke mulighed for enk rum)", options=["web", "bc", "FM"])
+ankomst = st.text_input("Angiv ankomsts tidspunkt hvis haves ")
+seng = st.text_input(" type seng Doob, Sing, OPCH, OPIN ")
+if web == "web":
+    rabat = st.number_input(" rabat i procent ", value=10, step=1)
+    procent = rabat / 100
+if web == "FM":
+    FM_add = st.number_input(" Folkemøde tillæg i procent ", value=0, step=5)
+    procent = FM_add / 100
+else:
+    procent = 0
+
+if year == '2026':
+    if single_room and (web == 'bc' or web == 'web'):
+        high_season_price = st.session_state.prices["Sing-Room-HS-26"] #975  #2026 975
+        low_season_price = st.session_state.prices["Sing-Room-LS-26"] #2026 850
+        single_room = "Y"
+        print(low_season_price)
+        print(high_season_price)
+    else:
+        low_season_price = st.session_state.prices["Dobb-Room-LS-26"] #950
+        high_season_price = st.session_state.prices["Dobb-Room-HS-26"] #1075
+        if web == "FM":
+            high_season_price = st.session_state.prices["Dobb-Room-HS-26"] #1075  #2026 1075
+            low_season_price = st.session_state.prices["Dobb-Room-HS-26"] #1075   #2026 1075
+            single_room = "N"
+            print(low_season_price)
+            print(high_season_price)
+        else:
+            high_season_price = st.session_state.prices["Dobb-Room-HS-26"] #1075   #2026 1075
+            low_season_price = st.session_state.prices["Dobb-Room-LS-26"] #950     #2026 950
+            single_room = "N"
+            print(low_season_price)
+            print(high_season_price)
+
+    st.markdown(f"**High season** {high_season_price}")
+    st.markdown(f"**Low season** {low_season_price}")
+    st.markdown('year 2026')
