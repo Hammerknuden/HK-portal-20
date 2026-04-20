@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="find excel in booking moved to data">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="Opslag af priser i setup">
+      <change afterPath="$PROJECT_DIR$/pages/Config/prices.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/2_setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/2_setup.py" afterDir="false" />
@@ -323,7 +324,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776681855517</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Opslag af priser i setup">
+      <option name="closed" value="true" />
+      <created>1776699521740</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1776699521740</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -334,6 +343,7 @@
     <MESSAGE value="authen updated igen" />
     <MESSAGE value="updatering af bookinfane" />
     <MESSAGE value="find excel in booking moved to data" />
-    <option name="LAST_COMMIT_MESSAGE" value="find excel in booking moved to data" />
+    <MESSAGE value="Opslag af priser i setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Opslag af priser i setup" />
   </component>
 </project>

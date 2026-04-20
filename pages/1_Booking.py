@@ -16,14 +16,23 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 import base64
+from config.prices import DEFAULT_PRICES
+sys.path.append(str(Path(__file__).resolve().parents[1]))
+
 st.set_page_config(page_title="Booking", layout="wide")
 require_login()
+
+# ✅ Init KUN hvis ikke findes
+if "prices" not in st.session_state:
+    st.session_state.prices = DEFAULT_PRICES.copy()
 
 st.title("Reservations formular")
 
 year = st.selectbox("booking år", ["2026", "2027"])
 now = st.date_input("booking dato")
 booking_number = st.text_input("booking nummer")
+
+st.write(st.session_state.prices)
 bruger = "Finn"
 network = st.selectbox("vælg lokal eller web ", options=["local", "URL"])
 
