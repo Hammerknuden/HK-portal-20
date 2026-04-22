@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="booking til known person">
-      <change afterPath="$PROJECT_DIR$/pages/2_databaseopslag.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/2_setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/3_setup.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ny side for databaseopslag" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -349,7 +345,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776704840698</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="ny side for databaseopslag">
+      <option name="closed" value="true" />
+      <created>1776872243237</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1776872243237</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -363,6 +367,7 @@
     <MESSAGE value="Opslag af priser i setup" />
     <MESSAGE value="prices mappe setup" />
     <MESSAGE value="booking til known person" />
-    <option name="LAST_COMMIT_MESSAGE" value="booking til known person" />
+    <MESSAGE value="ny side for databaseopslag" />
+    <option name="LAST_COMMIT_MESSAGE" value="ny side for databaseopslag" />
   </component>
 </project>
