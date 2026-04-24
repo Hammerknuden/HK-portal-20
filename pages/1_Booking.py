@@ -7,13 +7,13 @@ from datetime import datetime, date
 import sys
 from pathlib import Path
 import numpy as np
-#from confirmation_email import (
- #   admin_email,
- #   send_danish_confirmation_email,
- #   send_english_confirmation_email,
- #   send_german_confirmation_email
-#)
-#from data_email import (add_data, send_data_email)
+from confirmation_email import (
+    admin_email,
+    send_danish_confirmation_email,
+    send_english_confirmation_email,
+    send_german_confirmation_email
+)
+from data_email import (add_data, send_data_email)
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 import base64
@@ -30,8 +30,6 @@ if "prices" not in st.session_state:
 st.title("Reservations formular")
 
 year = st.selectbox("booking år", ["2026", "2027"])
-now = st.date_input("booking dato")
-booking_number = st.text_input("booking nummer")
 
 bruger = "Finn"
 network = st.selectbox("vælg lokal eller web ", options=["local", "URL"])
@@ -40,9 +38,11 @@ now = st.date_input("booking dato", key='booking date')
 
 booking_number = st.text_input("booking nummer ")
 
-
-checkin_date = st.date_input("Checkin dato", key='start booking')
-checkout_date = st.date_input("Checkout dato", key='slut booking')
+col1, col2 = st.columns(2)
+with col1:
+    checkin_date = st.date_input("Checkin dato", key='start booking')
+with col2:
+    checkout_date = st.date_input("Checkout dato", key='slut booking')
 
 single_room = st.checkbox("Enkeltværelse")
 
@@ -128,16 +128,22 @@ def highlight_cells(val):
     return color
 styled_data = new_data[['dato', '1-I', '2-I', '3-I', '4-I', '5-I']].style.map(highlight_cells)
 st.dataframe(styled_data)
+col1, col2, = st.columns(2)
+with col1:
+    if single_room:
+        num_guests = st.number_input("max en gæst", value=1, step=0)
+    else:
+        num_guests = st.number_input("Antal gæster", value=2, step=1)
+with col2:
+    num_rooms = st.number_input("Antal rum", value=1, step=1)
 
-if single_room:
-    num_guests = st.number_input("max en gæst", value=1, step=0)
-else:
-    num_guests = st.number_input("Antal gæster", value=2, step=1)
-
-num_rooms = st.number_input("Antal rum", value=1, step=1)
-web = st.selectbox("booking via web bc eller FM folkemøde ( ikke mulighed for enk rum)", options=["web", "bc", "FM"])
-ankomst = st.text_input("Angiv ankomsts tidspunkt hvis haves ")
-seng = st.text_input(" type seng Doob, Sing, OPCH, OPIN ")
+col1, col2, col3 = st.columns(3)
+with col1:
+    web = st.selectbox("booking via web bc eller FM folkemøde ( ikke mulighed for enk rum)", options=["web", "bc", "FM"])
+with col2:
+    ankomst = st.text_input("Angiv ankomsts tidspunkt hvis haves, kan efterlades blankt ")
+with col3:
+    seng = st.text_input(" type af seng der ønskes hvis det vides f.eks. Dobb, Sing, OPred, OPIN ")
 if web == "web":
     rabat = st.number_input(" rabat i procent ", value=10, step=1)
     procent = rabat / 100
@@ -169,10 +175,13 @@ if year == '2026':
             single_room = "N"
             print(low_season_price)
             print(high_season_price)
-
-    st.markdown(f"**High season** {high_season_price}")
-    st.markdown(f"**Low season** {low_season_price}")
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown(f"**High season** {high_season_price} kr")
+        with col2:
+            st.markdown(f"**Low season** {low_season_price} kr")
     st.markdown('year 2026')
+
 if year == '2027':
     if single_room and (web == 'bc' or web == 'web'):
         high_season_price = st.session_state.prices["Sing-Room-HS-27"]
@@ -195,10 +204,13 @@ if year == '2027':
             single_room = "N"
             print(low_season_price)
             print(high_season_price)
+            st.markdown('year 2027')
+        col1, col2, = st.columns(2)
+        with col1:
+            st.markdown(f"**High season** {high_season_price} kr")
+        with col2:
+            st.markdown(f"**Low season** {low_season_price} kr")
 
-    st.markdown(f"**High season** {high_season_price}")
-    st.markdown(f"**Low season** {low_season_price}")
-    st.markdown('year 2027')
 if year == '2026':
     bf_price = st.session_state.prices["Breakfirst-26"]  #100
 if year == '2027':
@@ -241,13 +253,19 @@ if breakfast and breakfast_alt:
 if year == '2026':
     high_season_start = datetime.strptime("28-06-26", _format := "%d-%m-%y").date()
     high_season_end = datetime.strptime("15-08-26", _format := "%d-%m-%y").date()
-    st.markdown(f"**Højsæson starter** {high_season_start}")
-    st.markdown(f"**Højsæson slutter** {high_season_end}")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown(f"**Højsæson starter** {high_season_start}")
+    with col2:
+        st.markdown(f"**Højsæson slutter** {high_season_end}")
 if year == '2027':
     high_season_start = datetime.strptime("22-06-27", _format := "%d-%m-%y").date()
     high_season_end = datetime.strptime("17-08-27", _format := "%d-%m-%y").date()
-    st.markdown(f"**Højsæson starter** {high_season_start}")
-    st.markdown(f"**Højsæson slutter** {high_season_end}")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown(f"**Højsæson starter** {high_season_start}")
+    with col2:
+        st.markdown(f"**Højsæson slutter** {high_season_end}")
 
 days = checkout_date - checkin_date
 
@@ -368,6 +386,122 @@ else:
 
 spouse = st.text_input("Spouce  ")
 comments = st.text_input("yderligere info til Dtb  ")
+
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.text("Vælg tekst til kunde mail: ")
+    text_ank = st.checkbox("tekst vedr. ankomsttid  ")
+    if Sprog == 'DK':
+        if text_ank:
+            text_ank = ("Da vores reception ikke er bemandet H24, bedes I informere om ankomsts tidspunkt for nøgle "
+                        "udlevering")
+        else:
+            text_ank = " - "
+
+    if Sprog == 'UK':
+        if text_ank:
+            text_ank = (
+                "Since the reception isn´t operative on a 24 hours basis, please inform us on your arrival time, "
+                "to obtain room key")
+        else:
+            text_ank = " - "
+
+    if Sprog == 'D':
+        if text_ank:
+            text_ank = ("Da die Rezeption nicht rund um die Uhr besetzt ist, informieren Sie uns bitte über Ihre "
+                        "Ankunftszeit,um Zimmerschlüssel erhalten.")
+        else:
+            text_ank = " - "
+with col2:
+    st.text("Vælg tekst til kunde vedr. valg af seng ")
+    text_bed = st.checkbox("tekst vedr. valg af seng  ")
+    if Sprog == 'DK':
+        if text_bed:
+            text_bed = "Ønske om dobbelt eller enkelseng kan sendes på mail før ankomst"
+        else:
+            text_bed = " - "
+
+    if Sprog == 'UK':
+        if text_bed:
+            text_bed = "Requests for a double or single bed can be sent by email before arrival"
+        else:
+            text_bed = " - "
+
+    if Sprog == 'D':
+        if text_bed:
+            text_bed = "Anfragen für ein Doppel- oder Einzelbett können vor der Anreise per E-Mail gesendet werden"
+        else:
+            text_bed = " - "
+with col3:
+    st.text("Vælg tekst til kunde vedr. valg af seng")
+    text_free = st.checkbox("Skriv ekstra tekst - husk sprog  ")
+    if text_free:
+        text_free = st.text_input("skriv add tekst ")
+        print(text_free)
+    else:
+        text_free = " - "
+
+guest_email = st.checkbox("send mail direkte til gæst  ")
+if guest_email:
+    to_addr = [email_address, admin_email]
+else:
+    to_addr = [admin_email]
+#to_addr = "finnjorg@mail.dk"
+confirmation_password = st.text_input("Admin kodeord")
+booking_submitted = st.button("Send booking mail")
+
+
+if Sprog == "DK" and booking_submitted:
+    send_danish_confirmation_email(to_addr, confirmation_password, name, num_rooms, num_guests, booking_number,
+                                   checkin_date, checkout_date, text_bf, formatted_prismed, text_web, formatted_justering,
+                                   formatted_pristotal, text_ank, text_bed, text_free, email_address, telefon)
+    st.markdown('dansk email er sendt')
+elif Sprog == "UK" and booking_submitted:
+    send_english_confirmation_email(to_addr, confirmation_password, name, num_rooms, num_guests, booking_number,
+                                    checkin_date, checkout_date, text_bf, formatted_prismed, text_web, formatted_justering,
+                                    formatted_pristotal, text_ank, text_bed, text_free, email_address, telefon)
+    st.markdown('engelsk email er sendt')
+elif Sprog == "D" and booking_submitted:
+    send_german_confirmation_email(to_addr, confirmation_password, name, num_rooms, num_guests, booking_number,
+                                   checkin_date, checkout_date, text_bf, formatted_prismed, text_web, formatted_justering,
+                                   formatted_pristotal, text_ank, text_bed, text_free, email_address, telefon)
+    st.markdown('tysk email er sendt')
+else:
+    st.markdown('Booking mail er ikke sendt ')
+
+send_data = st.button("send data fil")
+#send_data = st.checkbox("Data - mail til admin")
+additional_mail = st.checkbox("fleksibel mail address  ")
+if send_data:
+    to_addr_1 = admin_email
+if send_data and additional_mail:
+    add_mail = st.text_input("enter additional mail")
+    to_addr_1 = {admin_email, add_mail}
+
+if send_data: #and booking_submitted:
+
+    excel_file = add_data(year=year, booking_number=booking_number, name=name, checkin_date=checkin_date,
+                          checkout_date=checkout_date, now=now, nationalitet=nationalitet, web=web,
+                          ankomst=ankomst, seng=seng, rabat_a=rabat_a, num_rooms=num_rooms,
+                          num_guests=num_guests, email_address=email_address, telefon=telefon,
+                          spouse=spouse, single_room=single_room, BF=BF,
+                          formatted_pristotal=formatted_pristotal, known=known, comments=comments)
+
+    send_data_email(to_addr_1, confirmation_password, booking_number, name,
+                    checkin_date, checkout_date, num_rooms, now,
+                    nationalitet, web, ankomst, seng, procent,
+                    num_guests, email_address, telefon,
+                    formatted_pristotal, excel_file)
+
+    st.markdown("data mail sendt")
+    print(type(excel_file))
+
+else:
+    st.markdown("data mail ikke sendt ")
+#nyt tiltag ankomster
+
+
+
 
 
 
