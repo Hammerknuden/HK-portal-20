@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ny side for databaseopslag">
-      <change afterPath="$PROJECT_DIR$/pages/3_ankomster.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/3_setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/4_setup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +43,7 @@
     "Python.config_prices.executor": "Run",
     "Python.databaseopslag.executor": "Run",
     "Python.streamlit_app.executor": "Run",
-    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/config/config_prices.py"
+    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/pages/4_setup.py"
   }
 }]]></component>
   <component name="SharedIndexes">
@@ -370,7 +366,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776872604085</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="ny side for databaseopslag">
+      <option name="closed" value="true" />
+      <created>1777048596760</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1777048596760</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -7,13 +7,11 @@ from datetime import datetime, date
 import sys
 from pathlib import Path
 import numpy as np
-from confirmation_email import (
-    admin_email,
+from config.confirmation_email import (admin_email,
     send_danish_confirmation_email,
     send_english_confirmation_email,
-    send_german_confirmation_email
-)
-from data_email import (add_data, send_data_email)
+    send_german_confirmation_email)
+from config.data_email import add_data, send_data_email
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 import base64
@@ -440,7 +438,31 @@ with col3:
         print(text_free)
     else:
         text_free = " - "
-
+if web == "web" and Sprog == "DK":
+    text_web = "Rabat i forbindelse med opholdet er"
+    justering = rabat_t
+    formatted_justering = f"{justering:.2f}".replace(".", ",")
+    print(formatted_justering)
+elif web == "FM" and Sprog == "DK":
+    text_web = "Evt tillæg i forbindelse med denne booking"
+    justering = pris_add_t
+    formatted_justering = f"{justering:.2f}".replace(".", ",")
+    print(formatted_justering)
+    depositum = pristotal * 0.5
+    st.markdown(f"** depositum 50% ** {depositum:.2f}")
+    text_free = (f"Depositum {depositum:.2f}  kr skal indbetales ved kontooverførsel eller mobilpay 133565 "
+                 "inden 25 feb.2026 ")
+elif web == "web" and Sprog == "UK":
+    text_web = "Any discount in connection with this booking is."
+    justering = rabat_t
+    formatted_justering = f"{justering:.2f}".replace(".", ",")
+elif web == "web" and Sprog == "D":
+    text_web = f"Der Rabatt im Zusammenhang mit dieser Buchung beträgt."
+    justering = rabat_t
+    formatted_justering = f"{justering:.2f}".replace(".", ",")
+else:
+    text_web = " - "
+    formatted_justering = " - "
 guest_email = st.checkbox("send mail direkte til gæst  ")
 if guest_email:
     to_addr = [email_address, admin_email]
