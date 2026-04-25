@@ -34,7 +34,7 @@ if "prices" not in st.session_state:
         "Sing-Room-LS-27": 875,
         "Dobb-Room-HS-27": 1090,
         "Dobb-Room-LS-27": 980,
-        "Breakfirst-27": 110
+        "Breakfirst-27": 110,
     }
 
 st.write("Rediger priser:")
