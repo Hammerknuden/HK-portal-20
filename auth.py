@@ -24,6 +24,7 @@ authenticator = stauth.Authenticate(
     cookie_expiry_days=30
 )
 
+
 def require_login():
     authenticator.login(location='main')
 
@@ -40,6 +41,7 @@ def require_login():
 
     st.info("Indtast brugernavn og kode")
     st.stop()
+
 
 def require_admin():
     if st.session_state.get("username") != "admin":
