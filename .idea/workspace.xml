@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="auth updated og B.com link aktiveret" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="update github">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -412,7 +414,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777223953184</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="update github">
+      <option name="closed" value="true" />
+      <created>1777224858036</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1777224858037</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -440,6 +450,7 @@
     <MESSAGE value="ny side for databaseopslag" />
     <MESSAGE value="text web tilføjet" />
     <MESSAGE value="auth updated og B.com link aktiveret" />
-    <option name="LAST_COMMIT_MESSAGE" value="auth updated og B.com link aktiveret" />
+    <MESSAGE value="update github" />
+    <option name="LAST_COMMIT_MESSAGE" value="update github" />
   </component>
 </project>
