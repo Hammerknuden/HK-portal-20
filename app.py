@@ -5,6 +5,18 @@ st.set_page_config(
         layout="wide",
         initial_sidebar_state="expanded",
 )
+if "authentication_status" not in st.session_state:
+    st.session_state["authentication_status"] = None
+
+if "username" not in st.session_state:
+    st.session_state["username"] = None
+
+if "name" not in st.session_state:
+    st.session_state["name"] = None
+
+if "logout" not in st.session_state:
+    st.session_state["logout"] = None
+
 require_login()
 
 st.text("version 2.0.1")
