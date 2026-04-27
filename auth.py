@@ -24,27 +24,25 @@ credentials = {
 authenticator = stauth.Authenticate(
     credentials,
     'hk_portal2',
-    'hammerknuden',
+    'hammerknudenportal',
     cookie_expiry_days=30
 )
 
 
 def require_login():
-    authenticator.login(location='main')
-
-    authentication_status = st.session_state.get("authentication_status")
-    username = st.session_state.get("username")
+    name, authentication_status, username = authenticator.login(location='main')
 
     if authentication_status:
         authenticator.logout('Logout', 'sidebar')
         return True
 
-    if authentication_status is False:
+    elif authentication_status is False:
         st.error("Forkert brugernavn eller kode")
         st.stop()
 
-    st.info("Indtast brugernavn og kode")
-    st.stop()
+    else:
+        st.info("Indtast brugernavn og kode")
+        st.stop()
 
 
 def require_admin():
