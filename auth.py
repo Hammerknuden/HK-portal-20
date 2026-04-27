@@ -30,18 +30,21 @@ authenticator = stauth.Authenticate(
 
 
 def require_login():
-    name, authentication_status, username = authenticator.login(location='main')
+    authenticator.login(location='main')
+
+    authentication_status = st.session_state.get("authentication_status")
+    username = st.session_state.get("username")
+
+    if authentication_status is None:
+        st.info("Indtast brugernavn og kode")
+        st.stop()
 
     if authentication_status:
         authenticator.logout('Logout', 'sidebar')
         return True
 
-    elif authentication_status is False:
+    if authentication_status is False:
         st.error("Forkert brugernavn eller kode")
-        st.stop()
-
-    else:
-        st.info("Indtast brugernavn og kode")
         st.stop()
 
 
