@@ -1,7 +1,7 @@
 import streamlit as st
 from auth import require_login, require_admin
 st.set_page_config(page_title="Setup", layout="wide")
-#require_login()
+require_login()
 require_admin()
 
 st.title("Setup ⚙️")

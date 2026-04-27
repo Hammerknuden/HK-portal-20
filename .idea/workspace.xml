@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="def authenticator hash generate problems" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="req login fjernet">
+      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/4_Booking_C_link.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/4_Booking_C_link.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,14 +62,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00004" summary="authentication updated like version 10">
-      <option name="closed" value="true" />
-      <created>1776413003701</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1776413003701</updated>
     </task>
     <task id="LOCAL-00005" summary="authentication updated like version 10">
       <option name="closed" value="true" />
@@ -452,7 +447,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777312447243</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="req login fjernet">
+      <option name="closed" value="true" />
+      <created>1777312564180</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1777312564180</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -484,6 +487,7 @@
     <MESSAGE value="edit auth line spacing" />
     <MESSAGE value="workspace update" />
     <MESSAGE value="def authenticator hash generate problems" />
-    <option name="LAST_COMMIT_MESSAGE" value="def authenticator hash generate problems" />
+    <MESSAGE value="req login fjernet" />
+    <option name="LAST_COMMIT_MESSAGE" value="req login fjernet" />
   </component>
 </project>
