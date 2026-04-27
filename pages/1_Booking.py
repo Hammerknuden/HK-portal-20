@@ -19,7 +19,7 @@ from config.prices import DEFAULT_PRICES
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 st.set_page_config(page_title="Booking", layout="wide")
-require_login()
+#require_login()
 
 # ✅ Init KUN hvis ikke findes
 if "prices" not in st.session_state:
