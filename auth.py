@@ -6,6 +6,10 @@ usernames = ['finn', 'naja', 'admin']
 passwords = ['pc0012', 'pc0012nb', '0012']
 
 hashed_passwords = [stauth.Hasher().hash(pw) for pw in passwords]
+#hashed_passwords = stauth.Hasher().generate(passwords)
+#hashed_passwords = stauth.Hasher(passwords).generate()
+#hashed_passwords = stauth.Hasher.hash_passwords(passwords)
+print(hashed_passwords)
 
 credentials = {
     "usernames": {
@@ -19,7 +23,7 @@ credentials = {
 
 authenticator = stauth.Authenticate(
     credentials,
-    'hk_portal',
+    'hk_portal2',
     'hammerknuden',
     cookie_expiry_days=30
 )
