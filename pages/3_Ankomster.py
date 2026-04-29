@@ -9,7 +9,9 @@ st.subheader("Dagens ankomster ")
 # Date inputs fra Streamlit
 
 check_dato_start = st.date_input("Start dato")
-check_dato_slut = st.date_input("Slut dato")
+#vindue = st.number_input("antal dage frem")
+#check_dato_slut = vindue.days + check_dato_start
+st.date_input("Slut dato")
 check_for_ankomst = st.button(" check ankomster")
 year = st.selectbox("booking år", ["2026", "2027"])
 
