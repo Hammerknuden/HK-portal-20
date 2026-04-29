@@ -1,9 +1,9 @@
-from datetime import timedelta
+
 import streamlit as st
 from auth import require_login
 import pandas as pd
 from pathlib import Path
-
+from datetime import timedelta
 st.set_page_config(page_title="Ankomster", layout="wide")
 require_login()
 
@@ -11,11 +11,11 @@ st.subheader("Dagens ankomster ")
 # Date inputs fra Streamlit
 
 check_dato_start = st.date_input("Start dato")
-#antal_dage = st.number_input("Antal dage", min_value=1, value=3)
-check_dato_slut = st.date_input("Slut dato")
+antal_dage = st.number_input("Antal dage", min_value=1, value=3)
+#check_dato_slut = st.date_input("Slut dato")
 #if check_dato_start:
-#    check_dato_slut = check_dato_start + timedelta(days=antal_dage)
-#    st.write("Slutdato:", check_dato_slut)
+check_dato_slut = check_dato_start + timedelta(days=antal_dage)
+st.write("Slutdato:", check_dato_slut)
 
 #st.date_input("Slut dato")
 check_for_ankomst = st.button(" check ankomster")
@@ -25,7 +25,6 @@ if check_for_ankomst and year == "2026":
     # Load Excel
     BASE_DIR = Path.cwd()
     file_path = BASE_DIR / "data" / '2026_Booking 10.xlsx'
-    #file_name = "2026_BOOKING 10.xlsx"
     df = pd.read_excel(file_path, sheet_name="ankomster")
 
     # Rens kolonnenavne (vigtigt!)
