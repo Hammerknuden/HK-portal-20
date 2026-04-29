@@ -1,8 +1,11 @@
 import streamlit as st
 from auth import require_login
 import pandas as pd
+import sys
 from pathlib import Path
 from datetime import timedelta
+sys.path.append(str(Path(__file__).resolve().parents[1]))
+
 st.set_page_config(page_title="Ankomster", layout="wide")
 require_login()
 
