@@ -1,7 +1,9 @@
+from datetime import timedelta
 import streamlit as st
 from auth import require_login
 import pandas as pd
 from pathlib import Path
+
 st.set_page_config(page_title="Ankomster", layout="wide")
 require_login()
 
@@ -9,9 +11,13 @@ st.subheader("Dagens ankomster ")
 # Date inputs fra Streamlit
 
 check_dato_start = st.date_input("Start dato")
-#vindue = st.number_input("antal dage frem")
-#check_dato_slut = vindue.days + check_dato_start
-st.date_input("Slut dato")
+antal_dage = st.number_input("Antal dage", min_value=1, value=3)
+
+if check_dato_start:
+    check_dato_slut = check_dato_start + timedelta(days=antal_dage)
+    st.write("Slutdato:", check_dato_slut)
+
+#st.date_input("Slut dato")
 check_for_ankomst = st.button(" check ankomster")
 year = st.selectbox("booking år", ["2026", "2027"])
 

@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ny change fra gbt">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/2027_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2027_BOOKING 10.xlsx" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ankomst nyt set up fault" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,21 +29,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.1_Booking.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_Setup.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_setup.executor&quot;: &quot;Run&quot;,
-    &quot;Python.3_ankomster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.4_Booking_C_link.executor&quot;: &quot;Run&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.auth.executor&quot;: &quot;Run&quot;,
-    &quot;Python.config_prices.executor&quot;: &quot;Run&quot;,
-    &quot;Python.databaseopslag.executor&quot;: &quot;Run&quot;,
-    &quot;Python.streamlit_app.executor&quot;: &quot;Run&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/finnj/-repoHK2/HK-portal10/streamlit_app.py&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.1_Booking.executor": "Run",
+    "Python.2_Setup.executor": "Run",
+    "Python.2_setup.executor": "Run",
+    "Python.3_Ankomster.executor": "Run",
+    "Python.3_ankomster.executor": "Run",
+    "Python.4_Booking_C_link.executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.auth.executor": "Run",
+    "Python.config_prices.executor": "Run",
+    "Python.databaseopslag.executor": "Run",
+    "Python.streamlit_app.executor": "Run",
+    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/pages/3_Ankomster.py"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -62,22 +60,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00008" summary="multipage sidebar placering">
-      <option name="closed" value="true" />
-      <created>1776437445318</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1776437445318</updated>
-    </task>
-    <task id="LOCAL-00009" summary="multipage sidebar placering">
-      <option name="closed" value="true" />
-      <created>1776438288340</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1776438288340</updated>
     </task>
     <task id="LOCAL-00010" summary="multipage sidebar placering">
       <option name="closed" value="true" />
@@ -455,7 +437,23 @@
       <option name="project" value="LOCAL" />
       <updated>1777314510569</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="excel update 2027">
+      <option name="closed" value="true" />
+      <created>1777481710832</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1777481710832</updated>
+    </task>
+    <task id="LOCAL-00058" summary="ankomst nyt set up fault">
+      <option name="closed" value="true" />
+      <created>1777482108374</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1777482108374</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,6 +488,8 @@
     <MESSAGE value="req login fjernet" />
     <MESSAGE value="login sat øverst" />
     <MESSAGE value="ny change fra gbt" />
-    <option name="LAST_COMMIT_MESSAGE" value="ny change fra gbt" />
+    <MESSAGE value="excel update 2027" />
+    <MESSAGE value="ankomst nyt set up fault" />
+    <option name="LAST_COMMIT_MESSAGE" value="ankomst nyt set up fault" />
   </component>
 </project>
