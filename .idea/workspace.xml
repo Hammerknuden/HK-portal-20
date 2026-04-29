@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ankomst nyt set up fault" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ankomst nyt set up" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,14 +60,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00010" summary="multipage sidebar placering">
-      <option name="closed" value="true" />
-      <created>1776439063526</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1776439063526</updated>
     </task>
     <task id="LOCAL-00011" summary="multipage sidebar placering">
       <option name="closed" value="true" />
@@ -453,7 +445,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777482108374</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="ankomst nyt set up">
+      <option name="closed" value="true" />
+      <created>1777482688387</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1777482688387</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,6 +490,7 @@
     <MESSAGE value="ny change fra gbt" />
     <MESSAGE value="excel update 2027" />
     <MESSAGE value="ankomst nyt set up fault" />
-    <option name="LAST_COMMIT_MESSAGE" value="ankomst nyt set up fault" />
+    <MESSAGE value="ankomst nyt set up" />
+    <option name="LAST_COMMIT_MESSAGE" value="ankomst nyt set up" />
   </component>
 </project>
