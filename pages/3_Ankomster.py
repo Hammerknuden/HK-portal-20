@@ -13,7 +13,7 @@ check_dato_start = st.date_input("Start dato")
 #antal_dage = st.number_input("Antal dage", min_value=1, value=3)
 check_dato_slut = st.date_input("Slut dato")
 #if check_dato_start:
-check_dato_slut = check_dato_start + timedelta(days=antal_dage)
+#check_dato_slut = check_dato_start + timedelta(days=antal_dage)
 #st.write("Slutdato:", check_dato_slut)
 
 #st.date_input("Slut dato")
