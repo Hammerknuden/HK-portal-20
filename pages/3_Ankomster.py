@@ -26,7 +26,8 @@ check_for_ankomst = st.button(" check ankomster")
 
 if check_for_ankomst and year == "2026":
     # Load Excel
-    BASE_DIR = Path.cwd()
+    #BASE_DIR = Path.cwd()
+    BASE_DIR = Path(__file__).resolve().parent
     file_path = BASE_DIR / "data" / "2026_Booking 10.xlsx"
     df = pd.read_excel(file_path, sheet_name="ankomster")
 
