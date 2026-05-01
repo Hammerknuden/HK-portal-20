@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ankomst nyt set up">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ankomst nyt set up antal dage">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/3_Ankomster.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/3_Ankomster.py" afterDir="false" />
     </list>
@@ -63,46 +63,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00012" summary="multipage sidebar placering">
-      <option name="closed" value="true" />
-      <created>1776441893122</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1776441893122</updated>
-    </task>
-    <task id="LOCAL-00013" summary="authen updated igen">
-      <option name="closed" value="true" />
-      <created>1776442480800</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1776442480800</updated>
-    </task>
-    <task id="LOCAL-00014" summary="authen updated igen">
-      <option name="closed" value="true" />
-      <created>1776443808920</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1776443808920</updated>
-    </task>
-    <task id="LOCAL-00015" summary="authen updated igen">
-      <option name="closed" value="true" />
-      <created>1776502264200</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1776502264200</updated>
-    </task>
-    <task id="LOCAL-00016" summary="authen updated igen">
-      <option name="closed" value="true" />
-      <created>1776502630852</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1776502630852</updated>
     </task>
     <task id="LOCAL-00017" summary="authen updated igen">
       <option name="closed" value="true" />
@@ -456,7 +416,47 @@
       <option name="project" value="LOCAL" />
       <updated>1777482941625</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="ankomst nyt set up antal dage">
+      <option name="closed" value="true" />
+      <created>1777489230154</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1777489230154</updated>
+    </task>
+    <task id="LOCAL-00062" summary="ankomst nyt set up antal dage">
+      <option name="closed" value="true" />
+      <created>1777489860273</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1777489860273</updated>
+    </task>
+    <task id="LOCAL-00063" summary="ankomst nyt set up antal dage">
+      <option name="closed" value="true" />
+      <created>1777489982310</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1777489982310</updated>
+    </task>
+    <task id="LOCAL-00064" summary="ankomst nyt set up antal dage">
+      <option name="closed" value="true" />
+      <created>1777490024002</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1777490024002</updated>
+    </task>
+    <task id="LOCAL-00065" summary="ankomst nyt set up antal dage">
+      <option name="closed" value="true" />
+      <created>1777490200379</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1777490200379</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -494,6 +494,7 @@
     <MESSAGE value="excel update 2027" />
     <MESSAGE value="ankomst nyt set up fault" />
     <MESSAGE value="ankomst nyt set up" />
-    <option name="LAST_COMMIT_MESSAGE" value="ankomst nyt set up" />
+    <MESSAGE value="ankomst nyt set up antal dage" />
+    <option name="LAST_COMMIT_MESSAGE" value="ankomst nyt set up antal dage" />
   </component>
 </project>
