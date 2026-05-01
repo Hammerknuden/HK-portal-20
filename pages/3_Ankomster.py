@@ -1,8 +1,8 @@
 import streamlit as st
 from auth import require_login
 import pandas as pd
-import sys
 from pathlib import Path
+import sys
 from datetime import timedelta
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
@@ -27,35 +27,36 @@ check_for_ankomst = st.button(" check ankomster")
 if check_for_ankomst and year == "2026":
     # Load Excel
     #BASE_DIR = Path.cwd()
-    BASE_DIR = Path(__file__).resolve().parent
+    ##BASE_DIR = Path(__file__).resolve().parent
     #BASE_DIR = Path(__file__).resolve().parent.parent
-    file_path = BASE_DIR / "data" / "2026_Booking 10.xlsx"
-    df = pd.read_excel(file_path, sheet_name='ankomster')
+    ##file_path = BASE_DIR / "data" / "2026_Booking 10.xlsx"
+    ##df = pd.read_excel(file_path, sheet_name="ankomster")
 
     # Rens kolonnenavne (vigtigt!)
-    df.columns = df.columns.str.strip().str.lower()
+    ##df.columns = df.columns.str.strip().str.lower()
 
     # Sikr at 'dato' findes
-    if 'dato' not in df.columns:
-        st.error(f"Kolonnen 'dato' findes ikke. Fundet kolonner: {df.columns.tolist()}")
-    else:
+    ##if 'dato' not in df.columns:
+        ##st.error(f"Kolonnen 'dato' findes ikke. Fundet kolonner: {df.columns.tolist()}")
+    ##else:
         # Konverter til datetime
-        df['dato'] = pd.to_datetime(df['dato'], errors='coerce')
+        ##df['dato'] = pd.to_datetime(df['dato'], errors='coerce')
 
         # Fjern rækker med ugyldige datoer
-        df = df.dropna(subset=['dato'])
+        ##df = df.dropna(subset=['dato'])
 
     # Filtrer på interval
-    filtreret_df = df[
-        (df['dato'].dt.date >= check_dato_start) &
-        (df['dato'].dt.date <= check_dato_slut)
-        ]
+    ##filtreret_df = df[
+        ##(df['dato'].dt.date >= check_dato_start) &
+        ##(df['dato'].dt.date <= check_dato_slut)
+        ##]
 
         # Vis resultat
-    st.write("Ankomst oversigt:")
-    st.dataframe(filtreret_df)
+    ##st.write("Ankomst oversigt:")
+    ##st.dataframe(filtreret_df)
     BASE_DIR = Path.cwd()
     file_path = BASE_DIR / "data" / '2026_BOOKING 10.xlsx'
+    print(BASE_DIR)
     #file_name = "2026_BOOKING 10.xlsx"
     df = pd.read_excel(file_path, sheet_name="ankomst navn")
 
