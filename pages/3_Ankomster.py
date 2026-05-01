@@ -30,7 +30,7 @@ if check_for_ankomst and year == "2026":
     #BASE_DIR = Path(__file__).resolve().parent
     BASE_DIR = Path(__file__).resolve().parent.parent
     file_path = BASE_DIR / "data" / "2026_Booking 10.xlsx"
-    df = pd.read_excel(file_path, sheet_name="ankomster")
+    df = pd.read_excel(file_path, sheet_name='ankomster')
 
     # Rens kolonnenavne (vigtigt!)
     df.columns = df.columns.str.strip().str.lower()
