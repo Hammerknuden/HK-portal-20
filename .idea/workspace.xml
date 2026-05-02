@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ankomster slut ændret til days ahead">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="week number and events 2026">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,14 +64,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00028" summary="find excel in booking moved to data">
-      <option name="closed" value="true" />
-      <created>1776596131926</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1776596131926</updated>
     </task>
     <task id="LOCAL-00029" summary="find excel in booking moved to data">
       <option name="closed" value="true" />
@@ -455,7 +449,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777707258486</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="week number and events 2026">
+      <option name="closed" value="true" />
+      <created>1777729389502</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1777729389502</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -470,7 +472,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="authentication updated like version 10" />
     <MESSAGE value="multipage sidebar placering" />
     <MESSAGE value="authen updated igen" />
     <MESSAGE value="updatering af bookinfane" />
@@ -495,6 +496,7 @@
     <MESSAGE value="ankomst fejlmelder" />
     <MESSAGE value="updated excel" />
     <MESSAGE value="ankomster slut ændret til days ahead" />
-    <option name="LAST_COMMIT_MESSAGE" value="ankomster slut ændret til days ahead" />
+    <MESSAGE value="week number and events 2026" />
+    <option name="LAST_COMMIT_MESSAGE" value="week number and events 2026" />
   </component>
 </project>
