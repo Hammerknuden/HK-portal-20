@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ankomst fejlmelder" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="updated excel">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/3_Ankomster.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/3_Ankomster.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,14 +63,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00026" summary="find excel in booking moved to data">
-      <option name="closed" value="true" />
-      <created>1776547146722</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1776547146722</updated>
     </task>
     <task id="LOCAL-00027" summary="find excel in booking moved to data">
       <option name="closed" value="true" />
@@ -453,7 +448,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777641535740</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="updated excel">
+      <option name="closed" value="true" />
+      <created>1777642279194</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1777642279194</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -468,7 +471,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="all new" />
     <MESSAGE value="authentication like 10" />
     <MESSAGE value="authentication updated like version 10" />
     <MESSAGE value="multipage sidebar placering" />
@@ -493,6 +495,7 @@
     <MESSAGE value="ankomst nyt set up" />
     <MESSAGE value="ankomst nyt set up antal dage" />
     <MESSAGE value="ankomst fejlmelder" />
-    <option name="LAST_COMMIT_MESSAGE" value="ankomst fejlmelder" />
+    <MESSAGE value="updated excel" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated excel" />
   </component>
 </project>
