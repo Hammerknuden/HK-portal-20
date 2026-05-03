@@ -21,7 +21,7 @@ if clean_plan and year == "2026":
     # Load Excel
     BASE_DIR = Path.cwd()
     file_path = BASE_DIR / "data" / "2026_BOOKING 10.xlsx"
-    df = pd.read_excel(file_path, sheet_name="rengøring")
+    df = pd.read_excel(file_path, sheet_name="rengoering")
 
     # Rens kolonnenavne (vigtigt!)
     df.columns = df.columns.str.strip().str.lower()
@@ -50,7 +50,7 @@ if clean_plan and year == "2027":
     # Load Excel
     BASE_DIR = Path.cwd()
     file_path = BASE_DIR / "data" / "2027_BOOKING 10.xlsx"
-    df = pd.read_excel(file_path, sheet_name="rengøring")
+    df = pd.read_excel(file_path, sheet_name="rengoering")
 
     # Rens kolonnenavne (vigtigt!)
     df.columns = df.columns.str.strip().str.lower()
