@@ -62,22 +62,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00045" summary="update github">
-      <option name="closed" value="true" />
-      <created>1777224858036</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1777224858037</updated>
-    </task>
-    <task id="LOCAL-00046" summary="update github">
-      <option name="closed" value="true" />
-      <created>1777230839676</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1777230839677</updated>
-    </task>
     <task id="LOCAL-00047" summary="update github">
       <option name="closed" value="true" />
       <created>1777231314119</created>
@@ -454,7 +438,23 @@
       <option name="project" value="LOCAL" />
       <updated>1777824583025</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="cleaning regøring ændret til oe fra ø">
+      <option name="closed" value="true" />
+      <created>1777824783157</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1777824783157</updated>
+    </task>
+    <task id="LOCAL-00095" summary="cleaning regøring ændret til oe fra ø">
+      <option name="closed" value="true" />
+      <created>1777824956571</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1777824956571</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
