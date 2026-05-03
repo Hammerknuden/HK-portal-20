@@ -1,10 +1,8 @@
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parents[1]))
-
 import streamlit as st
 from auth import require_login
-st.write("import virker")
 import pandas as pd
 from datetime import timedelta
 
