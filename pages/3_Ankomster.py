@@ -143,7 +143,7 @@ st.subheader("Rengøring ")
 plan_dato_start = check_dato_start#st.date_input("Start dato")
 #antal_dage = st.number_input("Antal dage", min_value=1, value=5)
 plan_dato_slut = check_dato_slut #plan_dato_start + timedelta(days=antal_dage)
-clean_plan = st.button("planlæg regørring ")
+clean_plan = st.button("planlæg rengøring ")
 
 if clean_plan and year == "2026":
     # Load Excel
