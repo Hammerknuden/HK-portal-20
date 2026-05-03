@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="cleaning til ankomster">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/auth.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="cleaning regøring ændret til oe fra ø" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,30 +61,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00042" summary="text web tilføjet">
-      <option name="closed" value="true" />
-      <created>1777221485779</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1777221485779</updated>
-    </task>
-    <task id="LOCAL-00043" summary="auth updated og B.com link aktiveret">
-      <option name="closed" value="true" />
-      <created>1777223706908</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1777223706908</updated>
-    </task>
-    <task id="LOCAL-00044" summary="auth updated og B.com link aktiveret">
-      <option name="closed" value="true" />
-      <created>1777223953184</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1777223953184</updated>
     </task>
     <task id="LOCAL-00045" summary="update github">
       <option name="closed" value="true" />
@@ -457,7 +430,31 @@
       <option name="project" value="LOCAL" />
       <updated>1777824050399</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="cleaning regøring ændret til oe fra ø">
+      <option name="closed" value="true" />
+      <created>1777824357315</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1777824357315</updated>
+    </task>
+    <task id="LOCAL-00092" summary="cleaning regøring ændret til oe fra ø">
+      <option name="closed" value="true" />
+      <created>1777824441885</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1777824441885</updated>
+    </task>
+    <task id="LOCAL-00093" summary="cleaning regøring ændret til oe fra ø">
+      <option name="closed" value="true" />
+      <created>1777824583024</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1777824583025</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -472,7 +469,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="find excel in booking moved to data" />
     <MESSAGE value="Opslag af priser i setup" />
     <MESSAGE value="prices mappe setup" />
     <MESSAGE value="booking til known person" />
@@ -497,6 +493,7 @@
     <MESSAGE value="new page cleaning" />
     <MESSAGE value="cleaning import omfordeling" />
     <MESSAGE value="cleaning til ankomster" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaning til ankomster" />
+    <MESSAGE value="cleaning regøring ændret til oe fra ø" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleaning regøring ændret til oe fra ø" />
   </component>
 </project>
