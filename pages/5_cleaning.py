@@ -75,4 +75,4 @@ if clean_plan and year == "2027":
     st.write("Room checkouts:")
     st.dataframe(filtreret_df)
 else:
-    st.text("fault in program")
+    st.text("press buttom to plan ")
