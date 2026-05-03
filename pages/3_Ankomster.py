@@ -136,12 +136,13 @@ if check_for_ankomst and year == 2027:
             # Vis resultat
             st.write("Navne på ankomster:")
             st.dataframe(filtreret_df)
+
 st.subheader("Rengøring ")
 # Date inputs fra Streamlit
-year = st.selectbox("booking år", ["2026", "2027"])
-plan_dato_start = st.date_input("Start dato")
-antal_dage = st.number_input("Antal dage", min_value=1, value=5)
-plan_dato_slut = plan_dato_start + timedelta(days=antal_dage)
+#year = st.selectbox("booking år", ["2026", "2027"])
+plan_dato_start = check_dato_start#st.date_input("Start dato")
+#antal_dage = st.number_input("Antal dage", min_value=1, value=5)
+plan_dato_slut = check_dato_slut #plan_dato_start + timedelta(days=antal_dage)
 clean_plan = st.button("planlæg regørring ")
 
 if clean_plan and year == "2026":
