@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="week number and events 2026" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="new page cleaning">
+      <change beforePath="$PROJECT_DIR$/pages/5_cleaning.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/5_cleaning.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,14 +63,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00035" summary="prices mappe setup">
-      <option name="closed" value="true" />
-      <created>1776702521933</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1776702521933</updated>
     </task>
     <task id="LOCAL-00036" summary="booking til known person">
       <option name="closed" value="true" />
@@ -454,7 +448,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777792479804</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="new page cleaning">
+      <option name="closed" value="true" />
+      <created>1777792567340</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1777792567340</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -469,7 +471,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="multipage sidebar placering" />
     <MESSAGE value="authen updated igen" />
     <MESSAGE value="updatering af bookinfane" />
     <MESSAGE value="find excel in booking moved to data" />
@@ -494,6 +495,7 @@
     <MESSAGE value="updated excel" />
     <MESSAGE value="ankomster slut ændret til days ahead" />
     <MESSAGE value="week number and events 2026" />
-    <option name="LAST_COMMIT_MESSAGE" value="week number and events 2026" />
+    <MESSAGE value="new page cleaning" />
+    <option name="LAST_COMMIT_MESSAGE" value="new page cleaning" />
   </component>
 </project>

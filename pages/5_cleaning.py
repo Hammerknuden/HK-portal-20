@@ -72,7 +72,7 @@ if clean_plan and year == "2027":
         ]
 
         # Vis resultat
-    st.write("Room checkouts:")
+    st.write("Room checkouts ")
     st.dataframe(filtreret_df)
 else:
-    st.text("press buttom to plan ")
+    st.text("Press button to plan ")
