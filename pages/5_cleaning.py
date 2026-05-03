@@ -13,7 +13,7 @@ st.subheader("Rengøring ")
 # Date inputs fra Streamlit
 year = st.selectbox("booking år", ["2026", "2027"])
 plan_dato_start = st.date_input("Start dato")
-antal_dage = st.number_input("Antal dage", min_value=7, value=2)
+antal_dage = st.number_input("Antal dage", min_value=1, value=5)
 plan_dato_slut = plan_dato_start + timedelta(days=antal_dage)
 clean_plan = st.button(" check ankomster")
 
