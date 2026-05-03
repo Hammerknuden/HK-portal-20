@@ -45,3 +45,34 @@ if clean_plan and year == "2026":
         # Vis resultat
     st.write("Room checkouts:")
     st.dataframe(filtreret_df)
+
+if clean_plan and year == "2027":
+    # Load Excel
+    BASE_DIR = Path.cwd()
+    file_path = BASE_DIR / "data" / "2027_BOOKING 10.xlsx"
+    df = pd.read_excel(file_path, sheet_name="rengøring")
+
+    # Rens kolonnenavne (vigtigt!)
+    df.columns = df.columns.str.strip().str.lower()
+
+    # Sikr at 'dato' findes
+    if 'dato' not in df.columns:
+        st.error(f"Kolonnen 'dato' findes ikke. Fundet kolonner: {df.columns.tolist()}")
+    else:
+        # Konverter til datetime
+        df['dato'] = pd.to_datetime(df['dato'], errors='coerce')
+
+        # Fjern rækker med ugyldige datoer
+        df = df.dropna(subset=['dato'])
+
+    # Filtrer på interval
+    filtreret_df = df[
+        (df['dato'].dt.date >= plan_dato_start) &
+        (df['dato'].dt.date <= plan_dato_slut)
+        ]
+
+        # Vis resultat
+    st.write("Room checkouts:")
+    st.dataframe(filtreret_df)
+else:
+    st.text("fault in program")
