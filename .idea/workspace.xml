@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="week number and events 2026">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/5_setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/5_cleaning.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/5_cleaning.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,30 +63,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00030" summary="find excel in booking moved to data">
-      <option name="closed" value="true" />
-      <created>1776634876767</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1776634876767</updated>
-    </task>
-    <task id="LOCAL-00031" summary="find excel in booking moved to data">
-      <option name="closed" value="true" />
-      <created>1776634966751</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1776634966751</updated>
-    </task>
-    <task id="LOCAL-00032" summary="find excel in booking moved to data">
-      <option name="closed" value="true" />
-      <created>1776670431395</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1776670431395</updated>
     </task>
     <task id="LOCAL-00033" summary="find excel in booking moved to data">
       <option name="closed" value="true" />
@@ -457,7 +432,31 @@
       <option name="project" value="LOCAL" />
       <updated>1777729671144</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="week number and events 2026">
+      <option name="closed" value="true" />
+      <created>1777791758989</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1777791758990</updated>
+    </task>
+    <task id="LOCAL-00080" summary="week number and events 2026">
+      <option name="closed" value="true" />
+      <created>1777791884016</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1777791884017</updated>
+    </task>
+    <task id="LOCAL-00081" summary="week number and events 2026">
+      <option name="closed" value="true" />
+      <created>1777791948106</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1777791948106</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

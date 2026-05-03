@@ -6,7 +6,7 @@ import sys
 from datetime import timedelta
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-st.set_page_config(page_title="Rengørings plan", layout="wide")
+st.set_page_config(page_title="Cleaning plan", layout="wide")
 require_login()
 
 st.subheader("Rengøring ")
@@ -43,5 +43,5 @@ if clean_plan and year == "2026":
         ]
 
         # Vis resultat
-    st.write("Ankomst oversigt:")
+    st.write("Room checkouts:")
     st.dataframe(filtreret_df)
