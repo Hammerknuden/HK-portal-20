@@ -1,10 +1,11 @@
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parents[1]))
+
 import streamlit as st
 from auth import require_login
 import pandas as pd
-from pathlib import Path
-import sys
 from datetime import timedelta
-sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 st.set_page_config(page_title="Cleaning plan", layout="wide")
 require_login()
