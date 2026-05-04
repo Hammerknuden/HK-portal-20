@@ -131,12 +131,13 @@ styled_data = new_data[['dato', 'week_event', '1-I', '2-I', '3-I', '4-I', '5-I']
 st.dataframe(styled_data)
 col1, col2, = st.columns(2)
 with col1:
+    num_rooms = st.number_input("Antal rum", value=1, step=1)
+with col2:
     if single_room:
         num_guests = st.number_input("max en gæst", value=1, step=0)
     else:
         num_guests = st.number_input("Antal gæster", value=2, step=1)
-with col2:
-    num_rooms = st.number_input("Antal rum", value=1, step=1)
+
 
 col1, col2, col3 = st.columns(3)
 with col1:
