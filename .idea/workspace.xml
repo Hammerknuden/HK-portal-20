@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="upload excel regøring changed">
-      <change beforePath="$PROJECT_DIR$/pages/4_Booking_C_link.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/4_Links.py" afterDir="false" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="links expanded">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,22 +63,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00050" summary="def authenticator hash generate problems">
-      <option name="closed" value="true" />
-      <created>1777311527207</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1777311527208</updated>
-    </task>
-    <task id="LOCAL-00051" summary="def authenticator hash generate problems">
-      <option name="closed" value="true" />
-      <created>1777312389237</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1777312389237</updated>
     </task>
     <task id="LOCAL-00052" summary="def authenticator hash generate problems">
       <option name="closed" value="true" />
@@ -456,7 +440,23 @@
       <option name="project" value="LOCAL" />
       <updated>1777911055993</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="links expanded">
+      <option name="closed" value="true" />
+      <created>1777911436252</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1777911436252</updated>
+    </task>
+    <task id="LOCAL-00100" summary="links expanded">
+      <option name="closed" value="true" />
+      <created>1777911717314</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1777911717314</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -471,7 +471,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ny side for databaseopslag" />
     <MESSAGE value="text web tilføjet" />
     <MESSAGE value="auth updated og B.com link aktiveret" />
     <MESSAGE value="update github" />
@@ -496,6 +495,7 @@
     <MESSAGE value="upload excel app operationel" />
     <MESSAGE value="upload excel" />
     <MESSAGE value="upload excel regøring changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="upload excel regøring changed" />
+    <MESSAGE value="links expanded" />
+    <option name="LAST_COMMIT_MESSAGE" value="links expanded" />
   </component>
 </project>
