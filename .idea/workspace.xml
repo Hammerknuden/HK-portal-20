@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="Dtb 2026 update to book 122">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="starttext" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,14 +61,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00053" summary="req login fjernet">
-      <option name="closed" value="true" />
-      <created>1777312564180</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1777312564180</updated>
     </task>
     <task id="LOCAL-00054" summary="login sat øverst">
       <option name="closed" value="true" />
@@ -456,7 +446,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778077466066</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="starttext">
+      <option name="closed" value="true" />
+      <created>1778149021205</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1778149021206</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -471,7 +469,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="auth updated og B.com link aktiveret" />
     <MESSAGE value="update github" />
     <MESSAGE value="edit auth line spacing" />
     <MESSAGE value="workspace update" />
@@ -496,6 +493,7 @@
     <MESSAGE value="upload excel regøring changed" />
     <MESSAGE value="links expanded" />
     <MESSAGE value="Dtb 2026 update to book 122" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dtb 2026 update to book 122" />
+    <MESSAGE value="starttext" />
+    <option name="LAST_COMMIT_MESSAGE" value="starttext" />
   </component>
 </project>

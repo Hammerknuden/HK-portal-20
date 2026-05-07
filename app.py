@@ -22,7 +22,7 @@ require_login()
 
 st.text("version 2.0.1")
 st.image("logo2.jpg")
-st.title("HAMMERKNUDEN SOMMERPENSION")
+#st.title("HAMMERKNUDEN SOMMERPENSION")
 
 
 
