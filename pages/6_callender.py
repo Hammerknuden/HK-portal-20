@@ -24,7 +24,8 @@ if "booking_number" in st.session_state:
         f"{name} - "
         f"{checkin_date} til {checkout_date}"
     )
-
+else:
+    st.text("Ingen bookninger i session")
 #current_booking = st.checkbox("anvend igangværede booking")
 
 
