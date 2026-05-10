@@ -11,6 +11,7 @@ st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
 
 st.subheader("Anvend igang værende booking data fra ""booking")
+
 if "booking_number" in st.session_state:
 
     booking_number = st.session_state.booking_number
@@ -26,6 +27,7 @@ if "booking_number" in st.session_state:
 
 current_booking = st.checkbox("anvend igangværede booking")
 
+
 if "booking_data" not in st.session_state:
     st.session_state.booking_data = pd.DataFrame(
         columns=["Værelse", "Start", "Slut", "Gæst"]
@@ -40,15 +42,15 @@ with st.sidebar.form("booking_form"):
         [f"Værelse {i}" for i in range(1, 8)]
     )
 
-    #if current_booking:
-    #    st.text("[name]")
-    #    start_date = [checkin_date]
-    #    end_date = checkout_data
-    #else:
-    start_date = st.date_input(
-    "Start dato",
-    value=datetime.date.today()
-    )
+    if current_booking:
+        st.text("[name]")
+        start_date = [checkin_date]
+        end_date = checkout_data
+    else:
+        start_date = st.date_input(
+        "Start dato",
+        value=datetime.date.today()
+        )
 
     end_date = st.date_input(
     "Slut dato",
@@ -69,7 +71,7 @@ with st.sidebar.form("booking_form"):
                 "Værelse": room,
                 "Start": start_date,
                 "Slut": end_date,
-                "Gæst": name
+                "Gæst": booking_number
             }])
 
             st.session_state.booking_data = pd.concat(
