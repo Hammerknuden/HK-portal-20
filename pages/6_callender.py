@@ -71,7 +71,7 @@ with st.sidebar.form("booking_form"):
                 "Værelse": room,
                 "Start": start_date,
                 "Slut": end_date,
-                "Gæst": gæst
+                "Gæst": Gæst
             }])
 
             st.session_state.booking_data = pd.concat(
