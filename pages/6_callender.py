@@ -5,12 +5,24 @@ import datetime
 import sys
 import plotly.express as px
 from auth import require_login
-from booking import (booking_number, name, checkin_date, checkout_date)
 from config.data_email import add_data
 
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
 
+
+if "booking_number" in st.session_state:
+
+    booking_number = st.session_state.booking_number
+    name = st.session_state.name
+    checkin_date = st.session_state.checkin_date
+    checkout_date = st.session_state.checkout_date
+
+    st.text(
+        f"Booking nummer {booking_number} - "
+        f"{name} - "
+        f"{checkin_date} til {checkout_date}"
+    )
 st.subheader("Anvend igang værende booking data fra ""booking")
 current_booking = st.checkbox("anvend igangværede booking")
 if current_booking:
