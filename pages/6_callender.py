@@ -1,16 +1,20 @@
 import streamlit as st
 import pandas as pd
+from pathlib import Path
 import datetime
+import sys
 import plotly.express as px
 from auth import require_login
+from booking import (booking_number, name, checkin_date, checkout_date)
 from config.data_email import add_data
 
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
 
+st.subheader("Anvend igang værende booking data fra ""booking")
 current_booking = st.checkbox("anvend igangværede booking")
 if current_booking:
-    st.text(booking_number, name, checkin_date, checkou_date)
+    st.text(f"booking nummer {booking_number}", f" {name}", {checkin_date}, {checkou_date})
 else:
     st.text("fault in import")
 

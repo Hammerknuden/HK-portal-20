@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="new calender updated uden current booking">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ad text from add on">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/6_callender.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_callender.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,22 +68,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00059" summary="ankomst nyt set up">
-      <option name="closed" value="true" />
-      <created>1777482688387</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1777482688387</updated>
-    </task>
-    <task id="LOCAL-00060" summary="ankomst nyt set up">
-      <option name="closed" value="true" />
-      <created>1777482941625</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1777482941625</updated>
     </task>
     <task id="LOCAL-00061" summary="ankomst nyt set up antal dage">
       <option name="closed" value="true" />
@@ -460,7 +445,23 @@
       <option name="project" value="LOCAL" />
       <updated>1778394863217</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="ad text from add on">
+      <option name="closed" value="true" />
+      <created>1778395132077</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1778395132077</updated>
+    </task>
+    <task id="LOCAL-00109" summary="ad text from add on">
+      <option name="closed" value="true" />
+      <created>1778395245108</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1778395245108</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -476,7 +477,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="def authenticator hash generate problems" />
     <MESSAGE value="req login fjernet" />
     <MESSAGE value="login sat øverst" />
     <MESSAGE value="ny change fra gbt" />
@@ -501,6 +501,7 @@
     <MESSAGE value="excel update" />
     <MESSAGE value="new calender page" />
     <MESSAGE value="new calender updated uden current booking" />
-    <option name="LAST_COMMIT_MESSAGE" value="new calender updated uden current booking" />
+    <MESSAGE value="ad text from add on" />
+    <option name="LAST_COMMIT_MESSAGE" value="ad text from add on" />
   </component>
 </project>
