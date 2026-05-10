@@ -129,7 +129,7 @@ if not st.session_state.booking_data.empty:
         x_start="Start",
         x_end="Slut",
         y="Værelse",
-        color="Værelse",
+        color="Gæst", #"Værelse",
         hover_name="Gæst",
         text="Gæst",
         category_orders={
