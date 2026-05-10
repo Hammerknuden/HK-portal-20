@@ -8,7 +8,9 @@ from config.data_email import add_data
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
 
-#current_booking = st.checkbox("anvend igangværede booking")
+current_booking = st.checkbox("anvend igangværede booking")
+if:
+    Current_booking = st:text(booking_number, name, checkin_date, checkou_date)
 
 if "booking_data" not in st.session_state:
     st.session_state.booking_data = pd.DataFrame(

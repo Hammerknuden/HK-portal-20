@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excel update">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/7_setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/callender.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_callender.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="new calender updated uden current booking">
+      <change beforePath="$PROJECT_DIR$/pages/6_callender.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_callender.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,22 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00057" summary="excel update 2027">
-      <option name="closed" value="true" />
-      <created>1777481710832</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1777481710832</updated>
-    </task>
-    <task id="LOCAL-00058" summary="ankomst nyt set up fault">
-      <option name="closed" value="true" />
-      <created>1777482108374</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1777482108374</updated>
     </task>
     <task id="LOCAL-00059" summary="ankomst nyt set up">
       <option name="closed" value="true" />
@@ -463,7 +444,23 @@
       <option name="project" value="LOCAL" />
       <updated>1778392303122</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="new calender page">
+      <option name="closed" value="true" />
+      <created>1778394439967</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1778394439967</updated>
+    </task>
+    <task id="LOCAL-00107" summary="new calender updated uden current booking">
+      <option name="closed" value="true" />
+      <created>1778394863217</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1778394863217</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -479,8 +476,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="edit auth line spacing" />
-    <MESSAGE value="workspace update" />
     <MESSAGE value="def authenticator hash generate problems" />
     <MESSAGE value="req login fjernet" />
     <MESSAGE value="login sat øverst" />
@@ -504,6 +499,8 @@
     <MESSAGE value="Dtb 2026 update to book 122" />
     <MESSAGE value="starttext" />
     <MESSAGE value="excel update" />
-    <option name="LAST_COMMIT_MESSAGE" value="excel update" />
+    <MESSAGE value="new calender page" />
+    <MESSAGE value="new calender updated uden current booking" />
+    <option name="LAST_COMMIT_MESSAGE" value="new calender updated uden current booking" />
   </component>
 </project>
