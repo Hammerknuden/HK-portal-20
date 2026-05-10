@@ -521,6 +521,34 @@ if send_data: #and booking_submitted:
 
     st.markdown("data mail sendt")
     print(type(excel_file))
+    col1, col2 = st.columns(2)
+
+    # GEM ÆNDRINGER
+    with col1:
+        if st.button("Gem ændringer"):
+            st.session_state.booking_data.loc[
+                booking_index
+            ] = [
+                new_room,
+                new_start,
+                new_end,
+                new_guest
+            ]
+
+            st.success("Booking opdateret")
+            st.rerun()
+
+    # SLET BOOKING
+    with col2:
+        if st.button("Slet booking"):
+            st.session_state.booking_data = (
+                st.session_state.booking_data
+                .drop(index=booking_index)
+                .reset_index(drop=True)
+            )
+
+            st.success("Booking slettet")
+            st.rerun()
 
 else:
     st.markdown("data mail ikke sendt ")
