@@ -2,33 +2,41 @@ import streamlit as st
 import pandas as pd
 import datetime
 import plotly.express as px
+from auth import require_login
+from config.data_email import add_data
 
-st.set_page_config(page_title="Booking med Tidslinje", layout="wide")
+st.set_page_config(page_title="Timeline", layout="wide")
+require_login()
+
+current_booking = st.checkbox("anvend igangværede booking")
 
 if "booking_data" not in st.session_state:
     st.session_state.booking_data = pd.DataFrame(
         columns=["Værelse", "Start", "Slut", "Gæst"]
     )
+    # -------------------------
+    # OPRET BOOKING
+    # -------------------------
+    with st.sidebar.form("booking_form"):
 
-# -------------------------
-# OPRET BOOKING
-# -------------------------
-with st.sidebar.form("booking_form"):
+        room = st.selectbox(
+            "Værelse",
+            [f"Værelse {i}" for i in range(1, 8)])
 
-    room = st.selectbox(
-        "Værelse",
-        [f"Værelse {i}" for i in range(1, 6)]
-    )
-
-    start_date = st.date_input(
+    if current_booking:
+        st.text("[name]")
+        start_date = [checkin_date]
+        end_date = checkout_data
+    else:
+        start_date = st.date_input(
         "Start dato",
         value=datetime.date.today()
-    )
+        )
 
-    end_date = st.date_input(
+        end_date = st.date_input(
         "Slut dato",
         value=datetime.date.today() + datetime.timedelta(days=2)
-    )
+        )
 
     name = st.text_input("Gæstnavn")
 
@@ -71,7 +79,7 @@ if not st.session_state.booking_data.empty:
         hover_name="Gæst",
         text="Gæst",
         category_orders={
-            "Værelse": [f"Værelse {i}" for i in range(1, 6)]
+            "Værelse": [f"Værelse {i}" for i in range(1, 8)]
         }
     )
 
@@ -106,7 +114,7 @@ if not st.session_state.booking_data.empty:
         hover_name="Gæst",
         text="Gæst",
         category_orders={
-            "Værelse": [f"Værelse {i}" for i in range(1, 6)]
+            "Værelse": [f"Værelse {i}" for i in range(1, 8)]
         }
     )
     # Layout
@@ -147,7 +155,7 @@ if not st.session_state.booking_data.empty:
 
     new_room = st.selectbox(
         "Rediger værelse",
-        [f"Værelse {i}" for i in range(1, 6)],
+        [f"Værelse {i}" for i in range(1, 8)],
         index=int(booking["Værelse"].split()[-1]) - 1
     )
 

@@ -1,8 +1,10 @@
-streamlit
+streamlit~=1.56.0
 streamlit-authenticator
-pandas
-openpyxl
-numpy
-requests
-Pillow
+pandas~=3.0.2
+openpyxl~=3.1.5
+numpy~=2.4.4
+requests~=2.33.1
+Pillow~=12.2.0
 XlsxWriter
+DateTime~=6.0
+plotly~=6.7.0
