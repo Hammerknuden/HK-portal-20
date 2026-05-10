@@ -107,7 +107,7 @@ if not st.session_state.booking_data.empty:
         showgrid=True,
         gridwidth=5,
         gridcolor="black",
-        dtick="D2"
+        dtick="D4"
     )
 
     fig.update_yaxes(
