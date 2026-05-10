@@ -43,9 +43,9 @@ with st.sidebar.form("booking_form"):
     )
 
     if current_booking:
-        st.text("[name]")
-        start_date = [checkin_date]
-        end_date = checkout_data
+        st.text(f"{name}")
+        start_date =f"{checkin_date}"
+        end_date = f"{checkout_date}"
     else:
         start_date = st.date_input(
         "Start dato",
