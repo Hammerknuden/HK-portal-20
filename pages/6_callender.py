@@ -10,7 +10,7 @@ from config.data_email import add_data
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
 
-
+st.subheader("Anvend igang værende booking data fra ""booking")
 if "booking_number" in st.session_state:
 
     booking_number = st.session_state.booking_number
@@ -23,12 +23,8 @@ if "booking_number" in st.session_state:
         f"{name} - "
         f"{checkin_date} til {checkout_date}"
     )
-st.subheader("Anvend igang værende booking data fra ""booking")
+
 current_booking = st.checkbox("anvend igangværede booking")
-if current_booking:
-    st.text(f"booking nummer {booking_number}", f" {name}", {checkin_date}, {checkou_date})
-else:
-    st.text("fault in import")
 
 if "booking_data" not in st.session_state:
     st.session_state.booking_data = pd.DataFrame(

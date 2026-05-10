@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ad text from add on">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_callender.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_callender.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="editorial" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,22 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00061" summary="ankomst nyt set up antal dage">
-      <option name="closed" value="true" />
-      <created>1777489230154</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1777489230154</updated>
-    </task>
-    <task id="LOCAL-00062" summary="ankomst nyt set up antal dage">
-      <option name="closed" value="true" />
-      <created>1777489860273</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1777489860273</updated>
     </task>
     <task id="LOCAL-00063" summary="ankomst nyt set up antal dage">
       <option name="closed" value="true" />
@@ -461,7 +442,23 @@
       <option name="project" value="LOCAL" />
       <updated>1778395245108</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="editorial">
+      <option name="closed" value="true" />
+      <created>1778426636735</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1778426636735</updated>
+    </task>
+    <task id="LOCAL-00111" summary="editorial">
+      <option name="closed" value="true" />
+      <created>1778426932078</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1778426932078</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -477,7 +474,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="req login fjernet" />
     <MESSAGE value="login sat øverst" />
     <MESSAGE value="ny change fra gbt" />
     <MESSAGE value="excel update 2027" />
@@ -502,6 +498,7 @@
     <MESSAGE value="new calender page" />
     <MESSAGE value="new calender updated uden current booking" />
     <MESSAGE value="ad text from add on" />
-    <option name="LAST_COMMIT_MESSAGE" value="ad text from add on" />
+    <MESSAGE value="editorial" />
+    <option name="LAST_COMMIT_MESSAGE" value="editorial" />
   </component>
 </project>
