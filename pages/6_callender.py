@@ -25,7 +25,7 @@ if "booking_number" in st.session_state:
         f"{checkin_date} til {checkout_date}"
     )
 
-current_booking = st.checkbox("anvend igangværede booking")
+#current_booking = st.checkbox("anvend igangværede booking")
 
 
 if "booking_data" not in st.session_state:
@@ -42,15 +42,15 @@ with st.sidebar.form("booking_form"):
         [f"Værelse {i}" for i in range(1, 8)]
     )
 
-    if current_booking:
-        st.text(f"{name}")
-        start_date =f"{checkin_date}"
-        end_date = f"{checkout_date}"
-    else:
-        start_date = st.date_input(
-        "Start dato",
-        value=datetime.date.today()
-        )
+    #if current_booking:
+    #    st.text(f"{name}")
+     #   start_date =f"{checkin_date}"
+    #    end_date = f"{checkout_date}"
+    #else:
+    start_date = st.date_input(
+    "Start dato",
+    value=datetime.date.today()
+    )
 
     end_date = st.date_input(
     "Slut dato",
