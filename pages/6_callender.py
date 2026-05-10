@@ -14,10 +14,10 @@ st.subheader("Anvend igang værende booking data fra ""booking")
 
 if "booking_number" in st.session_state:
 
-    booking_number = st.session_state.booking_number
-    name = st.session_state.name
-    checkin_date = st.session_state.checkin_date
-    checkout_date = st.session_state.checkout_date
+    booking_number = st.session_state.get("booking_number", "")
+    name = st.session_state.get("name", "")
+    checkin_date = st.session_state.get("checkin_date", "")
+    checkout_date = st.session_state.get("checkout_date", "")
 
     st.text(
         f"Booking nummer {booking_number} - "
