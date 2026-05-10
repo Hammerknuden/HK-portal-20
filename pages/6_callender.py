@@ -9,8 +9,10 @@ st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
 
 current_booking = st.checkbox("anvend igangværede booking")
-if:
-    Current_booking = st:text(booking_number, name, checkin_date, checkou_date)
+if current_booking:
+    st.text(booking_number, name, checkin_date, checkou_date)
+else:
+    st.text("fault in import")
 
 if "booking_data" not in st.session_state:
     st.session_state.booking_data = pd.DataFrame(
