@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="sessionstate change">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fuld updated calender kode frA cHAT">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_callender.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_callender.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,14 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00075" summary="updated excel">
-      <option name="closed" value="true" />
-      <created>1777642279194</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1777642279194</updated>
     </task>
     <task id="LOCAL-00076" summary="ankomster slut ændret til days ahead">
       <option name="closed" value="true" />
@@ -461,7 +452,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778432946498</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <task id="LOCAL-00124" summary="fuld updated calender kode frA cHAT">
+      <option name="closed" value="true" />
+      <created>1778435401503</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1778435401503</updated>
+    </task>
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -477,7 +476,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="excel update 2027" />
     <MESSAGE value="ankomst nyt set up fault" />
     <MESSAGE value="ankomst nyt set up" />
     <MESSAGE value="ankomst nyt set up antal dage" />
@@ -502,6 +500,7 @@
     <MESSAGE value="editorial" />
     <MESSAGE value="color change" />
     <MESSAGE value="sessionstate change" />
-    <option name="LAST_COMMIT_MESSAGE" value="sessionstate change" />
+    <MESSAGE value="fuld updated calender kode frA cHAT" />
+    <option name="LAST_COMMIT_MESSAGE" value="fuld updated calender kode frA cHAT" />
   </component>
 </project>

@@ -553,6 +553,10 @@ if send_data: #and booking_submitted:
 else:
     st.markdown("data mail ikke sendt ")
 #nyt tiltag ankomster
+print(name)
+print(checkin_date)
+print(checkout_date)
+st.markdown(name)
 
 
 
