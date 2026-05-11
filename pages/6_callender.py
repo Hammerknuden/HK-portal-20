@@ -17,8 +17,10 @@ DATA_DIR.mkdir(exist_ok=True)
 
 BOOKING_FILE = DATA_DIR / "booking_data.csv"
 
+
 def save_bookings():
     st.session_state.booking_data.to_csv(BOOKING_FILE, index=False)
+
 
 st.subheader('Anvend igangværende booking data fra "booking"')
 
