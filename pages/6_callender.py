@@ -27,7 +27,8 @@ st.subheader('Anvend igangværende booking data fra "booking"')
 # -------------------------
 # SESSION BOOKING INFO
 # -------------------------
-if "booking_number" in st.session_state:
+
+if "booking" in st.session_state:
 
     booking_number = st.session_state.get("booking_number", "")
     name = st.session_state.get("booking_name", "")
