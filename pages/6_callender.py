@@ -35,8 +35,8 @@ if "booking_number" in st.session_state:
     checkout_date = st.session_state.get("checkout_date", "")
 
     st.text(
-        f"Booking nummer {booking_number} - "
-        f"{name} - "
+        f"Booking nummer {booking_number} - ",
+        f"{name} - ",
         f"{checkin_date} til {checkout_date}"
     )
 else:

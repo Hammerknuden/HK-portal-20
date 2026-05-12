@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="updated excel" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="x slider" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,14 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00082" summary="week number and events 2026">
-      <option name="closed" value="true" />
-      <created>1777792225758</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1777792225758</updated>
     </task>
     <task id="LOCAL-00083" summary="week number and events 2026">
       <option name="closed" value="true" />
@@ -458,7 +450,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778535688891</updated>
     </task>
-    <option name="localTasksCounter" value="131" />
+    <task id="LOCAL-00131" summary="x slider">
+      <option name="closed" value="true" />
+      <created>1778569178726</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1778569178726</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -474,7 +474,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ankomst nyt set up" />
     <MESSAGE value="ankomst nyt set up antal dage" />
     <MESSAGE value="ankomst fejlmelder" />
     <MESSAGE value="ankomster slut ændret til days ahead" />
@@ -499,6 +498,7 @@
     <MESSAGE value="fuld updated calender kode frA cHAT" />
     <MESSAGE value="key" />
     <MESSAGE value="updated excel" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated excel" />
+    <MESSAGE value="x slider" />
+    <option name="LAST_COMMIT_MESSAGE" value="x slider" />
   </component>
 </project>
