@@ -66,14 +66,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00091" summary="cleaning regøring ændret til oe fra ø">
-      <option name="closed" value="true" />
-      <created>1777824357315</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1777824357315</updated>
-    </task>
     <task id="LOCAL-00092" summary="cleaning regøring ændret til oe fra ø">
       <option name="closed" value="true" />
       <created>1777824441885</created>
@@ -458,7 +450,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778604484734</updated>
     </task>
-    <option name="localTasksCounter" value="140" />
+    <task id="LOCAL-00140" summary="updated">
+      <option name="closed" value="true" />
+      <created>1778604770574</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1778604770574</updated>
+    </task>
+    <option name="localTasksCounter" value="141" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
