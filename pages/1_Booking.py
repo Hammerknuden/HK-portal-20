@@ -562,10 +562,20 @@ st.markdown(name)
 st.markdown(checkin_date)
 st.markdown(checkout_date)
 
-def save_current_booking():
-    save_current_booking()
-    st.text("Booking saved in session state")
+def save_booking():
+    booking = st.session_state["booking_number"]
+    name = st.session_state["booking_name"]
+    checkin_date = st.session_state["booking_checkin_date"]
+    checkout_date = st.session_state["booking_checkout_date"]
 
+    st.write(f"Gemmer {booking} for {name}"),
+    st.write(f"Gemmer{checkin_date}","Gemmer{checkout_date}")
+
+st.text_input("Booking nummer", key="booking_number")
+st.date_input("Dato", key="booking_date")
+
+if st.button("Gem"):
+    save_booking()
 
 
 
