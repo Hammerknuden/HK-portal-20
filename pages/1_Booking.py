@@ -38,9 +38,9 @@ booking_number = st.text_input("booking nummer ", key="booking_number")
 
 col1, col2 = st.columns(2)
 with col1:
-    checkin_date = st.date_input("Checkin dato", key='start booking')
+    checkin_date = st.date_input("Checkin dato", key='booking_checkin_date')
 with col2:
-    checkout_date = st.date_input("Checkout dato", key='slut booking')
+    checkout_date = st.date_input("Checkout dato", key='booking_checkout_date')
 
 single_room = st.checkbox("Enkeltværelse")
 
@@ -569,10 +569,8 @@ def save_booking():
     checkout_date = st.session_state["booking_checkout_date"]
 
     st.write(f"Gemmer {booking} for {name}"),
-    st.write(f"Gemmer{checkin_date}","Gemmer{checkout_date}")
+    st.write(f"Gemmer{checkin_date}", "Gemmer{checkout_date}")
 
-st.text_input("Booking nummer", key="booking_number")
-st.date_input("Dato", key="booking_date")
 
 if st.button("Gem"):
     save_booking()

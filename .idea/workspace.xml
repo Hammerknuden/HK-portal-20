@@ -69,22 +69,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00084" summary="new page cleaning">
-      <option name="closed" value="true" />
-      <created>1777792567340</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1777792567340</updated>
-    </task>
-    <task id="LOCAL-00085" summary="new page cleaning">
-      <option name="closed" value="true" />
-      <created>1777796632359</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1777796632360</updated>
-    </task>
     <task id="LOCAL-00086" summary="cleaning import omfordeling">
       <option name="closed" value="true" />
       <created>1777820783278</created>
@@ -461,7 +445,23 @@
       <option name="project" value="LOCAL" />
       <updated>1778591521036</updated>
     </task>
-    <option name="localTasksCounter" value="133" />
+    <task id="LOCAL-00133" summary="x slider">
+      <option name="closed" value="true" />
+      <created>1778592064651</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1778592064651</updated>
+    </task>
+    <task id="LOCAL-00134" summary="x slider">
+      <option name="closed" value="true" />
+      <created>1778593050377</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1778593050377</updated>
+    </task>
+    <option name="localTasksCounter" value="135" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
