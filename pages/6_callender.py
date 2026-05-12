@@ -133,7 +133,7 @@ if not st.session_state.booking_data.empty:
         showlegend=False,
         height=400
     )
-
+    fig.update_xaxes(rangeslider_visible=True)
     fig.update_xaxes(
         tickformat="%d-%m",
         tickangle=0
