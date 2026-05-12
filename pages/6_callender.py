@@ -30,15 +30,16 @@ st.subheader('Anvend igangværende booking data fra "booking"')
 if "booking_number" in st.session_state:
 
     booking_number = st.session_state.get("booking_number", "")
-    name = st.session_state.get("name", "")
-    checkin_date = st.session_state.get("checkin_date", "")
-    checkout_date = st.session_state.get("checkout_date", "")
+    name = st.session_state.get("booking_name", "")
+    checkin_date = st.session_state.get("booking_checkin_date", "")
+    checkout_date = st.session_state.get("booking_checkout_date", "")
 
     st.text(
-        f"Booking nummer {booking_number} - ",
-        f"{name} - ",
+        f"Booking nummer {booking_number} - "
+        f"{name} - "
         f"{checkin_date} til {checkout_date}"
     )
+
 else:
     st.text("Ingen bookinger i session")
 
