@@ -5,6 +5,7 @@ import datetime
 import plotly.express as px
 from auth import require_login
 from config.data_email import add_data
+# INITIALISER SESSION STATE
 
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
