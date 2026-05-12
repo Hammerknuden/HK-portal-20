@@ -351,7 +351,7 @@ st.markdown(f"**Den totale pris** {formatted_pristotal}kr".replace(".",","))
 
 st.subheader("Kontakt information")
 
-name = st.text_input("Navn",key='booking_name')
+name = st.text_input("Navn", key='booking_name')
 fam_name = st.text_input("Efternavn (kun til søgning ellers blank)  ")
 telefon = st.text_input(" Kontakt telefon")
 email_address = st.text_input("email")
