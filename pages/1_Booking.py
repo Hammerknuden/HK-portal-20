@@ -524,6 +524,7 @@ if send_data: #and booking_submitted:
     col1, col2 = st.columns(2)
 
     # GEM ÆNDRINGER
+    booking_index = 0
     with col1:
         if st.button("Gem ændringer"):
             st.session_state.booking_data.loc[
