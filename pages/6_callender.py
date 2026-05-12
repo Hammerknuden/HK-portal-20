@@ -42,7 +42,7 @@ if "booking_number" in st.session_state:
 
 else:
     st.text("Ingen bookinger i session")
-st.write(st.session_state)
+
 # -------------------------
 # LOAD / INIT DATA
 # -------------------------
