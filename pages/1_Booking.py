@@ -562,6 +562,12 @@ st.markdown(name)
 st.markdown(checkin_date)
 st.markdown(checkout_date)
 
+def save_current_booking():
+    save_current_booking()
+    st.text("Booking saved in session state")
+
+
+
 
 
 
