@@ -128,19 +128,19 @@ with st.sidebar.form("booking_form"):
 # -------------------------
 st.subheader("Belægningsplan")
 
-    df = st.session_state.booking_data.copy()
+df = st.session_state.booking_data.copy()
 
-    df["Start"] = pd.to_datetime(df["Start"])
-    df["Slut"] = pd.to_datetime(df["Slut"])
+df["Start"] = pd.to_datetime(df["Start"])
+df["Slut"] = pd.to_datetime(df["Slut"])
 
-    fig = px.timeline(
-        df,
-        x_start="Start",
-        x_end="Slut",
-        y="Værelse",
-        color="Gæst",
-        hover_name="Gæst",
-        text="Gæst",
+fig = px.timeline(
+    df,
+    x_start="Start",
+    x_end="Slut",
+    y="Værelse",
+    color="Gæst",
+    hover_name="Gæst",
+    text="Gæst",
     )
 if not st.session_state.booking_data.empty:
 
