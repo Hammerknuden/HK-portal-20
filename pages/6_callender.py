@@ -25,6 +25,9 @@ if "booking_number" in st.session_state:
 else:
     st.text("Ingen bookinger i session")
 
+
+def to_dt(x):
+    return pd.to_datetime(x)
 # -------------------------
 # DATA SETUP
 # -------------------------
@@ -72,7 +75,8 @@ if "booking_data" not in st.session_state:
         st.session_state.booking_data = pd.DataFrame(
             columns=["Værelse", "Start", "Slut", "Gæst"]
         )
-
+        # gem straks første gang
+        st.session_state.booking_data.to_csv(BOOKING_FILE, index=False)
 # -------------------------
 # OPRET BOOKING
 # -------------------------
@@ -105,8 +109,8 @@ with st.sidebar.form("booking_form"):
         else:
             new_row = pd.DataFrame([{
                 "Værelse": room,
-                "Start": pd.to_datetime(start_date),
-                "Slut": pd.to_datetime(end_date),
+                "Start": to_dt(start_date),
+                "Slut": to_dt(end_date),
                 "Gæst": name
             }])
 
@@ -122,21 +126,33 @@ with st.sidebar.form("booking_form"):
 # -------------------------
 # VIS BOOKINGER
 # -------------------------
+st.subheader("Belægningsplan")
+
+    df = st.session_state.booking_data.copy()
+
+    df["Start"] = pd.to_datetime(df["Start"])
+    df["Slut"] = pd.to_datetime(df["Slut"])
+
+    fig = px.timeline(
+        df,
+        x_start="Start",
+        x_end="Slut",
+        y="Værelse",
+        color="Gæst",
+        hover_name="Gæst",
+        text="Gæst",
+    )
 if not st.session_state.booking_data.empty:
-
-    # Sikr datetime format
-    st.session_state.booking_data["Start"] = pd.to_datetime(
-        st.session_state.booking_data["Start"]
-    )
-
-    st.session_state.booking_data["Slut"] = pd.to_datetime(
-        st.session_state.booking_data["Slut"]
-    )
 
     st.subheader("Belægningsplan")
 
+    df = st.session_state.booking_data.copy()
+
+    df["Start"] = pd.to_datetime(df["Start"])
+    df["Slut"] = pd.to_datetime(df["Slut"])
+
     fig = px.timeline(
-        st.session_state.booking_data,
+        df,
         x_start="Start",
         x_end="Slut",
         y="Værelse",
