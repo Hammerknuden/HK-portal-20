@@ -119,6 +119,15 @@ with st.sidebar.form("booking_form"):
 # -------------------------
 if not st.session_state.booking_data.empty:
 
+    # Sikr datetime format
+    st.session_state.booking_data["Start"] = pd.to_datetime(
+        st.session_state.booking_data["Start"]
+    )
+
+    st.session_state.booking_data["Slut"] = pd.to_datetime(
+        st.session_state.booking_data["Slut"]
+    )
+
     st.subheader("Belægningsplan")
 
     fig = px.timeline(
@@ -129,9 +138,6 @@ if not st.session_state.booking_data.empty:
         color="Gæst",
         hover_name="Gæst",
         text="Gæst",
-        category_orders={
-            "Værelse": [f"Værelse {i}" for i in range(1, 8)]
-        }
     )
 
     fig.update_yaxes(autorange="reversed")

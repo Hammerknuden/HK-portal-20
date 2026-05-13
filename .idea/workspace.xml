@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="new save calender data">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_callender.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_callender.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="new save callebder data by chatgpt" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,14 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00100" summary="links expanded">
-      <option name="closed" value="true" />
-      <created>1777911717314</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1777911717314</updated>
     </task>
     <task id="LOCAL-00101" summary="Dtb 2026 update to book 122">
       <option name="closed" value="true" />
@@ -461,7 +450,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778691423794</updated>
     </task>
-    <option name="localTasksCounter" value="149" />
+    <task id="LOCAL-00149" summary="new save callebder data by chatgpt">
+      <option name="closed" value="true" />
+      <created>1778692393766</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1778692393766</updated>
+    </task>
+    <option name="localTasksCounter" value="150" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -477,7 +474,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="cleaning import omfordeling" />
     <MESSAGE value="cleaning til ankomster" />
     <MESSAGE value="cleaning regøring ændret til oe fra ø" />
     <MESSAGE value="upload excel app operationel" />
@@ -502,6 +498,7 @@
     <MESSAGE value="callender update seession" />
     <MESSAGE value="excel update" />
     <MESSAGE value="new save calender data" />
-    <option name="LAST_COMMIT_MESSAGE" value="new save calender data" />
+    <MESSAGE value="new save callebder data by chatgpt" />
+    <option name="LAST_COMMIT_MESSAGE" value="new save callebder data by chatgpt" />
   </component>
 </project>
