@@ -40,6 +40,11 @@ if not BOOKING_FILE.exists():
         columns=["Værelse", "Start", "Slut", "Gæst"]
     ).to_csv(BOOKING_FILE, index=False)
 
+st.write("Current file:", __file__)
+st.write("BASE_DIR:", BASE_DIR)
+st.write("DATA_DIR:", DATA_DIR)
+st.write("BOOKING_FILE:", BOOKING_FILE)
+
 
 def save_bookings():
     st.session_state.booking_data.to_csv(BOOKING_FILE, index=False)
