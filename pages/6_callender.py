@@ -9,6 +9,8 @@ from config.data_email import add_data
 
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
+
+
 if "booking_number" in st.session_state:
 
     booking_number = st.session_state.get("booking_number", "")
@@ -143,8 +145,6 @@ fig = px.timeline(
     text="Gæst",
     )
 if not st.session_state.booking_data.empty:
-
-    st.subheader("Belægningsplan")
 
     df = st.session_state.booking_data.copy()
 
