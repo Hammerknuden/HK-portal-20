@@ -9,26 +9,6 @@ from config.data_email import add_data
 
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
-
-# -------------------------
-# DATA SETUP
-# -------------------------
-DATA_DIR = Path("data")
-DATA_DIR.mkdir(exist_ok=True)
-
-BOOKING_FILE = DATA_DIR / "booking_data.csv"
-
-
-def save_bookings():
-    st.session_state.booking_data.to_csv(BOOKING_FILE, index=False)
-
-
-st.subheader('Anvend igangværende booking data fra "booking"')
-
-# -------------------------
-# SESSION BOOKING INFO
-# -------------------------
-
 if "booking_number" in st.session_state:
 
     booking_number = st.session_state.get("booking_number", "")
@@ -44,6 +24,34 @@ if "booking_number" in st.session_state:
 
 else:
     st.text("Ingen bookinger i session")
+
+# -------------------------
+# DATA SETUP
+# -------------------------
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+
+DATA_DIR.mkdir(exist_ok=True)
+
+BOOKING_FILE = DATA_DIR / "booking_data.csv"
+
+if not BOOKING_FILE.exists():
+    pd.DataFrame(
+        columns=["Værelse", "Start", "Slut", "Gæst"]
+    ).to_csv(BOOKING_FILE, index=False)
+
+
+def save_bookings():
+    st.session_state.booking_data.to_csv(BOOKING_FILE, index=False)
+
+
+st.subheader('Anvend igangværende booking data fra "booking"')
+
+# -------------------------
+# SESSION BOOKING INFO
+# -------------------------
+
+
 
 # -------------------------
 # LOAD / INIT DATA

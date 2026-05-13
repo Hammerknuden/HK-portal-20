@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="name key" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excel update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/6_callender.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_callender.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,22 +68,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00097" summary="upload excel">
-      <option name="closed" value="true" />
-      <created>1777844328007</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1777844328007</updated>
-    </task>
-    <task id="LOCAL-00098" summary="upload excel regøring changed">
-      <option name="closed" value="true" />
-      <created>1777911055993</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1777911055993</updated>
     </task>
     <task id="LOCAL-00099" summary="links expanded">
       <option name="closed" value="true" />
@@ -458,7 +445,23 @@
       <option name="project" value="LOCAL" />
       <updated>1778607615256</updated>
     </task>
-    <option name="localTasksCounter" value="146" />
+    <task id="LOCAL-00146" summary="callender update seession">
+      <option name="closed" value="true" />
+      <created>1778659705726</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1778659705727</updated>
+    </task>
+    <task id="LOCAL-00147" summary="excel update">
+      <option name="closed" value="true" />
+      <created>1778660078031</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1778660078031</updated>
+    </task>
+    <option name="localTasksCounter" value="148" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -474,7 +477,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="week number and events 2026" />
     <MESSAGE value="new page cleaning" />
     <MESSAGE value="cleaning import omfordeling" />
     <MESSAGE value="cleaning til ankomster" />
@@ -485,7 +487,6 @@
     <MESSAGE value="links expanded" />
     <MESSAGE value="Dtb 2026 update to book 122" />
     <MESSAGE value="starttext" />
-    <MESSAGE value="excel update" />
     <MESSAGE value="new calender page" />
     <MESSAGE value="new calender updated uden current booking" />
     <MESSAGE value="ad text from add on" />
@@ -499,6 +500,8 @@
     <MESSAGE value="keys updated" />
     <MESSAGE value="updated" />
     <MESSAGE value="name key" />
-    <option name="LAST_COMMIT_MESSAGE" value="name key" />
+    <MESSAGE value="callender update seession" />
+    <MESSAGE value="excel update" />
+    <option name="LAST_COMMIT_MESSAGE" value="excel update" />
   </component>
 </project>
