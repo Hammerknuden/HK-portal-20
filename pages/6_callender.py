@@ -100,8 +100,8 @@ with st.sidebar.form("booking_form"):
         else:
             new_row = pd.DataFrame([{
                 "Værelse": room,
-                "Start": start_date,
-                "Slut": end_date,
+                "Start": pd.to_datetime(start_date),
+                "Slut": pd.to_datetime(end_date),
                 "Gæst": name
             }])
 
@@ -174,8 +174,8 @@ if not st.session_state.booking_data.empty:
     )
 
     new_start = st.date_input(
-        "Rediger start",
-        value=pd.to_datetime(booking["Start"])
+       "Rediger start",
+      value=pd.to_datetime(booking["Start"])
     )
 
     new_end = st.date_input(
@@ -193,11 +193,10 @@ if not st.session_state.booking_data.empty:
     # GEM ÆNDRINGER
     with col1:
         if st.button("Gem ændringer"):
-
             st.session_state.booking_data.loc[booking_index] = [
                 new_room,
-                new_start,
-                new_end,
+                pd.to_datetime(new_start),
+                pd.to_datetime(new_end),
                 new_guest
             ]
 
