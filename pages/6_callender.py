@@ -274,8 +274,8 @@ if not st.session_state.booking_data.empty:
 else:
     st.info("Ingen bookinger at vise endnu.")
 
-BASE_DIR = Path.cwd()
-file_path = BASE_DIR / "data" / 'booking_data.csv'
-df = pd.read_excel(file_path)
+#BASE_DIR = Path.cwd()
+#file_path = BASE_DIR / "data" / 'booking_data.csv'
+#df = pd.read.csv(file_path)
 
-st.dataframe()
+#st.dataframe()
