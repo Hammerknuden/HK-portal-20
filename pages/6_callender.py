@@ -248,7 +248,8 @@ if not st.session_state.booking_data.empty:
     # VIS TABEL
     with st.expander("Se alle bookinger som liste"):
         st.dataframe(st.session_state.booking_data)
-
+        save_bookings()
+        st.success("Booking opdateret")
 else:
     st.info("Ingen bookinger at vise endnu.")
 
