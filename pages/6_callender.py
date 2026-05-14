@@ -276,5 +276,6 @@ else:
 
 BASE_DIR = Path.cwd()
 file_path = BASE_DIR / "data" / 'booking_data.cvr'
-df = pd.read_excel(file_path) # sheet_name='Dtb', dtype={'familienavn': str})
+df = pd.read_excel(file_path)
+
 st.dataframe()
