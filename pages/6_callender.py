@@ -275,7 +275,7 @@ else:
     st.info("Ingen bookinger at vise endnu.")
 
 BASE_DIR = Path.cwd()
-file_path = BASE_DIR / "data" / 'booking_data.cvr'
+file_path = BASE_DIR / "data" / 'booking_data.csv'
 df = pd.read_excel(file_path)
 
 st.dataframe()
