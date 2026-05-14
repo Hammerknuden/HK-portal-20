@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="new save callebder data by chatgpt, date problems now changed again" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="cvr upload">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/6_callender.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_callender.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +50,7 @@
     &quot;Python.config_prices.executor&quot;: &quot;Run&quot;,
     &quot;Python.databaseopslag.executor&quot;: &quot;Run&quot;,
     &quot;Python.streamlit_app.executor&quot;: &quot;Run&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/finnj/-repo hk20/hk_portal_20/pages/6_setup.py&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/finnj/-repo hk20/hk_portal_20/data/booking_data.csv&quot;
   }
 }</component>
   <component name="SharedIndexes">
@@ -65,38 +68,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00106" summary="new calender page">
-      <option name="closed" value="true" />
-      <created>1778394439967</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1778394439967</updated>
-    </task>
-    <task id="LOCAL-00107" summary="new calender updated uden current booking">
-      <option name="closed" value="true" />
-      <created>1778394863217</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1778394863217</updated>
-    </task>
-    <task id="LOCAL-00108" summary="ad text from add on">
-      <option name="closed" value="true" />
-      <created>1778395132077</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1778395132077</updated>
-    </task>
-    <task id="LOCAL-00109" summary="ad text from add on">
-      <option name="closed" value="true" />
-      <created>1778395245108</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1778395245108</updated>
     </task>
     <task id="LOCAL-00110" summary="editorial">
       <option name="closed" value="true" />
@@ -458,7 +429,39 @@
       <option name="project" value="LOCAL" />
       <updated>1778699546797</updated>
     </task>
-    <option name="localTasksCounter" value="155" />
+    <task id="LOCAL-00155" summary="callender up at running still prob session state fra booking">
+      <option name="closed" value="true" />
+      <created>1778707799029</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
+      <option name="project" value="LOCAL" />
+      <updated>1778707799029</updated>
+    </task>
+    <task id="LOCAL-00156" summary="callender up at running still prob session state fra booking">
+      <option name="closed" value="true" />
+      <created>1778743820401</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1778743820402</updated>
+    </task>
+    <task id="LOCAL-00157" summary="cvr upload">
+      <option name="closed" value="true" />
+      <created>1778745589870</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1778745589871</updated>
+    </task>
+    <task id="LOCAL-00158" summary="cvr upload">
+      <option name="closed" value="true" />
+      <created>1778746263594</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1778746263594</updated>
+    </task>
+    <option name="localTasksCounter" value="159" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -474,8 +477,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="cleaning regøring ændret til oe fra ø" />
-    <MESSAGE value="upload excel app operationel" />
     <MESSAGE value="upload excel" />
     <MESSAGE value="upload excel regøring changed" />
     <MESSAGE value="links expanded" />
@@ -499,6 +500,8 @@
     <MESSAGE value="new save calender data" />
     <MESSAGE value="new save callebder data by chatgpt" />
     <MESSAGE value="new save callebder data by chatgpt, date problems now changed again" />
-    <option name="LAST_COMMIT_MESSAGE" value="new save callebder data by chatgpt, date problems now changed again" />
+    <MESSAGE value="callender up at running still prob session state fra booking" />
+    <MESSAGE value="cvr upload" />
+    <option name="LAST_COMMIT_MESSAGE" value="cvr upload" />
   </component>
 </project>

@@ -274,3 +274,7 @@ if not st.session_state.booking_data.empty:
 else:
     st.info("Ingen bookinger at vise endnu.")
 
+BASE_DIR = Path.cwd()
+file_path = BASE_DIR / "data" / 'booking_data.cvr'
+df = pd.read_excel(file_path) # sheet_name='Dtb', dtype={'familienavn': str})
+st.dataframe()
