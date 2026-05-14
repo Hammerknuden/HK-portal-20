@@ -52,8 +52,11 @@ st.write("BOOKING_FILE:", BOOKING_FILE)
 
 
 def save_bookings():
-    st.session_state.booking_data.to_csv(BOOKING_FILE, index=False)
-
+    st.session_state.booking_data.to_csv(
+        BOOKING_FILE,
+        index=False,
+        encoding="utf-8"
+    )
 
 st.subheader('Anvend igangværende booking data fra "booking"')
 
@@ -69,10 +72,28 @@ st.subheader('Anvend igangværende booking data fra "booking"')
 if "booking_data" not in st.session_state:
 
     if BOOKING_FILE.exists():
-        st.session_state.booking_data = pd.read_csv(
-            BOOKING_FILE,
-            parse_dates=["Start", "Slut"]
-        )
+        try:
+            st.session_state.booking_data = pd.read_csv(
+                BOOKING_FILE,
+                parse_dates=["Start", "Slut"]
+            )
+
+        except Exception as e:
+            st.error(f"Fejl ved læsning af booking fil: {e}")
+
+            st.session_state.booking_data = pd.DataFrame(
+                columns=["Værelse", "Start", "Slut", "Gæst"]
+            )
+
+            st.session_state.booking_data.to_csv(
+                BOOKING_FILE,
+                index=False
+            )
+
+        #st.session_state.booking_data = pd.read_csv(
+        #    BOOKING_FILE,
+        #    parse_dates=["Start", "Slut"]
+        #)
     else:
         st.session_state.booking_data = pd.DataFrame(
             columns=["Værelse", "Start", "Slut", "Gæst"]
