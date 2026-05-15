@@ -52,11 +52,15 @@ st.write("BOOKING_FILE:", BOOKING_FILE)
 
 
 def save_bookings():
+
     st.session_state.booking_data.to_csv(
         BOOKING_FILE,
         index=False,
         encoding="utf-8"
     )
+
+    st.success(f"Gemte {len(st.session_state.booking_data)} bookinger")
+
 
 st.subheader('Anvend igangværende booking data fra "booking"')
 
@@ -71,7 +75,8 @@ st.subheader('Anvend igangværende booking data fra "booking"')
 # -------------------------
 if "booking_data" not in st.session_state:
 
-    if BOOKING_FILE.exists():
+    if BOOKING_FILE.exists() and BOOKING_FILE.stat().st_size > 0:
+
         try:
             st.session_state.booking_data = pd.read_csv(
                 BOOKING_FILE,
@@ -79,25 +84,16 @@ if "booking_data" not in st.session_state:
             )
 
         except Exception as e:
-            st.error(f"Fejl ved læsning af booking fil: {e}")
+            st.error(f"Fejl ved læsning: {e}")
 
             st.session_state.booking_data = pd.DataFrame(
                 columns=["Værelse", "Start", "Slut", "Gæst"]
             )
-
-            st.session_state.booking_data.to_csv(
-                BOOKING_FILE,
-                index=False
-            )
-
-        #st.session_state.booking_data = pd.read_csv(
-        #    BOOKING_FILE,
-        #    parse_dates=["Start", "Slut"]
-        #)
     else:
         st.session_state.booking_data = pd.DataFrame(
             columns=["Værelse", "Start", "Slut", "Gæst"]
         )
+
         # gem straks første gang
         st.session_state.booking_data.to_csv(BOOKING_FILE, index=False)
 # -------------------------
@@ -149,22 +145,11 @@ with st.sidebar.form("booking_form"):
 # -------------------------
 # VIS BOOKINGER
 # -------------------------
+# -------------------------
+# VIS BOOKINGER
+# -------------------------
 st.subheader("Belægningsplan")
 
-df = st.session_state.booking_data.copy()
-
-df["Start"] = pd.to_datetime(df["Start"])
-df["Slut"] = pd.to_datetime(df["Slut"])
-
-fig = px.timeline(
-    df,
-    x_start="Start",
-    x_end="Slut",
-    y="Værelse",
-    color="Gæst",
-    hover_name="Gæst",
-    text="Gæst",
-    )
 if not st.session_state.booking_data.empty:
 
     df = st.session_state.booking_data.copy()
@@ -192,7 +177,9 @@ if not st.session_state.booking_data.empty:
         showlegend=False,
         height=400
     )
+
     fig.update_xaxes(rangeslider_visible=True)
+
     fig.update_xaxes(
         tickformat="%d-%m",
         tickangle=0
@@ -222,8 +209,8 @@ if not st.session_state.booking_data.empty:
     )
 
     new_start = st.date_input(
-       "Rediger start",
-      value=pd.to_datetime(booking["Start"])
+        "Rediger start",
+        value=pd.to_datetime(booking["Start"])
     )
 
     new_end = st.date_input(
@@ -240,7 +227,9 @@ if not st.session_state.booking_data.empty:
 
     # GEM ÆNDRINGER
     with col1:
+
         if st.button("Gem ændringer"):
+
             st.session_state.booking_data.loc[booking_index] = [
                 new_room,
                 pd.to_datetime(new_start),
@@ -249,11 +238,14 @@ if not st.session_state.booking_data.empty:
             ]
 
             save_bookings()
+
             st.success("Booking opdateret")
+
             st.rerun()
 
     # SLET BOOKING
     with col2:
+
         if st.button("Slet booking"):
 
             st.session_state.booking_data = (
@@ -263,18 +255,25 @@ if not st.session_state.booking_data.empty:
             )
 
             save_bookings()
+
             st.success("Booking slettet")
+
             st.rerun()
 
     # VIS TABEL
     with st.expander("Se alle bookinger som liste"):
+
         st.dataframe(st.session_state.booking_data)
-        save_bookings()
-        st.success("Booking opdateret")
+
 else:
+
     st.info("Ingen bookinger at vise endnu.")
 
-BASE_DIR = Path.cwd()
-file_path = BASE_DIR / "data" / 'booking_data.csv'
-df = pd.read_csv(file_path)
-st.dataframe(df)
+
+
+    # GEM ÆNDRINGER
+
+    # VIS TABEL
+
+
+
