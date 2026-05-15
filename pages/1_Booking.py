@@ -273,8 +273,8 @@ days = checkout_date - checkin_date
 
 high_season_days = high_season_end - high_season_start
 high_booking = (checkin_date >= high_season_start) and (checkout_date <= high_season_end)
-low_booking = ((checkin_date <= high_season_start) and (checkout_date < high_season_start)) or (checkin_date >
-                high_season_end)
+low_booking = (((checkin_date <= high_season_start) and (checkout_date < high_season_start)) or
+               (checkin_date > high_season_end))
 mixbooking_early = (checkin_date < high_season_start) and (checkout_date > high_season_start)
 mixbooking_end = (checkout_date > high_season_end) and (high_season_start < checkin_date) and (checkin_date <
                                                                                                    high_season_end)
