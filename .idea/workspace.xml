@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="cvr upload">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="callender fully updateed safe">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_callender.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_callender.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,14 +68,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00116" summary="editorial">
-      <option name="closed" value="true" />
-      <created>1778428493683</created>
-      <option name="number" value="00116" />
-      <option name="presentableId" value="LOCAL-00116" />
-      <option name="project" value="LOCAL" />
-      <updated>1778428493683</updated>
     </task>
     <task id="LOCAL-00117" summary="editorial">
       <option name="closed" value="true" />
@@ -461,7 +453,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778754813938</updated>
     </task>
-    <option name="localTasksCounter" value="165" />
+    <task id="LOCAL-00165" summary="callender fully updateed safe">
+      <option name="closed" value="true" />
+      <created>1778830692733</created>
+      <option name="number" value="00165" />
+      <option name="presentableId" value="LOCAL-00165" />
+      <option name="project" value="LOCAL" />
+      <updated>1778830692733</updated>
+    </task>
+    <option name="localTasksCounter" value="166" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -477,7 +477,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="upload excel" />
     <MESSAGE value="upload excel regøring changed" />
     <MESSAGE value="links expanded" />
     <MESSAGE value="Dtb 2026 update to book 122" />
@@ -502,6 +501,7 @@
     <MESSAGE value="new save callebder data by chatgpt, date problems now changed again" />
     <MESSAGE value="callender up at running still prob session state fra booking" />
     <MESSAGE value="cvr upload" />
-    <option name="LAST_COMMIT_MESSAGE" value="cvr upload" />
+    <MESSAGE value="callender fully updateed safe" />
+    <option name="LAST_COMMIT_MESSAGE" value="callender fully updateed safe" />
   </component>
 </project>
