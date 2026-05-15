@@ -270,7 +270,9 @@ else:
     st.info("Ingen bookinger at vise endnu.")
 
 st.dataframe(st.session_state.booking_data)
+save_bookings()
 
+st.success("Booking opdateret")
     # GEM ÆNDRINGER
 
     # VIS TABEL
