@@ -276,6 +276,6 @@ st.success("Booking opdateret")
     # GEM ÆNDRINGER
 
     # VIS TABEL
-
+st.write(st.session_state
 
 
