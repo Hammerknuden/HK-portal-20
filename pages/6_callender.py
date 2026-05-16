@@ -53,6 +53,10 @@ st.write("BOOKING_FILE:", BOOKING_FILE)
 
 def save_bookings():
 
+    if st.session_state.booking_data.empty:
+        st.warning("Ingen data at gemme")
+        return
+
     st.session_state.booking_data.to_csv(
         BOOKING_FILE,
         index=False,
@@ -269,8 +273,7 @@ else:
 
     st.info("Ingen bookinger at vise endnu.")
 
-st.dataframe(st.session_state.booking_data)
-save_bookings()
+
 
 st.success("Booking opdateret")
     # GEM ÆNDRINGER
