@@ -577,6 +577,7 @@ def save_booking():
 
 if st.button("Gem"):
     save_booking()
+    st.write(st.session_state)
 
 
 
