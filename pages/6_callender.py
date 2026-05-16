@@ -53,8 +53,12 @@ st.write("BOOKING_FILE:", BOOKING_FILE)
 
 def save_bookings():
 
+    if "booking_data" not in st.session_state:
+        st.warning("Ingen booking_data i session")
+        return
+
     if st.session_state.booking_data.empty:
-        st.warning("Ingen data at gemme")
+        st.warning("booking_data er tom — gemmer ikke")
         return
 
     st.session_state.booking_data.to_csv(
@@ -63,7 +67,9 @@ def save_bookings():
         encoding="utf-8"
     )
 
-    st.success(f"Gemte {len(st.session_state.booking_data)} bookinger")
+    st.success(
+        f"Gemte {len(st.session_state.booking_data)} bookinger"
+    )
 
 
 st.subheader('Anvend igangværende booking data fra "booking"')
@@ -88,17 +94,19 @@ if "booking_data" not in st.session_state:
             )
 
         except Exception as e:
+
             st.error(f"Fejl ved læsning: {e}")
 
             st.session_state.booking_data = pd.DataFrame(
                 columns=["Værelse", "Start", "Slut", "Gæst"]
             )
+
     else:
+
         st.session_state.booking_data = pd.DataFrame(
             columns=["Værelse", "Start", "Slut", "Gæst"]
         )
 
-        # gem straks første gang
         st.session_state.booking_data.to_csv(BOOKING_FILE, index=False)
 # -------------------------
 # OPRET BOOKING
@@ -272,13 +280,29 @@ if not st.session_state.booking_data.empty:
 else:
 
     st.info("Ingen bookinger at vise endnu.")
+if "booking_data" not in st.session_state:
 
+    if BOOKING_FILE.exists() and BOOKING_FILE.stat().st_size > 0:
 
+        try:
+            st.session_state.booking_data = pd.read_csv(
+                BOOKING_FILE,
+                parse_dates=["Start", "Slut"]
+            )
 
-st.success("Booking opdateret")
-    # GEM ÆNDRINGER
+        except Exception as e:
 
-    # VIS TABEL
+            st.error(f"Fejl ved læsning: {e}")
+
+            st.session_state.booking_data = pd.DataFrame(
+                columns=["Værelse", "Start", "Slut", "Gæst"]
+            )
+
+    else:
+
+        st.session_state.booking_data = pd.DataFrame(
+            columns=["Værelse", "Start", "Slut", "Gæst"]
+        )
 st.write(st.session_state)
 
 

@@ -575,9 +575,7 @@ def save_booking():
     st.write(f"Fra {checkin_date} til {checkout_date}")
 
 
-if st.button("Gem"):
-    save_booking()
-    st.write(st.session_state)
+
 
 
 
