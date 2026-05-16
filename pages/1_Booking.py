@@ -34,7 +34,7 @@ network = st.selectbox("vælg lokal eller web ", options=["local", "URL"])
 
 now = st.date_input("booking dato", key='booking date')
 
-booking_number = st.text_input("booking nummer ", key="booking_name")
+booking_number = st.text_input("booking nummer ", key="booking_number")
 
 col1, col2 = st.columns(2)
 with col1:
