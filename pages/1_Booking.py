@@ -527,7 +527,7 @@ if send_data: #and booking_submitted:
 
 def save_booking():
 
-    booking = st.session_state.get("reservation_number", "")
+    booking = st.session_state.get("reservation", "")
     name = st.session_state.get("reservation_name", "")
     checkin_date = st.session_state.get("reservation_checkin_date", "")
     checkout_date = st.session_state.get("reservation_checkout_date", "")

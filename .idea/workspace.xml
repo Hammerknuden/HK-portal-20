@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excel update" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="booking data" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,14 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00132" summary="x slider">
-      <option name="closed" value="true" />
-      <created>1778591521035</created>
-      <option name="number" value="00132" />
-      <option name="presentableId" value="LOCAL-00132" />
-      <option name="project" value="LOCAL" />
-      <updated>1778591521036</updated>
     </task>
     <task id="LOCAL-00133" summary="x slider">
       <option name="closed" value="true" />
@@ -458,7 +450,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779035480632</updated>
     </task>
-    <option name="localTasksCounter" value="181" />
+    <task id="LOCAL-00181" summary="booking data">
+      <option name="closed" value="true" />
+      <created>1779039634914</created>
+      <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
+      <option name="project" value="LOCAL" />
+      <updated>1779039634915</updated>
+    </task>
+    <option name="localTasksCounter" value="182" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -484,7 +484,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="color change" />
     <MESSAGE value="sessionstate change" />
     <MESSAGE value="fuld updated calender kode frA cHAT" />
     <MESSAGE value="key" />
@@ -509,6 +508,7 @@
     <MESSAGE value="booking ændringer for save key ændret til reservation" />
     <MESSAGE value="booking ændringer for save key ændret til reservation ændret kald" />
     <MESSAGE value="excel update" />
-    <option name="LAST_COMMIT_MESSAGE" value="excel update" />
+    <MESSAGE value="booking data" />
+    <option name="LAST_COMMIT_MESSAGE" value="booking data" />
   </component>
 </project>
