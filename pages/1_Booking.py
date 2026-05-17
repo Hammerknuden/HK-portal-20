@@ -525,7 +525,7 @@ if send_data: #and booking_submitted:
     st.markdown("data mail ikke sendt ")
 
 
-def save_booking():
+def save_reservation():
 
     booking = st.session_state.get("reservation", "")
     name = st.session_state.get("reservation_name", "")
@@ -535,6 +535,8 @@ def save_booking():
     st.write(f"Gemmer booking {booking} for {name}")
     st.write(f"Fra {checkin_date} til {checkout_date}")
 
+    save_reservation()
+    st.success("Booking gemt")
 
 print(booking_number)
 print(name)
