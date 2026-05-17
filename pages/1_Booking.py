@@ -574,6 +574,7 @@ def save_booking():
     st.write(f"Gemmer booking {booking} for {name}")
     st.write(f"Fra {checkin_date} til {checkout_date}")
 
+st.write(st.session_state)
 
 
 
