@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="booking ændringer for save key ændret til reservation" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="booking ændringer for save key ændret til reservation ændret kald">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,22 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00128" summary="key">
-      <option name="closed" value="true" />
-      <created>1778531555202</created>
-      <option name="number" value="00128" />
-      <option name="presentableId" value="LOCAL-00128" />
-      <option name="project" value="LOCAL" />
-      <updated>1778531555202</updated>
-    </task>
-    <task id="LOCAL-00129" summary="updated excel">
-      <option name="closed" value="true" />
-      <created>1778535119797</created>
-      <option name="number" value="00129" />
-      <option name="presentableId" value="LOCAL-00129" />
-      <option name="project" value="LOCAL" />
-      <updated>1778535119797</updated>
     </task>
     <task id="LOCAL-00130" summary="updated excel">
       <option name="closed" value="true" />
@@ -458,7 +444,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779009604971</updated>
     </task>
-    <option name="localTasksCounter" value="177" />
+    <task id="LOCAL-00177" summary="booking ændringer for save key ændret til reservation">
+      <option name="closed" value="true" />
+      <created>1779015776047</created>
+      <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
+      <option name="project" value="LOCAL" />
+      <updated>1779015776049</updated>
+    </task>
+    <task id="LOCAL-00178" summary="booking ændringer for save key ændret til reservation ændret kald">
+      <option name="closed" value="true" />
+      <created>1779016011953</created>
+      <option name="number" value="00178" />
+      <option name="presentableId" value="LOCAL-00178" />
+      <option name="project" value="LOCAL" />
+      <updated>1779016011953</updated>
+    </task>
+    <option name="localTasksCounter" value="179" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -484,7 +486,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="editorial" />
     <MESSAGE value="color change" />
     <MESSAGE value="sessionstate change" />
     <MESSAGE value="fuld updated calender kode frA cHAT" />
@@ -509,6 +510,7 @@
     <MESSAGE value="new input for saveing session state" />
     <MESSAGE value="new def save session" />
     <MESSAGE value="booking ændringer for save key ændret til reservation" />
-    <option name="LAST_COMMIT_MESSAGE" value="booking ændringer for save key ændret til reservation" />
+    <MESSAGE value="booking ændringer for save key ændret til reservation ændret kald" />
+    <option name="LAST_COMMIT_MESSAGE" value="booking ændringer for save key ændret til reservation ændret kald" />
   </component>
 </project>
