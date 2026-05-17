@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="new def save session" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="booking ændringer for save key ændret til reservation" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,14 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00126" summary="fuld updated calender kode frA cHAT">
-      <option name="closed" value="true" />
-      <created>1778503028253</created>
-      <option name="number" value="00126" />
-      <option name="presentableId" value="LOCAL-00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1778503028253</updated>
     </task>
     <task id="LOCAL-00127" summary="key">
       <option name="closed" value="true" />
@@ -458,7 +450,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778927487771</updated>
     </task>
-    <option name="localTasksCounter" value="175" />
+    <task id="LOCAL-00175" summary="booking ændringer for save key ændret til reservation">
+      <option name="closed" value="true" />
+      <created>1779009453025</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
+      <option name="project" value="LOCAL" />
+      <updated>1779009453025</updated>
+    </task>
+    <option name="localTasksCounter" value="176" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -484,7 +484,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ad text from add on" />
     <MESSAGE value="editorial" />
     <MESSAGE value="color change" />
     <MESSAGE value="sessionstate change" />
@@ -509,6 +508,7 @@
     <MESSAGE value="all up and running new booking session state in calender" />
     <MESSAGE value="new input for saveing session state" />
     <MESSAGE value="new def save session" />
-    <option name="LAST_COMMIT_MESSAGE" value="new def save session" />
+    <MESSAGE value="booking ændringer for save key ændret til reservation" />
+    <option name="LAST_COMMIT_MESSAGE" value="booking ændringer for save key ændret til reservation" />
   </component>
 </project>

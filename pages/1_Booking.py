@@ -566,10 +566,10 @@ st.markdown(checkout_date)
 
 def save_booking():
 
-    booking = st.session_state.get("booking_number", "")
-    name = st.session_state.get("booking_name", "")
-    checkin_date = st.session_state.get("booking_checkin_date", "")
-    checkout_date = st.session_state.get("booking_checkout_date", "")
+    booking = st.session_state.get("reservation_number", "")
+    name = st.session_state.get("reservation_name", "")
+    checkin_date = st.session_state.get("reservation_checkin_date", "")
+    checkout_date = st.session_state.get("reservation_checkout_date", "")
 
     st.write(f"Gemmer booking {booking} for {name}")
     st.write(f"Fra {checkin_date} til {checkout_date}")
