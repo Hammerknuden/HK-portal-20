@@ -34,13 +34,13 @@ network = st.selectbox("vælg lokal eller web ", options=["local", "URL"])
 
 now = st.date_input("booking dato", key='booking date')
 
-booking_number = st.text_input("booking nummer ", key="booking_number")
+booking_number = st.text_input("booking nummer ", key="reservation_number")
 
 col1, col2 = st.columns(2)
 with col1:
-    checkin_date = st.date_input("Checkin dato", key='booking_checkin_date')
+    checkin_date = st.date_input("Checkin dato", key='reservation_checkin_date')
 with col2:
-    checkout_date = st.date_input("Checkout dato", key='booking_checkout_date')
+    checkout_date = st.date_input("Checkout dato", key='reservation_checkout_date')
 
 single_room = st.checkbox("Enkeltværelse")
 
@@ -351,7 +351,7 @@ st.markdown(f"**Den totale pris** {formatted_pristotal}kr".replace(".",","))
 
 st.subheader("Kontakt information")
 
-name = st.text_input("Navn", key='booking_name')
+name = st.text_input("Navn", key='reservation_name')
 fam_name = st.text_input("Efternavn (kun til søgning ellers blank)  ")
 telefon = st.text_input(" Kontakt telefon")
 email_address = st.text_input("email")
@@ -521,37 +521,37 @@ if send_data: #and booking_submitted:
 
     st.markdown("data mail sendt")
     print(type(excel_file))
-    col1, col2 = st.columns(2)
+    #col1, col2 = st.columns(2)
 
     # GEM ÆNDRINGER
-    booking_index = 0
-    with col1:
-        if st.button("Gem ændringer"):
-            st.session_state.booking_data.loc[
-                booking_index
-            ] = [
-                new_room,
-                new_start,
-                new_end,
-                new_guest
-            ]
+    #booking_index = 0
+    #with col1:
+    #    if st.button("Gem ændringer"):
+    #        st.session_state.booking_data.loc[
+    #            booking_index
+    #        ] = [
+    #            new_room,
+    #            new_start,
+    #            new_end,
+     #           new_guest
+     #       ]
 
-            st.success("Booking opdateret")
-            st.rerun()
+     #       st.success("Booking opdateret")
+     #       st.rerun()
 
     # SLET BOOKING
-    with col2:
-        if st.button("Slet booking"):
-            st.session_state.booking_data = (
-                st.session_state.booking_data
-                .drop(index=booking_index)
-                .reset_index(drop=True)
-            )
+    #with col2:
+    #    if st.button("Slet booking"):
+    #        st.session_state.booking_data = (
+    #            st.session_state.booking_data
+     #           .drop(index=booking_index)
+     #           .reset_index(drop=True)
+     #       )
 
-            st.success("Booking slettet")
-            st.rerun()
+     #       st.success("Booking slettet")
+     #       st.rerun()
 
-else:
+#else:
     st.markdown("data mail ikke sendt ")
 #nyt tiltag ankomster
 print(booking_number)
