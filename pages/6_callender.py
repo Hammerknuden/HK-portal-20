@@ -11,9 +11,14 @@ st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
 
 
-if 'reservation' in st.session_state:
+st.write(st.session_state)
 
-    booking_number = st.session_state.get("reservation_number", "")
+booking_number = st.session_state.get("reservation_number")
+
+if booking_number:
+
+    st.write("BOOKING FUNDET")
+
     name = st.session_state.get("reservation_name", "")
     checkin_date = st.session_state.get("reservation_checkin_date", "")
     checkout_date = st.session_state.get("reservation_checkout_date", "")
@@ -26,6 +31,7 @@ if 'reservation' in st.session_state:
 
 else:
     st.text("Ingen bookinger i session")
+
 
 
 def to_dt(x):
