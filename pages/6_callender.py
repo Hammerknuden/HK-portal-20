@@ -10,9 +10,6 @@ from config.data_email import add_data
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
 
-st.write("FØR")
-st.write(st.session_state)
-
 booking_number = st.session_state.get("reservation_number")
 
 if booking_number:
@@ -98,11 +95,6 @@ def save_bookings():
     )
 
 st.subheader('Anvend igangværende booking data fra "booking"')
-
-# -------------------------
-# SESSION BOOKING INFO
-# -------------------------
-
 
 
 # -------------------------
@@ -344,8 +336,6 @@ if "booking_data" not in st.session_state:
             columns=["Værelse", "Start", "Slut", "Gæst"]
         )
 
-st.write("EFTER")
-st.write(st.session_state)
 
 
 
