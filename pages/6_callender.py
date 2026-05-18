@@ -10,8 +10,6 @@ from config.data_email import add_data
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
 
-init_session()
-
 st.write("FØR")
 st.write(st.session_state)
 
