@@ -37,7 +37,7 @@ def init_session():
 
 require_login()
 
-init_session()
+#init_session()
 # ✅ Init KUN hvis ikke findes
 
 
@@ -71,7 +71,7 @@ if checkin_date and checkout_date:
 else:
     days = 0
 days = checkout_date - checkin_date
-
+init_session()
 st.text("Skema viser ikke udchecksdagen da den er irelevant i forbindelse med reservation")
 st.markdown(f"**Antal dage denne booking**  {days.days}")
 
