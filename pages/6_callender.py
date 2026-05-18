@@ -28,7 +28,7 @@ if booking_number:
 
 else:
     st.text("Ingen bookinger i session")
-st.write(st.session_state)
+#st.write(st.session_state)
 
 booking_number = st.session_state.get("reservation_number")
 
@@ -48,7 +48,6 @@ if booking_number:
 
 else:
     st.text("Ingen bookinger i session")
-
 
 
 def to_dt(x):
