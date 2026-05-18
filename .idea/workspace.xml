@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="dobbel call fjernet">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="session på booking date tilreservat">
       <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,14 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00147" summary="excel update">
-      <option name="closed" value="true" />
-      <created>1778660078031</created>
-      <option name="number" value="00147" />
-      <option name="presentableId" value="LOCAL-00147" />
-      <option name="project" value="LOCAL" />
-      <updated>1778660078031</updated>
     </task>
     <task id="LOCAL-00148" summary="new save calender data">
       <option name="closed" value="true" />
@@ -461,7 +452,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779121197066</updated>
     </task>
-    <option name="localTasksCounter" value="196" />
+    <task id="LOCAL-00196" summary="session på booking date tilreservat">
+      <option name="closed" value="true" />
+      <created>1779121665572</created>
+      <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
+      <option name="project" value="LOCAL" />
+      <updated>1779121665572</updated>
+    </task>
+    <option name="localTasksCounter" value="197" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -487,7 +486,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="callender update seession" />
     <MESSAGE value="new save calender data" />
     <MESSAGE value="new save callebder data by chatgpt" />
     <MESSAGE value="new save callebder data by chatgpt, date problems now changed again" />
@@ -512,6 +510,7 @@
     <MESSAGE value="update to solve reservation session state" />
     <MESSAGE value="update to solve reservation session state debug" />
     <MESSAGE value="dobbel call fjernet" />
-    <option name="LAST_COMMIT_MESSAGE" value="dobbel call fjernet" />
+    <MESSAGE value="session på booking date tilreservat" />
+    <option name="LAST_COMMIT_MESSAGE" value="session på booking date tilreservat" />
   </component>
 </project>
