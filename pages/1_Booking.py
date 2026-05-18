@@ -66,7 +66,6 @@ with col1:
 with col2:
     checkout_date = st.date_input(
         "Checkout dato",
-        value=datetime.date.today(),
         key="reservation_checkout_date"
     )
 
