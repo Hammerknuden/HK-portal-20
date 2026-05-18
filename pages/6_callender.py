@@ -92,6 +92,12 @@ if "booking_data" not in st.session_state:
                 parse_dates=["Start", "Slut"]
             )
 
+            # Fjern ekstra index-kolonne fra backup
+            st.session_state.booking_data = (
+                st.session_state.booking_data
+                .loc[:, ~st.session_state.booking_data.columns.str.contains("^Unnamed")]
+            )
+
         except Exception as e:
 
             st.error(f"Fejl ved læsning: {e}")
@@ -107,6 +113,7 @@ if "booking_data" not in st.session_state:
         )
 
         st.session_state.booking_data.to_csv(BOOKING_FILE, index=False)
+
 # -------------------------
 # OPRET BOOKING
 # -------------------------
