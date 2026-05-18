@@ -19,9 +19,28 @@ from config.prices import DEFAULT_PRICES
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 st.set_page_config(page_title="Booking", layout="wide")
+
+
+def init_session():
+    if "reservation_number" not in st.session_state:
+        st.session_state["reservation_number"] = None
+
+    if "reservation_name" not in st.session_state:
+        st.session_state["reservation_name"] = None
+
+    if "reservation_checkin_date" not in st.session_state:
+        st.session_state["reservation_checkin_date"] = None
+
+    if "reservation_checkout_date" not in st.session_state:
+        st.session_state["reservation_checkout_date"] = None
+
+
 require_login()
 
+init_session()
 # ✅ Init KUN hvis ikke findes
+
+
 if "prices" not in st.session_state:
     st.session_state.prices = DEFAULT_PRICES.copy()
 
