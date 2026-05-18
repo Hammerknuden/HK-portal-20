@@ -66,6 +66,10 @@ with col2:
 
 single_room = st.checkbox("Enkeltværelse")
 
+if checkin_date and checkout_date:
+    days = (checkout_date - checkin_date).days
+else:
+    days = 0
 days = checkout_date - checkin_date
 
 st.text("Skema viser ikke udchecksdagen da den er irelevant i forbindelse med reservation")
