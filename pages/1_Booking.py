@@ -51,7 +51,7 @@ year = st.selectbox("booking år", ["2026", "2027"])
 bruger = "Finn"
 network = st.selectbox("vælg lokal eller web ", options=["local", "URL"])
 
-now = st.date_input("booking dato", key='booking date')
+now = st.date_input("booking dato", key='reservation_date')
 
 booking_number = st.text_input("booking nummer ", key="reservation_number")
 
@@ -64,6 +64,7 @@ with col2:
 single_room = st.checkbox("Enkeltværelse")
 
 days = checkout_date - checkin_date
+
 st.text("Skema viser ikke udchecksdagen da den er irelevant i forbindelse med reservation")
 st.markdown(f"**Antal dage denne booking**  {days.days}")
 
@@ -566,7 +567,6 @@ st.markdown(name)
 st.markdown(checkin_date)
 st.markdown(checkout_date)
 
-st.write(st.session_state)
 
 
 
