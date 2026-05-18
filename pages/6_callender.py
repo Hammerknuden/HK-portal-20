@@ -71,7 +71,6 @@ def save_bookings():
         f"Gemte {len(st.session_state.booking_data)} bookinger"
     )
 
-
 st.subheader('Anvend igangværende booking data fra "booking"')
 
 # -------------------------

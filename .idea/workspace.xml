@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="session state reservation">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="save session state reservation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,14 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00134" summary="x slider">
-      <option name="closed" value="true" />
-      <created>1778593050377</created>
-      <option name="number" value="00134" />
-      <option name="presentableId" value="LOCAL-00134" />
-      <option name="project" value="LOCAL" />
-      <updated>1778593050377</updated>
     </task>
     <task id="LOCAL-00135" summary="x slider">
       <option name="closed" value="true" />
@@ -461,7 +452,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779039860585</updated>
     </task>
-    <option name="localTasksCounter" value="183" />
+    <task id="LOCAL-00183" summary="save session state reservation">
+      <option name="closed" value="true" />
+      <created>1779040526792</created>
+      <option name="number" value="00183" />
+      <option name="presentableId" value="LOCAL-00183" />
+      <option name="project" value="LOCAL" />
+      <updated>1779040526792</updated>
+    </task>
+    <option name="localTasksCounter" value="184" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -487,7 +486,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fuld updated calender kode frA cHAT" />
     <MESSAGE value="key" />
     <MESSAGE value="updated excel" />
     <MESSAGE value="x slider" />
@@ -512,6 +510,7 @@
     <MESSAGE value="excel update" />
     <MESSAGE value="booking data" />
     <MESSAGE value="session state reservation" />
-    <option name="LAST_COMMIT_MESSAGE" value="session state reservation" />
+    <MESSAGE value="save session state reservation" />
+    <option name="LAST_COMMIT_MESSAGE" value="save session state reservation" />
   </component>
 </project>
