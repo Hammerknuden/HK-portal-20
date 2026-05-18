@@ -32,23 +32,6 @@ else:
 
 booking_number = st.session_state.get("reservation_number")
 
-if booking_number:
-
-    st.write("BOOKING FUNDET")
-
-    name = st.session_state.get("reservation_name", "")
-    checkin_date = st.session_state.get("reservation_checkin_date", "")
-    checkout_date = st.session_state.get("reservation_checkout_date", "")
-
-    st.text(
-        f"Booking nummer {booking_number} - "
-        f"{name} - "
-        f"{checkin_date} til {checkout_date}"
-    )
-
-else:
-    st.text("Ingen bookinger i session")
-
 
 def to_dt(x):
     return pd.to_datetime(x)
