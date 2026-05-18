@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="session på booking date tilreservat">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="value til bage i dato format">
       <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,25 +33,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Python.1_Booking.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_Setup.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_setup.executor&quot;: &quot;Run&quot;,
-    &quot;Python.3_Ankomster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.3_ankomster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.4_Booking_C_link.executor&quot;: &quot;Run&quot;,
-    &quot;Python.5_cleaning.executor&quot;: &quot;Run&quot;,
-    &quot;Python.6_callender.executor&quot;: &quot;Run&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.auth.executor&quot;: &quot;Run&quot;,
-    &quot;Python.config_prices.executor&quot;: &quot;Run&quot;,
-    &quot;Python.databaseopslag.executor&quot;: &quot;Run&quot;,
-    &quot;Python.streamlit_app.executor&quot;: &quot;Run&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/finnj/-repo hk20/hk_portal_20/data/booking_data.csv&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.1_Booking.executor": "Run",
+    "Python.2_Setup.executor": "Run",
+    "Python.2_setup.executor": "Run",
+    "Python.3_Ankomster.executor": "Run",
+    "Python.3_ankomster.executor": "Run",
+    "Python.4_Booking_C_link.executor": "Run",
+    "Python.5_cleaning.executor": "Run",
+    "Python.6_callender.executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.auth.executor": "Run",
+    "Python.config_prices.executor": "Run",
+    "Python.databaseopslag.executor": "Run",
+    "Python.streamlit_app.executor": "Run",
+    "last_opened_file_path": "C:/Users/finnj/-repoHK2/HK-portal10/streamlit_app.py"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -67,22 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00148" summary="new save calender data">
-      <option name="closed" value="true" />
-      <created>1778691423794</created>
-      <option name="number" value="00148" />
-      <option name="presentableId" value="LOCAL-00148" />
-      <option name="project" value="LOCAL" />
-      <updated>1778691423794</updated>
-    </task>
-    <task id="LOCAL-00149" summary="new save callebder data by chatgpt">
-      <option name="closed" value="true" />
-      <created>1778692393766</created>
-      <option name="number" value="00149" />
-      <option name="presentableId" value="LOCAL-00149" />
-      <option name="project" value="LOCAL" />
-      <updated>1778692393766</updated>
     </task>
     <task id="LOCAL-00150" summary="new save callebder data by chatgpt, date problems now changed again">
       <option name="closed" value="true" />
@@ -460,7 +444,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779121665572</updated>
     </task>
-    <option name="localTasksCounter" value="197" />
+    <task id="LOCAL-00197" summary="value til bage i dato format">
+      <option name="closed" value="true" />
+      <created>1779122107108</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
+      <option name="project" value="LOCAL" />
+      <updated>1779122107108</updated>
+    </task>
+    <task id="LOCAL-00198" summary="value til bage i dato format">
+      <option name="closed" value="true" />
+      <created>1779123532594</created>
+      <option name="number" value="00198" />
+      <option name="presentableId" value="LOCAL-00198" />
+      <option name="project" value="LOCAL" />
+      <updated>1779123532594</updated>
+    </task>
+    <option name="localTasksCounter" value="199" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -486,7 +486,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="new save calender data" />
     <MESSAGE value="new save callebder data by chatgpt" />
     <MESSAGE value="new save callebder data by chatgpt, date problems now changed again" />
     <MESSAGE value="callender up at running still prob session state fra booking" />
@@ -511,6 +510,7 @@
     <MESSAGE value="update to solve reservation session state debug" />
     <MESSAGE value="dobbel call fjernet" />
     <MESSAGE value="session på booking date tilreservat" />
-    <option name="LAST_COMMIT_MESSAGE" value="session på booking date tilreservat" />
+    <MESSAGE value="value til bage i dato format" />
+    <option name="LAST_COMMIT_MESSAGE" value="value til bage i dato format" />
   </component>
 </project>

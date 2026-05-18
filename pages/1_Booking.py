@@ -57,16 +57,11 @@ booking_number = st.text_input("booking nummer ", key="reservation_number")
 
 col1, col2 = st.columns(2)
 with col1:
-    checkin_date = st.date_input(
-        "Checkin dato",
-        value=datetime.date.today(),
-        key="reservation_checkin_date"
+    checkin_date = st.date_input("Checkin dato", key="reservation_checkin_date"
     )
 
 with col2:
-    checkout_date = st.date_input(
-        "Checkout dato",
-        key="reservation_checkout_date"
+    checkout_date = st.date_input("Checkout dato", key="reservation_checkout_date"
     )
 
 single_room = st.checkbox("Enkeltværelse")
