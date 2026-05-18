@@ -91,11 +91,19 @@ if "booking_data" not in st.session_state:
                 BOOKING_FILE,
                 parse_dates=["Start", "Slut"]
             )
-
-            # Fjern ekstra index-kolonne fra backup
+            # Fjern unnamed kolonner
             st.session_state.booking_data = (
                 st.session_state.booking_data
                 .loc[:, ~st.session_state.booking_data.columns.str.contains("^Unnamed")]
+            )
+
+            # Sikre korrekte datatyper
+            st.session_state.booking_data["Værelse"] = (
+                st.session_state.booking_data["Værelse"].astype(str)
+            )
+
+            st.session_state.booking_data["Gæst"] = (
+                st.session_state.booking_data["Gæst"].astype(str)
             )
 
         except Exception as e:
