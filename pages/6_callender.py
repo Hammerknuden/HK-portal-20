@@ -10,6 +10,8 @@ from config.data_email import add_data
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
 
+init_session()
+
 booking_number = st.session_state.get("reservation_number")
 
 if booking_number:
@@ -29,8 +31,6 @@ if booking_number:
 else:
     st.text("Ingen bookinger i session")
 #st.write(st.session_state)
-
-#booking_number = st.session_state.get("reservation_number")
 
 
 def to_dt(x):
@@ -77,7 +77,6 @@ def save_bookings():
     )
 
 st.subheader('Anvend igangværende booking data fra "booking"')
-
 
 # -------------------------
 # LOAD / INIT DATA
