@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="save reservation" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="save reservation">
+      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,38 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00156" summary="callender up at running still prob session state fra booking">
-      <option name="closed" value="true" />
-      <created>1778743820401</created>
-      <option name="number" value="00156" />
-      <option name="presentableId" value="LOCAL-00156" />
-      <option name="project" value="LOCAL" />
-      <updated>1778743820402</updated>
-    </task>
-    <task id="LOCAL-00157" summary="cvr upload">
-      <option name="closed" value="true" />
-      <created>1778745589870</created>
-      <option name="number" value="00157" />
-      <option name="presentableId" value="LOCAL-00157" />
-      <option name="project" value="LOCAL" />
-      <updated>1778745589871</updated>
-    </task>
-    <task id="LOCAL-00158" summary="cvr upload">
-      <option name="closed" value="true" />
-      <created>1778746263594</created>
-      <option name="number" value="00158" />
-      <option name="presentableId" value="LOCAL-00158" />
-      <option name="project" value="LOCAL" />
-      <updated>1778746263594</updated>
-    </task>
-    <task id="LOCAL-00159" summary="cvr upload">
-      <option name="closed" value="true" />
-      <created>1778751826684</created>
-      <option name="number" value="00159" />
-      <option name="presentableId" value="LOCAL-00159" />
-      <option name="project" value="LOCAL" />
-      <updated>1778751826684</updated>
     </task>
     <task id="LOCAL-00160" summary="cvr upload">
       <option name="closed" value="true" />
@@ -458,7 +428,39 @@
       <option name="project" value="LOCAL" />
       <updated>1779206401625</updated>
     </task>
-    <option name="localTasksCounter" value="205" />
+    <task id="LOCAL-00205" summary="save reservation">
+      <option name="closed" value="true" />
+      <created>1779206479092</created>
+      <option name="number" value="00205" />
+      <option name="presentableId" value="LOCAL-00205" />
+      <option name="project" value="LOCAL" />
+      <updated>1779206479092</updated>
+    </task>
+    <task id="LOCAL-00206" summary="save reservation">
+      <option name="closed" value="true" />
+      <created>1779206581948</created>
+      <option name="number" value="00206" />
+      <option name="presentableId" value="LOCAL-00206" />
+      <option name="project" value="LOCAL" />
+      <updated>1779206581949</updated>
+    </task>
+    <task id="LOCAL-00207" summary="save reservation">
+      <option name="closed" value="true" />
+      <created>1779206656110</created>
+      <option name="number" value="00207" />
+      <option name="presentableId" value="LOCAL-00207" />
+      <option name="project" value="LOCAL" />
+      <updated>1779206656110</updated>
+    </task>
+    <task id="LOCAL-00208" summary="save reservation">
+      <option name="closed" value="true" />
+      <created>1779206758591</created>
+      <option name="number" value="00208" />
+      <option name="presentableId" value="LOCAL-00208" />
+      <option name="project" value="LOCAL" />
+      <updated>1779206758591</updated>
+    </task>
+    <option name="localTasksCounter" value="209" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
