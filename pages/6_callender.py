@@ -16,6 +16,7 @@ if booking_number:
 
     st.write("BOOKING FUNDET")
 
+    booking_number = st.session_state("reservation_number", "")
     name = st.session_state.get("reservation_name", "")
     checkin_date = st.session_state.get("reservation_checkin_date", "")
     checkout_date = st.session_state.get("reservation_checkout_date", "")
