@@ -561,13 +561,8 @@ def save_reservation():
 
     st.write(f"Gemmer booking {booking_number} for {name}")
     st.write(f"Fra {checkin_date} til {checkout_date}")
-
-
-#st.button("save reservation")
-
-#if save_reservation:
-#    save_reservation()
-#    st.success("Booking gemt")
+    save_reservation()
+    st.success("Booking gemt")
 
 
 
