@@ -30,7 +30,7 @@ else:
     st.text("Ingen bookinger i session")
 #st.write(st.session_state)
 
-booking_number = st.session_state.get("reservation_number")
+#booking_number = st.session_state.get("reservation_number")
 
 
 def to_dt(x):

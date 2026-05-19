@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="value til bage i dato format" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="value til bage i dato format">
+      <change beforePath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,25 +33,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Python.1_Booking.executor": "Run",
-    "Python.2_Setup.executor": "Run",
-    "Python.2_setup.executor": "Run",
-    "Python.3_Ankomster.executor": "Run",
-    "Python.3_ankomster.executor": "Run",
-    "Python.4_Booking_C_link.executor": "Run",
-    "Python.5_cleaning.executor": "Run",
-    "Python.6_callender.executor": "Run",
-    "Python.app.executor": "Run",
-    "Python.auth.executor": "Run",
-    "Python.config_prices.executor": "Run",
-    "Python.databaseopslag.executor": "Run",
-    "Python.streamlit_app.executor": "Run",
-    "last_opened_file_path": "C:/Users/finnj/-repoHK2/HK-portal10/streamlit_app.py"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python.1_Booking.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2_Setup.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2_setup.executor&quot;: &quot;Run&quot;,
+    &quot;Python.3_Ankomster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.3_ankomster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.4_Booking_C_link.executor&quot;: &quot;Run&quot;,
+    &quot;Python.5_cleaning.executor&quot;: &quot;Run&quot;,
+    &quot;Python.6_callender.executor&quot;: &quot;Run&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.auth.executor&quot;: &quot;Run&quot;,
+    &quot;Python.config_prices.executor&quot;: &quot;Run&quot;,
+    &quot;Python.databaseopslag.executor&quot;: &quot;Run&quot;,
+    &quot;Python.streamlit_app.executor&quot;: &quot;Run&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/finnj/-repoHK2/HK-portal10/streamlit_app.py&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
