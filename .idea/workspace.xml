@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="editorial">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_callender.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_callender.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="save reservation" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,14 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00155" summary="callender up at running still prob session state fra booking">
-      <option name="closed" value="true" />
-      <created>1778707799029</created>
-      <option name="number" value="00155" />
-      <option name="presentableId" value="LOCAL-00155" />
-      <option name="project" value="LOCAL" />
-      <updated>1778707799029</updated>
     </task>
     <task id="LOCAL-00156" summary="callender up at running still prob session state fra booking">
       <option name="closed" value="true" />
@@ -461,7 +450,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779206061698</updated>
     </task>
-    <option name="localTasksCounter" value="204" />
+    <task id="LOCAL-00204" summary="save reservation">
+      <option name="closed" value="true" />
+      <created>1779206401624</created>
+      <option name="number" value="00204" />
+      <option name="presentableId" value="LOCAL-00204" />
+      <option name="project" value="LOCAL" />
+      <updated>1779206401625</updated>
+    </task>
+    <option name="localTasksCounter" value="205" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -487,7 +484,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="cvr upload" />
     <MESSAGE value="callender fully updateed safe" />
     <MESSAGE value="pris fejl" />
     <MESSAGE value="editorieal" />
@@ -512,6 +508,7 @@
     <MESSAGE value="fjernet en session get" />
     <MESSAGE value="bookin data fra beckup" />
     <MESSAGE value="editorial" />
-    <option name="LAST_COMMIT_MESSAGE" value="editorial" />
+    <MESSAGE value="save reservation" />
+    <option name="LAST_COMMIT_MESSAGE" value="save reservation" />
   </component>
 </project>

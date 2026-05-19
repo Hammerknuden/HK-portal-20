@@ -570,15 +570,6 @@ if save_reservation:
     st.success("Booking gemt")
 
 
-#print(booking_number)
-#print(name)
-#print(checkin_date)
-#print(checkout_date)
-    st.markdown(booking_number)
-    st.markdown(name)
-    st.markdown(checkin_date)
-    st.markdown(checkout_date)
-
 
 
 
