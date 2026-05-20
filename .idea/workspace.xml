@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="init flyttet ned">
-      <change afterPath="$PROJECT_DIR$/pages/common.py" afterDir="false" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="common fil added new init state">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_callender.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_callender.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,14 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00170" summary="all up and running new booking session state in calender">
-      <option name="closed" value="true" />
-      <created>1778911886039</created>
-      <option name="number" value="00170" />
-      <option name="presentableId" value="LOCAL-00170" />
-      <option name="project" value="LOCAL" />
-      <updated>1778911886039</updated>
     </task>
     <task id="LOCAL-00171" summary="all up and running new booking session state in calender">
       <option name="closed" value="true" />
@@ -463,7 +452,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779308348555</updated>
     </task>
-    <option name="localTasksCounter" value="219" />
+    <task id="LOCAL-00219" summary="common fil added new init state">
+      <option name="closed" value="true" />
+      <created>1779309210163</created>
+      <option name="number" value="00219" />
+      <option name="presentableId" value="LOCAL-00219" />
+      <option name="project" value="LOCAL" />
+      <updated>1779309210163</updated>
+    </task>
+    <option name="localTasksCounter" value="220" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -489,7 +486,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="all up and running new booking session state in calender" />
     <MESSAGE value="new input for saveing session state" />
     <MESSAGE value="new def save session" />
     <MESSAGE value="booking ændringer for save key ændret til reservation" />
@@ -514,6 +510,7 @@
     <MESSAGE value="change from booking number to reservation number" />
     <MESSAGE value="init løsning ny chat" />
     <MESSAGE value="init flyttet ned" />
-    <option name="LAST_COMMIT_MESSAGE" value="init flyttet ned" />
+    <MESSAGE value="common fil added new init state" />
+    <option name="LAST_COMMIT_MESSAGE" value="common fil added new init state" />
   </component>
 </project>
