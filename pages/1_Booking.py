@@ -126,23 +126,23 @@ print(f"Room 3: {room_3}")
 print(f"Room 4: {room_4}")
 print(f"Room 5: {room_5}")
 
-if room_1 == days.days:
+if room_1 == days: #days:
     ledige_rum_1 = 1
 else:
     ledige_rum_1 = 0
-if room_2 == days.days:
+if room_2 == days: #.days:
     ledige_rum_2 = 1
 else:
     ledige_rum_2 = 0
-if room_3 == days.days:
+if room_3 == days:#.days:
     ledige_rum_3 = 1
 else:
     ledige_rum_3 = 0
-if room_4 == days.days:
+if room_4 == days:#.days:
     ledige_rum_4 = 1
 else:
     ledige_rum_4 = 0
-if room_5 == days.days:
+if room_5 == days:#.days:
     ledige_rum_5 = 1
 else:
     ledige_rum_5 = 0

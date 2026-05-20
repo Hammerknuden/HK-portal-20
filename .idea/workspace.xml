@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="common fil added new init state" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="lidt rettelser" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,14 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00172" summary="new input for saveing session state">
-      <option name="closed" value="true" />
-      <created>1778914034562</created>
-      <option name="number" value="00172" />
-      <option name="presentableId" value="LOCAL-00172" />
-      <option name="project" value="LOCAL" />
-      <updated>1778914034562</updated>
     </task>
     <task id="LOCAL-00173" summary="new input for saveing session state">
       <option name="closed" value="true" />
@@ -458,7 +450,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779310028302</updated>
     </task>
-    <option name="localTasksCounter" value="221" />
+    <task id="LOCAL-00221" summary="lidt rettelser">
+      <option name="closed" value="true" />
+      <created>1779310503060</created>
+      <option name="number" value="00221" />
+      <option name="presentableId" value="LOCAL-00221" />
+      <option name="project" value="LOCAL" />
+      <updated>1779310503060</updated>
+    </task>
+    <option name="localTasksCounter" value="222" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -484,7 +484,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="new input for saveing session state" />
     <MESSAGE value="new def save session" />
     <MESSAGE value="booking ændringer for save key ændret til reservation" />
     <MESSAGE value="booking ændringer for save key ændret til reservation ændret kald" />
@@ -509,6 +508,7 @@
     <MESSAGE value="init løsning ny chat" />
     <MESSAGE value="init flyttet ned" />
     <MESSAGE value="common fil added new init state" />
-    <option name="LAST_COMMIT_MESSAGE" value="common fil added new init state" />
+    <MESSAGE value="lidt rettelser" />
+    <option name="LAST_COMMIT_MESSAGE" value="lidt rettelser" />
   </component>
 </project>
