@@ -11,9 +11,9 @@ st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
 
 
-booking_number = st.session_state.get("reservation_number")
+reservation_number = st.session_state.get("reservation_number")
 
-if booking_number:
+if reservation_number:
 
     st.write("BOOKING FUNDET")
 
