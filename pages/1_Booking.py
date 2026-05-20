@@ -567,6 +567,8 @@ if booking_number:
     save_reservation()
     st.success("Booking gemt")
 
+st.session_state
+
 
 
 
