@@ -4,11 +4,14 @@ from pathlib import Path
 import datetime
 import plotly.express as px
 from auth import require_login
-from config.data_email import add_data
+from common import init_session
+#from config.data_email import add_data
 # INITIALISER SESSION STATE
 
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
+
+init_session()
 
 st.session_state
 reservation_number = st.session_state.get("reservation_number")

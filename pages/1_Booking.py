@@ -12,6 +12,7 @@ from config.confirmation_email import (admin_email,
     send_english_confirmation_email,
     send_german_confirmation_email)
 from config.data_email import add_data, send_data_email
+from common import init_session
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 import base64
