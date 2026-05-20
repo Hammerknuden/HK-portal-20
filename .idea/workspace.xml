@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="lidt rettelser" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="days.days ændret til days overordnet" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,14 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00173" summary="new input for saveing session state">
-      <option name="closed" value="true" />
-      <created>1778914105658</created>
-      <option name="number" value="00173" />
-      <option name="presentableId" value="LOCAL-00173" />
-      <option name="project" value="LOCAL" />
-      <updated>1778914105658</updated>
     </task>
     <task id="LOCAL-00174" summary="new def save session">
       <option name="closed" value="true" />
@@ -458,7 +450,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779310503060</updated>
     </task>
-    <option name="localTasksCounter" value="222" />
+    <task id="LOCAL-00222" summary="days.days ændret til days overordnet">
+      <option name="closed" value="true" />
+      <created>1779310730962</created>
+      <option name="number" value="00222" />
+      <option name="presentableId" value="LOCAL-00222" />
+      <option name="project" value="LOCAL" />
+      <updated>1779310730962</updated>
+    </task>
+    <option name="localTasksCounter" value="223" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -484,7 +484,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="new def save session" />
     <MESSAGE value="booking ændringer for save key ændret til reservation" />
     <MESSAGE value="booking ændringer for save key ændret til reservation ændret kald" />
     <MESSAGE value="excel update" />
@@ -509,6 +508,7 @@
     <MESSAGE value="init flyttet ned" />
     <MESSAGE value="common fil added new init state" />
     <MESSAGE value="lidt rettelser" />
-    <option name="LAST_COMMIT_MESSAGE" value="lidt rettelser" />
+    <MESSAGE value="days.days ændret til days overordnet" />
+    <option name="LAST_COMMIT_MESSAGE" value="days.days ændret til days overordnet" />
   </component>
 </project>
