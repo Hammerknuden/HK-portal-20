@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="change from booking number to reservation number">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="init løsning ny chat" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,14 +65,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00167" summary="editorieal">
-      <option name="closed" value="true" />
-      <created>1778867017965</created>
-      <option name="number" value="00167" />
-      <option name="presentableId" value="LOCAL-00167" />
-      <option name="project" value="LOCAL" />
-      <updated>1778867017965</updated>
     </task>
     <task id="LOCAL-00168" summary="editorieal">
       <option name="closed" value="true" />
@@ -461,7 +450,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779306767393</updated>
     </task>
-    <option name="localTasksCounter" value="216" />
+    <task id="LOCAL-00216" summary="init løsning ny chat">
+      <option name="closed" value="true" />
+      <created>1779307937380</created>
+      <option name="number" value="00216" />
+      <option name="presentableId" value="LOCAL-00216" />
+      <option name="project" value="LOCAL" />
+      <updated>1779307937380</updated>
+    </task>
+    <option name="localTasksCounter" value="217" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -487,7 +484,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="editorieal" />
     <MESSAGE value="all up and running new booking session state in booking" />
     <MESSAGE value="all up and running new booking session state in calender" />
     <MESSAGE value="new input for saveing session state" />
@@ -512,6 +508,7 @@
     <MESSAGE value="save reservation" />
     <MESSAGE value="reservation state get" />
     <MESSAGE value="change from booking number to reservation number" />
-    <option name="LAST_COMMIT_MESSAGE" value="change from booking number to reservation number" />
+    <MESSAGE value="init løsning ny chat" />
+    <option name="LAST_COMMIT_MESSAGE" value="init løsning ny chat" />
   </component>
 </project>

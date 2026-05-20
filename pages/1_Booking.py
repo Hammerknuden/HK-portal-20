@@ -35,7 +35,7 @@ def init_session():
             st.session_state[key] = value
 
 #byt evt init og login
-init_session()
+
 
 require_login()
 
