@@ -22,18 +22,20 @@ st.set_page_config(page_title="Booking", layout="wide")
 
 
 def init_session():
-    if "reservation_number" not in st.session_state:
-        st.session_state["reservation_number"] = None
 
-    if "reservation_name" not in st.session_state:
-        st.session_state["reservation_name"] = None
+    defaults = {
+        "reservation_number": "",
+        "reservation_name": "",
+        "reservation_checkin_date": None,
+        "reservation_checkout_date": None,
+    }
 
-    if "reservation_checkin_date" not in st.session_state:
-        st.session_state["reservation_checkin_date"] = None
+    for key, value in defaults.items():
+        if key not in st.session_state:
+            st.session_state[key] = value
 
-    if "reservation_checkout_date" not in st.session_state:
-        st.session_state["reservation_checkout_date"] = None
-
+#byt evt init og login
+init_session()
 
 require_login()
 

@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="reservation state get" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="change from booking number to reservation number">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,25 +34,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Python.1_Booking.executor": "Run",
-    "Python.2_Setup.executor": "Run",
-    "Python.2_setup.executor": "Run",
-    "Python.3_Ankomster.executor": "Run",
-    "Python.3_ankomster.executor": "Run",
-    "Python.4_Booking_C_link.executor": "Run",
-    "Python.5_cleaning.executor": "Run",
-    "Python.6_callender.executor": "Run",
-    "Python.app.executor": "Run",
-    "Python.auth.executor": "Run",
-    "Python.config_prices.executor": "Run",
-    "Python.databaseopslag.executor": "Run",
-    "Python.streamlit_app.executor": "Run",
-    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/pages/7_setup.py"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python.1_Booking.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2_Setup.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2_setup.executor&quot;: &quot;Run&quot;,
+    &quot;Python.3_Ankomster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.3_ankomster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.4_Booking_C_link.executor&quot;: &quot;Run&quot;,
+    &quot;Python.5_cleaning.executor&quot;: &quot;Run&quot;,
+    &quot;Python.6_callender.executor&quot;: &quot;Run&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.auth.executor&quot;: &quot;Run&quot;,
+    &quot;Python.config_prices.executor&quot;: &quot;Run&quot;,
+    &quot;Python.databaseopslag.executor&quot;: &quot;Run&quot;,
+    &quot;Python.streamlit_app.executor&quot;: &quot;Run&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/finnj/-repo hk20/hk_portal_20/pages/7_setup.py&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -65,22 +68,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00165" summary="callender fully updateed safe">
-      <option name="closed" value="true" />
-      <created>1778830692733</created>
-      <option name="number" value="00165" />
-      <option name="presentableId" value="LOCAL-00165" />
-      <option name="project" value="LOCAL" />
-      <updated>1778830692733</updated>
-    </task>
-    <task id="LOCAL-00166" summary="pris fejl">
-      <option name="closed" value="true" />
-      <created>1778858136129</created>
-      <option name="number" value="00166" />
-      <option name="presentableId" value="LOCAL-00166" />
-      <option name="project" value="LOCAL" />
-      <updated>1778858136129</updated>
     </task>
     <task id="LOCAL-00167" summary="editorieal">
       <option name="closed" value="true" />
@@ -458,7 +445,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779207666146</updated>
     </task>
-    <option name="localTasksCounter" value="214" />
+    <task id="LOCAL-00214" summary="reservation state get">
+      <option name="closed" value="true" />
+      <created>1779306565263</created>
+      <option name="number" value="00214" />
+      <option name="presentableId" value="LOCAL-00214" />
+      <option name="project" value="LOCAL" />
+      <updated>1779306565263</updated>
+    </task>
+    <task id="LOCAL-00215" summary="change from booking number to reservation number">
+      <option name="closed" value="true" />
+      <created>1779306767393</created>
+      <option name="number" value="00215" />
+      <option name="presentableId" value="LOCAL-00215" />
+      <option name="project" value="LOCAL" />
+      <updated>1779306767393</updated>
+    </task>
+    <option name="localTasksCounter" value="216" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -484,7 +487,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="pris fejl" />
     <MESSAGE value="editorieal" />
     <MESSAGE value="all up and running new booking session state in booking" />
     <MESSAGE value="all up and running new booking session state in calender" />
@@ -509,6 +511,7 @@
     <MESSAGE value="editorial" />
     <MESSAGE value="save reservation" />
     <MESSAGE value="reservation state get" />
-    <option name="LAST_COMMIT_MESSAGE" value="reservation state get" />
+    <MESSAGE value="change from booking number to reservation number" />
+    <option name="LAST_COMMIT_MESSAGE" value="change from booking number to reservation number" />
   </component>
 </project>
