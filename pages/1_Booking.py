@@ -74,10 +74,10 @@ if checkin_date and checkout_date:
     days = (checkout_date - checkin_date).days
 else:
     days = 0
-days = checkout_date - checkin_date
-#init_session()
+
+st.markdown(f"**Antal dage denne booking** {days}")
+
 st.text("Skema viser ikke udchecksdagen da den er irelevant i forbindelse med reservation")
-st.markdown(f"**Antal dage denne booking**  {days.days}")
 
 if year == '2026':
     if bruger == "Finn" and network == "local":
