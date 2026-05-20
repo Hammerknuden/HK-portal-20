@@ -10,7 +10,7 @@ from config.data_email import add_data
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
 
-
+st.session_state
 reservation_number = st.session_state.get("reservation_number")
 
 if reservation_number:
