@@ -16,15 +16,16 @@ init_session()
 st.session_state
 reservation_number = st.session_state.get("reservation_number")
 
-if reservation_number:
+if st.session_state.get("reservation_number"):
 
     st.write("BOOKING FUNDET")
 
-    booking_number = st.session_state("reservation_number", "")
+    booking_number = st.session_state.get("reservation_number", "")
     name = st.session_state.get("reservation_name", "")
-    now = st.session_state("reservation_date".date), #.today()),
-    checkin_date = st.session_state.get("reservation_checkin_date".date), #.today),
-    checkout_date = st.session_state.get("reservation_checkout_date".date)# , "")
+
+    reservation_date = st.session_state.get("reservation_date")
+    checkin_date = st.session_state.get("reservation_checkin_date")
+    checkout_date = st.session_state.get("reservation_checkout_date")
 
     st.text(
         f"Booking nummer {booking_number} - "
