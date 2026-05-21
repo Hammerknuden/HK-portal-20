@@ -15,6 +15,7 @@ init_session()
 
 st.session_state
 reservation_number = st.session_state.get("reservation_number")
+booking_number = reservation_number
 
 if st.session_state.get("reservation_checkin_date"):
 
