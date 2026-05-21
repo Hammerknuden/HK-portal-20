@@ -16,7 +16,7 @@ init_session()
 st.session_state
 reservation_number = st.session_state.get("reservation_number")
 
-if st.session_state.get("reservation_checkib_date"):
+if st.session_state.get("reservation_checkin_date"):
 
     st.write("BOOKING FUNDET")
 
