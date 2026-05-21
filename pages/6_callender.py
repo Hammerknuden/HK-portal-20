@@ -22,8 +22,9 @@ if reservation_number:
 
     booking_number = st.session_state("reservation_number", "")
     name = st.session_state.get("reservation_name", "")
-    checkin_date = st.session_state.get("reservation_checkin_date", "")
-    checkout_date = st.session_state.get("reservation_checkout_date", "")
+    now = st.session_state("reservation_date".date), #.today()),
+    checkin_date = st.session_state.get("reservation_checkin_date".date), #.today),
+    checkout_date = st.session_state.get("reservation_checkout_date".date)# , "")
 
     st.text(
         f"Booking nummer {booking_number} - "
