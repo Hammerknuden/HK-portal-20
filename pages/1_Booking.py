@@ -572,9 +572,9 @@ if booking_number:
     st.success("Booking gemt")
 
 
-st.write("AFSENDER STATE")
-st.write(st.session_state)
-st.session_state
+#st.write("AFSENDER STATE")
+#st.write(st.session_state)
+#st.session_state
 
 
 

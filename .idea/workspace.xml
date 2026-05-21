@@ -67,22 +67,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00187" summary="update to solve reservation session state">
-      <option name="closed" value="true" />
-      <created>1779112975741</created>
-      <option name="number" value="00187" />
-      <option name="presentableId" value="LOCAL-00187" />
-      <option name="project" value="LOCAL" />
-      <updated>1779112975741</updated>
-    </task>
-    <task id="LOCAL-00188" summary="update to solve reservation session state">
-      <option name="closed" value="true" />
-      <created>1779113018346</created>
-      <option name="number" value="00188" />
-      <option name="presentableId" value="LOCAL-00188" />
-      <option name="project" value="LOCAL" />
-      <updated>1779113018346</updated>
-    </task>
     <task id="LOCAL-00189" summary="update to solve reservation session state">
       <option name="closed" value="true" />
       <created>1779118003688</created>
@@ -459,7 +443,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779349792227</updated>
     </task>
-    <option name="localTasksCounter" value="236" />
+    <task id="LOCAL-00236" summary="lot of changes to secure session state between pages">
+      <option name="closed" value="true" />
+      <created>1779350018814</created>
+      <option name="number" value="00236" />
+      <option name="presentableId" value="LOCAL-00236" />
+      <option name="project" value="LOCAL" />
+      <updated>1779350018814</updated>
+    </task>
+    <task id="LOCAL-00237" summary="lot of changes to secure session state between pages">
+      <option name="closed" value="true" />
+      <created>1779350119421</created>
+      <option name="number" value="00237" />
+      <option name="presentableId" value="LOCAL-00237" />
+      <option name="project" value="LOCAL" />
+      <updated>1779350119421</updated>
+    </task>
+    <option name="localTasksCounter" value="238" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
