@@ -13,7 +13,7 @@ require_login()
 
 init_session()
 
-st.session_state
+#st.session_state
 checkin_date = st.session_state.get("reservation_checkin_date")
 
 #booking_number = reservation_number
