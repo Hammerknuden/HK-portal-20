@@ -30,23 +30,23 @@ authenticator = stauth.Authenticate(
 def require_login():
     authenticator.login(location='main')
 
-    authentication_status = st.session_state.get("authentication_status")
-    username = st.session_state.get("username")
-
-    if authentication_status is None:
+    if st.session_state.get("authentication_status") is None:
         st.info("Indtast brugernavn og kode")
-        st.stop()
+        return False
 
-    if authentication_status:
-        authenticator.logout('Logout', 'sidebar')
-        return True
-
-    if authentication_status is False:
+    if st.session_state.get("authentication_status") is False:
         st.error("Forkert brugernavn eller kode")
-        st.stop()
+        return False
+
+    authenticator.logout('Logout', 'sidebar')
+    return True
 
 
 def require_admin():
+    if not st.session_state.get("authentication_status"):
+        st.error("Ikke logget ind")
+        st.stop()
+
     if st.session_state.get("username") != "admin":
         st.error("Kun admin har adgang til denne side")
         st.stop()

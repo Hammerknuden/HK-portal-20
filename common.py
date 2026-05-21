@@ -1,9 +1,8 @@
-import streamlit as st
 from datetime import date
+import streamlit as st
 
 
 def init_session():
-
     defaults = {
         "reservation_number": "",
         "reservation_name": "",
@@ -15,3 +14,4 @@ def init_session():
     for key, value in defaults.items():
         if key not in st.session_state:
             st.session_state[key] = value
+

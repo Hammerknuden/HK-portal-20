@@ -39,7 +39,7 @@ def init_session():
 #byt evt init og login
 
 
-require_login()
+#require_login()
 init_session()
 #init_session()
 # ✅ Init KUN hvis ikke findes
@@ -571,6 +571,9 @@ if booking_number:
     save_reservation()
     st.success("Booking gemt")
 
+
+st.write("AFSENDER STATE")
+st.write(st.session_state)
 st.session_state
 
 
