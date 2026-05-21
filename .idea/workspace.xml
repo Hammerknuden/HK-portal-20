@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="days nu importeret i common">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="lot of changes to secure session state between pages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/2_databaseopslag.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/2_databaseopslag.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/3_Ankomster.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/3_Ankomster.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_callender.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_callender.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/7_setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/7_setup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +52,7 @@
     "Python.config_prices.executor": "Run",
     "Python.databaseopslag.executor": "Run",
     "Python.streamlit_app.executor": "Run",
-    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/pages/3_Ankomster.py"
+    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/auth.py"
   }
 }]]></component>
   <component name="SharedIndexes">
@@ -75,14 +70,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00179" summary="excel update">
-      <option name="closed" value="true" />
-      <created>1779032555851</created>
-      <option name="number" value="00179" />
-      <option name="presentableId" value="LOCAL-00179" />
-      <option name="project" value="LOCAL" />
-      <updated>1779032555851</updated>
     </task>
     <task id="LOCAL-00180" summary="excel update">
       <option name="closed" value="true" />
@@ -468,7 +455,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779346289043</updated>
     </task>
-    <option name="localTasksCounter" value="228" />
+    <task id="LOCAL-00228" summary="lot of changes to secure session state between pages">
+      <option name="closed" value="true" />
+      <created>1779347729276</created>
+      <option name="number" value="00228" />
+      <option name="presentableId" value="LOCAL-00228" />
+      <option name="project" value="LOCAL" />
+      <updated>1779347729276</updated>
+    </task>
+    <option name="localTasksCounter" value="229" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -494,7 +489,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="booking ændringer for save key ændret til reservation ændret kald" />
     <MESSAGE value="excel update" />
     <MESSAGE value="booking data" />
     <MESSAGE value="session state reservation" />
@@ -519,6 +513,7 @@
     <MESSAGE value="lidt rettelser" />
     <MESSAGE value="days.days ændret til days overordnet" />
     <MESSAGE value="days nu importeret i common" />
-    <option name="LAST_COMMIT_MESSAGE" value="days nu importeret i common" />
+    <MESSAGE value="lot of changes to secure session state between pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="lot of changes to secure session state between pages" />
   </component>
 </project>

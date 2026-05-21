@@ -7,8 +7,6 @@ passwords = ['pc0012', 'pc0012nb', '0012']
 
 hashed_passwords = [stauth.Hasher().hash(pw) for pw in passwords]
 
-print(hashed_passwords)
-
 credentials = {
     "usernames": {
         usernames[i]: {
@@ -28,13 +26,15 @@ authenticator = stauth.Authenticate(
 
 
 def require_login():
-    authenticator.login(location='main')
+    authenticator.login(location="main")
 
-    if st.session_state.get("authentication_status") is None:
+    status = st.session_state.get("authentication_status")
+
+    if status is None:
         st.info("Indtast brugernavn og kode")
         return False
 
-    if st.session_state.get("authentication_status") is False:
+    if status is False:
         st.error("Forkert brugernavn eller kode")
         return False
 

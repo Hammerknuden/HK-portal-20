@@ -9,24 +9,23 @@ st.set_page_config(
 
 st.title("HAMMERKNUDEN SOMMERPENSION")
 
-# 👇 INIT AUTH STATE (kun auth)
+# INIT AUTH STATE
 if "authentication_status" not in st.session_state:
     st.session_state["authentication_status"] = None
 
 if "username" not in st.session_state:
     st.session_state["username"] = None
 
-# 👇 LOGIN KUN HER
-#require_login()
+# 🔐 LOGIN HER
+require_login()
 
+# hvis ikke logget ind → stop
 if not st.session_state.get("authentication_status"):
     st.stop()
 
 st.text("version 2.0.1")
 st.image("logo2.jpg")
 
-
 st.success(f"Velkommen {st.session_state.get('username')} 👋")
 st.info("Brug menuen i venstre side 👈")
-
 
