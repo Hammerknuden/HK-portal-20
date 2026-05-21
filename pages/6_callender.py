@@ -13,10 +13,10 @@ require_login()
 
 init_session()
 
-st.session_state
+#st.session_state
 reservation_number = st.session_state.get("reservation_number")
 
-if st.session_state.get("reservation_number"):
+if st.session_state.get("reservation_checkib_date"):
 
     st.write("BOOKING FUNDET")
 
