@@ -3,7 +3,7 @@ from auth import require_login
 import pandas as pd
 from pathlib import Path
 st.set_page_config(page_title="Database", layout="wide")
-#require_login()
+require_login()
 
 st.subheader("Database opslag 3 niveauer ")
 

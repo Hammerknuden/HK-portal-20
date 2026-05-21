@@ -32,14 +32,13 @@ def require_login():
 
     if status is None:
         st.info("Indtast brugernavn og kode")
-        return False
+        st.stop()
 
     if status is False:
-        st.error("Forkert brugernavn eller kode")
-        return False
+        st.error("Forkert login")
+        st.stop()
 
     authenticator.logout('Logout', 'sidebar')
-    return True
 
 
 def require_admin():

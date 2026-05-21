@@ -17,7 +17,7 @@ if "username" not in st.session_state:
     st.session_state["username"] = None
 
 # 🔐 LOGIN HER
-#require_login()
+require_login()
 
 # hvis ikke logget ind → stop
 if not st.session_state.get("authentication_status"):
