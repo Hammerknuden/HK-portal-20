@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="app py auth">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_callender.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_callender.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="BF days ændret 259" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,22 +66,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00192" summary="update to solve reservation session state debug">
-      <option name="closed" value="true" />
-      <created>1779120622252</created>
-      <option name="number" value="00192" />
-      <option name="presentableId" value="LOCAL-00192" />
-      <option name="project" value="LOCAL" />
-      <updated>1779120622252</updated>
-    </task>
-    <task id="LOCAL-00193" summary="update to solve reservation session state debug">
-      <option name="closed" value="true" />
-      <created>1779120852033</created>
-      <option name="number" value="00193" />
-      <option name="presentableId" value="LOCAL-00193" />
-      <option name="project" value="LOCAL" />
-      <updated>1779120852034</updated>
     </task>
     <task id="LOCAL-00194" summary="update to solve reservation session state debug">
       <option name="closed" value="true" />
@@ -462,7 +443,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779377676942</updated>
     </task>
-    <option name="localTasksCounter" value="241" />
+    <task id="LOCAL-00241" summary="callender updateret for at forhindre sletning af session og gemme bedre">
+      <option name="closed" value="true" />
+      <created>1779432679192</created>
+      <option name="number" value="00241" />
+      <option name="presentableId" value="LOCAL-00241" />
+      <option name="project" value="LOCAL" />
+      <updated>1779432679192</updated>
+    </task>
+    <task id="LOCAL-00242" summary="BF days ændret 259">
+      <option name="closed" value="true" />
+      <created>1779433534046</created>
+      <option name="number" value="00242" />
+      <option name="presentableId" value="LOCAL-00242" />
+      <option name="project" value="LOCAL" />
+      <updated>1779433534046</updated>
+    </task>
+    <option name="localTasksCounter" value="243" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -488,8 +485,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="session state reservation" />
-    <MESSAGE value="save session state reservation" />
     <MESSAGE value="try to reload" />
     <MESSAGE value="ekstra kolonne i csv fil fjernes" />
     <MESSAGE value="ekstra kolonne i csv fil fjernes ny chat rettelse type" />
@@ -513,6 +508,8 @@
     <MESSAGE value="lot of changes to secure session state between pages" />
     <MESSAGE value="callender data upload" />
     <MESSAGE value="app py auth" />
-    <option name="LAST_COMMIT_MESSAGE" value="app py auth" />
+    <MESSAGE value="callender updateret for at forhindre sletning af session og gemme bedre" />
+    <MESSAGE value="BF days ændret 259" />
+    <option name="LAST_COMMIT_MESSAGE" value="BF days ændret 259" />
   </component>
 </project>

@@ -256,7 +256,7 @@ breakfast_alt = st.checkbox("begrænset morgenmad bestilles direkte ved ankomst 
 breakfast_rabat = st.checkbox("Der beregnes ikke rabat på morgenmad")
 
 if breakfast:
-    br_f = int(bf_price * int(num_guests) * int(days)#.days))
+    br_f = int(bf_price * int(num_guests) * int(days))#.days))
     BF = "Y"
     if Sprog == "DK":
         text_bf = "Morgenmad er inkluderet i prisen"
