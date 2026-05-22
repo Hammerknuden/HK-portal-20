@@ -73,60 +73,67 @@ def save_bookings():
         st.warning("booking_data er tom — gemmer ikke")
         return
 
-    st.session_state.booking_data.to_csv(
-        BOOKING_FILE,
-        index=False,
-        encoding="utf-8"
-    )
+    try:
 
-    st.success(
-        f"Gemte {len(st.session_state.booking_data)} bookinger"
-    )
+        st.session_state.booking_data.to_csv(
+            BOOKING_FILE,
+            index=False,
+            encoding="utf-8"
+        )
 
-st.subheader('Anvend igangværende booking data fra "booking"')
+        st.success(
+            f"Gemte {len(st.session_state.booking_data)} bookinger"
+        )
 
+    except Exception as e:
+
+        st.error(f"Fejl ved gemning: {e}")
+
+
+st.subheader("Brug koden")
+
+# -------------------------
+# LOAD / INIT DATA
+# -------------------------
+# -------------------------
+# LOAD / INIT DATA
+# -------------------------
 # -------------------------
 # LOAD / INIT DATA
 # -------------------------
 if "booking_data" not in st.session_state:
 
-    if BOOKING_FILE.exists() and BOOKING_FILE.stat().st_size > 0:
+    try:
 
-        try:
-            st.session_state.booking_data = pd.read_csv(
+        if BOOKING_FILE.exists() and BOOKING_FILE.stat().st_size > 0:
+
+            df = pd.read_csv(
                 BOOKING_FILE,
                 parse_dates=["Start", "Slut"]
             )
-            # Fjern unnamed kolonner
-            st.session_state.booking_data = (
-                st.session_state.booking_data
-                .loc[:, ~st.session_state.booking_data.columns.str.contains("^Unnamed")]
-            )
 
-            # Sikre korrekte datatyper
-            st.session_state.booking_data["Værelse"] = (
-                st.session_state.booking_data["Værelse"].astype(str)
-            )
+            df = df.loc[
+                :,
+                ~df.columns.str.contains("^Unnamed")
+            ]
 
-            st.session_state.booking_data["Gæst"] = (
-                st.session_state.booking_data["Gæst"].astype(str)
-            )
+        else:
 
-        except Exception as e:
-
-            st.error(f"Fejl ved læsning: {e}")
-
-            st.session_state.booking_data = pd.DataFrame(
+            df = pd.DataFrame(
                 columns=["Værelse", "Start", "Slut", "Gæst"]
             )
 
-    else:
+            df.to_csv(BOOKING_FILE, index=False)
+
+        st.session_state.booking_data = df
+
+    except Exception as e:
+
+        st.error(f"Fejl ved load: {e}")
 
         st.session_state.booking_data = pd.DataFrame(
             columns=["Værelse", "Start", "Slut", "Gæst"]
         )
-
-        st.session_state.booking_data.to_csv(BOOKING_FILE, index=False)
 
 # -------------------------
 # OPRET BOOKING
@@ -300,29 +307,6 @@ if not st.session_state.booking_data.empty:
 else:
 
     st.info("Ingen bookinger at vise endnu.")
-if "booking_data" not in st.session_state:
-
-    if BOOKING_FILE.exists() and BOOKING_FILE.stat().st_size > 0:
-
-        try:
-            st.session_state.booking_data = pd.read_csv(
-                BOOKING_FILE,
-                parse_dates=["Start", "Slut"]
-            )
-
-        except Exception as e:
-
-            st.error(f"Fejl ved læsning: {e}")
-
-            st.session_state.booking_data = pd.DataFrame(
-                columns=["Værelse", "Start", "Slut", "Gæst"]
-            )
-
-    else:
-
-        st.session_state.booking_data = pd.DataFrame(
-            columns=["Værelse", "Start", "Slut", "Gæst"]
-        )
 
 
 

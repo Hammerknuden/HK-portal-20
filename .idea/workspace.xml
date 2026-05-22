@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="callender data upload">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="app py auth">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/6_callender.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_callender.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,14 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00191" summary="update to solve reservation session state debug">
-      <option name="closed" value="true" />
-      <created>1779120561057</created>
-      <option name="number" value="00191" />
-      <option name="presentableId" value="LOCAL-00191" />
-      <option name="project" value="LOCAL" />
-      <updated>1779120561057</updated>
     </task>
     <task id="LOCAL-00192" summary="update to solve reservation session state debug">
       <option name="closed" value="true" />
@@ -461,7 +454,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779350486146</updated>
     </task>
-    <option name="localTasksCounter" value="240" />
+    <task id="LOCAL-00240" summary="app py auth">
+      <option name="closed" value="true" />
+      <created>1779377676941</created>
+      <option name="number" value="00240" />
+      <option name="presentableId" value="LOCAL-00240" />
+      <option name="project" value="LOCAL" />
+      <updated>1779377676942</updated>
+    </task>
+    <option name="localTasksCounter" value="241" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -487,7 +488,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="booking data" />
     <MESSAGE value="session state reservation" />
     <MESSAGE value="save session state reservation" />
     <MESSAGE value="try to reload" />
@@ -512,6 +512,7 @@
     <MESSAGE value="days nu importeret i common" />
     <MESSAGE value="lot of changes to secure session state between pages" />
     <MESSAGE value="callender data upload" />
-    <option name="LAST_COMMIT_MESSAGE" value="callender data upload" />
+    <MESSAGE value="app py auth" />
+    <option name="LAST_COMMIT_MESSAGE" value="app py auth" />
   </component>
 </project>
