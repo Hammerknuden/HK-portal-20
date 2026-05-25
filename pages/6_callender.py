@@ -156,7 +156,7 @@ with st.sidebar.form("booking_form"):
     )
 
     #booking_number = int(st.text_input("Bookingnummer"))
-    name = int(st.text_input("Gæstnavn"))
+    name = st.text_input("Gæstnavn")
 
     submitted = st.form_submit_button("Book nu")
 
