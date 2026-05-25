@@ -9,7 +9,8 @@ st.subheader("Database opslag 3 niveauer ")
 
 familie_navn = st.text_input("family name")
 telefon_nummer = st.text_input("telefon nummer med prefix")
-email =st.text_input("email adresse ")
+email = st.text_input("email adresse ")
+booking = st.text_input("booking nummer input")
 
 database_check = st.button("check for known person")
 
