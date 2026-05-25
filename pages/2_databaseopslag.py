@@ -32,7 +32,7 @@ if database_check:
     df = pd.read_excel(file_path, sheet_name="Dtb", dtype={'booking': str})
     search_value = booking
     pd.set_option("display.max_columns", None)
-    rows4 = df[df['Booking'] == search_value]
+    rows4 = df[df['booking'] == search_value]
 
     if familie_navn:
         st.dataframe(rows1)
