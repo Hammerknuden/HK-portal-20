@@ -28,12 +28,18 @@ if database_check:
     search_value = email
     pd.set_option("display.max_columns", None)
     rows3 = df[df['Email'] == search_value]
+    df = pd.read_excel(file_path, sheet_name="Dtb", dtype={'booking': str})
+    search_value = booking
+    pd.set_option("display.max_columns", None)
+    rows4 = df[df['Booking'] == search_value]
 
     if familie_navn:
         st.dataframe(rows1)
     if telefon_nummer:
         st.dataframe(rows2)
-    elif email:
+    if email:
         st.dataframe(rows3)
+    elif booking:
+        st.dataframe(rows4)
 else:
     st.text(" not in Database")
