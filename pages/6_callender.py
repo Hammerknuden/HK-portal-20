@@ -155,7 +155,8 @@ with st.sidebar.form("booking_form"):
         value=datetime.date.today() + datetime.timedelta(days=2)
     )
 
-    name = st.text_input("Gæstnavn")
+    booking_number = int(st.text_input("Bookingnummer"))
+    #name = st.text_input("Gæstnavn")
 
     submitted = st.form_submit_button("Book nu")
 

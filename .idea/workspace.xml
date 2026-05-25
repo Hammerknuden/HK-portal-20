@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="tilføj booking nummber i opslag">
-      <change beforePath="$PROJECT_DIR$/pages/2_databaseopslag.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/2_databaseopslag.py" afterDir="false" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excelupdate">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,22 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00201" summary="fjernet en session get">
-      <option name="closed" value="true" />
-      <created>1779191824128</created>
-      <option name="number" value="00201" />
-      <option name="presentableId" value="LOCAL-00201" />
-      <option name="project" value="LOCAL" />
-      <updated>1779191824129</updated>
-    </task>
-    <task id="LOCAL-00202" summary="bookin data fra beckup">
-      <option name="closed" value="true" />
-      <created>1779201404034</created>
-      <option name="number" value="00202" />
-      <option name="presentableId" value="LOCAL-00202" />
-      <option name="project" value="LOCAL" />
-      <updated>1779201404034</updated>
     </task>
     <task id="LOCAL-00203" summary="editorial">
       <option name="closed" value="true" />
@@ -462,7 +446,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779725775832</updated>
     </task>
-    <option name="localTasksCounter" value="250" />
+    <task id="LOCAL-00250" summary="tilføj booking nummber i opslag">
+      <option name="closed" value="true" />
+      <created>1779725846691</created>
+      <option name="number" value="00250" />
+      <option name="presentableId" value="LOCAL-00250" />
+      <option name="project" value="LOCAL" />
+      <updated>1779725846691</updated>
+    </task>
+    <task id="LOCAL-00251" summary="excelupdate">
+      <option name="closed" value="true" />
+      <created>1779726559220</created>
+      <option name="number" value="00251" />
+      <option name="presentableId" value="LOCAL-00251" />
+      <option name="project" value="LOCAL" />
+      <updated>1779726559221</updated>
+    </task>
+    <option name="localTasksCounter" value="252" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -488,7 +488,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ekstra kolonne i csv fil fjernes ny chat rettelse type" />
     <MESSAGE value="update to solve reservation session state" />
     <MESSAGE value="update to solve reservation session state debug" />
     <MESSAGE value="dobbel call fjernet" />
@@ -513,6 +512,7 @@
     <MESSAGE value="BF days ændret 259" />
     <MESSAGE value="excel update" />
     <MESSAGE value="tilføj booking nummber i opslag" />
-    <option name="LAST_COMMIT_MESSAGE" value="tilføj booking nummber i opslag" />
+    <MESSAGE value="excelupdate" />
+    <option name="LAST_COMMIT_MESSAGE" value="excelupdate" />
   </component>
 </project>
