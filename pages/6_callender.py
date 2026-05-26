@@ -109,7 +109,11 @@ if "booking_data" not in st.session_state:
 
             df = pd.read_csv(
                 BOOKING_FILE,
-                parse_dates=["Start", "Slut"]
+                parse_dates=["Start", "Slut"],
+                dtype={
+                    "Værelse": str,
+                    "Gæst": str
+                }
             )
 
             df = df.loc[
