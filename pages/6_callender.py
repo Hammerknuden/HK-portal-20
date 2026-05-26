@@ -273,19 +273,19 @@ if not st.session_state.booking_data.empty:
     with col1:
 
         if st.button("Gem ændringer"):
-            st.session_state.booking_data.at[
+            st.session_state.booking_data.loc[
                 booking_index, "Værelse"
             ] = str(new_room)
 
-            st.session_state.booking_data.at[
+            st.session_state.booking_data.loc[
                 booking_index, "Start"
             ] = pd.to_datetime(new_start)
 
-            st.session_state.booking_data.at[
+            st.session_state.booking_data.loc[
                 booking_index, "Slut"
             ] = pd.to_datetime(new_end)
 
-            st.session_state.booking_data.at[
+            st.session_state.booking_data.loc[
                 booking_index, "Gæst"
             ] = str(new_guest)
 

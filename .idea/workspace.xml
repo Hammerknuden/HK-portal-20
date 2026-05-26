@@ -68,22 +68,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00207" summary="save reservation">
-      <option name="closed" value="true" />
-      <created>1779206656110</created>
-      <option name="number" value="00207" />
-      <option name="presentableId" value="LOCAL-00207" />
-      <option name="project" value="LOCAL" />
-      <updated>1779206656110</updated>
-    </task>
-    <task id="LOCAL-00208" summary="save reservation">
-      <option name="closed" value="true" />
-      <created>1779206758591</created>
-      <option name="number" value="00208" />
-      <option name="presentableId" value="LOCAL-00208" />
-      <option name="project" value="LOCAL" />
-      <updated>1779206758591</updated>
-    </task>
     <task id="LOCAL-00209" summary="save reservation">
       <option name="closed" value="true" />
       <created>1779207069820</created>
@@ -460,7 +444,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779812090064</updated>
     </task>
-    <option name="localTasksCounter" value="256" />
+    <task id="LOCAL-00256" summary="fra name til booking number">
+      <option name="closed" value="true" />
+      <created>1779812382326</created>
+      <option name="number" value="00256" />
+      <option name="presentableId" value="LOCAL-00256" />
+      <option name="project" value="LOCAL" />
+      <updated>1779812382326</updated>
+    </task>
+    <task id="LOCAL-00257" summary="fra name til booking number">
+      <option name="closed" value="true" />
+      <created>1779812685216</created>
+      <option name="number" value="00257" />
+      <option name="presentableId" value="LOCAL-00257" />
+      <option name="project" value="LOCAL" />
+      <updated>1779812685216</updated>
+    </task>
+    <option name="localTasksCounter" value="258" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
