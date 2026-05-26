@@ -41,7 +41,7 @@ def init_session():
 
 require_login()
 init_session()
-#init_session()
+
 # ✅ Init KUN hvis ikke findes
 
 
