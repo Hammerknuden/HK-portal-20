@@ -170,7 +170,7 @@ with st.sidebar.form("booking_form"):
                 "Værelse": room,
                 "Start": to_dt(start_date),
                 "Slut": to_dt(end_date),
-                "Gæst": name
+                "Gæst": str(name)
             }])
 
             st.session_state.booking_data = pd.concat(
@@ -309,6 +309,12 @@ else:
 
     st.info("Ingen bookinger at vise endnu.")
 
+# MANUEL GEM KNAP
+# -------------------------
+if st.button("Gem session state til booking_data.csv"):
 
+    save_bookings()
+
+    st.success("Session state gemt til booking_data.csv")
 
 
