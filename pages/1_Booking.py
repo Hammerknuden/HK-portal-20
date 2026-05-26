@@ -27,7 +27,7 @@ def init_session():
     defaults = {
         "reservation_number": "",
         "reservation_name": "",
-        "reservation_date": date.today(),
+        #"reservation_date": date.today(),
         "reservation_checkin_date": date.today(),
         "reservation_checkout_date": date.today()
     }
@@ -55,7 +55,7 @@ year = st.selectbox("booking år", ["2026", "2027"])
 bruger = "Finn"
 network = st.selectbox("vælg lokal eller web ", options=["local", "URL"])
 
-now = st.date_input("booking dato", key='reservation_date')
+now = st.date_input("booking dato")#, key='reservation_date')
 
 booking_number = st.text_input("booking nummer ", key="reservation_number")
 st.write(st.session_state["reservation_number"])

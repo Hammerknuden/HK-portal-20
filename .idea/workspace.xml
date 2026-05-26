@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="pages session state overførsel ændret til number">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="pages session state fjerner init  i callender">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_callender.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_callender.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,22 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00212" summary="reservation state get">
-      <option name="closed" value="true" />
-      <created>1779207517907</created>
-      <option name="number" value="00212" />
-      <option name="presentableId" value="LOCAL-00212" />
-      <option name="project" value="LOCAL" />
-      <updated>1779207517907</updated>
-    </task>
-    <task id="LOCAL-00213" summary="reservation state get">
-      <option name="closed" value="true" />
-      <created>1779207666146</created>
-      <option name="number" value="00213" />
-      <option name="presentableId" value="LOCAL-00213" />
-      <option name="project" value="LOCAL" />
-      <updated>1779207666146</updated>
     </task>
     <task id="LOCAL-00214" summary="reservation state get">
       <option name="closed" value="true" />
@@ -464,7 +446,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779813677784</updated>
     </task>
-    <option name="localTasksCounter" value="261" />
+    <task id="LOCAL-00261" summary="pages session state fjerner init  i callender">
+      <option name="closed" value="true" />
+      <created>1779814481937</created>
+      <option name="number" value="00261" />
+      <option name="presentableId" value="LOCAL-00261" />
+      <option name="project" value="LOCAL" />
+      <updated>1779814481937</updated>
+    </task>
+    <task id="LOCAL-00262" summary="pages session state fjerner init  i callender">
+      <option name="closed" value="true" />
+      <created>1779814639839</created>
+      <option name="number" value="00262" />
+      <option name="presentableId" value="LOCAL-00262" />
+      <option name="project" value="LOCAL" />
+      <updated>1779814639839</updated>
+    </task>
+    <option name="localTasksCounter" value="263" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -490,7 +488,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="dobbel call fjernet" />
     <MESSAGE value="session på booking date tilreservat" />
     <MESSAGE value="value til bage i dato format" />
     <MESSAGE value="fjernet en session get" />
@@ -515,6 +512,7 @@
     <MESSAGE value="excelupdate" />
     <MESSAGE value="fra name til booking number" />
     <MESSAGE value="pages session state overførsel ændret til number" />
-    <option name="LAST_COMMIT_MESSAGE" value="pages session state overførsel ændret til number" />
+    <MESSAGE value="pages session state fjerner init  i callender" />
+    <option name="LAST_COMMIT_MESSAGE" value="pages session state fjerner init  i callender" />
   </component>
 </project>
