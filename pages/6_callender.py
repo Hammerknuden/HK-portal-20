@@ -273,19 +273,28 @@ if not st.session_state.booking_data.empty:
     with col1:
 
         if st.button("Gem ændringer"):
+            st.session_state.booking_data.at[
+                booking_index, "Værelse"
+            ] = str(new_room)
 
-            st.session_state.booking_data.loc[booking_index] = [
-                new_room,
-                pd.to_datetime(new_start),
-                pd.to_datetime(new_end),
-                new_guest
-            ]
+            st.session_state.booking_data.at[
+                booking_index, "Start"
+            ] = pd.to_datetime(new_start)
+
+            st.session_state.booking_data.at[
+                booking_index, "Slut"
+            ] = pd.to_datetime(new_end)
+
+            st.session_state.booking_data.at[
+                booking_index, "Gæst"
+            ] = str(new_guest)
 
             save_bookings()
 
             st.success("Booking opdateret")
 
             st.rerun()
+
 
     # SLET BOOKING
     with col2:
