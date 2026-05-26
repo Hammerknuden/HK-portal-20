@@ -209,6 +209,7 @@ if not st.session_state.booking_data.empty:
         color="Gæst",
         hover_name="Gæst",
         text="Gæst",
+        color_discrete_sequence=px.colors.qualitative.Dark24
     )
 
     fig.update_yaxes(autorange="reversed")
