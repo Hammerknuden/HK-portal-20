@@ -18,12 +18,12 @@ checkin_date = st.session_state.get("reservation_checkin_date")
 
 #booking_number = reservation_number
 
-if st.session_state.get("reservation_checkin_date"):
+if st.session_state.get("reservation_number"):
 
     st.write("BOOKING FUNDET")
 
-    booking_number = st.session_state.get("reservation_number", "")
-    name = st.session_state.get("reservation_name", "")
+    booking_number = st.session_state.get("reservation_number")#, "")
+    name = st.session_state.get("reservation_name")#, "")
 
     reservation_date = st.session_state.get("reservation_date")
     checkin_date = st.session_state.get("reservation_checkin_date")
