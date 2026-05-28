@@ -7,67 +7,47 @@ from auth import require_login
 from common import init_session
 import os
 
-# INITIALISER SESSION STATE
+# -------------------------
+# INIT
+# -------------------------
 init_session()
-
-#st.write(st.session_state)
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
-#init_session()
-#booking_number = reservation_number
-
-booking_number = st.session_state.get("reservation_number")
-
-
-if st.session_state.get("reservation_number"):
-
-    st.write("BOOKING FUNDET")
-
-    booking_number = st.session_state.get("reservation_number", "")
-    name = st.session_state.get("reservation_name", "")
-    #reservation_date = st.session_state.get("reservation_date")
-    checkin_date = st.session_state.get("reservation_checkin_date")
-    checkout_date = st.session_state.get("reservation_checkout_date")
-
-    st.text(
-        f"Booking nummer {booking_number} - "
-        f"{name} - "
-        f"{checkin_date} til {checkout_date}"
-    )
-
-else:
-    st.text("Ingen bookinger i session")
-#st.write(st.session_state)
-
 
 def to_dt(x):
     return pd.to_datetime(x)
+
 # -------------------------
 # DATA SETUP
 # -------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
-
 DATA_DIR.mkdir(exist_ok=True)
 
 BOOKING_FILE = DATA_DIR / "booking_data.csv"
 
-if not BOOKING_FILE.exists():
-    pd.DataFrame(
-        columns=["Værelse", "Start", "Slut", "Gæst"]
-    ).to_csv(BOOKING_FILE, index=False)
+# -------------------------
+# LOAD (ALWAYS SOURCE OF TRUTH)
+# -------------------------
+if BOOKING_FILE.exists() and BOOKING_FILE.stat().st_size > 0:
+    df = pd.read_csv(
+        BOOKING_FILE,
+        parse_dates=["Start", "Slut"],
+        dtype={"Værelse": str, "Gæst": str}
+    )
 
-#st.write("Current file:", __file__)
-#st.write("BASE_DIR:", BASE_DIR)
-#st.write("DATA_DIR:", DATA_DIR)
-#st.write("BOOKING_FILE:", BOOKING_FILE)
+    df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
 
+else:
+    df = pd.DataFrame(columns=["Værelse", "Start", "Slut", "Gæst"])
 
+# 🔥 IMPORTANT: always overwrite session state from disk on load
+st.session_state.booking_data = df
+
+# -------------------------
+# SAVE
+# -------------------------
 def save_bookings():
-    if "booking_data" not in st.session_state:
-        st.warning("Ingen booking_data i session")
-        return
-
     df = st.session_state.booking_data.copy()
 
     if df.empty:
@@ -81,79 +61,40 @@ def save_bookings():
     except Exception as e:
         st.error(f"Fejl ved gemning: {e}")
 
-
-#st.subheader("Brug koden")
-
 # -------------------------
-# LOAD / INIT DATA
+# RESERVATION INFO
 # -------------------------
-# -------------------------
-# LOAD / INIT DATA
-# -------------------------
-# -------------------------
-# LOAD / INIT DATA
-# -------------------------
-if "booking_data" not in st.session_state:
+booking_number = st.session_state.get("reservation_number")
 
-    try:
+if booking_number:
+    st.write("BOOKING FUNDET")
 
-        if BOOKING_FILE.exists() and BOOKING_FILE.stat().st_size > 0:
+    name = st.session_state.get("reservation_name", "")
+    checkin_date = st.session_state.get("reservation_checkin_date")
+    checkout_date = st.session_state.get("reservation_checkout_date")
 
-            df = pd.read_csv(
-                BOOKING_FILE,
-                parse_dates=["Start", "Slut"],
-                dtype={
-                    "Værelse": str,
-                    "Gæst": str
-                }
-            )
-
-            df = df.loc[
-                :,
-                ~df.columns.str.contains("^Unnamed")
-            ]
-
-        else:
-
-            df = pd.DataFrame(
-                columns=["Værelse", "Start", "Slut", "Gæst"]
-            )
-
-            df.to_csv(BOOKING_FILE, index=False)
-
-        st.session_state.booking_data = df
-
-    except Exception as e:
-
-        st.error(f"Fejl ved load: {e}")
-
-        st.session_state.booking_data = pd.DataFrame(
-            columns=["Værelse", "Start", "Slut", "Gæst"]
-        )
+    st.text(
+        f"Booking nummer {booking_number} - "
+        f"{name} - "
+        f"{checkin_date} til {checkout_date}"
+    )
+else:
+    st.text("Ingen bookinger i session")
 
 # -------------------------
 # OPRET BOOKING
 # -------------------------
 with st.sidebar.form("booking_form"):
 
-    room = st.selectbox(
-        "Værelse",
-        [f"Værelse {i}" for i in range(1, 8)]
-    )
+    room = st.selectbox("Værelse", [f"Værelse {i}" for i in range(1, 8)])
 
-    start_date = st.date_input(
-        "Start dato",
-        value=datetime.date.today()
-    )
-
+    start_date = st.date_input("Start dato", value=datetime.date.today())
     end_date = st.date_input(
         "Slut dato",
         value=datetime.date.today() + datetime.timedelta(days=2)
     )
 
-    #booking_number = int(st.text_input("Bookingnummer"))
     name = st.text_input("Gæstnavn")
-
     submitted = st.form_submit_button("Book nu")
 
     if submitted:
@@ -175,12 +116,8 @@ with st.sidebar.form("booking_form"):
             )
 
             save_bookings()
-            st.success("Booking gemt")
             st.rerun()
 
-# -------------------------
-# VIS BOOKINGER
-# -------------------------
 # -------------------------
 # VIS BOOKINGER
 # -------------------------
@@ -189,7 +126,6 @@ st.subheader("Belægningsplan")
 if not st.session_state.booking_data.empty:
 
     df = st.session_state.booking_data.copy()
-
     df["Start"] = pd.to_datetime(df["Start"])
     df["Slut"] = pd.to_datetime(df["Slut"])
 
@@ -215,17 +151,12 @@ if not st.session_state.booking_data.empty:
         height=400
     )
 
-    fig.update_xaxes(rangeslider_visible=True)
-
-    fig.update_xaxes(
-        tickformat="%d-%m",
-        tickangle=0
-    )
+    fig.update_xaxes(rangeslider_visible=True, tickformat="%d-%m")
 
     st.plotly_chart(fig, use_container_width=True)
 
     # -------------------------
-    # ADMINISTRATION
+    # ADMIN
     # -------------------------
     st.subheader("Administrer bookinger")
 
@@ -245,55 +176,24 @@ if not st.session_state.booking_data.empty:
         index=int(booking["Værelse"].split()[-1]) - 1
     )
 
-    new_start = st.date_input(
-        "Rediger start",
-        value=pd.to_datetime(booking["Start"])
-    )
-
-    new_end = st.date_input(
-        "Rediger slut",
-        value=pd.to_datetime(booking["Slut"])
-    )
-
-    new_guest = st.text_input(
-        "Rediger gæst",
-        value=booking["Gæst"]
-    )
+    new_start = st.date_input("Rediger start", value=pd.to_datetime(booking["Start"]))
+    new_end = st.date_input("Rediger slut", value=pd.to_datetime(booking["Slut"]))
+    new_guest = st.text_input("Rediger gæst", value=booking["Gæst"])
 
     col1, col2 = st.columns(2)
 
-    # GEM ÆNDRINGER
     with col1:
-
         if st.button("Gem ændringer"):
-            st.session_state.booking_data.loc[
-                booking_index, "Værelse"
-            ] = str(new_room)
-
-            st.session_state.booking_data.loc[
-                booking_index, "Start"
-            ] = pd.to_datetime(new_start)
-
-            st.session_state.booking_data.loc[
-                booking_index, "Slut"
-            ] = pd.to_datetime(new_end)
-
-            st.session_state.booking_data.loc[
-                booking_index, "Gæst"
-            ] = str(new_guest)
+            st.session_state.booking_data.loc[booking_index, "Værelse"] = str(new_room)
+            st.session_state.booking_data.loc[booking_index, "Start"] = pd.to_datetime(new_start)
+            st.session_state.booking_data.loc[booking_index, "Slut"] = pd.to_datetime(new_end)
+            st.session_state.booking_data.loc[booking_index, "Gæst"] = str(new_guest)
 
             save_bookings()
-
-            st.success("Booking opdateret")
-
             st.rerun()
 
-
-    # SLET BOOKING
     with col2:
-
         if st.button("Slet booking"):
-
             st.session_state.booking_data = (
                 st.session_state.booking_data
                 .drop(index=booking_index)
@@ -301,26 +201,21 @@ if not st.session_state.booking_data.empty:
             )
 
             save_bookings()
-
-            st.success("Booking slettet")
-
             st.rerun()
 
-    # VIS TABEL
-    with st.expander("Se alle bookinger som liste"):
-
+    with st.expander("Se alle bookinger"):
         st.dataframe(st.session_state.booking_data)
 
 else:
-
     st.info("Ingen bookinger at vise endnu.")
 
-# MANUEL GEM KNAP
+# -------------------------
+# MANUEL SAVE
 # -------------------------
 if st.button("Gem session state til booking_data.csv"):
-
     save_bookings()
 
-    st.success("Session state gemt til booking_data.csv")
-
-st.write("Sidst ændret:", datetime.datetime.fromtimestamp(os.path.getmtime(BOOKING_FILE)))
+st.write(
+    "Sidst ændret:",
+    datetime.datetime.fromtimestamp(os.path.getmtime(BOOKING_FILE))
+)
