@@ -86,7 +86,7 @@ def save_bookings():
         st.error(f"Fejl ved gemning: {e}")
 
 
-st.subheader("Brug koden")
+#st.subheader("Brug koden")
 
 # -------------------------
 # LOAD / INIT DATA

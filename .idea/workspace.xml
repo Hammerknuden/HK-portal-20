@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="reservations dato fjernet fra common" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="small edits" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,22 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00218" summary="init flyttet ned">
-      <option name="closed" value="true" />
-      <created>1779308348554</created>
-      <option name="number" value="00218" />
-      <option name="presentableId" value="LOCAL-00218" />
-      <option name="project" value="LOCAL" />
-      <updated>1779308348555</updated>
-    </task>
-    <task id="LOCAL-00219" summary="common fil added new init state">
-      <option name="closed" value="true" />
-      <created>1779309210163</created>
-      <option name="number" value="00219" />
-      <option name="presentableId" value="LOCAL-00219" />
-      <option name="project" value="LOCAL" />
-      <updated>1779309210163</updated>
     </task>
     <task id="LOCAL-00220" summary="common fil added new init state">
       <option name="closed" value="true" />
@@ -460,7 +444,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779982919764</updated>
     </task>
-    <option name="localTasksCounter" value="267" />
+    <task id="LOCAL-00267" summary="small edits">
+      <option name="closed" value="true" />
+      <created>1779983370594</created>
+      <option name="number" value="00267" />
+      <option name="presentableId" value="LOCAL-00267" />
+      <option name="project" value="LOCAL" />
+      <updated>1779983370595</updated>
+    </task>
+    <task id="LOCAL-00268" summary="small edits">
+      <option name="closed" value="true" />
+      <created>1779983444533</created>
+      <option name="number" value="00268" />
+      <option name="presentableId" value="LOCAL-00268" />
+      <option name="project" value="LOCAL" />
+      <updated>1779983444534</updated>
+    </task>
+    <option name="localTasksCounter" value="269" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -486,7 +486,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fjernet en session get" />
     <MESSAGE value="bookin data fra beckup" />
     <MESSAGE value="editorial" />
     <MESSAGE value="save reservation" />
@@ -511,6 +510,7 @@
     <MESSAGE value="pages session state fjerner init  i callender" />
     <MESSAGE value="excel og callender small update" />
     <MESSAGE value="reservations dato fjernet fra common" />
-    <option name="LAST_COMMIT_MESSAGE" value="reservations dato fjernet fra common" />
+    <MESSAGE value="small edits" />
+    <option name="LAST_COMMIT_MESSAGE" value="small edits" />
   </component>
 </project>
