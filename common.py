@@ -6,7 +6,7 @@ def init_session():
     defaults = {
         "reservation_number": "",
         "reservation_name": "",
-        "reservation_date": date.today(),
+        #"reservation_date": date.today(),
         "reservation_checkin_date": date.today(),
         "reservation_checkout_date": date.today(),
     }
