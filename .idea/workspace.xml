@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="small edits" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="small edits overskrift" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,14 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00220" summary="common fil added new init state">
-      <option name="closed" value="true" />
-      <created>1779310028301</created>
-      <option name="number" value="00220" />
-      <option name="presentableId" value="LOCAL-00220" />
-      <option name="project" value="LOCAL" />
-      <updated>1779310028302</updated>
     </task>
     <task id="LOCAL-00221" summary="lidt rettelser">
       <option name="closed" value="true" />
@@ -460,7 +452,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779983444534</updated>
     </task>
-    <option name="localTasksCounter" value="269" />
+    <task id="LOCAL-00269" summary="small edits overskrift">
+      <option name="closed" value="true" />
+      <created>1779983731293</created>
+      <option name="number" value="00269" />
+      <option name="presentableId" value="LOCAL-00269" />
+      <option name="project" value="LOCAL" />
+      <updated>1779983731293</updated>
+    </task>
+    <option name="localTasksCounter" value="270" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -486,7 +486,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="bookin data fra beckup" />
     <MESSAGE value="editorial" />
     <MESSAGE value="save reservation" />
     <MESSAGE value="reservation state get" />
@@ -511,6 +510,7 @@
     <MESSAGE value="excel og callender small update" />
     <MESSAGE value="reservations dato fjernet fra common" />
     <MESSAGE value="small edits" />
-    <option name="LAST_COMMIT_MESSAGE" value="small edits" />
+    <MESSAGE value="small edits overskrift" />
+    <option name="LAST_COMMIT_MESSAGE" value="small edits overskrift" />
   </component>
 </project>
