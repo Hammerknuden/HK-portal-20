@@ -6,18 +6,14 @@ import plotly.express as px
 from auth import require_login
 from common import init_session
 
-#from config.data_email import add_data
 # INITIALISER SESSION STATE
 
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
-
-#init_session()
-
-#st.session_state
-#checkin_date = st.session_state.get("reservation_checkin_date")
-booking_number = st.session_state.get("reservation_number")
 #booking_number = reservation_number
+
+booking_number = st.session_state.get("reservation_number")
+
 
 if st.session_state.get("reservation_number"):
 
