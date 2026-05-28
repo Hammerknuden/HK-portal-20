@@ -63,29 +63,21 @@ if not BOOKING_FILE.exists():
 
 
 def save_bookings():
-
     if "booking_data" not in st.session_state:
         st.warning("Ingen booking_data i session")
         return
 
-    if st.session_state.booking_data.empty:
+    df = st.session_state.booking_data.copy()
+
+    if df.empty:
         st.warning("booking_data er tom — gemmer ikke")
         return
 
     try:
-
-        st.session_state.booking_data.to_csv(
-            BOOKING_FILE,
-            index=False,
-            encoding="utf-8"
-        )
-
-        st.success(
-            f"Gemte {len(st.session_state.booking_data)} bookinger"
-        )
+        df.to_csv(BOOKING_FILE, index=False, encoding="utf-8")
+        st.success(f"Gemte {len(df)} bookinger")
 
     except Exception as e:
-
         st.error(f"Fejl ved gemning: {e}")
 
 
