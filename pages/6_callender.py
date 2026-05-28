@@ -7,10 +7,10 @@ from auth import require_login
 from common import init_session
 
 # INITIALISER SESSION STATE
-
+init_session()
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
-init_session()
+#init_session()
 #booking_number = reservation_number
 
 booking_number = st.session_state.get("reservation_number")
