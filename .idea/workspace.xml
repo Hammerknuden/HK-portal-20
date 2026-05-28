@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="pages session state fjerner init  i callender">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="pages session state fjerner init  i callender" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,22 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00214" summary="reservation state get">
-      <option name="closed" value="true" />
-      <created>1779306565263</created>
-      <option name="number" value="00214" />
-      <option name="presentableId" value="LOCAL-00214" />
-      <option name="project" value="LOCAL" />
-      <updated>1779306565263</updated>
-    </task>
-    <task id="LOCAL-00215" summary="change from booking number to reservation number">
-      <option name="closed" value="true" />
-      <created>1779306767393</created>
-      <option name="number" value="00215" />
-      <option name="presentableId" value="LOCAL-00215" />
-      <option name="project" value="LOCAL" />
-      <updated>1779306767393</updated>
     </task>
     <task id="LOCAL-00216" summary="init løsning ny chat">
       <option name="closed" value="true" />
@@ -462,7 +444,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779814639839</updated>
     </task>
-    <option name="localTasksCounter" value="263" />
+    <task id="LOCAL-00263" summary="pages session state fjerner init  i callender">
+      <option name="closed" value="true" />
+      <created>1779815466612</created>
+      <option name="number" value="00263" />
+      <option name="presentableId" value="LOCAL-00263" />
+      <option name="project" value="LOCAL" />
+      <updated>1779815466612</updated>
+    </task>
+    <task id="LOCAL-00264" summary="pages session state fjerner init  i callender">
+      <option name="closed" value="true" />
+      <created>1779815667847</created>
+      <option name="number" value="00264" />
+      <option name="presentableId" value="LOCAL-00264" />
+      <option name="project" value="LOCAL" />
+      <updated>1779815667847</updated>
+    </task>
+    <option name="localTasksCounter" value="265" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

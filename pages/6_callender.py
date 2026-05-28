@@ -5,6 +5,7 @@ import datetime
 import plotly.express as px
 from auth import require_login
 from common import init_session
+
 #from config.data_email import add_data
 # INITIALISER SESSION STATE
 
