@@ -9,7 +9,7 @@ from common import init_session
 # INITIALISER SESSION STATE
 init_session()
 
-st.write(st.session_state)
+#st.write(st.session_state)
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
 #init_session()
