@@ -5,6 +5,7 @@ import datetime
 import plotly.express as px
 from auth import require_login
 from common import init_session
+import os
 
 # INITIALISER SESSION STATE
 init_session()
@@ -322,4 +323,4 @@ if st.button("Gem session state til booking_data.csv"):
 
     st.success("Session state gemt til booking_data.csv")
 
-
+st.write("Sidst ændret:", datetime.datetime.fromtimestamp(os.path.getmtime(BOOKING_FILE)))
