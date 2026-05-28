@@ -11,7 +11,7 @@ init_session()
 
 st.write(st.session_state)
 st.set_page_config(page_title="Timeline", layout="wide")
-require_login()
+#require_login()
 #init_session()
 #booking_number = reservation_number
 
