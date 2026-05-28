@@ -59,6 +59,7 @@ now = st.date_input("booking dato")#, key='reservation_date')
 
 booking_number = st.text_input("booking nummer ", key="reservation_number")
 st.write(st.session_state["reservation_number"])
+
 col1, col2 = st.columns(2)
 with col1:
     checkin_date = st.date_input("Checkin dato", key="reservation_checkin_date"
