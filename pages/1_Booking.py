@@ -37,7 +37,7 @@ st.set_page_config(page_title="Booking", layout="wide")
 #            st.session_state[key] = value
 
 #byt evt init og login
-#require_login()
+require_login()
 init_session()
 
 # ✅ Init KUN hvis ikke findes
@@ -555,22 +555,14 @@ if send_data: #and booking_submitted:
     st.markdown("data mail ikke sendt ")
 
 
-def save_reservation():
+if st.button("Gem booking"):
 
-    booking_number = st.session_state.get("reservation_number", "")
-    name = st.session_state.get("reservation_name", "")
-    checkin_date = st.session_state.get("reservation_checkin_date", "")
-    checkout_date = st.session_state.get("reservation_checkout_date", "")
+    st.session_state["reservation_number"] = booking_number
+    st.session_state["reservation_name"] = reservation_name
+    st.session_state["reservation_checkin_date"] = checkin_date
+    st.session_state["reservation_checkout_date"] = checkout_date
 
-    st.write(f"Gemmer booking {booking_number} for {name}")
-    st.write(f"Fra {checkin_date} til {checkout_date}")
-
-
-if booking_number:
-    save_reservation()
     st.success("Booking gemt")
-
-
 #st.write("AFSENDER STATE")
 #st.write(st.session_state)
 #st.session_state

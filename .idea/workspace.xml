@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fjerner def init fra booking.py" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fjerner log in" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,30 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00225" summary="days nu importeret i common">
-      <option name="closed" value="true" />
-      <created>1779344905527</created>
-      <option name="number" value="00225" />
-      <option name="presentableId" value="LOCAL-00225" />
-      <option name="project" value="LOCAL" />
-      <updated>1779344905527</updated>
-    </task>
-    <task id="LOCAL-00226" summary="days nu importeret i common">
-      <option name="closed" value="true" />
-      <created>1779346196245</created>
-      <option name="number" value="00226" />
-      <option name="presentableId" value="LOCAL-00226" />
-      <option name="project" value="LOCAL" />
-      <updated>1779346196245</updated>
-    </task>
-    <task id="LOCAL-00227" summary="days nu importeret i common">
-      <option name="closed" value="true" />
-      <created>1779346289043</created>
-      <option name="number" value="00227" />
-      <option name="presentableId" value="LOCAL-00227" />
-      <option name="project" value="LOCAL" />
-      <updated>1779346289043</updated>
     </task>
     <task id="LOCAL-00228" summary="lot of changes to secure session state between pages">
       <option name="closed" value="true" />
@@ -460,7 +436,31 @@
       <option name="project" value="LOCAL" />
       <updated>1779987457816</updated>
     </task>
-    <option name="localTasksCounter" value="274" />
+    <task id="LOCAL-00274" summary=" alt med session og init">
+      <option name="closed" value="true" />
+      <created>1779987540997</created>
+      <option name="number" value="00274" />
+      <option name="presentableId" value="LOCAL-00274" />
+      <option name="project" value="LOCAL" />
+      <updated>1779987540997</updated>
+    </task>
+    <task id="LOCAL-00275" summary=" alt med session og init">
+      <option name="closed" value="true" />
+      <created>1779987643176</created>
+      <option name="number" value="00275" />
+      <option name="presentableId" value="LOCAL-00275" />
+      <option name="project" value="LOCAL" />
+      <updated>1779987643176</updated>
+    </task>
+    <task id="LOCAL-00276" summary="fjerner log in">
+      <option name="closed" value="true" />
+      <created>1779987816262</created>
+      <option name="number" value="00276" />
+      <option name="presentableId" value="LOCAL-00276" />
+      <option name="project" value="LOCAL" />
+      <updated>1779987816262</updated>
+    </task>
+    <option name="localTasksCounter" value="277" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -486,8 +486,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="save reservation" />
-    <MESSAGE value="reservation state get" />
     <MESSAGE value="change from booking number to reservation number" />
     <MESSAGE value="init løsning ny chat" />
     <MESSAGE value="init flyttet ned" />
@@ -511,6 +509,8 @@
     <MESSAGE value="small edits" />
     <MESSAGE value="small edits overskrift" />
     <MESSAGE value="fjerner def init fra booking.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="fjerner def init fra booking.py" />
+    <MESSAGE value=" alt med session og init" />
+    <MESSAGE value="fjerner log in" />
+    <option name="LAST_COMMIT_MESSAGE" value="fjerner log in" />
   </component>
 </project>
