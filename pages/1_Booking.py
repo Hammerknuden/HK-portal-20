@@ -37,8 +37,6 @@ st.set_page_config(page_title="Booking", layout="wide")
 #            st.session_state[key] = value
 
 #byt evt init og login
-
-
 require_login()
 init_session()
 

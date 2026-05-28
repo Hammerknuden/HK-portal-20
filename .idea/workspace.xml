@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="small edits overskrift">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/common.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fjerner def init fra booking.py" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,14 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00222" summary="days.days ændret til days overordnet">
-      <option name="closed" value="true" />
-      <created>1779310730962</created>
-      <option name="number" value="00222" />
-      <option name="presentableId" value="LOCAL-00222" />
-      <option name="project" value="LOCAL" />
-      <updated>1779310730962</updated>
     </task>
     <task id="LOCAL-00223" summary="days.days ændret til days overordnet">
       <option name="closed" value="true" />
@@ -463,7 +452,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779985986149</updated>
     </task>
-    <option name="localTasksCounter" value="271" />
+    <task id="LOCAL-00271" summary="fjerner def init fra booking.py">
+      <option name="closed" value="true" />
+      <created>1779986916785</created>
+      <option name="number" value="00271" />
+      <option name="presentableId" value="LOCAL-00271" />
+      <option name="project" value="LOCAL" />
+      <updated>1779986916785</updated>
+    </task>
+    <option name="localTasksCounter" value="272" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -489,7 +486,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="editorial" />
     <MESSAGE value="save reservation" />
     <MESSAGE value="reservation state get" />
     <MESSAGE value="change from booking number to reservation number" />
@@ -514,6 +510,7 @@
     <MESSAGE value="reservations dato fjernet fra common" />
     <MESSAGE value="small edits" />
     <MESSAGE value="small edits overskrift" />
-    <option name="LAST_COMMIT_MESSAGE" value="small edits overskrift" />
+    <MESSAGE value="fjerner def init fra booking.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="fjerner def init fra booking.py" />
   </component>
 </project>
