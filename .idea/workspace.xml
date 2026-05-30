@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ændre save funktion callender">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="data fil fra backup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_callender.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_callender.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,22 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00232" summary="lot of changes to secure session state between pages">
-      <option name="closed" value="true" />
-      <created>1779349462833</created>
-      <option name="number" value="00232" />
-      <option name="presentableId" value="LOCAL-00232" />
-      <option name="project" value="LOCAL" />
-      <updated>1779349462833</updated>
-    </task>
-    <task id="LOCAL-00233" summary="lot of changes to secure session state between pages">
-      <option name="closed" value="true" />
-      <created>1779349527152</created>
-      <option name="number" value="00233" />
-      <option name="presentableId" value="LOCAL-00233" />
-      <option name="project" value="LOCAL" />
-      <updated>1779349527152</updated>
     </task>
     <task id="LOCAL-00234" summary="lot of changes to secure session state between pages">
       <option name="closed" value="true" />
@@ -463,7 +446,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779994980012</updated>
     </task>
-    <option name="localTasksCounter" value="281" />
+    <task id="LOCAL-00281" summary="helt ny save">
+      <option name="closed" value="true" />
+      <created>1779995490899</created>
+      <option name="number" value="00281" />
+      <option name="presentableId" value="LOCAL-00281" />
+      <option name="project" value="LOCAL" />
+      <updated>1779995490899</updated>
+    </task>
+    <task id="LOCAL-00282" summary="data fil fra backup">
+      <option name="closed" value="true" />
+      <created>1779995671009</created>
+      <option name="number" value="00282" />
+      <option name="presentableId" value="LOCAL-00282" />
+      <option name="project" value="LOCAL" />
+      <updated>1779995671009</updated>
+    </task>
+    <option name="localTasksCounter" value="283" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -489,8 +488,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="common fil added new init state" />
-    <MESSAGE value="lidt rettelser" />
     <MESSAGE value="days.days ændret til days overordnet" />
     <MESSAGE value="days nu importeret i common" />
     <MESSAGE value="lot of changes to secure session state between pages" />
@@ -514,6 +511,8 @@
     <MESSAGE value="ny gem funktion tilsession" />
     <MESSAGE value="fjerne sesion state () fra callender" />
     <MESSAGE value="ændre save funktion callender" />
-    <option name="LAST_COMMIT_MESSAGE" value="ændre save funktion callender" />
+    <MESSAGE value="helt ny save" />
+    <MESSAGE value="data fil fra backup" />
+    <option name="LAST_COMMIT_MESSAGE" value="data fil fra backup" />
   </component>
 </project>
