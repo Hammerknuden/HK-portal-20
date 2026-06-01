@@ -51,4 +51,3 @@ def require_admin():
         st.stop()
 
 
-st.write(stauth.__version__)

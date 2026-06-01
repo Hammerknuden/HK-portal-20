@@ -295,6 +295,6 @@ if BOOKING_FILE.exists():
         )
     )
 
-
+st.write(stauth.__version__)
 
 
