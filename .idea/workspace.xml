@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="data fil fra backup">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excel update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,14 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00234" summary="lot of changes to secure session state between pages">
-      <option name="closed" value="true" />
-      <created>1779349546191</created>
-      <option name="number" value="00234" />
-      <option name="presentableId" value="LOCAL-00234" />
-      <option name="project" value="LOCAL" />
-      <updated>1779349546191</updated>
     </task>
     <task id="LOCAL-00235" summary="lot of changes to secure session state between pages">
       <option name="closed" value="true" />
@@ -462,7 +454,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779995671009</updated>
     </task>
-    <option name="localTasksCounter" value="283" />
+    <task id="LOCAL-00283" summary="excel update">
+      <option name="closed" value="true" />
+      <created>1780121803178</created>
+      <option name="number" value="00283" />
+      <option name="presentableId" value="LOCAL-00283" />
+      <option name="project" value="LOCAL" />
+      <updated>1780121803178</updated>
+    </task>
+    <option name="localTasksCounter" value="284" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -495,7 +495,6 @@
     <MESSAGE value="app py auth" />
     <MESSAGE value="callender updateret for at forhindre sletning af session og gemme bedre" />
     <MESSAGE value="BF days ændret 259" />
-    <MESSAGE value="excel update" />
     <MESSAGE value="tilføj booking nummber i opslag" />
     <MESSAGE value="excelupdate" />
     <MESSAGE value="fra name til booking number" />
@@ -513,6 +512,7 @@
     <MESSAGE value="ændre save funktion callender" />
     <MESSAGE value="helt ny save" />
     <MESSAGE value="data fil fra backup" />
-    <option name="LAST_COMMIT_MESSAGE" value="data fil fra backup" />
+    <MESSAGE value="excel update" />
+    <option name="LAST_COMMIT_MESSAGE" value="excel update" />
   </component>
 </project>
