@@ -70,14 +70,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00235" summary="lot of changes to secure session state between pages">
-      <option name="closed" value="true" />
-      <created>1779349792227</created>
-      <option name="number" value="00235" />
-      <option name="presentableId" value="LOCAL-00235" />
-      <option name="project" value="LOCAL" />
-      <updated>1779349792227</updated>
-    </task>
     <task id="LOCAL-00236" summary="lot of changes to secure session state between pages">
       <option name="closed" value="true" />
       <created>1779350018814</created>
@@ -462,7 +454,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780121803178</updated>
     </task>
-    <option name="localTasksCounter" value="284" />
+    <task id="LOCAL-00284" summary="excel update">
+      <option name="closed" value="true" />
+      <created>1780295859149</created>
+      <option name="number" value="00284" />
+      <option name="presentableId" value="LOCAL-00284" />
+      <option name="project" value="LOCAL" />
+      <updated>1780295859149</updated>
+    </task>
+    <option name="localTasksCounter" value="285" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
