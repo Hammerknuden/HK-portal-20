@@ -68,38 +68,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00241" summary="callender updateret for at forhindre sletning af session og gemme bedre">
-      <option name="closed" value="true" />
-      <created>1779432679192</created>
-      <option name="number" value="00241" />
-      <option name="presentableId" value="LOCAL-00241" />
-      <option name="project" value="LOCAL" />
-      <updated>1779432679192</updated>
-    </task>
-    <task id="LOCAL-00242" summary="BF days ændret 259">
-      <option name="closed" value="true" />
-      <created>1779433534046</created>
-      <option name="number" value="00242" />
-      <option name="presentableId" value="LOCAL-00242" />
-      <option name="project" value="LOCAL" />
-      <updated>1779433534046</updated>
-    </task>
-    <task id="LOCAL-00243" summary="BF days ændret 259">
-      <option name="closed" value="true" />
-      <created>1779433620009</created>
-      <option name="number" value="00243" />
-      <option name="presentableId" value="LOCAL-00243" />
-      <option name="project" value="LOCAL" />
-      <updated>1779433620010</updated>
-    </task>
-    <task id="LOCAL-00244" summary="excel update">
-      <option name="closed" value="true" />
-      <created>1779631075865</created>
-      <option name="number" value="00244" />
-      <option name="presentableId" value="LOCAL-00244" />
-      <option name="project" value="LOCAL" />
-      <updated>1779631075867</updated>
-    </task>
     <task id="LOCAL-00245" summary="excel update">
       <option name="closed" value="true" />
       <created>1779633208897</created>
@@ -460,7 +428,39 @@
       <option name="project" value="LOCAL" />
       <updated>1780299277861</updated>
     </task>
-    <option name="localTasksCounter" value="290" />
+    <task id="LOCAL-00290" summary="session state fault 560 ændret i call number fjernet">
+      <option name="closed" value="true" />
+      <created>1780299336261</created>
+      <option name="number" value="00290" />
+      <option name="presentableId" value="LOCAL-00290" />
+      <option name="project" value="LOCAL" />
+      <updated>1780299336261</updated>
+    </task>
+    <task id="LOCAL-00291" summary="session state fault 560 ændret i call number fjernet">
+      <option name="closed" value="true" />
+      <created>1780299432347</created>
+      <option name="number" value="00291" />
+      <option name="presentableId" value="LOCAL-00291" />
+      <option name="project" value="LOCAL" />
+      <updated>1780299432348</updated>
+    </task>
+    <task id="LOCAL-00292" summary="session state fault 560 ændret i call number fjernet">
+      <option name="closed" value="true" />
+      <created>1780299486466</created>
+      <option name="number" value="00292" />
+      <option name="presentableId" value="LOCAL-00292" />
+      <option name="project" value="LOCAL" />
+      <updated>1780299486466</updated>
+    </task>
+    <task id="LOCAL-00293" summary="session state fault 560 ændret i call number fjernet">
+      <option name="closed" value="true" />
+      <created>1780299680243</created>
+      <option name="number" value="00293" />
+      <option name="presentableId" value="LOCAL-00293" />
+      <option name="project" value="LOCAL" />
+      <updated>1780299680243</updated>
+    </task>
+    <option name="localTasksCounter" value="294" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

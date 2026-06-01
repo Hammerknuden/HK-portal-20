@@ -64,6 +64,8 @@ def save_bookings():
 # -------------------------
 # RESERVATION INFO
 # -------------------------
+
+
 booking_number = st.session_state.get("reservation_number")
 
 if booking_number:
