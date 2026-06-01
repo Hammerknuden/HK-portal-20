@@ -50,3 +50,5 @@ def require_admin():
         st.error("Kun admin har adgang til denne side")
         st.stop()
 
+
+st.write(stauth.__version__)
