@@ -15,6 +15,10 @@ init_session()
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
 
+#if session_state("reservation_number"):
+#    st.write("booking in state")
+
+
 def to_dt(x):
     return pd.to_datetime(x)
 
@@ -30,6 +34,7 @@ BOOKING_FILE = DATA_DIR / "booking_data.csv"
 # -------------------------
 # LOAD / SAVE
 # -------------------------
+
 
 def load_bookings():
 
