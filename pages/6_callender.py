@@ -17,7 +17,8 @@ require_login()
 
 if st.session_state.get("reservation_number"):
     st.write("booking in state")
-    st.session_state["reservation_name"] = ""
+    st.write("reservation_number")
+    st.write("reservation_checkin_date")
 
 else:
     init_session()
