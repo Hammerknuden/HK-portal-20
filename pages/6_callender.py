@@ -26,9 +26,9 @@ if st.session_state.get("reservation_name"):
 else:
     init_session()
 
-booking_number = st.session_state.get("reservation_number")
+name = st.session_state.get("reservation_name")
 
-if booking_number:
+if name:
 
     name = st.session_state.get("reservation_name", "")
     checkin_date = st.session_state.get("reservation_checkin_date")
