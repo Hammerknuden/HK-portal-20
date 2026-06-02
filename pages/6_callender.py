@@ -17,7 +17,7 @@ require_login()
 st.session_state
 
 
-if st.session_state.get("reservation_number"):
+if st.session_state.get("reservation_name"):
     st.write("booking in state")
     st.write("reservation_number")
     st.write("reservation_checkin_date")
