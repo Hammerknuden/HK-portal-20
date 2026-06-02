@@ -7,7 +7,7 @@ def init_session():
         "reservation_number": "",
         "reservation_name": "",
         "reservation_checkin_date": "",
-        "reservation_checkout_date": "",
+        "reservation_checkout_date": ""
     }
 
     for key, value in defaults.items():
