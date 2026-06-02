@@ -17,15 +17,6 @@ require_login()
 st.session_state
 
 
-if st.session_state.get("reservation_name"):
-
-    st.write("booking in state")
-    st.write("reservation_number")
-    st.write("reservation_checkin_date")
-
-else:
-    init_session()
-
 name = st.session_state.get("reservation_name")
 
 if name:
@@ -44,6 +35,7 @@ if name:
 
 else:
     st.text("Ingen bookinger i session")
+
 
 def to_dt(x):
     return pd.to_datetime(x)
