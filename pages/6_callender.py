@@ -17,9 +17,29 @@ require_login()
 
 if st.session_state.get("reservation_number"):
     st.write("booking in state")
+    st.session_state["reservation_name"] = ""
+
 else:
     init_session()
 
+booking_number = st.session_state.get("reservation_number")
+
+if booking_number:
+
+    name = st.session_state.get("reservation_name", "")
+    checkin_date = st.session_state.get("reservation_checkin_date")
+    checkout_date = st.session_state.get("reservation_checkout_date")
+
+    st.write("BOOKING FUNDET")
+
+    st.text(
+        f"Booking nummer {booking_number} - "
+        f"{name} - "
+        f"{checkin_date} til {checkout_date}"
+    )
+
+else:
+    st.text("Ingen bookinger i session")
 
 def to_dt(x):
     return pd.to_datetime(x)
@@ -27,6 +47,7 @@ def to_dt(x):
 # -------------------------
 # PATHS
 # -------------------------
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 DATA_DIR.mkdir(exist_ok=True)
@@ -88,24 +109,7 @@ df = load_bookings()
 # -------------------------
 # RESERVATION INFO
 # -------------------------
-booking_number = st.session_state.get("reservation_number")
 
-if booking_number:
-
-    name = st.session_state.get("reservation_name", "")
-    checkin_date = st.session_state.get("reservation_checkin_date")
-    checkout_date = st.session_state.get("reservation_checkout_date")
-
-    st.write("BOOKING FUNDET")
-
-    st.text(
-        f"Booking nummer {booking_number} - "
-        f"{name} - "
-        f"{checkin_date} til {checkout_date}"
-    )
-
-else:
-    st.text("Ingen bookinger i session")
 
 # -------------------------
 # CREATE BOOKING

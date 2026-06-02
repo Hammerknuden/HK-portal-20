@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="session state mangler i calender" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excel update samt regulering af init state">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/6_callender.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_callender.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,14 +70,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00253" summary="fra name til booking number">
-      <option name="closed" value="true" />
-      <created>1779728397301</created>
-      <option name="number" value="00253" />
-      <option name="presentableId" value="LOCAL-00253" />
-      <option name="project" value="LOCAL" />
-      <updated>1779728397301</updated>
     </task>
     <task id="LOCAL-00254" summary="fra name til booking number">
       <option name="closed" value="true" />
@@ -460,7 +455,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780326175709</updated>
     </task>
-    <option name="localTasksCounter" value="302" />
+    <task id="LOCAL-00302" summary="excel update samt regulering af init state">
+      <option name="closed" value="true" />
+      <created>1780380860877</created>
+      <option name="number" value="00302" />
+      <option name="presentableId" value="LOCAL-00302" />
+      <option name="project" value="LOCAL" />
+      <updated>1780380860877</updated>
+    </task>
+    <option name="localTasksCounter" value="303" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -486,7 +489,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="callender updateret for at forhindre sletning af session og gemme bedre" />
     <MESSAGE value="BF days ændret 259" />
     <MESSAGE value="tilføj booking nummber i opslag" />
     <MESSAGE value="excelupdate" />
@@ -511,6 +513,7 @@
     <MESSAGE value="update excel" />
     <MESSAGE value="new callender med csv as main source" />
     <MESSAGE value="session state mangler i calender" />
-    <option name="LAST_COMMIT_MESSAGE" value="session state mangler i calender" />
+    <MESSAGE value="excel update samt regulering af init state" />
+    <option name="LAST_COMMIT_MESSAGE" value="excel update samt regulering af init state" />
   </component>
 </project>
