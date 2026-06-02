@@ -14,7 +14,7 @@ import os
 
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
-st. session_state
+st.session_state
 
 
 if st.session_state.get("reservation_number"):
