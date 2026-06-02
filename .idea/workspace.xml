@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="nyt forsøg for session state at over leve sideskift">
-      <change beforePath="$PROJECT_DIR$/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,22 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00265" summary="excel og callender small update">
-      <option name="closed" value="true" />
-      <created>1779980988628</created>
-      <option name="number" value="00265" />
-      <option name="presentableId" value="LOCAL-00265" />
-      <option name="project" value="LOCAL" />
-      <updated>1779980988628</updated>
-    </task>
-    <task id="LOCAL-00266" summary="reservations dato fjernet fra common">
-      <option name="closed" value="true" />
-      <created>1779982919764</created>
-      <option name="number" value="00266" />
-      <option name="presentableId" value="LOCAL-00266" />
-      <option name="project" value="LOCAL" />
-      <updated>1779982919764</updated>
     </task>
     <task id="LOCAL-00267" summary="small edits">
       <option name="closed" value="true" />
@@ -462,7 +446,23 @@
       <option name="project" value="LOCAL" />
       <updated>1780427150354</updated>
     </task>
-    <option name="localTasksCounter" value="314" />
+    <task id="LOCAL-00314" summary="nyt forsøg for session state at over leve sideskift">
+      <option name="closed" value="true" />
+      <created>1780427341368</created>
+      <option name="number" value="00314" />
+      <option name="presentableId" value="LOCAL-00314" />
+      <option name="project" value="LOCAL" />
+      <updated>1780427341368</updated>
+    </task>
+    <task id="LOCAL-00315" summary="nyt forsøg for session state at over leve sideskift">
+      <option name="closed" value="true" />
+      <created>1780427507194</created>
+      <option name="number" value="00315" />
+      <option name="presentableId" value="LOCAL-00315" />
+      <option name="project" value="LOCAL" />
+      <updated>1780427507194</updated>
+    </task>
+    <option name="localTasksCounter" value="316" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
