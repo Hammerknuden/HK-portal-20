@@ -11,12 +11,14 @@ import os
 # -------------------------
 # INIT
 # -------------------------
-init_session()
+
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
 
-#if session_state("reservation_number"):
-#    st.write("booking in state")
+if st.session_state.get("reservation_number"):
+    st.write("booking in state")
+else:
+    init_session()
 
 
 def to_dt(x):
