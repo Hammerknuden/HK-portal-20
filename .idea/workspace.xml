@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="booking data csv 2 juni 0950" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="nyt forsøg for session state at over leve sideskift">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/6_callender.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_callender.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,14 +70,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00256" summary="fra name til booking number">
-      <option name="closed" value="true" />
-      <created>1779812382326</created>
-      <option name="number" value="00256" />
-      <option name="presentableId" value="LOCAL-00256" />
-      <option name="project" value="LOCAL" />
-      <updated>1779812382326</updated>
     </task>
     <task id="LOCAL-00257" summary="fra name til booking number">
       <option name="closed" value="true" />
@@ -460,7 +455,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780386644804</updated>
     </task>
-    <option name="localTasksCounter" value="305" />
+    <task id="LOCAL-00305" summary="nyt forsøg for session state at over leve sideskift">
+      <option name="closed" value="true" />
+      <created>1780426050838</created>
+      <option name="number" value="00305" />
+      <option name="presentableId" value="LOCAL-00305" />
+      <option name="project" value="LOCAL" />
+      <updated>1780426050839</updated>
+    </task>
+    <option name="localTasksCounter" value="306" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -486,7 +489,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="tilføj booking nummber i opslag" />
     <MESSAGE value="excelupdate" />
     <MESSAGE value="fra name til booking number" />
     <MESSAGE value="pages session state overførsel ændret til number" />
@@ -511,6 +513,7 @@
     <MESSAGE value="session state mangler i calender" />
     <MESSAGE value="excel update samt regulering af init state" />
     <MESSAGE value="booking data csv 2 juni 0950" />
-    <option name="LAST_COMMIT_MESSAGE" value="booking data csv 2 juni 0950" />
+    <MESSAGE value="nyt forsøg for session state at over leve sideskift" />
+    <option name="LAST_COMMIT_MESSAGE" value="nyt forsøg for session state at over leve sideskift" />
   </component>
 </project>
