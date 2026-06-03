@@ -80,24 +80,28 @@ def load_bookings():
 def save_bookings(df):
 
     try:
-
         df = df.copy()
 
+        # Sørg for korrekte datatyper
         if not df.empty:
             df["Start"] = pd.to_datetime(df["Start"])
             df["Slut"] = pd.to_datetime(df["Slut"])
 
-        st.write("Index name:", df.index.name)
+        # 🔥 Drop ALT index-baseret rod
+        df = df.reset_index(drop=True)
+
+        # 🔥 Lav en rigtig "number" kolonne (stabil til Supabase senere)
+        df.insert(0, "number", range(len(df)))
+
+        # 🔥 Gem CSV uden index (100% clean format)
         df.to_csv(
             BOOKING_FILE,
-            index=True,
-            index_label="number",
+            index=False,
             encoding="utf-8"
         )
 
     except Exception as e:
         st.error(f"Fejl ved gemning: {e}")
-
 
 # -------------------------
 # ALWAYS LOAD FRESH DATA
