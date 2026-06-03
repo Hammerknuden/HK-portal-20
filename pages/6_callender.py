@@ -88,7 +88,7 @@ def save_bookings(df):
             df["Slut"] = pd.to_datetime(df["Slut"])
 
         df.index.name = "number"
-
+        st.write("Index name:", df.index.name)
         df.to_csv(
             BOOKING_FILE,
             index=True,
