@@ -73,7 +73,7 @@ def load_bookings():
         return df
 
     return pd.DataFrame(
-        columns=["Number", "Værelse", "Start", "Slut", "Gæst"]
+        columns=["Værelse", "Start", "Slut", "Gæst"]
     )
 
 
@@ -140,7 +140,6 @@ with st.sidebar.form("booking_form"):
         else:
 
             new_row = pd.DataFrame([{
-                "Number": number,
                 "Værelse": room,
                 "Start": to_dt(start_date),
                 "Slut": to_dt(end_date),
