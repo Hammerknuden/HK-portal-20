@@ -84,18 +84,18 @@ def save_bookings(df):
     try:
         df = df.copy()
 
-        # Sørg for korrekte datatyper
         if not df.empty:
             df["Start"] = pd.to_datetime(df["Start"])
             df["Slut"] = pd.to_datetime(df["Slut"])
 
-        # 🔥 Drop ALT index-baseret rod
-        df = df.reset_index(drop=True)
+        # Fjern eksisterende number-kolonne
+        if "number" in df.columns:
+            df = df.drop(columns=["number"])
 
-        # 🔥 Lav en rigtig "number" kolonne (stabil til Supabase senere)
+        # Lav nye fortløbende numre
+        df = df.reset_index(drop=True)
         df.insert(0, "number", range(len(df)))
 
-        # 🔥 Gem CSV uden index (100% clean format)
         df.to_csv(
             BOOKING_FILE,
             index=False,
@@ -215,14 +215,20 @@ if not df.empty:
     # -------------------------
     st.subheader("Administrer bookinger")
 
-    booking_index = st.selectbox(
+    st.subheader("Administrer bookinger")
+
+    booking_number = st.selectbox(
         "Vælg booking",
-        df.index,
+        df["number"],
         format_func=lambda x:
-            f"{df.loc[x, 'Gæst']} - {df.loc[x, 'Værelse']}"
+        f"{df[df['number'] == x].iloc[0]['Gæst']} - "
+        f"{df[df['number'] == x].iloc[0]['Værelse']}"
     )
 
-    booking = df.loc[booking_index]
+    booking = df[df["number"] == booking_number].iloc[0]
+
+    # Find DataFrame-rækken
+    row_idx = df[df["number"] == booking_number].index[0]
 
     room_number = int(
         str(booking["Værelse"]).split()[-1]
@@ -253,16 +259,17 @@ if not df.empty:
         value=str(booking["Gæst"])
     )
 
+
     col1, col2 = st.columns(2)
 
     with col1:
 
         if st.button("Gem ændringer"):
 
-            df.loc[booking_index, "Værelse"] = new_room
-            df.loc[booking_index, "Start"] = pd.to_datetime(new_start)
-            df.loc[booking_index, "Slut"] = pd.to_datetime(new_end)
-            df.loc[booking_index, "Gæst"] = new_guest
+            df.loc[row_idx, "Værelse"] = new_room
+            df.loc[row_idx, "Start"] = pd.to_datetime(new_start)
+            df.loc[row_idx, "Slut"] = pd.to_datetime(new_end)
+            df.loc[row_idx, "Gæst"] = new_guest
 
             save_bookings(df)
 
@@ -272,10 +279,9 @@ if not df.empty:
     with col2:
 
         if st.button("Slet booking"):
-
             df = (
                 df
-                .drop(index=booking_index)
+                .drop(index=row_idx)
                 .reset_index(drop=True)
             )
 
