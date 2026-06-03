@@ -73,7 +73,7 @@ def load_bookings():
         return df
 
     return pd.DataFrame(
-        columns=["Værelse", "Start", "Slut", "Gæst"]
+        columns=["numbers", "Værelse", "Start", "Slut", "Gæst"]
     )
 
 
