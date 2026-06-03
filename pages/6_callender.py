@@ -68,7 +68,7 @@ def load_bookings():
             }
         )
 
-        #df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
+        df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
 
         return df
 
