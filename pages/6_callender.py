@@ -14,9 +14,8 @@ import os
 
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
+
 st.session_state
-st.write({'name'})
-st.write({'booking_number'})
 
 name = st.session_state.get("reservation_name")
 
@@ -74,7 +73,7 @@ def load_bookings():
         return df
 
     return pd.DataFrame(
-        columns=["Værelse", "Start", "Slut", "Gæst"]
+        columns=["Number", "Værelse", "Start", "Slut", "Gæst"]
     )
 
 
@@ -141,6 +140,7 @@ with st.sidebar.form("booking_form"):
         else:
 
             new_row = pd.DataFrame([{
+                "Number": number,
                 "Værelse": room,
                 "Start": to_dt(start_date),
                 "Slut": to_dt(end_date),

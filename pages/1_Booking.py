@@ -555,19 +555,7 @@ if send_data: #and booking_submitted:
     st.markdown("data mail ikke sendt ")
 
 
-#if st.button("Gem booking"):
-
- #   st.session_state["reservation_name"] = name
- #   st.session_state["reservation_checkin_date"] = checkin_date
- #   st.session_state["reservation_checkout_date"] = checkout_date
-
-    #st.session_state["saved_reservation_number"] = booking_number
 st.session_state
-  #  st.success("Booking gemt")
-#st.write("AFSENDER STATE")
-#st.write(st.session_state)
-#st.session_state
-
 
 
 
