@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="nyt forsøg for session state at over leve sideskift" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="new booking data fil uden numbers" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,22 +68,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00278" summary="fjerne sesion state () fra callender">
-      <option name="closed" value="true" />
-      <created>1779991482843</created>
-      <option name="number" value="00278" />
-      <option name="presentableId" value="LOCAL-00278" />
-      <option name="project" value="LOCAL" />
-      <updated>1779991482843</updated>
-    </task>
-    <task id="LOCAL-00279" summary="fjerne sesion state () fra callender">
-      <option name="closed" value="true" />
-      <created>1779994820961</created>
-      <option name="number" value="00279" />
-      <option name="presentableId" value="LOCAL-00279" />
-      <option name="project" value="LOCAL" />
-      <updated>1779994820961</updated>
     </task>
     <task id="LOCAL-00280" summary="ændre save funktion callender">
       <option name="closed" value="true" />
@@ -461,7 +445,23 @@
       <option name="project" value="LOCAL" />
       <updated>1780471250280</updated>
     </task>
-    <option name="localTasksCounter" value="327" />
+    <task id="LOCAL-00327" summary="new booking data fil uden numbers">
+      <option name="closed" value="true" />
+      <created>1780512028732</created>
+      <option name="number" value="00327" />
+      <option name="presentableId" value="LOCAL-00327" />
+      <option name="project" value="LOCAL" />
+      <updated>1780512028732</updated>
+    </task>
+    <task id="LOCAL-00328" summary="new booking data fil uden numbers">
+      <option name="closed" value="true" />
+      <created>1780512845391</created>
+      <option name="number" value="00328" />
+      <option name="presentableId" value="LOCAL-00328" />
+      <option name="project" value="LOCAL" />
+      <updated>1780512845391</updated>
+    </task>
+    <option name="localTasksCounter" value="329" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -487,7 +487,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="excelupdate" />
     <MESSAGE value="fra name til booking number" />
     <MESSAGE value="pages session state overførsel ændret til number" />
     <MESSAGE value="pages session state fjerner init  i callender" />
@@ -512,6 +511,7 @@
     <MESSAGE value="excel update samt regulering af init state" />
     <MESSAGE value="booking data csv 2 juni 0950" />
     <MESSAGE value="nyt forsøg for session state at over leve sideskift" />
-    <option name="LAST_COMMIT_MESSAGE" value="nyt forsøg for session state at over leve sideskift" />
+    <MESSAGE value="new booking data fil uden numbers" />
+    <option name="LAST_COMMIT_MESSAGE" value="new booking data fil uden numbers" />
   </component>
 </project>
