@@ -15,7 +15,8 @@ import os
 st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
 st.session_state
-
+st.write({'name'})
+st.write({'booking_number'})
 
 name = st.session_state.get("reservation_name")
 
