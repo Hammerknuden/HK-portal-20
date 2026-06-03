@@ -68,12 +68,12 @@ def load_bookings():
             }
         )
 
-        df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
+        #df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
 
         return df
 
     return pd.DataFrame(
-        columns=["numbers", "Værelse", "Start", "Slut", "Gæst"]
+        columns=["Værelse", "Start", "Slut", "Gæst"]
     )
 
 
@@ -87,9 +87,11 @@ def save_bookings(df):
             df["Start"] = pd.to_datetime(df["Start"])
             df["Slut"] = pd.to_datetime(df["Slut"])
 
+        df.index.name = "number"
+
         df.to_csv(
             BOOKING_FILE,
-            index=False,
+            index=True,
             encoding="utf-8"
         )
 
