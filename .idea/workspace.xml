@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="nyt forsøg for session state at over leve sideskift" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="starting up with supabase">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,62 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00278" summary="fjerne sesion state () fra callender">
-      <option name="closed" value="true" />
-      <created>1779991482843</created>
-      <option name="number" value="00278" />
-      <option name="presentableId" value="LOCAL-00278" />
-      <option name="project" value="LOCAL" />
-      <updated>1779991482843</updated>
-    </task>
-    <task id="LOCAL-00279" summary="fjerne sesion state () fra callender">
-      <option name="closed" value="true" />
-      <created>1779994820961</created>
-      <option name="number" value="00279" />
-      <option name="presentableId" value="LOCAL-00279" />
-      <option name="project" value="LOCAL" />
-      <updated>1779994820961</updated>
-    </task>
-    <task id="LOCAL-00280" summary="ændre save funktion callender">
-      <option name="closed" value="true" />
-      <created>1779994980012</created>
-      <option name="number" value="00280" />
-      <option name="presentableId" value="LOCAL-00280" />
-      <option name="project" value="LOCAL" />
-      <updated>1779994980012</updated>
-    </task>
-    <task id="LOCAL-00281" summary="helt ny save">
-      <option name="closed" value="true" />
-      <created>1779995490899</created>
-      <option name="number" value="00281" />
-      <option name="presentableId" value="LOCAL-00281" />
-      <option name="project" value="LOCAL" />
-      <updated>1779995490899</updated>
-    </task>
-    <task id="LOCAL-00282" summary="data fil fra backup">
-      <option name="closed" value="true" />
-      <created>1779995671009</created>
-      <option name="number" value="00282" />
-      <option name="presentableId" value="LOCAL-00282" />
-      <option name="project" value="LOCAL" />
-      <updated>1779995671009</updated>
-    </task>
-    <task id="LOCAL-00283" summary="excel update">
-      <option name="closed" value="true" />
-      <created>1780121803178</created>
-      <option name="number" value="00283" />
-      <option name="presentableId" value="LOCAL-00283" />
-      <option name="project" value="LOCAL" />
-      <updated>1780121803178</updated>
-    </task>
-    <task id="LOCAL-00284" summary="excel update">
-      <option name="closed" value="true" />
-      <created>1780295859149</created>
-      <option name="number" value="00284" />
-      <option name="presentableId" value="LOCAL-00284" />
-      <option name="project" value="LOCAL" />
-      <updated>1780295859149</updated>
     </task>
     <task id="LOCAL-00285" summary="excel update">
       <option name="closed" value="true" />
@@ -460,7 +406,63 @@
       <option name="project" value="LOCAL" />
       <updated>1780471250280</updated>
     </task>
-    <option name="localTasksCounter" value="327" />
+    <task id="LOCAL-00327" summary="nyt forsøg for session state at over leve sideskift">
+      <option name="closed" value="true" />
+      <created>1780471551962</created>
+      <option name="number" value="00327" />
+      <option name="presentableId" value="LOCAL-00327" />
+      <option name="project" value="LOCAL" />
+      <updated>1780471551962</updated>
+    </task>
+    <task id="LOCAL-00328" summary="forsøg med kollone overskrift i upload">
+      <option name="closed" value="true" />
+      <created>1780498542967</created>
+      <option name="number" value="00328" />
+      <option name="presentableId" value="LOCAL-00328" />
+      <option name="project" value="LOCAL" />
+      <updated>1780498542968</updated>
+    </task>
+    <task id="LOCAL-00329" summary="forsøg med kollone overskrift i upload">
+      <option name="closed" value="true" />
+      <created>1780509409854</created>
+      <option name="number" value="00329" />
+      <option name="presentableId" value="LOCAL-00329" />
+      <option name="project" value="LOCAL" />
+      <updated>1780509409855</updated>
+    </task>
+    <task id="LOCAL-00330" summary="starting up with supabase">
+      <option name="closed" value="true" />
+      <created>1780509487809</created>
+      <option name="number" value="00330" />
+      <option name="presentableId" value="LOCAL-00330" />
+      <option name="project" value="LOCAL" />
+      <updated>1780509487809</updated>
+    </task>
+    <task id="LOCAL-00331" summary="starting up with supabase">
+      <option name="closed" value="true" />
+      <created>1780509561726</created>
+      <option name="number" value="00331" />
+      <option name="presentableId" value="LOCAL-00331" />
+      <option name="project" value="LOCAL" />
+      <updated>1780509561726</updated>
+    </task>
+    <task id="LOCAL-00332" summary="starting up with supabase">
+      <option name="closed" value="true" />
+      <created>1780509993105</created>
+      <option name="number" value="00332" />
+      <option name="presentableId" value="LOCAL-00332" />
+      <option name="project" value="LOCAL" />
+      <updated>1780509993105</updated>
+    </task>
+    <task id="LOCAL-00333" summary="starting up with supabase">
+      <option name="closed" value="true" />
+      <created>1780510145680</created>
+      <option name="number" value="00333" />
+      <option name="presentableId" value="LOCAL-00333" />
+      <option name="project" value="LOCAL" />
+      <updated>1780510145682</updated>
+    </task>
+    <option name="localTasksCounter" value="334" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -486,8 +488,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="excelupdate" />
-    <MESSAGE value="fra name til booking number" />
     <MESSAGE value="pages session state overførsel ændret til number" />
     <MESSAGE value="pages session state fjerner init  i callender" />
     <MESSAGE value="excel og callender small update" />
@@ -511,6 +511,8 @@
     <MESSAGE value="excel update samt regulering af init state" />
     <MESSAGE value="booking data csv 2 juni 0950" />
     <MESSAGE value="nyt forsøg for session state at over leve sideskift" />
-    <option name="LAST_COMMIT_MESSAGE" value="nyt forsøg for session state at over leve sideskift" />
+    <MESSAGE value="forsøg med kollone overskrift i upload" />
+    <MESSAGE value="starting up with supabase" />
+    <option name="LAST_COMMIT_MESSAGE" value="starting up with supabase" />
   </component>
 </project>

@@ -7,7 +7,7 @@ import plotly.express as px
 from auth import require_login
 from common import init_session
 import os
-
+from supabase import create_client
 # -------------------------
 # INIT
 # -------------------------
@@ -40,8 +40,10 @@ else:
 def to_dt(x):
     return pd.to_datetime(x)
 
+
 # -------------------------
 # PATHS
+#
 # -------------------------
 
 BASE_DIR = Path(__file__).resolve().parent.parent

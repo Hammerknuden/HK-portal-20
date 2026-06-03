@@ -8,3 +8,4 @@ Pillow~=12.2.0
 XlsxWriter
 DateTime~=6.0
 plotly~=6.7.0
+supabase~=2.30.1
