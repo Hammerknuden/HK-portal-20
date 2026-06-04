@@ -37,7 +37,7 @@ st.write("Exists:", env_path.exists())
 st.write("URL:", os.getenv("SUPABASE_URL"))
 
 supabase = create_client(
-    supabase_url,
+    "https://nbyhyedvwluapmvnikkt.supabase.co",
     supabase_key
 )
 
