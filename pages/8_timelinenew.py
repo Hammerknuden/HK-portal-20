@@ -130,7 +130,7 @@ with st.sidebar.form("booking_form"):
                     "Værelse": room,
                     "Start": start_date.isoformat(),
                     "Slut": end_date.isoformat(),
-                    "Gæst": str(name)
+                    "Gæst": int(name)
                 }).execute()
 
                 st.success("Booking gemt")
@@ -204,8 +204,6 @@ if not df.empty:
 
     booking = df[df["id"] == booking_id].iloc[0]
 
-    # Find DataFrame-rækken
-    row_idx = df[df["id"] == booking_id].index[0]
 
     room_number = int(
         str(booking["Værelse"]).split()[-1]
@@ -242,13 +240,12 @@ if not df.empty:
     with col1:
 
         if st.button("Gem ændringer"):
-
-            df.loc[row_idx, "Værelse"] = new_room
-            df.loc[row_idx, "Start"] = pd.to_datetime(new_start)
-            df.loc[row_idx, "Slut"] = pd.to_datetime(new_end)
-            df.loc[row_idx, "Gæst"] = new_guest
-
-            save_bookings(df)
+            supabase.table("bookings").update({
+                "Værelse": new_room,
+                "Start": new_start.isoformat(),
+                "Slut": new_end.isoformat(),
+                "Gæst": int(new_guest)
+            }).eq("id", booking_id).execute()
 
             st.success("Ændringer gemt")
             st.rerun()
@@ -256,13 +253,10 @@ if not df.empty:
     with col2:
 
         if st.button("Slet booking"):
-            df = (
-                df
-                .drop(index=row_idx)
-                .reset_index(drop=True)
-            )
-
-            save_bookings(df)
+            supabase.table("bookings").delete().eq(
+                "id",
+                booking_id
+            ).execute()
 
             st.success("Booking slettet")
             st.rerun()
@@ -280,19 +274,6 @@ else:
         "Ingen bookinger at vise endnu."
     )
 
-# -------------------------
-# FILE INFO
-# -------------------------
-if BOOKING_FILE.exists():
-
-    st.caption(
-        "Sidst ændret: "
-        + str(
-            datetime.datetime.fromtimestamp(
-                os.path.getmtime(BOOKING_FILE)
-            )
-        )
-    )
 
 
 

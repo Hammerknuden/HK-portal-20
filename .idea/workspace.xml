@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ændret 285 fra booking til id" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ændret til booking_id">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/8_timelinenew.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/8_timelinenew.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,22 +72,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00312" summary="nyt forsøg for session state at over leve sideskift">
-      <option name="closed" value="true" />
-      <created>1780426890053</created>
-      <option name="number" value="00312" />
-      <option name="presentableId" value="LOCAL-00312" />
-      <option name="project" value="LOCAL" />
-      <updated>1780426890053</updated>
-    </task>
-    <task id="LOCAL-00313" summary="nyt forsøg for session state at over leve sideskift">
-      <option name="closed" value="true" />
-      <created>1780427150354</created>
-      <option name="number" value="00313" />
-      <option name="presentableId" value="LOCAL-00313" />
-      <option name="project" value="LOCAL" />
-      <updated>1780427150354</updated>
     </task>
     <task id="LOCAL-00314" summary="nyt forsøg for session state at over leve sideskift">
       <option name="closed" value="true" />
@@ -462,7 +449,23 @@
       <option name="project" value="LOCAL" />
       <updated>1780606931763</updated>
     </task>
-    <option name="localTasksCounter" value="361" />
+    <task id="LOCAL-00361" summary="ændret til booking_id">
+      <option name="closed" value="true" />
+      <created>1780607422181</created>
+      <option name="number" value="00361" />
+      <option name="presentableId" value="LOCAL-00361" />
+      <option name="project" value="LOCAL" />
+      <updated>1780607422181</updated>
+    </task>
+    <task id="LOCAL-00362" summary="ændret til booking_id">
+      <option name="closed" value="true" />
+      <created>1780607497011</created>
+      <option name="number" value="00362" />
+      <option name="presentableId" value="LOCAL-00362" />
+      <option name="project" value="LOCAL" />
+      <updated>1780607497011</updated>
+    </task>
+    <option name="localTasksCounter" value="363" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -488,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ændre save funktion callender" />
     <MESSAGE value="helt ny save" />
     <MESSAGE value="data fil fra backup" />
     <MESSAGE value="excel update" />
@@ -513,6 +515,7 @@
     <MESSAGE value="kallender side vises next to go er administration 8 timeline py" />
     <MESSAGE value="timeline new editorial oprydning" />
     <MESSAGE value="ændret 285 fra booking til id" />
-    <option name="LAST_COMMIT_MESSAGE" value="ændret 285 fra booking til id" />
+    <MESSAGE value="ændret til booking_id" />
+    <option name="LAST_COMMIT_MESSAGE" value="ændret til booking_id" />
   </component>
 </project>
