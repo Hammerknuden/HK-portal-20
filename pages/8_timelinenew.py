@@ -93,12 +93,12 @@ def load_bookings():
     return df
 
 
-st.write(df.columns.tolist())
+
 # -------------------------
 # ALWAYS LOAD FRESH DATA
 # -------------------------
 df = load_bookings()
-
+st.write(df.columns.tolist())
 # -------------------------
 # RESERVATION INFO
 # -------------------------
