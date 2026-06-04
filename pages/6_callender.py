@@ -34,6 +34,7 @@ try:
 except Exception as e:
     st.error(f"Fejl: {e}")
 
+
 name = st.session_state.get("reservation_name")
 
 if name:
