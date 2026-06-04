@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="trying load dotenv">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="trying load dotenv" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,30 +68,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00300" summary="new callender med csv as main source">
-      <option name="closed" value="true" />
-      <created>1780321603660</created>
-      <option name="number" value="00300" />
-      <option name="presentableId" value="LOCAL-00300" />
-      <option name="project" value="LOCAL" />
-      <updated>1780321603660</updated>
-    </task>
-    <task id="LOCAL-00301" summary="session state mangler i calender">
-      <option name="closed" value="true" />
-      <created>1780326175709</created>
-      <option name="number" value="00301" />
-      <option name="presentableId" value="LOCAL-00301" />
-      <option name="project" value="LOCAL" />
-      <updated>1780326175709</updated>
-    </task>
-    <task id="LOCAL-00302" summary="excel update samt regulering af init state">
-      <option name="closed" value="true" />
-      <created>1780380860877</created>
-      <option name="number" value="00302" />
-      <option name="presentableId" value="LOCAL-00302" />
-      <option name="project" value="LOCAL" />
-      <updated>1780380860877</updated>
     </task>
     <task id="LOCAL-00303" summary="excel update samt regulering af init state">
       <option name="closed" value="true" />
@@ -463,7 +437,31 @@
       <option name="project" value="LOCAL" />
       <updated>1780570730914</updated>
     </task>
-    <option name="localTasksCounter" value="349" />
+    <task id="LOCAL-00349" summary="trying load dotenv">
+      <option name="closed" value="true" />
+      <created>1780571519131</created>
+      <option name="number" value="00349" />
+      <option name="presentableId" value="LOCAL-00349" />
+      <option name="project" value="LOCAL" />
+      <updated>1780571519131</updated>
+    </task>
+    <task id="LOCAL-00350" summary="trying load dotenv">
+      <option name="closed" value="true" />
+      <created>1780571558226</created>
+      <option name="number" value="00350" />
+      <option name="presentableId" value="LOCAL-00350" />
+      <option name="project" value="LOCAL" />
+      <updated>1780571558226</updated>
+    </task>
+    <task id="LOCAL-00351" summary="trying load dotenv">
+      <option name="closed" value="true" />
+      <created>1780571705900</created>
+      <option name="number" value="00351" />
+      <option name="presentableId" value="LOCAL-00351" />
+      <option name="project" value="LOCAL" />
+      <updated>1780571705900</updated>
+    </task>
+    <option name="localTasksCounter" value="352" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
