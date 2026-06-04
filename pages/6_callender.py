@@ -17,10 +17,11 @@ st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
 
 st.session_state
-load_dotenv()
 
+load_dotenv()
 print(os.getenv("SUPABASE_URL"))
 st.write(os.getenv("SUPABASE_URL"))
+
 name = st.session_state.get("reservation_name")
 
 if name:
