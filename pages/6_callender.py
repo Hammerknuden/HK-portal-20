@@ -26,6 +26,13 @@ st.write("Env path:", env_path)
 st.write("Exists:", env_path.exists())
 st.write("URL:", os.getenv("SUPABASE_URL"))
 
+root = Path(__file__).parent.parent
+
+st.write("Root:", root)
+st.write("Files:")
+
+for f in root.iterdir():
+    st.write(f.name)
 name = st.session_state.get("reservation_name")
 
 if name:
