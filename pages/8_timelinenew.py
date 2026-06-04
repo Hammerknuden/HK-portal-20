@@ -204,12 +204,15 @@ if not df.empty:
     # -------------------------
     st.subheader("Administrer bookinger")
 
-    booking_number = st.selectbox(
+    st.subheader("Administrer bookinger")
+
+    booking_id = st.selectbox(
         "Vælg booking",
-        df["number"],
-        format_func=lambda x:
-        f"{df[df['number'] == x].iloc[0]['Gæst']} - "
-        f"{df[df['number'] == x].iloc[0]['Værelse']}"
+        df["id"],
+        format_func=lambda x: (
+            f"{df[df['id'] == x].iloc[0]['Gæst']} - "
+            f"{df[df['id'] == x].iloc[0]['Værelse']}"
+        )
     )
 
     booking = df[df["number"] == booking_number].iloc[0]
