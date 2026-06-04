@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="trying load dotenv" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="test og upload af ny kallenderside">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,30 +70,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00303" summary="excel update samt regulering af init state">
-      <option name="closed" value="true" />
-      <created>1780383081452</created>
-      <option name="number" value="00303" />
-      <option name="presentableId" value="LOCAL-00303" />
-      <option name="project" value="LOCAL" />
-      <updated>1780383081452</updated>
-    </task>
-    <task id="LOCAL-00304" summary="booking data csv 2 juni 0950">
-      <option name="closed" value="true" />
-      <created>1780386644804</created>
-      <option name="number" value="00304" />
-      <option name="presentableId" value="LOCAL-00304" />
-      <option name="project" value="LOCAL" />
-      <updated>1780386644804</updated>
-    </task>
-    <task id="LOCAL-00305" summary="nyt forsøg for session state at over leve sideskift">
-      <option name="closed" value="true" />
-      <created>1780426050838</created>
-      <option name="number" value="00305" />
-      <option name="presentableId" value="LOCAL-00305" />
-      <option name="project" value="LOCAL" />
-      <updated>1780426050839</updated>
     </task>
     <task id="LOCAL-00306" summary="nyt forsøg for session state at over leve sideskift">
       <option name="closed" value="true" />
@@ -461,7 +439,31 @@
       <option name="project" value="LOCAL" />
       <updated>1780571705900</updated>
     </task>
-    <option name="localTasksCounter" value="352" />
+    <task id="LOCAL-00352" summary="trying load dotenv">
+      <option name="closed" value="true" />
+      <created>1780571903970</created>
+      <option name="number" value="00352" />
+      <option name="presentableId" value="LOCAL-00352" />
+      <option name="project" value="LOCAL" />
+      <updated>1780571903970</updated>
+    </task>
+    <task id="LOCAL-00353" summary="key operativ forbindelse med supabase oprettet, keys i comunity cloud secrets">
+      <option name="closed" value="true" />
+      <created>1780571969331</created>
+      <option name="number" value="00353" />
+      <option name="presentableId" value="LOCAL-00353" />
+      <option name="project" value="LOCAL" />
+      <updated>1780571969331</updated>
+    </task>
+    <task id="LOCAL-00354" summary="test og upload af ny kallenderside">
+      <option name="closed" value="true" />
+      <created>1780578708526</created>
+      <option name="number" value="00354" />
+      <option name="presentableId" value="LOCAL-00354" />
+      <option name="project" value="LOCAL" />
+      <updated>1780578708526</updated>
+    </task>
+    <option name="localTasksCounter" value="355" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -487,8 +489,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fjerner def init fra booking.py" />
-    <MESSAGE value=" alt med session og init" />
     <MESSAGE value="fjerner log in" />
     <MESSAGE value="ny gem funktion tilsession" />
     <MESSAGE value="fjerne sesion state () fra callender" />
@@ -512,6 +512,8 @@
     <MESSAGE value="commmit undtagen env" />
     <MESSAGE value="ny gitignore" />
     <MESSAGE value="trying load dotenv" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying load dotenv" />
+    <MESSAGE value="key operativ forbindelse med supabase oprettet, keys i comunity cloud secrets" />
+    <MESSAGE value="test og upload af ny kallenderside" />
+    <option name="LAST_COMMIT_MESSAGE" value="test og upload af ny kallenderside" />
   </component>
 </project>
