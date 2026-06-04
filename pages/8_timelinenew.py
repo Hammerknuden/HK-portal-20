@@ -205,7 +205,7 @@ if not df.empty:
     booking = df[df["id"] == booking_id].iloc[0]
 
     # Find DataFrame-rækken
-    row_idx = df[df["number"] == booking_id].index[0]
+    row_idx = df[df["id"] == booking_id].index[0]
 
     room_number = int(
         str(booking["Værelse"]).split()[-1]
