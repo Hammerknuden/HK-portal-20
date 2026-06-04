@@ -20,33 +20,26 @@ st.session_state
 
 load_dotenv()
 
-supabase_url = st.secrets.get(
-    "SUPABASE_URL",
-    os.getenv("SUPABASE_URL")
-)
+supabase_url = "https://nbyhyedvwluapmvnikkt.supabase.co"
 
 supabase_key = st.secrets.get(
     "SUPABASE_KEY",
     os.getenv("SUPABASE_KEY")
 )
-env_path = Path(__file__).parent.parent / ".env"
 
-
-st.write("Env path:", env_path)
-st.write("Exists:", env_path.exists())
-st.write("URL:", os.getenv("SUPABASE_URL"))
+st.write("Key fundet:", bool(supabase_key))
 
 supabase = create_client(
-    "https://nbyhyedvwluapmvnikkt.supabase.co",
+    supabase_url,
     supabase_key
 )
 
-st.write("Supabase client oprettet")
-
 try:
     result = supabase.table("bookings").select("*").limit(1).execute()
-    st.write("Forbindelse OK")
+
+    st.success("Forbindelse OK")
     st.write(result.data)
+
 except Exception as e:
     st.error(f"Fejl: {e}")
 
