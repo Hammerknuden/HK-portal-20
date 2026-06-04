@@ -27,10 +27,10 @@ supabase = create_client(
 
 st.write("Key fundet:", bool(supabase_key))
 
-supabase = create_client(
-    supabase_url,
-    supabase_key
-)
+#supabase = create_client(
+#    supabase_url,
+#    supabase_key
+#)
 
 try:
     result = supabase.table("bookings").select("*").limit(1).execute()
