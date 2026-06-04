@@ -67,11 +67,6 @@ def to_dt(x):
     return pd.to_datetime(x)
 
 # -------------------------
-# PATHS
-#
-# -------------------------
-
-# -------------------------
 # LOAD / SAVE
 # -------------------------
 
@@ -91,18 +86,11 @@ def load_bookings():
         df["Slut"] = pd.to_datetime(df["Slut"])
 
     return df
-
-
-
-# -------------------------
-# ALWAYS LOAD FRESH DATA
-# -------------------------
-df = load_bookings()
-st.write(df.columns.tolist())
 # -------------------------
 # RESERVATION INFO
 # -------------------------
-
+df = load_bookings()
+st.write(df.columns.tolist())
 
 # -------------------------
 # CREATE BOOKING
