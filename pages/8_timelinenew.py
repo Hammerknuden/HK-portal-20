@@ -202,7 +202,7 @@ if not df.empty:
         )
     )
 
-    booking = df[df["number"] == booking_number].iloc[0]
+    booking = df[df["id"] == booking_number].iloc[0]
 
     # Find DataFrame-rækken
     row_idx = df[df["number"] == booking_number].index[0]
