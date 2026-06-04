@@ -204,7 +204,6 @@ if not df.empty:
     # -------------------------
     st.subheader("Administrer bookinger")
 
-    st.subheader("Administrer bookinger")
 
     booking_id = st.selectbox(
         "Vælg booking",
