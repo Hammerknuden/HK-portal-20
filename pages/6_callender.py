@@ -18,9 +18,13 @@ require_login()
 
 st.session_state
 
-load_dotenv()
-print(os.getenv("SUPABASE_URL"))
-st.write(os.getenv("SUPABASE_URL"))
+env_path = Path(__file__).parent.parent / ".env"
+
+load_dotenv(env_path)
+
+st.write("Env path:", env_path)
+st.write("Exists:", env_path.exists())
+st.write("URL:", os.getenv("SUPABASE_URL"))
 
 name = st.session_state.get("reservation_name")
 
