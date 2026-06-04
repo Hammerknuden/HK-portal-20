@@ -36,6 +36,13 @@ st.write("Env path:", env_path)
 st.write("Exists:", env_path.exists())
 st.write("URL:", os.getenv("SUPABASE_URL"))
 
+supabase = create_client(
+    supabase_url,
+    supabase_key
+)
+
+st.write("Supabase client oprettet")
+
 name = st.session_state.get("reservation_name")
 
 if name:
