@@ -20,11 +20,9 @@ st.session_state
 
 load_dotenv()
 
-supabase_url = "https://nbyhyedvwluapmvnikkt.supabase.co"
-
-supabase_key = st.secrets.get(
-    "SUPABASE_KEY",
-    os.getenv("SUPABASE_KEY")
+supabase = create_client(
+    st.secrets["SUPABASE_URL"],
+    st.secrets["SUPABASE_KEY"]
 )
 
 st.write("Key fundet:", bool(supabase_key))
