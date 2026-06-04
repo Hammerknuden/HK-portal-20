@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="new booking data fil med numbers ændret i csv hk20">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fjerner forhåbentlig env fra git">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +52,7 @@
     &quot;Python.config_prices.executor&quot;: &quot;Run&quot;,
     &quot;Python.databaseopslag.executor&quot;: &quot;Run&quot;,
     &quot;Python.streamlit_app.executor&quot;: &quot;Run&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/finnj/-repo hk20/hk_portal_20/common.py&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/finnj/-repo hk20/hk_portal_20/.env&quot;
   }
 }</component>
   <component name="SharedIndexes">
@@ -70,70 +70,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00282" summary="data fil fra backup">
-      <option name="closed" value="true" />
-      <created>1779995671009</created>
-      <option name="number" value="00282" />
-      <option name="presentableId" value="LOCAL-00282" />
-      <option name="project" value="LOCAL" />
-      <updated>1779995671009</updated>
-    </task>
-    <task id="LOCAL-00283" summary="excel update">
-      <option name="closed" value="true" />
-      <created>1780121803178</created>
-      <option name="number" value="00283" />
-      <option name="presentableId" value="LOCAL-00283" />
-      <option name="project" value="LOCAL" />
-      <updated>1780121803178</updated>
-    </task>
-    <task id="LOCAL-00284" summary="excel update">
-      <option name="closed" value="true" />
-      <created>1780295859149</created>
-      <option name="number" value="00284" />
-      <option name="presentableId" value="LOCAL-00284" />
-      <option name="project" value="LOCAL" />
-      <updated>1780295859149</updated>
-    </task>
-    <task id="LOCAL-00285" summary="excel update">
-      <option name="closed" value="true" />
-      <created>1780298120003</created>
-      <option name="number" value="00285" />
-      <option name="presentableId" value="LOCAL-00285" />
-      <option name="project" value="LOCAL" />
-      <updated>1780298120003</updated>
-    </task>
-    <task id="LOCAL-00286" summary="session state fault 560">
-      <option name="closed" value="true" />
-      <created>1780298278194</created>
-      <option name="number" value="00286" />
-      <option name="presentableId" value="LOCAL-00286" />
-      <option name="project" value="LOCAL" />
-      <updated>1780298278194</updated>
-    </task>
-    <task id="LOCAL-00287" summary="session state fault 560">
-      <option name="closed" value="true" />
-      <created>1780298363999</created>
-      <option name="number" value="00287" />
-      <option name="presentableId" value="LOCAL-00287" />
-      <option name="project" value="LOCAL" />
-      <updated>1780298363999</updated>
-    </task>
-    <task id="LOCAL-00288" summary="session state fault 560 ændret i call number fjernet">
-      <option name="closed" value="true" />
-      <created>1780299169787</created>
-      <option name="number" value="00288" />
-      <option name="presentableId" value="LOCAL-00288" />
-      <option name="project" value="LOCAL" />
-      <updated>1780299169787</updated>
-    </task>
-    <task id="LOCAL-00289" summary="session state fault 560 ændret i call number fjernet">
-      <option name="closed" value="true" />
-      <created>1780299277861</created>
-      <option name="number" value="00289" />
-      <option name="presentableId" value="LOCAL-00289" />
-      <option name="project" value="LOCAL" />
-      <updated>1780299277861</updated>
     </task>
     <task id="LOCAL-00290" summary="session state fault 560 ændret i call number fjernet">
       <option name="closed" value="true" />
@@ -463,7 +399,71 @@
       <option name="project" value="LOCAL" />
       <updated>1780514809615</updated>
     </task>
-    <option name="localTasksCounter" value="331" />
+    <task id="LOCAL-00331" summary="alt redigering virker nu">
+      <option name="closed" value="true" />
+      <created>1780516559811</created>
+      <option name="number" value="00331" />
+      <option name="presentableId" value="LOCAL-00331" />
+      <option name="project" value="LOCAL" />
+      <updated>1780516559811</updated>
+    </task>
+    <task id="LOCAL-00332" summary="alt redigering virker nu">
+      <option name="closed" value="true" />
+      <created>1780557471082</created>
+      <option name="number" value="00332" />
+      <option name="presentableId" value="LOCAL-00332" />
+      <option name="project" value="LOCAL" />
+      <updated>1780557471083</updated>
+    </task>
+    <task id="LOCAL-00333" summary="alt redigering virker nu">
+      <option name="closed" value="true" />
+      <created>1780557594743</created>
+      <option name="number" value="00333" />
+      <option name="presentableId" value="LOCAL-00333" />
+      <option name="project" value="LOCAL" />
+      <updated>1780557594743</updated>
+    </task>
+    <task id="LOCAL-00334" summary="load supabase 2 try">
+      <option name="closed" value="true" />
+      <created>1780557683121</created>
+      <option name="number" value="00334" />
+      <option name="presentableId" value="LOCAL-00334" />
+      <option name="project" value="LOCAL" />
+      <updated>1780557683122</updated>
+    </task>
+    <task id="LOCAL-00335" summary="load supabase 2 try">
+      <option name="closed" value="true" />
+      <created>1780557770237</created>
+      <option name="number" value="00335" />
+      <option name="presentableId" value="LOCAL-00335" />
+      <option name="project" value="LOCAL" />
+      <updated>1780557770238</updated>
+    </task>
+    <task id="LOCAL-00336" summary="load supabase 2 try">
+      <option name="closed" value="true" />
+      <created>1780557841164</created>
+      <option name="number" value="00336" />
+      <option name="presentableId" value="LOCAL-00336" />
+      <option name="project" value="LOCAL" />
+      <updated>1780557841164</updated>
+    </task>
+    <task id="LOCAL-00337" summary="load supabase 2 try">
+      <option name="closed" value="true" />
+      <created>1780558016453</created>
+      <option name="number" value="00337" />
+      <option name="presentableId" value="LOCAL-00337" />
+      <option name="project" value="LOCAL" />
+      <updated>1780558016453</updated>
+    </task>
+    <task id="LOCAL-00338" summary="fjerner forhåbentlig env fra git">
+      <option name="closed" value="true" />
+      <created>1780559091244</created>
+      <option name="number" value="00338" />
+      <option name="presentableId" value="LOCAL-00338" />
+      <option name="project" value="LOCAL" />
+      <updated>1780559091245</updated>
+    </task>
+    <option name="localTasksCounter" value="339" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -489,9 +489,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="pages session state overførsel ændret til number" />
-    <MESSAGE value="pages session state fjerner init  i callender" />
-    <MESSAGE value="excel og callender small update" />
     <MESSAGE value="reservations dato fjernet fra common" />
     <MESSAGE value="small edits" />
     <MESSAGE value="small edits overskrift" />
@@ -514,6 +511,9 @@
     <MESSAGE value="nyt forsøg for session state at over leve sideskift" />
     <MESSAGE value="new booking data fil uden numbers" />
     <MESSAGE value="new booking data fil med numbers ændret i csv hk20" />
-    <option name="LAST_COMMIT_MESSAGE" value="new booking data fil med numbers ændret i csv hk20" />
+    <MESSAGE value="alt redigering virker nu" />
+    <MESSAGE value="load supabase 2 try" />
+    <MESSAGE value="fjerner forhåbentlig env fra git" />
+    <option name="LAST_COMMIT_MESSAGE" value="fjerner forhåbentlig env fra git" />
   </component>
 </project>

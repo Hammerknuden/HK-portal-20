@@ -7,6 +7,7 @@ import plotly.express as px
 from auth import require_login
 from common import init_session
 import os
+from dotenv import load_dotenv
 from supabase import create_client
 # -------------------------
 # INIT
@@ -16,7 +17,10 @@ st.set_page_config(page_title="Timeline", layout="wide")
 require_login()
 
 st.session_state
+load_dotenv()
 
+print(os.getenv("SUPABASE_URL"))
+st.write(os.getenv("SUPABASE_URL"))
 name = st.session_state.get("reservation_name")
 
 if name:
@@ -35,6 +39,8 @@ if name:
 
 else:
     st.text("Ingen bookinger i session")
+
+
 
 
 def to_dt(x):
