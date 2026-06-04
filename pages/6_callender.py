@@ -43,6 +43,13 @@ supabase = create_client(
 
 st.write("Supabase client oprettet")
 
+try:
+    result = supabase.table("bookings").select("*").limit(1).execute()
+    st.write("Forbindelse OK")
+    st.write(result.data)
+except Exception as e:
+    st.error(f"Fejl: {e}")
+
 name = st.session_state.get("reservation_name")
 
 if name:
