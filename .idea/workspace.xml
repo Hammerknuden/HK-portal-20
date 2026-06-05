@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ændret til booking_id">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="editorial many parameters">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/8_timelinenew.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/8_timelinenew.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,14 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00314" summary="nyt forsøg for session state at over leve sideskift">
-      <option name="closed" value="true" />
-      <created>1780427341368</created>
-      <option name="number" value="00314" />
-      <option name="presentableId" value="LOCAL-00314" />
-      <option name="project" value="LOCAL" />
-      <updated>1780427341368</updated>
     </task>
     <task id="LOCAL-00315" summary="nyt forsøg for session state at over leve sideskift">
       <option name="closed" value="true" />
@@ -465,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780607497011</updated>
     </task>
-    <option name="localTasksCounter" value="363" />
+    <task id="LOCAL-00363" summary="editorial many parameters">
+      <option name="closed" value="true" />
+      <created>1780608715905</created>
+      <option name="number" value="00363" />
+      <option name="presentableId" value="LOCAL-00363" />
+      <option name="project" value="LOCAL" />
+      <updated>1780608715905</updated>
+    </task>
+    <option name="localTasksCounter" value="364" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -491,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="helt ny save" />
     <MESSAGE value="data fil fra backup" />
     <MESSAGE value="excel update" />
     <MESSAGE value="session state fault 560" />
@@ -516,6 +514,7 @@
     <MESSAGE value="timeline new editorial oprydning" />
     <MESSAGE value="ændret 285 fra booking til id" />
     <MESSAGE value="ændret til booking_id" />
-    <option name="LAST_COMMIT_MESSAGE" value="ændret til booking_id" />
+    <MESSAGE value="editorial many parameters" />
+    <option name="LAST_COMMIT_MESSAGE" value="editorial many parameters" />
   </component>
 </project>

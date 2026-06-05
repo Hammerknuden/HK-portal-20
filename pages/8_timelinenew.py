@@ -16,7 +16,7 @@ from supabase import create_client
 st.set_page_config(page_title="Timeline2", layout="wide")
 require_login()
 
-st.session_state
+#st.session_state
 
 load_dotenv()
 
@@ -34,14 +34,6 @@ try:
 except Exception as e:
     st.error(f"Fejl: {e}")
 
-try:
-    result = supabase.table("bookings").select("*").limit(1).execute()
-
-    st.success("Forbindelse OK")
-    st.write(result.data)
-
-except Exception as e:
-    st.error(f"Fejl: {e}")
 
 name = st.session_state.get("reservation_name")
 
