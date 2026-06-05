@@ -70,15 +70,20 @@ if st.button("Søg"):
 
     elif email:
 
-        result = (
-            supabase
-            .table("historie")
-            .select("*")
-            .eq("Email", email)
-            .execute()
-        )
+        try:
+            result = (
+                supabase
+                .table("historie")
+                .select("*")
+                .eq("Email", email)
+                .execute()
+            )
 
-        st.dataframe(pd.DataFrame(result.data))
+            st.write(result.data)
+            st.dataframe(pd.DataFrame(result.data))
+
+        except Exception as e:
+            st.error(e)
 
     elif booking:
 
