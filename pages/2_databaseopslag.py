@@ -32,7 +32,15 @@ familie_navn = st.text_input("Familienavn")
 telefon = st.text_input("Telefon")
 email = st.text_input("Email")
 booking = st.text_input("Bookingnummer")
-search = st.text_input("Søg")
+result = (
+    supabase
+    .table("historie")
+    .select("*")
+    .limit(1)
+    .execute()
+)
+
+st.write(result.data)
 
 if st.button("Søg"):
 
