@@ -2,10 +2,48 @@ import streamlit as st
 from auth import require_login
 import pandas as pd
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+from supabase import create_client
+
 st.set_page_config(page_title="Database", layout="wide")
 require_login()
 
-st.subheader("Database opslag 3 niveauer ")
+load_dotenv()
+
+supabase = create_client(
+    st.secrets["SUPABASE_URL"],
+    st.secrets["SUPABASE_KEY"]
+)
+
+try:
+    result = supabase.table("historie").select("*").limit(1).execute()
+
+    st.success("Forbindelse OK")
+    #st.write(result.data)
+
+except Exception as e:
+    st.error(f"Fejl: {e}")
+st.subheader("Database opslag 4 niveauer ")
+
+search = st.text_input("Søg")
+
+if st.button("Søg"):
+
+    result = (
+        supabase
+        .table("historik")
+        .select("*")
+        .or_(
+            f"Familienavn.eq.{search},"
+            f"telefon.eq.{search},"
+            f"Email.eq.{search},"
+            f"booking.eq.{search}"
+        )
+        .execute()
+    )
+
+    st.dataframe(pd.DataFrame(result.data))
 
 familie_navn = st.text_input("family name")
 telefon_nummer = st.text_input("telefon nummer med prefix")
