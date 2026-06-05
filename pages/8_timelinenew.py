@@ -71,7 +71,7 @@ def load_bookings():
         .execute()
     )
 
-    df = pd.DataFrame(result.data)
+    #df = pd.DataFrame(result.data)
 
     if not df.empty:
         df["Start"] = pd.to_datetime(df["Start"])
