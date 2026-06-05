@@ -18,6 +18,19 @@ from io import BytesIO
 import base64
 from config.prices import DEFAULT_PRICES
 sys.path.append(str(Path(__file__).resolve().parents[1]))
+import os
+from dotenv import load_dotenv
+from supabase import create_client
+
+
+load_dotenv()
+
+SUPABASE_URL = st.secrets["SUPABASE_URL"]
+SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
+
+supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+
+st.success("Forbindelse OK")
 
 st.set_page_config(page_title="Booking", layout="wide")
 
@@ -554,6 +567,54 @@ if send_data: #and booking_submitted:
 
     st.markdown("data mail ikke sendt ")
 
+    excel_file = add_data(...)
+
+    send_data_email(
+        to_addr_1,
+        confirmation_password,
+        booking_number,
+        name,
+        checkin_date,
+        checkout_date,
+        num_rooms,
+        now,
+        nationalitet,
+        web,
+        ankomst,
+        seng,
+        procent,
+        num_guests,
+        email_address,
+        telefon,
+        formatted_pristotal,
+        excel_file
+    )
+
+    # Gem booking i Supabase
+    supabase.table("hammerknuden_dtb").insert({
+        "booking_number": booking_number,
+        "navn": name,
+        "checkin_date": checkin_date.isoformat(),
+        "checkout_date": checkout_date.isoformat(),
+        "booking_date": now.date().isoformat(),
+        "nation": nationalitet,
+        "web": web,
+        "ankomst": ankomst,
+        "bed": seng,
+        "rabat": procent,
+        "antal_vaerelser": num_rooms,
+        "antal_gaester": num_guests,
+        "email": email_address,
+        "telefon": telefon,
+        "spouse": spouse,
+        "enkelt": single_room,
+        "morgenmad": BF,
+        "pris_total": formatted_pristotal,
+        "known": known,
+        "comments": comments
+    }).execute()
+
+    st.success("Booking gemt i Supabase")
 
 #st.session_state
 

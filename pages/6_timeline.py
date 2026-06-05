@@ -253,7 +253,7 @@ if not df.empty:
 
             st.success("Booking slettet")
             st.rerun()
-
+    # vis samlet overblik over alle indtastede bookinger
     with st.expander("Se alle bookinger"):
 
         st.dataframe(
