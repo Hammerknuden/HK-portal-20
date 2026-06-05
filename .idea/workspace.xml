@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="tilbage til sep søge kriterier">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Database hammerknuden.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/Database hammerknuden.xlsx" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="tilbage til sep søge kriterier" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,22 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00326" summary="nyt forsøg for session state at over leve sideskift">
-      <option name="closed" value="true" />
-      <created>1780471250280</created>
-      <option name="number" value="00326" />
-      <option name="presentableId" value="LOCAL-00326" />
-      <option name="project" value="LOCAL" />
-      <updated>1780471250280</updated>
-    </task>
-    <task id="LOCAL-00327" summary="new booking data fil uden numbers">
-      <option name="closed" value="true" />
-      <created>1780512028732</created>
-      <option name="number" value="00327" />
-      <option name="presentableId" value="LOCAL-00327" />
-      <option name="project" value="LOCAL" />
-      <updated>1780512028732</updated>
     </task>
     <task id="LOCAL-00328" summary="new booking data fil uden numbers">
       <option name="closed" value="true" />
@@ -465,7 +446,23 @@
       <option name="project" value="LOCAL" />
       <updated>1780643800052</updated>
     </task>
-    <option name="localTasksCounter" value="375" />
+    <task id="LOCAL-00375" summary="tilbage til sep søge kriterier">
+      <option name="closed" value="true" />
+      <created>1780651272978</created>
+      <option name="number" value="00375" />
+      <option name="presentableId" value="LOCAL-00375" />
+      <option name="project" value="LOCAL" />
+      <updated>1780651272979</updated>
+    </task>
+    <task id="LOCAL-00376" summary="tilbage til sep søge kriterier">
+      <option name="closed" value="true" />
+      <created>1780651536133</created>
+      <option name="number" value="00376" />
+      <option name="presentableId" value="LOCAL-00376" />
+      <option name="project" value="LOCAL" />
+      <updated>1780651536133</updated>
+    </task>
+    <option name="localTasksCounter" value="377" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
