@@ -29,7 +29,7 @@ try:
     result = supabase.table("bookings").select("*").limit(1).execute()
 
     st.success("Forbindelse OK")
-    st.write(result.data)
+    #st.write(result.data)
 
 except Exception as e:
     st.error(f"Fejl: {e}")
