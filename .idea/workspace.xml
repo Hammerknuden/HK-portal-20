@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fjerner sessionstate fra layout">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="supabase til opslag">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/2_databaseopslag.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/2_databaseopslag.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,14 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00320" summary="nyt forsøg for session state at over leve sideskift">
-      <option name="closed" value="true" />
-      <created>1780467502614</created>
-      <option name="number" value="00320" />
-      <option name="presentableId" value="LOCAL-00320" />
-      <option name="project" value="LOCAL" />
-      <updated>1780467502614</updated>
     </task>
     <task id="LOCAL-00321" summary="nyt forsøg for session state at over leve sideskift">
       <option name="closed" value="true" />
@@ -465,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780639209254</updated>
     </task>
-    <option name="localTasksCounter" value="369" />
+    <task id="LOCAL-00369" summary="supabase til opslag">
+      <option name="closed" value="true" />
+      <created>1780640669006</created>
+      <option name="number" value="00369" />
+      <option name="presentableId" value="LOCAL-00369" />
+      <option name="project" value="LOCAL" />
+      <updated>1780640669006</updated>
+    </task>
+    <option name="localTasksCounter" value="370" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -491,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="excel update" />
     <MESSAGE value="session state fault 560" />
     <MESSAGE value="session state fault 560 ændret i call number fjernet" />
     <MESSAGE value="update excel" />
@@ -516,6 +514,7 @@
     <MESSAGE value="ændret til booking_id" />
     <MESSAGE value="editorial many parameters" />
     <MESSAGE value="fjerner sessionstate fra layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="fjerner sessionstate fra layout" />
+    <MESSAGE value="supabase til opslag" />
+    <option name="LAST_COMMIT_MESSAGE" value="supabase til opslag" />
   </component>
 </project>
