@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="dtb from booking data fjernet fra now" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="rettelser til supabase return" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,14 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00333" summary="alt redigering virker nu">
-      <option name="closed" value="true" />
-      <created>1780557594743</created>
-      <option name="number" value="00333" />
-      <option name="presentableId" value="LOCAL-00333" />
-      <option name="project" value="LOCAL" />
-      <updated>1780557594743</updated>
     </task>
     <task id="LOCAL-00334" summary="load supabase 2 try">
       <option name="closed" value="true" />
@@ -462,7 +454,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780688349387</updated>
     </task>
-    <option name="localTasksCounter" value="382" />
+    <task id="LOCAL-00382" summary="rettelser til supabase return">
+      <option name="closed" value="true" />
+      <created>1780696817129</created>
+      <option name="number" value="00382" />
+      <option name="presentableId" value="LOCAL-00382" />
+      <option name="project" value="LOCAL" />
+      <updated>1780696817129</updated>
+    </task>
+    <option name="localTasksCounter" value="383" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -488,7 +488,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="excel update samt regulering af init state" />
     <MESSAGE value="booking data csv 2 juni 0950" />
     <MESSAGE value="nyt forsøg for session state at over leve sideskift" />
     <MESSAGE value="new booking data fil uden numbers" />
@@ -513,6 +512,7 @@
     <MESSAGE value="excel update" />
     <MESSAGE value="timeline opdateret til ny kalender" />
     <MESSAGE value="dtb from booking data fjernet fra now" />
-    <option name="LAST_COMMIT_MESSAGE" value="dtb from booking data fjernet fra now" />
+    <MESSAGE value="rettelser til supabase return" />
+    <option name="LAST_COMMIT_MESSAGE" value="rettelser til supabase return" />
   </component>
 </project>
