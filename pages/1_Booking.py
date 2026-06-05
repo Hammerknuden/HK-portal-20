@@ -596,7 +596,7 @@ if send_data: #and booking_submitted:
         "navn": name,
         "checkin_date": checkin_date.isoformat(),
         "checkout_date": checkout_date.isoformat(),
-        "booking_date": now.date().isoformat(),
+        "booking_date": now.isoformat(),
         "nation": nationalitet,
         "web": web,
         "ankomst": ankomst,
