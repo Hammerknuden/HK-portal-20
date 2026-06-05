@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="timeline opdateret til ny kalender" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="dtb from booking data fjernet fra now" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,14 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00332" summary="alt redigering virker nu">
-      <option name="closed" value="true" />
-      <created>1780557471082</created>
-      <option name="number" value="00332" />
-      <option name="presentableId" value="LOCAL-00332" />
-      <option name="project" value="LOCAL" />
-      <updated>1780557471083</updated>
     </task>
     <task id="LOCAL-00333" summary="alt redigering virker nu">
       <option name="closed" value="true" />
@@ -462,7 +454,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780687681634</updated>
     </task>
-    <option name="localTasksCounter" value="381" />
+    <task id="LOCAL-00381" summary="dtb from booking data fjernet fra now">
+      <option name="closed" value="true" />
+      <created>1780688349387</created>
+      <option name="number" value="00381" />
+      <option name="presentableId" value="LOCAL-00381" />
+      <option name="project" value="LOCAL" />
+      <updated>1780688349387</updated>
+    </task>
+    <option name="localTasksCounter" value="382" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -488,7 +488,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="session state mangler i calender" />
     <MESSAGE value="excel update samt regulering af init state" />
     <MESSAGE value="booking data csv 2 juni 0950" />
     <MESSAGE value="nyt forsøg for session state at over leve sideskift" />
@@ -513,6 +512,7 @@
     <MESSAGE value="Status alle søge funktioner online med supabase" />
     <MESSAGE value="excel update" />
     <MESSAGE value="timeline opdateret til ny kalender" />
-    <option name="LAST_COMMIT_MESSAGE" value="timeline opdateret til ny kalender" />
+    <MESSAGE value="dtb from booking data fjernet fra now" />
+    <option name="LAST_COMMIT_MESSAGE" value="dtb from booking data fjernet fra now" />
   </component>
 </project>

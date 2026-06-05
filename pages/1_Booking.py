@@ -615,7 +615,12 @@ if send_data: #and booking_submitted:
     }).execute()
 
     st.success("Booking gemt i Supabase")
+    with st.expander("Se alle bookinger"):
 
+        st.dataframe(
+            df,
+            use_container_width=True
+        )
 #st.session_state
 
 
