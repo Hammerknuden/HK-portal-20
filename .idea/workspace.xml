@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="tilbage til sep søge kriterier" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="Status alle søge funktioner online med supabase" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,14 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00328" summary="new booking data fil uden numbers">
-      <option name="closed" value="true" />
-      <created>1780512845391</created>
-      <option name="number" value="00328" />
-      <option name="presentableId" value="LOCAL-00328" />
-      <option name="project" value="LOCAL" />
-      <updated>1780512845391</updated>
     </task>
     <task id="LOCAL-00329" summary="new booking data fil med numbers ændret i csv hk20">
       <option name="closed" value="true" />
@@ -462,7 +454,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780651536133</updated>
     </task>
-    <option name="localTasksCounter" value="377" />
+    <task id="LOCAL-00377" summary="Status alle søge funktioner online med supabase">
+      <option name="closed" value="true" />
+      <created>1780651697481</created>
+      <option name="number" value="00377" />
+      <option name="presentableId" value="LOCAL-00377" />
+      <option name="project" value="LOCAL" />
+      <updated>1780651697481</updated>
+    </task>
+    <option name="localTasksCounter" value="378" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -488,7 +488,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="session state fault 560 ændret i call number fjernet" />
     <MESSAGE value="update excel" />
     <MESSAGE value="new callender med csv as main source" />
     <MESSAGE value="session state mangler i calender" />
@@ -513,6 +512,7 @@
     <MESSAGE value="fjerner sessionstate fra layout" />
     <MESSAGE value="supabase til opslag" />
     <MESSAGE value="tilbage til sep søge kriterier" />
-    <option name="LAST_COMMIT_MESSAGE" value="tilbage til sep søge kriterier" />
+    <MESSAGE value="Status alle søge funktioner online med supabase" />
+    <option name="LAST_COMMIT_MESSAGE" value="Status alle søge funktioner online med supabase" />
   </component>
 </project>
