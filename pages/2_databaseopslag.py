@@ -79,7 +79,7 @@ if st.button("Søg"):
                 .execute()
             )
 
-            st.write(result.data)
+            #st.write(result.data)
             st.dataframe(pd.DataFrame(result.data))
 
         except Exception as e:
