@@ -142,6 +142,7 @@ if not df.empty:
 
     plot_df = df.copy()
 
+    plot_df["Gæst"] = plot_df["Gæst"].astype(str)
     plot_df["Start"] = pd.to_datetime(plot_df["Start"])
     plot_df["Slut"] = pd.to_datetime(plot_df["Slut"])
 
