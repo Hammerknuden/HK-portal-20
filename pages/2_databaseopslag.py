@@ -40,7 +40,7 @@ result = (
     .execute()
 )
 
-st.write(result.data)
+#st.write(result.data)
 
 if st.button("Søg"):
 
