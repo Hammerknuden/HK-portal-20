@@ -555,7 +555,7 @@ if send_data: #and booking_submitted:
     st.markdown("data mail ikke sendt ")
 
 
-st.session_state
+#st.session_state
 
 
 

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="Status alle søge funktioner online med supabase" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excel update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,28 +32,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Python.1_Booking.executor": "Run",
-    "Python.2_Setup.executor": "Run",
-    "Python.2_databaseopslag.executor": "Run",
-    "Python.2_setup.executor": "Run",
-    "Python.3_Ankomster.executor": "Run",
-    "Python.3_ankomster.executor": "Run",
-    "Python.4_Booking_C_link.executor": "Run",
-    "Python.5_cleaning.executor": "Run",
-    "Python.6_callender.executor": "Run",
-    "Python.8_timelinenew.executor": "Run",
-    "Python.app.executor": "Run",
-    "Python.auth.executor": "Run",
-    "Python.common.executor": "Run",
-    "Python.config_prices.executor": "Run",
-    "Python.databaseopslag.executor": "Run",
-    "Python.streamlit_app.executor": "Run",
-    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/pages/2_databaseopslag.py"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python.1_Booking.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2_Setup.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2_databaseopslag.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2_setup.executor&quot;: &quot;Run&quot;,
+    &quot;Python.3_Ankomster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.3_ankomster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.4_Booking_C_link.executor&quot;: &quot;Run&quot;,
+    &quot;Python.5_cleaning.executor&quot;: &quot;Run&quot;,
+    &quot;Python.6_callender.executor&quot;: &quot;Run&quot;,
+    &quot;Python.8_timelinenew.executor&quot;: &quot;Run&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.auth.executor&quot;: &quot;Run&quot;,
+    &quot;Python.common.executor&quot;: &quot;Run&quot;,
+    &quot;Python.config_prices.executor&quot;: &quot;Run&quot;,
+    &quot;Python.databaseopslag.executor&quot;: &quot;Run&quot;,
+    &quot;Python.streamlit_app.executor&quot;: &quot;Run&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/finnj/-repo hk20/hk_portal_20/pages/2_databaseopslag.py&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -69,14 +69,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00329" summary="new booking data fil med numbers ændret i csv hk20">
-      <option name="closed" value="true" />
-      <created>1780512926151</created>
-      <option name="number" value="00329" />
-      <option name="presentableId" value="LOCAL-00329" />
-      <option name="project" value="LOCAL" />
-      <updated>1780512926151</updated>
     </task>
     <task id="LOCAL-00330" summary="new booking data fil med numbers ændret i csv hk20">
       <option name="closed" value="true" />
@@ -462,7 +454,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780651697481</updated>
     </task>
-    <option name="localTasksCounter" value="378" />
+    <task id="LOCAL-00378" summary="excel update">
+      <option name="closed" value="true" />
+      <created>1780668571483</created>
+      <option name="number" value="00378" />
+      <option name="presentableId" value="LOCAL-00378" />
+      <option name="project" value="LOCAL" />
+      <updated>1780668571483</updated>
+    </task>
+    <option name="localTasksCounter" value="379" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -488,7 +488,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="update excel" />
     <MESSAGE value="new callender med csv as main source" />
     <MESSAGE value="session state mangler i calender" />
     <MESSAGE value="excel update samt regulering af init state" />
@@ -513,6 +512,7 @@
     <MESSAGE value="supabase til opslag" />
     <MESSAGE value="tilbage til sep søge kriterier" />
     <MESSAGE value="Status alle søge funktioner online med supabase" />
-    <option name="LAST_COMMIT_MESSAGE" value="Status alle søge funktioner online med supabase" />
+    <MESSAGE value="excel update" />
+    <option name="LAST_COMMIT_MESSAGE" value="excel update" />
   </component>
 </project>
