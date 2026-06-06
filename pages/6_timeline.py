@@ -74,8 +74,8 @@ def load_bookings():
     df = pd.DataFrame(result.data)
 
     if not df.empty:
-        df["Start"] = pd.to_datetime(df["Start"])
-        df["Slut"] = pd.to_datetime(df["Slut"])
+        df["checkin_date"] = pd.to_datetime(df["checkin_date"])
+        df["checkout_date"] = pd.to_datetime(df["checkout_date"])
 
     return df
 # -------------------------
@@ -90,21 +90,21 @@ df = load_bookings()
 with st.sidebar.form("booking_form"):
 
     room = st.selectbox(
-        "Værelse",
-        [f"Værelse {i}" for i in range(1, 8)]
+        "room_number",
+        [f"room_number {i}" for i in range(1, 8)]
     )
 
     start_date = st.date_input(
-        "Start dato",
+        "checkin_date",
         value=datetime.date.today()
     )
 
     end_date = st.date_input(
-        "Slut dato",
+        "checkout_date",
         value=datetime.date.today() + datetime.timedelta(days=2)
     )
 
-    name = st.text_input("Gæstnavn")
+    name = st.text_input("booking_number")
 
     submitted = st.form_submit_button("Book nu")
 
@@ -119,10 +119,10 @@ with st.sidebar.form("booking_form"):
             try:
 
                 supabase.table("bookings").insert({
-                    "Værelse": room,
-                    "Start": start_date.isoformat(),
-                    "Slut": end_date.isoformat(),
-                    "Gæst": int(name)
+                    "room_number": room,
+                    "checkin_date": start_date.isoformat(),
+                    "checkout_date": end_date.isoformat(),
+                    "booking_number": int(name)
                 }).execute()
 
                 st.success("Booking gemt")
@@ -142,18 +142,18 @@ if not df.empty:
 
     plot_df = df.copy()
 
-    plot_df["Gæst"] = plot_df["Gæst"].astype(str)
-    plot_df["Start"] = pd.to_datetime(plot_df["Start"])
-    plot_df["Slut"] = pd.to_datetime(plot_df["Slut"])
+    plot_df["booking_number"] = plot_df["booking_number"].astype(str)
+    plot_df["checkin_date"] = pd.to_datetime(plot_df["checkin_date"])
+    plot_df["checkout_date"] = pd.to_datetime(plot_df["checkout_date"])
 
     fig = px.timeline(
         plot_df,
-        x_start="Start",
-        x_end="Slut",
-        y="Værelse",
-        color="Gæst",
-        hover_name="Gæst",
-        text="Gæst",
+        x_start="checkin_date",
+        x_end="checkout_date",
+        y="room_number",
+        color="booking_number",
+        hover_name="booking_number",
+        text="booking_number",
         color_discrete_sequence=px.colors.qualitative.Dark24
     )
 
@@ -190,8 +190,8 @@ if not df.empty:
         "Vælg booking",
         df["id"],
         format_func=lambda x: (
-            f"{df[df['id'] == x].iloc[0]['Gæst']} - "
-            f"{df[df['id'] == x].iloc[0]['Værelse']}"
+            f"{df[df['id'] == x].iloc[0]['booking_number']} - "
+            f"{df[df['id'] == x].iloc[0]['room_number']}"
         )
     )
 
@@ -199,32 +199,32 @@ if not df.empty:
 
 
     room_number = int(
-        str(booking["Værelse"]).split()[-1]
+        str(booking["room_number"]).split()[-1]
     ) - 1
 
     new_room = st.selectbox(
-        "Rediger værelse",
-        [f"Værelse {i}" for i in range(1, 8)],
+        "edit room",
+        [f"room_number {i}" for i in range(1, 8)],
         index=room_number
     )
 
     new_start = st.date_input(
-        "Rediger start",
+        "Rediger checkin_date",
         value=pd.to_datetime(
-            booking["Start"]
+            booking["checkin_date"]
         ).date()
     )
 
     new_end = st.date_input(
-        "Rediger slut",
+        "Rediger checkout_date",
         value=pd.to_datetime(
-            booking["Slut"]
+            booking["checkout_date"]
         ).date()
     )
 
     new_guest = st.text_input(
-        "Rediger gæst",
-        value=str(booking["Gæst"])
+        "Rediger booking_number",
+        value=str(booking["booking_number"])
     )
 
 
@@ -234,10 +234,10 @@ if not df.empty:
 
         if st.button("Gem ændringer"):
             supabase.table("bookings").update({
-                "Værelse": new_room,
-                "Start": new_start.isoformat(),
-                "Slut": new_end.isoformat(),
-                "Gæst": int(new_guest)
+                "room_number": new_room,
+                "checkin_date": new_start.isoformat(),
+                "checkout_date": new_end.isoformat(),
+                "booking_number": int(new_guest)
             }).eq("id", booking_id).execute()
 
             st.success("Ændringer gemt")
