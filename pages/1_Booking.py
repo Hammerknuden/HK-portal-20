@@ -567,28 +567,28 @@ if send_data: #and booking_submitted:
 
 
 
-    excel_file = add_data(...)
+   #excel_file = add_data(...)
 
-    send_data_email(
-        to_addr_1,
-        confirmation_password,
-        booking_number,
-        name,
-        checkin_date,
-        checkout_date,
-        num_rooms,
-        now,
-        nationalitet,
-        web,
-        ankomst,
-        seng,
-        procent,
-        num_guests,
-        email_address,
-        telefon,
-        formatted_pristotal,
-        excel_file
-    )
+    #send_data_email(
+     #   to_addr_1,
+      #  confirmation_password,
+     #   booking_number,
+     #   name,
+     #   checkin_date,
+     #   checkout_date,
+     #   num_rooms,
+     #   now,
+     #   nationalitet,
+     #   web,
+     #   ankomst,
+     #   seng,
+     #   procent,
+     #   num_guests,
+     #   email_address,
+     #   telefon,
+     #   formatted_pristotal,
+     ¤   excel_file
+    #)
 
     # Gem booking i Supabase
     supabase.table("hammerknuden_dtb").insert({
