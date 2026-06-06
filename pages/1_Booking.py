@@ -578,14 +578,14 @@ if send_data: #and booking_submitted:
         "ankomst": ankomst,
         "bed": seng,
         "rabat": procent,
-        "antal_vaerelser": num_rooms,
-        "antal_gaester": num_guests,
+        "numb_rooms": num_rooms,
+        "numb_guestsr": num_guests,
         "email": email_address,
         "telefon": telefon,
         "spouse": spouse,
         "enkelt": single_room,
         "morgenmad": BF,
-        "pris_total": pristotal,
+        "pris": pristotal,
         "known": known,
         "comments": comments
     }).execute()
@@ -609,6 +609,38 @@ with st.expander("Se alle bookinger"):
         df_supabase,
         use_container_width=True
     )
+col1, col2 = st.columns(2)
+
+with col1:
+
+    if st.button("Gem ændringer"):
+        supabase.table("hammerknuden_dtb").update({
+            "room": new_room,
+            "checkin_date": new_start.isoformat(),
+            "checkout_date": new_end.isoformat(),
+            "booking_number": int(new_guest)
+        }).eq("id", booking_id).execute()
+
+        st.success("Ændringer gemt")
+        st.rerun()
+
+with col2:
+
+    if st.button("Slet booking"):
+        supabase.table("hammerknuden_dtb").delete().eq(
+            "id",
+            booking_id
+        ).execute()
+
+        st.success("Booking slettet")
+        st.rerun()
+    # vis samlet overblik over alle indtastede bookinger
+    with st.expander("Se alle bookinger"):
+
+        st.dataframe(
+            df,
+            use_container_width=True
+        )
 
 
 
