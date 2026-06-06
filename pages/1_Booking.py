@@ -592,23 +592,23 @@ if send_data: #and booking_submitted:
 
     st.success("Booking gemt i Supabase")
 
-    with st.expander("Se alle bookinger"):
-        result = (
-            supabase
-            .table("hammerknuden_dtb")
-            .select("*")
-            .execute()
-        )
-
-        df_supabase = pd.DataFrame(result.data)
-
-        st.dataframe(
-            df_supabase,
-            use_container_width=True
-        )
 
 #st.session_state
 st.markdown("data mail ikke sendt ")
+with st.expander("Se alle bookinger"):
+    result = (
+        supabase
+        .table("hammerknuden_dtb")
+        .select("*")
+        .execute()
+    )
+
+    df_supabase = pd.DataFrame(result.data)
+
+    st.dataframe(
+        df_supabase,
+        use_container_width=True
+    )
 
 
 
