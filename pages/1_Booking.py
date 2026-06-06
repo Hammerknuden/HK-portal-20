@@ -565,7 +565,7 @@ if send_data: #and booking_submitted:
     st.markdown("data mail sendt")
     print(type(excel_file))
 
-    st.markdown("data mail ikke sendt ")
+
 
     excel_file = add_data(...)
 
@@ -609,7 +609,7 @@ if send_data: #and booking_submitted:
         "spouse": spouse,
         "enkelt": single_room,
         "morgenmad": BF,
-        "pris_total": formatted_pristotal,
+        "pris_total": pristotal,
         "known": known,
         "comments": comments
     }).execute()
@@ -623,7 +623,7 @@ if send_data: #and booking_submitted:
             use_container_width=True
         )
 #st.session_state
-
+st.markdown("data mail ikke sendt ")
 
 
 
