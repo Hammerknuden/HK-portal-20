@@ -566,30 +566,6 @@ if send_data: #and booking_submitted:
     print(type(excel_file))
 
 
-
-   #excel_file = add_data(...)
-
-    #send_data_email(
-     #   to_addr_1,
-      #  confirmation_password,
-     #   booking_number,
-     #   name,
-     #   checkin_date,
-     #   checkout_date,
-     #   num_rooms,
-     #   now,
-     #   nationalitet,
-     #   web,
-     #   ankomst,
-     #   seng,
-     #   procent,
-     #   num_guests,
-     #   email_address,
-     #   telefon,
-     #   formatted_pristotal,
-     #   excel_file
-    #)
-
     # Gem booking i Supabase
     supabase.table("hammerknuden_dtb").insert({
         "booking_number": booking_number,
@@ -617,11 +593,20 @@ if send_data: #and booking_submitted:
     st.success("Booking gemt i Supabase")
 
     with st.expander("Se alle bookinger"):
+        result = (
+            supabase
+            .table("hammerknuden_dtb")
+            .select("*")
+            .execute()
+        )
+
+        df_supabase = pd.DataFrame(result.data)
 
         st.dataframe(
-            df,
+            df_supabase,
             use_container_width=True
         )
+
 #st.session_state
 st.markdown("data mail ikke sendt ")
 
