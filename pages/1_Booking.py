@@ -635,20 +635,6 @@ with col2:
         st.success("Booking slettet")
         st.rerun()
     # vis samlet overblik over alle indtastede bookinger
-    with st.expander("Se alle bookinger"):
-        result = (
-            supabase
-            .table("hammerknuden_dtb")
-            .select("*")
-            .execute()
-        )
-
-        df_supabase = pd.DataFrame(result.data)
-
-        st.dataframe(
-            df_supabase,
-            use_container_width=True
-
 
 
 
