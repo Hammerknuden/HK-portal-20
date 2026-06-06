@@ -587,7 +587,7 @@ if send_data: #and booking_submitted:
      #   email_address,
      #   telefon,
      #   formatted_pristotal,
-     ¤   excel_file
+     #   excel_file
     #)
 
     # Gem booking i Supabase
