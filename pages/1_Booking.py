@@ -618,10 +618,10 @@ if send_data: #and booking_submitted:
 
     with st.expander("Se alle bookinger"):
 
-    st.dataframe(
-        df,
-        use_container_width=True
-    )
+        st.dataframe(
+            df,
+            use_container_width=True
+        )
 #st.session_state
 
 
