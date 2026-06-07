@@ -612,7 +612,7 @@ with st.expander("Se alle bookinger"):
 
 booking_id = st.selectbox(
     "Vælg booking",
-    df_supabase["id"]
+    df_supabase["booking_number"]
 )
 booking = df_supabase[
     df_supabase["id"] == booking_id
