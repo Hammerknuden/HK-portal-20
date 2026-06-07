@@ -595,73 +595,77 @@ if send_data: #and booking_submitted:
 
 #st.session_state
 st.markdown("data mail ikke sendt ")
-with st.expander("Se alle bookinger"):
-    result = (
-        supabase
-        .table("hammerknuden_dtb")
-        .select("*")
-        .execute()
+
+edit = st.button("lav ændringer i eksisterende booking")
+
+if edit:
+    with st.expander("Se alle bookinger"):
+        result = (
+            supabase
+            .table("hammerknuden_dtb")
+            .select("*")
+            .execute()
+        )
+
+        df_supabase = pd.DataFrame(result.data)
+
+        st.dataframe(
+            df_supabase,
+            use_container_width=True
+        )
+
+    booking_id = st.selectbox(
+        "Vælg booking",
+        options=df_supabase["id"].tolist(),
+        format_func=lambda x: (
+            f"{df_supabase[df_supabase['id'] == x].iloc[0]['booking_number']} - "
+            f"{df_supabase[df_supabase['id'] == x].iloc[0]['navn']}"
+        )
     )
 
-    df_supabase = pd.DataFrame(result.data)
+    booking = df_supabase[
+        df_supabase["id"] == booking_id
+    ].iloc[0]
 
-    st.dataframe(
-        df_supabase,
-        use_container_width=True
+
+    new_booking_number = st.text_input(
+        "Bookingnummer",
+        value=str(booking["booking_number"])
     )
 
-booking_id = st.selectbox(
-    "Vælg booking",
-    options=df_supabase["id"].tolist(),
-    format_func=lambda x: (
-        f"{df_supabase[df_supabase['id'] == x].iloc[0]['booking_number']} - "
-        f"{df_supabase[df_supabase['id'] == x].iloc[0]['navn']}"
+    new_email = st.text_input(
+        "email",
+        value=str(df_supabase.iloc[0]["email"])
     )
-)
+    new_phone = st.text_input(
+        "Telefon",
+        value=str(booking["telefon"])
+    )
 
-booking = df_supabase[
-    df_supabase["id"] == booking_id
-].iloc[0]
+    new_checkin = st.date_input(
+        "Checkin",
+        value=pd.to_datetime(
+            booking["checkin_date"]
+        ).date()
+    )
 
+    new_checkin = st.date_input(
+        "Checkout",
+        value=pd.to_datetime(
+            booking["checkout_date"]
+        ).date()
+    )
 
-new_booking_number = st.text_input(
-    "Bookingnummer",
-    value=str(booking["booking_number"])
-)
+    new_ankomst = st.text_input(
+        "ankomst",
+        value=str(df_supabase.iloc[0]["ankomst"])
 
-new_email = st.text_input(
-    "email",
-    value=str(df_supabase.iloc[0]["email"])
-)
-new_phone = st.text_input(
-    "Telefon",
-    value=str(booking["telefon"])
-)
+    )
 
-new_checkin = st.date_input(
-    "Checkin",
-    value=pd.to_datetime(
-        booking["checkin_date"]
-    ).date()
-)
-
-new_checkin = st.date_input(
-    "Checkout",
-    value=pd.to_datetime(
-        booking["checkout_date"]
-    ).date()
-)
-
-new_ankomst = st.text_input(
-    "ankomst",
-    value=str(df_supabase.iloc[0]["ankomst"])
-
-)
-
-new_bed = st.text_input(
-    "Bed",
-    value=str(df_supabase.iloc[0]["bed"])
-)
+    new_bed = st.text_input(
+        "Bed",
+        value=str(df_supabase.iloc[0]["bed"])
+    )
 
 col1, col2 = st.columns(2)
 
