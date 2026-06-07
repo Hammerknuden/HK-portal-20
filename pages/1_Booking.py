@@ -653,7 +653,7 @@ new_checkin = st.date_input(
 )
 
 new_ankomst = st.date_input(
-    "Ankomst",
+    "ankomst",
     value=str(df_supabase.iloc[0]["ankomst"])
 
 )
