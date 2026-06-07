@@ -673,8 +673,12 @@ if edit:
         if st.button("Gem ændringer"):
             supabase.table("hammerknuden_dtb").update({
                 "booking_number": int(new_booking_number),
+                "email":new_email,
                 "telefon": new_phone,
-                "checkin_date": new_checkin.isoformat()
+                "checkin_date": new_checkin.isoformat(),
+                "checkout_date": new_checkout.isoformat(),
+                "ankomst": new_ankomst,
+                "bed": new_bed
             }).eq(
                 "id",
                 booking_id
