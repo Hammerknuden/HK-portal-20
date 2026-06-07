@@ -579,7 +579,7 @@ if send_data: #and booking_submitted:
         "bed": seng,
         "rabat": procent,
         "numb_rooms": num_rooms,
-        "numb_guestsr": num_guests,
+        "numb_guests": num_guests,
         "email": email_address,
         "telefon": telefon,
         "spouse": spouse,
