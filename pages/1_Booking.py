@@ -629,14 +629,13 @@ new_booking_number = st.text_input(
     value=str(booking["booking_number"])
 )
 
-new_phone = st.text_input(
-    "Telefon",
-    value=str(booking["telefon"])
-)
-
 new_email = st.text_input(
     "email",
     value=str(email["email"])
+)
+new_phone = st.text_input(
+    "Telefon",
+    value=str(booking["telefon"])
 )
 
 new_checkin = st.date_input(
