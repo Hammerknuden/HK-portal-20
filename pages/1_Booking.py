@@ -634,6 +634,11 @@ new_phone = st.text_input(
     value=str(booking["telefon"])
 )
 
+new_email = st.text_input(
+    "email",
+    value=str(email["email"])
+)
+
 new_checkin = st.date_input(
     "Checkin",
     value=pd.to_datetime(
@@ -649,16 +654,14 @@ new_checkin = st.date_input(
 )
 
 new_ankomst = st.date_input(
-    "ankomst",
-    value=pd.to_datetime(
-        booking["ankomst"]
+    "Ankomst",
+    value=str(booking["ankomst"]
     )
 )
 
 new_bed = st.date_input(
     "Bed",
-    value=pd.to_datetime(
-        booking["bed"]
+    value=str(booking["bed"]
     )
 )
 
