@@ -623,14 +623,6 @@ booking = df_supabase[
     df_supabase["id"] == booking_id
 ].iloc[0]
 
-booking_id = st.selectbox(
-    "Vælg booking",
-    options=df_supabase["id"].tolist(),
-    format_func=lambda x: (
-        f"{df_supabase[df_supabase['id'] == x].iloc[0]['booking_number']} - "
-        f"{df_supabase[df_supabase['id'] == x].iloc[0]['navn']}"
-    )
-)
 
 new_booking_number = st.text_input(
     "Bookingnummer",
