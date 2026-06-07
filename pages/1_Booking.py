@@ -652,13 +652,13 @@ new_checkin = st.date_input(
     ).date()
 )
 
-new_ankomst = st.date_input(
+new_ankomst = st.text_input(
     "ankomst",
     value=str(df_supabase.iloc[0]["ankomst"])
 
 )
 
-new_bed = st.date_input(
+new_bed = st.text_input(
     "Bed",
     value=str(df_supabase.iloc[0]["bed"])
 )
