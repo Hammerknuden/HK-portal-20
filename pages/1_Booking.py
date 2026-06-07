@@ -667,32 +667,32 @@ if edit:
         value=str(df_supabase.iloc[0]["bed"])
     )
 
-col1, col2 = st.columns(2)
+    col1, col2 = st.columns(2)
 
-with col1:
-    if st.button("Gem ændringer"):
-        supabase.table("hammerknuden_dtb").update({
-            "booking_number": int(new_booking_number),
-            "telefon": new_phone,
-            "checkin_date": new_checkin.isoformat()
-        }).eq(
-            "id",
-            booking_id
-        ).execute()
+    with col1:
+        if st.button("Gem ændringer"):
+            supabase.table("hammerknuden_dtb").update({
+                "booking_number": int(new_booking_number),
+                "telefon": new_phone,
+                "checkin_date": new_checkin.isoformat()
+            }).eq(
+                "id",
+                booking_id
+            ).execute()
 
-        st.success("Ændringer gemt")
-        st.rerun()
+            st.success("Ændringer gemt")
+            st.rerun()
 
-with col2:
+    with col2:
 
-    if st.button("Slet booking"):
-        supabase.table("hammerknuden_dtb").delete().eq(
-            "id",
-            booking_id
-        ).execute()
+        if st.button("Slet booking"):
+            supabase.table("hammerknuden_dtb").delete().eq(
+                "id",
+                booking_id
+            ).execute()
 
-        st.success("Booking slettet")
-        st.rerun()
+            st.success("Booking slettet")
+            st.rerun()
     # vis samlet overblik over alle indtastede bookinger
 
 
