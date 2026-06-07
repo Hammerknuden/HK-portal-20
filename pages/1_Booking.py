@@ -640,6 +640,28 @@ new_checkin = st.date_input(
         booking["checkin_date"]
     ).date()
 )
+
+new_checkin = st.date_input(
+    "Checkout",
+    value=pd.to_datetime(
+        booking["checkout_date"]
+    ).date()
+)
+
+new_ankomst = st.date_input(
+    "Ankomst",
+    value=pd.to_datetime(
+        booking["ankomst"]
+    )
+)
+
+new_bed = st.date_input(
+    "Bed",
+    value=pd.to_datetime(
+        booking["bed"]
+    )
+)
+
 col1, col2 = st.columns(2)
 
 with col1:
