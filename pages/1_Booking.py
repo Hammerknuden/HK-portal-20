@@ -631,7 +631,7 @@ new_booking_number = st.text_input(
 
 new_email = st.text_input(
     "email",
-    value=str(email["email"])
+    value=str(df_supabase.iloc[0]["email"])
 )
 new_phone = st.text_input(
     "Telefon",
