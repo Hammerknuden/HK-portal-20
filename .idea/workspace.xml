@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="gem funtion opdateret fra timeline">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="flere rettelses felter" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,30 +70,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00350" summary="trying load dotenv">
-      <option name="closed" value="true" />
-      <created>1780571558226</created>
-      <option name="number" value="00350" />
-      <option name="presentableId" value="LOCAL-00350" />
-      <option name="project" value="LOCAL" />
-      <updated>1780571558226</updated>
-    </task>
-    <task id="LOCAL-00351" summary="trying load dotenv">
-      <option name="closed" value="true" />
-      <created>1780571705900</created>
-      <option name="number" value="00351" />
-      <option name="presentableId" value="LOCAL-00351" />
-      <option name="project" value="LOCAL" />
-      <updated>1780571705900</updated>
-    </task>
-    <task id="LOCAL-00352" summary="trying load dotenv">
-      <option name="closed" value="true" />
-      <created>1780571903970</created>
-      <option name="number" value="00352" />
-      <option name="presentableId" value="LOCAL-00352" />
-      <option name="project" value="LOCAL" />
-      <updated>1780571903970</updated>
     </task>
     <task id="LOCAL-00353" summary="key operativ forbindelse med supabase oprettet, keys i comunity cloud secrets">
       <option name="closed" value="true" />
@@ -466,7 +439,31 @@
       <option name="project" value="LOCAL" />
       <updated>1780848535160</updated>
     </task>
-    <option name="localTasksCounter" value="399" />
+    <task id="LOCAL-00399" summary="gem er delete opdateret med bedre søgning">
+      <option name="closed" value="true" />
+      <created>1780859247889</created>
+      <option name="number" value="00399" />
+      <option name="presentableId" value="LOCAL-00399" />
+      <option name="project" value="LOCAL" />
+      <updated>1780859247890</updated>
+    </task>
+    <task id="LOCAL-00400" summary="gem er delete opdateret med bedre søgning">
+      <option name="closed" value="true" />
+      <created>1780859343853</created>
+      <option name="number" value="00400" />
+      <option name="presentableId" value="LOCAL-00400" />
+      <option name="project" value="LOCAL" />
+      <updated>1780859343853</updated>
+    </task>
+    <task id="LOCAL-00401" summary="flere rettelses felter">
+      <option name="closed" value="true" />
+      <created>1780859685680</created>
+      <option name="number" value="00401" />
+      <option name="presentableId" value="LOCAL-00401" />
+      <option name="project" value="LOCAL" />
+      <updated>1780859685680</updated>
+    </task>
+    <option name="localTasksCounter" value="402" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -492,8 +489,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fjerner forhåbentlig env fra git" />
-    <MESSAGE value="commmit undtagen env" />
     <MESSAGE value="ny gitignore" />
     <MESSAGE value="trying load dotenv" />
     <MESSAGE value="key operativ forbindelse med supabase oprettet, keys i comunity cloud secrets" />
@@ -517,6 +512,8 @@
     <MESSAGE value="hammerknuden redigering test kode" />
     <MESSAGE value="booking gem funktion i booking" />
     <MESSAGE value="gem funtion opdateret fra timeline" />
-    <option name="LAST_COMMIT_MESSAGE" value="gem funtion opdateret fra timeline" />
+    <MESSAGE value="gem er delete opdateret med bedre søgning" />
+    <MESSAGE value="flere rettelses felter" />
+    <option name="LAST_COMMIT_MESSAGE" value="flere rettelses felter" />
   </component>
 </project>

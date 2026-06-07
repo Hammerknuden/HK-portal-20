@@ -649,7 +649,7 @@ new_checkin = st.date_input(
 )
 
 new_ankomst = st.date_input(
-    "Ankomst",
+    "ankomst",
     value=pd.to_datetime(
         booking["ankomst"]
     )
