@@ -654,14 +654,13 @@ new_checkin = st.date_input(
 
 new_ankomst = st.date_input(
     "Ankomst",
-    value=str(booking["ankomst"]
-    )
+    value=str(df_supabase.iloc[0]["ankomst"])
+
 )
 
 new_bed = st.date_input(
     "Bed",
-    value=str(booking["bed"]
-    )
+    value=str(df_supabase.iloc[0]["bed"])
 )
 
 col1, col2 = st.columns(2)
