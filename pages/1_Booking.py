@@ -609,17 +609,42 @@ with st.expander("Se alle bookinger"):
         df_supabase,
         use_container_width=True
     )
+
+booking_id = st.selectbox(
+    "Vælg booking",
+    df_supabase["id"]
+)
+booking = df_supabase[
+    df_supabase["id"] == booking_id
+].iloc[0]
+new_booking_number = st.text_input(
+    "Bookingnummer",
+    value=str(booking["booking_number"])
+)
+
+new_phone = st.text_input(
+    "Telefon",
+    value=str(booking["telefon"])
+)
+
+new_checkin = st.date_input(
+    "Checkin",
+    value=pd.to_datetime(
+        booking["checkin_date"]
+    ).date()
+)
 col1, col2 = st.columns(2)
 
 with col1:
-
     if st.button("Gem ændringer"):
         supabase.table("hammerknuden_dtb").update({
-            "room": new_room,
-            "checkin_date": new_start.isoformat(),
-            "checkout_date": new_end.isoformat(),
-            "booking_number": int(new_guest)
-        }).eq("id", booking_id).execute()
+            "booking_number": int(new_booking_number),
+            "telefon": new_phone,
+            "checkin_date": new_checkin.isoformat()
+        }).eq(
+            "id",
+            booking_id
+        ).execute()
 
         st.success("Ændringer gemt")
         st.rerun()
