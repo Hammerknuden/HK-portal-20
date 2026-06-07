@@ -197,7 +197,6 @@ if not df.empty:
 
     booking = df[df["id"] == booking_id].iloc[0]
 
-
     room_number = int(
         str(booking["room_number"]).split()[-1]
     ) - 1
