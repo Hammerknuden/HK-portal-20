@@ -619,7 +619,9 @@ if edit:
         "Vælg booking",
         options=df_supabase["id"].tolist(),
         format_func=lambda x: (
-            f"{df_supabase[df_supabase['id'] == x].iloc[0]['booking_number']} - "
+            f"ID:{x} | "
+            f"Booking:{df_supabase[df_supabase['id'] == x].iloc[0]['booking_number']} | "
+            f"Værelse:{df_supabase[df_supabase['id'] == x].iloc[0]['room_number']} | "
             f"{df_supabase[df_supabase['id'] == x].iloc[0]['navn']}"
         )
     )
