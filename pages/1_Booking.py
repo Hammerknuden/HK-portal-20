@@ -677,23 +677,31 @@ if edit:
 
     with col1:
         if st.button("Gem ændringer"):
-            supabase.table("hammerknuden_dtb").update({
-                "booking_number": int(new_booking_number),
-                "email": new_email,
-                "telefon": new_phone,
-                "checkin_date": new_checkin.isoformat(),
-                "checkout_date": new_checkout.isoformat(),
-                "ankomst": new_ankomst,
-                "bed": new_bed,
-                "room_number": new_room_number
 
-            }).eq(
-                "id",
-                booking_id
-            ).execute()
+            try:
 
-            st.success("Ændringer gemt")
-            st.rerun()
+                result = supabase.table("hammerknuden_dtb").update({
+                    "booking_number": int(new_booking_number),
+                    "email": new_email,
+                    "telefon": new_phone,
+                    "checkin_date": new_checkin.isoformat(),
+                    "checkout_date": new_checkout.isoformat(),
+                    "ankomst": new_ankomst,
+                    "bed": new_bed,
+                    "room_number": new_room_number
+                }).eq(
+                    "id",
+                    booking_id
+                ).execute()
+
+                st.write(result)
+
+                st.success("Ændringer gemt")
+                st.rerun()
+
+            except Exception as e:
+                st.error(f"Fejl: {e}")
+                st.write(type(e))
 
     with col2:
 
