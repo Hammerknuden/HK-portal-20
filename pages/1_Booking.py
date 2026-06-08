@@ -702,20 +702,9 @@ if edit:
 
             except Exception as e:
                 st.error(f"Fejl: {e}")
-        with col1:
-        if st.button("Gem ændringer"):
 
-            try:
-                st.write("Valgt ID:", booking_id)
 
-                result = supabase.table("hammerknuden_dtb").update({
-                    "ankomst": new_ankomst
-                }).eq(
-                    "id",
-                    booking_id
-                ).execute()
-
-                st.write(result.data)
+    #st.write(result.data)
                 #result = supabase.table("hammerknuden_dtb").update({
                 #    "booking_number": int(new_booking_number),
                 #    "email": new_email,
@@ -730,7 +719,7 @@ if edit:
                 #    booking_id
                 #).execute()
 
-                st.write(result)
+                #st.write(result)
 
                 st.success("Ændringer gemt")
                 st.rerun()
