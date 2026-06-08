@@ -685,7 +685,7 @@ if edit:
                 "checkout_date": new_checkout.isoformat(),
                 "ankomst": new_ankomst,
                 "bed": new_bed,
-                "room_number": room_number
+                "room_number": new_room_number
 
             }).eq(
                 "id",
