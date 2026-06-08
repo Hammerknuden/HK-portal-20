@@ -671,6 +671,7 @@ if edit:
         "room_number",
         value=str(booking["room_number"])
     )
+
     col1, col2 = st.columns(2)
 
     with col1:
@@ -682,7 +683,7 @@ if edit:
                 "checkin_date": new_checkin.isoformat(),
                 "checkout_date": new_checkout.isoformat(),
                 "ankomst": new_ankomst,
-                "bed": new_bed
+                "bed": new_bed,
                 "room_number": room_number
 
             }).eq(

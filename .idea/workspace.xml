@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="rettelser til gem funktionen mulig fejl">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="rettelser i gem opsætning tilføjet room_number" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,22 +70,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00365" summary="fjerner sessionstate fra layout">
-      <option name="closed" value="true" />
-      <created>1780638344960</created>
-      <option name="number" value="00365" />
-      <option name="presentableId" value="LOCAL-00365" />
-      <option name="project" value="LOCAL" />
-      <updated>1780638344960</updated>
-    </task>
-    <task id="LOCAL-00366" summary="fjerner sessionstate fra layout">
-      <option name="closed" value="true" />
-      <created>1780638399048</created>
-      <option name="number" value="00366" />
-      <option name="presentableId" value="LOCAL-00366" />
-      <option name="project" value="LOCAL" />
-      <updated>1780638399049</updated>
     </task>
     <task id="LOCAL-00367" summary="fjerner sessionstate fra layout">
       <option name="closed" value="true" />
@@ -466,7 +447,23 @@
       <option name="project" value="LOCAL" />
       <updated>1780862807042</updated>
     </task>
-    <option name="localTasksCounter" value="414" />
+    <task id="LOCAL-00414" summary="rettelser i gem opsætning tilføjet room_number">
+      <option name="closed" value="true" />
+      <created>1780901217042</created>
+      <option name="number" value="00414" />
+      <option name="presentableId" value="LOCAL-00414" />
+      <option name="project" value="LOCAL" />
+      <updated>1780901217043</updated>
+    </task>
+    <task id="LOCAL-00415" summary="rettelser i gem opsætning tilføjet room_number">
+      <option name="closed" value="true" />
+      <created>1780901288892</created>
+      <option name="number" value="00415" />
+      <option name="presentableId" value="LOCAL-00415" />
+      <option name="project" value="LOCAL" />
+      <updated>1780901288892</updated>
+    </task>
+    <option name="localTasksCounter" value="416" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -492,7 +489,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="test og upload af ny kallenderside" />
     <MESSAGE value="kallender side vises next to go er administration 8 timeline py" />
     <MESSAGE value="timeline new editorial oprydning" />
     <MESSAGE value="ændret 285 fra booking til id" />
@@ -517,6 +513,7 @@
     <MESSAGE value="burde virke perfekt har kun lavet indrykning" />
     <MESSAGE value="rettelser til gem funktionen mulig fejl ved checkout" />
     <MESSAGE value="rettelser til gem funktionen mulig fejl" />
-    <option name="LAST_COMMIT_MESSAGE" value="rettelser til gem funktionen mulig fejl" />
+    <MESSAGE value="rettelser i gem opsætning tilføjet room_number" />
+    <option name="LAST_COMMIT_MESSAGE" value="rettelser i gem opsætning tilføjet room_number" />
   </component>
 </project>
