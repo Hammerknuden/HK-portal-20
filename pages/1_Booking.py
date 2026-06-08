@@ -596,7 +596,8 @@ if send_data: #and booking_submitted:
 #st.session_state
 st.markdown("data mail ikke sendt ")
 
-edit = st.button("lav ændringer i eksisterende booking")
+edit = st.checkbox("Edit eksisterende booking")
+
 
 if edit:
     with st.expander("Se alle bookinger"):
