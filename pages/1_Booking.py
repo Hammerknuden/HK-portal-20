@@ -615,21 +615,19 @@ if edit:
             use_container_width=True
         )
 
+    booking_lookup = df.set_index("id")
+
     booking_id = st.selectbox(
         "Vælg booking",
-        options=df_supabase["id"].tolist(),
+        df["id"],
         format_func=lambda x: (
-            f"ID:{x} | "
-            f"Booking:{df_supabase[df_supabase['id'] == x].iloc[0]['booking_number']} | "
-            f"Værelse:{df_supabase[df_supabase['id'] == x].iloc[0]['room_number']} | "
-            f"{df_supabase[df_supabase['id'] == x].iloc[0]['navn']}"
+            f"Booking: {booking_lookup.loc[x, 'booking_number']} | "
+            f"Værelse: {booking_lookup.loc[x, 'room_number']} | "
+            f"{booking_lookup.loc[x, 'navn']}"
         )
     )
 
-    booking = df_supabase[
-        df_supabase["id"] == booking_id
-    ].iloc[0]
-
+    booking = booking_lookup.loc[booking_id]
 
     new_booking_number = st.text_input(
         "Bookingnummer",
