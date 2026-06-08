@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="rettelser til gem funktionen mulig fejl ved checkout" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="rettelser til gem funktionen mulig fejl">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,14 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00364" summary="fjerner sessionstate fra layout">
-      <option name="closed" value="true" />
-      <created>1780638163611</created>
-      <option name="number" value="00364" />
-      <option name="presentableId" value="LOCAL-00364" />
-      <option name="project" value="LOCAL" />
-      <updated>1780638163612</updated>
     </task>
     <task id="LOCAL-00365" summary="fjerner sessionstate fra layout">
       <option name="closed" value="true" />
@@ -463,7 +458,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780862237093</updated>
     </task>
-    <option name="localTasksCounter" value="413" />
+    <task id="LOCAL-00413" summary="rettelser til gem funktionen mulig fejl">
+      <option name="closed" value="true" />
+      <created>1780862807042</created>
+      <option name="number" value="00413" />
+      <option name="presentableId" value="LOCAL-00413" />
+      <option name="project" value="LOCAL" />
+      <updated>1780862807042</updated>
+    </task>
+    <option name="localTasksCounter" value="414" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -489,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="key operativ forbindelse med supabase oprettet, keys i comunity cloud secrets" />
     <MESSAGE value="test og upload af ny kallenderside" />
     <MESSAGE value="kallender side vises next to go er administration 8 timeline py" />
     <MESSAGE value="timeline new editorial oprydning" />
@@ -514,6 +516,7 @@
     <MESSAGE value="flere rettelses felter" />
     <MESSAGE value="burde virke perfekt har kun lavet indrykning" />
     <MESSAGE value="rettelser til gem funktionen mulig fejl ved checkout" />
-    <option name="LAST_COMMIT_MESSAGE" value="rettelser til gem funktionen mulig fejl ved checkout" />
+    <MESSAGE value="rettelser til gem funktionen mulig fejl" />
+    <option name="LAST_COMMIT_MESSAGE" value="rettelser til gem funktionen mulig fejl" />
   </component>
 </project>

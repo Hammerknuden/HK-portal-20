@@ -635,7 +635,7 @@ if edit:
 
     new_email = st.text_input(
         "email",
-        value=str(df_supabase.iloc[0]["email"])
+        value=str(booking["email"])
     )
     new_phone = st.text_input(
         "Telefon",
@@ -649,7 +649,7 @@ if edit:
         ).date()
     )
 
-    new_checkin = st.date_input(
+    new_checkout = st.date_input(
         "Checkout",
         value=pd.to_datetime(
             booking["checkout_date"]
@@ -658,27 +658,33 @@ if edit:
 
     new_ankomst = st.text_input(
         "ankomst",
-        value=str(df_supabase.iloc[0]["ankomst"])
+        value=str(booking["ankomst"])
 
     )
 
     new_bed = st.text_input(
         "Bed",
-        value=str(df_supabase.iloc[0]["bed"])
+        value=str(booking["bed"])
     )
 
+    new_bed = st.text_input(
+        "room_number",
+        value=str(booking["room_number"])
+    )
     col1, col2 = st.columns(2)
 
     with col1:
         if st.button("Gem ændringer"):
             supabase.table("hammerknuden_dtb").update({
                 "booking_number": int(new_booking_number),
-                "email":new_email,
+                "email": new_email,
                 "telefon": new_phone,
                 "checkin_date": new_checkin.isoformat(),
                 "checkout_date": new_checkout.isoformat(),
                 "ankomst": new_ankomst,
                 "bed": new_bed
+                "room_number": room_number
+
             }).eq(
                 "id",
                 booking_id
