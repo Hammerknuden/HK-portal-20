@@ -615,11 +615,11 @@ if edit:
             use_container_width=True
         )
 
-    booking_lookup = df.set_index("id")
+    booking_lookup = df_supabase.set_index("id")
 
     booking_id = st.selectbox(
         "Vælg booking",
-        df["id"],
+        df_supabase["id"],
         format_func=lambda x: (
             f"Booking: {booking_lookup.loc[x, 'booking_number']} | "
             f"Værelse: {booking_lookup.loc[x, 'room_number']} | "
