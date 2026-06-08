@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="edit knap lavet til checkmark">
-      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="edit new col 1 for fejl søgning">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,22 +72,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00369" summary="supabase til opslag">
-      <option name="closed" value="true" />
-      <created>1780640669006</created>
-      <option name="number" value="00369" />
-      <option name="presentableId" value="LOCAL-00369" />
-      <option name="project" value="LOCAL" />
-      <updated>1780640669006</updated>
-    </task>
-    <task id="LOCAL-00370" summary="supabase til opslag">
-      <option name="closed" value="true" />
-      <created>1780641657971</created>
-      <option name="number" value="00370" />
-      <option name="presentableId" value="LOCAL-00370" />
-      <option name="project" value="LOCAL" />
-      <updated>1780641657971</updated>
     </task>
     <task id="LOCAL-00371" summary="supabase til opslag">
       <option name="closed" value="true" />
@@ -465,7 +449,23 @@
       <option name="project" value="LOCAL" />
       <updated>1780901901297</updated>
     </task>
-    <option name="localTasksCounter" value="418" />
+    <task id="LOCAL-00418" summary="edit new booking forviring">
+      <option name="closed" value="true" />
+      <created>1780902567591</created>
+      <option name="number" value="00418" />
+      <option name="presentableId" value="LOCAL-00418" />
+      <option name="project" value="LOCAL" />
+      <updated>1780902567591</updated>
+    </task>
+    <task id="LOCAL-00419" summary="edit new col 1 for fejl søgning">
+      <option name="closed" value="true" />
+      <created>1780902769874</created>
+      <option name="number" value="00419" />
+      <option name="presentableId" value="LOCAL-00419" />
+      <option name="project" value="LOCAL" />
+      <updated>1780902769874</updated>
+    </task>
+    <option name="localTasksCounter" value="420" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -491,8 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="timeline new editorial oprydning" />
-    <MESSAGE value="ændret 285 fra booking til id" />
     <MESSAGE value="ændret til booking_id" />
     <MESSAGE value="editorial many parameters" />
     <MESSAGE value="fjerner sessionstate fra layout" />
@@ -516,6 +514,8 @@
     <MESSAGE value="rettelser til gem funktionen mulig fejl" />
     <MESSAGE value="rettelser i gem opsætning tilføjet room_number" />
     <MESSAGE value="edit knap lavet til checkmark" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit knap lavet til checkmark" />
+    <MESSAGE value="edit new booking forviring" />
+    <MESSAGE value="edit new col 1 for fejl søgning" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit new col 1 for fejl søgning" />
   </component>
 </project>
