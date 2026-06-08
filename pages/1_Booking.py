@@ -667,7 +667,7 @@ if edit:
         value=str(booking["bed"])
     )
 
-    new_bed = st.text_input(
+    new_room_number = st.text_input(
         "room_number",
         value=str(booking["room_number"])
     )
