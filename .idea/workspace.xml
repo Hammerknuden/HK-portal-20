@@ -73,14 +73,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00371" summary="supabase til opslag">
-      <option name="closed" value="true" />
-      <created>1780641983048</created>
-      <option name="number" value="00371" />
-      <option name="presentableId" value="LOCAL-00371" />
-      <option name="project" value="LOCAL" />
-      <updated>1780641983049</updated>
-    </task>
     <task id="LOCAL-00372" summary="tilbage til sep søge kriterier">
       <option name="closed" value="true" />
       <created>1780642632765</created>
@@ -465,7 +457,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780902769874</updated>
     </task>
-    <option name="localTasksCounter" value="420" />
+    <task id="LOCAL-00420" summary="edit new col 1 for fejl søgning">
+      <option name="closed" value="true" />
+      <created>1780910153330</created>
+      <option name="number" value="00420" />
+      <option name="presentableId" value="LOCAL-00420" />
+      <option name="project" value="LOCAL" />
+      <updated>1780910153330</updated>
+    </task>
+    <option name="localTasksCounter" value="421" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

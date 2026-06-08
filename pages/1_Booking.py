@@ -678,6 +678,31 @@ if edit:
     with col1:
         if st.button("Gem ændringer"):
 
+            st.write("BUTTON TRYKKET")
+
+            try:
+
+                st.write("Valgt ID:", booking_id)
+
+                result = supabase.table("hammerknuden_dtb").update({
+                    "ankomst": new_ankomst
+                }).eq(
+                    "id",
+                    booking_id
+                ).execute()
+
+                st.write("UPDATE KØRT")
+                st.write(result.data)
+
+                st.success("Ændringer gemt")
+
+                # st.rerun()
+
+            except Exception as e:
+                st.error(f"Fejl: {e}")
+        with col1:
+        if st.button("Gem ændringer"):
+
             try:
                 st.write("Valgt ID:", booking_id)
 
