@@ -587,7 +587,8 @@ if send_data: #and booking_submitted:
         "morgenmad": BF,
         "pris": pristotal,
         "known": known,
-        "comments": comments
+        "comments": comments,
+        "room_number": 7
     }).execute()
 
     st.success("Booking gemt i Supabase")
