@@ -386,9 +386,10 @@ elif web == "FM":
     formatted_pristotal = f"{pristotal:.2f}".replace(".",",")
 else:
     rabat_a = 0
+    pristotal = prismed
     formatted_prismed = f"{prismed:.2f}".replace(".",",")
     formatted_pristotal = formatted_prismed
-    pristotal = prismed
+
     print(formatted_pristotal)
 st.markdown(f"**Den totale pris** {formatted_pristotal}kr".replace(".",","))
 

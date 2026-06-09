@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="booking direlte til room 7" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="booking com pris med = pris total fejlede for supabase">
+      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,14 +72,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00381" summary="dtb from booking data fjernet fra now">
-      <option name="closed" value="true" />
-      <created>1780688349387</created>
-      <option name="number" value="00381" />
-      <option name="presentableId" value="LOCAL-00381" />
-      <option name="project" value="LOCAL" />
-      <updated>1780688349387</updated>
     </task>
     <task id="LOCAL-00382" summary="rettelser til supabase return">
       <option name="closed" value="true" />
@@ -463,7 +457,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780982114404</updated>
     </task>
-    <option name="localTasksCounter" value="430" />
+    <task id="LOCAL-00430" summary="booking com pris med = pris total fejlede for supabase">
+      <option name="closed" value="true" />
+      <created>1780987567443</created>
+      <option name="number" value="00430" />
+      <option name="presentableId" value="LOCAL-00430" />
+      <option name="project" value="LOCAL" />
+      <updated>1780987567443</updated>
+    </task>
+    <option name="localTasksCounter" value="431" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -489,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="tilbage til sep søge kriterier" />
     <MESSAGE value="Status alle søge funktioner online med supabase" />
     <MESSAGE value="excel update" />
     <MESSAGE value="timeline opdateret til ny kalender" />
@@ -514,6 +515,7 @@
     <MESSAGE value="redigering af gem så den omfatter tidligere kolloner" />
     <MESSAGE value="workspase" />
     <MESSAGE value="booking direlte til room 7" />
-    <option name="LAST_COMMIT_MESSAGE" value="booking direlte til room 7" />
+    <MESSAGE value="booking com pris med = pris total fejlede for supabase" />
+    <option name="LAST_COMMIT_MESSAGE" value="booking com pris med = pris total fejlede for supabase" />
   </component>
 </project>
