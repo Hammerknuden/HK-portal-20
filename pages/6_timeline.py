@@ -278,13 +278,13 @@ try:
 except Exception as e:
     st.error(f"Fejl: {e}")
 
+
 def to_dt(x):
     return pd.to_datetime(x)
 
 # -------------------------
 # LOAD / SAVE
 # -------------------------
-
 
 def load_bookings():
     result = (
@@ -305,7 +305,7 @@ def load_bookings():
 # RESERVATION INFO
 # -------------------------
 df = load_bookings()
-#st.write(df.columns.tolist())
+st.write(df.columns.tolist())
 
 # -------------------------
 # CREATE BOOKING
