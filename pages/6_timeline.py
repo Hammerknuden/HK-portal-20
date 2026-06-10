@@ -6,6 +6,7 @@ import datetime
 import plotly.express as px
 from auth import require_login
 from common import init_session
+import re
 import os
 from dotenv import load_dotenv
 from supabase import create_client
@@ -491,7 +492,6 @@ if not df.empty:
     # -------------------------
     st.subheader("Administrer bookinger")
 
-
     booking_id = st.selectbox(
         "Vælg booking",
         df["id"],
@@ -503,12 +503,19 @@ if not df.empty:
 
     booking = df[df["id"] == booking_id].iloc[0]
 
-    room_number = int(
-        str(booking["room_number"]).split()[-1]
-    ) - 1
+    room_text = str(booking["room_number"])
+
+    match = re.search(r"(\d+)", room_text)
+
+    if match:
+        room_number = int(match.group(1)) - 1
+    else:
+        room_number = 0
+
+    room_number = max(0, min(room_number, 6))
 
     new_room = st.selectbox(
-        "edit room",
+        "Edit room",
         [f"room_number {i}" for i in range(1, 8)],
         index=room_number
     )
@@ -531,7 +538,6 @@ if not df.empty:
         "Rediger booking_number",
         value=str(booking["booking_number"])
     )
-
 
     col1, col2 = st.columns(2)
 
