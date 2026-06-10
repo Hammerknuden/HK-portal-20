@@ -273,7 +273,7 @@ if not df.empty:
 
     with col1:
 
-        if st.button("Gem ændringer"):
+        if st.button("Gem til lille dtb ",key="save old dtb"):
             supabase.table("bookings").update({
                 "room_number": new_room,
                 "checkin_date": new_start.isoformat(),
@@ -543,7 +543,7 @@ if not df.empty:
 
     with col1:
 
-        if st.button("Gem ændringer"):
+        if st.button("Gem ændringer",key="new_dtb"):
             supabase.table("hammerknuden_dtb").update({
                 "room_number": new_room,
                 "checkin_date": new_start.isoformat(),

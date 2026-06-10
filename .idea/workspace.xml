@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="rækkefølger ændre på begge dtb">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="stor oprydning i den nye dtb booking">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,14 +72,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00390" summary="mail sender to data mails">
-      <option name="closed" value="true" />
-      <created>1780729848276</created>
-      <option name="number" value="00390" />
-      <option name="presentableId" value="LOCAL-00390" />
-      <option name="project" value="LOCAL" />
-      <updated>1780729848276</updated>
     </task>
     <task id="LOCAL-00391" summary="expander moved">
       <option name="closed" value="true" />
@@ -466,7 +457,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781070708232</updated>
     </task>
-    <option name="localTasksCounter" value="439" />
+    <task id="LOCAL-00439" summary="stor oprydning i den nye dtb booking">
+      <option name="closed" value="true" />
+      <created>1781071829436</created>
+      <option name="number" value="00439" />
+      <option name="presentableId" value="LOCAL-00439" />
+      <option name="project" value="LOCAL" />
+      <updated>1781071829436</updated>
+    </task>
+    <option name="localTasksCounter" value="440" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -492,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="expander moved" />
     <MESSAGE value="hammerknuden redigering test kode" />
     <MESSAGE value="booking gem funktion i booking" />
     <MESSAGE value="gem funtion opdateret fra timeline" />
@@ -517,6 +515,7 @@
     <MESSAGE value="fault in sidebar lne 313 bookink form nyt navn new" />
     <MESSAGE value="ordning af række følge" />
     <MESSAGE value="rækkefølger ændre på begge dtb" />
-    <option name="LAST_COMMIT_MESSAGE" value="rækkefølger ændre på begge dtb" />
+    <MESSAGE value="stor oprydning i den nye dtb booking" />
+    <option name="LAST_COMMIT_MESSAGE" value="stor oprydning i den nye dtb booking" />
   </component>
 </project>
