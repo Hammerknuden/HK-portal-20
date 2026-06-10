@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="stor oprydning i den nye dtb booking">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="slet booking tildelt keys">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,22 +72,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00391" summary="expander moved">
-      <option name="closed" value="true" />
-      <created>1780760422246</created>
-      <option name="number" value="00391" />
-      <option name="presentableId" value="LOCAL-00391" />
-      <option name="project" value="LOCAL" />
-      <updated>1780760422246</updated>
-    </task>
-    <task id="LOCAL-00392" summary="hammerknuden redigering test kode">
-      <option name="closed" value="true" />
-      <created>1780777573667</created>
-      <option name="number" value="00392" />
-      <option name="presentableId" value="LOCAL-00392" />
-      <option name="project" value="LOCAL" />
-      <updated>1780777573667</updated>
     </task>
     <task id="LOCAL-00393" summary="hammerknuden redigering test kode">
       <option name="closed" value="true" />
@@ -465,7 +449,23 @@
       <option name="project" value="LOCAL" />
       <updated>1781071829436</updated>
     </task>
-    <option name="localTasksCounter" value="440" />
+    <task id="LOCAL-00440" summary="gem booking tildelt keys">
+      <option name="closed" value="true" />
+      <created>1781072872268</created>
+      <option name="number" value="00440" />
+      <option name="presentableId" value="LOCAL-00440" />
+      <option name="project" value="LOCAL" />
+      <updated>1781072872268</updated>
+    </task>
+    <task id="LOCAL-00441" summary="slet booking tildelt keys">
+      <option name="closed" value="true" />
+      <created>1781073043142</created>
+      <option name="number" value="00441" />
+      <option name="presentableId" value="LOCAL-00441" />
+      <option name="project" value="LOCAL" />
+      <updated>1781073043143</updated>
+    </task>
+    <option name="localTasksCounter" value="442" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -491,8 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="hammerknuden redigering test kode" />
-    <MESSAGE value="booking gem funktion i booking" />
     <MESSAGE value="gem funtion opdateret fra timeline" />
     <MESSAGE value="gem er delete opdateret med bedre søgning" />
     <MESSAGE value="flere rettelses felter" />
@@ -516,6 +514,8 @@
     <MESSAGE value="ordning af række følge" />
     <MESSAGE value="rækkefølger ændre på begge dtb" />
     <MESSAGE value="stor oprydning i den nye dtb booking" />
-    <option name="LAST_COMMIT_MESSAGE" value="stor oprydning i den nye dtb booking" />
+    <MESSAGE value="gem booking tildelt keys" />
+    <MESSAGE value="slet booking tildelt keys" />
+    <option name="LAST_COMMIT_MESSAGE" value="slet booking tildelt keys" />
   </component>
 </project>
