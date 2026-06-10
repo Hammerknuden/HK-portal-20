@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="slet booking tildelt keys">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="slet booking tildelt keys" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,14 +70,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00393" summary="hammerknuden redigering test kode">
-      <option name="closed" value="true" />
-      <created>1780777972953</created>
-      <option name="number" value="00393" />
-      <option name="presentableId" value="LOCAL-00393" />
-      <option name="project" value="LOCAL" />
-      <updated>1780777972953</updated>
     </task>
     <task id="LOCAL-00394" summary="hammerknuden redigering test kode">
       <option name="closed" value="true" />
@@ -465,7 +455,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781073043143</updated>
     </task>
-    <option name="localTasksCounter" value="442" />
+    <task id="LOCAL-00442" summary="slet booking tildelt keys">
+      <option name="closed" value="true" />
+      <created>1781073614576</created>
+      <option name="number" value="00442" />
+      <option name="presentableId" value="LOCAL-00442" />
+      <option name="project" value="LOCAL" />
+      <updated>1781073614576</updated>
+    </task>
+    <option name="localTasksCounter" value="443" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

@@ -441,6 +441,11 @@ if not df.empty:
     plot_df["checkin_date"] = pd.to_datetime(plot_df["checkin_date"])
     plot_df["checkout_date"] = pd.to_datetime(plot_df["checkout_date"])
 
+    st.write(
+        plot_df[
+            ["room_number", "room_sort", "booking_number"]
+        ].head(20)
+    )
     fig = px.timeline(
         plot_df,
         x_start="checkin_date",
