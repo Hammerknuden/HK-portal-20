@@ -446,6 +446,11 @@ if not df.empty:
             ["room_number", "room_sort", "booking_number"]
         ].head(20)
     )
+    st.write(
+        plot_df["room_number"]
+        .value_counts()
+        .sort_index()
+    )
     fig = px.timeline(
         plot_df,
         x_start="checkin_date",
