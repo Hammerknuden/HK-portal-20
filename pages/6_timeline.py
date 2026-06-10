@@ -310,7 +310,7 @@ st.write(df.columns.tolist())
 # -------------------------
 # CREATE BOOKING
 # -------------------------
-with st.sidebar.form("booking_form"):
+with st.sidebar.form("booking_form_new"):
 
     room = st.selectbox(
         "room_number",

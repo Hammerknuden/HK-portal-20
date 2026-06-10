@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="time line new database try copy of old">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fault in sidebar lne 313" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,14 +70,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00385" summary="rettelser til alle kollonner i navn både booking og timeline">
-      <option name="closed" value="true" />
-      <created>1780727617715</created>
-      <option name="number" value="00385" />
-      <option name="presentableId" value="LOCAL-00385" />
-      <option name="project" value="LOCAL" />
-      <updated>1780727617716</updated>
     </task>
     <task id="LOCAL-00386" summary="rettelser til alle kollonner i navn både booking og timeline">
       <option name="closed" value="true" />
@@ -465,7 +455,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781028294914</updated>
     </task>
-    <option name="localTasksCounter" value="434" />
+    <task id="LOCAL-00434" summary="fault in sidebar lne 313">
+      <option name="closed" value="true" />
+      <created>1781069004186</created>
+      <option name="number" value="00434" />
+      <option name="presentableId" value="LOCAL-00434" />
+      <option name="project" value="LOCAL" />
+      <updated>1781069004187</updated>
+    </task>
+    <option name="localTasksCounter" value="435" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -491,7 +489,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="dtb from booking data fjernet fra now" />
     <MESSAGE value="rettelser til supabase return" />
     <MESSAGE value="rettelser til alle kollonner i navn både booking og timeline" />
     <MESSAGE value="mail sender to data mails" />
@@ -516,6 +513,7 @@
     <MESSAGE value="excel update def pristotal for bc" />
     <MESSAGE value="edit ny web" />
     <MESSAGE value="time line new database try copy of old" />
-    <option name="LAST_COMMIT_MESSAGE" value="time line new database try copy of old" />
+    <MESSAGE value="fault in sidebar lne 313" />
+    <option name="LAST_COMMIT_MESSAGE" value="fault in sidebar lne 313" />
   </component>
 </project>
