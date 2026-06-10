@@ -139,6 +139,8 @@ with st.sidebar.form("booking_form"):
 st.subheader("Belægningsplan")
 
 if not df.empty:
+    df["room_number"] = pd.to_numeric(df["room_number"])
+    df = df.sort_values(by="room_number", ascending=True)
 
     plot_df = df.copy()
 
