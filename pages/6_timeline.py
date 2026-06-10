@@ -406,6 +406,37 @@ if not df.empty:
 
     plot_df = df.copy()
 
+    # Fjern tomme værelser
+    plot_df = plot_df[
+        plot_df["room_number"].notna()
+    ]
+
+    plot_df = plot_df[
+        plot_df["room_number"].astype(str).str.strip() != ""
+    ]
+
+    # Udtræk værelsesnummer til sortering
+    plot_df["room_sort"] = (
+        plot_df["room_number"]
+        .astype(str)
+        .str.extract(r"(\d+)", expand=False)
+    )
+
+    # Fjern rækker uden gyldigt værelsesnummer
+    plot_df = plot_df[
+        plot_df["room_sort"].notna()
+    ]
+
+    plot_df["room_sort"] = plot_df["room_sort"].astype(int)
+
+    # Fjern værelse 0
+    plot_df = plot_df[
+        plot_df["room_sort"] > 0
+    ]
+
+    # Sortér værelserne numerisk
+    plot_df = plot_df.sort_values("room_sort")
+
     plot_df["booking_number"] = plot_df["booking_number"].astype(str)
     plot_df["checkin_date"] = pd.to_datetime(plot_df["checkin_date"])
     plot_df["checkout_date"] = pd.to_datetime(plot_df["checkout_date"])
@@ -421,8 +452,19 @@ if not df.empty:
         color_discrete_sequence=px.colors.qualitative.Dark24
     )
 
+    # Tving rækkefølgen på værelserne
+    room_order = (
+        plot_df
+        .sort_values("room_sort")
+        ["room_number"]
+        .drop_duplicates()
+        .tolist()
+    )
+
     fig.update_yaxes(
-        autorange="reversed"
+        autorange="reversed",
+        categoryorder="array",
+        categoryarray=room_order
     )
 
     fig.update_layout(
