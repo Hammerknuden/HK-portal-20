@@ -471,7 +471,14 @@ if not df.empty:
         text="booking_number",
         color_discrete_sequence=px.colors.qualitative.Dark24
     )
-
+    if debug:
+        st.write(
+            sorted(
+                plot_df["room_number"]
+                .astype(str)
+                .unique()
+            )
+        )
     # Tving rækkefølgen på værelserne
     room_order = (
         plot_df

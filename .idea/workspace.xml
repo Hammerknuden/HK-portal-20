@@ -71,14 +71,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00414" summary="rettelser i gem opsætning tilføjet room_number">
-      <option name="closed" value="true" />
-      <created>1780901217042</created>
-      <option name="number" value="00414" />
-      <option name="presentableId" value="LOCAL-00414" />
-      <option name="project" value="LOCAL" />
-      <updated>1780901217043</updated>
-    </task>
     <task id="LOCAL-00415" summary="rettelser i gem opsætning tilføjet room_number">
       <option name="closed" value="true" />
       <created>1780901288892</created>
@@ -463,7 +455,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781161994079</updated>
     </task>
-    <option name="localTasksCounter" value="463" />
+    <task id="LOCAL-00463" summary="debug timeline old dtb">
+      <option name="closed" value="true" />
+      <created>1781162291779</created>
+      <option name="number" value="00463" />
+      <option name="presentableId" value="LOCAL-00463" />
+      <option name="project" value="LOCAL" />
+      <updated>1781162291779</updated>
+    </task>
+    <option name="localTasksCounter" value="464" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
