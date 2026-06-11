@@ -453,45 +453,21 @@ if not df.empty:
     debug = st.checkbox("Debug timeline")
 
     if debug:
-        st.write("Antal rækker:", len(plot_df))
+        if debug:
+            ...
+            # dine debug-visninger
 
-        st.write(
-            plot_df.groupby("booking_number")
-            .size()
-            .sort_values(ascending=False)
-            .head(20)
+        fig = px.timeline(
+            plot_df,
+            x_start="checkin_date",
+            x_end="checkout_date",
+            y="room_number",
+            color="booking_number",
+            hover_name="booking_number",
+            text="booking_number",
+            color_discrete_sequence=px.colors.qualitative.Dark24
         )
 
-        st.write("Room order:")
-
-        st.write(
-            plot_df[
-                plot_df["booking_number"].isin(["16", "36", "19"])
-            ][
-                [
-                    "id",
-                    "booking_number",
-                    "room_number",
-                    "checkin_date",
-                    "checkout_date"
-                ]
-            ]
-            .sort_values(["booking_number", "room_number"])
-        )
-
-        st.write(plot_df.dtypes)
-        st.write(df.dtypes)
-        st.write(df.head(5))
-        st.write(plot_df.columns.tolist())
-
-    st.write(
-        plot_df["room_number"]
-        .unique()
-    )
-    plot_df["room_number"] = (
-            "Værelse "
-            + plot_df["room_number"].astype(str)
-    )
     room_order = (
         plot_df
         .sort_values("room_sort")
@@ -499,32 +475,7 @@ if not df.empty:
         .drop_duplicates()
         .tolist()
     )
-    plot_df["room_number"] = (
-            "Værelse " +
-            plot_df["room_number"].astype(str)
-    )
 
-    st.write(plot_df["room_number"].unique())
-    st.write("UNIQUE:")
-    st.write(plot_df["room_number"].unique())
-
-    st.write("HEAD:")
-    st.write(
-        plot_df[
-            ["room_number", "booking_number"]
-        ].head(10)
-    )
-    st.write(
-        plot_df[
-            plot_df["booking_number"] == "20"
-            ][[
-            "id",
-            "booking_number",
-            "room_number",
-            "checkin_date",
-            "checkout_date"
-        ]]
-    )
     fig = px.timeline(
         plot_df,
         x_start="checkin_date",
