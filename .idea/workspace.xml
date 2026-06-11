@@ -71,14 +71,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00400" summary="gem er delete opdateret med bedre søgning">
-      <option name="closed" value="true" />
-      <created>1780859343853</created>
-      <option name="number" value="00400" />
-      <option name="presentableId" value="LOCAL-00400" />
-      <option name="project" value="LOCAL" />
-      <updated>1780859343853</updated>
-    </task>
     <task id="LOCAL-00401" summary="flere rettelses felter">
       <option name="closed" value="true" />
       <created>1780859685680</created>
@@ -463,7 +455,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781157653474</updated>
     </task>
-    <option name="localTasksCounter" value="449" />
+    <task id="LOCAL-00449" summary="debug timeline new dtb">
+      <option name="closed" value="true" />
+      <created>1781157982036</created>
+      <option name="number" value="00449" />
+      <option name="presentableId" value="LOCAL-00449" />
+      <option name="project" value="LOCAL" />
+      <updated>1781157982036</updated>
+    </task>
+    <option name="localTasksCounter" value="450" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
