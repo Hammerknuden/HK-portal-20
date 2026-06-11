@@ -454,7 +454,13 @@ if not df.empty:
 
     if debug:
         st.write("Antal rækker:", len(plot_df))
-
+    st.write(
+        df[
+            ["id",
+             "booking_number",
+             "room_number"]
+        ].head(20)
+    )
     fig = px.timeline(
         plot_df,
         x_start="checkin_date",
