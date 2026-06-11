@@ -454,40 +454,40 @@ if not df.empty:
 
     if debug:
         st.write("Antal rækker:", len(plot_df))
+
         st.write(
             plot_df.groupby("booking_number")
             .size()
             .sort_values(ascending=False)
             .head(20)
         )
-    plot_df["room_number"] = plot_df["room_number"].astype(str)
-    room_order = (
-        plot_df
-        .sort_values("room_sort")
-        ["room_number"]
-        .drop_duplicates()
-        .tolist()
-    )
 
-    st.write(room_order)
-    st.write(
-        plot_df[
-            plot_df["booking_number"].isin(["16", "36", "19"])
-        ][
-            [
-                "id",
-                "booking_number",
-                "room_number",
-                "checkin_date",
-                "checkout_date"
+        st.write("Room order:")
+
+        st.write(
+            plot_df[
+                plot_df["booking_number"].isin(["16", "36", "19"])
+            ][
+                [
+                    "id",
+                    "booking_number",
+                    "room_number",
+                    "checkin_date",
+                    "checkout_date"
+                ]
             ]
-        ]
-        .sort_values(["booking_number", "room_number"])
+            .sort_values(["booking_number", "room_number"])
+        )
+
+        st.write(plot_df.dtypes)
+        st.write(df.dtypes)
+        st.write(df.head(5))
+        st.write(plot_df.columns.tolist())
+
+    st.write(
+        plot_df["room_number"]
+        .unique()
     )
-    st.write(plot_df.dtypes)
-    st.write(df.dtypes)
-    st.write(df.head(5))
-    st.write(plot_df.columns.tolist())
     fig = px.timeline(
         plot_df,
         x_start="checkin_date",
