@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="slet booking tildelt keys">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="debug timeline new dtb">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,22 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00397" summary="gem funtion opdateret fra timeline">
-      <option name="closed" value="true" />
-      <created>1780848449648</created>
-      <option name="number" value="00397" />
-      <option name="presentableId" value="LOCAL-00397" />
-      <option name="project" value="LOCAL" />
-      <updated>1780848449648</updated>
-    </task>
-    <task id="LOCAL-00398" summary="gem funtion opdateret fra timeline">
-      <option name="closed" value="true" />
-      <created>1780848535160</created>
-      <option name="number" value="00398" />
-      <option name="presentableId" value="LOCAL-00398" />
-      <option name="project" value="LOCAL" />
-      <updated>1780848535160</updated>
     </task>
     <task id="LOCAL-00399" summary="gem er delete opdateret med bedre søgning">
       <option name="closed" value="true" />
@@ -465,7 +450,23 @@
       <option name="project" value="LOCAL" />
       <updated>1781074180300</updated>
     </task>
-    <option name="localTasksCounter" value="446" />
+    <task id="LOCAL-00446" summary="debug timeline new dtb">
+      <option name="closed" value="true" />
+      <created>1781156014116</created>
+      <option name="number" value="00446" />
+      <option name="presentableId" value="LOCAL-00446" />
+      <option name="project" value="LOCAL" />
+      <updated>1781156014116</updated>
+    </task>
+    <task id="LOCAL-00447" summary="debug timeline new dtb">
+      <option name="closed" value="true" />
+      <created>1781156248341</created>
+      <option name="number" value="00447" />
+      <option name="presentableId" value="LOCAL-00447" />
+      <option name="project" value="LOCAL" />
+      <updated>1781156248341</updated>
+    </task>
+    <option name="localTasksCounter" value="448" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -491,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="gem funtion opdateret fra timeline" />
     <MESSAGE value="gem er delete opdateret med bedre søgning" />
     <MESSAGE value="flere rettelses felter" />
     <MESSAGE value="burde virke perfekt har kun lavet indrykning" />
@@ -516,6 +516,7 @@
     <MESSAGE value="stor oprydning i den nye dtb booking" />
     <MESSAGE value="gem booking tildelt keys" />
     <MESSAGE value="slet booking tildelt keys" />
-    <option name="LAST_COMMIT_MESSAGE" value="slet booking tildelt keys" />
+    <MESSAGE value="debug timeline new dtb" />
+    <option name="LAST_COMMIT_MESSAGE" value="debug timeline new dtb" />
   </component>
 </project>

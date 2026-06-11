@@ -441,41 +441,17 @@ if not df.empty:
     plot_df["checkin_date"] = pd.to_datetime(plot_df["checkin_date"])
     plot_df["checkout_date"] = pd.to_datetime(plot_df["checkout_date"])
 
-    st.write(
-        plot_df[
-            ["room_number", "room_sort", "booking_number"]
-        ].head(20)
-    )
-    st.write(
-        plot_df["room_number"]
-        .value_counts()
-        .sort_index()
-    )
-    st.write(
-        plot_df[
-            ["booking_number", "room_number", "checkin_date", "checkout_date"]
-        ].head(30)
-    )
-    st.write(
-        plot_df.groupby("booking_number")
-        .size()
-        .sort_values(ascending=False)
-        .head(20)
-    )
-    st.write(
-        plot_df[
-            plot_df["booking_number"] == "16"
-            ][
-            [
-                "id",
-                "booking_number",
-                "room_number",
-                "checkin_date",
-                "checkout_date",
-                "navn"
-            ]
-        ]
-    )
+    debug = st.checkbox("Debug timeline")
+
+    if debug:
+        st.write("Antal rækker:", len(plot_df))
+        st.write(
+            plot_df.groupby("booking_number")
+            .size()
+            .sort_values(ascending=False)
+            .head(20)
+        )
+
     fig = px.timeline(
         plot_df,
         x_start="checkin_date",
