@@ -438,6 +438,11 @@ if not df.empty:
 
     plot_df["room_sort"] = plot_df["room_sort"].astype(int)
 
+    plot_df["room_number"] = (
+            "Værelse "
+            + plot_df["room_number"].astype(str)
+    )
+
     # Fjern værelse 0
     plot_df = plot_df[
         plot_df["room_sort"] > 0
