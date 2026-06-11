@@ -499,6 +499,12 @@ if not df.empty:
         .drop_duplicates()
         .tolist()
     )
+    plot_df["room_number"] = (
+            "Værelse " +
+            plot_df["room_number"].astype(str)
+    )
+
+    st.write(plot_df["room_number"].unique())
     fig = px.timeline(
         plot_df,
         x_start="checkin_date",
