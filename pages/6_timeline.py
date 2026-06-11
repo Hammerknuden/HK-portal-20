@@ -186,6 +186,7 @@ if not df.empty:
     )
     st.write(df.dtypes)
     st.write(df.head(5))
+    st.write(plot_df.columns.tolist())
     fig = px.timeline(
         plot_df,
         x_start="checkin_date",
@@ -486,6 +487,7 @@ if not df.empty:
     st.write(plot_df.dtypes)
     st.write(df.dtypes)
     st.write(df.head(5))
+    st.write(plot_df.columns.tolist())
     fig = px.timeline(
         plot_df,
         x_start="checkin_date",
