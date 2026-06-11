@@ -505,6 +505,15 @@ if not df.empty:
     )
 
     st.write(plot_df["room_number"].unique())
+    st.write("UNIQUE:")
+    st.write(plot_df["room_number"].unique())
+
+    st.write("HEAD:")
+    st.write(
+        plot_df[
+            ["room_number", "booking_number"]
+        ].head(10)
+    )
     fig = px.timeline(
         plot_df,
         x_start="checkin_date",
