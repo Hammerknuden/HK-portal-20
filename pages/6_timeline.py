@@ -184,6 +184,8 @@ if not df.empty:
         .sort_values(ascending=False)
         .head(20)
     )
+    st.write(df.dtypes)
+    st.write(df.head(5))
     fig = px.timeline(
         plot_df,
         x_start="checkin_date",
@@ -482,6 +484,8 @@ if not df.empty:
         .sort_values(["booking_number", "room_number"])
     )
     st.write(plot_df.dtypes)
+    st.write(df.dtypes)
+    st.write(df.head(5))
     fig = px.timeline(
         plot_df,
         x_start="checkin_date",
