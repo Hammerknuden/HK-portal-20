@@ -451,7 +451,16 @@ if not df.empty:
             .sort_values(ascending=False)
             .head(20)
         )
+    plot_df["room_number"] = plot_df["room_number"].astype(str)
+    room_order = (
+        plot_df
+        .sort_values("room_sort")
+        ["room_number"]
+        .drop_duplicates()
+        .tolist()
+    )
 
+    st.write(room_order)
     fig = px.timeline(
         plot_df,
         x_start="checkin_date",
