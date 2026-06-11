@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="debug timeline old dtb" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="debug nutraliseret">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,14 +72,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00417" summary="edit knap lavet til checkmark">
-      <option name="closed" value="true" />
-      <created>1780901901297</created>
-      <option name="number" value="00417" />
-      <option name="presentableId" value="LOCAL-00417" />
-      <option name="project" value="LOCAL" />
-      <updated>1780901901297</updated>
     </task>
     <task id="LOCAL-00418" summary="edit new booking forviring">
       <option name="closed" value="true" />
@@ -463,7 +457,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781162618033</updated>
     </task>
-    <option name="localTasksCounter" value="466" />
+    <task id="LOCAL-00466" summary="debug nutraliseret">
+      <option name="closed" value="true" />
+      <created>1781163299860</created>
+      <option name="number" value="00466" />
+      <option name="presentableId" value="LOCAL-00466" />
+      <option name="project" value="LOCAL" />
+      <updated>1781163299860</updated>
+    </task>
+    <option name="localTasksCounter" value="467" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -489,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="flere rettelses felter" />
     <MESSAGE value="burde virke perfekt har kun lavet indrykning" />
     <MESSAGE value="rettelser til gem funktionen mulig fejl ved checkout" />
     <MESSAGE value="rettelser til gem funktionen mulig fejl" />
@@ -514,6 +515,7 @@
     <MESSAGE value="slet booking tildelt keys" />
     <MESSAGE value="debug timeline new dtb" />
     <MESSAGE value="debug timeline old dtb" />
-    <option name="LAST_COMMIT_MESSAGE" value="debug timeline old dtb" />
+    <MESSAGE value="debug nutraliseret" />
+    <option name="LAST_COMMIT_MESSAGE" value="debug nutraliseret" />
   </component>
 </project>

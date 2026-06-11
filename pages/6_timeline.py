@@ -178,12 +178,12 @@ if not df.empty:
     plot_df["checkin_date"] = pd.to_datetime(plot_df["checkin_date"])
     plot_df["checkout_date"] = pd.to_datetime(plot_df["checkout_date"])
 
-    st.write(
-        df.groupby("booking_number")
-        .size()
-        .sort_values(ascending=False)
-        .head(20)
-    )
+    #st.write(
+    #    df.groupby("booking_number")
+    #    .size()
+    #    .sort_values(ascending=False)
+    #    .head(20)
+    #)
     #st.write(df.dtypes)
     #st.write(df.head(5))
     #st.write(plot_df.columns.tolist())
