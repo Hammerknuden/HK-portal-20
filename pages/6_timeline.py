@@ -184,9 +184,9 @@ if not df.empty:
         .sort_values(ascending=False)
         .head(20)
     )
-    st.write(df.dtypes)
-    st.write(df.head(5))
-    st.write(plot_df.columns.tolist())
+    #st.write(df.dtypes)
+    #st.write(df.head(5))
+    #st.write(plot_df.columns.tolist())
     fig = px.timeline(
         plot_df,
         x_start="checkin_date",
@@ -355,7 +355,7 @@ def load_bookings():
 # RESERVATION INFO
 # -------------------------
 df = load_bookings()
-st.write(df.columns.tolist())
+#st.write(df.columns.tolist())
 
 # -------------------------
 # CREATE BOOKING
@@ -459,13 +459,21 @@ if not df.empty:
 
     if debug:
         st.write("Antal rækker:", len(plot_df))
-    st.write(
-        df[
-            ["id",
-             "booking_number",
-             "room_number"]
-        ].head(20)
-    )
+        st.write(
+            df[
+                ["id",
+                "booking_number",
+                "room_number"]
+            ].head(20)
+        )
+        st.write(
+            sorted(
+                plot_df["room_number"]
+                .astype(str)
+                .unique()
+            )
+        )
+
     fig = px.timeline(
         plot_df,
         x_start="checkin_date",
@@ -476,14 +484,7 @@ if not df.empty:
         text="booking_number",
         color_discrete_sequence=px.colors.qualitative.Dark24
     )
-    if debug:
-        st.write(
-            sorted(
-                plot_df["room_number"]
-                .astype(str)
-                .unique()
-            )
-        )
+
     # Tving rækkefølgen på værelserne
     room_order = (
         plot_df
