@@ -515,8 +515,11 @@ if not df.empty:
         "Vælg booking",
         df["id"],
         format_func=lambda x: (
-            f"{df[df['id'] == x].iloc[0]['booking_number']} - "
-            f"{df[df['id'] == x].iloc[0]['room_number']}"
+            f"Booking {df[df['id'] == x].iloc[0]['booking_number']} | "
+            f"Værelse {df[df['id'] == x].iloc[0]['room_number']}"
+            if pd.notna(df[df['id'] == x].iloc[0]['room_number'])
+               and str(df[df['id'] == x].iloc[0]['room_number']).strip() != ""
+            else f"Booking {df[df['id'] == x].iloc[0]['booking_number']} | Ikke tildelt"
         )
     )
 

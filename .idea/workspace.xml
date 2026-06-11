@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="debug timeline old dtb">
-      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="debug timeline old dtb" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,22 +70,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00412" summary="rettelser til gem funktionen mulig fejl ved checkout">
-      <option name="closed" value="true" />
-      <created>1780862237093</created>
-      <option name="number" value="00412" />
-      <option name="presentableId" value="LOCAL-00412" />
-      <option name="project" value="LOCAL" />
-      <updated>1780862237093</updated>
-    </task>
-    <task id="LOCAL-00413" summary="rettelser til gem funktionen mulig fejl">
-      <option name="closed" value="true" />
-      <created>1780862807042</created>
-      <option name="number" value="00413" />
-      <option name="presentableId" value="LOCAL-00413" />
-      <option name="project" value="LOCAL" />
-      <updated>1780862807042</updated>
     </task>
     <task id="LOCAL-00414" summary="rettelser i gem opsætning tilføjet room_number">
       <option name="closed" value="true" />
@@ -465,7 +447,23 @@
       <option name="project" value="LOCAL" />
       <updated>1781161176766</updated>
     </task>
-    <option name="localTasksCounter" value="461" />
+    <task id="LOCAL-00461" summary="debug timeline old dtb">
+      <option name="closed" value="true" />
+      <created>1781161772035</created>
+      <option name="number" value="00461" />
+      <option name="presentableId" value="LOCAL-00461" />
+      <option name="project" value="LOCAL" />
+      <updated>1781161772035</updated>
+    </task>
+    <task id="LOCAL-00462" summary="debug timeline old dtb">
+      <option name="closed" value="true" />
+      <created>1781161994079</created>
+      <option name="number" value="00462" />
+      <option name="presentableId" value="LOCAL-00462" />
+      <option name="project" value="LOCAL" />
+      <updated>1781161994079</updated>
+    </task>
+    <option name="localTasksCounter" value="463" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
