@@ -456,6 +456,12 @@ if not df.empty:
             ["booking_number", "room_number", "checkin_date", "checkout_date"]
         ].head(30)
     )
+    st.write(
+        plot_df.groupby("booking_number")
+        .size()
+        .sort_values(ascending=False)
+        .head(20)
+    )
     fig = px.timeline(
         plot_df,
         x_start="checkin_date",
