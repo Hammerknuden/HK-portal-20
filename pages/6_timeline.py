@@ -453,28 +453,7 @@ if not df.empty:
     debug = st.checkbox("Debug timeline")
 
     if debug:
-        if debug:
-            ...
-            # dine debug-visninger
-
-        fig = px.timeline(
-            plot_df,
-            x_start="checkin_date",
-            x_end="checkout_date",
-            y="room_number",
-            color="booking_number",
-            hover_name="booking_number",
-            text="booking_number",
-            color_discrete_sequence=px.colors.qualitative.Dark24
-        )
-
-    room_order = (
-        plot_df
-        .sort_values("room_sort")
-        ["room_number"]
-        .drop_duplicates()
-        .tolist()
-    )
+        st.write("Antal rækker:", len(plot_df))
 
     fig = px.timeline(
         plot_df,
