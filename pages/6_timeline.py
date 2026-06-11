@@ -462,6 +462,20 @@ if not df.empty:
         .sort_values(ascending=False)
         .head(20)
     )
+    st.write(
+        plot_df[
+            plot_df["booking_number"] == "16"
+            ][
+            [
+                "id",
+                "booking_number",
+                "room_number",
+                "checkin_date",
+                "checkout_date",
+                "navn"
+            ]
+        ]
+    )
     fig = px.timeline(
         plot_df,
         x_start="checkin_date",
