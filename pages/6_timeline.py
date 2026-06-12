@@ -36,26 +36,6 @@ except Exception as e:
     st.error(f"Fejl: {e}")
 
 
-name = st.session_state.get("reservation_name")
-
-if name:
-    booking_number = st.session_state.get("reservation_number")
-    name = st.session_state.get("reservation_name", "")
-    checkin_date = st.session_state.get("reservation_checkin_date")
-    checkout_date = st.session_state.get("reservation_checkout_date")
-
-    st.write("BOOKING FUNDET")
-
-    st.text(
-        f"Booking nummer {booking_number} - "
-        f"{name} - "
-        f"{checkin_date} til {checkout_date}"
-    )
-
-else:
-    st.text("Ingen bookinger i session")
-
-
 def to_dt(x):
     return pd.to_datetime(x)
 

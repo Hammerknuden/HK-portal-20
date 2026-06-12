@@ -73,14 +73,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00418" summary="edit new booking forviring">
-      <option name="closed" value="true" />
-      <created>1780902567591</created>
-      <option name="number" value="00418" />
-      <option name="presentableId" value="LOCAL-00418" />
-      <option name="project" value="LOCAL" />
-      <updated>1780902567591</updated>
-    </task>
     <task id="LOCAL-00419" summary="edit new col 1 for fejl søgning">
       <option name="closed" value="true" />
       <created>1780902769874</created>
@@ -465,7 +457,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781163299860</updated>
     </task>
-    <option name="localTasksCounter" value="467" />
+    <task id="LOCAL-00467" summary="debug nutraliseret">
+      <option name="closed" value="true" />
+      <created>1781164037766</created>
+      <option name="number" value="00467" />
+      <option name="presentableId" value="LOCAL-00467" />
+      <option name="project" value="LOCAL" />
+      <updated>1781164037767</updated>
+    </task>
+    <option name="localTasksCounter" value="468" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
