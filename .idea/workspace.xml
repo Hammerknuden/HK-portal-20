@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="debug nutraliseret">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="sessionstate fjernet fra indledning imeline">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,14 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00419" summary="edit new col 1 for fejl søgning">
-      <option name="closed" value="true" />
-      <created>1780902769874</created>
-      <option name="number" value="00419" />
-      <option name="presentableId" value="LOCAL-00419" />
-      <option name="project" value="LOCAL" />
-      <updated>1780902769874</updated>
     </task>
     <task id="LOCAL-00420" summary="edit new col 1 for fejl søgning">
       <option name="closed" value="true" />
@@ -465,7 +458,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781164037767</updated>
     </task>
-    <option name="localTasksCounter" value="468" />
+    <task id="LOCAL-00468" summary="sessionstate fjernet fra indledning imeline">
+      <option name="closed" value="true" />
+      <created>1781245157161</created>
+      <option name="number" value="00468" />
+      <option name="presentableId" value="LOCAL-00468" />
+      <option name="project" value="LOCAL" />
+      <updated>1781245157162</updated>
+    </task>
+    <option name="localTasksCounter" value="469" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -491,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="burde virke perfekt har kun lavet indrykning" />
     <MESSAGE value="rettelser til gem funktionen mulig fejl ved checkout" />
     <MESSAGE value="rettelser til gem funktionen mulig fejl" />
     <MESSAGE value="rettelser i gem opsætning tilføjet room_number" />
@@ -516,6 +516,18 @@
     <MESSAGE value="debug timeline new dtb" />
     <MESSAGE value="debug timeline old dtb" />
     <MESSAGE value="debug nutraliseret" />
-    <option name="LAST_COMMIT_MESSAGE" value="debug nutraliseret" />
+    <MESSAGE value="sessionstate fjernet fra indledning imeline" />
+    <option name="LAST_COMMIT_MESSAGE" value="sessionstate fjernet fra indledning imeline" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/pages/6_timeline.py</url>
+          <line>70</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -27,7 +27,7 @@ require_login()
 if not st.session_state.get("authentication_status"):
     st.stop()
 
-st.text("version 2.0.1")
+st.text("version 2.1.1")
 st.image("logo2.jpg")
 
 st.success(f"Velkommen {st.session_state.get('username')} 👋")

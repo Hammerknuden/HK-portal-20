@@ -371,20 +371,58 @@ with st.sidebar.form("booking_form_new"):
 
             try:
 
-                supabase.table("hammerknuden_dtb").insert({
-                    "room_number": room,
-                    "checkin_date": start_date.isoformat(),
-                    "checkout_date": end_date.isoformat(),
-                    "booking_number": int(name)
-                }).execute()
+                # Find eksisterende bookinger på samme værelse
+                existing = (
+                    supabase
+                    .table("hammerknuden_dtb")
+                    .select("*")
+                    .eq("room_number", room)
+                    .execute()
+                )
 
-                st.success("Booking gemt")
+                overlap = False
 
-                st.rerun()
+                for booking in existing.data:
+
+                    existing_checkin = pd.to_datetime(
+                        booking["checkin_date"]
+                    ).date()
+
+                    existing_checkout = pd.to_datetime(
+                        booking["checkout_date"]
+                    ).date()
+
+                    if (
+                            existing_checkin < end_date
+                            and
+                            existing_checkout > start_date
+                    ):
+                        overlap = True
+                        break
+
+                if overlap:
+
+                    st.error(
+                        f"Værelset er allerede booket "
+                        f"fra {existing_checkin} til {existing_checkout}"
+                    )
+
+                else:
+
+                    supabase.table("hammerknuden_dtb").insert({
+                        "room_number": room,
+                        "checkin_date": start_date.isoformat(),
+                        "checkout_date": end_date.isoformat(),
+                        "booking_number": int(name)
+                    }).execute()
+
+                    st.success("Booking gemt")
+                    st.rerun()
 
             except Exception as e:
 
                 st.error(f"Fejl ved gemning: {e}")
+
 
 # -------------------------
 # TIMELINE
