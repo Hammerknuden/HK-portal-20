@@ -426,7 +426,7 @@ with st.sidebar.form("booking_form_new"):
 
                     st.write("Ny booking i DB:")
                     st.write(result.data)
-                    st.rerun()
+                    #st.rerun()
 
             except Exception as e:
 
