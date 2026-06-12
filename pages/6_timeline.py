@@ -341,10 +341,9 @@ df = load_bookings()
 # CREATE BOOKING
 # -------------------------
 with st.sidebar.form("booking_form_new"):
-
     room = st.selectbox(
         "room_number",
-        [f"room_number {i}" for i in range(1, 8)]
+        [str(i) for i in range(1, 8)]
     )
 
     start_date = st.date_input(

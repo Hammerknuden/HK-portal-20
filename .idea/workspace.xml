@@ -71,14 +71,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00421" summary="edit new col 1 for fejl søgning">
-      <option name="closed" value="true" />
-      <created>1780913869369</created>
-      <option name="number" value="00421" />
-      <option name="presentableId" value="LOCAL-00421" />
-      <option name="project" value="LOCAL" />
-      <updated>1780913869369</updated>
-    </task>
     <task id="LOCAL-00422" summary="edit new col 1 for fejl søgning">
       <option name="closed" value="true" />
       <created>1780914426496</created>
@@ -463,7 +455,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781246509167</updated>
     </task>
-    <option name="localTasksCounter" value="470" />
+    <task id="LOCAL-00470" summary="check for dobb bookinger i timeline">
+      <option name="closed" value="true" />
+      <created>1781247212996</created>
+      <option name="number" value="00470" />
+      <option name="presentableId" value="LOCAL-00470" />
+      <option name="project" value="LOCAL" />
+      <updated>1781247212996</updated>
+    </task>
+    <option name="localTasksCounter" value="471" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
