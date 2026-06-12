@@ -591,7 +591,7 @@ if not df.empty:
         "Rediger booking_number",
         value=str(booking["booking_number"])
     )
-
+    st.write(df["room_number"].value_counts())
     col1, col2 = st.columns(2)
 
     with col1:

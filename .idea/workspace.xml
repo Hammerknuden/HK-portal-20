@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="sessionstate fjernet fra indledning imeline">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="check for dobb bookinger i timeline" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,14 +70,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00420" summary="edit new col 1 for fejl søgning">
-      <option name="closed" value="true" />
-      <created>1780910153330</created>
-      <option name="number" value="00420" />
-      <option name="presentableId" value="LOCAL-00420" />
-      <option name="project" value="LOCAL" />
-      <updated>1780910153330</updated>
     </task>
     <task id="LOCAL-00421" summary="edit new col 1 for fejl søgning">
       <option name="closed" value="true" />
@@ -466,7 +455,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781245157162</updated>
     </task>
-    <option name="localTasksCounter" value="469" />
+    <task id="LOCAL-00469" summary="check for dobb bookinger i timeline">
+      <option name="closed" value="true" />
+      <created>1781246509167</created>
+      <option name="number" value="00469" />
+      <option name="presentableId" value="LOCAL-00469" />
+      <option name="project" value="LOCAL" />
+      <updated>1781246509167</updated>
+    </task>
+    <option name="localTasksCounter" value="470" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -492,7 +489,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="rettelser til gem funktionen mulig fejl ved checkout" />
     <MESSAGE value="rettelser til gem funktionen mulig fejl" />
     <MESSAGE value="rettelser i gem opsætning tilføjet room_number" />
     <MESSAGE value="edit knap lavet til checkmark" />
@@ -517,7 +513,8 @@
     <MESSAGE value="debug timeline old dtb" />
     <MESSAGE value="debug nutraliseret" />
     <MESSAGE value="sessionstate fjernet fra indledning imeline" />
-    <option name="LAST_COMMIT_MESSAGE" value="sessionstate fjernet fra indledning imeline" />
+    <MESSAGE value="check for dobb bookinger i timeline" />
+    <option name="LAST_COMMIT_MESSAGE" value="check for dobb bookinger i timeline" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
