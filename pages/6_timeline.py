@@ -416,6 +416,16 @@ with st.sidebar.form("booking_form_new"):
                     }).execute()
 
                     st.success("Booking gemt")
+                    result = (
+                        supabase
+                        .table("hammerknuden_dtb")
+                        .select("*")
+                        .eq("booking_number", int(name))
+                        .execute()
+                    )
+
+                    st.write("Ny booking i DB:")
+                    st.write(result.data)
                     st.rerun()
 
             except Exception as e:
