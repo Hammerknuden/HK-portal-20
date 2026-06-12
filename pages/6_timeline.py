@@ -158,15 +158,6 @@ if not df.empty:
     plot_df["checkin_date"] = pd.to_datetime(plot_df["checkin_date"])
     plot_df["checkout_date"] = pd.to_datetime(plot_df["checkout_date"])
 
-    #st.write(
-    #    df.groupby("booking_number")
-    #    .size()
-    #    .sort_values(ascending=False)
-    #    .head(20)
-    #)
-    #st.write(df.dtypes)
-    #st.write(df.head(5))
-    #st.write(plot_df.columns.tolist())
     fig = px.timeline(
         plot_df,
         x_start="checkin_date",
@@ -486,19 +477,33 @@ if not df.empty:
 
     if debug:
         st.write("Antal rækker:", len(plot_df))
+
         st.write(
             df[
                 ["id",
-                "booking_number",
-                "room_number"]
+                 "booking_number",
+                 "room_number"]
             ].head(20)
         )
+
         st.write(
+            "Unikke værelser:",
             sorted(
                 plot_df["room_number"]
                 .astype(str)
                 .unique()
             )
+        )
+
+        st.write(
+            "Seneste bookinger:"
+        )
+
+        st.dataframe(
+            df.sort_values(
+                "id",
+                ascending=False
+            ).head(10)
         )
 
     fig = px.timeline(
@@ -600,7 +605,7 @@ if not df.empty:
         "Rediger booking_number",
         value=str(booking["booking_number"])
     )
-    st.write(df["room_number"].value_counts())
+
     col1, col2 = st.columns(2)
 
     with col1:
