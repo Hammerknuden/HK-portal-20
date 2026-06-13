@@ -555,6 +555,16 @@ if not df.empty:
     # -------------------------
     # EDIT BOOKINGS
     # -------------------------
+    def room_label(room):
+        if pd.isna(room) or str(room).strip() == "":
+            return "Ikke tildelt"
+
+        try:
+            return f"Værelse {int(float(room))}"
+        except:
+            return f"Værelse {room}"
+
+
     st.subheader("Administrer bookinger")
 
     booking_id = st.selectbox(
@@ -562,10 +572,7 @@ if not df.empty:
         df["id"],
         format_func=lambda x: (
             f"Booking {df[df['id'] == x].iloc[0]['booking_number']} | "
-            f"Værelse {df[df['id'] == x].iloc[0]['room_number']}"
-            if pd.notna(df[df['id'] == x].iloc[0]['room_number'])
-               and str(df[df['id'] == x].iloc[0]['room_number']).strip() != ""
-            else f"Booking {df[df['id'] == x].iloc[0]['booking_number']} | Ikke tildelt"
+            f"{room_label(df[df['id'] == x].iloc[0]['room_number'])}"
         )
     )
 
@@ -582,9 +589,11 @@ if not df.empty:
 
     room_number = max(0, min(room_number, 6))
 
+    room_options = [1, 2, 3, 4, 5, 6, 7]
+
     new_room = st.selectbox(
         "Edit room",
-        [f"room_number {i}" for i in range(1, 8)],
+        room_options,
         index=room_number
     )
 
