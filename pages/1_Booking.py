@@ -568,7 +568,7 @@ if send_data: #and booking_submitted:
 
 
     # Gem booking i Supabase
-    supabase.table("hammerknuden_dtb").insert({
+    supabase.table("hk_dtb").insert({
         "booking_number": booking_number,
         "navn": name,
         "checkin_date": checkin_date.isoformat(),
@@ -605,7 +605,7 @@ if edit:
     with st.expander("Se alle bookinger"):
         result = (
             supabase
-            .table("hammerknuden_dtb")
+            .table("hk_dtb")
             .select("*")
             .execute()
         )
@@ -688,7 +688,7 @@ if edit:
             try:
                 result = (
                     supabase
-                    .table("hammerknuden_dtb")
+                    .table("hk_dtb")
                     .update({
                         "booking_number": new_booking_number,
                         "email": new_email,
@@ -715,7 +715,7 @@ if edit:
     with col2:
 
         if st.button("Slet booking"):
-            supabase.table("hammerknuden_dtb").delete().eq(
+            supabase.table("hk_dtb").delete().eq(
                 "id",
                 booking_id
             ).execute()

@@ -291,7 +291,7 @@ else:
 #####
 
 try:
-    result = supabase.table("hammerknuden_dtb").select("*").limit(1).execute()
+    result = supabase.table("hk_dtb").select("*").limit(1).execute()
 
     st.success("Forbindelse OK")
     #st.write(result.data)
@@ -310,7 +310,7 @@ def to_dt(x):
 def load_bookings():
     result = (
         supabase
-        .table("hammerknuden_dtb")
+        .table("hk_dtb")
         .select("*")
         .execute()
     )
@@ -364,7 +364,7 @@ with st.sidebar.form("booking_form_new"):
                 # Find eksisterende bookinger på samme værelse
                 existing = (
                     supabase
-                    .table("hammerknuden_dtb")
+                    .table("hk_dtb")
                     .select("*")
                     .eq("room_number", room)
                     .execute()
@@ -399,7 +399,7 @@ with st.sidebar.form("booking_form_new"):
 
                 else:
 
-                    supabase.table("hammerknuden_dtb").insert({
+                    supabase.table("hk_dtb").insert({
                         "room_number": room,
                         "checkin_date": start_date.isoformat(),
                         "checkout_date": end_date.isoformat(),
@@ -409,7 +409,7 @@ with st.sidebar.form("booking_form_new"):
                     st.success("Booking gemt")
                     result = (
                         supabase
-                        .table("hammerknuden_dtb")
+                        .table("hk_dtb")
                         .select("*")
                         .eq("booking_number", int(name))
                         .execute()
@@ -611,7 +611,7 @@ if not df.empty:
     with col1:
 
         if st.button("Gem ændringer",key="new_dtb"):
-            supabase.table("hammerknuden_dtb").update({
+            supabase.table("hk_dtb").update({
                 "room_number": new_room,
                 "checkin_date": new_start.isoformat(),
                 "checkout_date": new_end.isoformat(),
@@ -624,7 +624,7 @@ if not df.empty:
     with col2:
 
         if st.button("Slet booking", key="new dtb"):
-            supabase.table("hammerknuden_dtb").delete().eq(
+            supabase.table("hk_dtb").delete().eq(
                 "id",
                 booking_id
             ).execute()
