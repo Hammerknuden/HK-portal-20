@@ -307,6 +307,7 @@ def to_dt(x):
 # LOAD / SAVE
 # -------------------------
 
+
 def load_bookings():
     result = (
         supabase
@@ -610,7 +611,7 @@ if not df.empty:
 
     with col1:
 
-        if st.button("Gem ændringer",key="new_dtb"):
+        if st.button("Gem ændringer", key="new_dtb"):
             supabase.table("hk_dtb").update({
                 "room_number": new_room,
                 "checkin_date": new_start.isoformat(),
