@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="new database hk dtb implem fault in gem">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ændringer i st selectboks for rum nummer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,14 +72,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00429" summary="booking direlte til room 7">
-      <option name="closed" value="true" />
-      <created>1780982114404</created>
-      <option name="number" value="00429" />
-      <option name="presentableId" value="LOCAL-00429" />
-      <option name="project" value="LOCAL" />
-      <updated>1780982114404</updated>
     </task>
     <task id="LOCAL-00430" summary="booking com pris med = pris total fejlede for supabase">
       <option name="closed" value="true" />
@@ -466,7 +457,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781348817984</updated>
     </task>
-    <option name="localTasksCounter" value="478" />
+    <task id="LOCAL-00478" summary="ændringer i st selectboks for rum nummer">
+      <option name="closed" value="true" />
+      <created>1781361583658</created>
+      <option name="number" value="00478" />
+      <option name="presentableId" value="LOCAL-00478" />
+      <option name="project" value="LOCAL" />
+      <updated>1781361583658</updated>
+    </task>
+    <option name="localTasksCounter" value="479" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -492,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ny søgning i booking presentation" />
     <MESSAGE value="redigering af gem så den omfatter tidligere kolloner" />
     <MESSAGE value="workspase" />
     <MESSAGE value="booking direlte til room 7" />
@@ -517,6 +515,7 @@
     <MESSAGE value="excel update" />
     <MESSAGE value="new database hk dtb implem" />
     <MESSAGE value="new database hk dtb implem fault in gem" />
-    <option name="LAST_COMMIT_MESSAGE" value="new database hk dtb implem fault in gem" />
+    <MESSAGE value="ændringer i st selectboks for rum nummer" />
+    <option name="LAST_COMMIT_MESSAGE" value="ændringer i st selectboks for rum nummer" />
   </component>
 </project>
