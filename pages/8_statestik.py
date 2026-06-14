@@ -24,7 +24,27 @@ supabase = create_client(
 )
 
 try:
-    result = supabase.table("hk_dtb").select("*").limit(1).execute()
+
+    all_rows = []
+    offset = 0
+    page_size = 1000
+
+    while True:
+        response = (
+            supabase.table("hk_dtb")
+            .select("*")
+            .range(offset, offset + page_size - 1)
+            .execute()
+        )
+
+        if not response.data:
+            break
+
+        all_rows.extend(response.data)
+        offset += page_size
+
+    df = pd.DataFrame(all_rows)
+
 
     st.success("Forbindelse OK")
     #st.write(result.data)

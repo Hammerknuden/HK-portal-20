@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="danmarks staestik">
-      <change beforePath="$PROJECT_DIR$/pages/8_statestik.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/8_statestik.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="danmarks staestik" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,30 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00439" summary="stor oprydning i den nye dtb booking">
-      <option name="closed" value="true" />
-      <created>1781071829436</created>
-      <option name="number" value="00439" />
-      <option name="presentableId" value="LOCAL-00439" />
-      <option name="project" value="LOCAL" />
-      <updated>1781071829436</updated>
-    </task>
-    <task id="LOCAL-00440" summary="gem booking tildelt keys">
-      <option name="closed" value="true" />
-      <created>1781072872268</created>
-      <option name="number" value="00440" />
-      <option name="presentableId" value="LOCAL-00440" />
-      <option name="project" value="LOCAL" />
-      <updated>1781072872268</updated>
-    </task>
-    <task id="LOCAL-00441" summary="slet booking tildelt keys">
-      <option name="closed" value="true" />
-      <created>1781073043142</created>
-      <option name="number" value="00441" />
-      <option name="presentableId" value="LOCAL-00441" />
-      <option name="project" value="LOCAL" />
-      <updated>1781073043143</updated>
     </task>
     <task id="LOCAL-00442" summary="slet booking tildelt keys">
       <option name="closed" value="true" />
@@ -466,7 +440,31 @@
       <option name="project" value="LOCAL" />
       <updated>1781423911602</updated>
     </task>
-    <option name="localTasksCounter" value="488" />
+    <task id="LOCAL-00488" summary="danmarks staestik">
+      <option name="closed" value="true" />
+      <created>1781424132479</created>
+      <option name="number" value="00488" />
+      <option name="presentableId" value="LOCAL-00488" />
+      <option name="project" value="LOCAL" />
+      <updated>1781424132480</updated>
+    </task>
+    <task id="LOCAL-00489" summary="danmarks staestik">
+      <option name="closed" value="true" />
+      <created>1781424185307</created>
+      <option name="number" value="00489" />
+      <option name="presentableId" value="LOCAL-00489" />
+      <option name="project" value="LOCAL" />
+      <updated>1781424185307</updated>
+    </task>
+    <task id="LOCAL-00490" summary="danmarks staestik">
+      <option name="closed" value="true" />
+      <created>1781424216988</created>
+      <option name="number" value="00490" />
+      <option name="presentableId" value="LOCAL-00490" />
+      <option name="project" value="LOCAL" />
+      <updated>1781424216988</updated>
+    </task>
+    <option name="localTasksCounter" value="491" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
