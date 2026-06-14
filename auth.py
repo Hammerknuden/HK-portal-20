@@ -26,6 +26,17 @@ authenticator = stauth.Authenticate(
 
 
 def require_login():
+
+    defaults = {
+        "authentication_status": None,
+        "name": None,
+        "username": None,
+        "logout": False,
+    }
+
+    for key, value in defaults.items():
+        st.session_state.setdefault(key, value)
+
     authenticator.login(location="main")
 
     status = st.session_state.get("authentication_status")
@@ -38,7 +49,21 @@ def require_login():
         st.error("Forkert login")
         st.stop()
 
-    authenticator.logout('Logout', 'sidebar')
+    authenticator.logout("Logout", "sidebar")
+#def require_login():
+#    authenticator.login(location="main")
+
+#    status = st.session_state.get("authentication_status")
+
+#    if status is None:
+#        st.info("Indtast brugernavn og kode")
+#        st.stop()
+
+#    if status is False:
+#        st.error("Forkert login")
+#        st.stop()
+
+#    authenticator.logout('Logout', 'sidebar')
 
 
 def require_admin():
