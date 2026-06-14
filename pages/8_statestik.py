@@ -83,7 +83,22 @@ sortering = {
     "NL": 5,
     "ANDRE": 6
 }
+hovedlande = ["DK", "D", "S", "N", "NL"]
 
+stats["nation"] = stats["nation"].fillna("").str.upper()
+
+stats["gruppe"] = stats["nation"].apply(
+    lambda x: x if x in hovedlande else "ANDRE"
+)
+
+rapport = (
+    stats.groupby("gruppe")
+         .agg({
+             "ankomster": "sum",
+             "overnatninger": "sum"
+         })
+         .reset_index()
+)
 rapport["sort"] = rapport["gruppe"].map(sortering)
 rapport = rapport.sort_values("sort").drop(columns="sort")
 
