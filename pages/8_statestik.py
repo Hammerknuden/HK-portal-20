@@ -27,12 +27,12 @@ try:
     result = supabase.table("hk_dtb").select("*").limit(1).execute()
 
     st.success("Forbindelse OK")
-    st.write(result.data)
+    #st.write(result.data)
 
 except Exception as e:
     st.error(f"Fejl: {e}")
 
-#df = pd.DataFrame(result.data)
+df = pd.DataFrame(result.data)
 
 # Beregn antal nætter
 df["checkin_date"] = pd.to_datetime(df["checkin_date"])
