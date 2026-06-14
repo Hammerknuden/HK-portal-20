@@ -10,6 +10,7 @@ import re
 import os
 from dotenv import load_dotenv
 from supabase import create_client
+from importlib.metadata import version
 # -------------------------
 # INIT
 # -------------------------
@@ -18,7 +19,7 @@ st.set_page_config(page_title="Timeline2", layout="wide")
 require_login()
 
 #st.session_state
-st.write(stauth.__version__)
+st.write(version("streamlit-authenticator"))
 load_dotenv()
 
 supabase = create_client(
