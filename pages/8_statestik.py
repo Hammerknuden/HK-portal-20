@@ -55,7 +55,14 @@ try:
     df["overnatninger"] = (
         df["numb_guests"] * df["nights"]
     )
+    df["nation"] = (
+        df["nation"]
+        .fillna("")
+        .astype(str)
+        .str.strip()
+    )
 
+    df = df[df["nation"] != ""]
     # Statistik pr. land
     stats = (
         df.groupby("nation")
