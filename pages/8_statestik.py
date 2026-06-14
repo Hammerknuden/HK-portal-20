@@ -24,7 +24,6 @@ supabase = create_client(
 )
 
 try:
-
     all_rows = []
     offset = 0
     page_size = 1000
@@ -45,14 +44,49 @@ try:
 
     df = pd.DataFrame(all_rows)
 
+    # Beregn antal nætter
+    df["checkin_date"] = pd.to_datetime(df["checkin_date"])
+    df["checkout_date"] = pd.to_datetime(df["checkout_date"])
+
+    df["nights"] = (
+        df["checkout_date"] - df["checkin_date"]
+    ).dt.days
+
+    df["overnatninger"] = (
+        df["numb_guests"] * df["nights"]
+    )
+
+    # Statistik pr. land
+    stats = (
+        df.groupby("nation")
+        .agg(
+            ankomster=("numb_guests", "sum"),
+            overnatninger=("overnatninger", "sum")
+        )
+        .reset_index()
+    )
+
+    hovedlande = ["DK", "D", "S", "N", "NL"]
+
+    stats["nation"] = stats["nation"].fillna("").str.upper()
+
+    stats["gruppe"] = stats["nation"].apply(
+        lambda x: x if x in hovedlande else "ANDRE"
+    )
+
+    rapport = (
+        stats.groupby("gruppe")
+        .agg({
+            "ankomster": "sum",
+            "overnatninger": "sum"
+        })
+        .reset_index()
+    )
 
     st.success("Forbindelse OK")
-    #st.write(result.data)
 
 except Exception as e:
     st.error(f"Fejl: {e}")
-
-#df = pd.DataFrame(result.data)
 
 st.subheader("Rapport til Danmarks Statistik")
 st.dataframe(rapport)
