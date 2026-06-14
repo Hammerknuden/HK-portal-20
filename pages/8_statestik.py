@@ -75,5 +75,15 @@ stats = (
       .sort_values("overnatninger", ascending=False)
 )
 st.write(stats)
+sortering = {
+    "DK": 1,
+    "D": 2,
+    "S": 3,
+    "N": 4,
+    "NL": 5,
+    "ANDRE": 6
+}
 
+rapport["sort"] = rapport["gruppe"].map(sortering)
+rapport = rapport.sort_values("sort").drop(columns="sort")
 
