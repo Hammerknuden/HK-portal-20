@@ -18,7 +18,7 @@ st.set_page_config(page_title="Timeline2", layout="wide")
 require_login()
 
 #st.session_state
-
+st.write(stauth.__version__)
 load_dotenv()
 
 supabase = create_client(

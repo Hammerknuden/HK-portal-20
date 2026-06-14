@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ændringer i st selectboks for rum nummer">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="only workspace">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,14 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00430" summary="booking com pris med = pris total fejlede for supabase">
-      <option name="closed" value="true" />
-      <created>1780987567443</created>
-      <option name="number" value="00430" />
-      <option name="presentableId" value="LOCAL-00430" />
-      <option name="project" value="LOCAL" />
-      <updated>1780987567443</updated>
     </task>
     <task id="LOCAL-00431" summary="excel update def pristotal for bc">
       <option name="closed" value="true" />
@@ -465,7 +458,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781361583658</updated>
     </task>
-    <option name="localTasksCounter" value="479" />
+    <task id="LOCAL-00479" summary="only workspace">
+      <option name="closed" value="true" />
+      <created>1781369107628</created>
+      <option name="number" value="00479" />
+      <option name="presentableId" value="LOCAL-00479" />
+      <option name="project" value="LOCAL" />
+      <updated>1781369107628</updated>
+    </task>
+    <option name="localTasksCounter" value="480" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -491,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="redigering af gem så den omfatter tidligere kolloner" />
     <MESSAGE value="workspase" />
     <MESSAGE value="booking direlte til room 7" />
     <MESSAGE value="booking com pris med = pris total fejlede for supabase" />
@@ -516,6 +516,7 @@
     <MESSAGE value="new database hk dtb implem" />
     <MESSAGE value="new database hk dtb implem fault in gem" />
     <MESSAGE value="ændringer i st selectboks for rum nummer" />
-    <option name="LAST_COMMIT_MESSAGE" value="ændringer i st selectboks for rum nummer" />
+    <MESSAGE value="only workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="only workspace" />
   </component>
 </project>
