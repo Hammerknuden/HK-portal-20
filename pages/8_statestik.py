@@ -54,51 +54,5 @@ except Exception as e:
 
 #df = pd.DataFrame(result.data)
 
-# Beregn antal nætter
-df["checkin_date"] = pd.to_datetime(df["checkin_date"])
-df["checkout_date"] = pd.to_datetime(df["checkout_date"])
-
-df["nights"] = (
-    df["checkout_date"] - df["checkin_date"]
-).dt.days
-
-df["overnatninger"] = df["numb_guests"] * df["nights"]
-
-# Statistik pr. land
-stats = (
-    df.groupby("nation")
-      .agg(
-          ankomster=("numb_guests", "sum"),
-          overnatninger=("overnatninger", "sum")
-      )
-      .reset_index()
-      .sort_values("overnatninger", ascending=False)
-)
-st.write(stats)
-sortering = {
-    "DK": 1,
-    "D": 2,
-    "S": 3,
-    "N": 4,
-    "NL": 5,
-    "ANDRE": 6
-}
-hovedlande = ["DK", "D", "S", "N", "NL"]
-
-stats["nation"] = stats["nation"].fillna("").str.upper()
-
-stats["gruppe"] = stats["nation"].apply(
-    lambda x: x if x in hovedlande else "ANDRE"
-)
-
-rapport = (
-    stats.groupby("gruppe")
-         .agg({
-             "ankomster": "sum",
-             "overnatninger": "sum"
-         })
-         .reset_index()
-)
-rapport["sort"] = rapport["gruppe"].map(sortering)
-rapport = rapport.sort_values("sort").drop(columns="sort")
-
+st.subheader("Rapport til Danmarks Statistik")
+st.dataframe(rapport)
