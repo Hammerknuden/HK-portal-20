@@ -39,7 +39,7 @@ df["checkin_date"] = pd.to_datetime(df["checkin_date"])
 df["checkout_date"] = pd.to_datetime(df["checkout_date"])
 
 df["nights"] = (
-    df["checkout_date_date"] - df["checkin_date"]
+    df["checkout_date"] - df["checkin_date"]
 ).dt.days
 
 df["overnatninger"] = df["numb_guests"] * df["nights"]
