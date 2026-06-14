@@ -52,7 +52,7 @@ try:
 except Exception as e:
     st.error(f"Fejl: {e}")
 
-df = pd.DataFrame(result.data)
+#df = pd.DataFrame(result.data)
 
 # Beregn antal nætter
 df["checkin_date"] = pd.to_datetime(df["checkin_date"])
