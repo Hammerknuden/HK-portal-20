@@ -48,7 +48,7 @@ df["overnatninger"] = df["numb_guests"] * df["nights"]
 stats = (
     df.groupby("nation")
       .agg(
-          ankomster=("persons", "sum"),
+          ankomster=("numb_guests", "sum"),
           overnatninger=("overnatninger", "sum")
       )
       .reset_index()

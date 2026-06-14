@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="booking dtb disable">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/callender_old.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/8_statestik.py" afterDir="false" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="danmarks staestik">
+      <change beforePath="$PROJECT_DIR$/pages/8_statestik.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/8_statestik.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +47,7 @@
     "Python.5_cleaning.executor": "Run",
     "Python.6_callender.executor": "Run",
     "Python.6_timeline.executor": "Run",
+    "Python.8_statestik.executor": "Run",
     "Python.8_timelinenew.executor": "Run",
     "Python.app.executor": "Run",
     "Python.auth.executor": "Run",
@@ -73,22 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00437" summary="ordning af række følge">
-      <option name="closed" value="true" />
-      <created>1781070615710</created>
-      <option name="number" value="00437" />
-      <option name="presentableId" value="LOCAL-00437" />
-      <option name="project" value="LOCAL" />
-      <updated>1781070615710</updated>
-    </task>
-    <task id="LOCAL-00438" summary="rækkefølger ændre på begge dtb">
-      <option name="closed" value="true" />
-      <created>1781070708232</created>
-      <option name="number" value="00438" />
-      <option name="presentableId" value="LOCAL-00438" />
-      <option name="project" value="LOCAL" />
-      <updated>1781070708232</updated>
     </task>
     <task id="LOCAL-00439" summary="stor oprydning i den nye dtb booking">
       <option name="closed" value="true" />
@@ -466,7 +450,23 @@
       <option name="project" value="LOCAL" />
       <updated>1781418138091</updated>
     </task>
-    <option name="localTasksCounter" value="486" />
+    <task id="LOCAL-00486" summary="danmarks staestik">
+      <option name="closed" value="true" />
+      <created>1781423872841</created>
+      <option name="number" value="00486" />
+      <option name="presentableId" value="LOCAL-00486" />
+      <option name="project" value="LOCAL" />
+      <updated>1781423872841</updated>
+    </task>
+    <task id="LOCAL-00487" summary="danmarks staestik">
+      <option name="closed" value="true" />
+      <created>1781423911602</created>
+      <option name="number" value="00487" />
+      <option name="presentableId" value="LOCAL-00487" />
+      <option name="project" value="LOCAL" />
+      <updated>1781423911602</updated>
+    </task>
+    <option name="localTasksCounter" value="488" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -492,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="booking com pris med = pris total fejlede for supabase" />
     <MESSAGE value="excel update def pristotal for bc" />
     <MESSAGE value="edit ny web" />
     <MESSAGE value="time line new database try copy of old" />
@@ -517,6 +516,7 @@
     <MESSAGE value="only workspace" />
     <MESSAGE value="login tracking" />
     <MESSAGE value="booking dtb disable" />
-    <option name="LAST_COMMIT_MESSAGE" value="booking dtb disable" />
+    <MESSAGE value="danmarks staestik" />
+    <option name="LAST_COMMIT_MESSAGE" value="danmarks staestik" />
   </component>
 </project>
