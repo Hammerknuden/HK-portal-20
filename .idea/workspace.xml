@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="omsætning graf">
-      <change beforePath="$PROJECT_DIR$/pages/8_statestik.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/8_statestik.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="omsætning graf tekst til tal" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,22 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00457" summary="debug timeline old dtb">
-      <option name="closed" value="true" />
-      <created>1781160275827</created>
-      <option name="number" value="00457" />
-      <option name="presentableId" value="LOCAL-00457" />
-      <option name="project" value="LOCAL" />
-      <updated>1781160275827</updated>
-    </task>
-    <task id="LOCAL-00458" summary="debug timeline old dtb">
-      <option name="closed" value="true" />
-      <created>1781160365702</created>
-      <option name="number" value="00458" />
-      <option name="presentableId" value="LOCAL-00458" />
-      <option name="project" value="LOCAL" />
-      <updated>1781160365702</updated>
     </task>
     <task id="LOCAL-00459" summary="debug timeline old dtb">
       <option name="closed" value="true" />
@@ -466,7 +448,23 @@
       <option name="project" value="LOCAL" />
       <updated>1781542177509</updated>
     </task>
-    <option name="localTasksCounter" value="506" />
+    <task id="LOCAL-00506" summary="omsætning graf tekst til tal">
+      <option name="closed" value="true" />
+      <created>1781542423950</created>
+      <option name="number" value="00506" />
+      <option name="presentableId" value="LOCAL-00506" />
+      <option name="project" value="LOCAL" />
+      <updated>1781542423950</updated>
+    </task>
+    <task id="LOCAL-00507" summary="omsætning graf tekst til tal">
+      <option name="closed" value="true" />
+      <created>1781542566463</created>
+      <option name="number" value="00507" />
+      <option name="presentableId" value="LOCAL-00507" />
+      <option name="project" value="LOCAL" />
+      <updated>1781542566463</updated>
+    </task>
+    <option name="localTasksCounter" value="508" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -492,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="rækkefølger ændre på begge dtb" />
     <MESSAGE value="stor oprydning i den nye dtb booking" />
     <MESSAGE value="gem booking tildelt keys" />
     <MESSAGE value="slet booking tildelt keys" />
@@ -517,6 +514,7 @@
     <MESSAGE value="edit nation" />
     <MESSAGE value="excel update" />
     <MESSAGE value="omsætning graf" />
-    <option name="LAST_COMMIT_MESSAGE" value="omsætning graf" />
+    <MESSAGE value="omsætning graf tekst til tal" />
+    <option name="LAST_COMMIT_MESSAGE" value="omsætning graf tekst til tal" />
   </component>
 </project>

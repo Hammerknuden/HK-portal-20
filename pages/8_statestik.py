@@ -219,6 +219,6 @@ fig = px.bar(
     barmode="group",  # side om side
     title="Omsætning pr. måned"
 )
-
+st.write(df["pris"].sum())
 st.plotly_chart(fig, use_container_width=True)
 
