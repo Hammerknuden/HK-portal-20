@@ -221,5 +221,12 @@ fig = px.bar(
 )
 st.write(df["pris"].sum())
 st.write(df["pris"].describe())
+st.write(
+    df.groupby("month")
+      .agg(
+          bookinger=("pris", "count"),
+          omsaetning=("pris", "sum")
+      )
+)
 st.plotly_chart(fig, use_container_width=True)
 
