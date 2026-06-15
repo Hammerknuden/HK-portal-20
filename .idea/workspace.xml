@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="booking com sortering">
-      <change beforePath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/8_statestik.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/8_statestik.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="booking pace" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,14 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00448" summary="debug timeline new dtb">
-      <option name="closed" value="true" />
-      <created>1781157653474</created>
-      <option name="number" value="00448" />
-      <option name="presentableId" value="LOCAL-00448" />
-      <option name="project" value="LOCAL" />
-      <updated>1781157653474</updated>
     </task>
     <task id="LOCAL-00449" summary="debug timeline new dtb">
       <option name="closed" value="true" />
@@ -467,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781502876428</updated>
     </task>
-    <option name="localTasksCounter" value="497" />
+    <task id="LOCAL-00497" summary="booking pace">
+      <option name="closed" value="true" />
+      <created>1781508496827</created>
+      <option name="number" value="00497" />
+      <option name="presentableId" value="LOCAL-00497" />
+      <option name="project" value="LOCAL" />
+      <updated>1781508496827</updated>
+    </task>
+    <option name="localTasksCounter" value="498" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -493,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fault in sidebar lne 313" />
     <MESSAGE value="fault in sidebar lne 313 bookink form nyt navn new" />
     <MESSAGE value="ordning af række følge" />
     <MESSAGE value="rækkefølger ændre på begge dtb" />
@@ -518,6 +514,7 @@
     <MESSAGE value="sortering dk statestik" />
     <MESSAGE value="sortering af cansl nights" />
     <MESSAGE value="booking com sortering" />
-    <option name="LAST_COMMIT_MESSAGE" value="booking com sortering" />
+    <MESSAGE value="booking pace" />
+    <option name="LAST_COMMIT_MESSAGE" value="booking pace" />
   </component>
 </project>

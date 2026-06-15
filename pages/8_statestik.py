@@ -153,3 +153,4 @@ fig = px.line(
     color="season_year",
     markers=True
 )
+st.plotly_chart(fig, use_container_width=True)
