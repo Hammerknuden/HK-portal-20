@@ -165,14 +165,16 @@ historik_df = pd.DataFrame({
     "aug": [117530, 127753],
     "sep": [68998, 83673]
 })
+df["checkin_date"] = pd.to_datetime(df["checkin_date"])
 
 df["year"] = df["checkin_date"].dt.year
+df["month"] = df["checkin_date"].dt.month
 
 oms_2026 = (
     df[df["year"] == 2026]
     .groupby("month")
     .agg(
-        revenue=("prid", "sum")
+        revenue=("pris", "sum")
     )
 )
 df["month"] = df["checkin_date"].dt.month
