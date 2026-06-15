@@ -167,8 +167,8 @@ historik_df = pd.DataFrame({
 })
 df["checkin_date"] = pd.to_datetime(df["checkin_date"])
 
-df["year"] = df["checkin_date"].dt.year
-df["month"] = df["checkin_date"].dt.month
+df["year"] = df["checkout_date"].dt.year
+df["month"] = df["checkout_date"].dt.month
 
 df["pris"] = (
     df["pris"]
@@ -187,7 +187,7 @@ oms_2026 = (
         revenue=("pris", "sum")
     )
 )
-df["month"] = df["checkin_date"].dt.month
+df["month"] = df["checkout_date"].dt.month
 
 ny_række = pd.DataFrame({
     "year": [2026],
