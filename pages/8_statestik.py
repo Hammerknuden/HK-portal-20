@@ -154,3 +154,54 @@ fig = px.line(
     #markers=True
 )
 st.plotly_chart(fig, use_container_width=True)
+
+st.subheader(" Omsætning")
+
+historik_df = pd.DataFrame({
+    "year": [2024, 2025],
+    "maj": [69584, 62879],
+    "juni": [114975, 97108],
+    "juli": [121365, 117225],
+    "aug": [117530, 127753],
+    "sep": [68998, 83673]
+})
+df["checkin_date"] = pd.to_datetime(df["checkin_date"])
+
+df["month"] = df["checkin_date"].dt.month
+
+oms_2026 = (
+    df.groupby("month")
+      .agg(
+          revenue=("price_sum", "sum")
+      )
+)
+ny_række = pd.DataFrame({
+    "year": [2026],
+    "maj": [oms_2026.loc[5, "revenue"] if 5 in oms_2026.index else 0],
+    "juni": [oms_2026.loc[6, "revenue"] if 6 in oms_2026.index else 0],
+    "juli": [oms_2026.loc[7, "revenue"] if 7 in oms_2026.index else 0],
+    "aug": [oms_2026.loc[8, "revenue"] if 8 in oms_2026.index else 0],
+    "sep": [oms_2026.loc[9, "revenue"] if 9 in oms_2026.index else 0],
+})
+historik_df = pd.concat(
+    [historik_df, ny_række],
+    ignore_index=True
+)
+st.subheader("Omsætning pr. måned")
+
+st.dataframe(historik_df)
+historik_long = historik_df.melt(
+    id_vars="year",
+    var_name="month",
+    value_name="revenue"
+)
+fig = px.bar(
+    historik_long,
+    x="month",
+    y="revenue",
+    color="year",
+    barmode="group",
+    title="Omsætning pr. måned"
+)
+
+st.plotly_chart(fig, use_container_width=True)
