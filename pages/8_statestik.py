@@ -209,13 +209,16 @@ historik_long = historik_df.melt(
     var_name="month",
     value_name="revenue"
 )
+historik_long["year"] = historik_long["year"].astype(str)
+
 fig = px.bar(
     historik_long,
     x="month",
     y="revenue",
     color="year",
-    barmode="group",
+    barmode="group",  # side om side
     title="Omsætning pr. måned"
 )
 
 st.plotly_chart(fig, use_container_width=True)
+
