@@ -659,10 +659,14 @@ if edit:
         ).date()
     )
 
+    new_nation = st.text_input(
+        "nation",
+        value=str(booking["nation"])
+    )
+
     new_web = st.text_input(
         "web",
         value=str(booking["web"])
-
     )
     new_ankomst = st.text_input(
         "ankomst",
@@ -695,6 +699,7 @@ if edit:
                         "telefon": new_phone,
                         "checkin_date": new_checkin.isoformat(),
                         "checkout_date": new_checkout.isoformat(),
+                        "nation": new_nation,
                         "web": new_web,
                         "ankomst": new_ankomst,
                         "bed": new_bed,
