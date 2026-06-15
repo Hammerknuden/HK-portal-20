@@ -109,6 +109,7 @@ except Exception as e:
 st.subheader("Rapport til Danmarks Statistik")
 st.dataframe(rapport)
 
+st.subheader("Booking com bookings")
 # Bookingkanaler
 kanal_df = df.copy()
 
@@ -135,3 +136,20 @@ fig = px.pie(
 )
 
 st.plotly_chart(fig, use_container_width=True)
+
+st.subheader("Booking pace")
+
+response = (
+    supabase.table("bookin_pace")
+    .select("*")
+    .execute()
+)
+
+pace_df = pd.DataFrame(response.data)
+fig = px.line(
+    pace_df,
+    x="week_number",
+    y="sold_nights",
+    color="season_year",
+    markers=True
+)
