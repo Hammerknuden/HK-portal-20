@@ -165,16 +165,18 @@ historik_df = pd.DataFrame({
     "aug": [117530, 127753],
     "sep": [68998, 83673]
 })
-df["checkin_date"] = pd.to_datetime(df["checkin_date"])
 
-df["month"] = df["checkin_date"].dt.month
+df["year"] = df["checkin_date"].dt.year
 
 oms_2026 = (
-    df.groupby("month")
-      .agg(
-          revenue=("pris", "sum")
-      )
+    df[df["year"] == 2026]
+    .groupby("month")
+    .agg(
+        revenue=("prid", "sum")
+    )
 )
+df["month"] = df["checkin_date"].dt.month
+
 ny_række = pd.DataFrame({
     "year": [2026],
     "maj": [oms_2026.loc[5, "revenue"] if 5 in oms_2026.index else 0],
