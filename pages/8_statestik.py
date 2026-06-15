@@ -220,5 +220,6 @@ fig = px.bar(
     title="Omsætning pr. måned"
 )
 st.write(df["pris"].sum())
+st.write(df["pris"].describe())
 st.plotly_chart(fig, use_container_width=True)
 
