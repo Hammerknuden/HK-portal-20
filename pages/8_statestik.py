@@ -172,7 +172,7 @@ df["month"] = df["checkin_date"].dt.month
 oms_2026 = (
     df.groupby("month")
       .agg(
-          revenue=("price_sum", "sum")
+          revenue=("pris", "sum")
       )
 )
 ny_række = pd.DataFrame({
