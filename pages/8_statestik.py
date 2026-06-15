@@ -151,6 +151,6 @@ fig = px.line(
     x="week_number",
     y="sold_nights",
     color="season_year",
-    markers=True
+    #markers=True
 )
 st.plotly_chart(fig, use_container_width=True)
