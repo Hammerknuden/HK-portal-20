@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="sortering af cansl nights">
+      <change beforePath="$PROJECT_DIR$/pages/8_statestik.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/8_statestik.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,14 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00446" summary="debug timeline new dtb">
-      <option name="closed" value="true" />
-      <created>1781156014116</created>
-      <option name="number" value="00446" />
-      <option name="presentableId" value="LOCAL-00446" />
-      <option name="project" value="LOCAL" />
-      <updated>1781156014116</updated>
     </task>
     <task id="LOCAL-00447" summary="debug timeline new dtb">
       <option name="closed" value="true" />
@@ -466,7 +458,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781440988157</updated>
     </task>
-    <option name="localTasksCounter" value="495" />
+    <task id="LOCAL-00495" summary="sortering af cansl nights">
+      <option name="closed" value="true" />
+      <created>1781502338439</created>
+      <option name="number" value="00495" />
+      <option name="presentableId" value="LOCAL-00495" />
+      <option name="project" value="LOCAL" />
+      <updated>1781502338440</updated>
+    </task>
+    <option name="localTasksCounter" value="496" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -492,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="edit ny web" />
     <MESSAGE value="time line new database try copy of old" />
     <MESSAGE value="fault in sidebar lne 313" />
     <MESSAGE value="fault in sidebar lne 313 bookink form nyt navn new" />
@@ -517,6 +516,7 @@
     <MESSAGE value="booking dtb disable" />
     <MESSAGE value="danmarks staestik" />
     <MESSAGE value="sortering dk statestik" />
-    <option name="LAST_COMMIT_MESSAGE" value="sortering dk statestik" />
+    <MESSAGE value="sortering af cansl nights" />
+    <option name="LAST_COMMIT_MESSAGE" value="sortering af cansl nights" />
   </component>
 </project>

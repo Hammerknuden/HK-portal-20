@@ -6,6 +6,7 @@ import datetime
 import plotly.express as px
 from auth import require_login
 from common import init_session
+import plotly.express as px
 import os
 from dotenv import load_dotenv
 from supabase import create_client
@@ -107,3 +108,30 @@ except Exception as e:
 
 st.subheader("Rapport til Danmarks Statistik")
 st.dataframe(rapport)
+
+# Bookingkanaler
+kanal_df = df.copy()
+
+kanal_df["kanal"] = kanal_df["web"].str.upper().str.strip()
+
+kanal_df["kanal"] = kanal_df["kanal"].apply(
+    lambda x: "Booking.com" if x == "BC" else "Egne bookinger"
+)
+
+kanal_stats = (
+    kanal_df.groupby("kanal")
+    .agg(
+        overnatninger=("overnatninger", "sum")
+    )
+    .reset_index()
+)
+
+st.write(kanal_stats)
+fig = px.pie(
+    kanal_stats,
+    names="kanal",
+    values="overnatninger",
+    title="Andel af overnatninger fra Booking.com"
+)
+
+st.plotly_chart(fig, use_container_width=True)
