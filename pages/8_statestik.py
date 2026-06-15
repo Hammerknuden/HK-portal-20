@@ -170,6 +170,16 @@ df["checkin_date"] = pd.to_datetime(df["checkin_date"])
 df["year"] = df["checkin_date"].dt.year
 df["month"] = df["checkin_date"].dt.month
 
+df["pris"] = (
+    df["pris"]
+    .astype(str)
+    .str.replace(",", ".", regex=False)
+)
+
+df["pris"] = pd.to_numeric(
+    df["pris"],
+    errors="coerce"
+)
 oms_2026 = (
     df[df["year"] == 2026]
     .groupby("month")

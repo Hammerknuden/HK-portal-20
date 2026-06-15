@@ -74,22 +74,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00455" summary="debug timeline old dtb">
-      <option name="closed" value="true" />
-      <created>1781159990921</created>
-      <option name="number" value="00455" />
-      <option name="presentableId" value="LOCAL-00455" />
-      <option name="project" value="LOCAL" />
-      <updated>1781159990922</updated>
-    </task>
-    <task id="LOCAL-00456" summary="debug timeline old dtb">
-      <option name="closed" value="true" />
-      <created>1781160151315</created>
-      <option name="number" value="00456" />
-      <option name="presentableId" value="LOCAL-00456" />
-      <option name="project" value="LOCAL" />
-      <updated>1781160151315</updated>
-    </task>
     <task id="LOCAL-00457" summary="debug timeline old dtb">
       <option name="closed" value="true" />
       <created>1781160275827</created>
@@ -466,7 +450,23 @@
       <option name="project" value="LOCAL" />
       <updated>1781541597457</updated>
     </task>
-    <option name="localTasksCounter" value="504" />
+    <task id="LOCAL-00504" summary="omsætning graf">
+      <option name="closed" value="true" />
+      <created>1781542035188</created>
+      <option name="number" value="00504" />
+      <option name="presentableId" value="LOCAL-00504" />
+      <option name="project" value="LOCAL" />
+      <updated>1781542035188</updated>
+    </task>
+    <task id="LOCAL-00505" summary="omsætning graf">
+      <option name="closed" value="true" />
+      <created>1781542177509</created>
+      <option name="number" value="00505" />
+      <option name="presentableId" value="LOCAL-00505" />
+      <option name="project" value="LOCAL" />
+      <updated>1781542177509</updated>
+    </task>
+    <option name="localTasksCounter" value="506" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
