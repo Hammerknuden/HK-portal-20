@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="sortering dk statestik">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/8_statestik.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/8_statestik.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,22 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00444" summary="slet booking tildelt keys">
-      <option name="closed" value="true" />
-      <created>1781074048133</created>
-      <option name="number" value="00444" />
-      <option name="presentableId" value="LOCAL-00444" />
-      <option name="project" value="LOCAL" />
-      <updated>1781074048133</updated>
-    </task>
-    <task id="LOCAL-00445" summary="slet booking tildelt keys">
-      <option name="closed" value="true" />
-      <created>1781074180300</created>
-      <option name="number" value="00445" />
-      <option name="presentableId" value="LOCAL-00445" />
-      <option name="project" value="LOCAL" />
-      <updated>1781074180300</updated>
     </task>
     <task id="LOCAL-00446" summary="debug timeline new dtb">
       <option name="closed" value="true" />
@@ -467,7 +450,23 @@
       <option name="project" value="LOCAL" />
       <updated>1781434405292</updated>
     </task>
-    <option name="localTasksCounter" value="493" />
+    <task id="LOCAL-00493" summary="sortering dk statestik">
+      <option name="closed" value="true" />
+      <created>1781440875315</created>
+      <option name="number" value="00493" />
+      <option name="presentableId" value="LOCAL-00493" />
+      <option name="project" value="LOCAL" />
+      <updated>1781440875315</updated>
+    </task>
+    <task id="LOCAL-00494" summary="sortering dk statestik">
+      <option name="closed" value="true" />
+      <created>1781440988156</created>
+      <option name="number" value="00494" />
+      <option name="presentableId" value="LOCAL-00494" />
+      <option name="project" value="LOCAL" />
+      <updated>1781440988157</updated>
+    </task>
+    <option name="localTasksCounter" value="495" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

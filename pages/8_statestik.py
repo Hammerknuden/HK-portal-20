@@ -44,6 +44,16 @@ try:
 
     df = pd.DataFrame(all_rows)
 
+    # Fjern annullerede bookinger
+    df = df[
+        df["web"]
+        .fillna("")
+        .astype(str)
+        .str.strip()
+        .str.upper()
+        != "CANSL"
+        ]
+
     # Beregn antal nætter
     df["checkin_date"] = pd.to_datetime(df["checkin_date"])
     df["checkout_date"] = pd.to_datetime(df["checkout_date"])
