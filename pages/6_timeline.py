@@ -78,12 +78,10 @@ def optimize_temp_room(df):
 
     bookings = df.copy()
 
-    # fjern tomme værelser
     bookings = bookings[
         bookings["room_number"].notna()
     ]
 
-    # konverter sikkert til tal
     bookings["room_number"] = pd.to_numeric(
         bookings["room_number"],
         errors="coerce"
@@ -100,6 +98,8 @@ def optimize_temp_room(df):
     bookings["optimized_room"] = (
         bookings["room_number"]
     )
+
+    bookings["packing_status"] = "Normal"
 
     bookings = bookings.sort_values(
         "checkin_date"
@@ -129,12 +129,23 @@ def optimize_temp_room(df):
 
             if overlaps.empty:
 
-                bookings.loc[
-                    idx,
-                    "optimized_room"
-                ] = target_room
+                bookings.loc[idx, "optimized_room"] = target_room
+                bookings.loc[idx, "packing_status"] = "Flyttet"
 
                 break
+
+    # <-- INDSÆT BLOKKEN HER
+
+    mask = (
+        (bookings["room_number"] == 7)
+        &
+        (bookings["optimized_room"] == 7)
+    )
+
+    bookings.loc[
+        mask,
+        "packing_status"
+    ] = "Ikke flyttet"
 
     return bookings
 # RESERVATION INFO
@@ -385,8 +396,13 @@ if not df.empty:
         x_start="checkin_date",
         x_end="checkout_date",
         y="room_number",
-        color="booking_number",
-        text="booking_number"
+        color="packing_status",
+        text="booking_number",
+        color_discrete_map={
+            "Normal": "lightblue",
+            "Flyttet": "green",
+            "Ikke flyttet": "red"
+        }
     )
 
     fig2.update_yaxes(
