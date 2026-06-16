@@ -167,7 +167,7 @@ check_dato_slut = check_dato_start + timedelta(days=antal_dage)
 result = (
     supabase.table("hk_dtb")
     .select(
-        "booking_number, name, checkin_date, bed, known, room_number"
+        "booking_number, navn, checkin_date, bed, known, room_number"
     )
     .gte("checkin_date", str(check_dato_start))
     .lte("checkin_date", str(check_dato_slut))
@@ -186,7 +186,7 @@ if not df.empty:
         df[
             [
                 "booking_number",
-                "name",
+                "navn",
                 "checkin_date",
                 "bed",
                 "known",
