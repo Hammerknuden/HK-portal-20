@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="optimerings funktion stadig under udarbejdelse">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="slider til fig 2">
       <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,14 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00469" summary="check for dobb bookinger i timeline">
-      <option name="closed" value="true" />
-      <created>1781246509167</created>
-      <option name="number" value="00469" />
-      <option name="presentableId" value="LOCAL-00469" />
-      <option name="project" value="LOCAL" />
-      <updated>1781246509167</updated>
     </task>
     <task id="LOCAL-00470" summary="check for dobb bookinger i timeline">
       <option name="closed" value="true" />
@@ -466,7 +458,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781607617167</updated>
     </task>
-    <option name="localTasksCounter" value="518" />
+    <task id="LOCAL-00518" summary="slider til fig 2">
+      <option name="closed" value="true" />
+      <created>1781607955416</created>
+      <option name="number" value="00518" />
+      <option name="presentableId" value="LOCAL-00518" />
+      <option name="project" value="LOCAL" />
+      <updated>1781607955416</updated>
+    </task>
+    <option name="localTasksCounter" value="519" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -492,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="slet booking tildelt keys" />
     <MESSAGE value="debug timeline new dtb" />
     <MESSAGE value="debug timeline old dtb" />
     <MESSAGE value="debug nutraliseret" />
@@ -517,6 +516,7 @@
     <MESSAGE value="omsætning graf tekst til tal" />
     <MESSAGE value="optimerings funktion" />
     <MESSAGE value="optimerings funktion stadig under udarbejdelse" />
-    <option name="LAST_COMMIT_MESSAGE" value="optimerings funktion stadig under udarbejdelse" />
+    <MESSAGE value="slider til fig 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="slider til fig 2" />
   </component>
 </project>

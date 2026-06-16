@@ -390,7 +390,12 @@ if not df.empty:
             "Værelse "
             + opt_plot["optimized_room"].astype(str)
     )
-
+    opt_plot["room_sort"] = (
+        opt_plot["room_number"]
+        .astype(str)
+        .str.extract(r"(\d+)")
+        .astype(int)
+    )
     fig2 = px.timeline(
         opt_plot,
         x_start="checkin_date",
@@ -412,10 +417,30 @@ if not df.empty:
         rangeslider_visible=True,
         tickformat="%d-%m"
     )
+    fig2.update_yaxes(
+        autorange="reversed",
+        categoryorder="array",
+        categoryarray=room_order
+    )
+    fig2.update_xaxes(
+        rangeslider_visible=True,
+        tickformat="%d-%m",
+        dtick="D1",
+        showgrid=True
+    )
     st.plotly_chart(
         fig2,
         use_container_width=True
     )
+    room_order = [
+        "Værelse 1",
+        "Værelse 2",
+        "Værelse 3",
+        "Værelse 4",
+        "Værelse 5",
+        "Værelse 6",
+        "Værelse 7"
+    ]
     # -------------------------
     # EDIT BOOKINGS
     # -------------------------
