@@ -425,7 +425,7 @@ if not df.empty:
     fig2.update_xaxes(
         rangeslider_visible=True,
         tickformat="%d-%m",
-        dtick="D1",
+        dtick="D7",
         showgrid=True
     )
     st.plotly_chart(
