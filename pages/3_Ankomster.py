@@ -3,7 +3,7 @@ from auth import require_login
 import pandas as pd
 from pathlib import Path
 import sys
-from datetime import timedelta
+from datetime import date, timedelta
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 from dotenv import load_dotenv
 from supabase import create_client

@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="status app running med optimerings tiltag">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/3_Ankomster.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/3_Ankomster.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ankomster i supabase" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,14 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00473" summary="selectbox ændret">
-      <option name="closed" value="true" />
-      <created>1781248053649</created>
-      <option name="number" value="00473" />
-      <option name="presentableId" value="LOCAL-00473" />
-      <option name="project" value="LOCAL" />
-      <updated>1781248053649</updated>
     </task>
     <task id="LOCAL-00474" summary="oprydning">
       <option name="closed" value="true" />
@@ -467,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781609914702</updated>
     </task>
-    <option name="localTasksCounter" value="522" />
+    <task id="LOCAL-00522" summary="ankomster i supabase">
+      <option name="closed" value="true" />
+      <created>1781627732980</created>
+      <option name="number" value="00522" />
+      <option name="presentableId" value="LOCAL-00522" />
+      <option name="project" value="LOCAL" />
+      <updated>1781627732980</updated>
+    </task>
+    <option name="localTasksCounter" value="523" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -493,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="debug nutraliseret" />
     <MESSAGE value="sessionstate fjernet fra indledning imeline" />
     <MESSAGE value="check for dobb bookinger i timeline" />
     <MESSAGE value="selectbox ændret" />
@@ -518,6 +514,7 @@
     <MESSAGE value="slider til fig 2" />
     <MESSAGE value="rækkefølge smat dato grid" />
     <MESSAGE value="status app running med optimerings tiltag" />
-    <option name="LAST_COMMIT_MESSAGE" value="status app running med optimerings tiltag" />
+    <MESSAGE value="ankomster i supabase" />
+    <option name="LAST_COMMIT_MESSAGE" value="ankomster i supabase" />
   </component>
 </project>
