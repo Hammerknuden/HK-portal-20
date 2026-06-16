@@ -73,36 +73,41 @@ def load_bookings():
                 ]
 
     return df
-def load_bookings():
-    result = (
-        supabase
-        .table("hk_dtb")
-        .select("*")
-        .execute()
-    )
-
-    df = pd.DataFrame(result.data)
-
-    if not df.empty:
-        df["checkin_date"] = pd.to_datetime(df["checkin_date"])
-        df["checkout_date"] = pd.to_datetime(df["checkout_date"])
-
-    return df
-
-
-# <-- INDSÆT HER
 
 def optimize_temp_room(df):
 
     bookings = df.copy()
 
-    bookings["optimized_room"] = bookings["room_number"]
+    # fjern tomme værelser
+    bookings = bookings[
+        bookings["room_number"].notna()
+    ]
 
-    bookings = bookings.sort_values("checkin_date")
+    # konverter sikkert til tal
+    bookings["room_number"] = pd.to_numeric(
+        bookings["room_number"],
+        errors="coerce"
+    )
+
+    bookings = bookings[
+        bookings["room_number"].notna()
+    ]
+
+    bookings["room_number"] = (
+        bookings["room_number"].astype(int)
+    )
+
+    bookings["optimized_room"] = (
+        bookings["room_number"]
+    )
+
+    bookings = bookings.sort_values(
+        "checkin_date"
+    )
 
     for idx, row in bookings.iterrows():
 
-        room = int(row["room_number"])
+        room = row["room_number"]
 
         if room != 7:
             continue
@@ -115,7 +120,7 @@ def optimize_temp_room(df):
             overlaps = bookings[
                 (bookings.index != idx)
                 &
-                (bookings["optimized_room"].astype(int) == target_room)
+                (bookings["optimized_room"] == target_room)
                 &
                 (bookings["checkin_date"] < end)
                 &
@@ -124,13 +129,17 @@ def optimize_temp_room(df):
 
             if overlaps.empty:
 
-                bookings.loc[idx, "optimized_room"] = target_room
+                bookings.loc[
+                    idx,
+                    "optimized_room"
+                ] = target_room
+
                 break
 
     return bookings
-
 # RESERVATION INFO
 # -------------------------
+
 df = load_bookings()
 st.write(
     df[
