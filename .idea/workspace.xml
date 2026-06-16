@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="optimerings funktion">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="optimerings funktion stadig under udarbejdelse">
       <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,14 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00468" summary="sessionstate fjernet fra indledning imeline">
-      <option name="closed" value="true" />
-      <created>1781245157161</created>
-      <option name="number" value="00468" />
-      <option name="presentableId" value="LOCAL-00468" />
-      <option name="project" value="LOCAL" />
-      <updated>1781245157162</updated>
     </task>
     <task id="LOCAL-00469" summary="check for dobb bookinger i timeline">
       <option name="closed" value="true" />
@@ -467,7 +458,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781595585962</updated>
     </task>
-    <option name="localTasksCounter" value="517" />
+    <task id="LOCAL-00517" summary="optimerings funktion stadig under udarbejdelse">
+      <option name="closed" value="true" />
+      <created>1781607617167</created>
+      <option name="number" value="00517" />
+      <option name="presentableId" value="LOCAL-00517" />
+      <option name="project" value="LOCAL" />
+      <updated>1781607617167</updated>
+    </task>
+    <option name="localTasksCounter" value="518" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -493,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="gem booking tildelt keys" />
     <MESSAGE value="slet booking tildelt keys" />
     <MESSAGE value="debug timeline new dtb" />
     <MESSAGE value="debug timeline old dtb" />
@@ -518,6 +516,7 @@
     <MESSAGE value="omsætning graf" />
     <MESSAGE value="omsætning graf tekst til tal" />
     <MESSAGE value="optimerings funktion" />
-    <option name="LAST_COMMIT_MESSAGE" value="optimerings funktion" />
+    <MESSAGE value="optimerings funktion stadig under udarbejdelse" />
+    <option name="LAST_COMMIT_MESSAGE" value="optimerings funktion stadig under udarbejdelse" />
   </component>
 </project>

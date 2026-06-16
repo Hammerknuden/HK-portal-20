@@ -408,7 +408,10 @@ if not df.empty:
     fig2.update_yaxes(
         autorange="reversed"
     )
-
+    fig2.update_xaxes(
+        rangeslider_visible=True,
+        tickformat="%d-%m"
+    )
     st.plotly_chart(
         fig2,
         use_container_width=True
