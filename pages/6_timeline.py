@@ -441,6 +441,7 @@ if not df.empty:
         "Værelse 6",
         "Værelse 7"
     ]
+
     # -------------------------
     # EDIT BOOKINGS
     # -------------------------
