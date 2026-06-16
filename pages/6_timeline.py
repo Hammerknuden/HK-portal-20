@@ -62,13 +62,16 @@ def load_bookings():
     if not df.empty:
         df["checkin_date"] = pd.to_datetime(df["checkin_date"])
         df["checkout_date"] = pd.to_datetime(df["checkout_date"])
-        if "status" in df.columns:
+        if "web" in df.columns:
             df = df[
-                df["status"]
+                df["web"]
                 .fillna("")
+                .astype(str)
+                .str.strip()
                 .str.lower()
                 != "cansl"
                 ]
+
     return df
 def load_bookings():
     result = (

@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="optimerings funktion" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="optimerings funktion">
+      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,22 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00464" summary="debug timeline old dtb">
-      <option name="closed" value="true" />
-      <created>1781162451662</created>
-      <option name="number" value="00464" />
-      <option name="presentableId" value="LOCAL-00464" />
-      <option name="project" value="LOCAL" />
-      <updated>1781162451662</updated>
-    </task>
-    <task id="LOCAL-00465" summary="debug timeline old dtb">
-      <option name="closed" value="true" />
-      <created>1781162618032</created>
-      <option name="number" value="00465" />
-      <option name="presentableId" value="LOCAL-00465" />
-      <option name="project" value="LOCAL" />
-      <updated>1781162618033</updated>
     </task>
     <task id="LOCAL-00466" summary="debug nutraliseret">
       <option name="closed" value="true" />
@@ -464,7 +450,23 @@
       <option name="project" value="LOCAL" />
       <updated>1781594509697</updated>
     </task>
-    <option name="localTasksCounter" value="513" />
+    <task id="LOCAL-00513" summary="optimerings funktion">
+      <option name="closed" value="true" />
+      <created>1781594760435</created>
+      <option name="number" value="00513" />
+      <option name="presentableId" value="LOCAL-00513" />
+      <option name="project" value="LOCAL" />
+      <updated>1781594760435</updated>
+    </task>
+    <task id="LOCAL-00514" summary="optimerings funktion">
+      <option name="closed" value="true" />
+      <created>1781594927461</created>
+      <option name="number" value="00514" />
+      <option name="presentableId" value="LOCAL-00514" />
+      <option name="project" value="LOCAL" />
+      <updated>1781594927462</updated>
+    </task>
+    <option name="localTasksCounter" value="515" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
