@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="slider til fig 2">
-      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="status app running med optimerings tiltag">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/3_Ankomster.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/3_Ankomster.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,30 +35,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Python.1_Booking.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_Setup.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_databaseopslag.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_setup.executor&quot;: &quot;Run&quot;,
-    &quot;Python.3_Ankomster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.3_ankomster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.4_Booking_C_link.executor&quot;: &quot;Run&quot;,
-    &quot;Python.5_cleaning.executor&quot;: &quot;Run&quot;,
-    &quot;Python.6_callender.executor&quot;: &quot;Run&quot;,
-    &quot;Python.6_timeline.executor&quot;: &quot;Run&quot;,
-    &quot;Python.8_statestik.executor&quot;: &quot;Run&quot;,
-    &quot;Python.8_timelinenew.executor&quot;: &quot;Run&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.auth.executor&quot;: &quot;Run&quot;,
-    &quot;Python.common.executor&quot;: &quot;Run&quot;,
-    &quot;Python.config_prices.executor&quot;: &quot;Run&quot;,
-    &quot;Python.databaseopslag.executor&quot;: &quot;Run&quot;,
-    &quot;Python.streamlit_app.executor&quot;: &quot;Run&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/finnj/-repo hk20/hk_portal_20/pages/callender_old.py&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.1_Booking.executor": "Run",
+    "Python.2_Setup.executor": "Run",
+    "Python.2_databaseopslag.executor": "Run",
+    "Python.2_setup.executor": "Run",
+    "Python.3_Ankomster.executor": "Run",
+    "Python.3_ankomster.executor": "Run",
+    "Python.4_Booking_C_link.executor": "Run",
+    "Python.5_cleaning.executor": "Run",
+    "Python.6_callender.executor": "Run",
+    "Python.6_timeline.executor": "Run",
+    "Python.8_statestik.executor": "Run",
+    "Python.8_timelinenew.executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.auth.executor": "Run",
+    "Python.common.executor": "Run",
+    "Python.config_prices.executor": "Run",
+    "Python.databaseopslag.executor": "Run",
+    "Python.streamlit_app.executor": "Run",
+    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/pages/3_Ankomster.py"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -73,30 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00470" summary="check for dobb bookinger i timeline">
-      <option name="closed" value="true" />
-      <created>1781247212996</created>
-      <option name="number" value="00470" />
-      <option name="presentableId" value="LOCAL-00470" />
-      <option name="project" value="LOCAL" />
-      <updated>1781247212996</updated>
-    </task>
-    <task id="LOCAL-00471" summary="selectbox ændret">
-      <option name="closed" value="true" />
-      <created>1781247376786</created>
-      <option name="number" value="00471" />
-      <option name="presentableId" value="LOCAL-00471" />
-      <option name="project" value="LOCAL" />
-      <updated>1781247376786</updated>
-    </task>
-    <task id="LOCAL-00472" summary="selectbox ændret">
-      <option name="closed" value="true" />
-      <created>1781247833487</created>
-      <option name="number" value="00472" />
-      <option name="presentableId" value="LOCAL-00472" />
-      <option name="project" value="LOCAL" />
-      <updated>1781247833487</updated>
     </task>
     <task id="LOCAL-00473" summary="selectbox ændret">
       <option name="closed" value="true" />
@@ -466,7 +443,31 @@
       <option name="project" value="LOCAL" />
       <updated>1781607955416</updated>
     </task>
-    <option name="localTasksCounter" value="519" />
+    <task id="LOCAL-00519" summary="rækkefølge smat dato grid">
+      <option name="closed" value="true" />
+      <created>1781608374375</created>
+      <option name="number" value="00519" />
+      <option name="presentableId" value="LOCAL-00519" />
+      <option name="project" value="LOCAL" />
+      <updated>1781608374375</updated>
+    </task>
+    <task id="LOCAL-00520" summary="rækkefølge smat dato grid">
+      <option name="closed" value="true" />
+      <created>1781608421991</created>
+      <option name="number" value="00520" />
+      <option name="presentableId" value="LOCAL-00520" />
+      <option name="project" value="LOCAL" />
+      <updated>1781608421991</updated>
+    </task>
+    <task id="LOCAL-00521" summary="status app running med optimerings tiltag">
+      <option name="closed" value="true" />
+      <created>1781609914702</created>
+      <option name="number" value="00521" />
+      <option name="presentableId" value="LOCAL-00521" />
+      <option name="project" value="LOCAL" />
+      <updated>1781609914702</updated>
+    </task>
+    <option name="localTasksCounter" value="522" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -492,8 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="debug timeline new dtb" />
-    <MESSAGE value="debug timeline old dtb" />
     <MESSAGE value="debug nutraliseret" />
     <MESSAGE value="sessionstate fjernet fra indledning imeline" />
     <MESSAGE value="check for dobb bookinger i timeline" />
@@ -517,6 +516,8 @@
     <MESSAGE value="optimerings funktion" />
     <MESSAGE value="optimerings funktion stadig under udarbejdelse" />
     <MESSAGE value="slider til fig 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="slider til fig 2" />
+    <MESSAGE value="rækkefølge smat dato grid" />
+    <MESSAGE value="status app running med optimerings tiltag" />
+    <option name="LAST_COMMIT_MESSAGE" value="status app running med optimerings tiltag" />
   </component>
 </project>
