@@ -27,268 +27,8 @@ supabase = create_client(
     st.secrets["SUPABASE_KEY"]
 )
 
-# try:
-#     result = supabase.table("bookings").select("*").limit(1).execute()
-#
-#     st.success("Forbindelse OK")
-#     #st.write(result.data)
-#
-# except Exception as e:
-#     st.error(f"Fejl: {e}")
-#
-
-# def to_dt(x):
-#     return pd.to_datetime(x)
-#
-# # -------------------------
-# # LOAD / SAVE
-# # -------------------------
-#
-#
-# def load_bookings():
-#     result = (
-#         supabase
-#         .table("bookings")
-#         .select("*")
-#         .execute()
-#     )
-#
-#     df = pd.DataFrame(result.data)
-#
-#     if not df.empty:
-#         df["checkin_date"] = pd.to_datetime(df["checkin_date"])
-#         df["checkout_date"] = pd.to_datetime(df["checkout_date"])
-#
-#     return df
-# # -------------------------
-# # RESERVATION INFO
-# # -------------------------
-# df = load_bookings()
-# #st.write(df.columns.tolist())
-#
-# # -------------------------
-# # CREATE BOOKING
-# # -------------------------
-# with st.sidebar.form("booking_form"):
-#
-#     room = st.selectbox(
-#         "room_number",
-#         [f"room_number {i}" for i in range(1, 8)]
-#     )
-#
-#     start_date = st.date_input(
-#         "checkin_date",
-#         value=datetime.date.today()
-#     )
-#
-#     end_date = st.date_input(
-#         "checkout_date",
-#         value=datetime.date.today() + datetime.timedelta(days=2)
-#     )
-#
-#     name = st.text_input("booking_number")
-#
-#     submitted = st.form_submit_button("Book nu")
-#
-#     if submitted:
-#
-#         if end_date < start_date:
-#
-#             st.error("Slut dato skal være efter start dato")
-#
-#         else:
-#
-#             try:
-#
-#                 supabase.table("bookings").insert({
-#                     "room_number": room,
-#                     "checkin_date": start_date.isoformat(),
-#                     "checkout_date": end_date.isoformat(),
-#                     "booking_number": int(name)
-#                 }).execute()
-#
-#                 st.success("Booking gemt")
-#
-#                 st.rerun()
-#
-#             except Exception as e:
-#
-#                 st.error(f"Fejl ved gemning: {e}")
-#
-# # -------------------------
-# # TIMELINE
-# # -------------------------
-# st.subheader("Belægningsplan")
-#
-# if not df.empty:
-#
-#     plot_df = df.copy()
-#
-#     # Fjern tomme værelser
-#     plot_df = plot_df[
-#         plot_df["room_number"].notna()
-#     ]
-#
-#     plot_df = plot_df[
-#         plot_df["room_number"].astype(str).str.strip() != ""
-#     ]
-#
-#     # Udtræk værelsesnummer til sortering
-#     plot_df["room_sort"] = (
-#         plot_df["room_number"]
-#         .astype(str)
-#         .str.extract(r"(\d+)", expand=False)
-#     )
-#
-#     # Fjern rækker uden gyldigt værelsesnummer
-#     plot_df = plot_df[
-#         plot_df["room_sort"].notna()
-#     ]
-#
-#     plot_df["room_sort"] = plot_df["room_sort"].astype(int)
-#
-#     # Fjern værelse 0
-#     plot_df = plot_df[
-#         plot_df["room_sort"] > 0
-#     ]
-#
-#     # Sortér værelserne numerisk
-#     plot_df = plot_df.sort_values("room_sort")
-#
-#     plot_df["booking_number"] = plot_df["booking_number"].astype(str)
-#     plot_df["checkin_date"] = pd.to_datetime(plot_df["checkin_date"])
-#     plot_df["checkout_date"] = pd.to_datetime(plot_df["checkout_date"])
-#
-#     fig = px.timeline(
-#         plot_df,
-#         x_start="checkin_date",
-#         x_end="checkout_date",
-#         y="room_number",
-#         color="booking_number",
-#         hover_name="booking_number",
-#         text="booking_number",
-#         color_discrete_sequence=px.colors.qualitative.Dark24
-#     )
-#
-#     # Tving rækkefølgen på værelserne
-#     room_order = (
-#         plot_df
-#         .sort_values("room_sort")
-#         ["room_number"]
-#         .drop_duplicates()
-#         .tolist()
-#     )
-#
-#     fig.update_yaxes(
-#         autorange="reversed",
-#         categoryorder="array",
-#         categoryarray=room_order
-#     )
-#
-#     fig.update_layout(
-#         plot_bgcolor="white",
-#         paper_bgcolor="white",
-#         xaxis_title="Dato",
-#         yaxis_title="",
-#         showlegend=False,
-#         height=400
-#     )
-#
-#     fig.update_xaxes(
-#         rangeslider_visible=True,
-#         tickformat="%d-%m"
-#     )
-#
-#     st.plotly_chart(
-#         fig,
-#         use_container_width=True
-#     )
-#
-#     # -------------------------
-#     # EDIT BOOKINGS
-#     # -------------------------
-#     st.subheader("Administrer bookinger")
-#
-#     booking_id = st.selectbox(
-#         "Vælg booking",
-#         df["id"],
-#         format_func=lambda x: (
-#             f"{df[df['id'] == x].iloc[0]['booking_number']} - "
-#             f"{df[df['id'] == x].iloc[0]['room_number']}"
-#         )
-#     )
-#
-#     booking = df[df["id"] == booking_id].iloc[0]
-#
-#     room_number = int(
-#         str(booking["room_number"]).split()[-1]
-#     ) - 1
-#
-#     new_room = st.selectbox(
-#         "edit room",
-#         [f"room_number {i}" for i in range(1, 8)],
-#         index=room_number
-#     )
-#
-#     new_start = st.date_input(
-#         "Rediger checkin_date",
-#         value=pd.to_datetime(
-#             booking["checkin_date"]
-#         ).date()
-#     )
-#
-#     new_end = st.date_input(
-#         "Rediger checkout_date",
-#         value=pd.to_datetime(
-#             booking["checkout_date"]
-#         ).date()
-#     )
-#
-#     new_guest = st.text_input(
-#         "Rediger booking_number",
-#         value=str(booking["booking_number"])
-#     )
-#
-#     col1, col2 = st.columns(2)
-#
-#     with col1:
-#
-#         if st.button("Gem til lille dtb ", key="save old dtb"):
-#             supabase.table("bookings").update({
-#                 "room_number": new_room,
-#                 "checkin_date": new_start.isoformat(),
-#                 "checkout_date": new_end.isoformat(),
-#                 "booking_number": int(new_guest)
-#             }).eq("id", booking_id).execute()
-#
-#             st.success("Ændringer gemt")
-#             st.rerun()
-#
-#     with col2:
-#
-#         if st.button("Slet booking", key="slet_old"):
-#             supabase.table("bookings").delete().eq(
-#                 "id",
-#                 booking_id
-#             ).execute()
-#
-#             st.success("Booking slettet")
-#             st.rerun()
-#     # vis samlet overblik over alle indtastede bookinger
-#     with st.expander("Se alle bookinger"):
-#
-#         st.dataframe(
-#             df,
-#             use_container_width=True
-#         )
-#
-# else:
-#
-#     st.info(
-#         "Ingen bookinger at vise endnu."
-#     )
 #####
-# try new database
+# new database
 #####
 
 try:
@@ -324,12 +64,67 @@ def load_bookings():
         df["checkout_date"] = pd.to_datetime(df["checkout_date"])
 
     return df
-# -------------------------
+def load_bookings():
+    result = (
+        supabase
+        .table("hk_dtb")
+        .select("*")
+        .execute()
+    )
+
+    df = pd.DataFrame(result.data)
+
+    if not df.empty:
+        df["checkin_date"] = pd.to_datetime(df["checkin_date"])
+        df["checkout_date"] = pd.to_datetime(df["checkout_date"])
+
+    return df
+
+
+# <-- INDSÆT HER
+
+def optimize_temp_room(df):
+
+    bookings = df.copy()
+
+    bookings["optimized_room"] = bookings["room_number"]
+
+    bookings = bookings.sort_values("checkin_date")
+
+    for idx, row in bookings.iterrows():
+
+        room = int(row["room_number"])
+
+        if room != 7:
+            continue
+
+        start = row["checkin_date"]
+        end = row["checkout_date"]
+
+        for target_room in [1, 2, 3, 4, 5]:
+
+            overlaps = bookings[
+                (bookings.index != idx)
+                &
+                (bookings["optimized_room"].astype(int) == target_room)
+                &
+                (bookings["checkin_date"] < end)
+                &
+                (bookings["checkout_date"] > start)
+            ]
+
+            if overlaps.empty:
+
+                bookings.loc[idx, "optimized_room"] = target_room
+                break
+
+    return bookings
+
 # RESERVATION INFO
 # -------------------------
 df = load_bookings()
 #st.write(df.columns.tolist())
-
+optimized_df = optimize_temp_room(df)
 # -------------------------
 # CREATE BOOKING
 # -------------------------
@@ -552,7 +347,32 @@ if not df.empty:
         fig,
         use_container_width=True
     )
+    st.subheader("Optimeret belægningsplan")
 
+    opt_plot = optimized_df.copy()
+
+    opt_plot["room_number"] = (
+            "Værelse "
+            + opt_plot["optimized_room"].astype(str)
+    )
+
+    fig2 = px.timeline(
+        opt_plot,
+        x_start="checkin_date",
+        x_end="checkout_date",
+        y="room_number",
+        color="booking_number",
+        text="booking_number"
+    )
+
+    fig2.update_yaxes(
+        autorange="reversed"
+    )
+
+    st.plotly_chart(
+        fig2,
+        use_container_width=True
+    )
     # -------------------------
     # EDIT BOOKINGS
     # -------------------------
