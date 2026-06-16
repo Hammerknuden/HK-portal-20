@@ -185,12 +185,13 @@ if not df.empty:
     st.dataframe(
         df[
             [
-                "booking_number",
-                "navn",
                 "checkin_date",
+                "booking_number",
+                "room_number",
+                "navn",
                 "bed",
                 "known",
-                "room_number",
+
             ]
         ],
         use_container_width=True,
