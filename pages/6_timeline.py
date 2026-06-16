@@ -123,6 +123,12 @@ def optimize_temp_room(df):
 # RESERVATION INFO
 # -------------------------
 df = load_bookings()
+st.write(
+    df[
+        df["room_number"].isna()
+    ]
+)
+
 #st.write(df.columns.tolist())
 optimized_df = optimize_temp_room(df)
 # -------------------------

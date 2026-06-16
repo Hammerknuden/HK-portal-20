@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="omsætning graf tekst til tal">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="optimerings funktion" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,14 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00463" summary="debug timeline old dtb">
-      <option name="closed" value="true" />
-      <created>1781162291779</created>
-      <option name="number" value="00463" />
-      <option name="presentableId" value="LOCAL-00463" />
-      <option name="project" value="LOCAL" />
-      <updated>1781162291779</updated>
     </task>
     <task id="LOCAL-00464" summary="debug timeline old dtb">
       <option name="closed" value="true" />
@@ -467,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781546964133</updated>
     </task>
-    <option name="localTasksCounter" value="512" />
+    <task id="LOCAL-00512" summary="optimerings funktion">
+      <option name="closed" value="true" />
+      <created>1781594509697</created>
+      <option name="number" value="00512" />
+      <option name="presentableId" value="LOCAL-00512" />
+      <option name="project" value="LOCAL" />
+      <updated>1781594509697</updated>
+    </task>
+    <option name="localTasksCounter" value="513" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -493,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="stor oprydning i den nye dtb booking" />
     <MESSAGE value="gem booking tildelt keys" />
     <MESSAGE value="slet booking tildelt keys" />
     <MESSAGE value="debug timeline new dtb" />
@@ -518,6 +514,7 @@
     <MESSAGE value="excel update" />
     <MESSAGE value="omsætning graf" />
     <MESSAGE value="omsætning graf tekst til tal" />
-    <option name="LAST_COMMIT_MESSAGE" value="omsætning graf tekst til tal" />
+    <MESSAGE value="optimerings funktion" />
+    <option name="LAST_COMMIT_MESSAGE" value="optimerings funktion" />
   </component>
 </project>
