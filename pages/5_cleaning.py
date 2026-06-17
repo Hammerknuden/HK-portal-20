@@ -131,12 +131,18 @@ if not df.empty:
         df[
             [
                 "checkout_date",
-                "booking_number",
                 "room_number",
-
+                "booking_number",
             ]
-        ],
-        use_container_width=True,
+        ].rename(
+            columns={
+                "checkout_date": "Udcheck",
+                "room_number": "Værelse",
+                "booking_number": "Booking nr."
+            }
+        ),
+        use_container_width=True
     )
+
 else:
     st.info("Ingen udcheckninger i perioden.")
