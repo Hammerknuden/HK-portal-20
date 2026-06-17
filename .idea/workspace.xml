@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excel">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="rækkefølge på værelser samt en excel update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,14 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00491" summary="sortering dk statestik">
-      <option name="closed" value="true" />
-      <created>1781434258763</created>
-      <option name="number" value="00491" />
-      <option name="presentableId" value="LOCAL-00491" />
-      <option name="project" value="LOCAL" />
-      <updated>1781434258763</updated>
     </task>
     <task id="LOCAL-00492" summary="sortering dk statestik">
       <option name="closed" value="true" />
@@ -467,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781681581363</updated>
     </task>
-    <option name="localTasksCounter" value="540" />
+    <task id="LOCAL-00540" summary="rækkefølge på værelser samt en excel update">
+      <option name="closed" value="true" />
+      <created>1781722473294</created>
+      <option name="number" value="00540" />
+      <option name="presentableId" value="LOCAL-00540" />
+      <option name="project" value="LOCAL" />
+      <updated>1781722473295</updated>
+    </task>
+    <option name="localTasksCounter" value="541" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -493,7 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="booking dtb disable" />
     <MESSAGE value="danmarks staestik" />
     <MESSAGE value="sortering dk statestik" />
     <MESSAGE value="sortering af cansl nights" />
@@ -518,6 +517,7 @@
     <MESSAGE value="deaktiveret excel" />
     <MESSAGE value="status all ok" />
     <MESSAGE value="excel" />
-    <option name="LAST_COMMIT_MESSAGE" value="excel" />
+    <MESSAGE value="rækkefølge på værelser samt en excel update" />
+    <option name="LAST_COMMIT_MESSAGE" value="rækkefølge på værelser samt en excel update" />
   </component>
 </project>

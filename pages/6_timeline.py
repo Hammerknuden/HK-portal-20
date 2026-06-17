@@ -150,16 +150,24 @@ def optimize_temp_room(df):
     return bookings
 # RESERVATION INFO
 # -------------------------
+selected_season = st.selectbox(
+    "Sæson",
+    [2026, 2027, 2028]
+)
 
 df = load_bookings()
-st.write(
-    df[
-        df["room_number"].isna()
-    ]
-)
+
+df = df[
+    df["season"] == selected_season
+]
 
 #st.write(df.columns.tolist())
 optimized_df = optimize_temp_room(df)
+
+st.write(
+    f"Antal bookinger i sæson {selected_season}:",
+    len(df)
+)
 # -------------------------
 # CREATE BOOKING
 # -------------------------
