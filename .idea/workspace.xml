@@ -72,30 +72,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00484" summary="login tracking">
-      <option name="closed" value="true" />
-      <created>1781417709254</created>
-      <option name="number" value="00484" />
-      <option name="presentableId" value="LOCAL-00484" />
-      <option name="project" value="LOCAL" />
-      <updated>1781417709254</updated>
-    </task>
-    <task id="LOCAL-00485" summary="booking dtb disable">
-      <option name="closed" value="true" />
-      <created>1781418138091</created>
-      <option name="number" value="00485" />
-      <option name="presentableId" value="LOCAL-00485" />
-      <option name="project" value="LOCAL" />
-      <updated>1781418138091</updated>
-    </task>
-    <task id="LOCAL-00486" summary="danmarks staestik">
-      <option name="closed" value="true" />
-      <created>1781423872841</created>
-      <option name="number" value="00486" />
-      <option name="presentableId" value="LOCAL-00486" />
-      <option name="project" value="LOCAL" />
-      <updated>1781423872841</updated>
-    </task>
     <task id="LOCAL-00487" summary="danmarks staestik">
       <option name="closed" value="true" />
       <created>1781423911602</created>
@@ -464,7 +440,31 @@
       <option name="project" value="LOCAL" />
       <updated>1781680226612</updated>
     </task>
-    <option name="localTasksCounter" value="533" />
+    <task id="LOCAL-00533" summary="cleaning updateret med layout og filter">
+      <option name="closed" value="true" />
+      <created>1781680416385</created>
+      <option name="number" value="00533" />
+      <option name="presentableId" value="LOCAL-00533" />
+      <option name="project" value="LOCAL" />
+      <updated>1781680416385</updated>
+    </task>
+    <task id="LOCAL-00534" summary="cleaning updateret med layout og filter">
+      <option name="closed" value="true" />
+      <created>1781680488778</created>
+      <option name="number" value="00534" />
+      <option name="presentableId" value="LOCAL-00534" />
+      <option name="project" value="LOCAL" />
+      <updated>1781680488778</updated>
+    </task>
+    <task id="LOCAL-00535" summary="cleaning updateret med layout og filter">
+      <option name="closed" value="true" />
+      <created>1781680736358</created>
+      <option name="number" value="00535" />
+      <option name="presentableId" value="LOCAL-00535" />
+      <option name="project" value="LOCAL" />
+      <updated>1781680736358</updated>
+    </task>
+    <option name="localTasksCounter" value="536" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
