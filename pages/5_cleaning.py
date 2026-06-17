@@ -120,8 +120,9 @@ result = (
     .order("checkout_date")
     .execute()
 )
-st.write(df["web"].unique())
+
 df = pd.DataFrame(result.data)
+st.write(df["web"].unique())
 
 # Sortér værelser 1-5
 if not df.empty:
