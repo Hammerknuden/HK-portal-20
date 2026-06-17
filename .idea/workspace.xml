@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="deaktiveret excel" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="status all ok" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,22 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00488" summary="danmarks staestik">
-      <option name="closed" value="true" />
-      <created>1781424132479</created>
-      <option name="number" value="00488" />
-      <option name="presentableId" value="LOCAL-00488" />
-      <option name="project" value="LOCAL" />
-      <updated>1781424132480</updated>
-    </task>
-    <task id="LOCAL-00489" summary="danmarks staestik">
-      <option name="closed" value="true" />
-      <created>1781424185307</created>
-      <option name="number" value="00489" />
-      <option name="presentableId" value="LOCAL-00489" />
-      <option name="project" value="LOCAL" />
-      <updated>1781424185307</updated>
     </task>
     <task id="LOCAL-00490" summary="danmarks staestik">
       <option name="closed" value="true" />
@@ -464,7 +448,23 @@
       <option name="project" value="LOCAL" />
       <updated>1781681093292</updated>
     </task>
-    <option name="localTasksCounter" value="537" />
+    <task id="LOCAL-00537" summary="status all ok">
+      <option name="closed" value="true" />
+      <created>1781681358473</created>
+      <option name="number" value="00537" />
+      <option name="presentableId" value="LOCAL-00537" />
+      <option name="project" value="LOCAL" />
+      <updated>1781681358473</updated>
+    </task>
+    <task id="LOCAL-00538" summary="status all ok">
+      <option name="closed" value="true" />
+      <created>1781681401175</created>
+      <option name="number" value="00538" />
+      <option name="presentableId" value="LOCAL-00538" />
+      <option name="project" value="LOCAL" />
+      <updated>1781681401175</updated>
+    </task>
+    <option name="localTasksCounter" value="539" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -490,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="only workspace" />
     <MESSAGE value="login tracking" />
     <MESSAGE value="booking dtb disable" />
     <MESSAGE value="danmarks staestik" />
@@ -515,6 +514,7 @@
     <MESSAGE value="cleaning updateret med supabase" />
     <MESSAGE value="cleaning updateret med layout og filter" />
     <MESSAGE value="deaktiveret excel" />
-    <option name="LAST_COMMIT_MESSAGE" value="deaktiveret excel" />
+    <MESSAGE value="status all ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="status all ok" />
   </component>
 </project>
