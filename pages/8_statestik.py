@@ -201,7 +201,7 @@ historik_df = pd.concat(
     [historik_df, ny_række],
     ignore_index=True
 )
-st.subheader("Omsætning pr. måned med moms")
+#st.subheader("Omsætning pr. måned med moms")
 
 st.dataframe(historik_df)
 historik_long = historik_df.melt(
@@ -220,7 +220,7 @@ fig = px.bar(
     title="Omsætning pr. måned"
 )
 #st.write(df["pris"].sum())
-st.write(df["pris"].describe())
+#st.write(df["pris"].describe())
 st.write(
     df.groupby("month")
       .agg(
