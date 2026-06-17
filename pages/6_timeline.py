@@ -409,10 +409,22 @@ if not df.empty:
             "Ikke flyttet": "red"
         }
     )
+    room_order = [
+        "Værelse 1",
+        "Værelse 2",
+        "Værelse 3",
+        "Værelse 4",
+        "Værelse 5",
+        "Værelse 6",
+        "Værelse 7"
+    ]
 
     fig2.update_yaxes(
-        autorange="reversed"
+        autorange="reversed",
+        categoryorder="array",
+        categoryarray=room_order
     )
+
     fig2.update_xaxes(
         rangeslider_visible=True,
         tickformat="%d-%m"
