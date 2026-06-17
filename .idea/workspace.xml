@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ankomst tid tilføjet" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="staestik opdateret med moms" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,14 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00479" summary="only workspace">
-      <option name="closed" value="true" />
-      <created>1781369107628</created>
-      <option name="number" value="00479" />
-      <option name="presentableId" value="LOCAL-00479" />
-      <option name="project" value="LOCAL" />
-      <updated>1781369107628</updated>
     </task>
     <task id="LOCAL-00480" summary="login tracking">
       <option name="closed" value="true" />
@@ -464,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781637227721</updated>
     </task>
-    <option name="localTasksCounter" value="528" />
+    <task id="LOCAL-00528" summary="staestik opdateret med moms">
+      <option name="closed" value="true" />
+      <created>1781678983390</created>
+      <option name="number" value="00528" />
+      <option name="presentableId" value="LOCAL-00528" />
+      <option name="project" value="LOCAL" />
+      <updated>1781678983391</updated>
+    </task>
+    <option name="localTasksCounter" value="529" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -490,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="oprydning" />
     <MESSAGE value="new database hk dtb implem" />
     <MESSAGE value="new database hk dtb implem fault in gem" />
     <MESSAGE value="ændringer i st selectboks for rum nummer" />
@@ -515,6 +514,7 @@
     <MESSAGE value="ankomster i supabase import af date.timedelta" />
     <MESSAGE value="excel fjernet fra ankomster" />
     <MESSAGE value="ankomst tid tilføjet" />
-    <option name="LAST_COMMIT_MESSAGE" value="ankomst tid tilføjet" />
+    <MESSAGE value="staestik opdateret med moms" />
+    <option name="LAST_COMMIT_MESSAGE" value="staestik opdateret med moms" />
   </component>
 </project>
