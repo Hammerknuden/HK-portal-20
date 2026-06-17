@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="cleaning updateret med layout og filter" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="deaktiveret excel" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,14 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00487" summary="danmarks staestik">
-      <option name="closed" value="true" />
-      <created>1781423911602</created>
-      <option name="number" value="00487" />
-      <option name="presentableId" value="LOCAL-00487" />
-      <option name="project" value="LOCAL" />
-      <updated>1781423911602</updated>
     </task>
     <task id="LOCAL-00488" summary="danmarks staestik">
       <option name="closed" value="true" />
@@ -464,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781680736358</updated>
     </task>
-    <option name="localTasksCounter" value="536" />
+    <task id="LOCAL-00536" summary="deaktiveret excel">
+      <option name="closed" value="true" />
+      <created>1781681093291</created>
+      <option name="number" value="00536" />
+      <option name="presentableId" value="LOCAL-00536" />
+      <option name="project" value="LOCAL" />
+      <updated>1781681093292</updated>
+    </task>
+    <option name="localTasksCounter" value="537" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -490,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ændringer i st selectboks for rum nummer" />
     <MESSAGE value="only workspace" />
     <MESSAGE value="login tracking" />
     <MESSAGE value="booking dtb disable" />
@@ -515,6 +514,7 @@
     <MESSAGE value="staestik opdateret med moms" />
     <MESSAGE value="cleaning updateret med supabase" />
     <MESSAGE value="cleaning updateret med layout og filter" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaning updateret med layout og filter" />
+    <MESSAGE value="deaktiveret excel" />
+    <option name="LAST_COMMIT_MESSAGE" value="deaktiveret excel" />
   </component>
 </project>

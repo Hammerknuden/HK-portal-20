@@ -217,7 +217,7 @@ fig = px.bar(
     y="revenue",
     color="year",
     barmode="group",  # side om side
-    title="Omsætning pr. måned"
+    title="Omsætning pr. måned inkl moms"
 )
 #st.write(df["pris"].sum())
 #st.write(df["pris"].describe())
