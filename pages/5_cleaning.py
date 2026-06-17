@@ -112,14 +112,15 @@ check_dato_slut = check_dato_start + timedelta(days=antal_dage)
 result = (
     supabase.table("hk_dtb")
     .select(
-        "booking_number, checkout_date, room_number"
+        "booking_number, checkout_date, room_number, web"
     )
     .gte("checkout_date", str(check_dato_start))
     .lte("checkout_date", str(check_dato_slut))
-    .order("room_number")
+    .neq("web", "cansl")
+    .order("checkout_date")
     .execute()
 )
-
+st.write(df["web"].unique())
 df = pd.DataFrame(result.data)
 
 # Sortér værelser 1-5
