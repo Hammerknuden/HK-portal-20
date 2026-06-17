@@ -127,7 +127,10 @@ st.write(df["web"].unique())
 # Sortér værelser 1-5
 if not df.empty:
     df["room_number"] = pd.to_numeric(df["room_number"], errors="coerce")
-    df = df.sort_values(["room_number", "checkout_date"])
+    df["checkout_date"] = pd.to_datetime(df["checkout_date"])
+
+    df = df.sort_values(["checkout_date", "room_number"])
+
 
     st.dataframe(
         df[
