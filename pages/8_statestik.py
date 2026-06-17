@@ -155,15 +155,15 @@ fig = px.line(
 )
 st.plotly_chart(fig, use_container_width=True)
 
-st.subheader(" Omsætning")
+st.subheader(" Omsætning inkl. moms")
 
 historik_df = pd.DataFrame({
     "year": [2024, 2025],
-    "maj": [69584, 62879],
-    "juni": [114975, 97108],
-    "juli": [121365, 117225],
-    "aug": [117530, 127753],
-    "sep": [68998, 83673]
+    "maj": [86980, 78599],
+    "juni": [143719, 121385],
+    "juli": [151706, 146531],
+    "aug": [146913, 159691],
+    "sep": [107810, 104591]
 })
 df["checkin_date"] = pd.to_datetime(df["checkin_date"])
 
