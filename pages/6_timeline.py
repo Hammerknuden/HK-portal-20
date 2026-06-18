@@ -60,8 +60,10 @@ def load_bookings():
     df = pd.DataFrame(result.data)
 
     if not df.empty:
+
         df["checkin_date"] = pd.to_datetime(df["checkin_date"])
         df["checkout_date"] = pd.to_datetime(df["checkout_date"])
+
         if "web" in df.columns:
             df = df[
                 df["web"]
@@ -70,9 +72,28 @@ def load_bookings():
                 .str.strip()
                 .str.lower()
                 != "cansl"
-                ]
+            ]
+
+        if "room_number" in df.columns:
+            df["room_number"] = (
+                pd.to_numeric(
+                    df["room_number"],
+                    errors="coerce"
+                )
+                .astype(int)
+            )
+
+        if "season" in df.columns:
+            df["season"] = (
+                pd.to_numeric(
+                    df["season"],
+                    errors="coerce"
+                )
+                .astype(int)
+            )
 
     return df
+
 
 def optimize_temp_room(df):
 
