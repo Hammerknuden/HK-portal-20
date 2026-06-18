@@ -177,18 +177,28 @@ selected_season = st.selectbox(
 )
 
 df = load_bookings()
-st.write(
-    df[df["room_number"].isna()]
-)
-st.write(
-    "Antal tomme room_number:",
-    df["room_number"].isna().sum()
-)
+#st.write(
+#    df[df["room_number"].isna()]
+#)
+#st.write(
+#    "Antal tomme room_number:",
+#    df["room_number"].isna().sum()
+#)
 st.write(df["room_number"].dtype)
 st.write(df.dtypes)
-df = df[
-    df["season"] == selected_season
-]
+st.write(df["room_number"].dtype)
+st.write(df["season"].dtype)
+df["season"] = pd.to_numeric(
+    df["season"],
+    errors="coerce"
+)
+df["room_number"] = pd.to_numeric(
+    df["room_number"],
+    errors="coerce"
+)
+#df = df[
+#    df["season"] == selected_season
+#]
 
 #st.write(df.columns.tolist())
 optimized_df = optimize_temp_room(df)
