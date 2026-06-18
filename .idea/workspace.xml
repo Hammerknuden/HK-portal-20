@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="forbered til fremtidig seasons" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="mayor changes in supabase all timeline works ok">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,14 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00493" summary="sortering dk statestik">
-      <option name="closed" value="true" />
-      <created>1781440875315</created>
-      <option name="number" value="00493" />
-      <option name="presentableId" value="LOCAL-00493" />
-      <option name="project" value="LOCAL" />
-      <updated>1781440875315</updated>
     </task>
     <task id="LOCAL-00494" summary="sortering dk statestik">
       <option name="closed" value="true" />
@@ -464,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781725689311</updated>
     </task>
-    <option name="localTasksCounter" value="542" />
+    <task id="LOCAL-00542" summary="mayor changes in supabase all timeline works ok">
+      <option name="closed" value="true" />
+      <created>1781726168390</created>
+      <option name="number" value="00542" />
+      <option name="presentableId" value="LOCAL-00542" />
+      <option name="project" value="LOCAL" />
+      <updated>1781726168391</updated>
+    </task>
+    <option name="localTasksCounter" value="543" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -490,7 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="sortering dk statestik" />
     <MESSAGE value="sortering af cansl nights" />
     <MESSAGE value="booking com sortering" />
     <MESSAGE value="booking pace" />
@@ -515,6 +517,7 @@
     <MESSAGE value="excel" />
     <MESSAGE value="rækkefølge på værelser samt en excel update" />
     <MESSAGE value="forbered til fremtidig seasons" />
-    <option name="LAST_COMMIT_MESSAGE" value="forbered til fremtidig seasons" />
+    <MESSAGE value="mayor changes in supabase all timeline works ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="mayor changes in supabase all timeline works ok" />
   </component>
 </project>

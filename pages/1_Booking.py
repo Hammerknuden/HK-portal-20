@@ -589,7 +589,9 @@ if send_data: #and booking_submitted:
         "pris": pristotal,
         "known": known,
         "comments": comments,
-        "room_number": 7
+        "room_number": 7,
+        "season": year,
+        "movable": True
     }).execute()
 
     st.success("Booking gemt i Supabase")
@@ -703,7 +705,8 @@ if edit:
                         "web": new_web,
                         "ankomst": new_ankomst,
                         "bed": new_bed,
-                        "room_number": new_room_number
+                        "room_number": new_room_number,
+                        "season": year,
                     })
                     .eq("id", booking_id)
                     .execute()
