@@ -164,6 +164,7 @@ st.write(
     df["room_number"].isna().sum()
 )
 st.write(df["room_number"].dtype)
+st.write(df.dtypes)
 df = df[
     df["season"] == selected_season
 ]
