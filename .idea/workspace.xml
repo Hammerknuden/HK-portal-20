@@ -72,14 +72,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00502" summary="omsætning graf">
-      <option name="closed" value="true" />
-      <created>1781541523996</created>
-      <option name="number" value="00502" />
-      <option name="presentableId" value="LOCAL-00502" />
-      <option name="project" value="LOCAL" />
-      <updated>1781541523996</updated>
-    </task>
     <task id="LOCAL-00503" summary="omsætning graf">
       <option name="closed" value="true" />
       <created>1781541597457</created>
@@ -464,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781768418097</updated>
     </task>
-    <option name="localTasksCounter" value="551" />
+    <task id="LOCAL-00551" summary="fjerne 1.0 fra redigereing">
+      <option name="closed" value="true" />
+      <created>1781778126641</created>
+      <option name="number" value="00551" />
+      <option name="presentableId" value="LOCAL-00551" />
+      <option name="project" value="LOCAL" />
+      <updated>1781778126642</updated>
+    </task>
+    <option name="localTasksCounter" value="552" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

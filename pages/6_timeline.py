@@ -80,7 +80,7 @@ def load_bookings():
                     df["room_number"],
                     errors="coerce"
                 )
-                .astype(int)
+                .astype("Int64")
             )
 
         if "season" in df.columns:
@@ -89,7 +89,7 @@ def load_bookings():
                     df["season"],
                     errors="coerce"
                 )
-                .astype(int)
+                .astype("Int64")
             )
 
     return df
