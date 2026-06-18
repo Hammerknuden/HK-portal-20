@@ -482,7 +482,8 @@ if not df.empty:
         df["id"],
         format_func=lambda x: (
             f"Booking {df[df['id'] == x].iloc[0]['booking_number']} | "
-            f"{room_label(df[df['id'] == x].iloc[0]['room_number'])}"
+            f"{room_label(df[df['id'] == x].iloc[0]['room_number'])} | "
+            f"{'🔓' if df[df['id'] == x].iloc[0].get('movable', True) else '🔒'}"
         )
     )
 
@@ -574,11 +575,6 @@ else:
         "Ingen bookinger at vise endnu."
     )
 
-format_func=lambda x: (
-    f"Booking {booking_no} | "
-    f"{room_label} | "
-    f"{'🔓' if movable else '🔒'}"
-)
 
 
 

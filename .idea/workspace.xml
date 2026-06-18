@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="locked unlocked" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="show locked unlocked">
+      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,14 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00496" summary="booking com sortering">
-      <option name="closed" value="true" />
-      <created>1781502876428</created>
-      <option name="number" value="00496" />
-      <option name="presentableId" value="LOCAL-00496" />
-      <option name="project" value="LOCAL" />
-      <updated>1781502876428</updated>
     </task>
     <task id="LOCAL-00497" summary="booking pace">
       <option name="closed" value="true" />
@@ -464,7 +458,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781765249429</updated>
     </task>
-    <option name="localTasksCounter" value="545" />
+    <task id="LOCAL-00545" summary="show locked unlocked">
+      <option name="closed" value="true" />
+      <created>1781765637880</created>
+      <option name="number" value="00545" />
+      <option name="presentableId" value="LOCAL-00545" />
+      <option name="project" value="LOCAL" />
+      <updated>1781765637880</updated>
+    </task>
+    <option name="localTasksCounter" value="546" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -490,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="booking pace" />
     <MESSAGE value="edit nation" />
     <MESSAGE value="excel update" />
     <MESSAGE value="omsætning graf" />
@@ -515,6 +516,7 @@
     <MESSAGE value="mayor changes in supabase all timeline works ok" />
     <MESSAGE value="update of send to supabase" />
     <MESSAGE value="locked unlocked" />
-    <option name="LAST_COMMIT_MESSAGE" value="locked unlocked" />
+    <MESSAGE value="show locked unlocked" />
+    <option name="LAST_COMMIT_MESSAGE" value="show locked unlocked" />
   </component>
 </project>
