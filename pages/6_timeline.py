@@ -156,7 +156,7 @@ selected_season = st.selectbox(
 )
 
 df = load_bookings()
-
+st.write(df["room_number"].dtype)
 df = df[
     df["season"] == selected_season
 ]
