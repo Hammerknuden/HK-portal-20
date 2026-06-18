@@ -525,6 +525,14 @@ if not df.empty:
         "Rediger booking_number",
         value=str(booking["booking_number"])
     )
+    new_movable = st.checkbox(
+        "Kan flyttes af optimering",
+        value=bool(booking.get("movable", True))
+    )
+    #new_movable = st.checkbox(
+    #    "Kan flyttes af optimering",
+    #    value=bool(booking.get("movable", True))
+    #)
 
     col1, col2 = st.columns(2)
 
@@ -535,7 +543,8 @@ if not df.empty:
                 "room_number": new_room,
                 "checkin_date": new_start.isoformat(),
                 "checkout_date": new_end.isoformat(),
-                "booking_number": int(new_guest)
+                "booking_number": int(new_guest),
+                "movable": new_movable
             }).eq("id", booking_id).execute()
 
             st.success("Ændringer gemt")
