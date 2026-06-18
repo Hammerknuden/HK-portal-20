@@ -574,7 +574,11 @@ else:
         "Ingen bookinger at vise endnu."
     )
 
-
+format_func=lambda x: (
+    f"Booking {booking_no} | "
+    f"{room_label} | "
+    f"{'🔓' if movable else '🔒'}"
+)
 
 
 

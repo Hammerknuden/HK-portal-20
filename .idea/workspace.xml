@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="update of send to supabase">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="locked unlocked" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,14 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00495" summary="sortering af cansl nights">
-      <option name="closed" value="true" />
-      <created>1781502338439</created>
-      <option name="number" value="00495" />
-      <option name="presentableId" value="LOCAL-00495" />
-      <option name="project" value="LOCAL" />
-      <updated>1781502338440</updated>
     </task>
     <task id="LOCAL-00496" summary="booking com sortering">
       <option name="closed" value="true" />
@@ -467,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781764295956</updated>
     </task>
-    <option name="localTasksCounter" value="544" />
+    <task id="LOCAL-00544" summary="locked unlocked">
+      <option name="closed" value="true" />
+      <created>1781765249429</created>
+      <option name="number" value="00544" />
+      <option name="presentableId" value="LOCAL-00544" />
+      <option name="project" value="LOCAL" />
+      <updated>1781765249429</updated>
+    </task>
+    <option name="localTasksCounter" value="545" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -493,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="booking com sortering" />
     <MESSAGE value="booking pace" />
     <MESSAGE value="edit nation" />
     <MESSAGE value="excel update" />
@@ -518,6 +514,7 @@
     <MESSAGE value="forbered til fremtidig seasons" />
     <MESSAGE value="mayor changes in supabase all timeline works ok" />
     <MESSAGE value="update of send to supabase" />
-    <option name="LAST_COMMIT_MESSAGE" value="update of send to supabase" />
+    <MESSAGE value="locked unlocked" />
+    <option name="LAST_COMMIT_MESSAGE" value="locked unlocked" />
   </component>
 </project>
