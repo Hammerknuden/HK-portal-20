@@ -192,6 +192,7 @@ st.write(
     f"Antal bookinger i sæson {selected_season}:",
     len(df)
 )
+
 # -------------------------
 # CREATE BOOKING
 # -------------------------
