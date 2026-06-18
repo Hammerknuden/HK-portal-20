@@ -156,6 +156,13 @@ selected_season = st.selectbox(
 )
 
 df = load_bookings()
+st.write(
+    df[df["room_number"].isna()]
+)
+st.write(
+    "Antal tomme room_number:",
+    df["room_number"].isna().sum()
+)
 st.write(df["room_number"].dtype)
 df = df[
     df["season"] == selected_season
