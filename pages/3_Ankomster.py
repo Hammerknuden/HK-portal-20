@@ -44,7 +44,7 @@ check_dato_slut = check_dato_start + timedelta(days=antal_dage)
 result = (
     supabase.table("hk_dtb")
     .select(
-        "booking_number, navn, checkin_date, ankomst, bed, known, room_number"
+        "booking_number, navn, checkin_date, ankomst, bed, known, room_number, nation, enkelt"
     )
     .gte("checkin_date", str(check_dato_start))
     .lte("checkin_date", str(check_dato_slut))

@@ -72,22 +72,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00513" summary="optimerings funktion">
-      <option name="closed" value="true" />
-      <created>1781594760435</created>
-      <option name="number" value="00513" />
-      <option name="presentableId" value="LOCAL-00513" />
-      <option name="project" value="LOCAL" />
-      <updated>1781594760435</updated>
-    </task>
-    <task id="LOCAL-00514" summary="optimerings funktion">
-      <option name="closed" value="true" />
-      <created>1781594927461</created>
-      <option name="number" value="00514" />
-      <option name="presentableId" value="LOCAL-00514" />
-      <option name="project" value="LOCAL" />
-      <updated>1781594927462</updated>
-    </task>
     <task id="LOCAL-00515" summary="optimerings funktion">
       <option name="closed" value="true" />
       <created>1781595271371</created>
@@ -464,7 +448,23 @@
       <option name="project" value="LOCAL" />
       <updated>1781852961026</updated>
     </task>
-    <option name="localTasksCounter" value="562" />
+    <task id="LOCAL-00562" summary="status supabase introduceret på booking side med beregning af ledige værelser">
+      <option name="closed" value="true" />
+      <created>1781854090320</created>
+      <option name="number" value="00562" />
+      <option name="presentableId" value="LOCAL-00562" />
+      <option name="project" value="LOCAL" />
+      <updated>1781854090321</updated>
+    </task>
+    <task id="LOCAL-00563" summary="status supabase introduceret på booking side med beregning af ledige værelser">
+      <option name="closed" value="true" />
+      <created>1781864734394</created>
+      <option name="number" value="00563" />
+      <option name="presentableId" value="LOCAL-00563" />
+      <option name="project" value="LOCAL" />
+      <updated>1781864734394</updated>
+    </task>
+    <option name="localTasksCounter" value="564" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
