@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fjernelser af cansl fra ankomster">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ny check af ledige rum grafisk simpelt" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,22 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00508" summary="omsætning graf tekst til tal">
-      <option name="closed" value="true" />
-      <created>1781544057812</created>
-      <option name="number" value="00508" />
-      <option name="presentableId" value="LOCAL-00508" />
-      <option name="project" value="LOCAL" />
-      <updated>1781544057812</updated>
-    </task>
-    <task id="LOCAL-00509" summary="omsætning graf tekst til tal">
-      <option name="closed" value="true" />
-      <created>1781544175388</created>
-      <option name="number" value="00509" />
-      <option name="presentableId" value="LOCAL-00509" />
-      <option name="project" value="LOCAL" />
-      <updated>1781544175388</updated>
     </task>
     <task id="LOCAL-00510" summary="omsætning graf tekst til tal">
       <option name="closed" value="true" />
@@ -467,7 +448,23 @@
       <option name="project" value="LOCAL" />
       <updated>1781850363481</updated>
     </task>
-    <option name="localTasksCounter" value="557" />
+    <task id="LOCAL-00557" summary="ny check af ledige rum supabase">
+      <option name="closed" value="true" />
+      <created>1781852000426</created>
+      <option name="number" value="00557" />
+      <option name="presentableId" value="LOCAL-00557" />
+      <option name="project" value="LOCAL" />
+      <updated>1781852000427</updated>
+    </task>
+    <task id="LOCAL-00558" summary="ny check af ledige rum grafisk simpelt">
+      <option name="closed" value="true" />
+      <created>1781852512069</created>
+      <option name="number" value="00558" />
+      <option name="presentableId" value="LOCAL-00558" />
+      <option name="project" value="LOCAL" />
+      <updated>1781852512069</updated>
+    </task>
+    <option name="localTasksCounter" value="559" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -493,8 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="optimerings funktion" />
-    <MESSAGE value="optimerings funktion stadig under udarbejdelse" />
     <MESSAGE value="slider til fig 2" />
     <MESSAGE value="rækkefølge smat dato grid" />
     <MESSAGE value="status app running med optimerings tiltag" />
@@ -518,6 +513,8 @@
     <MESSAGE value="status up and running again" />
     <MESSAGE value="fjernelse af 1.0 fra booking py" />
     <MESSAGE value="fjernelser af cansl fra ankomster" />
-    <option name="LAST_COMMIT_MESSAGE" value="fjernelser af cansl fra ankomster" />
+    <MESSAGE value="ny check af ledige rum supabase" />
+    <MESSAGE value="ny check af ledige rum grafisk simpelt" />
+    <option name="LAST_COMMIT_MESSAGE" value="ny check af ledige rum grafisk simpelt" />
   </component>
 </project>

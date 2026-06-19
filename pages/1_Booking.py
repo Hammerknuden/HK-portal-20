@@ -88,11 +88,11 @@ else:
     days = 0
 
 st.markdown(f"**Antal dage denne booking** {days}")
-source = st.radio(
-    "Datakilde",
-    ["Supabase", "Excel"],
-    horizontal=True
-)
+#source = st.radio(
+#    "Datakilde",
+#    ["Supabase", "Excel"],
+#    horizontal=True
+#)
 st.text("Skema viser ikke udchecksdagen da den er irelevant i forbindelse med reservation")
 
 if year == '2026':
