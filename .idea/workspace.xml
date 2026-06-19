@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ankomst opdateret med flere koloner" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="2027 booking" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,14 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00517" summary="optimerings funktion stadig under udarbejdelse">
-      <option name="closed" value="true" />
-      <created>1781607617167</created>
-      <option name="number" value="00517" />
-      <option name="presentableId" value="LOCAL-00517" />
-      <option name="project" value="LOCAL" />
-      <updated>1781607617167</updated>
     </task>
     <task id="LOCAL-00518" summary="slider til fig 2">
       <option name="closed" value="true" />
@@ -464,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781864918511</updated>
     </task>
-    <option name="localTasksCounter" value="566" />
+    <task id="LOCAL-00566" summary="2027 booking">
+      <option name="closed" value="true" />
+      <created>1781883513808</created>
+      <option name="number" value="00566" />
+      <option name="presentableId" value="LOCAL-00566" />
+      <option name="project" value="LOCAL" />
+      <updated>1781883513809</updated>
+    </task>
+    <option name="localTasksCounter" value="567" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -490,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="status app running med optimerings tiltag" />
     <MESSAGE value="ankomster i supabase" />
     <MESSAGE value="ankomster i supabase import af date.timedelta" />
     <MESSAGE value="excel fjernet fra ankomster" />
@@ -515,6 +514,7 @@
     <MESSAGE value="ny check af ledige rum grafisk simpelt" />
     <MESSAGE value="status supabase introduceret på booking side med beregning af ledige værelser" />
     <MESSAGE value="ankomst opdateret med flere koloner" />
-    <option name="LAST_COMMIT_MESSAGE" value="ankomst opdateret med flere koloner" />
+    <MESSAGE value="2027 booking" />
+    <option name="LAST_COMMIT_MESSAGE" value="2027 booking" />
   </component>
 </project>

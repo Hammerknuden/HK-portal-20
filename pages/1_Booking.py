@@ -192,6 +192,9 @@ result = (
 
 bookings = pd.DataFrame(result.data)
 
+print("Shape:", bookings.shape)
+print("Columns:", bookings.columns.tolist())
+print("Season:", selected_season)
 occupied_rooms = set(
     pd.to_numeric(
         bookings["room_number"],
