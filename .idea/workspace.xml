@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="status supabase introduceret på booking side med beregning af ledige værelser" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ankomst opdateret med flere koloner" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,22 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00515" summary="optimerings funktion">
-      <option name="closed" value="true" />
-      <created>1781595271371</created>
-      <option name="number" value="00515" />
-      <option name="presentableId" value="LOCAL-00515" />
-      <option name="project" value="LOCAL" />
-      <updated>1781595271372</updated>
-    </task>
-    <task id="LOCAL-00516" summary="optimerings funktion">
-      <option name="closed" value="true" />
-      <created>1781595585961</created>
-      <option name="number" value="00516" />
-      <option name="presentableId" value="LOCAL-00516" />
-      <option name="project" value="LOCAL" />
-      <updated>1781595585962</updated>
     </task>
     <task id="LOCAL-00517" summary="optimerings funktion stadig under udarbejdelse">
       <option name="closed" value="true" />
@@ -464,7 +448,23 @@
       <option name="project" value="LOCAL" />
       <updated>1781864734394</updated>
     </task>
-    <option name="localTasksCounter" value="564" />
+    <task id="LOCAL-00564" summary="ankomst opdateret med flere koloner">
+      <option name="closed" value="true" />
+      <created>1781864876453</created>
+      <option name="number" value="00564" />
+      <option name="presentableId" value="LOCAL-00564" />
+      <option name="project" value="LOCAL" />
+      <updated>1781864876453</updated>
+    </task>
+    <task id="LOCAL-00565" summary="ankomst opdateret med flere koloner">
+      <option name="closed" value="true" />
+      <created>1781864918511</created>
+      <option name="number" value="00565" />
+      <option name="presentableId" value="LOCAL-00565" />
+      <option name="project" value="LOCAL" />
+      <updated>1781864918511</updated>
+    </task>
+    <option name="localTasksCounter" value="566" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -490,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="rækkefølge smat dato grid" />
     <MESSAGE value="status app running med optimerings tiltag" />
     <MESSAGE value="ankomster i supabase" />
     <MESSAGE value="ankomster i supabase import af date.timedelta" />
@@ -515,6 +514,7 @@
     <MESSAGE value="ny check af ledige rum supabase" />
     <MESSAGE value="ny check af ledige rum grafisk simpelt" />
     <MESSAGE value="status supabase introduceret på booking side med beregning af ledige værelser" />
-    <option name="LAST_COMMIT_MESSAGE" value="status supabase introduceret på booking side med beregning af ledige værelser" />
+    <MESSAGE value="ankomst opdateret med flere koloner" />
+    <option name="LAST_COMMIT_MESSAGE" value="ankomst opdateret med flere koloner" />
   </component>
 </project>

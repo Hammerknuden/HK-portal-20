@@ -193,10 +193,14 @@ result = (
 bookings = pd.DataFrame(result.data)
 
 occupied_rooms = set(
-    bookings["room_number"]
+    pd.to_numeric(
+        bookings["room_number"],
+        errors="coerce"
+    )
     .dropna()
     .astype(int)
 )
+
 all_rooms = {1, 2, 3, 4, 5}
 
 available_rooms = (
