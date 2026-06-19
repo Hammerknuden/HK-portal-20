@@ -67,7 +67,7 @@ if not df.empty:
                 "booking_number",
                 "room_number",
                 "navn",
-                "nation"
+                "nation",
                 "ankomst",
                 "bed",
                 "enkelt",
