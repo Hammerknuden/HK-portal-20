@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="2027 booking">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="2027 booking de bug">
       <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,14 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00519" summary="rækkefølge smat dato grid">
-      <option name="closed" value="true" />
-      <created>1781608374375</created>
-      <option name="number" value="00519" />
-      <option name="presentableId" value="LOCAL-00519" />
-      <option name="project" value="LOCAL" />
-      <updated>1781608374375</updated>
     </task>
     <task id="LOCAL-00520" summary="rækkefølge smat dato grid">
       <option name="closed" value="true" />
@@ -466,7 +458,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781883721749</updated>
     </task>
-    <option name="localTasksCounter" value="568" />
+    <task id="LOCAL-00568" summary="2027 booking de bug">
+      <option name="closed" value="true" />
+      <created>1781883988297</created>
+      <option name="number" value="00568" />
+      <option name="presentableId" value="LOCAL-00568" />
+      <option name="project" value="LOCAL" />
+      <updated>1781883988297</updated>
+    </task>
+    <option name="localTasksCounter" value="569" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -492,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ankomster i supabase" />
     <MESSAGE value="ankomster i supabase import af date.timedelta" />
     <MESSAGE value="excel fjernet fra ankomster" />
     <MESSAGE value="ankomst tid tilføjet" />
@@ -517,6 +516,7 @@
     <MESSAGE value="status supabase introduceret på booking side med beregning af ledige værelser" />
     <MESSAGE value="ankomst opdateret med flere koloner" />
     <MESSAGE value="2027 booking" />
-    <option name="LAST_COMMIT_MESSAGE" value="2027 booking" />
+    <MESSAGE value="2027 booking de bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="2027 booking de bug" />
   </component>
 </project>

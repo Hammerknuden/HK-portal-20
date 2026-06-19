@@ -180,6 +180,8 @@ st.dataframe(styled_data)
 ledige_rum_excel = ledige_rum
 #supabase
 
+year = season
+
 result = (
     supabase
     .table("hk_dtb")
@@ -192,11 +194,8 @@ result = (
 
 bookings = pd.DataFrame(result.data)
 
+st.write("Bookings empty:", bookings.empty)
 st.write("Shape:", bookings.shape)
-st.write("Columns:", bookings.columns.tolist())
-st.write("Type:", type(bookings))
-st.write("Selected season:", selected_season)
-st.write("Rows:", len(bookings))
 
 occupied_rooms = set(
     pd.to_numeric(
