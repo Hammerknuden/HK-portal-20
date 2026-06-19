@@ -246,6 +246,7 @@ with col2:
             else:
                 st.error("Optaget")
 
+
 col1, col2, = st.columns(2)
 with col1:
     num_rooms = st.number_input("Antal rum", value=1, step=1)
