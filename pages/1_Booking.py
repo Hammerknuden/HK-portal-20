@@ -229,7 +229,20 @@ with col2:
         "Supabase",
         ledige_rum_supabase
     )
+    st.markdown("### Værelsesstatus")
 
+    rooms = [1, 2, 3, 4, 5]
+
+    cols = st.columns(len(rooms))
+
+    for i, room in enumerate(rooms):
+
+        with cols[i]:
+
+            if room in available_rooms:
+                st.success(f"🏠 {room}")
+            else:
+                st.error(f"🏠 {room}")
 col1, col2, = st.columns(2)
 with col1:
     num_rooms = st.number_input("Antal rum", value=1, step=1)
