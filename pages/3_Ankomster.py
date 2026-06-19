@@ -48,6 +48,7 @@ result = (
     )
     .gte("checkin_date", str(check_dato_start))
     .lte("checkin_date", str(check_dato_slut))
+    .neq("web", "cansl")
     .order("room_number")
     .execute()
 )
