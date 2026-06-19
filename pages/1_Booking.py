@@ -239,10 +239,13 @@ with col2:
 
         with cols[i]:
 
+            st.write(f"**Værelse {room}**")
+
             if room in available_rooms:
-                st.success(f"🏠 {room}")
+                st.success("Ledigt")
             else:
-                st.error(f"🏠 {room}")
+                st.error("Optaget")
+
 col1, col2, = st.columns(2)
 with col1:
     num_rooms = st.number_input("Antal rum", value=1, step=1)
