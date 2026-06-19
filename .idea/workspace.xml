@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="2027 booking de bug">
-      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="2027 booking de bug" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,22 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00520" summary="rækkefølge smat dato grid">
-      <option name="closed" value="true" />
-      <created>1781608421991</created>
-      <option name="number" value="00520" />
-      <option name="presentableId" value="LOCAL-00520" />
-      <option name="project" value="LOCAL" />
-      <updated>1781608421991</updated>
-    </task>
-    <task id="LOCAL-00521" summary="status app running med optimerings tiltag">
-      <option name="closed" value="true" />
-      <created>1781609914702</created>
-      <option name="number" value="00521" />
-      <option name="presentableId" value="LOCAL-00521" />
-      <option name="project" value="LOCAL" />
-      <updated>1781609914702</updated>
     </task>
     <task id="LOCAL-00522" summary="ankomster i supabase">
       <option name="closed" value="true" />
@@ -466,7 +448,23 @@
       <option name="project" value="LOCAL" />
       <updated>1781883988297</updated>
     </task>
-    <option name="localTasksCounter" value="569" />
+    <task id="LOCAL-00569" summary="2027 booking de bug">
+      <option name="closed" value="true" />
+      <created>1781884531641</created>
+      <option name="number" value="00569" />
+      <option name="presentableId" value="LOCAL-00569" />
+      <option name="project" value="LOCAL" />
+      <updated>1781884531641</updated>
+    </task>
+    <task id="LOCAL-00570" summary="2027 booking de bug">
+      <option name="closed" value="true" />
+      <created>1781884619683</created>
+      <option name="number" value="00570" />
+      <option name="presentableId" value="LOCAL-00570" />
+      <option name="project" value="LOCAL" />
+      <updated>1781884619684</updated>
+    </task>
+    <option name="localTasksCounter" value="571" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

@@ -191,11 +191,12 @@ result = (
     .neq("web", "cansl")
     .execute()
 )
-
+st.write("result.data =", result.data)
+st.write("type =", type(result.data))
 bookings = pd.DataFrame(result.data)
 
-st.write("Bookings empty:", bookings.empty)
-st.write("Shape:", bookings.shape)
+#st.write("Bookings empty:", bookings.empty)
+#st.write("Shape:", bookings.shape)
 
 occupied_rooms = set(
     pd.to_numeric(
