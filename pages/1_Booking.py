@@ -88,7 +88,11 @@ else:
     days = 0
 
 st.markdown(f"**Antal dage denne booking** {days}")
-
+source = st.radio(
+    "Datakilde",
+    ["Supabase", "Excel"],
+    horizontal=True
+)
 st.text("Skema viser ikke udchecksdagen da den er irelevant i forbindelse med reservation")
 
 if year == '2026':
@@ -172,6 +176,60 @@ def highlight_cells(val):
 
 styled_data = new_data[['dato', 'week_event', '1-I', '2-I', '3-I', '4-I', '5-I']].style.map(highlight_cells)
 st.dataframe(styled_data)
+
+ledige_rum_excel = ledige_rum
+#supabase
+
+result = (
+    supabase
+    .table("hk_dtb")
+    .select("*")
+    .lt("checkin_date", checkout_date.isoformat())
+    .gt("checkout_date", checkin_date.isoformat())
+    .neq("web", "cansl")
+    .execute()
+)
+
+bookings = pd.DataFrame(result.data)
+
+occupied_rooms = set(
+    bookings["room_number"]
+    .dropna()
+    .astype(int)
+)
+all_rooms = {1, 2, 3, 4, 5}
+
+available_rooms = (
+    all_rooms - occupied_rooms
+)
+
+ledige_rum = len(available_rooms)
+
+st.markdown(
+    f"**Antal ledige rum:** {ledige_rum}"
+)
+
+st.write(
+    "Ledige værelser:",
+    sorted(available_rooms)
+)
+ledige_rum_supabase = len(
+    available_rooms
+)
+col1, col2 = st.columns(2)
+
+with col1:
+    st.metric(
+        "Excel",
+        ledige_rum_excel
+    )
+
+with col2:
+    st.metric(
+        "Supabase",
+        ledige_rum_supabase
+    )
+
 col1, col2, = st.columns(2)
 with col1:
     num_rooms = st.number_input("Antal rum", value=1, step=1)

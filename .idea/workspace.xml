@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fjernelse af 1.0 fra booking py" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fjernelser af cansl fra ankomster">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,14 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00507" summary="omsætning graf tekst til tal">
-      <option name="closed" value="true" />
-      <created>1781542566463</created>
-      <option name="number" value="00507" />
-      <option name="presentableId" value="LOCAL-00507" />
-      <option name="project" value="LOCAL" />
-      <updated>1781542566463</updated>
     </task>
     <task id="LOCAL-00508" summary="omsætning graf tekst til tal">
       <option name="closed" value="true" />
@@ -464,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781850065447</updated>
     </task>
-    <option name="localTasksCounter" value="556" />
+    <task id="LOCAL-00556" summary="fjernelser af cansl fra ankomster">
+      <option name="closed" value="true" />
+      <created>1781850363481</created>
+      <option name="number" value="00556" />
+      <option name="presentableId" value="LOCAL-00556" />
+      <option name="project" value="LOCAL" />
+      <updated>1781850363481</updated>
+    </task>
+    <option name="localTasksCounter" value="557" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -490,7 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="omsætning graf tekst til tal" />
     <MESSAGE value="optimerings funktion" />
     <MESSAGE value="optimerings funktion stadig under udarbejdelse" />
     <MESSAGE value="slider til fig 2" />
@@ -515,6 +517,7 @@
     <MESSAGE value="fjerne 1.0 fra redigereing" />
     <MESSAGE value="status up and running again" />
     <MESSAGE value="fjernelse af 1.0 fra booking py" />
-    <option name="LAST_COMMIT_MESSAGE" value="fjernelse af 1.0 fra booking py" />
+    <MESSAGE value="fjernelser af cansl fra ankomster" />
+    <option name="LAST_COMMIT_MESSAGE" value="fjernelser af cansl fra ankomster" />
   </component>
 </project>
