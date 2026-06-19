@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ny check af ledige rum grafisk simpelt" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="status supabase introduceret på booking side med beregning af ledige værelser" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,14 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00512" summary="optimerings funktion">
-      <option name="closed" value="true" />
-      <created>1781594509697</created>
-      <option name="number" value="00512" />
-      <option name="presentableId" value="LOCAL-00512" />
-      <option name="project" value="LOCAL" />
-      <updated>1781594509697</updated>
     </task>
     <task id="LOCAL-00513" summary="optimerings funktion">
       <option name="closed" value="true" />
@@ -464,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781852847743</updated>
     </task>
-    <option name="localTasksCounter" value="561" />
+    <task id="LOCAL-00561" summary="status supabase introduceret på booking side med beregning af ledige værelser">
+      <option name="closed" value="true" />
+      <created>1781852961026</created>
+      <option name="number" value="00561" />
+      <option name="presentableId" value="LOCAL-00561" />
+      <option name="project" value="LOCAL" />
+      <updated>1781852961026</updated>
+    </task>
+    <option name="localTasksCounter" value="562" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -490,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="slider til fig 2" />
     <MESSAGE value="rækkefølge smat dato grid" />
     <MESSAGE value="status app running med optimerings tiltag" />
     <MESSAGE value="ankomster i supabase" />
@@ -515,6 +514,7 @@
     <MESSAGE value="fjernelser af cansl fra ankomster" />
     <MESSAGE value="ny check af ledige rum supabase" />
     <MESSAGE value="ny check af ledige rum grafisk simpelt" />
-    <option name="LAST_COMMIT_MESSAGE" value="ny check af ledige rum grafisk simpelt" />
+    <MESSAGE value="status supabase introduceret på booking side med beregning af ledige værelser" />
+    <option name="LAST_COMMIT_MESSAGE" value="status supabase introduceret på booking side med beregning af ledige værelser" />
   </component>
 </project>

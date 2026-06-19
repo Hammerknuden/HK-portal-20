@@ -229,22 +229,22 @@ with col2:
         "Supabase",
         ledige_rum_supabase
     )
-    st.markdown("### Værelsesstatus")
+st.markdown("### Værelsesstatus dtb")
 
-    rooms = [1, 2, 3, 4, 5]
+rooms = [1, 2, 3, 4, 5]
 
-    cols = st.columns(len(rooms))
+cols = st.columns(len(rooms))
 
-    for i, room in enumerate(rooms):
+for i, room in enumerate(rooms):
 
-        with cols[i]:
+    with cols[i]:
 
-            st.write(f"**Værelse {room}**")
+        st.write(f"**Værelse {room}**")
 
-            if room in available_rooms:
-                st.success("Ledigt")
-            else:
-                st.error("Optaget")
+        if room in available_rooms:
+            st.success("Ledigt")
+        else:
+            st.error("Optaget")
 
 
 col1, col2, = st.columns(2)
