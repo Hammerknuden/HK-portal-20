@@ -191,12 +191,20 @@ result = (
     .neq("web", "cansl")
     .execute()
 )
-st.write("result.data =", result.data)
-st.write("type =", type(result.data))
+#st.write("result.data =", result.data)
+#st.write("type =", type(result.data))
 bookings = pd.DataFrame(result.data)
 
-#st.write("Bookings empty:", bookings.empty)
-#st.write("Shape:", bookings.shape)
+if bookings.empty:
+    st.info(f"Ingen bookinger fundet for {year}")
+    bookings = pd.DataFrame(columns=[
+        "booking_id",
+        "room_number",
+        "season",
+        "arrival_date",
+        "departure_date",
+        "movable"
+    ])
 
 occupied_rooms = set(
     pd.to_numeric(
