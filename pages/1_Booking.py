@@ -180,7 +180,7 @@ st.dataframe(styled_data)
 ledige_rum_excel = ledige_rum
 #supabase
 
-year = season
+#year = season
 
 result = (
     supabase
