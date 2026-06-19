@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fjerne 1.0 fra redigereing" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="status up and running again">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,22 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00504" summary="omsætning graf">
-      <option name="closed" value="true" />
-      <created>1781542035188</created>
-      <option name="number" value="00504" />
-      <option name="presentableId" value="LOCAL-00504" />
-      <option name="project" value="LOCAL" />
-      <updated>1781542035188</updated>
-    </task>
-    <task id="LOCAL-00505" summary="omsætning graf">
-      <option name="closed" value="true" />
-      <created>1781542177509</created>
-      <option name="number" value="00505" />
-      <option name="presentableId" value="LOCAL-00505" />
-      <option name="project" value="LOCAL" />
-      <updated>1781542177509</updated>
     </task>
     <task id="LOCAL-00506" summary="omsætning graf tekst til tal">
       <option name="closed" value="true" />
@@ -464,7 +450,23 @@
       <option name="project" value="LOCAL" />
       <updated>1781778361649</updated>
     </task>
-    <option name="localTasksCounter" value="553" />
+    <task id="LOCAL-00553" summary="fjerne 1.0 fra redigereing">
+      <option name="closed" value="true" />
+      <created>1781778651959</created>
+      <option name="number" value="00553" />
+      <option name="presentableId" value="LOCAL-00553" />
+      <option name="project" value="LOCAL" />
+      <updated>1781778651959</updated>
+    </task>
+    <task id="LOCAL-00554" summary="status up and running again">
+      <option name="closed" value="true" />
+      <created>1781778806263</created>
+      <option name="number" value="00554" />
+      <option name="presentableId" value="LOCAL-00554" />
+      <option name="project" value="LOCAL" />
+      <updated>1781778806263</updated>
+    </task>
+    <option name="localTasksCounter" value="555" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -490,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="excel update" />
     <MESSAGE value="omsætning graf" />
     <MESSAGE value="omsætning graf tekst til tal" />
     <MESSAGE value="optimerings funktion" />
@@ -515,6 +516,7 @@
     <MESSAGE value="locked unlocked" />
     <MESSAGE value="show locked unlocked" />
     <MESSAGE value="fjerne 1.0 fra redigereing" />
-    <option name="LAST_COMMIT_MESSAGE" value="fjerne 1.0 fra redigereing" />
+    <MESSAGE value="status up and running again" />
+    <option name="LAST_COMMIT_MESSAGE" value="status up and running again" />
   </component>
 </project>

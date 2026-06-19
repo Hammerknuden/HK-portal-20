@@ -614,6 +614,24 @@ if edit:
 
         df_supabase = pd.DataFrame(result.data)
 
+        if "room_number" in df_supabase.columns:
+            df_supabase["room_number"] = (
+                pd.to_numeric(
+                    df_supabase["room_number"],
+                    errors="coerce"
+                )
+                .astype("Int64")
+            )
+
+        if "season" in df_supabase.columns:
+            df_supabase["season"] = (
+                pd.to_numeric(
+                    df_supabase["season"],
+                    errors="coerce"
+                )
+                .astype("Int64")
+            )
+
         st.dataframe(
             df_supabase,
             use_container_width=True
