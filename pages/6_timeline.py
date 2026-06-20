@@ -47,6 +47,10 @@ def to_dt(x):
 # -------------------------
 # LOAD / SAVE
 # -------------------------
+selected_season = st.selectbox(
+    "Sæson",
+    [2026, 2027, 2028]
+)
 
 
 def load_bookings():
@@ -54,7 +58,7 @@ def load_bookings():
         supabase
         .table("hk_dtb")
         .select("*")
-        .eq("season", int(year))
+        .eq("season", selected_season)
         .execute()
     )
 
@@ -179,10 +183,6 @@ def optimize_temp_room(df):
     return bookings
 # RESERVATION INFO
 # -------------------------
-selected_season = st.selectbox(
-    "Sæson",
-    [2026, 2027, 2028]
-)
 
 df = load_bookings()
 
