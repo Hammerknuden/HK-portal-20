@@ -191,7 +191,7 @@ result = (
     .execute()
 )
 
-#bookings = pd.DataFrame(result.data or [])
+bookings = pd.DataFrame(result.data or [])
 
 if "room_number" in bookings.columns:
     occupied_rooms = set(

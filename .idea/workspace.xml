@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="2027 booking de bug" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="2027 booking oprydning" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,14 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00524" summary="ankomster i supabase import af date.timedelta">
-      <option name="closed" value="true" />
-      <created>1781628252834</created>
-      <option name="number" value="00524" />
-      <option name="presentableId" value="LOCAL-00524" />
-      <option name="project" value="LOCAL" />
-      <updated>1781628252834</updated>
     </task>
     <task id="LOCAL-00525" summary="ankomster i supabase import af date.timedelta">
       <option name="closed" value="true" />
@@ -464,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781885354960</updated>
     </task>
-    <option name="localTasksCounter" value="573" />
+    <task id="LOCAL-00573" summary="2027 booking oprydning">
+      <option name="closed" value="true" />
+      <created>1781934221202</created>
+      <option name="number" value="00573" />
+      <option name="presentableId" value="LOCAL-00573" />
+      <option name="project" value="LOCAL" />
+      <updated>1781934221202</updated>
+    </task>
+    <option name="localTasksCounter" value="574" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -490,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ankomster i supabase import af date.timedelta" />
     <MESSAGE value="excel fjernet fra ankomster" />
     <MESSAGE value="ankomst tid tilføjet" />
     <MESSAGE value="staestik opdateret med moms" />
@@ -515,6 +514,7 @@
     <MESSAGE value="ankomst opdateret med flere koloner" />
     <MESSAGE value="2027 booking" />
     <MESSAGE value="2027 booking de bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="2027 booking de bug" />
+    <MESSAGE value="2027 booking oprydning" />
+    <option name="LAST_COMMIT_MESSAGE" value="2027 booking oprydning" />
   </component>
 </project>
