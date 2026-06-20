@@ -181,7 +181,6 @@ ledige_rum_excel = ledige_rum
 #supabase
 
 #year = season
-
 result = (
     supabase
     .table("hk_dtb")
@@ -191,29 +190,17 @@ result = (
     .neq("web", "cansl")
     .execute()
 )
-#st.write("result.data =", result.data)
-#st.write("type =", type(result.data))
-bookings = pd.DataFrame(result.data)
 
-if bookings.empty:
-    st.info(f"Ingen bookinger fundet for {year}")
-    bookings = pd.DataFrame(columns=[
-        "booking_id",
-        "room_number",
-        "season",
-        "arrival_date",
-        "departure_date",
-        "movable"
-    ])
+#bookings = pd.DataFrame(result.data or [])
 
-occupied_rooms = set(
-    pd.to_numeric(
-        bookings["room_number"],
-        errors="coerce"
+if "room_number" in bookings.columns:
+    occupied_rooms = set(
+        pd.to_numeric(bookings["room_number"], errors="coerce")
+        .dropna()
+        .astype(int)
     )
-    .dropna()
-    .astype(int)
-)
+else:
+    occupied_rooms = set()
 
 all_rooms = {1, 2, 3, 4, 5}
 
