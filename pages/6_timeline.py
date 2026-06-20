@@ -54,8 +54,15 @@ def load_bookings():
         supabase
         .table("hk_dtb")
         .select("*")
+        .eq("season", year)
         .execute()
     )
+    #result = (
+    #    supabase
+    #    .table("hk_dtb")
+    #    .select("*")
+    #    .execute()
+    #)
 
     df = pd.DataFrame(result.data)
 
