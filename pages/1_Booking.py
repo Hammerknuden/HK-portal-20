@@ -451,19 +451,19 @@ elif web == "web":
     rabat_rm = pris * rabat_a
     rabat_t = rabat_mm + rabat_rm
     formatted_rabat_t = f"{rabat_t:.2f}"
-    st.markdown(f"**Rabat** {formatted_rabat_t}kr".replace(".",","))
+    st.markdown(f"**Rabat** {formatted_rabat_t}kr".replace(".", ","))
     pristotal = prismed - rabat_t
-    formatted_pristotal = f"{pristotal:.2f}".replace(".",",")
+    formatted_pristotal = f"{pristotal:.2f}".replace(".", ",")
     print("formatted_prismed:", formatted_prismed)
     print("type:", type(formatted_prismed))
 elif web == "FM":
-    formatted_prismed = f"{prismed:.2f}".replace(".",_",")
+    formatted_prismed = f"{prismed:.2f}".replace(".", ",")
     pris_add_a = (int(FM_add) / 100)
     pris_add_t = (prismed + br_f) * pris_add_a
     formatted_pris_add_t = f"{pris_add_t:.2f}"
-    st.markdown(f"**Tiilæg** {formatted_pris_add_t} kr".replace(".",","))
+    st.markdown(f"**Tiilæg** {formatted_pris_add_t} kr".replace(".", ","))
     pristotal = prismed + pris_add_t
-    formatted_pristotal = f"{pristotal:.2f}".replace(".",",")
+    formatted_pristotal = f"{pristotal:.2f}".replace(".", ",")
     rabat_a = pris_add_a
 else:
     rabat_a = 0
