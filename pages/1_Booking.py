@@ -217,7 +217,7 @@ st.markdown(
 #st.write(
 #    "Ledige værelser:",
 #    sorted(available_rooms)
-)
+#)
 ledige_rum_supabase = len(
     available_rooms
 )
