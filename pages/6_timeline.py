@@ -54,9 +54,10 @@ def load_bookings():
         supabase
         .table("hk_dtb")
         .select("*")
-        .eq("season", year)
+        .eq("season", int(year))
         .execute()
     )
+
     #result = (
     #    supabase
     #    .table("hk_dtb")
