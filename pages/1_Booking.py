@@ -214,9 +214,9 @@ st.markdown(
     f"**Antal ledige rum:** {ledige_rum}"
 )
 
-st.write(
-    "Ledige værelser:",
-    sorted(available_rooms)
+#st.write(
+#    "Ledige værelser:",
+#    sorted(available_rooms)
 )
 ledige_rum_supabase = len(
     available_rooms
