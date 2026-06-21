@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="niveau 2 opstart">
-      <change beforePath="$PROJECT_DIR$/___init___.py" beforeDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="niveau 2  new files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +53,7 @@
     "Python.config_prices.executor": "Run",
     "Python.databaseopslag.executor": "Run",
     "Python.streamlit_app.executor": "Run",
-    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/modules/___init___.py"
+    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/modules/level2_optimizer.py"
   }
 }]]></component>
   <component name="SharedIndexes">
@@ -73,14 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00545" summary="show locked unlocked">
-      <option name="closed" value="true" />
-      <created>1781765637880</created>
-      <option name="number" value="00545" />
-      <option name="presentableId" value="LOCAL-00545" />
-      <option name="project" value="LOCAL" />
-      <updated>1781765637880</updated>
     </task>
     <task id="LOCAL-00546" summary="show locked unlocked">
       <option name="closed" value="true" />
@@ -466,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782075982860</updated>
     </task>
-    <option name="localTasksCounter" value="594" />
+    <task id="LOCAL-00594" summary="niveau 2  new files">
+      <option name="closed" value="true" />
+      <created>1782076543785</created>
+      <option name="number" value="00594" />
+      <option name="presentableId" value="LOCAL-00594" />
+      <option name="project" value="LOCAL" />
+      <updated>1782076543785</updated>
+    </task>
+    <option name="localTasksCounter" value="595" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -492,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="deaktiveret excel" />
     <MESSAGE value="status all ok" />
     <MESSAGE value="excel" />
     <MESSAGE value="rækkefølge på værelser samt en excel update" />
@@ -517,6 +514,7 @@
     <MESSAGE value="fig timeline y akse update" />
     <MESSAGE value="fig 2 updated med lidt oprydning i dobbelt blokke" />
     <MESSAGE value="niveau 2 opstart" />
-    <option name="LAST_COMMIT_MESSAGE" value="niveau 2 opstart" />
+    <MESSAGE value="niveau 2  new files" />
+    <option name="LAST_COMMIT_MESSAGE" value="niveau 2  new files" />
   </component>
 </project>
