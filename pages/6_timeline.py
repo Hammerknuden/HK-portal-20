@@ -380,6 +380,41 @@ if not df.empty:
         )
     plot_df_display = plot_df.copy()
 
+    plot_df_display = plot_df.copy()
+
+    if len(plot_df_display) > 0:
+
+        dummy_date = plot_df_display["checkin_date"].min()
+
+        dummy_rows = []
+
+        for room in [
+            "Værelse 1",
+            "Værelse 2",
+            "Værelse 3",
+            "Værelse 4",
+            "Værelse 5",
+            "Værelse 6",
+            "Værelse 7",
+        ]:
+
+            if room not in plot_df_display["room_number"].unique():
+                room_no = int(room.split()[-1])
+
+                dummy_rows.append({
+                    "room_number": room,
+                    "checkin_date": dummy_date,
+                    "checkout_date": dummy_date + pd.Timedelta(days=1),
+                    "booking_number": f"DUMMY_{room_no}",
+                    "room_sort": room_no
+                })
+
+        if dummy_rows:
+            plot_df_display = pd.concat(
+                [plot_df_display, pd.DataFrame(dummy_rows)],
+                ignore_index=True
+            )
+
     # if len(plot_df_display) > 0:
     #
     #     dummy_date = plot_df_display["checkin_date"].min()
