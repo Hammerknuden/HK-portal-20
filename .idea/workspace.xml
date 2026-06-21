@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fig 2 updated med lidt oprydning i dobbelt blokke">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="niveau 2 opstart">
+      <change afterPath="$PROJECT_DIR$/.venv/Lib/site-packages/modules-1.0.0.dist-info/INSTALLER" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.venv/Lib/site-packages/modules-1.0.0.dist-info/METADATA" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.venv/Lib/site-packages/modules-1.0.0.dist-info/RECORD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.venv/Lib/site-packages/modules-1.0.0.dist-info/REQUESTED" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.venv/Lib/site-packages/modules-1.0.0.dist-info/WHEEL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.venv/Lib/site-packages/modules-1.0.0.dist-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.venv/Lib/site-packages/modules.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/level2_optimizer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
     </list>
@@ -74,30 +82,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00540" summary="rækkefølge på værelser samt en excel update">
-      <option name="closed" value="true" />
-      <created>1781722473294</created>
-      <option name="number" value="00540" />
-      <option name="presentableId" value="LOCAL-00540" />
-      <option name="project" value="LOCAL" />
-      <updated>1781722473295</updated>
-    </task>
-    <task id="LOCAL-00541" summary="forbered til fremtidig seasons">
-      <option name="closed" value="true" />
-      <created>1781725689311</created>
-      <option name="number" value="00541" />
-      <option name="presentableId" value="LOCAL-00541" />
-      <option name="project" value="LOCAL" />
-      <updated>1781725689311</updated>
-    </task>
-    <task id="LOCAL-00542" summary="mayor changes in supabase all timeline works ok">
-      <option name="closed" value="true" />
-      <created>1781726168390</created>
-      <option name="number" value="00542" />
-      <option name="presentableId" value="LOCAL-00542" />
-      <option name="project" value="LOCAL" />
-      <updated>1781726168391</updated>
     </task>
     <task id="LOCAL-00543" summary="update of send to supabase">
       <option name="closed" value="true" />
@@ -467,7 +451,31 @@
       <option name="project" value="LOCAL" />
       <updated>1782024818563</updated>
     </task>
-    <option name="localTasksCounter" value="589" />
+    <task id="LOCAL-00589" summary="niveau 2 opstart">
+      <option name="closed" value="true" />
+      <created>1782060457572</created>
+      <option name="number" value="00589" />
+      <option name="presentableId" value="LOCAL-00589" />
+      <option name="project" value="LOCAL" />
+      <updated>1782060457572</updated>
+    </task>
+    <task id="LOCAL-00590" summary="niveau 2 opstart">
+      <option name="closed" value="true" />
+      <created>1782060505904</created>
+      <option name="number" value="00590" />
+      <option name="presentableId" value="LOCAL-00590" />
+      <option name="project" value="LOCAL" />
+      <updated>1782060505904</updated>
+    </task>
+    <task id="LOCAL-00591" summary="niveau 2 opstart">
+      <option name="closed" value="true" />
+      <created>1782060616478</created>
+      <option name="number" value="00591" />
+      <option name="presentableId" value="LOCAL-00591" />
+      <option name="project" value="LOCAL" />
+      <updated>1782060616478</updated>
+    </task>
+    <option name="localTasksCounter" value="592" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -493,7 +501,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="cleaning updateret med layout og filter" />
     <MESSAGE value="deaktiveret excel" />
     <MESSAGE value="status all ok" />
     <MESSAGE value="excel" />
@@ -518,6 +525,7 @@
     <MESSAGE value="fig timeline y akse update samt excel update" />
     <MESSAGE value="fig timeline y akse update" />
     <MESSAGE value="fig 2 updated med lidt oprydning i dobbelt blokke" />
-    <option name="LAST_COMMIT_MESSAGE" value="fig 2 updated med lidt oprydning i dobbelt blokke" />
+    <MESSAGE value="niveau 2 opstart" />
+    <option name="LAST_COMMIT_MESSAGE" value="niveau 2 opstart" />
   </component>
 </project>

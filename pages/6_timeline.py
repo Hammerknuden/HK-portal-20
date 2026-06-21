@@ -11,6 +11,7 @@ import os
 from dotenv import load_dotenv
 from supabase import create_client
 from importlib.metadata import version
+from modules.level2_optimizer import analyze_improvements
 # -------------------------
 # INIT
 # -------------------------
@@ -637,6 +638,16 @@ if st.button("🔍 Undersøg optimeringsmuligheder"):
     st.success(
     f"Analyserer sæson {selected_season}"
     )
+
+
+    def analyze_improvements(
+            bookings,
+            season
+    ):
+        return []
+
+
+    from modules.level2_optimizer import analyze_improvements
 
 
 
