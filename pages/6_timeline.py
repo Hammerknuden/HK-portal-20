@@ -391,13 +391,15 @@ if not df.empty:
     )
 
     # Tving rækkefølgen på værelserne
-    room_order = (
-        plot_df
-        .sort_values("room_sort")
-        ["room_number"]
-        .drop_duplicates()
-        .tolist()
-    )
+
+    room_order = [1, 2, 3, 4, 5, 6, 7]
+   # room_order = (
+   #     plot_df
+   #     .sort_values("room_sort")
+   #     ["room_number"]
+   #     .drop_duplicates()
+   #     .tolist()
+   # )
 
     fig.update_yaxes(
         autorange="reversed",
