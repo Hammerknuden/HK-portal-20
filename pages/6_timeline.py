@@ -378,9 +378,28 @@ if not df.empty:
                 ascending=False
             ).head(10)
         )
+    plot_df_display = plot_df.copy()
 
+    if len(plot_df_display) > 0:
+        dummy_rows = []
+
+        for room in [1, 2, 3, 4, 5, 6, 7]:
+            if room not in plot_df_display["room_number"].astype(int).unique():
+                dummy_rows.append({
+                    "room_number": room,
+                    "checkin_date": plot_df_display["checkin_date"].min(),
+                    "checkout_date": plot_df_display["checkin_date"].min(),
+                    "booking_number": "",
+                    "room_sort": room
+                })
+
+        if dummy_rows:
+            plot_df_display = pd.concat(
+                [plot_df_display, pd.DataFrame(dummy_rows)],
+                ignore_index=True
+            )
     fig = px.timeline(
-        plot_df,
+        plot_df_display,
         x_start="checkin_date",
         x_end="checkout_date",
         y="room_number",

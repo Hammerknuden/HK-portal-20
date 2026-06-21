@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="2027 booking check">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fig timeline y akse update samt excel update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,14 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00533" summary="cleaning updateret med layout og filter">
-      <option name="closed" value="true" />
-      <created>1781680416385</created>
-      <option name="number" value="00533" />
-      <option name="presentableId" value="LOCAL-00533" />
-      <option name="project" value="LOCAL" />
-      <updated>1781680416385</updated>
     </task>
     <task id="LOCAL-00534" summary="cleaning updateret med layout og filter">
       <option name="closed" value="true" />
@@ -468,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781937851371</updated>
     </task>
-    <option name="localTasksCounter" value="582" />
+    <task id="LOCAL-00582" summary="fig timeline y akse update samt excel update">
+      <option name="closed" value="true" />
+      <created>1782020980673</created>
+      <option name="number" value="00582" />
+      <option name="presentableId" value="LOCAL-00582" />
+      <option name="project" value="LOCAL" />
+      <updated>1782020980673</updated>
+    </task>
+    <option name="localTasksCounter" value="583" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -494,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ankomst tid tilføjet" />
     <MESSAGE value="staestik opdateret med moms" />
     <MESSAGE value="cleaning updateret med supabase" />
     <MESSAGE value="cleaning updateret med layout og filter" />
@@ -519,6 +514,7 @@
     <MESSAGE value="2027 booking de bug" />
     <MESSAGE value="2027 booking oprydning" />
     <MESSAGE value="2027 booking check" />
-    <option name="LAST_COMMIT_MESSAGE" value="2027 booking check" />
+    <MESSAGE value="fig timeline y akse update samt excel update" />
+    <option name="LAST_COMMIT_MESSAGE" value="fig timeline y akse update samt excel update" />
   </component>
 </project>
