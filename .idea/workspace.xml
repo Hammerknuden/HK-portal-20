@@ -72,14 +72,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00534" summary="cleaning updateret med layout og filter">
-      <option name="closed" value="true" />
-      <created>1781680488778</created>
-      <option name="number" value="00534" />
-      <option name="presentableId" value="LOCAL-00534" />
-      <option name="project" value="LOCAL" />
-      <updated>1781680488778</updated>
-    </task>
     <task id="LOCAL-00535" summary="cleaning updateret med layout og filter">
       <option name="closed" value="true" />
       <created>1781680736358</created>
@@ -464,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782020980673</updated>
     </task>
-    <option name="localTasksCounter" value="583" />
+    <task id="LOCAL-00583" summary="fig timeline y akse update samt excel update">
+      <option name="closed" value="true" />
+      <created>1782021500669</created>
+      <option name="number" value="00583" />
+      <option name="presentableId" value="LOCAL-00583" />
+      <option name="project" value="LOCAL" />
+      <updated>1782021500669</updated>
+    </task>
+    <option name="localTasksCounter" value="584" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

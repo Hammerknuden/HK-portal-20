@@ -381,14 +381,18 @@ if not df.empty:
     plot_df_display = plot_df.copy()
 
     if len(plot_df_display) > 0:
+
+        dummy_date = plot_df_display["checkin_date"].min()
+
         dummy_rows = []
 
         for room in [1, 2, 3, 4, 5, 6, 7]:
+
             if room not in plot_df_display["room_number"].astype(int).unique():
                 dummy_rows.append({
                     "room_number": room,
-                    "checkin_date": plot_df_display["checkin_date"].min(),
-                    "checkout_date": plot_df_display["checkin_date"].min(),
+                    "checkin_date": dummy_date,
+                    "checkout_date": dummy_date + pd.Timedelta(days=1),
                     "booking_number": "",
                     "room_sort": room
                 })
@@ -398,6 +402,7 @@ if not df.empty:
                 [plot_df_display, pd.DataFrame(dummy_rows)],
                 ignore_index=True
             )
+
     fig = px.timeline(
         plot_df_display,
         x_start="checkin_date",
@@ -412,13 +417,6 @@ if not df.empty:
     # Tving rækkefølgen på værelserne
 
     room_order = [1, 2, 3, 4, 5, 6, 7]
-   # room_order = (
-   #     plot_df
-   #     .sort_values("room_sort")
-   #     ["room_number"]
-   #     .drop_duplicates()
-   #     .tolist()
-   # )
 
     fig.update_yaxes(
         autorange="reversed",
