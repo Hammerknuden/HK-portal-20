@@ -631,7 +631,12 @@ else:
         "Ingen bookinger at vise endnu."
     )
 
+st.subheader("Niveau 2 optimering")
 
+if st.button("🔍 Undersøg optimeringsmuligheder"):
+    ...st.success(
+    f"Analyserer sæson {selected_season}"
+)
 
 
 
