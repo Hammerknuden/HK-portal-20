@@ -432,11 +432,6 @@ if not df.empty:
         categoryorder="array",
         categoryarray=room_order
     )
-    fig.update_yaxes(
-        autorange="reversed",
-        categoryorder="array",
-        categoryarray=room_order
-    )
 
     fig.update_layout(
         plot_bgcolor="white",
