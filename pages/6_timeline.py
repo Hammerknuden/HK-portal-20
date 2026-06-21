@@ -638,16 +638,22 @@ if st.button("🔍 Undersøg optimeringsmuligheder"):
     st.success(
     f"Analyserer sæson {selected_season}"
     )
-
-
-    def analyze_improvements(
-            bookings,
-            season
-    ):
-        return []
-
-
     from modules.level2_optimizer import analyze_improvements
+
+    st.subheader("Niveau 2 optimering")
+
+    if st.button("🔍 Undersøg optimeringsmuligheder"):
+        st.success(
+            f"Analyserer sæson {selected_season}"
+        )
+
+        suggestions = analyze_improvements(
+            bookings=df,
+            season=selected_season
+        )
+
+        st.write(suggestions)
+
 
 
 
