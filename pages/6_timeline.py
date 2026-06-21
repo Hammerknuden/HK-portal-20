@@ -380,28 +380,28 @@ if not df.empty:
         )
     plot_df_display = plot_df.copy()
 
-    if len(plot_df_display) > 0:
-
-        dummy_date = plot_df_display["checkin_date"].min()
-
-        dummy_rows = []
-
-        for room in [1, 2, 3, 4, 5, 6, 7]:
-
-            if room not in plot_df_display["room_number"].astype(int).unique():
-                dummy_rows.append({
-                    "room_number": room,
-                    "checkin_date": dummy_date,
-                    "checkout_date": dummy_date + pd.Timedelta(days=1),
-                    "booking_number": "",
-                    "room_sort": room
-                })
-
-        if dummy_rows:
-            plot_df_display = pd.concat(
-                [plot_df_display, pd.DataFrame(dummy_rows)],
-                ignore_index=True
-            )
+    # if len(plot_df_display) > 0:
+    #
+    #     dummy_date = plot_df_display["checkin_date"].min()
+    #
+    #     dummy_rows = []
+    #
+    #     for room in [1, 2, 3, 4, 5, 6, 7]:
+    #
+    #         if room not in plot_df_display["room_number"].astype(int).unique():
+    #             dummy_rows.append({
+    #                 "room_number": room,
+    #                 "checkin_date": dummy_date,
+    #                 "checkout_date": dummy_date + pd.Timedelta(days=1),
+    #                 "booking_number": "",
+    #                 "room_sort": room
+    #             })
+    #
+    #     if dummy_rows:
+    #         plot_df_display = pd.concat(
+    #             [plot_df_display, pd.DataFrame(dummy_rows)],
+    #             ignore_index=True
+    #         )
 
     fig = px.timeline(
         plot_df_display,
@@ -416,8 +416,22 @@ if not df.empty:
 
     # Tving rækkefølgen på værelserne
 
-    room_order = [1, 2, 3, 4, 5, 6, 7]
+    #room_order = [1, 2, 3, 4, 5, 6, 7]
+    room_order = [
+        "Værelse 1",
+        "Værelse 2",
+        "Værelse 3",
+        "Værelse 4",
+        "Værelse 5",
+        "Værelse 6",
+        "Værelse 7",
+    ]
 
+    fig.update_yaxes(
+        autorange="reversed",
+        categoryorder="array",
+        categoryarray=room_order
+    )
     fig.update_yaxes(
         autorange="reversed",
         categoryorder="array",

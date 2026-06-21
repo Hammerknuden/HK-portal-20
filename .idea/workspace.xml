@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fig timeline y akse update samt excel update" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fig timeline y akse update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,14 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00535" summary="cleaning updateret med layout og filter">
-      <option name="closed" value="true" />
-      <created>1781680736358</created>
-      <option name="number" value="00535" />
-      <option name="presentableId" value="LOCAL-00535" />
-      <option name="project" value="LOCAL" />
-      <updated>1781680736358</updated>
     </task>
     <task id="LOCAL-00536" summary="deaktiveret excel">
       <option name="closed" value="true" />
@@ -464,7 +458,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782021500669</updated>
     </task>
-    <option name="localTasksCounter" value="584" />
+    <task id="LOCAL-00584" summary="fig timeline y akse update">
+      <option name="closed" value="true" />
+      <created>1782021927331</created>
+      <option name="number" value="00584" />
+      <option name="presentableId" value="LOCAL-00584" />
+      <option name="project" value="LOCAL" />
+      <updated>1782021927331</updated>
+    </task>
+    <option name="localTasksCounter" value="585" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -490,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="staestik opdateret med moms" />
     <MESSAGE value="cleaning updateret med supabase" />
     <MESSAGE value="cleaning updateret med layout og filter" />
     <MESSAGE value="deaktiveret excel" />
@@ -515,6 +516,7 @@
     <MESSAGE value="2027 booking oprydning" />
     <MESSAGE value="2027 booking check" />
     <MESSAGE value="fig timeline y akse update samt excel update" />
-    <option name="LAST_COMMIT_MESSAGE" value="fig timeline y akse update samt excel update" />
+    <MESSAGE value="fig timeline y akse update" />
+    <option name="LAST_COMMIT_MESSAGE" value="fig timeline y akse update" />
   </component>
 </project>
