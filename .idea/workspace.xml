@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="niveau 2  buildind level 2">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="niveau 2  buildind level 2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,30 +72,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00554" summary="status up and running again">
-      <option name="closed" value="true" />
-      <created>1781778806263</created>
-      <option name="number" value="00554" />
-      <option name="presentableId" value="LOCAL-00554" />
-      <option name="project" value="LOCAL" />
-      <updated>1781778806263</updated>
-    </task>
-    <task id="LOCAL-00555" summary="fjernelse af 1.0 fra booking py">
-      <option name="closed" value="true" />
-      <created>1781850065447</created>
-      <option name="number" value="00555" />
-      <option name="presentableId" value="LOCAL-00555" />
-      <option name="project" value="LOCAL" />
-      <updated>1781850065447</updated>
-    </task>
-    <task id="LOCAL-00556" summary="fjernelser af cansl fra ankomster">
-      <option name="closed" value="true" />
-      <created>1781850363481</created>
-      <option name="number" value="00556" />
-      <option name="presentableId" value="LOCAL-00556" />
-      <option name="project" value="LOCAL" />
-      <updated>1781850363481</updated>
     </task>
     <task id="LOCAL-00557" summary="ny check af ledige rum supabase">
       <option name="closed" value="true" />
@@ -467,7 +441,31 @@
       <option name="project" value="LOCAL" />
       <updated>1782110067335</updated>
     </task>
-    <option name="localTasksCounter" value="603" />
+    <task id="LOCAL-00603" summary="niveau 2  buildind level 2">
+      <option name="closed" value="true" />
+      <created>1782110543800</created>
+      <option name="number" value="00603" />
+      <option name="presentableId" value="LOCAL-00603" />
+      <option name="project" value="LOCAL" />
+      <updated>1782110543800</updated>
+    </task>
+    <task id="LOCAL-00604" summary="niveau 2  buildind level 2">
+      <option name="closed" value="true" />
+      <created>1782110701473</created>
+      <option name="number" value="00604" />
+      <option name="presentableId" value="LOCAL-00604" />
+      <option name="project" value="LOCAL" />
+      <updated>1782110701473</updated>
+    </task>
+    <task id="LOCAL-00605" summary="niveau 2  buildind level 2">
+      <option name="closed" value="true" />
+      <created>1782110795713</created>
+      <option name="number" value="00605" />
+      <option name="presentableId" value="LOCAL-00605" />
+      <option name="project" value="LOCAL" />
+      <updated>1782110795713</updated>
+    </task>
+    <option name="localTasksCounter" value="606" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

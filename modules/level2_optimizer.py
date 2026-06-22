@@ -50,3 +50,4 @@ def analyze_improvements(bookings, season):
         "season": int(season),
         "eligible_for_optimization": int(len(eligible)),
         "room_distribution": room_distribution
+    }
