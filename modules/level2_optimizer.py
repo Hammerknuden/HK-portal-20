@@ -91,37 +91,47 @@ def calculate_gaps(bookings):
         gaps[str(int(room))] = room_gaps
 
     return gaps
-# def calculate_gaps(bookings):
-#
-#     gaps = {}
-#
-#     for room in sorted(bookings["room_number"].dropna().unique()):
-#
-#         room_bookings = (
-#             bookings[
-#                 bookings["room_number"] == room
-#             ]
-#             .sort_values("checkin_date")
-#         )
-#
-#         room_gaps = []
-#
-#         previous_checkout = None
-#
-#         for _, booking in room_bookings.iterrows():
-#
-#             if previous_checkout is not None:
-#
-#                 gap = (
-#                     booking["checkin_date"]
-#                     - previous_checkout
-#                 ).days
-#
-#                 if gap > 0:
-#                     room_gaps.append(gap)
-#
-#             previous_checkout = booking["checkout_date"]
-#
-#         gaps[int(room)] = room_gaps
-#
 #     return gaps
+def find_room7_move_options(bookings):
+
+    source_room = 7
+    target_rooms = [1, 2, 3, 4, 5]
+
+    suggestions = []
+
+    room7_bookings = bookings[
+        bookings["room_number"] == source_room
+    ].sort_values("checkin_date")
+
+    for _, candidate in room7_bookings.iterrows():
+
+        candidate_checkin = candidate["checkin_date"]
+        candidate_checkout = candidate["checkout_date"]
+
+        possible_rooms = []
+
+        for room in target_rooms:
+
+            room_bookings = bookings[
+                bookings["room_number"] == room
+            ]
+
+            overlaps = room_bookings[
+                (room_bookings["checkin_date"] < candidate_checkout)
+                &
+                (room_bookings["checkout_date"] > candidate_checkin)
+            ]
+
+            if overlaps.empty:
+                possible_rooms.append(room)
+
+        if possible_rooms:
+            suggestions.append({
+                "booking_number": int(candidate["booking_number"]),
+                "from_room": source_room,
+                "possible_rooms": possible_rooms,
+                "checkin_date": str(candidate_checkin.date()),
+                "checkout_date": str(candidate_checkout.date())
+            })
+
+    return suggestions
