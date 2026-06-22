@@ -39,15 +39,6 @@ def analyze_improvements(bookings, season):
         for room, count in groupby_result.items()
     }
 
-    room1 = season_bookings[
-        season_bookings["room_number"] == 1
-        ].sort_values("checkin_date")
-
-    #return {
-    #    "room1_debug": room1[
-    #        ["booking_number", "checkin_date", "checkout_date", "movable"]
-    #    ].to_dict("records")
-    #}
     room_gaps = calculate_gaps(season_bookings)
 
     return {
