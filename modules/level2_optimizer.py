@@ -41,38 +41,12 @@ def analyze_improvements(bookings, season):
         .size()
     )
 
-    return {
-        "season": season,
-        "eligible_for_optimization": len(eligible),
-        "groupby_index": groupby_result.index.tolist(),
-        "groupby_values": groupby_result.values.tolist()
+    room_distribution = {
+        str(int(room)): int(count)
+        for room, count in groupby_result.items()
     }
-    # return {
-    #     "season": int(season),
-    #     "eligible_for_optimization": int(len(eligible)),
-    #     "room_distribution": room_distribution
-    # }
 
-    # return {
-    #     "season": season,
-    #     "eligible_for_optimization": len(eligible),
-    #     "groupby_result": (
-    #         eligible
-    #         .groupby("room_number")
-    #         .size()
-    #         .to_dict()
-    #     )
-    # }
-    # return {
-    #     "season": season,
-    #     "eligible_for_optimization": len(eligible),
-    #     "room_numbers_sample": eligible["room_number"].head(10).tolist()
-    # }
-    # return {
-    #     "season": season,
-    #     "total_bookings": len(season_bookings),
-    #     "movable": len(movable),
-    #     "checked_in": len(checked_in),
-    #     "eligible_for_optimization": len(eligible),
-    #     "room_distribution": room_distribution
-    # }
+    return {
+        "season": int(season),
+        "eligible_for_optimization": int(len(eligible)),
+        "room_distribution": room_distribution
