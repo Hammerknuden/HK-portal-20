@@ -75,23 +75,65 @@ def calculate_gaps(bookings):
         )
 
         room_gaps = []
-
         previous_checkout = None
+        previous_booking = None
 
         for _, booking in room_bookings.iterrows():
 
-            if previous_checkout is not None:
+            checkin = booking["checkin_date"]
+            checkout = booking["checkout_date"]
+            booking_number = booking["booking_number"]
 
-                gap = (
-                    booking["checkin_date"]
-                    - previous_checkout
-                ).days
+            if previous_checkout is not None:
+                gap = (checkin - previous_checkout).days
 
                 if gap > 0:
-                    room_gaps.append(gap)
+                    room_gaps.append({
+                        "gap_days": int(gap),
+                        "from_booking": int(previous_booking),
+                        "from_checkout": str(previous_checkout.date()),
+                        "to_booking": int(booking_number),
+                        "to_checkin": str(checkin.date())
+                    })
 
-            previous_checkout = booking["checkout_date"]
+            if previous_checkout is None or checkout > previous_checkout:
+                previous_checkout = checkout
+                previous_booking = booking_number
 
-        gaps[int(room)] = room_gaps
+        gaps[str(int(room))] = room_gaps
 
     return gaps
+# def calculate_gaps(bookings):
+#
+#     gaps = {}
+#
+#     for room in sorted(bookings["room_number"].dropna().unique()):
+#
+#         room_bookings = (
+#             bookings[
+#                 bookings["room_number"] == room
+#             ]
+#             .sort_values("checkin_date")
+#         )
+#
+#         room_gaps = []
+#
+#         previous_checkout = None
+#
+#         for _, booking in room_bookings.iterrows():
+#
+#             if previous_checkout is not None:
+#
+#                 gap = (
+#                     booking["checkin_date"]
+#                     - previous_checkout
+#                 ).days
+#
+#                 if gap > 0:
+#                     room_gaps.append(gap)
+#
+#             previous_checkout = booking["checkout_date"]
+#
+#         gaps[int(room)] = room_gaps
+#
+#     return gaps
