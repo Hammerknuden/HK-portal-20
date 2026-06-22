@@ -29,7 +29,7 @@ def analyze_improvements(bookings, season):
             ).dt.date > today
         )
     ]
-    room_distribution = (
+    raw_distribution = (
         eligible
         .groupby("room_number")
         .size()
@@ -37,15 +37,21 @@ def analyze_improvements(bookings, season):
     )
 
     return {
-        "season": season,
-        "eligible_for_optimization": len(eligible),
-        "groupby_result": (
-            eligible
-            .groupby("room_number")
-            .size()
-            .to_dict()
-        )
+        "season": int(season),
+        "eligible_for_optimization": int(len(eligible)),
+        "room_distribution": room_distribution
     }
+
+    # return {
+    #     "season": season,
+    #     "eligible_for_optimization": len(eligible),
+    #     "groupby_result": (
+    #         eligible
+    #         .groupby("room_number")
+    #         .size()
+    #         .to_dict()
+    #     )
+    # }
     # return {
     #     "season": season,
     #     "eligible_for_optimization": len(eligible),

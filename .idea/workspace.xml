@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="niveau 2  buildind level 2" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="niveau 2  buildind level 2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,30 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00551" summary="fjerne 1.0 fra redigereing">
-      <option name="closed" value="true" />
-      <created>1781778126641</created>
-      <option name="number" value="00551" />
-      <option name="presentableId" value="LOCAL-00551" />
-      <option name="project" value="LOCAL" />
-      <updated>1781778126642</updated>
-    </task>
-    <task id="LOCAL-00552" summary="fjerne 1.0 fra redigereing">
-      <option name="closed" value="true" />
-      <created>1781778361649</created>
-      <option name="number" value="00552" />
-      <option name="presentableId" value="LOCAL-00552" />
-      <option name="project" value="LOCAL" />
-      <updated>1781778361649</updated>
-    </task>
-    <task id="LOCAL-00553" summary="fjerne 1.0 fra redigereing">
-      <option name="closed" value="true" />
-      <created>1781778651959</created>
-      <option name="number" value="00553" />
-      <option name="presentableId" value="LOCAL-00553" />
-      <option name="project" value="LOCAL" />
-      <updated>1781778651959</updated>
     </task>
     <task id="LOCAL-00554" summary="status up and running again">
       <option name="closed" value="true" />
@@ -465,7 +443,31 @@
       <option name="project" value="LOCAL" />
       <updated>1782109486412</updated>
     </task>
-    <option name="localTasksCounter" value="600" />
+    <task id="LOCAL-00600" summary="niveau 2  buildind level 2">
+      <option name="closed" value="true" />
+      <created>1782109821880</created>
+      <option name="number" value="00600" />
+      <option name="presentableId" value="LOCAL-00600" />
+      <option name="project" value="LOCAL" />
+      <updated>1782109821880</updated>
+    </task>
+    <task id="LOCAL-00601" summary="niveau 2  buildind level 2">
+      <option name="closed" value="true" />
+      <created>1782109958673</created>
+      <option name="number" value="00601" />
+      <option name="presentableId" value="LOCAL-00601" />
+      <option name="project" value="LOCAL" />
+      <updated>1782109958673</updated>
+    </task>
+    <task id="LOCAL-00602" summary="niveau 2  buildind level 2">
+      <option name="closed" value="true" />
+      <created>1782110067335</created>
+      <option name="number" value="00602" />
+      <option name="presentableId" value="LOCAL-00602" />
+      <option name="project" value="LOCAL" />
+      <updated>1782110067335</updated>
+    </task>
+    <option name="localTasksCounter" value="603" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
