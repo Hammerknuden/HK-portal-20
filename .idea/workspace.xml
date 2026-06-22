@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="niveau 2  buildind level 2" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="niveau 2  next step ledige perioder" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,30 +72,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00557" summary="ny check af ledige rum supabase">
-      <option name="closed" value="true" />
-      <created>1781852000426</created>
-      <option name="number" value="00557" />
-      <option name="presentableId" value="LOCAL-00557" />
-      <option name="project" value="LOCAL" />
-      <updated>1781852000427</updated>
-    </task>
-    <task id="LOCAL-00558" summary="ny check af ledige rum grafisk simpelt">
-      <option name="closed" value="true" />
-      <created>1781852512069</created>
-      <option name="number" value="00558" />
-      <option name="presentableId" value="LOCAL-00558" />
-      <option name="project" value="LOCAL" />
-      <updated>1781852512069</updated>
-    </task>
-    <task id="LOCAL-00559" summary="ny check af ledige rum grafisk simpelt">
-      <option name="closed" value="true" />
-      <created>1781852615850</created>
-      <option name="number" value="00559" />
-      <option name="presentableId" value="LOCAL-00559" />
-      <option name="project" value="LOCAL" />
-      <updated>1781852615850</updated>
     </task>
     <task id="LOCAL-00560" summary="ny check af ledige rum grafisk simpelt">
       <option name="closed" value="true" />
@@ -465,7 +441,31 @@
       <option name="project" value="LOCAL" />
       <updated>1782110795713</updated>
     </task>
-    <option name="localTasksCounter" value="606" />
+    <task id="LOCAL-00606" summary="niveau 2  buildind level 2">
+      <option name="closed" value="true" />
+      <created>1782110850652</created>
+      <option name="number" value="00606" />
+      <option name="presentableId" value="LOCAL-00606" />
+      <option name="project" value="LOCAL" />
+      <updated>1782110850652</updated>
+    </task>
+    <task id="LOCAL-00607" summary="niveau 2  buildind level 2 nyt checkp">
+      <option name="closed" value="true" />
+      <created>1782111039824</created>
+      <option name="number" value="00607" />
+      <option name="presentableId" value="LOCAL-00607" />
+      <option name="project" value="LOCAL" />
+      <updated>1782111039824</updated>
+    </task>
+    <task id="LOCAL-00608" summary="niveau 2  next step ledige perioder">
+      <option name="closed" value="true" />
+      <created>1782111383347</created>
+      <option name="number" value="00608" />
+      <option name="presentableId" value="LOCAL-00608" />
+      <option name="project" value="LOCAL" />
+      <updated>1782111383347</updated>
+    </task>
+    <option name="localTasksCounter" value="609" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -491,8 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="excel" />
-    <MESSAGE value="rækkefølge på værelser samt en excel update" />
     <MESSAGE value="forbered til fremtidig seasons" />
     <MESSAGE value="mayor changes in supabase all timeline works ok" />
     <MESSAGE value="update of send to supabase" />
@@ -516,6 +514,8 @@
     <MESSAGE value="niveau 2 opstart" />
     <MESSAGE value="niveau 2  new files" />
     <MESSAGE value="niveau 2  buildind level 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="niveau 2  buildind level 2" />
+    <MESSAGE value="niveau 2  buildind level 2 nyt checkp" />
+    <MESSAGE value="niveau 2  next step ledige perioder" />
+    <option name="LAST_COMMIT_MESSAGE" value="niveau 2  next step ledige perioder" />
   </component>
 </project>
