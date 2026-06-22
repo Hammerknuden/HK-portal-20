@@ -39,7 +39,7 @@ def analyze_improvements(bookings, season):
         for room, count in groupby_result.items()
     }
 
-    room_gaps = calculate_gaps(eligible)
+    room_gaps = calculate_gaps(season_bookings)
 
     return {
         "season": int(season),
