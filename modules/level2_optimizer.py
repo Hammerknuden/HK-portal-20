@@ -47,3 +47,37 @@ def analyze_improvements(bookings, season):
         "eligible_for_optimization": int(len(eligible)),
         "room_distribution": room_distribution
     }
+def calculate_gaps(bookings):
+
+    gaps = {}
+
+    for room in sorted(bookings["room_number"].dropna().unique()):
+
+        room_bookings = (
+            bookings[
+                bookings["room_number"] == room
+            ]
+            .sort_values("checkin_date")
+        )
+
+        room_gaps = []
+
+        previous_checkout = None
+
+        for _, booking in room_bookings.iterrows():
+
+            if previous_checkout is not None:
+
+                gap = (
+                    booking["checkin_date"]
+                    - previous_checkout
+                ).days
+
+                if gap > 0:
+                    room_gaps.append(gap)
+
+            previous_checkout = booking["checkout_date"]
+
+        gaps[int(room)] = room_gaps
+
+    return gaps
