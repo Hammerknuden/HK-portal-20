@@ -1,6 +1,8 @@
-def analyze_improvements(bookings, season):
+import pandas as pd
+from datetime import date
 
-    from datetime import date
+
+def analyze_improvements(bookings, season):
 
     today = date.today()
 
