@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="niveau 2  new files" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="niveau 2  buildind level 2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,14 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00548" summary="show locked unlocked">
-      <option name="closed" value="true" />
-      <created>1781767932529</created>
-      <option name="number" value="00548" />
-      <option name="presentableId" value="LOCAL-00548" />
-      <option name="project" value="LOCAL" />
-      <updated>1781767932529</updated>
     </task>
     <task id="LOCAL-00549" summary="show locked unlocked">
       <option name="closed" value="true" />
@@ -464,7 +458,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782107862183</updated>
     </task>
-    <option name="localTasksCounter" value="597" />
+    <task id="LOCAL-00597" summary="niveau 2  buildind level 2">
+      <option name="closed" value="true" />
+      <created>1782108301937</created>
+      <option name="number" value="00597" />
+      <option name="presentableId" value="LOCAL-00597" />
+      <option name="project" value="LOCAL" />
+      <updated>1782108301937</updated>
+    </task>
+    <option name="localTasksCounter" value="598" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -490,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="status all ok" />
     <MESSAGE value="excel" />
     <MESSAGE value="rækkefølge på værelser samt en excel update" />
     <MESSAGE value="forbered til fremtidig seasons" />
@@ -515,6 +516,7 @@
     <MESSAGE value="fig 2 updated med lidt oprydning i dobbelt blokke" />
     <MESSAGE value="niveau 2 opstart" />
     <MESSAGE value="niveau 2  new files" />
-    <option name="LAST_COMMIT_MESSAGE" value="niveau 2  new files" />
+    <MESSAGE value="niveau 2  buildind level 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="niveau 2  buildind level 2" />
   </component>
 </project>
