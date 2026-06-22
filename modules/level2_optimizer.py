@@ -93,6 +93,8 @@ def calculate_gaps(bookings):
 
     return gaps
 #     return gaps
+
+
 def find_room7_move_options(bookings):
 
     source_room = 7
