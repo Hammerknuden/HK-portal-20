@@ -29,26 +29,18 @@ def analyze_improvements(bookings, season):
             ).dt.date > today
         )
     ]
+    room_distribution = (
+        eligible
+        .groupby("room_number")
+        .size()
+        .to_dict()
+    )
 
     return {
         "season": season,
         "total_bookings": len(season_bookings),
         "movable": len(movable),
         "checked_in": len(checked_in),
-        "eligible_for_optimization": len(eligible)
+        "eligible_for_optimization": len(eligible),
+        "room_distribution": room_distribution
     }
-# def analyze_improvements(bookings, season):
-#     season_bookings = bookings[
-#         bookings["season"] == season
-#         ]
-#
-#     movable_bookings = season_bookings[
-#         season_bookings["movable"] == True
-#         ]
-#
-#     return {
-#         "season": season,
-#         "total_bookings": len(season_bookings),
-#         "movable_bookings": len(movable_bookings)
-#     }
-
