@@ -50,15 +50,15 @@ def analyze_improvements(bookings, season):
     }
     room_gaps = calculate_gaps(season_bookings)
 
-    # return {
-    #     "season": int(season),
-    #     "total_bookings": int(len(season_bookings)),
-    #     "movable": int(len(movable)),
-    #     "checked_in": int(len(checked_in)),
-    #     "eligible_for_optimization": int(len(eligible)),
-    #     "room_distribution": room_distribution,
-    #     "room_gaps": room_gaps
-    # }
+    return {
+        "season": int(season),
+        "total_bookings": int(len(season_bookings)),
+        "movable": int(len(movable)),
+        "checked_in": int(len(checked_in)),
+        "eligible_for_optimization": int(len(eligible)),
+        "room_distribution": room_distribution,
+        "room_gaps": room_gaps
+    }
 
 
 def calculate_gaps(bookings):
