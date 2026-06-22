@@ -38,14 +38,15 @@ def analyze_improvements(bookings, season):
         str(int(room)): int(count)
         for room, count in groupby_result.items()
     }
-
+    room7_suggestions = find_room7_move_options(eligible)
     room_gaps = calculate_gaps(season_bookings)
 
     return {
         "season": int(season),
         "eligible_for_optimization": int(len(eligible)),
         "room_distribution": room_distribution,
-        "room_gaps": room_gaps
+        "room_gaps": room_gaps,
+        "room7_suggestions": room7_suggestions
     }
 
 
