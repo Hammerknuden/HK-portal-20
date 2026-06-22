@@ -8,33 +8,26 @@ def analyze_improvements(bookings, season):
 
     season_bookings = bookings[
         bookings["season"] == season
-    ]
+    ].copy()
+
+    season_bookings["checkin_date"] = pd.to_datetime(
+        season_bookings["checkin_date"]
+    )
 
     movable = season_bookings[
         season_bookings["movable"] == True
     ]
 
     checked_in = season_bookings[
-        pd.to_datetime(
-            season_bookings["checkin_date"]
-        ).dt.date <= today
+        season_bookings["checkin_date"].dt.date <= today
     ]
 
     eligible = season_bookings[
         (season_bookings["movable"] == True)
         &
-        (
-            pd.to_datetime(
-                season_bookings["checkin_date"]
-            ).dt.date > today
-        )
+        (season_bookings["checkin_date"].dt.date > today)
     ]
-    raw_distribution = (
-        eligible
-        .groupby("room_number")
-        .size()
-        .to_dict()
-    )
+
     groupby_result = (
         eligible
         .groupby("room_number")
@@ -48,6 +41,9 @@ def analyze_improvements(bookings, season):
 
     return {
         "season": int(season),
+        "total_bookings": int(len(season_bookings)),
+        "movable": int(len(movable)),
+        "checked_in": int(len(checked_in)),
         "eligible_for_optimization": int(len(eligible)),
         "room_distribution": room_distribution
     }
