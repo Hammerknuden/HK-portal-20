@@ -39,13 +39,16 @@ def analyze_improvements(bookings, season):
         for room, count in groupby_result.items()
     }
 
+    room_gaps = calculate_gaps(eligible)
+
     return {
         "season": int(season),
         "total_bookings": int(len(season_bookings)),
         "movable": int(len(movable)),
         "checked_in": int(len(checked_in)),
         "eligible_for_optimization": int(len(eligible)),
-        "room_distribution": room_distribution
+        "room_distribution": room_distribution,
+        "room_gaps": room_gaps
     }
 
 
