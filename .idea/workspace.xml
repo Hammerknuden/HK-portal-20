@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="niveau 2  level 2 first new optimize">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/level2_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/level2_optimizer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,14 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00572" summary="2027 booking de bug">
-      <option name="closed" value="true" />
-      <created>1781885354960</created>
-      <option name="number" value="00572" />
-      <option name="presentableId" value="LOCAL-00572" />
-      <option name="project" value="LOCAL" />
-      <updated>1781885354960</updated>
     </task>
     <task id="LOCAL-00573" summary="2027 booking oprydning">
       <option name="closed" value="true" />
@@ -467,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782145968200</updated>
     </task>
-    <option name="localTasksCounter" value="621" />
+    <task id="LOCAL-00621" summary="niveau 2  level 2 first new optimize">
+      <option name="closed" value="true" />
+      <created>1782147411652</created>
+      <option name="number" value="00621" />
+      <option name="presentableId" value="LOCAL-00621" />
+      <option name="project" value="LOCAL" />
+      <updated>1782147411652</updated>
+    </task>
+    <option name="localTasksCounter" value="622" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

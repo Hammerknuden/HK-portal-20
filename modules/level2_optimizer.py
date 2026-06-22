@@ -38,11 +38,15 @@ def analyze_improvements(bookings, season):
         str(int(room)): int(count)
         for room, count in groupby_result.items()
     }
-    return {
-        "checkin_dtype": str(eligible["checkin_date"].dtype),
-        "checkout_dtype": str(eligible["checkout_date"].dtype)
-    }
-    room7_suggestions = find_room7_move_options(eligible)
+    # return {
+    #     "checkin_dtype": str(eligible["checkin_date"].dtype),
+    #     "checkout_dtype": str(eligible["checkout_date"].dtype)
+    # }
+    room7_suggestions = find_room7_move_options(
+        candidates=eligible,
+        all_bookings=season_bookings
+    )
+    #room7_suggestions = find_room7_move_options(eligible)
     room_gaps = calculate_gaps(season_bookings)
 
     return {
@@ -99,15 +103,15 @@ def calculate_gaps(bookings):
 #     return gaps
 
 
-def find_room7_move_options(bookings):
+def find_room7_move_options(candidates, all_bookings):
 
     source_room = 7
     target_rooms = [1, 2, 3, 4, 5]
 
     suggestions = []
 
-    room7_bookings = bookings[
-        bookings["room_number"] == source_room
+    room7_bookings = candidates[
+        candidates["room_number"] == source_room
     ].sort_values("checkin_date")
 
     for _, candidate in room7_bookings.iterrows():
@@ -119,8 +123,8 @@ def find_room7_move_options(bookings):
 
         for room in target_rooms:
 
-            room_bookings = bookings[
-                bookings["room_number"] == room
+            room_bookings = all_bookings[
+                all_bookings["room_number"] == room
             ]
 
             overlaps = room_bookings[
@@ -142,3 +146,46 @@ def find_room7_move_options(bookings):
             })
 
     return suggestions
+# def find_room7_move_options(bookings):
+#
+#     source_room = 7
+#     target_rooms = [1, 2, 3, 4, 5]
+#
+#     suggestions = []
+#
+#     room7_bookings = bookings[
+#         bookings["room_number"] == source_room
+#     ].sort_values("checkin_date")
+#
+#     for _, candidate in room7_bookings.iterrows():
+#
+#         candidate_checkin = candidate["checkin_date"]
+#         candidate_checkout = candidate["checkout_date"]
+#
+#         possible_rooms = []
+#
+#         for room in target_rooms:
+#
+#             room_bookings = bookings[
+#                 bookings["room_number"] == room
+#             ]
+#
+#             overlaps = room_bookings[
+#                 (room_bookings["checkin_date"] < candidate_checkout)
+#                 &
+#                 (room_bookings["checkout_date"] > candidate_checkin)
+#             ]
+#
+#             if overlaps.empty:
+#                 possible_rooms.append(room)
+#
+#         if possible_rooms:
+#             suggestions.append({
+#                 "booking_number": int(candidate["booking_number"]),
+#                 "from_room": source_room,
+#                 "possible_rooms": possible_rooms,
+#                 "checkin_date": str(candidate_checkin.date()),
+#                 "checkout_date": str(candidate_checkout.date())
+#             })
+#
+#     return suggestions
