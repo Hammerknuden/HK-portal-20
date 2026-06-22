@@ -43,11 +43,11 @@ def analyze_improvements(bookings, season):
         season_bookings["room_number"] == 1
         ].sort_values("checkin_date")
 
-    return {
-        "room1_debug": room1[
-            ["booking_number", "checkin_date", "checkout_date", "movable"]
-        ].to_dict("records")
-    }
+    #return {
+    #    "room1_debug": room1[
+    #        ["booking_number", "checkin_date", "checkout_date", "movable"]
+    #    ].to_dict("records")
+    #}
     room_gaps = calculate_gaps(season_bookings)
 
     return {
