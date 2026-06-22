@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="niveau 2  level 2 first new optimize" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="niveau 2  level 2 first new optimize">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,22 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00570" summary="2027 booking de bug">
-      <option name="closed" value="true" />
-      <created>1781884619683</created>
-      <option name="number" value="00570" />
-      <option name="presentableId" value="LOCAL-00570" />
-      <option name="project" value="LOCAL" />
-      <updated>1781884619684</updated>
-    </task>
-    <task id="LOCAL-00571" summary="2027 booking de bug">
-      <option name="closed" value="true" />
-      <created>1781885151703</created>
-      <option name="number" value="00571" />
-      <option name="presentableId" value="LOCAL-00571" />
-      <option name="project" value="LOCAL" />
-      <updated>1781885151703</updated>
     </task>
     <task id="LOCAL-00572" summary="2027 booking de bug">
       <option name="closed" value="true" />
@@ -465,7 +451,23 @@
       <option name="project" value="LOCAL" />
       <updated>1782145550686</updated>
     </task>
-    <option name="localTasksCounter" value="619" />
+    <task id="LOCAL-00619" summary="niveau 2  level 2 first new optimize">
+      <option name="closed" value="true" />
+      <created>1782145825142</created>
+      <option name="number" value="00619" />
+      <option name="presentableId" value="LOCAL-00619" />
+      <option name="project" value="LOCAL" />
+      <updated>1782145825142</updated>
+    </task>
+    <task id="LOCAL-00620" summary="niveau 2  level 2 first new optimize">
+      <option name="closed" value="true" />
+      <created>1782145968200</created>
+      <option name="number" value="00620" />
+      <option name="presentableId" value="LOCAL-00620" />
+      <option name="project" value="LOCAL" />
+      <updated>1782145968200</updated>
+    </task>
+    <option name="localTasksCounter" value="621" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

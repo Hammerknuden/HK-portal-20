@@ -38,6 +38,10 @@ def analyze_improvements(bookings, season):
         str(int(room)): int(count)
         for room, count in groupby_result.items()
     }
+    return {
+        "checkin_dtype": str(eligible["checkin_date"].dtype),
+        "checkout_dtype": str(eligible["checkout_date"].dtype)
+    }
     room7_suggestions = find_room7_move_options(eligible)
     room_gaps = calculate_gaps(season_bookings)
 
