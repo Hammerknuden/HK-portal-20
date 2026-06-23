@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="niveau 2  level 2 first new optimize">
-      <change beforePath="$PROJECT_DIR$/modules/level2_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/level2_optimizer.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="level 2 Add room 7 relocation suggestions" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,22 +72,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00574" summary="2027 booking oprydning">
-      <option name="closed" value="true" />
-      <created>1781934280544</created>
-      <option name="number" value="00574" />
-      <option name="presentableId" value="LOCAL-00574" />
-      <option name="project" value="LOCAL" />
-      <updated>1781934280544</updated>
-    </task>
-    <task id="LOCAL-00575" summary="2027 booking oprydning">
-      <option name="closed" value="true" />
-      <created>1781934693251</created>
-      <option name="number" value="00575" />
-      <option name="presentableId" value="LOCAL-00575" />
-      <option name="project" value="LOCAL" />
-      <updated>1781934693251</updated>
     </task>
     <task id="LOCAL-00576" summary="2027 booking oprydning">
       <option name="closed" value="true" />
@@ -467,7 +449,23 @@
       <option name="project" value="LOCAL" />
       <updated>1782147578746</updated>
     </task>
-    <option name="localTasksCounter" value="623" />
+    <task id="LOCAL-00623" summary="niveau 2  level 2 new bookinking to test vær 7 optimizer">
+      <option name="closed" value="true" />
+      <created>1782148028564</created>
+      <option name="number" value="00623" />
+      <option name="presentableId" value="LOCAL-00623" />
+      <option name="project" value="LOCAL" />
+      <updated>1782148028564</updated>
+    </task>
+    <task id="LOCAL-00624" summary="level 2 Add room 7 relocation suggestions">
+      <option name="closed" value="true" />
+      <created>1782148922258</created>
+      <option name="number" value="00624" />
+      <option name="presentableId" value="LOCAL-00624" />
+      <option name="project" value="LOCAL" />
+      <updated>1782148922259</updated>
+    </task>
+    <option name="localTasksCounter" value="625" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -493,8 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="locked unlocked" />
-    <MESSAGE value="show locked unlocked" />
     <MESSAGE value="fjerne 1.0 fra redigereing" />
     <MESSAGE value="status up and running again" />
     <MESSAGE value="fjernelse af 1.0 fra booking py" />
@@ -518,6 +514,8 @@
     <MESSAGE value="niveau 2  level 2 room gap analysis" />
     <MESSAGE value="niveau 2  level 2 oprydning i returns" />
     <MESSAGE value="niveau 2  level 2 first new optimize" />
-    <option name="LAST_COMMIT_MESSAGE" value="niveau 2  level 2 first new optimize" />
+    <MESSAGE value="niveau 2  level 2 new bookinking to test vær 7 optimizer" />
+    <MESSAGE value="level 2 Add room 7 relocation suggestions" />
+    <option name="LAST_COMMIT_MESSAGE" value="level 2 Add room 7 relocation suggestions" />
   </component>
 </project>

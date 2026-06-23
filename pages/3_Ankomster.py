@@ -79,3 +79,47 @@ if not df.empty:
     )
 else:
     st.info("Ingen ankomster i perioden.")
+
+result = (
+    supabase.table("hk_dtb")
+    .select(
+        "booking_number, checkout_date, room_number, web"
+    )
+    .gte("checkout_date", str(check_dato_start))
+    .lte("checkout_date", str(check_dato_slut))
+    .neq("web", "cansl")
+    .order("checkout_date")
+    .execute()
+)
+
+df = pd.DataFrame(result.data)
+st.write(df["web"].unique())
+
+# Sortér værelser 1-5
+if not df.empty:
+    df["room_number"] = pd.to_numeric(df["room_number"], errors="coerce")
+    df["checkout_date"] = pd.to_datetime(df["checkout_date"])
+
+    df = df.sort_values(["checkout_date", "room_number"])
+
+
+    st.dataframe(
+        df[
+            [
+                "checkout_date",
+                "room_number",
+                "booking_number",
+            ]
+        ].rename(
+            columns={
+                "checkout_date": "Udcheck",
+                "room_number": "Værelse",
+                "booking_number": "Booking nr."
+            }
+        ),
+        use_container_width=True
+    )
+
+else:
+    st.info("Ingen udcheckninger i perioden.")
+
