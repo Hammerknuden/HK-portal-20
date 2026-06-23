@@ -53,15 +53,17 @@ result = (
     .order("room_number")
     .execute()
 )
-# skifter pd.DataFrame til st.table
-df = st.table(result.data)
+
+df = pd.DataFrame(result.data)
 
 # Sortér værelser 1-5
+df = pd.DataFrame(result.data)
+
 if not df.empty:
     df["room_number"] = pd.to_numeric(df["room_number"], errors="coerce")
     df = df.sort_values(["checkin_date", "room_number"])
 
-    st.dataframe(
+    st.table(
         df[
             [
                 "checkin_date",
@@ -73,13 +75,23 @@ if not df.empty:
                 "bed",
                 "enkelt",
                 "known",
-
             ]
-        ],
-        use_container_width=True,
+        ].rename(
+            columns={
+                "checkin_date": "Check-in",
+                "booking_number": "Booking nr.",
+                "room_number": "Værelse",
+                "navn": "Navn",
+                "nation": "Land",
+                "ankomst": "Ankomst",
+                "bed": "Seng",
+                "enkelt": "Enkelt",
+                "known": "Kendt",
+            }
+        )
     )
-#else:
-#    st.info("Ingen ankomster i perioden.")
+else:
+    st.info("Ingen ankomster i perioden.")
 
 st.subheader("Afrejse udcheck i perioden")
 result = (
@@ -93,18 +105,20 @@ result = (
     .order("checkout_date")
     .execute()
 )
-#skift pd.DataFrame til st. table
-df = st.table(result.data)
 
-st.write(df["web"].unique())
+df = pd.DataFrame(result.data)
+
+#st.write(df["web"].unique())
 
 # Sortér værelser 1-5
+df = pd.DataFrame(result.data)
+
 if not df.empty:
     df["room_number"] = pd.to_numeric(df["room_number"], errors="coerce")
     df["checkout_date"] = pd.to_datetime(df["checkout_date"])
 
     df = df.sort_values(["checkout_date", "room_number"])
-    # st.dataframe til st.table
+
     st.table(
         df[
             [
@@ -116,12 +130,10 @@ if not df.empty:
             columns={
                 "checkout_date": "Udcheck",
                 "room_number": "Værelse",
-                "booking_number": "Booking nr."
+                "booking_number": "Booking nr.",
             }
-        ),
-        use_container_width=True
+        )
     )
-
-#else:
-#    st.info("Ingen udcheckninger i perioden.")
+else:
+    st.info("Ingen udcheckninger i perioden.")
 

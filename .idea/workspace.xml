@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="skifter pandas til st.table for print" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="skifter pandas til st.table for print">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/3_Inn and Out.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/3_Inn and Out.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,14 +76,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00583" summary="fig timeline y akse update samt excel update">
-      <option name="closed" value="true" />
-      <created>1782021500669</created>
-      <option name="number" value="00583" />
-      <option name="presentableId" value="LOCAL-00583" />
-      <option name="project" value="LOCAL" />
-      <updated>1782021500669</updated>
     </task>
     <task id="LOCAL-00584" summary="fig timeline y akse update">
       <option name="closed" value="true" />
@@ -466,7 +461,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782194870690</updated>
     </task>
-    <option name="localTasksCounter" value="632" />
+    <task id="LOCAL-00632" summary="skifter pandas til st.table for print">
+      <option name="closed" value="true" />
+      <created>1782195006002</created>
+      <option name="number" value="00632" />
+      <option name="presentableId" value="LOCAL-00632" />
+      <option name="project" value="LOCAL" />
+      <updated>1782195006002</updated>
+    </task>
+    <option name="localTasksCounter" value="633" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
