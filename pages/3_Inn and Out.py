@@ -7,7 +7,9 @@ from datetime import date, timedelta
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 from dotenv import load_dotenv
 from supabase import create_client
-
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.lib.styles import getSampleStyleSheet
+from io import BytesIO
 
 st.set_page_config(page_title="Ankomster", layout="wide")
 #require_login()
@@ -136,6 +138,19 @@ if not df.empty:
     )
 else:
     st.info("Ingen udcheckninger i perioden.")
+buffer = BytesIO()
+
+doc = SimpleDocTemplate(buffer)
+styles = getSampleStyleSheet()
+story = []
+
+story.append(Paragraph("Ankomster og afrejser", styles["Heading1"]))
+
+doc.build(story)
+
+pdf_bytes = buffer.getvalue()
+buffer.close()
+
 
 st.download_button(
     "📄 Download rapport",

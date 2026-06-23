@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="skifter pandas til st.table for print">
-      <change beforePath="$PROJECT_DIR$/pages/3_Inn and Out.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/3_Inn and Out.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="skifter print buttom" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,30 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00585" summary="fig timeline y akse update">
-      <option name="closed" value="true" />
-      <created>1782023250553</created>
-      <option name="number" value="00585" />
-      <option name="presentableId" value="LOCAL-00585" />
-      <option name="project" value="LOCAL" />
-      <updated>1782023250553</updated>
-    </task>
-    <task id="LOCAL-00586" summary="fig timeline y akse update">
-      <option name="closed" value="true" />
-      <created>1782023288821</created>
-      <option name="number" value="00586" />
-      <option name="presentableId" value="LOCAL-00586" />
-      <option name="project" value="LOCAL" />
-      <updated>1782023288821</updated>
-    </task>
-    <task id="LOCAL-00587" summary="fig timeline y akse update">
-      <option name="closed" value="true" />
-      <created>1782023453866</created>
-      <option name="number" value="00587" />
-      <option name="presentableId" value="LOCAL-00587" />
-      <option name="project" value="LOCAL" />
-      <updated>1782023453866</updated>
     </task>
     <task id="LOCAL-00588" summary="fig 2 updated med lidt oprydning i dobbelt blokke">
       <option name="closed" value="true" />
@@ -468,7 +442,31 @@
       <option name="project" value="LOCAL" />
       <updated>1782195892950</updated>
     </task>
-    <option name="localTasksCounter" value="634" />
+    <task id="LOCAL-00634" summary="skifter pandas til st.table for print">
+      <option name="closed" value="true" />
+      <created>1782196198370</created>
+      <option name="number" value="00634" />
+      <option name="presentableId" value="LOCAL-00634" />
+      <option name="project" value="LOCAL" />
+      <updated>1782196198370</updated>
+    </task>
+    <task id="LOCAL-00635" summary="skifter print buttom">
+      <option name="closed" value="true" />
+      <created>1782196421632</created>
+      <option name="number" value="00635" />
+      <option name="presentableId" value="LOCAL-00635" />
+      <option name="project" value="LOCAL" />
+      <updated>1782196421632</updated>
+    </task>
+    <task id="LOCAL-00636" summary="skifter print buttom">
+      <option name="closed" value="true" />
+      <created>1782196636949</created>
+      <option name="number" value="00636" />
+      <option name="presentableId" value="LOCAL-00636" />
+      <option name="project" value="LOCAL" />
+      <updated>1782196636949</updated>
+    </task>
+    <option name="localTasksCounter" value="637" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -494,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fjernelse af 1.0 fra booking py" />
     <MESSAGE value="fjernelser af cansl fra ankomster" />
     <MESSAGE value="ny check af ledige rum supabase" />
     <MESSAGE value="ny check af ledige rum grafisk simpelt" />
@@ -519,6 +516,7 @@
     <MESSAGE value="level 2 Add room 7 relocation suggestions" />
     <MESSAGE value="forsøg sammenlægning ankomster cleaning" />
     <MESSAGE value="skifter pandas til st.table for print" />
-    <option name="LAST_COMMIT_MESSAGE" value="skifter pandas til st.table for print" />
+    <MESSAGE value="skifter print buttom" />
+    <option name="LAST_COMMIT_MESSAGE" value="skifter print buttom" />
   </component>
 </project>
