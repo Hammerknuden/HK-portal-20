@@ -11,3 +11,4 @@ plotly~=6.7.0
 supabase~=2.30.1
 dotenv~=0.9.9
 python-dotenv~=1.2.2
+reportlab
