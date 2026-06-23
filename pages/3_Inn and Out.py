@@ -33,7 +33,7 @@ st.success("Forbindelse OK")
 check_dato_start = date.today()
 
 antal_dage = st.selectbox(
-    "Vis ankomster de næste dage",
+    "Ankomster og afrejser de næste dage",
     [3, 5, 7, 9, 14],
     index=0
 )
@@ -104,9 +104,8 @@ if not df.empty:
     df["checkout_date"] = pd.to_datetime(df["checkout_date"])
 
     df = df.sort_values(["checkout_date", "room_number"])
-
-
-    st.dataframe(
+    # st.dataframe til st.table
+    st.table(
         df[
             [
                 "checkout_date",
