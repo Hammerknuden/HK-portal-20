@@ -37,6 +37,7 @@ antal_dage = st.selectbox(
     [3, 5, 7, 9, 14],
     index=0
 )
+st.subheader(" Ankomster ")
 
 check_dato_slut = check_dato_start + timedelta(days=antal_dage)
 
@@ -80,6 +81,7 @@ if not df.empty:
 else:
     st.info("Ingen ankomster i perioden.")
 
+st.subheader("Afrejse udcheck i perioden")
 result = (
     supabase.table("hk_dtb")
     .select(

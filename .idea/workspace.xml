@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="level 2 Add room 7 relocation suggestions" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="forsøg sammenlægning ankomster cleaning" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,31 +32,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Python.1_Booking.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_Setup.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_databaseopslag.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_setup.executor&quot;: &quot;Run&quot;,
-    &quot;Python.3_Ankomster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.3_ankomster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.4_Booking_C_link.executor&quot;: &quot;Run&quot;,
-    &quot;Python.5_cleaning.executor&quot;: &quot;Run&quot;,
-    &quot;Python.6_callender.executor&quot;: &quot;Run&quot;,
-    &quot;Python.6_timeline.executor&quot;: &quot;Run&quot;,
-    &quot;Python.8_statestik.executor&quot;: &quot;Run&quot;,
-    &quot;Python.8_timelinenew.executor&quot;: &quot;Run&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.auth.executor&quot;: &quot;Run&quot;,
-    &quot;Python.common.executor&quot;: &quot;Run&quot;,
-    &quot;Python.config_prices.executor&quot;: &quot;Run&quot;,
-    &quot;Python.databaseopslag.executor&quot;: &quot;Run&quot;,
-    &quot;Python.level2_optimizer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.streamlit_app.executor&quot;: &quot;Run&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/finnj/-repo hk20/hk_portal_20/modules/level2_optimizer.py&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.1_Booking.executor": "Run",
+    "Python.2_Setup.executor": "Run",
+    "Python.2_databaseopslag.executor": "Run",
+    "Python.2_setup.executor": "Run",
+    "Python.3_Ankomster.executor": "Run",
+    "Python.3_ankomster.executor": "Run",
+    "Python.4_Booking_C_link.executor": "Run",
+    "Python.5_cleaning.executor": "Run",
+    "Python.6_callender.executor": "Run",
+    "Python.6_timeline.executor": "Run",
+    "Python.8_statestik.executor": "Run",
+    "Python.8_timelinenew.executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.auth.executor": "Run",
+    "Python.common.executor": "Run",
+    "Python.config_prices.executor": "Run",
+    "Python.databaseopslag.executor": "Run",
+    "Python.level2_optimizer.executor": "Run",
+    "Python.streamlit_app.executor": "Run",
+    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/pages/5_cleaning.py"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -72,14 +72,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00576" summary="2027 booking oprydning">
-      <option name="closed" value="true" />
-      <created>1781934715001</created>
-      <option name="number" value="00576" />
-      <option name="presentableId" value="LOCAL-00576" />
-      <option name="project" value="LOCAL" />
-      <updated>1781934715001</updated>
     </task>
     <task id="LOCAL-00577" summary="2027 booking oprydning">
       <option name="closed" value="true" />
@@ -465,7 +457,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782148922259</updated>
     </task>
-    <option name="localTasksCounter" value="625" />
+    <task id="LOCAL-00625" summary="forsøg sammenlægning ankomster cleaning">
+      <option name="closed" value="true" />
+      <created>1782192749658</created>
+      <option name="number" value="00625" />
+      <option name="presentableId" value="LOCAL-00625" />
+      <option name="project" value="LOCAL" />
+      <updated>1782192749658</updated>
+    </task>
+    <option name="localTasksCounter" value="626" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fjerne 1.0 fra redigereing" />
     <MESSAGE value="status up and running again" />
     <MESSAGE value="fjernelse af 1.0 fra booking py" />
     <MESSAGE value="fjernelser af cansl fra ankomster" />
@@ -516,6 +515,7 @@
     <MESSAGE value="niveau 2  level 2 first new optimize" />
     <MESSAGE value="niveau 2  level 2 new bookinking to test vær 7 optimizer" />
     <MESSAGE value="level 2 Add room 7 relocation suggestions" />
-    <option name="LAST_COMMIT_MESSAGE" value="level 2 Add room 7 relocation suggestions" />
+    <MESSAGE value="forsøg sammenlægning ankomster cleaning" />
+    <option name="LAST_COMMIT_MESSAGE" value="forsøg sammenlægning ankomster cleaning" />
   </component>
 </project>
