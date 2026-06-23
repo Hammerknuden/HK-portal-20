@@ -78,8 +78,8 @@ if not df.empty:
         ],
         use_container_width=True,
     )
-else:
-    st.info("Ingen ankomster i perioden.")
+#else:
+#    st.info("Ingen ankomster i perioden.")
 
 st.subheader("Afrejse udcheck i perioden")
 result = (
@@ -123,6 +123,6 @@ if not df.empty:
         use_container_width=True
     )
 
-else:
-    st.info("Ingen udcheckninger i perioden.")
+#else:
+#    st.info("Ingen udcheckninger i perioden.")
 
