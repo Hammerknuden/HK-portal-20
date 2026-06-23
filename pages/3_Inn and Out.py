@@ -140,7 +140,49 @@ if not df.empty:
 else:
     st.info("Ingen udcheckninger i perioden.")
 buffer = BytesIO()
+def lav_pdf(df_ankomst, df_afrejse):
+    buffer = BytesIO()
 
+    doc = SimpleDocTemplate(buffer)
+    styles = getSampleStyleSheet()
+    story = []
+
+    story.append(Paragraph("Ankomster og afrejser", styles["Heading1"]))
+    story.append(Spacer(1, 12))
+
+    if not df_ankomst.empty:
+        story.append(Paragraph("Ankomster", styles["Heading2"]))
+
+        data = [df_ankomst.columns.tolist()] + df_ankomst.astype(str).values.tolist()
+
+        table = Table(data)
+        table.setStyle(TableStyle([
+            ("GRID", (0, 0), (-1, -1), 0.5, colors.black),
+            ("BACKGROUND", (0, 0), (-1, 0), colors.lightgrey),
+        ]))
+
+        story.append(table)
+        story.append(Spacer(1, 18))
+
+    if not df_afrejse.empty:
+        story.append(Paragraph("Afrejser", styles["Heading2"]))
+
+        data = [df_afrejse.columns.tolist()] + df_afrejse.astype(str).values.tolist()
+
+        table = Table(data)
+        table.setStyle(TableStyle([
+            ("GRID", (0, 0), (-1, -1), 0.5, colors.black),
+            ("BACKGROUND", (0, 0), (-1, 0), colors.lightgrey),
+        ]))
+
+        story.append(table)
+
+    doc.build(story)
+
+    pdf_bytes = buffer.getvalue()
+    buffer.close()
+
+    return pdf_bytes
 doc = SimpleDocTemplate(buffer)
 styles = getSampleStyleSheet()
 story = []
