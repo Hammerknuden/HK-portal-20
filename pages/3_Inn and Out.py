@@ -12,7 +12,7 @@ from supabase import create_client
 st.set_page_config(page_title="Ankomster", layout="wide")
 #require_login()
 
-st.subheader("Dagens ankomster ")
+st.subheader("De næste dages ankomster og afrejser ")
 # Date inputs fra Streamlit
 
 
@@ -93,7 +93,7 @@ if not df.empty:
 else:
     st.info("Ingen ankomster i perioden.")
 
-st.subheader("Afrejse udcheck i perioden")
+st.subheader("Periodens afrejser")
 result = (
     supabase.table("hk_dtb")
     .select(
@@ -136,4 +136,6 @@ if not df.empty:
     )
 else:
     st.info("Ingen udcheckninger i perioden.")
+
+st.write( " for print brug Ctrl + P husk at lukke sidebar først")
 
