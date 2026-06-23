@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="forsøg sammenlægning ankomster cleaning" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="forsøg sammenlægning ankomster cleaning">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,22 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00577" summary="2027 booking oprydning">
-      <option name="closed" value="true" />
-      <created>1781935945466</created>
-      <option name="number" value="00577" />
-      <option name="presentableId" value="LOCAL-00577" />
-      <option name="project" value="LOCAL" />
-      <updated>1781935945466</updated>
-    </task>
-    <task id="LOCAL-00578" summary="2027 booking check">
-      <option name="closed" value="true" />
-      <created>1781936120502</created>
-      <option name="number" value="00578" />
-      <option name="presentableId" value="LOCAL-00578" />
-      <option name="project" value="LOCAL" />
-      <updated>1781936120503</updated>
     </task>
     <task id="LOCAL-00579" summary="2027 booking check">
       <option name="closed" value="true" />
@@ -465,7 +451,23 @@
       <option name="project" value="LOCAL" />
       <updated>1782192749658</updated>
     </task>
-    <option name="localTasksCounter" value="626" />
+    <task id="LOCAL-00626" summary="forsøg sammenlægning ankomster cleaning">
+      <option name="closed" value="true" />
+      <created>1782192964376</created>
+      <option name="number" value="00626" />
+      <option name="presentableId" value="LOCAL-00626" />
+      <option name="project" value="LOCAL" />
+      <updated>1782192964376</updated>
+    </task>
+    <task id="LOCAL-00627" summary="forsøg sammenlægning ankomster cleaning">
+      <option name="closed" value="true" />
+      <created>1782193274032</created>
+      <option name="number" value="00627" />
+      <option name="presentableId" value="LOCAL-00627" />
+      <option name="project" value="LOCAL" />
+      <updated>1782193274032</updated>
+    </task>
+    <option name="localTasksCounter" value="628" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

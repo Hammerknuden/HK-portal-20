@@ -53,8 +53,8 @@ result = (
     .order("room_number")
     .execute()
 )
-
-df = pd.DataFrame(result.data)
+# skifter pd.DataFrame til st.table
+df = st.table(result.data)
 
 # Sortér værelser 1-5
 if not df.empty:
@@ -93,8 +93,9 @@ result = (
     .order("checkout_date")
     .execute()
 )
+#skift pd.DataFrame til st. table
+df = st.table(result.data)
 
-df = pd.DataFrame(result.data)
 st.write(df["web"].unique())
 
 # Sortér værelser 1-5
