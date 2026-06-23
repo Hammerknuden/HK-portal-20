@@ -96,7 +96,7 @@ result = (
 #skift pd.DataFrame til st. table
 df = st.table(result.data)
 
-st.write(df["web"].unique())
+#st.write(df["web"].unique())
 
 # Sortér værelser 1-5
 if not df.empty:

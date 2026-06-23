@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="forsøg sammenlægning ankomster cleaning">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="skifter pandas til st.table for print" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,14 +72,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00579" summary="2027 booking check">
-      <option name="closed" value="true" />
-      <created>1781937259069</created>
-      <option name="number" value="00579" />
-      <option name="presentableId" value="LOCAL-00579" />
-      <option name="project" value="LOCAL" />
-      <updated>1781937259069</updated>
     </task>
     <task id="LOCAL-00580" summary="2027 booking check">
       <option name="closed" value="true" />
@@ -467,7 +457,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782193274032</updated>
     </task>
-    <option name="localTasksCounter" value="628" />
+    <task id="LOCAL-00628" summary="skifter pandas til st.table for print">
+      <option name="closed" value="true" />
+      <created>1782194141218</created>
+      <option name="number" value="00628" />
+      <option name="presentableId" value="LOCAL-00628" />
+      <option name="project" value="LOCAL" />
+      <updated>1782194141218</updated>
+    </task>
+    <option name="localTasksCounter" value="629" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -493,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="status up and running again" />
     <MESSAGE value="fjernelse af 1.0 fra booking py" />
     <MESSAGE value="fjernelser af cansl fra ankomster" />
     <MESSAGE value="ny check af ledige rum supabase" />
@@ -518,6 +515,7 @@
     <MESSAGE value="niveau 2  level 2 new bookinking to test vær 7 optimizer" />
     <MESSAGE value="level 2 Add room 7 relocation suggestions" />
     <MESSAGE value="forsøg sammenlægning ankomster cleaning" />
-    <option name="LAST_COMMIT_MESSAGE" value="forsøg sammenlægning ankomster cleaning" />
+    <MESSAGE value="skifter pandas til st.table for print" />
+    <option name="LAST_COMMIT_MESSAGE" value="skifter pandas til st.table for print" />
   </component>
 </project>
