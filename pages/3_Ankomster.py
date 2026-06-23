@@ -59,7 +59,7 @@ df = pd.DataFrame(result.data)
 # Sortér værelser 1-5
 if not df.empty:
     df["room_number"] = pd.to_numeric(df["room_number"], errors="coerce")
-    df = df.sort_values(["room_number", "checkin_date"])
+    df = df.sort_values(["checkin_date", "room_number"])
 
     st.dataframe(
         df[
