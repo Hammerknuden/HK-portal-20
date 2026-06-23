@@ -137,23 +137,11 @@ if not df.empty:
 else:
     st.info("Ingen udcheckninger i perioden.")
 
-st.components.v1.html(
-    """
-    <button
-        onclick="window.print()"
-        style="
-            background-color:#4CAF50;
-            color:white;
-            padding:10px 20px;
-            border:none;
-            border-radius:5px;
-            cursor:pointer;
-            font-size:16px;
-        ">
-        🖨️ Print rapport
-    </button>
-    """,
-    height=60,
+st.download_button(
+    "📄 Download rapport",
+    pdf_bytes,
+    file_name="rapport.pdf",
+    mime="application/pdf"
 )
 
 #st.write( " for print brug Ctrl + P husk at lukke sidebar først")
