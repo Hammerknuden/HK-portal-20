@@ -11,7 +11,7 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 from io import BytesIO
 
-
+st.write(reportlab.Version)
 st.set_page_config(page_title="Ankomster", layout="wide")
 #require_login()
 
