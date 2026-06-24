@@ -52,7 +52,8 @@ def analyze_improvements(bookings, season):
         "eligible_for_optimization": int(len(eligible)),
         "room_distribution": room_distribution,
         "room7_suggestions": room7_suggestions,
-        "room7_blockers": room7_blockers
+        "room7_blockers": room7_blockers,
+        "room7_blocker_move_options": room7_blocker_move_options
     }
 
 
@@ -193,6 +194,16 @@ def find_room7_blockers(candidates, all_bookings):
             "checkout_date": str(candidate_checkout.date()),
             "blockers": target_room_blockers
         })
+        room7_blocker_move_options = []
+
+        for item in room7_blockers:
+            options = find_block_relocation_options(
+                candidate=item,
+                blockers=item["blockers"],
+                all_bookings=season_bookings
+            )
+
+            room7_blocker_move_options.extend(options)
 
     return results
 
