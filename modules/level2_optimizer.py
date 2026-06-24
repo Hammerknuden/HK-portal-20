@@ -227,13 +227,13 @@ def find_block_relocation_options(candidate, blockers, all_bookings):
         if not all(b["movable"] for b in room_blockers):
             continue
 
-        blocker_numbers = [
-            b["booking_number"]
+        blocker_ids = [
+            b["id"]
             for b in room_blockers
         ]
 
         blocker_rows = all_bookings[
-            all_bookings["booking_number"].isin(blocker_numbers)
+            all_bookings["id"].isin(blocker_ids)
         ]
 
         for new_room in target_rooms:
@@ -242,12 +242,38 @@ def find_block_relocation_options(candidate, blockers, all_bookings):
                 continue
 
             room_bookings = all_bookings[
-                ~all_bookings["booking_number"].isin(blocker_numbers)
+                ~all_bookings["id"].isin(blocker_ids)
             ]
 
             room_bookings = room_bookings[
                 room_bookings["room_number"] == new_room
-            ]
+                ]
+
+            conflict_found = False
+
+            for _, blocker in blocker_rows.iterrows():
+
+                overlaps = room_bookings[
+                    (room_bookings["checkin_date"] < blocker["checkout_date"])
+                    &
+                    (room_bookings["checkout_date"] > blocker["checkin_date"])
+                    ]
+
+                if not overlaps.empty:
+                    conflict_found = True
+                    break
+
+            if not conflict_found:
+                options.append({
+                    "make_room_for": int(candidate["booking_number"]),
+                    "target_room_for_room7_booking": int(target_room),
+                    "move_blocker_ids": [int(x) for x in blocker_ids],
+                    "move_blockers": [
+                        int(x)
+                        for x in blocker_rows["booking_number"].tolist()
+                    ],
+                    "move_blockers_to_room": int(new_room)
+                })
 
             conflict_found = False
 
