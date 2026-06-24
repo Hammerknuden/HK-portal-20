@@ -214,6 +214,7 @@ def find_room7_blockers(candidates, all_bookings):
 
 #find_block_relocation_options(candidate, blockers, all_bookings)
 
+
 def find_block_relocation_options(candidate, blockers, all_bookings):
 
     target_rooms = [1, 2, 3, 4, 5]
