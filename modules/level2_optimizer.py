@@ -145,6 +145,8 @@ def find_room7_move_options(candidates, all_bookings):
 
     return suggestions
 
+
+# hvilke blokke blokerer for værelse 7 bookinger
 def find_room7_blockers(candidates, all_bookings):
 
     source_room = 7
@@ -193,3 +195,65 @@ def find_room7_blockers(candidates, all_bookings):
         })
 
     return results
+
+
+#find_block_relocation_options(candidate, blockers, all_bookings)
+
+def find_block_relocation_options(candidate, blockers, all_bookings):
+
+    target_rooms = [1, 2, 3, 4, 5]
+    options = []
+
+    for target_room, room_blockers in blockers.items():
+
+        if not room_blockers:
+            continue
+
+        if not all(b["movable"] for b in room_blockers):
+            continue
+
+        blocker_numbers = [
+            b["booking_number"]
+            for b in room_blockers
+        ]
+
+        blocker_rows = all_bookings[
+            all_bookings["booking_number"].isin(blocker_numbers)
+        ]
+
+        for new_room in target_rooms:
+
+            if new_room == int(target_room):
+                continue
+
+            room_bookings = all_bookings[
+                ~all_bookings["booking_number"].isin(blocker_numbers)
+            ]
+
+            room_bookings = room_bookings[
+                room_bookings["room_number"] == new_room
+            ]
+
+            conflict_found = False
+
+            for _, blocker in blocker_rows.iterrows():
+
+                overlaps = room_bookings[
+                    (room_bookings["checkin_date"] < blocker["checkout_date"])
+                    &
+                    (room_bookings["checkout_date"] > blocker["checkin_date"])
+                ]
+
+                if not overlaps.empty:
+                    conflict_found = True
+                    break
+
+            if not conflict_found:
+                options.append({
+                    "make_room_for": int(candidate["booking_number"]),
+                    "target_room_for_room7_booking": int(target_room),
+                    "move_blockers": blocker_numbers,
+                    "move_blockers_to_room": int(new_room)
+                })
+
+    return options

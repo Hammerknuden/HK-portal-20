@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="skifter pdf download">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" afterDir="false" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="level 2b optimizer step 1">
       <change beforePath="$PROJECT_DIR$/modules/level2_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/level2_optimizer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/5_cleaning.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/5_cleaning.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,14 +75,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00596" summary="niveau 2  new files">
-      <option name="closed" value="true" />
-      <created>1782107862183</created>
-      <option name="number" value="00596" />
-      <option name="presentableId" value="LOCAL-00596" />
-      <option name="project" value="LOCAL" />
-      <updated>1782107862183</updated>
     </task>
     <task id="LOCAL-00597" summary="niveau 2  buildind level 2">
       <option name="closed" value="true" />
@@ -472,7 +460,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782198465376</updated>
     </task>
-    <option name="localTasksCounter" value="645" />
+    <task id="LOCAL-00645" summary="level 2b optimizer step 1">
+      <option name="closed" value="true" />
+      <created>1782279960593</created>
+      <option name="number" value="00645" />
+      <option name="presentableId" value="LOCAL-00645" />
+      <option name="project" value="LOCAL" />
+      <updated>1782279960593</updated>
+    </task>
+    <option name="localTasksCounter" value="646" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -498,7 +494,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ny check af ledige rum supabase" />
     <MESSAGE value="ny check af ledige rum grafisk simpelt" />
     <MESSAGE value="status supabase introduceret på booking side med beregning af ledige værelser" />
     <MESSAGE value="ankomst opdateret med flere koloner" />
@@ -523,6 +518,7 @@
     <MESSAGE value="skifter pandas til st.table for print" />
     <MESSAGE value="skifter print buttom" />
     <MESSAGE value="skifter pdf download" />
-    <option name="LAST_COMMIT_MESSAGE" value="skifter pdf download" />
+    <MESSAGE value="level 2b optimizer step 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="level 2b optimizer step 1" />
   </component>
 </project>
