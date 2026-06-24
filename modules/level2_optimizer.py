@@ -38,22 +38,21 @@ def analyze_improvements(bookings, season):
         str(int(room)): int(count)
         for room, count in groupby_result.items()
     }
-    # return {
-    #     "checkin_dtype": str(eligible["checkin_date"].dtype),
-    #     "checkout_dtype": str(eligible["checkout_date"].dtype)
-    # }
     room7_suggestions = find_room7_move_options(
         candidates=eligible,
         all_bookings=season_bookings
     )
-    #room7_suggestions = find_room7_move_options(eligible)
+    room7_blockers = find_room7_blockers(
+        candidates=eligible,
+        all_bookings=season_bookings
+    )
     room_gaps = calculate_gaps(season_bookings)
 
     return {
-        "season": int(season),
         "eligible_for_optimization": int(len(eligible)),
         "room_distribution": room_distribution,
-        "room7_suggestions": room7_suggestions
+        "room7_suggestions": room7_suggestions,
+        "room7_blockers": room7_blockers
     }
 
 
@@ -145,3 +144,52 @@ def find_room7_move_options(candidates, all_bookings):
             })
 
     return suggestions
+
+def find_room7_blockers(candidates, all_bookings):
+
+    source_room = 7
+    target_rooms = [1, 2, 3, 4, 5]
+
+    results = []
+
+    room7_bookings = candidates[
+        candidates["room_number"] == source_room
+    ].sort_values("checkin_date")
+
+    for _, candidate in room7_bookings.iterrows():
+
+        candidate_checkin = candidate["checkin_date"]
+        candidate_checkout = candidate["checkout_date"]
+
+        target_room_blockers = {}
+
+        for room in target_rooms:
+
+            room_bookings = all_bookings[
+                all_bookings["room_number"] == room
+            ]
+
+            blockers = room_bookings[
+                (room_bookings["checkin_date"] < candidate_checkout)
+                &
+                (room_bookings["checkout_date"] > candidate_checkin)
+            ].sort_values("checkin_date")
+
+            target_room_blockers[str(room)] = [
+                {
+                    "booking_number": int(row["booking_number"]),
+                    "checkin_date": str(row["checkin_date"].date()),
+                    "checkout_date": str(row["checkout_date"].date()),
+                    "movable": bool(row["movable"])
+                }
+                for _, row in blockers.iterrows()
+            ]
+
+        results.append({
+            "booking_number": int(candidate["booking_number"]),
+            "checkin_date": str(candidate_checkin.date()),
+            "checkout_date": str(candidate_checkout.date()),
+            "blockers": target_room_blockers
+        })
+
+    return results

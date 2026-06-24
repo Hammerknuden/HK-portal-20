@@ -12,7 +12,7 @@ from supabase import create_client
 st.set_page_config(page_title="Cleaning plan", layout="wide")
 require_login()
 
-st.subheader("Rengøring ")
+st.subheader("suspended page ")
 # Date inputs fra Streamlit
 # year = st.selectbox("booking år", ["2026", "2027"])
 # plan_dato_start = st.date_input("Start dato")

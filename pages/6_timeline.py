@@ -587,10 +587,6 @@ if not df.empty:
         "Kan flyttes af optimering",
         value=bool(booking.get("movable", True))
     )
-    #new_movable = st.checkbox(
-    #    "Kan flyttes af optimering",
-    #    value=bool(booking.get("movable", True))
-    #)
 
     col1, col2 = st.columns(2)
 
@@ -645,7 +641,6 @@ if st.button("🔍 Undersøg optimeringsmuligheder"):
     )
 
     st.write(suggestions)
-
 
 
 
