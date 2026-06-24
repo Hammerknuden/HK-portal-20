@@ -209,15 +209,6 @@ def find_room7_blockers(candidates, all_bookings):
         })
         room7_blocker_move_options = []
 
-        for item in room7_blockers:
-            options = find_block_relocation_options(
-                candidate=item,
-                blockers=item["blockers"],
-                all_bookings=season_bookings
-            )
-
-            room7_blocker_move_options.extend(options)
-
     return results
 
 
