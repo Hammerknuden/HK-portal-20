@@ -193,6 +193,7 @@ def find_room7_blockers(candidates, all_bookings):
 
             target_room_blockers[str(room)] = [
                 {
+                    "id": int(row["id"]),
                     "booking_number": int(row["booking_number"]),
                     "checkin_date": str(row["checkin_date"].date()),
                     "checkout_date": str(row["checkout_date"].date()),

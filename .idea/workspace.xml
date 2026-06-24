@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="level 2b optimizer ident move options">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="level 2b change from booking nr to &quot;id&quot; for targeting" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,14 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00601" summary="niveau 2  buildind level 2">
-      <option name="closed" value="true" />
-      <created>1782109958673</created>
-      <option name="number" value="00601" />
-      <option name="presentableId" value="LOCAL-00601" />
-      <option name="project" value="LOCAL" />
-      <updated>1782109958673</updated>
     </task>
     <task id="LOCAL-00602" summary="niveau 2  buildind level 2">
       <option name="closed" value="true" />
@@ -468,7 +458,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782281830688</updated>
     </task>
-    <option name="localTasksCounter" value="650" />
+    <task id="LOCAL-00650" summary="level 2b change from booking nr to &quot;id&quot; for targeting">
+      <option name="closed" value="true" />
+      <created>1782284736099</created>
+      <option name="number" value="00650" />
+      <option name="presentableId" value="LOCAL-00650" />
+      <option name="project" value="LOCAL" />
+      <updated>1782284736099</updated>
+    </task>
+    <option name="localTasksCounter" value="651" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -494,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ankomst opdateret med flere koloner" />
     <MESSAGE value="2027 booking" />
     <MESSAGE value="2027 booking de bug" />
     <MESSAGE value="2027 booking oprydning" />
@@ -519,6 +516,7 @@
     <MESSAGE value="level 2b optimizer step 1" />
     <MESSAGE value="level 2b optimizer ident blockers" />
     <MESSAGE value="level 2b optimizer ident move options" />
-    <option name="LAST_COMMIT_MESSAGE" value="level 2b optimizer ident move options" />
+    <MESSAGE value="level 2b change from booking nr to &quot;id&quot; for targeting" />
+    <option name="LAST_COMMIT_MESSAGE" value="level 2b change from booking nr to &quot;id&quot; for targeting" />
   </component>
 </project>
