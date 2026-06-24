@@ -42,10 +42,23 @@ def analyze_improvements(bookings, season):
         candidates=eligible,
         all_bookings=season_bookings
     )
+
     room7_blockers = find_room7_blockers(
         candidates=eligible,
         all_bookings=season_bookings
     )
+
+    room7_blocker_move_options = []
+
+    for item in room7_blockers:
+        options = find_block_relocation_options(
+            candidate=item,
+            blockers=item["blockers"],
+            all_bookings=season_bookings
+        )
+
+        room7_blocker_move_options.extend(options)
+
     room_gaps = calculate_gaps(season_bookings)
 
     return {

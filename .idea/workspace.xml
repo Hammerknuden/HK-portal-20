@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="level 2b optimizer ident blockers">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="level 2b optimizer ident move options">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/level2_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/level2_optimizer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,14 +76,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00598" summary="niveau 2  buildind level 2">
-      <option name="closed" value="true" />
-      <created>1782109236155</created>
-      <option name="number" value="00598" />
-      <option name="presentableId" value="LOCAL-00598" />
-      <option name="project" value="LOCAL" />
-      <updated>1782109236155</updated>
     </task>
     <task id="LOCAL-00599" summary="niveau 2  buildind level 2">
       <option name="closed" value="true" />
@@ -468,7 +461,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782280587081</updated>
     </task>
-    <option name="localTasksCounter" value="647" />
+    <task id="LOCAL-00647" summary="level 2b optimizer ident move options">
+      <option name="closed" value="true" />
+      <created>1782280949769</created>
+      <option name="number" value="00647" />
+      <option name="presentableId" value="LOCAL-00647" />
+      <option name="project" value="LOCAL" />
+      <updated>1782280949769</updated>
+    </task>
+    <option name="localTasksCounter" value="648" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -494,7 +495,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="status supabase introduceret på booking side med beregning af ledige værelser" />
     <MESSAGE value="ankomst opdateret med flere koloner" />
     <MESSAGE value="2027 booking" />
     <MESSAGE value="2027 booking de bug" />
@@ -519,6 +519,7 @@
     <MESSAGE value="skifter pdf download" />
     <MESSAGE value="level 2b optimizer step 1" />
     <MESSAGE value="level 2b optimizer ident blockers" />
-    <option name="LAST_COMMIT_MESSAGE" value="level 2b optimizer ident blockers" />
+    <MESSAGE value="level 2b optimizer ident move options" />
+    <option name="LAST_COMMIT_MESSAGE" value="level 2b optimizer ident move options" />
   </component>
 </project>
