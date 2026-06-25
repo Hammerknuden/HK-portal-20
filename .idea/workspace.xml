@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="level 2b more analyse til niveau 2c" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="level 2b more analyse til niveau 2c">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +58,7 @@
     &quot;Python.databaseopslag.executor&quot;: &quot;Run&quot;,
     &quot;Python.level2_optimizer.executor&quot;: &quot;Run&quot;,
     &quot;Python.streamlit_app.executor&quot;: &quot;Run&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/finnj/-repo hk20/hk_portal_20/pages/5_cleaning.py&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/finnj/-repo hk20/hk_portal_20/pages/8_statestik.py&quot;
   }
 }</component>
   <component name="SharedIndexes">
@@ -73,22 +76,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00604" summary="niveau 2  buildind level 2">
-      <option name="closed" value="true" />
-      <created>1782110701473</created>
-      <option name="number" value="00604" />
-      <option name="presentableId" value="LOCAL-00604" />
-      <option name="project" value="LOCAL" />
-      <updated>1782110701473</updated>
-    </task>
-    <task id="LOCAL-00605" summary="niveau 2  buildind level 2">
-      <option name="closed" value="true" />
-      <created>1782110795713</created>
-      <option name="number" value="00605" />
-      <option name="presentableId" value="LOCAL-00605" />
-      <option name="project" value="LOCAL" />
-      <updated>1782110795713</updated>
     </task>
     <task id="LOCAL-00606" summary="niveau 2  buildind level 2">
       <option name="closed" value="true" />
@@ -466,7 +453,23 @@
       <option name="project" value="LOCAL" />
       <updated>1782285603553</updated>
     </task>
-    <option name="localTasksCounter" value="653" />
+    <task id="LOCAL-00653" summary="level 2b more analyse til niveau 2c">
+      <option name="closed" value="true" />
+      <created>1782317703912</created>
+      <option name="number" value="00653" />
+      <option name="presentableId" value="LOCAL-00653" />
+      <option name="project" value="LOCAL" />
+      <updated>1782317703913</updated>
+    </task>
+    <task id="LOCAL-00654" summary="level 2b more analyse til niveau 2c">
+      <option name="closed" value="true" />
+      <created>1782317995970</created>
+      <option name="number" value="00654" />
+      <option name="presentableId" value="LOCAL-00654" />
+      <option name="project" value="LOCAL" />
+      <updated>1782317995970</updated>
+    </task>
+    <option name="localTasksCounter" value="655" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
