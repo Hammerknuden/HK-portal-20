@@ -61,7 +61,19 @@ def analyze_improvements(bookings, season):
 
         room7_blocker_move_options.extend(options)
 
-    room_gaps = calculate_gaps(season_bookings)
+    coverage = []
+
+    room7_bookings = eligible[
+        eligible["room_number"] == 7
+        ]
+
+    for _, candidate in room7_bookings.iterrows():
+        coverage.append(
+            analyze_period_coverage(
+                candidate,
+                season_bookings
+            )
+        )
 
     return {
         "room7_candidates": [
@@ -73,56 +85,12 @@ def analyze_improvements(bookings, season):
                 "checkout_date": str(row["checkout_date"].date()),
                 "movable": bool(row["movable"])
             }
-            for _, row in eligible[
-                eligible["room_number"] == 7
-                ].iterrows()
+            for _, row in room7_bookings.iterrows()
         ],
         "room7_blockers": room7_blockers,
         "room7_blocker_move_options": room7_blocker_move_options,
-        "tested_moves": [
-            {
-                "make_room_for": 150,
-                "target_room": 3,
-                "blocker_ids": [68],
-                "try_move_to": 1,
-                "blocked_by": [19]
-            }
-        ]
+        "room7_period_coverage": coverage
     }
-
-    # return {
-    #     "room7_candidates": [
-    #         {
-    #             "id": int(row["id"]),
-    #             "booking_number": int(row["booking_number"]),
-    #             "room_number": int(row["room_number"]),
-    #             "checkin_date": str(row["checkin_date"].date()),
-    #             "checkout_date": str(row["checkout_date"].date()),
-    #             "movable": bool(row["movable"])
-    #         }
-    #         for _, row in eligible[
-    #             eligible["room_number"] == 7
-    #             ].iterrows()
-    #     ],
-    #     "room7_blockers": room7_blockers,
-    #     "room7_blocker_move_options": room7_blocker_move_options
-    # }
-    # "tested_moves": [
-    #     {
-    #         "make_room_for": 150,
-    #         "target_room": 3,
-    #         "blocker_ids": [68],
-    #         "try_move_to": 1,
-    #         "blocked_by": [19]
-    #     }
-    # ]
-    # # return {
-    #     "eligible_for_optimization": int(len(eligible)),
-    #     "room_distribution": room_distribution,
-    #     "room7_suggestions": room7_suggestions,
-    #     "room7_blockers": room7_blockers,
-    #     "room7_blocker_move_options": room7_blocker_move_options
-    # }
 
 
 def calculate_gaps(bookings):
@@ -339,7 +307,7 @@ def find_block_relocation_options(candidate, blockers, all_bookings):
                     (room_bookings["checkin_date"] < blocker["checkout_date"])
                     &
                     (room_bookings["checkout_date"] > blocker["checkin_date"])
-                ]
+                    ]
 
                 if not overlaps.empty:
                     conflict_found = True
@@ -354,3 +322,52 @@ def find_block_relocation_options(candidate, blockers, all_bookings):
                 })
 
     return options
+
+
+def analyze_period_coverage(
+        candidate,
+        all_bookings
+):
+
+    target_rooms = [1, 2, 3, 4, 5]
+
+    result = {
+        "booking_number": int(candidate["booking_number"]),
+        "checkin_date": str(candidate["checkin_date"].date()),
+        "checkout_date": str(candidate["checkout_date"].date()),
+        "daily_free_rooms": {}
+    }
+
+    current_day = candidate["checkin_date"]
+
+    while current_day < candidate["checkout_date"]:
+
+        free_rooms = []
+
+        for room in target_rooms:
+
+            room_bookings = all_bookings[
+                all_bookings["room_number"] == room
+            ]
+
+            overlaps = room_bookings[
+                (room_bookings["checkin_date"] <= current_day)
+                &
+                (room_bookings["checkout_date"] > current_day)
+            ]
+
+            if overlaps.empty:
+                free_rooms.append(room)
+
+        result["daily_free_rooms"][
+            str(current_day.date())
+        ] = free_rooms
+
+        current_day += pd.Timedelta(days=1)
+
+    result["period_possible"] = all(
+        len(rooms) > 0
+        for rooms in result["daily_free_rooms"].values()
+    )
+
+    return result
