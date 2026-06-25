@@ -88,7 +88,6 @@ def analyze_improvements(bookings, season):
             for _, row in room7_bookings.iterrows()
         ],
         "room7_blockers": room7_blockers,
-        "room7_blocker_move_options": room7_blocker_move_options,
         "room7_period_coverage": coverage
     }
 
@@ -296,28 +295,6 @@ def find_block_relocation_options(candidate, blockers, all_bookings):
                         int(x)
                         for x in blocker_rows["booking_number"].tolist()
                     ],
-                    "move_blockers_to_room": int(new_room)
-                })
-
-            conflict_found = False
-
-            for _, blocker in blocker_rows.iterrows():
-
-                overlaps = room_bookings[
-                    (room_bookings["checkin_date"] < blocker["checkout_date"])
-                    &
-                    (room_bookings["checkout_date"] > blocker["checkin_date"])
-                    ]
-
-                if not overlaps.empty:
-                    conflict_found = True
-                    break
-
-            if not conflict_found:
-                options.append({
-                    "make_room_for": int(candidate["booking_number"]),
-                    "target_room_for_room7_booking": int(target_room),
-                    "move_blockers": blocker_numbers,
                     "move_blockers_to_room": int(new_room)
                 })
 
