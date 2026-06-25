@@ -13,7 +13,9 @@ def analyze_improvements(bookings, season):
     season_bookings["checkin_date"] = pd.to_datetime(
         season_bookings["checkin_date"]
     )
-
+    season_bookings["checkout_date"] = pd.to_datetime(
+        season_bookings["checkout_date"]
+    )
     movable = season_bookings[
         season_bookings["movable"] == True
     ]
@@ -62,12 +64,29 @@ def analyze_improvements(bookings, season):
     room_gaps = calculate_gaps(season_bookings)
 
     return {
-        "eligible_for_optimization": int(len(eligible)),
-        "room_distribution": room_distribution,
-        "room7_suggestions": room7_suggestions,
+        "room7_candidates": [
+            {
+                "id": int(row["id"]),
+                "booking_number": int(row["booking_number"]),
+                "room_number": int(row["room_number"]),
+                "checkin_date": str(row["checkin_date"].date()),
+                "checkout_date": str(row["checkout_date"].date()),
+                "movable": bool(row["movable"])
+            }
+            for _, row in eligible[
+                eligible["room_number"] == 7
+                ].iterrows()
+        ],
         "room7_blockers": room7_blockers,
         "room7_blocker_move_options": room7_blocker_move_options
     }
+    # return {
+    #     "eligible_for_optimization": int(len(eligible)),
+    #     "room_distribution": room_distribution,
+    #     "room7_suggestions": room7_suggestions,
+    #     "room7_blockers": room7_blockers,
+    #     "room7_blocker_move_options": room7_blocker_move_options
+    # }
 
 
 def calculate_gaps(bookings):

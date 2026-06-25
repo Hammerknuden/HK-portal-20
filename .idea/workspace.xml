@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="level 2b more analyse til niveau 2c">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excel update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,22 +75,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00606" summary="niveau 2  buildind level 2">
-      <option name="closed" value="true" />
-      <created>1782110850652</created>
-      <option name="number" value="00606" />
-      <option name="presentableId" value="LOCAL-00606" />
-      <option name="project" value="LOCAL" />
-      <updated>1782110850652</updated>
-    </task>
-    <task id="LOCAL-00607" summary="niveau 2  buildind level 2 nyt checkp">
-      <option name="closed" value="true" />
-      <created>1782111039824</created>
-      <option name="number" value="00607" />
-      <option name="presentableId" value="LOCAL-00607" />
-      <option name="project" value="LOCAL" />
-      <updated>1782111039824</updated>
     </task>
     <task id="LOCAL-00608" summary="niveau 2  next step ledige perioder">
       <option name="closed" value="true" />
@@ -469,7 +452,23 @@
       <option name="project" value="LOCAL" />
       <updated>1782317995970</updated>
     </task>
-    <option name="localTasksCounter" value="655" />
+    <task id="LOCAL-00655" summary="level 2b more analyse til niveau 2c">
+      <option name="closed" value="true" />
+      <created>1782365204361</created>
+      <option name="number" value="00655" />
+      <option name="presentableId" value="LOCAL-00655" />
+      <option name="project" value="LOCAL" />
+      <updated>1782365204362</updated>
+    </task>
+    <task id="LOCAL-00656" summary="excel update">
+      <option name="closed" value="true" />
+      <created>1782365226255</created>
+      <option name="number" value="00656" />
+      <option name="presentableId" value="LOCAL-00656" />
+      <option name="project" value="LOCAL" />
+      <updated>1782365226255</updated>
+    </task>
+    <option name="localTasksCounter" value="657" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -495,7 +494,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="2027 booking de bug" />
     <MESSAGE value="2027 booking oprydning" />
     <MESSAGE value="2027 booking check" />
     <MESSAGE value="fig timeline y akse update samt excel update" />
@@ -520,6 +518,7 @@
     <MESSAGE value="level 2b optimizer ident move options" />
     <MESSAGE value="level 2b change from booking nr to &quot;id&quot; for targeting" />
     <MESSAGE value="level 2b more analyse til niveau 2c" />
-    <option name="LAST_COMMIT_MESSAGE" value="level 2b more analyse til niveau 2c" />
+    <MESSAGE value="excel update" />
+    <option name="LAST_COMMIT_MESSAGE" value="excel update" />
   </component>
 </project>
