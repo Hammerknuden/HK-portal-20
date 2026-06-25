@@ -78,9 +78,45 @@ def analyze_improvements(bookings, season):
                 ].iterrows()
         ],
         "room7_blockers": room7_blockers,
-        "room7_blocker_move_options": room7_blocker_move_options
+        "room7_blocker_move_options": room7_blocker_move_options,
+        "tested_moves": [
+            {
+                "make_room_for": 150,
+                "target_room": 3,
+                "blocker_ids": [68],
+                "try_move_to": 1,
+                "blocked_by": [19]
+            }
+        ]
     }
+
     # return {
+    #     "room7_candidates": [
+    #         {
+    #             "id": int(row["id"]),
+    #             "booking_number": int(row["booking_number"]),
+    #             "room_number": int(row["room_number"]),
+    #             "checkin_date": str(row["checkin_date"].date()),
+    #             "checkout_date": str(row["checkout_date"].date()),
+    #             "movable": bool(row["movable"])
+    #         }
+    #         for _, row in eligible[
+    #             eligible["room_number"] == 7
+    #             ].iterrows()
+    #     ],
+    #     "room7_blockers": room7_blockers,
+    #     "room7_blocker_move_options": room7_blocker_move_options
+    # }
+    # "tested_moves": [
+    #     {
+    #         "make_room_for": 150,
+    #         "target_room": 3,
+    #         "blocker_ids": [68],
+    #         "try_move_to": 1,
+    #         "blocked_by": [19]
+    #     }
+    # ]
+    # # return {
     #     "eligible_for_optimization": int(len(eligible)),
     #     "room_distribution": room_distribution,
     #     "room7_suggestions": room7_suggestions,
