@@ -348,6 +348,8 @@ def analyze_period_coverage(
     )
 
     return result
+
+
 def get_target_rooms(coverage):
 
     first_day = next(
