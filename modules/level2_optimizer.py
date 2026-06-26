@@ -75,11 +75,13 @@ def analyze_improvements(bookings, season):
         ]
 
     for _, candidate in room7_bookings.iterrows():
-        coverage.append(
-            analyze_period_coverage(
-                candidate,
-                season_bookings
-            )
+        coverage_item = analyze_period_coverage(
+            candidate,
+            season_bookings
+        )
+
+        coverage_item["target_room_scores"] = choose_target_rooms(
+            coverage_item
         )
 
     return {
@@ -433,3 +435,39 @@ def find_connected_blocks(bookings, room_number):
         })
 
     return result
+
+
+def choose_target_rooms(coverage):
+
+    daily_free_rooms = coverage["daily_free_rooms"]
+
+    days = list(daily_free_rooms.keys())
+
+    if not days:
+        return []
+
+    first_day = days[0]
+    first_day_rooms = daily_free_rooms[first_day]
+
+    room_scores = []
+
+    for room in first_day_rooms:
+
+        free_days = sum(
+            room in rooms
+            for rooms in daily_free_rooms.values()
+        )
+
+        room_scores.append({
+            "room": int(room),
+            "free_days": int(free_days),
+            "total_days": int(len(days)),
+            "missing_days": int(len(days) - free_days)
+        })
+
+    room_scores = sorted(
+        room_scores,
+        key=lambda x: x["missing_days"]
+    )
+
+    return room_scores
