@@ -84,6 +84,8 @@ def analyze_improvements(bookings, season):
             coverage_item
         )
 
+        coverage.append(coverage_item)
+
     return {
         "room7_candidates": [
             {
