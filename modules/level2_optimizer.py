@@ -98,9 +98,9 @@ def analyze_improvements(bookings, season):
         "coverage_count": len(coverage),
         "coverage": coverage,
         "target_blocks": target_blocks
-
-        #"first_coverage": coverage[0] if coverage else None
     }
+        #"first_coverage": coverage[0] if coverage else None
+
     #     "room7_candidates": [
     #         {
     #             "id": int(row["id"]),
