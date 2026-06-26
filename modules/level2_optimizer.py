@@ -98,6 +98,7 @@ def analyze_improvements(bookings, season):
         "room7_blocker_move_options": room7_blocker_move_options,
         "room7_period_coverage": coverage,
         "room_blocks": room_blocks
+
     }
 
 
@@ -419,6 +420,7 @@ def find_connected_blocks(bookings, room_number):
             for row in block
         )
 
+
         result.append({
             "room_number": int(room_number),
             "start": str(block_start.date()),
@@ -426,7 +428,8 @@ def find_connected_blocks(bookings, room_number):
             "booking_ids": block_ids,
             "booking_numbers": block_booking_numbers,
             "movable": block_movable,
-            "length": int((block_end - block_start).days)
+            "length": int((block_end - block_start).days),
+            "count": len(block)
         })
 
     return result
