@@ -56,6 +56,7 @@ def analyze_improvements(bookings, season):
         )
         for room in [1, 2, 3, 4, 5]
     }
+
     room7_blocker_move_options = []
 
     for item in room7_blockers:
@@ -64,13 +65,7 @@ def analyze_improvements(bookings, season):
             blockers=item["blockers"],
             all_bookings=season_bookings
         )
-        room_blocks = {
-            str(room): find_connected_blocks(
-                season_bookings,
-                room
-            )
-            for room in [1, 2, 3, 4, 5]
-        }
+
         room7_blocker_move_options.extend(options)
 
     coverage = []
@@ -96,12 +91,13 @@ def analyze_improvements(bookings, season):
                 "checkin_date": str(row["checkin_date"].date()),
                 "checkout_date": str(row["checkout_date"].date()),
                 "movable": bool(row["movable"])
-                "room_blocks": room_blocks
             }
             for _, row in room7_bookings.iterrows()
         ],
         "room7_blockers": room7_blockers,
-        "room7_period_coverage": coverage
+        "room7_blocker_move_options": room7_blocker_move_options,
+        "room7_period_coverage": coverage,
+        "room_blocks": room_blocks
     }
 
 
