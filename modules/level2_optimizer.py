@@ -85,10 +85,19 @@ def analyze_improvements(bookings, season):
         )
 
         coverage.append(coverage_item)
+    target_blocks = []
 
+    for coverage_item in coverage:
+        target_blocks.append(
+            find_target_block(
+                coverage_item,
+                room_blocks
+            )
+        )
     return {
         "coverage_count": len(coverage),
-        "coverage": coverage
+        "coverage": coverage,
+        "target_blocks": target_blocks
 
         #"first_coverage": coverage[0] if coverage else None
     }
@@ -527,3 +536,6 @@ def find_target_block(
             }
 
     return None
+
+
+
