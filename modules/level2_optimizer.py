@@ -89,6 +89,7 @@ def analyze_improvements(bookings, season):
     return {
         "coverage_count": len(coverage),
         "coverage": coverage
+
         #"first_coverage": coverage[0] if coverage else None
     }
     #     "room7_candidates": [
@@ -477,3 +478,52 @@ def choose_target_rooms(coverage):
     )
 
     return room_scores
+
+
+def find_target_block(
+        coverage_item,
+        room_blocks
+):
+
+    if not coverage_item["target_room_scores"]:
+        return None
+
+    best_target = coverage_item["target_room_scores"][0]
+
+    target_room = best_target["room"]
+    checkin = pd.to_datetime(
+        coverage_item["checkin_date"]
+    )
+    checkout = pd.to_datetime(
+        coverage_item["checkout_date"]
+    )
+
+    blocks = room_blocks.get(
+        str(target_room),
+        []
+    )
+
+    for block in blocks:
+
+        block_start = pd.to_datetime(
+            block["start"]
+        )
+        block_end = pd.to_datetime(
+            block["end"]
+        )
+
+        overlaps = (
+            block_start < checkout
+            and
+            block_end > checkin
+        )
+
+        if overlaps:
+            return {
+                "booking_number": coverage_item["booking_number"],
+                "target_room": int(target_room),
+                "missing_days": int(best_target["missing_days"]),
+                "block": block
+            }
+
+    return None
