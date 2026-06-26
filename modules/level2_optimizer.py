@@ -49,7 +49,13 @@ def analyze_improvements(bookings, season):
         candidates=eligible,
         all_bookings=season_bookings
     )
-
+    room_blocks = {
+        str(room): find_connected_blocks(
+            season_bookings,
+            room
+        )
+        for room in [1, 2, 3, 4, 5]
+    }
     room7_blocker_move_options = []
 
     for item in room7_blockers:
@@ -58,7 +64,13 @@ def analyze_improvements(bookings, season):
             blockers=item["blockers"],
             all_bookings=season_bookings
         )
-
+        room_blocks = {
+            str(room): find_connected_blocks(
+                season_bookings,
+                room
+            )
+            for room in [1, 2, 3, 4, 5]
+        }
         room7_blocker_move_options.extend(options)
 
     coverage = []
@@ -84,6 +96,7 @@ def analyze_improvements(bookings, season):
                 "checkin_date": str(row["checkin_date"].date()),
                 "checkout_date": str(row["checkout_date"].date()),
                 "movable": bool(row["movable"])
+                "room_blocks": room_blocks
             }
             for _, row in room7_bookings.iterrows()
         ],
@@ -357,3 +370,67 @@ def get_target_rooms(coverage):
     )
 
     return coverage["daily_free_rooms"][first_day]
+
+
+def find_connected_blocks(bookings, room_number):
+
+    room_bookings = (
+        bookings[
+            bookings["room_number"] == room_number
+        ]
+        .sort_values("checkin_date")
+    )
+
+    blocks = []
+    current_block = []
+
+    for _, booking in room_bookings.iterrows():
+
+        if not current_block:
+            current_block = [booking]
+            continue
+
+        previous = current_block[-1]
+
+        if booking["checkin_date"] == previous["checkout_date"]:
+            current_block.append(booking)
+        else:
+            blocks.append(current_block)
+            current_block = [booking]
+
+    if current_block:
+        blocks.append(current_block)
+
+    result = []
+
+    for block in blocks:
+
+        block_ids = [
+            int(row["id"])
+            for row in block
+        ]
+
+        block_booking_numbers = [
+            int(row["booking_number"])
+            for row in block
+        ]
+
+        block_start = block[0]["checkin_date"]
+        block_end = block[-1]["checkout_date"]
+
+        block_movable = all(
+            bool(row["movable"])
+            for row in block
+        )
+
+        result.append({
+            "room_number": int(room_number),
+            "start": str(block_start.date()),
+            "end": str(block_end.date()),
+            "booking_ids": block_ids,
+            "booking_numbers": block_booking_numbers,
+            "movable": block_movable,
+            "length": int((block_end - block_start).days)
+        })
+
+    return result
