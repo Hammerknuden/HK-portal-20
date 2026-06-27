@@ -113,29 +113,28 @@ def analyze_improvements(bookings, season):
             "target_room": target["target_room"],
             "block_move_options": options
         })
+        destination_periods = []
 
-    swap_options = []
+        for target in target_blocks:
 
-    for target in target_blocks:
+            if target is None:
+                continue
 
-        if target is None:
-            continue
-
-        swap_options.append({
-            "booking_number": target["booking_number"],
-            "target_room": target["target_room"],
-            "swap_options": can_swap_block(
-                target["block"],
-                room_blocks
-            )
-        })
-
+            destination_periods.append({
+                "booking_number": target["booking_number"],
+                "target_room": target["target_room"],
+                "target_block": target["block"],
+                "destination_periods": analyze_destination_periods(
+                    target["block"],
+                    room_blocks
+                )
+            })
     return {
         "coverage_count": len(coverage),
         "coverage": coverage,
         "target_blocks": target_blocks,
         "block_move_options": block_move_options,
-        "swap_options": swap_options
+        "destination_periods": destination_periods
     }
 
 
@@ -610,7 +609,7 @@ def can_block_move(target_block, all_bookings):
     return options
 
 
-def can_swap_block(
+def analyze_destination_periods(
         target_block,
         room_blocks
 ):
@@ -619,63 +618,42 @@ def can_swap_block(
     target_start = pd.to_datetime(target_block["start"])
     target_end = pd.to_datetime(target_block["end"])
 
-    swap_options = []
+    target_rooms = [1, 2, 3, 4, 5]
 
-    for room, blocks in room_blocks.items():
+    results = []
 
-        swap_room = int(room)
+    for room in target_rooms:
 
-        if swap_room == source_room:
+        if room == source_room:
             continue
 
-        for other_block in blocks:
+        room_result = {
+            "room": int(room),
+            "period_start": str(target_start.date()),
+            "period_end": str(target_end.date()),
+            "blocking_blocks": []
+        }
 
-            if not other_block["movable"]:
-                continue
+        for block in room_blocks.get(str(room), []):
 
-            other_start = pd.to_datetime(other_block["start"])
-            other_end = pd.to_datetime(other_block["end"])
+            block_start = pd.to_datetime(block["start"])
+            block_end = pd.to_datetime(block["end"])
 
-            # Foreløbig simpel regel:
-            # Kun byt hvis blokkene overlapper i tid.
             overlaps = (
-                other_start < target_end
+                block_start < target_end
                 and
-                other_end > target_start
+                block_end > target_start
             )
 
-            if not overlaps:
-                continue
+            if overlaps:
+                room_result["blocking_blocks"].append(block)
 
-            swap_options.append({
-                "swap_type": "whole_block",
-                "target_block_from_room": int(source_room),
-                "target_block_to_room": int(swap_room),
-                "target_block_start": str(target_start.date()),
-                "target_block_end": str(target_end.date()),
-                "target_block_ids": [
-                    int(x)
-                    for x in target_block["booking_ids"]
-                ],
-                "target_block_bookings": [
-                    int(x)
-                    for x in target_block["booking_numbers"]
-                ],
-                "other_block_from_room": int(swap_room),
-                "other_block_to_room": int(source_room),
-                "other_block_start": str(other_start.date()),
-                "other_block_end": str(other_end.date()),
-                "other_block_ids": [
-                    int(x)
-                    for x in other_block["booking_ids"]
-                ],
-                "other_block_bookings": [
-                    int(x)
-                    for x in other_block["booking_numbers"]
-                ]
-            })
+        room_result["blocking_count"] = len(
+            room_result["blocking_blocks"]
+        )
 
-    return swap_options
+        results.append(room_result)
 
+    return results
 
 
