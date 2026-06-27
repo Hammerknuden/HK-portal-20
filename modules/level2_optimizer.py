@@ -112,11 +112,25 @@ def analyze_improvements(bookings, season):
                 room_blocks
             )
         )
+    swap_options = []
+
+    for target in target_blocks:
+
+        if target is None:
+            continue
+
+        swap_options.append(
+            can_swap_block(
+                target["block"],
+                room_blocks
+            )
+        )
     return {
         "coverage_count": len(coverage),
         "coverage": coverage,
         "target_blocks": target_blocks,
-        "block_move_options": block_move_options
+        "block_move_options": block_move_options,
+        "swap_options": swap_options
     }
         #"first_coverage": coverage[0] if coverage else None
 
@@ -608,6 +622,74 @@ def can_block_move(target_block, all_bookings):
             })
 
     return options
+
+
+def can_swap_block(
+        target_block,
+        room_blocks
+):
+
+    source_room = target_block["room_number"]
+    target_start = pd.to_datetime(target_block["start"])
+    target_end = pd.to_datetime(target_block["end"])
+
+    swap_options = []
+
+    for room, blocks in room_blocks.items():
+
+        swap_room = int(room)
+
+        if swap_room == source_room:
+            continue
+
+        for other_block in blocks:
+
+            if not other_block["movable"]:
+                continue
+
+            other_start = pd.to_datetime(other_block["start"])
+            other_end = pd.to_datetime(other_block["end"])
+
+            # Foreløbig simpel regel:
+            # Kun byt hvis blokkene overlapper i tid.
+            overlaps = (
+                other_start < target_end
+                and
+                other_end > target_start
+            )
+
+            if not overlaps:
+                continue
+
+            swap_options.append({
+                "swap_type": "whole_block",
+                "target_block_from_room": int(source_room),
+                "target_block_to_room": int(swap_room),
+                "target_block_start": str(target_start.date()),
+                "target_block_end": str(target_end.date()),
+                "target_block_ids": [
+                    int(x)
+                    for x in target_block["booking_ids"]
+                ],
+                "target_block_bookings": [
+                    int(x)
+                    for x in target_block["booking_numbers"]
+                ],
+                "other_block_from_room": int(swap_room),
+                "other_block_to_room": int(source_room),
+                "other_block_start": str(other_start.date()),
+                "other_block_end": str(other_end.date()),
+                "other_block_ids": [
+                    int(x)
+                    for x in other_block["booking_ids"]
+                ],
+                "other_block_bookings": [
+                    int(x)
+                    for x in other_block["booking_numbers"]
+                ]
+            })
+
+    return swap_options
 
 
 

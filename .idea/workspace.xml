@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="level 2 block move 1" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="level 2 block move 1 move options">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/level2_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/level2_optimizer.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,14 +77,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00625" summary="forsøg sammenlægning ankomster cleaning">
-      <option name="closed" value="true" />
-      <created>1782192749658</created>
-      <option name="number" value="00625" />
-      <option name="presentableId" value="LOCAL-00625" />
-      <option name="project" value="LOCAL" />
-      <updated>1782192749658</updated>
     </task>
     <task id="LOCAL-00626" summary="forsøg sammenlægning ankomster cleaning">
       <option name="closed" value="true" />
@@ -467,7 +462,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782541625793</updated>
     </task>
-    <option name="localTasksCounter" value="674" />
+    <task id="LOCAL-00674" summary="level 2 block move 1 move options">
+      <option name="closed" value="true" />
+      <created>1782541950085</created>
+      <option name="number" value="00674" />
+      <option name="presentableId" value="LOCAL-00674" />
+      <option name="project" value="LOCAL" />
+      <updated>1782541950085</updated>
+    </task>
+    <option name="localTasksCounter" value="675" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -493,7 +496,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fig timeline y akse update" />
     <MESSAGE value="fig 2 updated med lidt oprydning i dobbelt blokke" />
     <MESSAGE value="niveau 2 opstart" />
     <MESSAGE value="niveau 2  new files" />
@@ -518,6 +520,7 @@
     <MESSAGE value="level 2 c de bug" />
     <MESSAGE value="level 2 blocke afsammenhængende rum" />
     <MESSAGE value="level 2 block move 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="level 2 block move 1" />
+    <MESSAGE value="level 2 block move 1 move options" />
+    <option name="LAST_COMMIT_MESSAGE" value="level 2 block move 1 move options" />
   </component>
 </project>
