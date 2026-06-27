@@ -88,6 +88,14 @@ def analyze_improvements(bookings, season):
 
     target_blocks = []
 
+    for coverage_item in coverage:
+        target_blocks.append(
+            find_target_block(
+                coverage_item,
+                room_blocks
+            )
+        )
+
     block_move_options = []
 
     for target in target_blocks:
@@ -105,13 +113,7 @@ def analyze_improvements(bookings, season):
             "target_room": target["target_room"],
             "block_move_options": options
         })
-    for coverage_item in coverage:
-        target_blocks.append(
-            find_target_block(
-                coverage_item,
-                room_blocks
-            )
-        )
+
     swap_options = []
 
     for target in target_blocks:
@@ -119,12 +121,15 @@ def analyze_improvements(bookings, season):
         if target is None:
             continue
 
-        swap_options.append(
-            can_swap_block(
+        swap_options.append({
+            "booking_number": target["booking_number"],
+            "target_room": target["target_room"],
+            "swap_options": can_swap_block(
                 target["block"],
                 room_blocks
             )
-        )
+        })
+
     return {
         "coverage_count": len(coverage),
         "coverage": coverage,
@@ -132,25 +137,6 @@ def analyze_improvements(bookings, season):
         "block_move_options": block_move_options,
         "swap_options": swap_options
     }
-        #"first_coverage": coverage[0] if coverage else None
-
-    #     "room7_candidates": [
-    #         {
-    #             "id": int(row["id"]),
-    #             "booking_number": int(row["booking_number"]),
-    #             "room_number": int(row["room_number"]),
-    #             "checkin_date": str(row["checkin_date"].date()),
-    #             "checkout_date": str(row["checkout_date"].date()),
-    #             "movable": bool(row["movable"])
-    #         }
-    #         for _, row in room7_bookings.iterrows()
-    #     ],
-    #     "room7_blockers": room7_blockers,
-    #     "room7_blocker_move_options": room7_blocker_move_options,
-    #     "room7_period_coverage": coverage,
-    #     "room_blocks": room_blocks
-    #
-    # }
 
 
 def calculate_gaps(bookings):
