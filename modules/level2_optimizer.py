@@ -650,13 +650,15 @@ def analyze_destination_periods(
         room_result["blocking_count"] = len(
             room_result["blocking_blocks"]
         )
-        room_result["score"] = (
+
+        room_result["score"] = [
             room_result["blocking_count"],
             sum(
                 block["length"]
                 for block in room_result["blocking_blocks"]
             )
-        )
+        ]
+
         results.append(room_result)
 
     return results
