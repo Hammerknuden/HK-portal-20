@@ -538,4 +538,57 @@ def find_target_block(
     return None
 
 
+def can_block_move(target_block, all_bookings):
+
+    source_room = target_block["room_number"]
+    target_rooms = [1, 2, 3, 4, 5]
+
+    block_ids = target_block["booking_ids"]
+
+    block_rows = all_bookings[
+        all_bookings["id"].isin(block_ids)
+    ]
+
+    options = []
+
+    for new_room in target_rooms:
+
+        if new_room == source_room:
+            continue
+
+        room_bookings = all_bookings[
+            ~all_bookings["id"].isin(block_ids)
+        ]
+
+        room_bookings = room_bookings[
+            room_bookings["room_number"] == new_room
+        ]
+
+        conflict_found = False
+
+        for _, block_booking in block_rows.iterrows():
+
+            overlaps = room_bookings[
+                (room_bookings["checkin_date"] < block_booking["checkout_date"])
+                &
+                (room_bookings["checkout_date"] > block_booking["checkin_date"])
+            ]
+
+            if not overlaps.empty:
+                conflict_found = True
+                break
+
+        if not conflict_found:
+            options.append({
+                "move_block_from_room": int(source_room),
+                "move_block_to_room": int(new_room),
+                "booking_ids": [int(x) for x in block_ids],
+                "booking_numbers": target_block["booking_numbers"],
+                "start": target_block["start"],
+                "end": target_block["end"]
+            })
+
+    return options
+
+
 
