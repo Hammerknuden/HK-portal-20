@@ -85,8 +85,26 @@ def analyze_improvements(bookings, season):
         )
 
         coverage.append(coverage_item)
+
     target_blocks = []
 
+    block_move_options = []
+
+    for target in target_blocks:
+
+        if target is None:
+            continue
+
+        options = can_block_move(
+            target_block=target["block"],
+            all_bookings=season_bookings
+        )
+
+        block_move_options.append({
+            "booking_number": target["booking_number"],
+            "target_room": target["target_room"],
+            "block_move_options": options
+        })
     for coverage_item in coverage:
         target_blocks.append(
             find_target_block(
@@ -97,7 +115,8 @@ def analyze_improvements(bookings, season):
     return {
         "coverage_count": len(coverage),
         "coverage": coverage,
-        "target_blocks": target_blocks
+        "target_blocks": target_blocks,
+        "block_move_options": block_move_options
     }
         #"first_coverage": coverage[0] if coverage else None
 
