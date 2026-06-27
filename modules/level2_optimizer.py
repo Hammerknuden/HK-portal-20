@@ -566,7 +566,6 @@ def can_block_move(target_block, all_bookings):
     block_rows = all_bookings[
         all_bookings["id"].isin(block_ids)
     ]
-
     options = []
 
     for new_room in target_rooms:
