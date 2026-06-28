@@ -696,8 +696,9 @@ def build_recommendations(
         destination_periods
 ):
 
-    st.write("Recommendations:", len(recommendations))
     recommendations = []
+
+    st.write("Recommendations:", len(recommendations))
 
     target_lookup = {
         item["candidate_id"]: item
@@ -759,8 +760,10 @@ def build_recommendations(
             "best_destination_score": best_destination["score"],
             "best_destination_blocking_count": best_destination["blocking_count"]
         })
+    st.write("Recommendations final:", len(recommendations))
 
     return recommendations
+
 
 
 
