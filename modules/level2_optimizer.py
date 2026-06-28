@@ -138,6 +138,7 @@ def analyze_improvements(bookings, season):
             continue
 
         destination_periods.append({
+            "candidate_id": target["candidate_id"],
             "booking_number": target["booking_number"],
             "target_room": target["target_room"],
             "target_block": target["block"],
@@ -373,6 +374,7 @@ def analyze_period_coverage(
     target_rooms = [1, 2, 3, 4, 5]
 
     result = {
+        "candidate_id": int(candidate["id"]),
         "booking_number": int(candidate["booking_number"]),
         "checkin_date": str(candidate["checkin_date"].date()),
         "checkout_date": str(candidate["checkout_date"].date()),
@@ -564,6 +566,7 @@ def find_target_block(
 
         if overlaps:
             return {
+                "candidate_id": coverage_item["candidate_id"],
                 "booking_number": coverage_item["booking_number"],
                 "target_room": int(target_room),
                 "missing_days": int(best_target["missing_days"]),
@@ -687,43 +690,70 @@ def build_recommendations(
         destination_periods
 ):
 
-    # recommendations = []
-    #
-    # for index, coverage_item in enumerate(coverage):
-    #
-    #     target_block = target_blocks[index]
-    #
-    #     if target_block is None:
-    #         recommendations.append({
-    #             "booking_number": coverage_item["booking_number"],
-    #             "status": "No target block found",
-    #             "period_possible": coverage_item["period_possible"]
-    #         })
-    #         continue
-    #
-    #     destinations = destination_periods[index]["destination_periods"]
-    #
-    #     best_destination = sorted(
-    #         destinations,
-    #         key=lambda x: x["score"]
-    #     )[0]
-    #
-    #     recommendations.append({
-    #         "booking_number": coverage_item["booking_number"],
-    #         "status": "Candidate found",
-    #         "period_possible": coverage_item["period_possible"],
-    #         "target_room": target_block["target_room"],
-    #         "missing_days": target_block["missing_days"],
-    #         "target_block_start": target_block["block"]["start"],
-    #         "target_block_end": target_block["block"]["end"],
-    #         "target_block_bookings": target_block["block"]["booking_numbers"],
-    #         "best_destination_room": best_destination["room"],
-    #         "best_destination_score": best_destination["score"],
-    #         "best_destination_blocking_count": best_destination["blocking_count"]
-    #     })
+    recommendations = []
 
-    return []  #recommendations
+    target_lookup = {
+        item["candidate_id"]: item
+        for item in target_blocks
+        if item is not None
+    }
 
+    destination_lookup = {
+        item["candidate_id"]: item
+        for item in destination_periods
+    }
+
+    for coverage_item in coverage:
+
+        candidate_id = coverage_item["candidate_id"]
+        booking_number = coverage_item["booking_number"]
+
+        target_block = target_lookup.get(candidate_id)
+
+        if target_block is None:
+            recommendations.append({
+                "candidate_id": candidate_id,
+                "booking_number": booking_number,
+                "status": "No target block found",
+                "period_possible": coverage_item["period_possible"]
+            })
+            continue
+
+        destination_item = destination_lookup.get(candidate_id)
+
+        if destination_item is None:
+            recommendations.append({
+                "candidate_id": candidate_id,
+                "booking_number": booking_number,
+                "status": "No destination analysis found",
+                "period_possible": coverage_item["period_possible"]
+            })
+            continue
+
+        destinations = destination_item["destination_periods"]
+
+        best_destination = sorted(
+            destinations,
+            key=lambda x: x["score"]
+        )[0]
+
+        recommendations.append({
+            "candidate_id": candidate_id,
+            "booking_number": booking_number,
+            "status": "Candidate found",
+            "period_possible": coverage_item["period_possible"],
+            "target_room": target_block["target_room"],
+            "missing_days": target_block["missing_days"],
+            "target_block_start": target_block["block"]["start"],
+            "target_block_end": target_block["block"]["end"],
+            "target_block_bookings": target_block["block"]["booking_numbers"],
+            "target_block_ids": target_block["block"]["booking_ids"],
+            "best_destination_room": best_destination["room"],
+            "best_destination_score": best_destination["score"],
+            "best_destination_blocking_count": best_destination["blocking_count"]
+        })
+
+    return recommendations
 
 
 
