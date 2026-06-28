@@ -75,14 +75,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00634" summary="skifter pandas til st.table for print">
-      <option name="closed" value="true" />
-      <created>1782196198370</created>
-      <option name="number" value="00634" />
-      <option name="presentableId" value="LOCAL-00634" />
-      <option name="project" value="LOCAL" />
-      <updated>1782196198370</updated>
-    </task>
     <task id="LOCAL-00635" summary="skifter print buttom">
       <option name="closed" value="true" />
       <created>1782196421632</created>
@@ -467,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782626413788</updated>
     </task>
-    <option name="localTasksCounter" value="683" />
+    <task id="LOCAL-00683" summary="level 2 build recommendations 1">
+      <option name="closed" value="true" />
+      <created>1782626622450</created>
+      <option name="number" value="00683" />
+      <option name="presentableId" value="LOCAL-00683" />
+      <option name="project" value="LOCAL" />
+      <updated>1782626622450</updated>
+    </task>
+    <option name="localTasksCounter" value="684" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

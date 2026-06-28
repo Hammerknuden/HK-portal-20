@@ -142,11 +142,11 @@ def analyze_improvements(bookings, season):
                 )
             })
 
-        recommendations = build_recommendations(
-            coverage,
-            target_blocks,
-            destination_periods
-        )
+        #recommendations = build_recommendations(
+        #    coverage,
+        #    target_blocks,
+        #    destination_periods
+        #)
 
 
     return {
@@ -155,7 +155,7 @@ def analyze_improvements(bookings, season):
         "target_blocks": target_blocks,
         "block_move_options": block_move_options,
         "destination_periods": destination_periods,
-        "recommendations": recommendations
+        #"recommendations": recommendations
     }
 
 
