@@ -107,12 +107,24 @@ def analyze_improvements(bookings, season):
             target_block=target["block"],
             all_bookings=season_bookings
         )
+        block_move_options = []
 
-        block_move_options.append({
-            "booking_number": target["booking_number"],
-            "target_room": target["target_room"],
-            "block_move_options": options
-        })
+        for target in target_blocks:
+
+            if target is None:
+                continue
+
+            options = can_block_move(
+                target_block=target["block"],
+                all_bookings=season_bookings
+            )
+
+            block_move_options.append({
+                "booking_number": target["booking_number"],
+                "target_room": target["target_room"],
+                "block_move_options": options
+            })
+
         destination_periods = []
 
         for target in target_blocks:
@@ -129,11 +141,13 @@ def analyze_improvements(bookings, season):
                     room_blocks
                 )
             })
+
         recommendations = build_recommendations(
             coverage,
             target_blocks,
             destination_periods
         )
+
 
     return {
         "coverage_count": len(coverage),
