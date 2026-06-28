@@ -230,3 +230,64 @@ st.write(
 )
 st.plotly_chart(fig, use_container_width=True)
 
+st.subheader("Gennemsnitlig bookinglængde pr. måned")
+
+df_stats = df.copy()
+
+# Datoformat
+df_stats["checkin_date"] = pd.to_datetime(df_stats["checkin_date"], errors="coerce")
+df_stats["checkout_date"] = pd.to_datetime(df_stats["checkout_date"], errors="coerce")
+
+# Fjern annullerede bookinger
+df_stats = df_stats[
+    df_stats["web"].astype(str).str.lower() != "cansl"
+]
+
+# Beregn bookinglængde i nætter
+df_stats["booking_length"] = (
+    df_stats["checkout_date"] - df_stats["checkin_date"]
+).dt.days
+
+# Fjern fejl / tomme datoer
+df_stats = df_stats[
+    df_stats["booking_length"].notna()
+]
+
+df_stats = df_stats[
+    df_stats["booking_length"] > 0
+]
+
+# Måned ud fra check-in dato
+df_stats["month"] = df_stats["checkin_date"].dt.month
+df_stats["month_name"] = df_stats["checkin_date"].dt.strftime("%b")
+
+avg_length = (
+    df_stats
+    .groupby(["month", "month_name"])["booking_length"]
+    .mean()
+    .reset_index()
+    .sort_values("month")
+)
+
+fig = px.bar(
+    avg_length,
+    x="month_name",
+    y="booking_length",
+    text=avg_length["booking_length"].round(1),
+    labels={
+        "month_name": "Måned",
+        "booking_length": "Gennemsnitlig bookinglængde"
+    },
+    title="Gennemsnitlig bookinglængde pr. måned"
+)
+
+fig.update_traces(
+    textposition="outside"
+)
+
+fig.update_layout(
+    yaxis_title="Nætter",
+    xaxis_title="Måned"
+)
+
+st.plotly_chart(fig, use_container_width=True)
