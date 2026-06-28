@@ -147,13 +147,19 @@ def analyze_improvements(bookings, season):
                 room_blocks
             )
         })
+    recommendations = build_recommendations(
+        coverage,
+        target_blocks,
+        destination_periods
+    )
 
     return {
         "coverage_count": len(coverage),
         "coverage": coverage,
         "target_blocks": target_blocks,
         "block_move_options": block_move_options,
-        "destination_periods": destination_periods
+        "destination_periods": destination_periods,
+        "recommendations": recommendations
     }
 
 
