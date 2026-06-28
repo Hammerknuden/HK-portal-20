@@ -691,42 +691,42 @@ def build_recommendations(
         destination_periods
 ):
 
-    recommendations = []
+    # recommendations = []
+    #
+    # for index, coverage_item in enumerate(coverage):
+    #
+    #     target_block = target_blocks[index]
+    #
+    #     if target_block is None:
+    #         recommendations.append({
+    #             "booking_number": coverage_item["booking_number"],
+    #             "status": "No target block found",
+    #             "period_possible": coverage_item["period_possible"]
+    #         })
+    #         continue
+    #
+    #     destinations = destination_periods[index]["destination_periods"]
+    #
+    #     best_destination = sorted(
+    #         destinations,
+    #         key=lambda x: x["score"]
+    #     )[0]
+    #
+    #     recommendations.append({
+    #         "booking_number": coverage_item["booking_number"],
+    #         "status": "Candidate found",
+    #         "period_possible": coverage_item["period_possible"],
+    #         "target_room": target_block["target_room"],
+    #         "missing_days": target_block["missing_days"],
+    #         "target_block_start": target_block["block"]["start"],
+    #         "target_block_end": target_block["block"]["end"],
+    #         "target_block_bookings": target_block["block"]["booking_numbers"],
+    #         "best_destination_room": best_destination["room"],
+    #         "best_destination_score": best_destination["score"],
+    #         "best_destination_blocking_count": best_destination["blocking_count"]
+    #     })
 
-    for index, coverage_item in enumerate(coverage):
-
-        target_block = target_blocks[index]
-
-        if target_block is None:
-            recommendations.append({
-                "booking_number": coverage_item["booking_number"],
-                "status": "No target block found",
-                "period_possible": coverage_item["period_possible"]
-            })
-            continue
-
-        destinations = destination_periods[index]["destination_periods"]
-
-        best_destination = sorted(
-            destinations,
-            key=lambda x: x["score"]
-        )[0]
-
-        recommendations.append({
-            "booking_number": coverage_item["booking_number"],
-            "status": "Candidate found",
-            "period_possible": coverage_item["period_possible"],
-            "target_room": target_block["target_room"],
-            "missing_days": target_block["missing_days"],
-            "target_block_start": target_block["block"]["start"],
-            "target_block_end": target_block["block"]["end"],
-            "target_block_bookings": target_block["block"]["booking_numbers"],
-            "best_destination_room": best_destination["room"],
-            "best_destination_score": best_destination["score"],
-            "best_destination_blocking_count": best_destination["blocking_count"]
-        })
-
-    return recommendations
+    return []  #recommendations
 
 
 
