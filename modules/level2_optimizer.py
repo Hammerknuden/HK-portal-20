@@ -1,6 +1,22 @@
 import pandas as pd
 from datetime import date
 
+# ==========================================================
+# LEVEL 2 OPTIMIZER - DESIGN PRINCIPLES
+#
+# Internal processing:
+#   - Always use database "id" as the unique identifier.
+#   - Never use booking_number for joins or lookups.
+#
+# Presentation:
+#   - Always display booking_number to the user.
+#   - booking_number is for readability only.
+#
+# Reason:
+#   - One booking_number may contain multiple rooms.
+#   - Database id is always unique.
+# ==========================================================
+
 
 def analyze_improvements(bookings, season):
 
@@ -107,55 +123,36 @@ def analyze_improvements(bookings, season):
             target_block=target["block"],
             all_bookings=season_bookings
         )
-        block_move_options = []
 
-        for target in target_blocks:
+        block_move_options.append({
+            "booking_number": target["booking_number"],
+            "target_room": target["target_room"],
+            "block_move_options": options
+        })
 
-            if target is None:
-                continue
+    destination_periods = []
 
-            options = can_block_move(
-                target_block=target["block"],
-                all_bookings=season_bookings
+    for target in target_blocks:
+
+        if target is None:
+            continue
+
+        destination_periods.append({
+            "booking_number": target["booking_number"],
+            "target_room": target["target_room"],
+            "target_block": target["block"],
+            "destination_periods": analyze_destination_periods(
+                target["block"],
+                room_blocks
             )
-
-            block_move_options.append({
-                "booking_number": target["booking_number"],
-                "target_room": target["target_room"],
-                "block_move_options": options
-            })
-
-        destination_periods = []
-
-        for target in target_blocks:
-
-            if target is None:
-                continue
-
-            destination_periods.append({
-                "booking_number": target["booking_number"],
-                "target_room": target["target_room"],
-                "target_block": target["block"],
-                "destination_periods": analyze_destination_periods(
-                    target["block"],
-                    room_blocks
-                )
-            })
-
-        #recommendations = build_recommendations(
-        #    coverage,
-        #    target_blocks,
-        #    destination_periods
-        #)
-
+        })
 
     return {
         "coverage_count": len(coverage),
         "coverage": coverage,
         "target_blocks": target_blocks,
         "block_move_options": block_move_options,
-        "destination_periods": destination_periods,
-        #"recommendations": recommendations
+        "destination_periods": destination_periods
     }
 
 
@@ -476,7 +473,6 @@ def find_connected_blocks(bookings, room_number):
             bool(row["movable"])
             for row in block
         )
-
 
         result.append({
             "room_number": int(room_number),
