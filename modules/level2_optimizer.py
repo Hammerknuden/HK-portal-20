@@ -1,7 +1,7 @@
 import pandas as pd
 from datetime import date
-
-# ==========================================================
+import streamlit as st
+# =============== ===========================================
 # LEVEL 2 OPTIMIZER - DESIGN PRINCIPLES
 #
 # Internal processing:
@@ -696,6 +696,7 @@ def build_recommendations(
         destination_periods
 ):
 
+    st.write("Recommendations:", len(recommendations))
     recommendations = []
 
     target_lookup = {
