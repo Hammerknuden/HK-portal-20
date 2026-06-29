@@ -455,7 +455,11 @@ if not df.empty:
 
     fig.update_xaxes(
         rangeslider_visible=True,
-        tickformat="%d-%m"
+        tickformat="%d-%m",
+        showgrid=True,
+        gridcolor="lightgray",
+        gridwidth=1,
+        dtick="D7"
     )
 
     st.plotly_chart(
@@ -522,6 +526,7 @@ if not df.empty:
     # -------------------------
     # EDIT BOOKINGS
     # -------------------------
+
     def room_label(room):
         if pd.isna(room) or str(room).strip() == "":
             return "Ikke tildelt"
