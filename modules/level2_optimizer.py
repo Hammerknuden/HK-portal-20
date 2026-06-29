@@ -155,6 +155,7 @@ def analyze_improvements(bookings, season):
     return {
         #"recommendations_count": len(recommendations),
         "recommendations": recommendations
+        #"destination_options": destination_options
     }
     # return {
     #     "coverage_count": len(coverage),
@@ -727,7 +728,6 @@ def build_recommendations(
                 "period_possible": coverage_item["period_possible"]
             })
             continue
-
         destination_item = destination_lookup.get(candidate_id)
 
         if destination_item is None:
@@ -738,13 +738,23 @@ def build_recommendations(
                 "period_possible": coverage_item["period_possible"]
             })
             continue
-
         destinations = destination_item["destination_periods"]
 
-        best_destination = sorted(
-            destinations,
-            key=lambda x: x["score"]
-        )[0]
+        destination_options = []
+
+        for destination in sorted(
+                destinations,
+                key=lambda x: x["score"]
+        ):
+            destination_options.append({
+                "room": destination["room"],
+                "score": destination["score"],
+                "blocking_count": destination["blocking_count"],
+                "blocking_bookings": [
+                    block["booking_numbers"]
+                    for block in destination["blocking_blocks"]
+                ]
+            })
 
         recommendations.append({
             "candidate_id": candidate_id,
@@ -757,11 +767,7 @@ def build_recommendations(
             "target_block_end": target_block["block"]["end"],
             "target_block_bookings": target_block["block"]["booking_numbers"],
             "target_block_ids": target_block["block"]["booking_ids"],
-
-            "destination_options": sorted(
-                destinations,
-                key=lambda x: x["score"]
-            )
+            "destination_options": destination_options
         })
 
     return recommendations
