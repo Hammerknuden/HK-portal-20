@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="new build recomandations">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="new build recomandations based on options">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/level2_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/level2_optimizer.py" afterDir="false" />
@@ -78,14 +78,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00644" summary="skifter pdf download">
-      <option name="closed" value="true" />
-      <created>1782198465376</created>
-      <option name="number" value="00644" />
-      <option name="presentableId" value="LOCAL-00644" />
-      <option name="project" value="LOCAL" />
-      <updated>1782198465376</updated>
     </task>
     <task id="LOCAL-00645" summary="level 2b optimizer step 1">
       <option name="closed" value="true" />
@@ -471,7 +463,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782652127196</updated>
     </task>
-    <option name="localTasksCounter" value="693" />
+    <task id="LOCAL-00693" summary="new build recomandations based on options">
+      <option name="closed" value="true" />
+      <created>1782713811350</created>
+      <option name="number" value="00693" />
+      <option name="presentableId" value="LOCAL-00693" />
+      <option name="project" value="LOCAL" />
+      <updated>1782713811350</updated>
+    </task>
+    <option name="localTasksCounter" value="694" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -497,7 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="niveau 2  level 2 first new optimize" />
     <MESSAGE value="niveau 2  level 2 new bookinking to test vær 7 optimizer" />
     <MESSAGE value="level 2 Add room 7 relocation suggestions" />
     <MESSAGE value="forsøg sammenlægning ankomster cleaning" />
@@ -522,6 +521,7 @@
     <MESSAGE value="level 2 beslutning om maskine køre id og presentation booking nummer er taget og valideret i def´s" />
     <MESSAGE value="statestik booking længde" />
     <MESSAGE value="new build recomandations" />
-    <option name="LAST_COMMIT_MESSAGE" value="new build recomandations" />
+    <MESSAGE value="new build recomandations based on options" />
+    <option name="LAST_COMMIT_MESSAGE" value="new build recomandations based on options" />
   </component>
 </project>
