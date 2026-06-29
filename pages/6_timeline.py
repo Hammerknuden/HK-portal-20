@@ -511,7 +511,11 @@ if not df.empty:
 
     fig2.update_xaxes(
         rangeslider_visible=True,
-        tickformat="%d-%m"
+        tickformat="%d-%m",
+        showgrid=True,
+        gridcolor="lightgray",
+        gridwidth=1,
+        dtick="D7"
     )
     fig2.update_yaxes(
         autorange="reversed",
