@@ -717,6 +717,14 @@ def build_recommendations(
 
         candidate_id = coverage_item["candidate_id"]
         booking_number = coverage_item["booking_number"]
+        if not coverage_item["period_possible"]:
+            recommendations.append({
+                "candidate_id": candidate_id,
+                "booking_number": booking_number,
+                "status": "No daily capacity",
+                "period_possible": False
+            })
+            continue
 
         target_block = target_lookup.get(candidate_id)
 
