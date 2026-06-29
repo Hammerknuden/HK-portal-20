@@ -740,11 +740,16 @@ def build_recommendations(
 
         if destination_item is None:
             recommendations.append({
-                "candidate_id": candidate_id,
                 "booking_number": booking_number,
-                "status": "No destination analysis found",
-                "period_possible": coverage_item["period_possible"]
+                "status": "Ikke mulig",
+                "reason": "Ingen ledig kapacitet på mindst én dag"
             })
+            # recommendations.append({
+            #     "candidate_id": candidate_id,
+            #     "booking_number": booking_number,
+            #     "status": "No destination analysis found",
+            #     "period_possible": coverage_item["period_possible"]
+            # })
             continue
         destinations = destination_item["destination_periods"]
 
@@ -763,20 +768,32 @@ def build_recommendations(
                     for block in destination["blocking_blocks"]
                 ]
             })
-
         recommendations.append({
-            "candidate_id": candidate_id,
             "booking_number": booking_number,
-            "status": "Candidate found",
-            "period_possible": coverage_item["period_possible"],
+            "status": "Mulig",
             "target_room": target_block["target_room"],
-            "missing_days": target_block["missing_days"],
-            "target_block_start": target_block["block"]["start"],
-            "target_block_end": target_block["block"]["end"],
-            "target_block_bookings": target_block["block"]["booking_numbers"],
-            "target_block_ids": target_block["block"]["booking_ids"],
-            "destination_options": destination_options
+            "options": [
+                {
+                    "flyt_blok_til": option["room"],
+                    "blokeringer": option["blocking_count"],
+                    "score": option["score"]
+                }
+                for option in destination_options
+            ]
         })
+        # recommendations.append({
+        #     "candidate_id": candidate_id,
+        #     "booking_number": booking_number,
+        #     "status": "Candidate found",
+        #     "period_possible": coverage_item["period_possible"],
+        #     "target_room": target_block["target_room"],
+        #     "missing_days": target_block["missing_days"],
+        #     "target_block_start": target_block["block"]["start"],
+        #     "target_block_end": target_block["block"]["end"],
+        #     "target_block_bookings": target_block["block"]["booking_numbers"],
+        #     "target_block_ids": target_block["block"]["booking_ids"],
+        #     "destination_options": destination_options
+        # })
 
     return recommendations
 
