@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="rettlese til cadidate found her 143" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="simplificeret output">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,14 +76,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00649" summary="level 2b optimizer ident move options">
-      <option name="closed" value="true" />
-      <created>1782281830688</created>
-      <option name="number" value="00649" />
-      <option name="presentableId" value="LOCAL-00649" />
-      <option name="project" value="LOCAL" />
-      <updated>1782281830688</updated>
     </task>
     <task id="LOCAL-00650" summary="level 2b change from booking nr to &quot;id&quot; for targeting">
       <option name="closed" value="true" />
@@ -467,7 +461,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782715817994</updated>
     </task>
-    <option name="localTasksCounter" value="698" />
+    <task id="LOCAL-00698" summary="simplificeret output">
+      <option name="closed" value="true" />
+      <created>1782716321953</created>
+      <option name="number" value="00698" />
+      <option name="presentableId" value="LOCAL-00698" />
+      <option name="project" value="LOCAL" />
+      <updated>1782716321953</updated>
+    </task>
+    <option name="localTasksCounter" value="699" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -493,7 +495,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="level 2 Add room 7 relocation suggestions" />
     <MESSAGE value="forsøg sammenlægning ankomster cleaning" />
     <MESSAGE value="skifter pandas til st.table for print" />
     <MESSAGE value="skifter print buttom" />
@@ -518,6 +519,7 @@
     <MESSAGE value="new build recomandations" />
     <MESSAGE value="new build recomandations based on options" />
     <MESSAGE value="rettlese til cadidate found her 143" />
-    <option name="LAST_COMMIT_MESSAGE" value="rettlese til cadidate found her 143" />
+    <MESSAGE value="simplificeret output" />
+    <option name="LAST_COMMIT_MESSAGE" value="simplificeret output" />
   </component>
 </project>

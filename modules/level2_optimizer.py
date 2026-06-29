@@ -770,7 +770,8 @@ def build_recommendations(
             })
         recommendations.append({
             "booking_number": booking_number,
-            "status": "Mulig",
+            "status": "⭐⭐⭐⭐ NY VERSION ⭐⭐⭐⭐",
+            #"status": "Mulig",
             "target_room": target_block["target_room"],
             "options": [
                 {
