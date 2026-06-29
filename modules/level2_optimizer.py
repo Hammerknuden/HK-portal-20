@@ -152,15 +152,18 @@ def analyze_improvements(bookings, season):
         target_blocks,
         destination_periods
     )
-
     return {
-        "coverage_count": len(coverage),
-        "coverage": coverage,
-        "target_blocks": target_blocks,
-        "block_move_options": block_move_options,
-        "destination_periods": destination_periods,
+        "recommendations_count": len(recommendations),
         "recommendations": recommendations
     }
+    # return {
+    #     "coverage_count": len(coverage),
+    #     "coverage": coverage,
+    #     "target_blocks": target_blocks,
+    #     "block_move_options": block_move_options,
+    #     "destination_periods": destination_periods,
+    #     "recommendations": recommendations
+    # }
 
 
 def calculate_gaps(bookings):
@@ -698,8 +701,6 @@ def build_recommendations(
 
     recommendations = []
 
-    st.write("Recommendations:", len(recommendations))
-
     target_lookup = {
         item["candidate_id"]: item
         for item in target_blocks
@@ -756,11 +757,12 @@ def build_recommendations(
             "target_block_end": target_block["block"]["end"],
             "target_block_bookings": target_block["block"]["booking_numbers"],
             "target_block_ids": target_block["block"]["booking_ids"],
-            "best_destination_room": best_destination["room"],
-            "best_destination_score": best_destination["score"],
-            "best_destination_blocking_count": best_destination["blocking_count"]
+
+            "destination_options": sorted(
+                destinations,
+                key=lambda x: x["score"]
+            )
         })
-    st.write("Recommendations final:", len(recommendations))
 
     return recommendations
 
