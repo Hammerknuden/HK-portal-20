@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="simplificeret output">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="grid til fig 2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,22 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00652" summary="level 2b more analyse til niveau 2c">
-      <option name="closed" value="true" />
-      <created>1782285603553</created>
-      <option name="number" value="00652" />
-      <option name="presentableId" value="LOCAL-00652" />
-      <option name="project" value="LOCAL" />
-      <updated>1782285603553</updated>
-    </task>
-    <task id="LOCAL-00653" summary="level 2b more analyse til niveau 2c">
-      <option name="closed" value="true" />
-      <created>1782317703912</created>
-      <option name="number" value="00653" />
-      <option name="presentableId" value="LOCAL-00653" />
-      <option name="project" value="LOCAL" />
-      <updated>1782317703913</updated>
     </task>
     <task id="LOCAL-00654" summary="level 2b more analyse til niveau 2c">
       <option name="closed" value="true" />
@@ -470,7 +451,23 @@
       <option name="project" value="LOCAL" />
       <updated>1782717164932</updated>
     </task>
-    <option name="localTasksCounter" value="701" />
+    <task id="LOCAL-00701" summary="grid til fig 2">
+      <option name="closed" value="true" />
+      <created>1782750604986</created>
+      <option name="number" value="00701" />
+      <option name="presentableId" value="LOCAL-00701" />
+      <option name="project" value="LOCAL" />
+      <updated>1782750604986</updated>
+    </task>
+    <task id="LOCAL-00702" summary="grid til fig 2">
+      <option name="closed" value="true" />
+      <created>1782750696793</created>
+      <option name="number" value="00702" />
+      <option name="presentableId" value="LOCAL-00702" />
+      <option name="project" value="LOCAL" />
+      <updated>1782750696793</updated>
+    </task>
+    <option name="localTasksCounter" value="703" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -496,7 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="forsøg sammenlægning ankomster cleaning" />
     <MESSAGE value="skifter pandas til st.table for print" />
     <MESSAGE value="skifter print buttom" />
     <MESSAGE value="skifter pdf download" />
@@ -521,6 +517,7 @@
     <MESSAGE value="new build recomandations based on options" />
     <MESSAGE value="rettlese til cadidate found her 143" />
     <MESSAGE value="simplificeret output" />
-    <option name="LAST_COMMIT_MESSAGE" value="simplificeret output" />
+    <MESSAGE value="grid til fig 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="grid til fig 2" />
   </component>
 </project>
