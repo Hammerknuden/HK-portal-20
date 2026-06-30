@@ -100,7 +100,12 @@ def analyze_improvements(bookings, season):
             coverage_item
         )
 
+        coverage_item["missing_day_analysis"] = analyze_missing_days(
+            coverage_item
+        )
+
         coverage.append(coverage_item)
+
 
     target_blocks = []
 
@@ -308,8 +313,6 @@ def find_room7_blockers(candidates, all_bookings):
         room7_blocker_move_options = []
 
     return results
-
-#find_block_relocation_options(candidate, blockers, all_bookings)
 
 
 def find_block_relocation_options(candidate, blockers, all_bookings):
@@ -534,6 +537,10 @@ def choose_target_rooms(coverage):
     )
 
     return room_scores
+
+# def analyze_missing_days(
+#         coverage_item
+# ):
 
 
 def find_target_block(
@@ -797,6 +804,48 @@ def build_recommendations(
 
     return recommendations
 
+
+def analyze_missing_days(
+        coverage_item
+):
+
+    if not coverage_item["target_room_scores"]:
+        return None
+
+    target_room = coverage_item["target_room_scores"][0]["room"]
+
+    daily_free_rooms = coverage_item["daily_free_rooms"]
+    days = list(daily_free_rooms.keys())
+
+    missing_days = [
+        day
+        for day in days
+        if target_room not in daily_free_rooms[day]
+    ]
+
+    if not missing_days:
+        position = "none"
+        direction = "none"
+
+    elif missing_days[0] == days[0]:
+        position = "start"
+        direction = "backward"
+
+    elif missing_days[-1] == days[-1]:
+        position = "end"
+        direction = "forward"
+
+    else:
+        position = "middle"
+        direction = "split"
+
+    return {
+        "target_room": int(target_room),
+        "missing_days": missing_days,
+        "missing_count": len(missing_days),
+        "missing_position": position,
+        "direction": direction
+    }
 
 
 

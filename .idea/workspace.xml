@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="grid til fig 2" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="workspace update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/level2_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/level2_optimizer.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,14 +77,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00654" summary="level 2b more analyse til niveau 2c">
-      <option name="closed" value="true" />
-      <created>1782317995970</created>
-      <option name="number" value="00654" />
-      <option name="presentableId" value="LOCAL-00654" />
-      <option name="project" value="LOCAL" />
-      <updated>1782317995970</updated>
     </task>
     <task id="LOCAL-00655" summary="level 2b more analyse til niveau 2c">
       <option name="closed" value="true" />
@@ -467,7 +462,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782750696793</updated>
     </task>
-    <option name="localTasksCounter" value="703" />
+    <task id="LOCAL-00703" summary="workspace update">
+      <option name="closed" value="true" />
+      <created>1782750950619</created>
+      <option name="number" value="00703" />
+      <option name="presentableId" value="LOCAL-00703" />
+      <option name="project" value="LOCAL" />
+      <updated>1782750950619</updated>
+    </task>
+    <option name="localTasksCounter" value="704" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -493,7 +496,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="skifter pandas til st.table for print" />
     <MESSAGE value="skifter print buttom" />
     <MESSAGE value="skifter pdf download" />
     <MESSAGE value="level 2b optimizer step 1" />
@@ -518,6 +520,7 @@
     <MESSAGE value="rettlese til cadidate found her 143" />
     <MESSAGE value="simplificeret output" />
     <MESSAGE value="grid til fig 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="grid til fig 2" />
+    <MESSAGE value="workspace update" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace update" />
   </component>
 </project>
