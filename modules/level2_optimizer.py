@@ -744,8 +744,16 @@ def build_recommendations(
                 "period_possible": coverage_item["period_possible"]
             })
             continue
+
         destination_item = destination_lookup.get(candidate_id)
 
+        missing = coverage_item["missing_day_analysis"]
+
+        valid_rooms = set(
+            coverage_item["daily_free_rooms"][
+                missing["missing_days"][0]
+            ]
+        )
         if destination_item is None:
             recommendations.append({
                 "booking_number": booking_number,
@@ -767,6 +775,10 @@ def build_recommendations(
                 destinations,
                 key=lambda x: x["score"]
         ):
+
+            if destination["room"] not in valid_rooms:
+                continue
+
             destination_options.append({
                 "room": destination["room"],
                 "score": destination["score"],
