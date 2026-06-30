@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="workspace update">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/level2_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/level2_optimizer.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="logik ændret" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,22 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00655" summary="level 2b more analyse til niveau 2c">
-      <option name="closed" value="true" />
-      <created>1782365204361</created>
-      <option name="number" value="00655" />
-      <option name="presentableId" value="LOCAL-00655" />
-      <option name="project" value="LOCAL" />
-      <updated>1782365204362</updated>
-    </task>
-    <task id="LOCAL-00656" summary="excel update">
-      <option name="closed" value="true" />
-      <created>1782365226255</created>
-      <option name="number" value="00656" />
-      <option name="presentableId" value="LOCAL-00656" />
-      <option name="project" value="LOCAL" />
-      <updated>1782365226255</updated>
     </task>
     <task id="LOCAL-00657" summary="level 2 c de bug">
       <option name="closed" value="true" />
@@ -470,7 +451,23 @@
       <option name="project" value="LOCAL" />
       <updated>1782750950619</updated>
     </task>
-    <option name="localTasksCounter" value="704" />
+    <task id="LOCAL-00704" summary="logik ændret">
+      <option name="closed" value="true" />
+      <created>1782802962778</created>
+      <option name="number" value="00704" />
+      <option name="presentableId" value="LOCAL-00704" />
+      <option name="project" value="LOCAL" />
+      <updated>1782802962778</updated>
+    </task>
+    <task id="LOCAL-00705" summary="logik ændret">
+      <option name="closed" value="true" />
+      <created>1782803144523</created>
+      <option name="number" value="00705" />
+      <option name="presentableId" value="LOCAL-00705" />
+      <option name="project" value="LOCAL" />
+      <updated>1782803144523</updated>
+    </task>
+    <option name="localTasksCounter" value="706" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -496,7 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="skifter print buttom" />
     <MESSAGE value="skifter pdf download" />
     <MESSAGE value="level 2b optimizer step 1" />
     <MESSAGE value="level 2b optimizer ident blockers" />
@@ -521,6 +517,7 @@
     <MESSAGE value="simplificeret output" />
     <MESSAGE value="grid til fig 2" />
     <MESSAGE value="workspace update" />
-    <option name="LAST_COMMIT_MESSAGE" value="workspace update" />
+    <MESSAGE value="logik ændret" />
+    <option name="LAST_COMMIT_MESSAGE" value="logik ændret" />
   </component>
 </project>
