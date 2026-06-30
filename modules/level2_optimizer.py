@@ -159,7 +159,8 @@ def analyze_improvements(bookings, season):
     )
     return {
         #"recommendations_count": len(recommendations),
-        "recommendations": recommendations
+        "recommendations": recommendations,
+        "coverage": coverage
         #"destination_options": destination_options
     }
     # return {
