@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="logik ændret nu ser vi på missing days">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/level2_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/level2_optimizer.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fiiltrring af blocke så kun valid blocke bliver vist" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,14 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00658" summary="level 2 c de bug">
-      <option name="closed" value="true" />
-      <created>1782367308640</created>
-      <option name="number" value="00658" />
-      <option name="presentableId" value="LOCAL-00658" />
-      <option name="project" value="LOCAL" />
-      <updated>1782367308640</updated>
     </task>
     <task id="LOCAL-00659" summary="level 2 c de bug">
       <option name="closed" value="true" />
@@ -470,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782803331367</updated>
     </task>
-    <option name="localTasksCounter" value="707" />
+    <task id="LOCAL-00707" summary="fiiltrring af blocke så kun valid blocke bliver vist">
+      <option name="closed" value="true" />
+      <created>1782805093927</created>
+      <option name="number" value="00707" />
+      <option name="presentableId" value="LOCAL-00707" />
+      <option name="project" value="LOCAL" />
+      <updated>1782805093928</updated>
+    </task>
+    <option name="localTasksCounter" value="708" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -496,7 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="level 2b optimizer step 1" />
     <MESSAGE value="level 2b optimizer ident blockers" />
     <MESSAGE value="level 2b optimizer ident move options" />
     <MESSAGE value="level 2b change from booking nr to &quot;id&quot; for targeting" />
@@ -521,6 +517,7 @@
     <MESSAGE value="workspace update" />
     <MESSAGE value="logik ændret" />
     <MESSAGE value="logik ændret nu ser vi på missing days" />
-    <option name="LAST_COMMIT_MESSAGE" value="logik ændret nu ser vi på missing days" />
+    <MESSAGE value="fiiltrring af blocke så kun valid blocke bliver vist" />
+    <option name="LAST_COMMIT_MESSAGE" value="fiiltrring af blocke så kun valid blocke bliver vist" />
   </component>
 </project>
