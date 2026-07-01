@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fiiltrring af blocke så kun valid blocke bliver vist" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excel update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,22 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00659" summary="level 2 c de bug">
-      <option name="closed" value="true" />
-      <created>1782369156901</created>
-      <option name="number" value="00659" />
-      <option name="presentableId" value="LOCAL-00659" />
-      <option name="project" value="LOCAL" />
-      <updated>1782369156901</updated>
-    </task>
-    <task id="LOCAL-00660" summary="level 2 c de bug">
-      <option name="closed" value="true" />
-      <created>1782370480946</created>
-      <option name="number" value="00660" />
-      <option name="presentableId" value="LOCAL-00660" />
-      <option name="project" value="LOCAL" />
-      <updated>1782370480946</updated>
     </task>
     <task id="LOCAL-00661" summary="level 2 c de bug">
       <option name="closed" value="true" />
@@ -467,7 +451,23 @@
       <option name="project" value="LOCAL" />
       <updated>1782805093928</updated>
     </task>
-    <option name="localTasksCounter" value="708" />
+    <task id="LOCAL-00708" summary="excel update">
+      <option name="closed" value="true" />
+      <created>1782886297948</created>
+      <option name="number" value="00708" />
+      <option name="presentableId" value="LOCAL-00708" />
+      <option name="project" value="LOCAL" />
+      <updated>1782886297948</updated>
+    </task>
+    <task id="LOCAL-00709" summary="excel update">
+      <option name="closed" value="true" />
+      <created>1782890944841</created>
+      <option name="number" value="00709" />
+      <option name="presentableId" value="LOCAL-00709" />
+      <option name="project" value="LOCAL" />
+      <updated>1782890944841</updated>
+    </task>
+    <option name="localTasksCounter" value="710" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -497,7 +497,6 @@
     <MESSAGE value="level 2b optimizer ident move options" />
     <MESSAGE value="level 2b change from booking nr to &quot;id&quot; for targeting" />
     <MESSAGE value="level 2b more analyse til niveau 2c" />
-    <MESSAGE value="excel update" />
     <MESSAGE value="level 2 c de bug" />
     <MESSAGE value="level 2 blocke afsammenhængende rum" />
     <MESSAGE value="level 2 block move 1" />
@@ -518,6 +517,7 @@
     <MESSAGE value="logik ændret" />
     <MESSAGE value="logik ændret nu ser vi på missing days" />
     <MESSAGE value="fiiltrring af blocke så kun valid blocke bliver vist" />
-    <option name="LAST_COMMIT_MESSAGE" value="fiiltrring af blocke så kun valid blocke bliver vist" />
+    <MESSAGE value="excel update" />
+    <option name="LAST_COMMIT_MESSAGE" value="excel update" />
   </component>
 </project>
