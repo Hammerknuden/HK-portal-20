@@ -223,6 +223,8 @@ with st.sidebar.form("booking_form_new"):
 
     name = st.text_input("booking_number")
 
+    season = selected_season
+
     submitted = st.form_submit_button("Book nu")
 
     if submitted:
