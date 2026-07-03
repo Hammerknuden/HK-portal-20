@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excel update">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="data emil data validate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
     </list>
@@ -77,22 +77,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00662" summary="level 2 c de bug">
-      <option name="closed" value="true" />
-      <created>1782373806167</created>
-      <option name="number" value="00662" />
-      <option name="presentableId" value="LOCAL-00662" />
-      <option name="project" value="LOCAL" />
-      <updated>1782373806167</updated>
-    </task>
-    <task id="LOCAL-00663" summary="level 2 blocke afsammenhængende rum">
-      <option name="closed" value="true" />
-      <created>1782454833525</created>
-      <option name="number" value="00663" />
-      <option name="presentableId" value="LOCAL-00663" />
-      <option name="project" value="LOCAL" />
-      <updated>1782454833525</updated>
     </task>
     <task id="LOCAL-00664" summary="level 2 blocke afsammenhængende rum">
       <option name="closed" value="true" />
@@ -470,7 +454,23 @@
       <option name="project" value="LOCAL" />
       <updated>1782891072086</updated>
     </task>
-    <option name="localTasksCounter" value="711" />
+    <task id="LOCAL-00711" summary="data emil data validate">
+      <option name="closed" value="true" />
+      <created>1783059713226</created>
+      <option name="number" value="00711" />
+      <option name="presentableId" value="LOCAL-00711" />
+      <option name="project" value="LOCAL" />
+      <updated>1783059713226</updated>
+    </task>
+    <task id="LOCAL-00712" summary="data emil data validate">
+      <option name="closed" value="true" />
+      <created>1783059807290</created>
+      <option name="number" value="00712" />
+      <option name="presentableId" value="LOCAL-00712" />
+      <option name="project" value="LOCAL" />
+      <updated>1783059807290</updated>
+    </task>
+    <option name="localTasksCounter" value="713" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -496,7 +496,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="level 2b optimizer ident blockers" />
     <MESSAGE value="level 2b optimizer ident move options" />
     <MESSAGE value="level 2b change from booking nr to &quot;id&quot; for targeting" />
     <MESSAGE value="level 2b more analyse til niveau 2c" />
@@ -521,6 +520,7 @@
     <MESSAGE value="logik ændret nu ser vi på missing days" />
     <MESSAGE value="fiiltrring af blocke så kun valid blocke bliver vist" />
     <MESSAGE value="excel update" />
-    <option name="LAST_COMMIT_MESSAGE" value="excel update" />
+    <MESSAGE value="data emil data validate" />
+    <option name="LAST_COMMIT_MESSAGE" value="data emil data validate" />
   </component>
 </project>
