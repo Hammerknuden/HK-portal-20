@@ -185,6 +185,7 @@ def optimize_temp_room(df):
 # RESERVATION INFO
 # -------------------------
 
+
 df = load_bookings()
 
 df["season"] = pd.to_numeric(
@@ -290,7 +291,6 @@ with st.sidebar.form("booking_form_new"):
                     }).execute()
 
                     st.success("Booking gemt")
-                    #st.rerun()
 
                     result = (
                         supabase
@@ -302,7 +302,7 @@ with st.sidebar.form("booking_form_new"):
 
                     st.write("Ny booking i DB:")
                     st.write(result.data)
-                    #st.rerun()
+                    st.rerun()
 
             except Exception as e:
 
