@@ -242,7 +242,8 @@ with st.sidebar.form("booking_form_new"):
                     supabase
                     .table("hk_dtb")
                     .select("*")
-                    .eq("room_number", room)
+                    .eq("room_number", int(room))
+                    .neq("web", "cansl")
                     .execute()
                 )
 
@@ -274,15 +275,23 @@ with st.sidebar.form("booking_form_new"):
                     )
 
                 else:
+                    if not name:
+                        st.error("Booking nummer mangler")
+                        st.stop()
 
                     supabase.table("hk_dtb").insert({
-                        "room_number": room,
+                        "room_number": int(room),
                         "checkin_date": start_date.isoformat(),
                         "checkout_date": end_date.isoformat(),
-                        "booking_number": int(name)
+                        "booking_number": int(name),
+                        "season": int(selected_season),
+                        "movable": True,
+                        "web": "web",
                     }).execute()
 
                     st.success("Booking gemt")
+                    #st.rerun()
+
                     result = (
                         supabase
                         .table("hk_dtb")
