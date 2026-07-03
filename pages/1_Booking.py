@@ -629,22 +629,91 @@ if send_data and additional_mail:
     add_mail = st.text_input("enter additional mail")
     to_addr_1 = {admin_email, add_mail}
 
-if send_data: #and booking_submitted:
+if send_data:
 
-    excel_file = add_data(year=year, booking_number=booking_number, name=name, checkin_date=checkin_date,
-                          checkout_date=checkout_date, now=now, nationalitet=nationalitet, web=web,
-                          ankomst=ankomst, seng=seng, rabat_a=rabat_a, num_rooms=num_rooms,
-                          num_guests=num_guests, email_address=email_address, telefon=telefon,
-                          spouse=spouse, single_room=single_room, BF=BF,
-                          formatted_pristotal=formatted_pristotal, known=known, comments=comments)
+    missing_fields = []
 
-    send_data_email(to_addr_1, confirmation_password, booking_number, name,
-                    checkin_date, checkout_date, num_rooms, now,
-                    nationalitet, web, ankomst, seng, procent,
-                    num_guests, email_address, telefon,
-                    formatted_pristotal, excel_file)
+    if not booking_number:
+        missing_fields.append("booking nummer")
 
-    st.markdown("data mail sendt")
+    if not name:
+        missing_fields.append("navn")
+
+    if not checkin_date:
+        missing_fields.append("check-in dato")
+
+    if not checkout_date:
+        missing_fields.append("check-out dato")
+
+    if missing_fields:
+        st.warning(
+            "Check data - mangler: "
+            + ", ".join(missing_fields)
+        )
+        st.stop()
+
+    excel_file = add_data(
+        year=year,
+        booking_number=booking_number,
+        name=name,
+        checkin_date=checkin_date,
+        checkout_date=checkout_date,
+        now=now,
+        nationalitet=nationalitet,
+        web=web,
+        ankomst=ankomst,
+        seng=seng,
+        rabat_a=rabat_a,
+        num_rooms=num_rooms,
+        num_guests=num_guests,
+        email_address=email_address,
+        telefon=telefon,
+        spouse=spouse,
+        single_room=single_room,
+        BF=BF,
+        formatted_pristotal=formatted_pristotal,
+        known=known,
+        comments=comments
+    )
+
+    send_data_email(
+        to_addr_1,
+        confirmation_password,
+        booking_number,
+        name,
+        checkin_date,
+        checkout_date,
+        num_rooms,
+        now,
+        nationalitet,
+        web,
+        ankomst,
+        seng,
+        procent,
+        num_guests,
+        email_address,
+        telefon,
+        formatted_pristotal,
+        excel_file
+    )
+
+    st.success("Data mail sendt")
+# if send_data:
+#
+#     excel_file = add_data(year=year, booking_number=booking_number, name=name, checkin_date=checkin_date,
+#                           checkout_date=checkout_date, now=now, nationalitet=nationalitet, web=web,
+#                           ankomst=ankomst, seng=seng, rabat_a=rabat_a, num_rooms=num_rooms,
+#                           num_guests=num_guests, email_address=email_address, telefon=telefon,
+#                           spouse=spouse, single_room=single_room, BF=BF,
+#                           formatted_pristotal=formatted_pristotal, known=known, comments=comments)
+#
+#     send_data_email(to_addr_1, confirmation_password, booking_number, name,
+#                     checkin_date, checkout_date, num_rooms, now,
+#                     nationalitet, web, ankomst, seng, procent,
+#                     num_guests, email_address, telefon,
+#                     formatted_pristotal, excel_file)
+#
+#     st.markdown("data mail sendt")
     print(type(excel_file))
 
 
