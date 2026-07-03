@@ -636,14 +636,14 @@ if send_data:
     if not booking_number:
         missing_fields.append("booking nummer")
 
-    if not name:
-        missing_fields.append("navn")
+    #if not name:
+    #    missing_fields.append("navn")
 
-    if not checkin_date:
-        missing_fields.append("check-in dato")
+    #if not checkin_date:
+    #    missing_fields.append("check-in dato")
 
-    if not checkout_date:
-        missing_fields.append("check-out dato")
+    #if not checkout_date:
+    #    missing_fields.append("check-out dato")
 
     if missing_fields:
         st.warning(
