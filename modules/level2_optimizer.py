@@ -152,6 +152,22 @@ def analyze_improvements(bookings, season):
                 room_blocks
             )
         })
+
+    partial_block_candidates = []
+
+    for target in target_blocks:
+
+        if target is None:
+            continue
+
+        partial_block_candidates.append({
+            "booking_number": target["booking_number"],
+            "candidates": build_incremental_block_candidates(
+                target["block"],
+                direction="forward"
+            )
+        })
+
     recommendations = build_recommendations(
         coverage,
         target_blocks,
@@ -160,6 +176,7 @@ def analyze_improvements(bookings, season):
     return {
         #"recommendations_count": len(recommendations),
         "recommendations": recommendations,
+        "partial_block_candidates": partial_block_candidates
         #"coverage": coverage
         #"destination_options": destination_options
     }
@@ -861,5 +878,42 @@ def analyze_missing_days(
     }
 
 
+def build_incremental_block_candidates(
+        target_block,
+        direction="forward"
+):
+
+    booking_ids = target_block["booking_ids"]
+    booking_numbers = target_block["booking_numbers"]
+
+    candidates = []
+
+    if direction == "forward":
+
+        for size in range(1, len(booking_ids) + 1):
+
+            candidates.append({
+                "type": "partial_block",
+                "direction": "forward",
+                "size": int(size),
+                "booking_ids": booking_ids[:size],
+                "booking_numbers": booking_numbers[:size],
+                "from_room": target_block["room_number"]
+            })
+
+    elif direction == "backward":
+
+        for size in range(1, len(booking_ids) + 1):
+
+            candidates.append({
+                "type": "partial_block",
+                "direction": "backward",
+                "size": int(size),
+                "booking_ids": booking_ids[-size:],
+                "booking_numbers": booking_numbers[-size:],
+                "from_room": target_block["room_number"]
+            })
+
+    return candidates
 
 
