@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excel update">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="next step under blokke analyse">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/level2_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/level2_optimizer.py" afterDir="false" />
     </list>
@@ -77,14 +77,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00668" summary="level 2 blocke afsammenhængende rum">
-      <option name="closed" value="true" />
-      <created>1782459291011</created>
-      <option name="number" value="00668" />
-      <option name="presentableId" value="LOCAL-00668" />
-      <option name="project" value="LOCAL" />
-      <updated>1782459291012</updated>
     </task>
     <task id="LOCAL-00669" summary="level 2 blocke afsammenhængende rum">
       <option name="closed" value="true" />
@@ -470,7 +462,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783145469111</updated>
     </task>
-    <option name="localTasksCounter" value="717" />
+    <task id="LOCAL-00717" summary="next step under blokke analyse">
+      <option name="closed" value="true" />
+      <created>1783148336452</created>
+      <option name="number" value="00717" />
+      <option name="presentableId" value="LOCAL-00717" />
+      <option name="project" value="LOCAL" />
+      <updated>1783148336452</updated>
+    </task>
+    <option name="localTasksCounter" value="718" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -496,7 +496,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="level 2b more analyse til niveau 2c" />
     <MESSAGE value="level 2 c de bug" />
     <MESSAGE value="level 2 blocke afsammenhængende rum" />
     <MESSAGE value="level 2 block move 1" />
@@ -521,6 +520,7 @@
     <MESSAGE value="timeline small booking ipdate" />
     <MESSAGE value="timeline small booking update" />
     <MESSAGE value="excel update" />
-    <option name="LAST_COMMIT_MESSAGE" value="excel update" />
+    <MESSAGE value="next step under blokke analyse" />
+    <option name="LAST_COMMIT_MESSAGE" value="next step under blokke analyse" />
   </component>
 </project>

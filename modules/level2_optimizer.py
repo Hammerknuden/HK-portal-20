@@ -167,12 +167,13 @@ def analyze_improvements(bookings, season):
                 direction="forward"
             )
         })
-
+        st.write("Partial candidates:", partial_block_candidates)
     recommendations = build_recommendations(
         coverage,
         target_blocks,
         destination_periods
     )
+    st.write("Returning:", len(partial_block_candidates))
     return {
         #"recommendations_count": len(recommendations),
         "recommendations": recommendations,
