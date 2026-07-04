@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="timeline small booking ipdate">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="timeline small booking update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,14 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00666" summary="level 2 blocke afsammenhængende rum">
-      <option name="closed" value="true" />
-      <created>1782458058692</created>
-      <option name="number" value="00666" />
-      <option name="presentableId" value="LOCAL-00666" />
-      <option name="project" value="LOCAL" />
-      <updated>1782458058692</updated>
     </task>
     <task id="LOCAL-00667" summary="level 2 blocke afsammenhængende rum">
       <option name="closed" value="true" />
@@ -470,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783061880360</updated>
     </task>
-    <option name="localTasksCounter" value="715" />
+    <task id="LOCAL-00715" summary="timeline small booking update">
+      <option name="closed" value="true" />
+      <created>1783062790631</created>
+      <option name="number" value="00715" />
+      <option name="presentableId" value="LOCAL-00715" />
+      <option name="project" value="LOCAL" />
+      <updated>1783062790632</updated>
+    </task>
+    <option name="localTasksCounter" value="716" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -496,7 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="level 2b change from booking nr to &quot;id&quot; for targeting" />
     <MESSAGE value="level 2b more analyse til niveau 2c" />
     <MESSAGE value="level 2 c de bug" />
     <MESSAGE value="level 2 blocke afsammenhængende rum" />
@@ -521,6 +517,7 @@
     <MESSAGE value="excel update" />
     <MESSAGE value="data emil data validate" />
     <MESSAGE value="timeline small booking ipdate" />
-    <option name="LAST_COMMIT_MESSAGE" value="timeline small booking ipdate" />
+    <MESSAGE value="timeline small booking update" />
+    <option name="LAST_COMMIT_MESSAGE" value="timeline small booking update" />
   </component>
 </project>
