@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="candidates for partial blockmove">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/level2_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/level2_optimizer.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="oprydning" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,14 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00677" summary="level 2 block move change swap to period">
-      <option name="closed" value="true" />
-      <created>1782545120422</created>
-      <option name="number" value="00677" />
-      <option name="presentableId" value="LOCAL-00677" />
-      <option name="project" value="LOCAL" />
-      <updated>1782545120422</updated>
     </task>
     <task id="LOCAL-00678" summary="level 2 block move change swap swap bliver">
       <option name="closed" value="true" />
@@ -470,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783233843650</updated>
     </task>
-    <option name="localTasksCounter" value="726" />
+    <task id="LOCAL-00726" summary="oprydning">
+      <option name="closed" value="true" />
+      <created>1783234463066</created>
+      <option name="number" value="00726" />
+      <option name="presentableId" value="LOCAL-00726" />
+      <option name="project" value="LOCAL" />
+      <updated>1783234463067</updated>
+    </task>
+    <option name="localTasksCounter" value="727" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -496,7 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="level 2 block move 1 swap options" />
     <MESSAGE value="level 2 block move change swap to period" />
     <MESSAGE value="level 2 block move change swap swap bliver" />
     <MESSAGE value="level 2 move scores" />
@@ -521,6 +517,7 @@
     <MESSAGE value="minor excel update" />
     <MESSAGE value="partiel block test" />
     <MESSAGE value="candidates for partial blockmove" />
-    <option name="LAST_COMMIT_MESSAGE" value="candidates for partial blockmove" />
+    <MESSAGE value="oprydning" />
+    <option name="LAST_COMMIT_MESSAGE" value="oprydning" />
   </component>
 </project>
