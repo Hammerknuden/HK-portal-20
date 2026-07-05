@@ -213,6 +213,7 @@ def analyze_improvements(bookings, season):
         destination_periods
     )
     st.write(partial_block_move_tests)
+
     return {
         "recommendations": recommendations,
         "partial_block_candidates": partial_block_candidates,
