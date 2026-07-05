@@ -660,7 +660,58 @@ if st.button("🔍 Undersøg optimeringsmuligheder"):
         season=selected_season
     )
 
-    st.write(suggestions)
+recommendations = suggestions.get("recommendations", [])
+
+st.subheader("Optimeringsforslag")
+
+if not recommendations:
+    st.info("Ingen forslag fundet")
+
+for rec in recommendations:
+
+    booking_number = rec.get("booking_number")
+    status = rec.get("status")
+
+    with st.container(border=True):
+
+        st.markdown(f"### Booking {booking_number}")
+
+        if status != "Mulig":
+            st.warning(
+                rec.get("reason", status)
+            )
+            continue
+
+        target_room = rec.get("target_room")
+        options = rec.get("options", [])
+
+        st.success(
+            f"Mulig placering på værelse {target_room}"
+        )
+
+        if not options:
+            st.info("Ingen flyttemuligheder fundet")
+            continue
+
+        for i, option in enumerate(options, start=1):
+            move_to_room = option["flyt_blok_til"]
+            blockers = option["blokeringer"]
+            score = option["score"]
+
+            with st.expander(
+                    f"Mulighed {i}: Flyt blok til værelse {move_to_room}",
+                    expanded=(i == 1)
+            ):
+                st.write(f"Booking {booking_number} placeres på værelse {target_room}")
+                st.write(f"Blok flyttes til værelse {move_to_room}")
+                st.write(f"Blokeringer: {blockers}")
+                st.write(f"Score: {score}")
+
+                st.button(
+                    f"Udfør mulighed {i}",
+                    key=f"execute_{booking_number}_{i}",
+                    disabled=True
+                )
 
 
 
