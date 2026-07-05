@@ -170,42 +170,61 @@ def analyze_improvements(bookings, season):
 
     partial_block_move_tests = []
 
+    coverage_lookup = {
+        item["candidate_id"]: item
+        for item in coverage
+    }
+
     for block in partial_block_candidates:
+
+        coverage_item = coverage_lookup.get(
+            block["candidate_id"]
+        )
+
+        if coverage_item is None:
+            continue
+
+        missing = coverage_item["missing_day_analysis"]
+
+        if missing is None:
+            continue
+
+        first_missing_day = missing["missing_days"][0]
+
+        valid_rooms = coverage_item["daily_free_rooms"][
+            first_missing_day
+        ]
 
         for candidate in block["candidates"]:
             partial_block_move_tests.append({
                 "booking_number": block["booking_number"],
+                "candidate_bookings": candidate["booking_numbers"],
+                "valid_rooms": valid_rooms,
                 "results": test_partial_block_move(
                     candidate=candidate,
                     all_bookings=season_bookings,
-                    valid_rooms=[1, 5]
+                    valid_rooms=valid_rooms
                 )
             })
     # partial_block_move_tests = []
     #
     # for block in partial_block_candidates:
-    #     booking_number = block["booking_number"]
     #
-    #     # valid_rooms hentes fra coverage
-    #
-    #     partial_block_move_tests.append({
-    #         "booking_number": booking_number,
-    #         "results": test_partial_block_move(
-    #             ...
-    #         )
-    #     })
+    #     for candidate in block["candidates"]:
+    #         partial_block_move_tests.append({
+    #             "booking_number": block["booking_number"],
+    #             "results": test_partial_block_move(
+    #                 candidate=candidate,
+    #                 all_bookings=season_bookings,
+    #                 valid_rooms=[1, 5]
+    #             )
+    #         })
 
     recommendations = build_recommendations(
         coverage,
         target_blocks,
         destination_periods
     )
-    #st.write("Returning:", len(partial_block_candidates))
-    st.write("Partial block candidates:")
-    st.write(partial_block_candidates)
-
-    st.write("Partial block move tests:")
-    st.write(partial_block_move_tests)
 
     return {
         #"recommendations_count": len(recommendations),
