@@ -171,16 +171,29 @@ def analyze_improvements(bookings, season):
     partial_block_move_tests = []
 
     for block in partial_block_candidates:
-        booking_number = block["booking_number"]
 
-        # valid_rooms hentes fra coverage
-
-        partial_block_move_tests.append({
-            "booking_number": booking_number,
-            "results": test_partial_block_move(
-                ...
-            )
-        })
+        for candidate in block["candidates"]:
+            partial_block_move_tests.append({
+                "booking_number": block["booking_number"],
+                "results": test_partial_block_move(
+                    candidate=candidate,
+                    all_bookings=season_bookings,
+                    valid_rooms=[1, 5]
+                )
+            })
+    # partial_block_move_tests = []
+    #
+    # for block in partial_block_candidates:
+    #     booking_number = block["booking_number"]
+    #
+    #     # valid_rooms hentes fra coverage
+    #
+    #     partial_block_move_tests.append({
+    #         "booking_number": booking_number,
+    #         "results": test_partial_block_move(
+    #             ...
+    #         )
+    #     })
 
     recommendations = build_recommendations(
         coverage,
@@ -188,6 +201,12 @@ def analyze_improvements(bookings, season):
         destination_periods
     )
     #st.write("Returning:", len(partial_block_candidates))
+    st.write("Partial block candidates:")
+    st.write(partial_block_candidates)
+
+    st.write("Partial block move tests:")
+    st.write(partial_block_move_tests)
+
     return {
         #"recommendations_count": len(recommendations),
         "recommendations": recommendations,
