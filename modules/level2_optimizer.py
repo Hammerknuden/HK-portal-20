@@ -106,7 +106,6 @@ def analyze_improvements(bookings, season):
 
         coverage.append(coverage_item)
 
-
     target_blocks = []
 
     for coverage_item in coverage:
@@ -168,13 +167,6 @@ def analyze_improvements(bookings, season):
                 direction="forward"
             )
         })
-        # partial_block_candidates.append({
-        #     "booking_number": target["booking_number"],
-        #     "candidates": build_incremental_block_candidates(
-        #         target["block"],
-        #         direction="forward"
-        #     )
-        # })
 
     partial_block_move_tests = []
 
@@ -214,19 +206,6 @@ def analyze_improvements(bookings, season):
                     valid_rooms=valid_rooms
                 )
             })
-    # partial_block_move_tests = []
-    #
-    # for block in partial_block_candidates:
-    #
-    #     for candidate in block["candidates"]:
-    #         partial_block_move_tests.append({
-    #             "booking_number": block["booking_number"],
-    #             "results": test_partial_block_move(
-    #                 candidate=candidate,
-    #                 all_bookings=season_bookings,
-    #                 valid_rooms=[1, 5]
-    #             )
-    #         })
 
     recommendations = build_recommendations(
         coverage,
@@ -235,21 +214,10 @@ def analyze_improvements(bookings, season):
     )
     st.write(partial_block_move_tests)
     return {
-        #"recommendations_count": len(recommendations),
         "recommendations": recommendations,
         "partial_block_candidates": partial_block_candidates,
         "partial_block_move_tests": partial_block_move_tests
-        #"coverage": coverage
-        #"destination_options": destination_options
     }
-    # return {
-    #     "coverage_count": len(coverage),
-    #     "coverage": coverage,
-    #     "target_blocks": target_blocks,
-    #     "block_move_options": block_move_options,
-    #     "destination_periods": destination_periods,
-    #     "recommendations": recommendations
-    # }
 
 
 def calculate_gaps(bookings):
