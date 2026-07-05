@@ -161,12 +161,20 @@ def analyze_improvements(bookings, season):
             continue
 
         partial_block_candidates.append({
+            "candidate_id": target["candidate_id"],
             "booking_number": target["booking_number"],
             "candidates": build_incremental_block_candidates(
                 target["block"],
                 direction="forward"
             )
         })
+        # partial_block_candidates.append({
+        #     "booking_number": target["booking_number"],
+        #     "candidates": build_incremental_block_candidates(
+        #         target["block"],
+        #         direction="forward"
+        #     )
+        # })
 
     partial_block_move_tests = []
 
