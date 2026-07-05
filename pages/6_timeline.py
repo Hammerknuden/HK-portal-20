@@ -660,59 +660,64 @@ if st.button("🔍 Undersøg optimeringsmuligheder"):
         season=selected_season
     )
 
-recommendations = suggestions.get("recommendations", [])
+    recommendations = suggestions.get("recommendations", [])
 
-st.subheader("Optimeringsforslag")
+    st.subheader("Optimeringsforslag")
 
-if not recommendations:
-    st.info("Ingen forslag fundet")
+    # resten af layout-koden skal også være indrykket her
 
-for rec in recommendations:
+    if not recommendations:
+        st.info("Ingen forslag fundet")
 
-    booking_number = rec.get("booking_number")
-    status = rec.get("status")
+    for rec in recommendations:
 
-    with st.container(border=True):
+        booking_number = rec.get("booking_number")
+        status = rec.get("status")
 
-        st.markdown(f"### Booking {booking_number}")
+        with st.container(border=True):
 
-        if status != "Mulig":
-            st.warning(
-                rec.get("reason", status)
+            st.markdown(f"### Booking {booking_number}")
+
+            if status != "Mulig":
+                st.warning(
+                    rec.get("reason", status)
+                )
+                continue
+
+            target_room = rec.get("target_room")
+            options = rec.get("options", [])
+
+            st.success(
+                f"Mulig placering på værelse {target_room}"
             )
-            continue
 
-        target_room = rec.get("target_room")
-        options = rec.get("options", [])
+            if not options:
+                st.info("Ingen flyttemuligheder fundet")
+                continue
 
-        st.success(
-            f"Mulig placering på værelse {target_room}"
-        )
+            for i, option in enumerate(options, start=1):
 
-        if not options:
-            st.info("Ingen flyttemuligheder fundet")
-            continue
+                move_to_room = option["flyt_blok_til"]
+                blockers = option["blokeringer"]
+                score = option["score"]
 
-        for i, option in enumerate(options, start=1):
-            move_to_room = option["flyt_blok_til"]
-            blockers = option["blokeringer"]
-            score = option["score"]
-
-            with st.expander(
+                with st.expander(
                     f"Mulighed {i}: Flyt blok til værelse {move_to_room}",
                     expanded=(i == 1)
-            ):
-                st.write(f"Booking {booking_number} placeres på værelse {target_room}")
-                st.write(f"Blok flyttes til værelse {move_to_room}")
-                st.write(f"Blokeringer: {blockers}")
-                st.write(f"Score: {score}")
+                ):
+                    st.write(
+                        f"Booking {booking_number} placeres på værelse {target_room}"
+                    )
+                    st.write(
+                        f"Blok flyttes til værelse {move_to_room}"
+                    )
+                    st.write(f"Blokeringer: {blockers}")
+                    st.write(f"Score: {score}")
 
-                st.button(
-                    f"Udfør mulighed {i}",
-                    key=f"execute_{booking_number}_{i}",
-                    disabled=True
-                )
-
-
+                    st.button(
+                        f"Udfør mulighed {i}",
+                        key=f"execute_{booking_number}_{i}",
+                        disabled=True
+                    )
 
 
