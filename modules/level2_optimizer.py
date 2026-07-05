@@ -216,8 +216,8 @@ def analyze_improvements(bookings, season):
 
     return {
         "recommendations": recommendations,
-        "partial_block_candidates": partial_block_candidates,
-        "partial_block_move_tests": partial_block_move_tests
+        #"partial_block_candidates": partial_block_candidates,
+        #"partial_block_move_tests": partial_block_move_tests
     }
 
 
