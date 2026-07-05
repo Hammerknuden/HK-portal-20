@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="next step under blokke analyse">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="minor excel update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,14 +76,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00671" summary="level 2 blocke afsammenhængende rum">
-      <option name="closed" value="true" />
-      <created>1782475578763</created>
-      <option name="number" value="00671" />
-      <option name="presentableId" value="LOCAL-00671" />
-      <option name="project" value="LOCAL" />
-      <updated>1782475578764</updated>
     </task>
     <task id="LOCAL-00672" summary="level 2 blocke afsammenhængende rum">
       <option name="closed" value="true" />
@@ -470,7 +461,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783149326900</updated>
     </task>
-    <option name="localTasksCounter" value="720" />
+    <task id="LOCAL-00720" summary="minor excel update">
+      <option name="closed" value="true" />
+      <created>1783180054780</created>
+      <option name="number" value="00720" />
+      <option name="presentableId" value="LOCAL-00720" />
+      <option name="project" value="LOCAL" />
+      <updated>1783180054781</updated>
+    </task>
+    <option name="localTasksCounter" value="721" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -496,7 +495,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="level 2 blocke afsammenhængende rum" />
     <MESSAGE value="level 2 block move 1" />
     <MESSAGE value="level 2 block move 1 move options" />
     <MESSAGE value="level 2 block move 1 swap options" />
@@ -521,6 +519,7 @@
     <MESSAGE value="excel update" />
     <MESSAGE value="next step under blokke analyse debug" />
     <MESSAGE value="next step under blokke analyse" />
-    <option name="LAST_COMMIT_MESSAGE" value="next step under blokke analyse" />
+    <MESSAGE value="minor excel update" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor excel update" />
   </component>
 </project>

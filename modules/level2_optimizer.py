@@ -167,7 +167,21 @@ def analyze_improvements(bookings, season):
                 direction="forward"
             )
         })
-        #st.write("Partial candidates:", partial_block_candidates)
+
+    partial_block_move_tests = []
+
+    for block in partial_block_candidates:
+        booking_number = block["booking_number"]
+
+        # valid_rooms hentes fra coverage
+
+        partial_block_move_tests.append({
+            "booking_number": booking_number,
+            "results": test_partial_block_move(
+                ...
+            )
+        })
+
     recommendations = build_recommendations(
         coverage,
         target_blocks,
@@ -177,7 +191,8 @@ def analyze_improvements(bookings, season):
     return {
         #"recommendations_count": len(recommendations),
         "recommendations": recommendations,
-        "partial_block_candidates": partial_block_candidates
+        "partial_block_candidates": partial_block_candidates,
+        "partial_block_move_tests": partial_block_move_tests
         #"coverage": coverage
         #"destination_options": destination_options
     }
@@ -916,5 +931,18 @@ def build_incremental_block_candidates(
             })
 
     return candidates
+
+
+def test_partial_block_move(
+        candidate,
+        all_bookings,
+        valid_rooms
+):
+
+    results = []
+
+    # kode kommer senere
+
+    return results
 
 
