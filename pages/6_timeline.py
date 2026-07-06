@@ -446,13 +446,29 @@ if not df.empty:
     )
 
     for d in mandage:
-        fig.add_vline(
-            x=d.strftime("%Y-%m-%d"),
-            line_width=1,
-            line_dash="dot",
-            line_color="gray",
-            annotation_text=f"Uge {d.isocalendar().week}",
-            annotation_position="bottom"
+        x = d.strftime("%Y-%m-%d")
+
+        fig.add_shape(
+            type="line",
+            x0=x,
+            x1=x,
+            y0=0,
+            y1=1,
+            yref="paper",
+            line=dict(
+                color="gray",
+                width=1,
+                dash="dot"
+            )
+        )
+
+        fig.add_annotation(
+            x=x,
+            y=0,
+            yref="paper",
+            text=f"Uge {d.isocalendar().week}",
+            showarrow=False,
+            yshift=-18
         )
 
     # Periodemarkeringer
