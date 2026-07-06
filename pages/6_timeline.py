@@ -717,7 +717,8 @@ if st.button("🔍 Undersøg optimeringsmuligheder"):
                     st.button(
                         f"Udfør mulighed {i}",
                         key=f"execute_{booking_number}_{i}",
-                        disabled=True
+                        #disabled=True
                     )
+                    st.info("Execute kommer her")
 
 
