@@ -668,8 +668,6 @@ if suggestions:
 
     st.subheader("Optimeringsforslag")
 
-    # hele recommendation-layoutet her
-
     if not recommendations:
         st.info("Ingen forslag fundet")
 
@@ -719,10 +717,7 @@ if suggestions:
                     st.write(f"Score: {score}")
 
                     if st.button(
-                            f"Udfør mulighed {i}",
-                            key=f"execute_{booking_number}_{i}"
+                        f"Udfør mulighed {i}",
+                        key=f"execute_{booking_number}_{i}"
                     ):
                         st.info("Execute kommer her")
-
-
-
