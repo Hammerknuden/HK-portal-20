@@ -461,15 +461,24 @@ if not df.empty:
                 dash="dot"
             )
         )
-
         fig.add_annotation(
             x=x,
             y=0,
             yref="paper",
-            text=f"Uge {d.isocalendar().week}",
+            text=f"{d.isocalendar().week}",
             showarrow=False,
-            yshift=-18
+            yshift=-18,
+            font=dict(size=10, color="gray")
         )
+        # fig.add_annotation(
+        #     x=x,
+        #     y=0,
+        #     yref="paper",
+        #     text=f"{d.isocalendar().week}",
+        #     #text=f"Uge {d.isocalendar().week}",
+        #     showarrow=False,
+        #     yshift=-18
+        # )
 
     # Periodemarkeringer
     fig.add_vrect(
