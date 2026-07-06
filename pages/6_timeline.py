@@ -449,6 +449,7 @@ if not df.empty:
         "Værelse 6",
         "Værelse 7",
     ]
+    # tilføjelser til grid dato linie
     fig.add_vrect(
         x0="2026-05-22",
         x1="2026-05-25",
@@ -468,7 +469,14 @@ if not df.empty:
         annotation_text="Folkemøde",
         annotation_position="bottom left"
     )
-
+        #uge numre
+    fig.add_vline(
+        x="2026-06-01",
+        line_dash="dot",
+        line_width=1,
+        annotation_text="uge 23",
+        annotation_position="top"
+    )
     fig.update_yaxes(
         autorange="reversed",
         categoryorder="array",
