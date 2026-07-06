@@ -48,10 +48,18 @@ def to_dt(x):
 # -------------------------
 # LOAD / SAVE
 # -------------------------
+
+
 selected_season = st.selectbox(
     "Sæson",
     [2026, 2027, 2028]
 )
+if (
+    "optimizer_season" not in st.session_state
+    or st.session_state["optimizer_season"] != selected_season
+):
+    st.session_state.pop("optimizer_suggestions", None)
+    st.session_state["optimizer_season"] = selected_season
 
 
 def load_bookings():
@@ -62,13 +70,6 @@ def load_bookings():
         .eq("season", selected_season)
         .execute()
     )
-
-    #result = (
-    #    supabase
-    #    .table("hk_dtb")
-    #    .select("*")
-    #    .execute()
-    #)
 
     df = pd.DataFrame(result.data)
 
@@ -651,20 +652,23 @@ else:
 st.subheader("Niveau 2 optimering")
 
 if st.button("🔍 Undersøg optimeringsmuligheder"):
-    st.success(
-        f"Analyserer sæson {selected_season}"
-    )
-
-    suggestions = analyze_improvements(
+    st.session_state["optimizer_suggestions"] = analyze_improvements(
         bookings=df,
         season=selected_season
     )
 
-    recommendations = suggestions.get("recommendations", [])
+suggestions = st.session_state.get("optimizer_suggestions")
+
+if suggestions:
+
+    recommendations = suggestions.get(
+        "recommendations",
+        []
+    )
 
     st.subheader("Optimeringsforslag")
 
-    # resten af layout-koden skal også være indrykket her
+    # hele recommendation-layoutet her
 
     if not recommendations:
         st.info("Ingen forslag fundet")
