@@ -110,7 +110,9 @@ st.subheader("Rapport til Danmarks Statistik")
 st.dataframe(rapport)
 
 st.subheader("Booking com bookings")
+
 # Bookingkanaler
+
 kanal_df = df.copy()
 
 kanal_df["kanal"] = kanal_df["web"].str.upper().str.strip()
