@@ -557,7 +557,7 @@ if not df.empty:
         fig,
         use_container_width=True
     )
-    if st.checkbox("What if timeline")
+    if st.checkbox("What if timeline"):
 
         st.subheader("Optimeret belægningsplan")
 
