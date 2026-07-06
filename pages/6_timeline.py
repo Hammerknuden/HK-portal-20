@@ -714,11 +714,11 @@ if st.button("🔍 Undersøg optimeringsmuligheder"):
                     st.write(f"Blokeringer: {blockers}")
                     st.write(f"Score: {score}")
 
-                    st.button(
-                        f"Udfør mulighed {i}",
-                        key=f"execute_{booking_number}_{i}",
-                        #disabled=True
-                    )
-                    st.info("Execute kommer her")
+                    if st.button(
+                            f"Udfør mulighed {i}",
+                            key=f"execute_{booking_number}_{i}"
+                    ):
+                        st.info("Execute kommer her")
+
 
 
