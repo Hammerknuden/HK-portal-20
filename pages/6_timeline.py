@@ -456,7 +456,7 @@ if not df.empty:
         opacity=0.25,
         line_width=0,
         annotation_text="Pinse",
-        annotation_position="top left"
+        annotation_position="buttom left"
     )
 
     fig.add_vrect(
@@ -466,7 +466,7 @@ if not df.empty:
         opacity=0.25,
         line_width=0,
         annotation_text="Folkemøde",
-        annotation_position="top left"
+        annotation_position="buttom left"
     )
 
     fig.update_yaxes(
