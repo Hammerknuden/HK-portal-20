@@ -470,12 +470,12 @@ if not df.empty:
         annotation_position="bottom left"
     )
         #uge numre
-    fig.add_vline(
-        x="2026-06-01",
-        line_dash="dot",
-        line_width=1,
-        annotation_text="uge 23",
-        annotation_position="bottom"
+    fig.update_xaxes(
+        rangeslider_visible=True,
+        tickformat="%d-%m",
+        showgrid=True,
+        gridcolor="lightgray",
+        dtick="D1"
     )
     fig.update_yaxes(
         autorange="reversed",
