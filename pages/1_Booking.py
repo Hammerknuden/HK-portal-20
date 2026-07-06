@@ -783,7 +783,8 @@ if edit:
 
     new_booking_number = st.text_input(
         "Bookingnummer",
-        value=str(booking["booking_number"])
+        value=str(booking["booking_number"]),
+        key=f"booking_number_{booking_id}"
     )
 
     new_email = st.text_input(
@@ -791,19 +792,12 @@ if edit:
         value="" if pd.isna(booking["email"]) else str(booking["email"]),
         key=f"email_{booking_id}"
     )
-    # new_email = st.text_input(
-    #     "email",
-    #     value=str(booking["email"])
-    # )
+
     new_phone = st.text_input(
         "Telefon",
         value="" if pd.isna(booking["telefon"]) else str(booking["telefon"]),
         key=f"telefon_{booking_id}"
     )
-    # new_phone = st.text_input(
-    #     "Telefon",
-    #     value=str(booking["telefon"])
-    # )
 
     new_checkin = st.date_input(
         "Checkin",

@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="Add Level 2 optimizer UI and prepare execute data">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="small edit i booking editor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,14 +77,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00690" summary="new build recomandations">
-      <option name="closed" value="true" />
-      <created>1782651403562</created>
-      <option name="number" value="00690" />
-      <option name="presentableId" value="LOCAL-00690" />
-      <option name="project" value="LOCAL" />
-      <updated>1782651403562</updated>
     </task>
     <task id="LOCAL-00691" summary="new build recomandations">
       <option name="closed" value="true" />
@@ -469,7 +462,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783321598794</updated>
     </task>
-    <option name="localTasksCounter" value="739" />
+    <task id="LOCAL-00739" summary="small edit i booking editor">
+      <option name="closed" value="true" />
+      <created>1783324838070</created>
+      <option name="number" value="00739" />
+      <option name="presentableId" value="LOCAL-00739" />
+      <option name="project" value="LOCAL" />
+      <updated>1783324838071</updated>
+    </task>
+    <option name="localTasksCounter" value="740" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -495,7 +496,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="level 2 beslutning om maskine køre id og presentation booking nummer er taget og valideret i def´s" />
     <MESSAGE value="statestik booking længde" />
     <MESSAGE value="new build recomandations" />
     <MESSAGE value="new build recomandations based on options" />
@@ -520,6 +520,7 @@
     <MESSAGE value="level 2 layout" />
     <MESSAGE value="level 2 execute options" />
     <MESSAGE value="Add Level 2 optimizer UI and prepare execute data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Level 2 optimizer UI and prepare execute data" />
+    <MESSAGE value="small edit i booking editor" />
+    <option name="LAST_COMMIT_MESSAGE" value="small edit i booking editor" />
   </component>
 </project>
