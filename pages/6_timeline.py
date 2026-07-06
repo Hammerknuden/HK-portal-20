@@ -475,7 +475,7 @@ if not df.empty:
         line_dash="dot",
         line_width=1,
         annotation_text="uge 23",
-        annotation_position="top"
+        annotation_position="bottom"
     )
     fig.update_yaxes(
         autorange="reversed",
