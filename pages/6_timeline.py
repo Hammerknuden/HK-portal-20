@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from datetime import timedelta
 from pathlib import Path
 import streamlit_authenticator as stauth
 import datetime
@@ -393,8 +394,6 @@ if not df.empty:
         )
     plot_df_display = plot_df.copy()
 
-    plot_df_display = plot_df.copy()
-
     if len(plot_df_display) > 0:
 
         dummy_date = plot_df_display["checkin_date"].min()
@@ -438,6 +437,34 @@ if not df.empty:
         text="booking_number",
         color_discrete_sequence=px.colors.qualitative.Dark24
     )
+
+    # Ugenumre som lodrette mandagslinjer
+    mandage = pd.date_range(
+        plot_df_display["checkin_date"].min(),
+        plot_df_display["checkout_date"].max(),
+        freq="W-MON"
+    )
+
+    for d in mandage:
+        fig.add_vline(
+            x=d,
+            line_width=1,
+            line_dash="dot",
+            line_color="gray",
+            annotation_text=f"Uge {d.isocalendar().week}",
+            annotation_position="bottom"
+        )
+
+    # Periodemarkeringer
+    fig.add_vrect(
+        x0="2026-05-22",
+        x1="2026-05-25",
+        fillcolor="lightgray",
+        opacity=0.25,
+        line_width=0,
+        annotation_text="Pinse",
+        annotation_position="bottom left"
+    )
     # Tving rækkefølgen på værelserne
 
     room_order = [
@@ -469,7 +496,7 @@ if not df.empty:
         annotation_text="Folkemøde",
         annotation_position="bottom left"
     )
-        #uge numre
+        #ugenumre
     fig.update_xaxes(
         rangeslider_visible=True,
         tickformat="%d-%m",
