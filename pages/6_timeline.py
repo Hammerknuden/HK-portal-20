@@ -557,67 +557,69 @@ if not df.empty:
         fig,
         use_container_width=True
     )
-    st.subheader("Optimeret belægningsplan")
+    if st.checkbox("What if timeline")
 
-    opt_plot = optimized_df.copy()
+        st.subheader("Optimeret belægningsplan")
 
-    opt_plot["room_number"] = (
-            "Værelse "
-            + opt_plot["optimized_room"].astype(str)
-    )
-    opt_plot["room_sort"] = (
-        opt_plot["room_number"]
-        .astype(str)
-        .str.extract(r"(\d+)")
-        .astype(int)
-    )
-    fig2 = px.timeline(
-        opt_plot,
-        x_start="checkin_date",
-        x_end="checkout_date",
-        y="room_number",
-        color="packing_status",
-        text="booking_number",
-        color_discrete_map={
-            "Normal": "lightblue",
-            "Flyttet": "green",
-            "Ikke flyttet": "red"
-        }
-    )
-    room_order = [
-        "Værelse 1",
-        "Værelse 2",
-        "Værelse 3",
-        "Værelse 4",
-        "Værelse 5",
-        "Værelse 6",
-        "Værelse 7"
-    ]
+        opt_plot = optimized_df.copy()
 
-    fig2.update_yaxes(
-        autorange="reversed",
-        categoryorder="array",
-        categoryarray=room_order
-    )
+        opt_plot["room_number"] = (
+                "Værelse "
+                + opt_plot["optimized_room"].astype(str)
+        )
+        opt_plot["room_sort"] = (
+            opt_plot["room_number"]
+            .astype(str)
+            .str.extract(r"(\d+)")
+            .astype(int)
+        )
+        fig2 = px.timeline(
+            opt_plot,
+            x_start="checkin_date",
+            x_end="checkout_date",
+            y="room_number",
+            color="packing_status",
+            text="booking_number",
+            color_discrete_map={
+                "Normal": "lightblue",
+                "Flyttet": "green",
+                "Ikke flyttet": "red"
+            }
+        )
+        room_order = [
+            "Værelse 1",
+            "Værelse 2",
+            "Værelse 3",
+            "Værelse 4",
+            "Værelse 5",
+            "Værelse 6",
+            "Værelse 7"
+        ]
 
-    fig2.update_xaxes(
-        rangeslider_visible=True,
-        tickformat="%d-%m",
-        showgrid=True,
-        gridcolor="lightgray",
-        gridwidth=1,
-        dtick="D7"
-    )
-    fig2.update_yaxes(
-        autorange="reversed",
-        categoryorder="array",
-        categoryarray=room_order
-    )
+        fig2.update_yaxes(
+            autorange="reversed",
+            categoryorder="array",
+            categoryarray=room_order
+        )
 
-    st.plotly_chart(
-        fig2,
-        use_container_width=True
-    )
+        fig2.update_xaxes(
+            rangeslider_visible=True,
+            tickformat="%d-%m",
+            showgrid=True,
+            gridcolor="lightgray",
+            gridwidth=1,
+            dtick="D7"
+        )
+        fig2.update_yaxes(
+            autorange="reversed",
+            categoryorder="array",
+            categoryarray=room_order
+        )
+
+        st.plotly_chart(
+            fig2,
+            use_container_width=True
+        )
     # -------------------------
     # EDIT BOOKINGS
     # -------------------------
