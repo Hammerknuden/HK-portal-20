@@ -447,7 +447,7 @@ if not df.empty:
 
     for d in mandage:
         fig.add_vline(
-            x=d,
+            x=d.strftime("%Y-%m-%d"),
             line_width=1,
             line_dash="dot",
             line_color="gray",
