@@ -502,25 +502,51 @@ if not df.empty:
         "Værelse 7",
     ]
     # tilføjelser til grid dato linie
-    fig.add_vrect(
-        x0="2026-05-22",
-        x1="2026-05-25",
-        fillcolor="lightgray",
-        opacity=0.25,
-        line_width=0,
-        annotation_text="Pinse",
-        annotation_position="bottom left"
+    # fig.add_vrect(
+    #     x0="2026-05-22",
+    #     x1="2026-05-25",
+    #     fillcolor="lightgray",
+    #     opacity=0.25,
+    #     line_width=0,
+    #     annotation_text="Pinse",
+    #     annotation_position="bottom left"
+    # )
+    #
+    # fig.add_vrect(
+    #     x0="2026-06-11",
+    #     x1="2026-06-14",
+    #     fillcolor="lightgray",
+    #     opacity=0.25,
+    #     line_width=0,
+    #     annotation_text="Folkemøde",
+    #     annotation_position="bottom left"
+    # )
+    # Hent kalender-events fra Supabase
+    events_result = (
+        supabase
+        .table("Events")
+        .select("*")
+        .eq("season", int(selected_season))
+        .execute()
     )
 
-    fig.add_vrect(
-        x0="2026-06-11",
-        x1="2026-06-14",
-        fillcolor="lightgray",
-        opacity=0.25,
-        line_width=0,
-        annotation_text="Folkemøde",
-        annotation_position="bottom left"
-    )
+    events_df = pd.DataFrame(events_result.data)
+
+    if not events_df.empty:
+
+        events_df["start_date"] = pd.to_datetime(events_df["start_date"])
+        events_df["end_date"] = pd.to_datetime(events_df["end_date"])
+
+        for _, event in events_df.iterrows():
+            fig.add_vrect(
+                x0=event["start_date"],
+                x1=event["end_date"],
+                fillcolor=event.get("color", "lightgray"),
+                opacity=0.25,
+                line_width=0,
+                annotation_text=event["Events"],
+                annotation_position="bottom left"
+            )
         #ugenumre
     fig.update_xaxes(
         rangeslider_visible=True,
