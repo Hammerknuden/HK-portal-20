@@ -542,7 +542,11 @@ if not df.empty:
                 x0=event["start_date"],
                 x1=event["end_date"],
                 fillcolor=event.get("color", "lightgray"),
-                opacity=0.25,
+                opacity=(
+                    float(event["opacity"])
+                    if pd.notna(event["opacity"])
+                    else 0.20
+                ),
                 line_width=0,
                 annotation_text=event["event"],
                 annotation_position="bottom left"
