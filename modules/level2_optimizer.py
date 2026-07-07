@@ -854,10 +854,12 @@ def build_recommendations(
                 {
                     "flyt_blok_til": option["room"],
                     "blokeringer": option["blocking_count"],
-                    "score": option["score"]
+                    "score": option["score"],
+                    "blocking_blocks": option["blocking_blocks"]
                 }
                 for option in destination_options
             ]
+
         })
 
     return recommendations
@@ -944,61 +946,6 @@ def build_incremental_block_candidates(
 
     return candidates
 
-
-# def test_partial_block_move(
-#         candidate,
-#         all_bookings,
-#         valid_rooms
-# ):
-#
-#     results = []
-#
-#     candidate_ids = candidate["booking_ids"]
-#
-#     candidate_rows = all_bookings[
-#         all_bookings["id"].isin(candidate_ids)
-#     ]
-#
-#     for room in valid_rooms:
-#
-#         room_bookings = all_bookings[
-#             all_bookings["room_number"] == room
-#         ]
-#
-#         room_bookings = room_bookings[
-#             ~room_bookings["id"].isin(candidate_ids)
-#         ]
-#
-#         conflict_found = False
-#
-#         for _, booking in candidate_rows.iterrows():
-#
-#             overlaps = room_bookings[
-#                 (room_bookings["checkin_date"] < booking["checkout_date"])
-#                 &
-#                 (room_bookings["checkout_date"] > booking["checkin_date"])
-#             ]
-#
-#             if not overlaps.empty:
-#                 conflict_found = True
-#                 break
-#
-#         if not conflict_found:
-#             results.append({
-#
-#                 "move_to_room": int(room),
-#                 "booking_ids": [
-#                     int(x)
-#                     for x in candidate["booking_ids"]
-#                 ],
-#                 "booking_numbers": [
-#                     int(x)
-#                     for x in candidate["booking_numbers"]
-#                 ],
-#                 "size": int(candidate["size"])
-#             })
-#
-#     return results
 
 def analyze_partial_block_move(
         candidate,
