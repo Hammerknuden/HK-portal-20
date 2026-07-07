@@ -7,7 +7,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-st.title("HAMMERKNUDEN SOMMERPENSION")
+st.subheader("HAMMERKNUDEN SOMMERPENSION")
 
 # INIT AUTH STATE
 if "authentication_status" not in st.session_state:

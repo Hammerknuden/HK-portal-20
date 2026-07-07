@@ -501,26 +501,7 @@ if not df.empty:
         "Værelse 6",
         "Værelse 7",
     ]
-    # tilføjelser til grid dato linie
-    # fig.add_vrect(
-    #     x0="2026-05-22",
-    #     x1="2026-05-25",
-    #     fillcolor="lightgray",
-    #     opacity=0.25,
-    #     line_width=0,
-    #     annotation_text="Pinse",
-    #     annotation_position="bottom left"
-    # )
-    #
-    # fig.add_vrect(
-    #     x0="2026-06-11",
-    #     x1="2026-06-14",
-    #     fillcolor="lightgray",
-    #     opacity=0.25,
-    #     line_width=0,
-    #     annotation_text="Folkemøde",
-    #     annotation_position="bottom left"
-    # )
+
     # Hent kalender-events fra Supabase
     events_result = (
         supabase
