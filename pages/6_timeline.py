@@ -530,7 +530,7 @@ if not df.empty:
                     opacity=(
                         float(event["opacity"])
                         if pd.notna(event["opacity"])
-                        else 0.20
+                        else 0.10
                     ),
                     line_width=0
                 )
