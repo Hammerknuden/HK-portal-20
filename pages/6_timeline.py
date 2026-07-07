@@ -537,7 +537,7 @@ if not df.empty:
 
                 fig.add_annotation(
                     x=event["start_date"],
-                    y=-0.06,
+                    y=-0.08,
                     xref="x",
                     yref="paper",
                     text=event["event"],
@@ -546,7 +546,7 @@ if not df.empty:
                     bgcolor="white",
                     bordercolor="lightgray",
                     borderwidth=1,
-                    font=dict(size=10)
+                    font=dict(size=8)
                 )
 
         #ugenumre
