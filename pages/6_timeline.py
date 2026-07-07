@@ -829,7 +829,7 @@ if suggestions:
                     #     f"Udfør mulighed {i}",
                     #     key=f"execute_{booking_number}_{i}"
                     # ):
-                        st.info("Execute kommer her")
+                    #    st.info("Execute kommer her")
                     if st.button(
                             f"Udfør mulighed {i}",
                             key=f"execute_{booking_number}_{i}"
