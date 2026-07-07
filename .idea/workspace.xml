@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="1 test af execute funktionen">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/level2_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/level2_optimizer.py" afterDir="false" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="indentifiser de blokke der skal byttes med">
+      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,14 +76,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00715" summary="timeline small booking update">
-      <option name="closed" value="true" />
-      <created>1783062790631</created>
-      <option name="number" value="00715" />
-      <option name="presentableId" value="LOCAL-00715" />
-      <option name="project" value="LOCAL" />
-      <updated>1783062790632</updated>
     </task>
     <task id="LOCAL-00716" summary="excel update">
       <option name="closed" value="true" />
@@ -470,7 +461,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783453090721</updated>
     </task>
-    <option name="localTasksCounter" value="764" />
+    <task id="LOCAL-00764" summary="indentifiser de blokke der skal byttes med">
+      <option name="closed" value="true" />
+      <created>1783458997056</created>
+      <option name="number" value="00764" />
+      <option name="presentableId" value="LOCAL-00764" />
+      <option name="project" value="LOCAL" />
+      <updated>1783458997056</updated>
+    </task>
+    <option name="localTasksCounter" value="765" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -496,7 +495,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="logik ændret" />
     <MESSAGE value="logik ændret nu ser vi på missing days" />
     <MESSAGE value="fiiltrring af blocke så kun valid blocke bliver vist" />
     <MESSAGE value="data emil data validate" />
@@ -521,6 +519,7 @@
     <MESSAGE value="header chang subheader" />
     <MESSAGE value="event neden for slider i  timeline" />
     <MESSAGE value="1 test af execute funktionen" />
-    <option name="LAST_COMMIT_MESSAGE" value="1 test af execute funktionen" />
+    <MESSAGE value="indentifiser de blokke der skal byttes med" />
+    <option name="LAST_COMMIT_MESSAGE" value="indentifiser de blokke der skal byttes med" />
   </component>
 </project>

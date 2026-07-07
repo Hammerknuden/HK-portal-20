@@ -825,11 +825,6 @@ if suggestions:
                     st.write(f"Blokeringer: {blockers}")
                     st.write(f"Score: {score}")
 
-                    # if st.button(
-                    #     f"Udfør mulighed {i}",
-                    #     key=f"execute_{booking_number}_{i}"
-                    # ):
-                    #    st.info("Execute kommer her")
                     if st.button(
                             f"Udfør mulighed {i}",
                             key=f"execute_{booking_number}_{i}"
@@ -850,3 +845,11 @@ if suggestions:
                             "booking_ids": rec.get("block_booking_ids"),
                             "booking_numbers": rec.get("block_booking_numbers")
                         })
+                        st.write("Blok der skal flyttes væk:")
+
+                        for block in option.get("blocking_blocks", []):
+                            st.write({
+                                "room": move_to_room,
+                                "booking_ids": block["booking_ids"],
+                                "booking_numbers": block["booking_numbers"]
+                            })
