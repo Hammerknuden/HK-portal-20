@@ -544,7 +544,7 @@ if not df.empty:
                 fillcolor=event.get("color", "lightgray"),
                 opacity=0.25,
                 line_width=0,
-                annotation_text=event["Events"],
+                annotation_text=event["event"],
                 annotation_position="bottom left"
             )
         #ugenumre
