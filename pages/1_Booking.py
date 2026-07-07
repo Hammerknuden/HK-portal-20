@@ -60,7 +60,7 @@ init_session()
 if "prices" not in st.session_state:
     st.session_state.prices = DEFAULT_PRICES.copy()
 
-st.title("Reservations formular")
+st.title("Reservation")
 
 year = st.selectbox("booking år", ["2026", "2027"])
 
