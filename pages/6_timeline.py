@@ -825,8 +825,28 @@ if suggestions:
                     st.write(f"Blokeringer: {blockers}")
                     st.write(f"Score: {score}")
 
-                    if st.button(
-                        f"Udfør mulighed {i}",
-                        key=f"execute_{booking_number}_{i}"
-                    ):
+                    # if st.button(
+                    #     f"Udfør mulighed {i}",
+                    #     key=f"execute_{booking_number}_{i}"
+                    # ):
                         st.info("Execute kommer her")
+                    if st.button(
+                            f"Udfør mulighed {i}",
+                            key=f"execute_{booking_number}_{i}"
+                    ):
+                        st.info("Execute test - ingen databaseændring")
+
+                        st.write("Booking der skal placeres:")
+                        st.write({
+                            "booking_number": booking_number,
+                            "candidate_id": rec.get("candidate_id"),
+                            "target_room": target_room
+                        })
+
+                        st.write("Blok der skal flyttes:")
+                        st.write({
+                            "source_room": rec.get("source_room"),
+                            "move_to_room": move_to_room,
+                            "booking_ids": rec.get("block_booking_ids"),
+                            "booking_numbers": rec.get("block_booking_numbers")
+                        })
