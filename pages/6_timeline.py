@@ -519,19 +519,36 @@ if not df.empty:
         events_df["end_date"] = pd.to_datetime(events_df["end_date"])
 
         for _, event in events_df.iterrows():
-            fig.add_vrect(
-                x0=event["start_date"],
-                x1=event["end_date"],
-                fillcolor=event.get("color", "lightgray"),
-                opacity=(
-                    float(event["opacity"])
-                    if pd.notna(event["opacity"])
-                    else 0.20
-                ),
-                line_width=0,
-                annotation_text=event["event"],
-                annotation_position="bottom left"
-            )
+            events_df["start_date"] = pd.to_datetime(events_df["start_date"])
+            events_df["end_date"] = pd.to_datetime(events_df["end_date"])
+
+            for _, event in events_df.iterrows():
+                fig.add_vrect(
+                    x0=event["start_date"],
+                    x1=event["end_date"],
+                    fillcolor=event["color"],
+                    opacity=(
+                        float(event["opacity"])
+                        if pd.notna(event["opacity"])
+                        else 0.20
+                    ),
+                    line_width=0
+                )
+
+                fig.add_annotation(
+                    x=event["start_date"],
+                    y=-0.06,
+                    xref="x",
+                    yref="paper",
+                    text=event["event"],
+                    showarrow=False,
+                    xanchor="left",
+                    bgcolor="white",
+                    bordercolor="lightgray",
+                    borderwidth=1,
+                    font=dict(size=10)
+                )
+
         #ugenumre
     fig.update_xaxes(
         rangeslider_visible=True,
