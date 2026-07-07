@@ -834,8 +834,10 @@ def build_recommendations(
                 "blocking_bookings": [
                     block["booking_numbers"]
                     for block in destination["blocking_blocks"]
-                ]
+                ],
+                "blocking_blocks": destination["blocking_blocks"]
             })
+
         recommendations.append({
             "booking_number": booking_number,
             "candidate_id": candidate_id,
