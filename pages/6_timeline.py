@@ -829,27 +829,62 @@ if suggestions:
                             f"Udfør mulighed {i}",
                             key=f"execute_{booking_number}_{i}"
                     ):
-                        st.info("Execute test - ingen databaseændring")
 
-                        st.write("Booking der skal placeres:")
-                        st.write({
-                            "booking_number": booking_number,
-                            "candidate_id": rec.get("candidate_id"),
-                            "target_room": target_room
-                        })
+                        block_ids = rec.get("block_booking_ids")
+                        source_room = rec.get("source_room")
+                        move_to_room = option["flyt_blok_til"]
+                        blocking_blocks = option.get("blocking_blocks", [])
 
-                        st.write("Blok der skal flyttes:")
-                        st.write({
-                            "source_room": rec.get("source_room"),
-                            "move_to_room": move_to_room,
-                            "booking_ids": rec.get("block_booking_ids"),
-                            "booking_numbers": rec.get("block_booking_numbers")
-                        })
-                        st.write("Blok der skal flyttes væk:")
+                        # 1. Flyt blokerende blokke fra modtager-rummet tilbage til source_room
+                        for blocking_block in blocking_blocks:
+                            blocking_ids = blocking_block["booking_ids"]
 
-                        for block in option.get("blocking_blocks", []):
-                            st.write({
-                                "room": move_to_room,
-                                "booking_ids": block["booking_ids"],
-                                "booking_numbers": block["booking_numbers"]
-                            })
+                            supabase.table("hk_dtb").update({
+                                "room_number": int(source_room)
+                            }).in_(
+                                "id",
+                                blocking_ids
+                            ).execute()
+
+                        # 2. Flyt target-blokken til valgt værelse
+                        supabase.table("hk_dtb").update({
+                            "room_number": int(move_to_room)
+                        }).in_(
+                            "id",
+                            block_ids
+                        ).execute()
+
+                        # 3. Ryd optimizer-session
+                        st.session_state.pop("optimizer_suggestions", None)
+
+                        st.success("Flytning udført - kør analysen igen")
+
+                        st.rerun()
+                    # if st.button(
+                    #         f"Udfør mulighed {i}",
+                    #         key=f"execute_{booking_number}_{i}"
+                    # ):
+                    #     st.info("Execute test - ingen databaseændring")
+                    #
+                    #     st.write("Booking der skal placeres:")
+                    #     st.write({
+                    #         "booking_number": booking_number,
+                    #         "candidate_id": rec.get("candidate_id"),
+                    #         "target_room": target_room
+                    #     })
+                    #
+                    #     st.write("Blok der skal flyttes:")
+                    #     st.write({
+                    #         "source_room": rec.get("source_room"),
+                    #         "move_to_room": move_to_room,
+                    #         "booking_ids": rec.get("block_booking_ids"),
+                    #         "booking_numbers": rec.get("block_booking_numbers")
+                    #     })
+                    #     st.write("Blok der skal flyttes væk:")
+                    #
+                    #     for block in option.get("blocking_blocks", []):
+                    #         st.write({
+                    #             "room": move_to_room,
+                    #             "booking_ids": block["booking_ids"],
+                    #             "booking_numbers": block["booking_numbers"]
+                    #         })
