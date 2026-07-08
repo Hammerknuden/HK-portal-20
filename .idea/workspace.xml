@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="execute aktiv">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/level2_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/level2_optimizer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="execute aktiv layout systematiseret" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,14 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00719" summary="next step under blokke analyse">
-      <option name="closed" value="true" />
-      <created>1783149326900</created>
-      <option name="number" value="00719" />
-      <option name="presentableId" value="LOCAL-00719" />
-      <option name="project" value="LOCAL" />
-      <updated>1783149326900</updated>
     </task>
     <task id="LOCAL-00720" summary="minor excel update">
       <option name="closed" value="true" />
@@ -471,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783493659758</updated>
     </task>
-    <option name="localTasksCounter" value="768" />
+    <task id="LOCAL-00768" summary="execute aktiv layout systematiseret">
+      <option name="closed" value="true" />
+      <created>1783496129410</created>
+      <option name="number" value="00768" />
+      <option name="presentableId" value="LOCAL-00768" />
+      <option name="project" value="LOCAL" />
+      <updated>1783496129410</updated>
+    </task>
+    <option name="localTasksCounter" value="769" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -497,7 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fiiltrring af blocke så kun valid blocke bliver vist" />
     <MESSAGE value="data emil data validate" />
     <MESSAGE value="timeline small booking ipdate" />
     <MESSAGE value="timeline small booking update" />
@@ -522,6 +517,7 @@
     <MESSAGE value="1 test af execute funktionen" />
     <MESSAGE value="indentifiser de blokke der skal byttes med" />
     <MESSAGE value="execute aktiv" />
-    <option name="LAST_COMMIT_MESSAGE" value="execute aktiv" />
+    <MESSAGE value="execute aktiv layout systematiseret" />
+    <option name="LAST_COMMIT_MESSAGE" value="execute aktiv layout systematiseret" />
   </component>
 </project>

@@ -784,6 +784,7 @@ if suggestions:
 
         booking_number = rec.get("booking_number")
         status = rec.get("status")
+        st.write(rec)
 
         with st.container(border=True):
 
