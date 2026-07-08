@@ -785,12 +785,24 @@ def build_recommendations(
         target_block = target_lookup.get(candidate_id)
 
         if target_block is None:
-            recommendations.append({
-                "candidate_id": candidate_id,
-                "booking_number": booking_number,
-                "status": "No target block found",
-                "period_possible": coverage_item["period_possible"]
-            })
+
+            if coverage_item["period_possible"]:
+                recommendations.append({
+                    "candidate_id": candidate_id,
+                    "booking_number": booking_number,
+                    "status": "ready",
+                    "status_text": "Klar til flytning"
+                })
+
+            else:
+                recommendations.append({
+                    "candidate_id": candidate_id,
+                    "booking_number": booking_number,
+                    "status": "impossible",
+                    "status_text": "Ingen flyttemulighed",
+                    "reason": "Ingen target-blok fundet"
+                })
+
             continue
 
         destination_item = destination_lookup.get(candidate_id)
@@ -805,16 +817,12 @@ def build_recommendations(
         if destination_item is None:
             recommendations.append({
                 "booking_number": booking_number,
-                "status": "Ikke mulig",
+                "status": "impossible",
+                "status_text": "Ingen flyttemulighed",
                 "reason": "Ingen ledig kapacitet på mindst én dag"
             })
-            # recommendations.append({
-            #     "candidate_id": candidate_id,
-            #     "booking_number": booking_number,
-            #     "status": "No destination analysis found",
-            #     "period_possible": coverage_item["period_possible"]
-            # })
             continue
+
         destinations = destination_item["destination_periods"]
 
         destination_options = []
@@ -841,16 +849,14 @@ def build_recommendations(
         recommendations.append({
             "booking_number": booking_number,
             "candidate_id": candidate_id,
-            "status": "Mulig",
+            "status": "rearrangement",
+            "status_text": "Kræver omrokering",
 
             "source_room": target_block["block"]["room_number"],
             "target_room": target_block["target_room"],
 
-            "block_booking_ids":
-                target_block["block"]["booking_ids"],
-
-            "block_booking_numbers":
-                target_block["block"]["booking_numbers"],
+            "block_booking_ids": target_block["block"]["booking_ids"],
+            "block_booking_numbers": target_block["block"]["booking_numbers"],
 
             "options": [
                 {
@@ -861,7 +867,6 @@ def build_recommendations(
                 }
                 for option in destination_options
             ]
-
         })
 
     return recommendations

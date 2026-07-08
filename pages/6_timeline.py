@@ -789,10 +789,15 @@ if suggestions:
 
             st.markdown(f"### Booking {booking_number}")
 
-            if status != "Mulig":
-                st.warning(
-                    rec.get("reason", status)
-                )
+            if status == "ready":
+                st.success("🟢 Klar til flytning")
+                continue
+
+            elif status == "rearrangement":
+                st.info("🔵 Kræver omrokering")
+
+            else:
+                st.error("🔴 Ingen flyttemulighed")
                 continue
 
             target_room = rec.get("target_room")
@@ -860,31 +865,3 @@ if suggestions:
                         st.success("Flytning udført - kør analysen igen")
 
                         st.rerun()
-                    # if st.button(
-                    #         f"Udfør mulighed {i}",
-                    #         key=f"execute_{booking_number}_{i}"
-                    # ):
-                    #     st.info("Execute test - ingen databaseændring")
-                    #
-                    #     st.write("Booking der skal placeres:")
-                    #     st.write({
-                    #         "booking_number": booking_number,
-                    #         "candidate_id": rec.get("candidate_id"),
-                    #         "target_room": target_room
-                    #     })
-                    #
-                    #     st.write("Blok der skal flyttes:")
-                    #     st.write({
-                    #         "source_room": rec.get("source_room"),
-                    #         "move_to_room": move_to_room,
-                    #         "booking_ids": rec.get("block_booking_ids"),
-                    #         "booking_numbers": rec.get("block_booking_numbers")
-                    #     })
-                    #     st.write("Blok der skal flyttes væk:")
-                    #
-                    #     for block in option.get("blocking_blocks", []):
-                    #         st.write({
-                    #             "room": move_to_room,
-                    #             "booking_ids": block["booking_ids"],
-                    #             "booking_numbers": block["booking_numbers"]
-                    #         })

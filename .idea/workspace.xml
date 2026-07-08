@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="indentifiser de blokke der skal byttes med">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="execute aktiv">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/level2_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/level2_optimizer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,14 +78,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00718" summary="next step under blokke analyse debug">
-      <option name="closed" value="true" />
-      <created>1783149036776</created>
-      <option name="number" value="00718" />
-      <option name="presentableId" value="LOCAL-00718" />
-      <option name="project" value="LOCAL" />
-      <updated>1783149036776</updated>
     </task>
     <task id="LOCAL-00719" summary="next step under blokke analyse">
       <option name="closed" value="true" />
@@ -470,7 +463,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783459995085</updated>
     </task>
-    <option name="localTasksCounter" value="767" />
+    <task id="LOCAL-00767" summary="execute aktiv">
+      <option name="closed" value="true" />
+      <created>1783493659757</created>
+      <option name="number" value="00767" />
+      <option name="presentableId" value="LOCAL-00767" />
+      <option name="project" value="LOCAL" />
+      <updated>1783493659758</updated>
+    </task>
+    <option name="localTasksCounter" value="768" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -496,7 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="logik ændret nu ser vi på missing days" />
     <MESSAGE value="fiiltrring af blocke så kun valid blocke bliver vist" />
     <MESSAGE value="data emil data validate" />
     <MESSAGE value="timeline small booking ipdate" />
@@ -521,6 +521,7 @@
     <MESSAGE value="event neden for slider i  timeline" />
     <MESSAGE value="1 test af execute funktionen" />
     <MESSAGE value="indentifiser de blokke der skal byttes med" />
-    <option name="LAST_COMMIT_MESSAGE" value="indentifiser de blokke der skal byttes med" />
+    <MESSAGE value="execute aktiv" />
+    <option name="LAST_COMMIT_MESSAGE" value="execute aktiv" />
   </component>
 </project>
