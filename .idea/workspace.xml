@@ -75,14 +75,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00720" summary="minor excel update">
-      <option name="closed" value="true" />
-      <created>1783180054780</created>
-      <option name="number" value="00720" />
-      <option name="presentableId" value="LOCAL-00720" />
-      <option name="project" value="LOCAL" />
-      <updated>1783180054781</updated>
-    </task>
     <task id="LOCAL-00721" summary="partiel block test">
       <option name="closed" value="true" />
       <created>1783230908625</created>
@@ -467,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783496129410</updated>
     </task>
-    <option name="localTasksCounter" value="769" />
+    <task id="LOCAL-00769" summary="execute aktiv layout systematiseret">
+      <option name="closed" value="true" />
+      <created>1783496493696</created>
+      <option name="number" value="00769" />
+      <option name="presentableId" value="LOCAL-00769" />
+      <option name="project" value="LOCAL" />
+      <updated>1783496493696</updated>
+    </task>
+    <option name="localTasksCounter" value="770" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
