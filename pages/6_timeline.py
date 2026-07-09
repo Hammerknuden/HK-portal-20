@@ -360,12 +360,6 @@ if not df.empty:
     plot_df["checkin_date"] = pd.to_datetime(plot_df["checkin_date"])
     plot_df["checkout_date"] = pd.to_datetime(plot_df["checkout_date"])
 
-    plot_df = plot_df.sort_values("room_sort")
-
-    plot_df["booking_number"] = plot_df["booking_number"].astype(str)
-    plot_df["checkin_date"] = pd.to_datetime(plot_df["checkin_date"])
-    plot_df["checkout_date"] = pd.to_datetime(plot_df["checkout_date"])
-
     room_labels = {
         1: "Værelse 1",
         2: "Værelse 2",
@@ -381,56 +375,12 @@ if not df.empty:
         .astype(int)
         .map(room_labels)
     )
-#hvis der er brug for debug timeline fjern comment fra næste blok
 
-    #debug = st.checkbox("Debug timeline")
-
-    # if debug:
-    #     st.write("Antal rækker:", len(plot_df))
-    #
-    #     st.write(
-    #         df[
-    #             ["id",
-    #              "booking_number",
-    #              "room_number"]
-    #         ].head(20)
-    #     )
-    #
-    #     st.write(
-    #         "Unikke værelser:",
-    #         sorted(
-    #             plot_df["room_number"]
-    #             .astype(str)
-    #             .unique()
-    #         )
-    #     )
-
-        # st.write(
-        #     "Seneste bookinger:"
-        # )
-        #
-        # st.dataframe(
-        #     df.sort_values(
-        #         "id",
-        #         ascending=False
-        #     ).head(10)
-        # )
     plot_df_display = plot_df.copy()
 
     if len(plot_df_display) > 0:
 
         dummy_date = plot_df_display["checkin_date"].min()
-
-        room_labels = {
-            1: "Værelse 1",
-            2: "Værelse 2",
-            3: "Værelse 3",
-            4: "Værelse 4",
-            5: "Værelse 5",
-            6: "Privat",
-            7: "Temporary",
-        }
-
         dummy_rows = []
 
         for room_no, room_label in room_labels.items():
@@ -449,38 +399,6 @@ if not df.empty:
                 [plot_df_display, pd.DataFrame(dummy_rows)],
                 ignore_index=True
             )
-    # if len(plot_df_display) > 0:
-    #
-    #     dummy_date = plot_df_display["checkin_date"].min()
-    #
-    #     dummy_rows = []
-    #
-    #     for room in [
-    #         "Værelse 1",
-    #         "Værelse 2",
-    #         "Værelse 3",
-    #         "Værelse 4",
-    #         "Værelse 5",
-    #         "Værelse 6",
-    #         "Værelse 7",
-    #     ]:
-    #
-    #         if room not in plot_df_display["room_number"].unique():
-    #             room_no = int(room.split()[-1])
-    #
-    #             dummy_rows.append({
-    #                 "room_number": room,
-    #                 "checkin_date": dummy_date,
-    #                 "checkout_date": dummy_date + pd.Timedelta(days=1),
-    #                 "booking_number": f"DUMMY_{room_no}",
-    #                 "room_sort": room_no
-    #             })
-    #
-    #     if dummy_rows:
-    #         plot_df_display = pd.concat(
-    #             [plot_df_display, pd.DataFrame(dummy_rows)],
-    #             ignore_index=True
-    #         )
 
     fig = px.timeline(
         plot_df_display,
@@ -492,7 +410,20 @@ if not df.empty:
         text="booking_number",
         color_discrete_sequence=px.colors.qualitative.Dark24
     )
+    room_order = [
+        "Værelse 1",
+        "Værelse 2",
+        "Værelse 3",
+        "Værelse 4",
+        "Værelse 5",
+        "Privat",
+        "Temporary",
+    ]
 
+    fig.update_yaxes(
+        categoryorder="array",
+        categoryarray=room_order[::-1]
+    )
     # Ugenumre som lodrette mandagslinjer
     mandage = pd.date_range(
         plot_df_display["checkin_date"].min(),
