@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="big change fra vær6 og 7 nye navne nye labels">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="editorial dobbel tekst" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,14 +74,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00730" summary="level 2 layout">
-      <option name="closed" value="true" />
-      <created>1783274619462</created>
-      <option name="number" value="00730" />
-      <option name="presentableId" value="LOCAL-00730" />
-      <option name="project" value="LOCAL" />
-      <updated>1783274619463</updated>
     </task>
     <task id="LOCAL-00731" summary="level 2 layout">
       <option name="closed" value="true" />
@@ -470,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783582527756</updated>
     </task>
-    <option name="localTasksCounter" value="779" />
+    <task id="LOCAL-00779" summary="editorial dobbel tekst">
+      <option name="closed" value="true" />
+      <created>1783583926510</created>
+      <option name="number" value="00779" />
+      <option name="presentableId" value="LOCAL-00779" />
+      <option name="project" value="LOCAL" />
+      <updated>1783583926510</updated>
+    </task>
+    <option name="localTasksCounter" value="780" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -496,7 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="partiel block test" />
     <MESSAGE value="candidates for partial blockmove" />
     <MESSAGE value="oprydning" />
     <MESSAGE value="test partal block move" />
@@ -521,6 +517,7 @@
     <MESSAGE value="debug commet" />
     <MESSAGE value="dummy reduced og vær 7 til temp vær 6 pvt" />
     <MESSAGE value="big change fra vær6 og 7 nye navne nye labels" />
-    <option name="LAST_COMMIT_MESSAGE" value="big change fra vær6 og 7 nye navne nye labels" />
+    <MESSAGE value="editorial dobbel tekst" />
+    <option name="LAST_COMMIT_MESSAGE" value="editorial dobbel tekst" />
   </component>
 </project>

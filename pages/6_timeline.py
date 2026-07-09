@@ -366,45 +366,6 @@ if not df.empty:
     plot_df["booking_number"] = plot_df["booking_number"].astype(str)
     plot_df["checkin_date"] = pd.to_datetime(plot_df["checkin_date"])
     plot_df["checkout_date"] = pd.to_datetime(plot_df["checkout_date"])
-    # plot_df["room_sort"] = (
-    #     plot_df["room_number"]
-    #     .astype(str)
-    #     .str.extract(r"(\d+)", expand=False)
-    # )
-
-    # # Fjern rækker uden gyldigt værelsesnummer
-    # plot_df = plot_df[
-    #     plot_df["room_sort"].notna()
-    # ]
-    #
-    # plot_df["room_sort"] = plot_df["room_sort"].astype(int)
-    #
-    # plot_df["room_number"] = (
-    #         "Værelse "
-    #         + plot_df["room_number"].astype(str)
-    # )
-    #
-    # # Fjern værelse 0
-    # plot_df = plot_df[
-    #     plot_df["room_sort"] > 0
-    # ]
-    #
-    # # Sortér værelserne numerisk
-    # plot_df = plot_df.sort_values("room_sort")
-    #
-    # plot_df["booking_number"] = plot_df["booking_number"].astype(str)
-    # plot_df["checkin_date"] = pd.to_datetime(plot_df["checkin_date"])
-    # plot_df["checkout_date"] = pd.to_datetime(plot_df["checkout_date"])
-    #
-    # room_labels = {
-    #     1: "Værelse 1",
-    #     2: "Værelse 2",
-    #     3: "Værelse 3",
-    #     4: "Værelse 4",
-    #     5: "Værelse 5",
-    #     6: "Privat",
-    #     7: "Temporary",
-    # }
 
     plot_df["room_number"] = (
         plot_df["room_sort"]
