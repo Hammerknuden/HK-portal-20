@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
+import datetime
 from datetime import timedelta
 from pathlib import Path
 import streamlit_authenticator as stauth
-import datetime
 import plotly.express as px
 from auth import require_login
 from common import init_session
@@ -470,26 +470,18 @@ if not df.empty:
             yshift=-18,
             font=dict(size=10, color="gray")
         )
-        # fig.add_annotation(
-        #     x=x,
-        #     y=0,
-        #     yref="paper",
-        #     text=f"{d.isocalendar().week}",
-        #     #text=f"Uge {d.isocalendar().week}",
-        #     showarrow=False,
-        #     yshift=-18
-        # )
+
 
     # Periodemarkeringer
-    fig.add_vrect(
-        x0="2026-05-22",
-        x1="2026-05-25",
-        fillcolor="lightgray",
-        opacity=0.25,
-        line_width=0,
-        annotation_text="Pinse",
-        annotation_position="bottom left"
-    )
+    # fig.add_vrect(
+    #     x0="2026-05-22",
+    #     x1="2026-05-25",
+    #     fillcolor="lightgray",
+    #     opacity=0.25,
+    #     line_width=0,
+    #     annotation_text="Pinse",
+    #     annotation_position="bottom left"
+    # )
     # Tving rækkefølgen på værelserne
 
     room_order = [

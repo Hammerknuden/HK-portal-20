@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="status commit layout og execute virker">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" afterDir="false" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excel update">
+      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,14 +76,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00723" summary="partiel block test">
-      <option name="closed" value="true" />
-      <created>1783232638898</created>
-      <option name="number" value="00723" />
-      <option name="presentableId" value="LOCAL-00723" />
-      <option name="project" value="LOCAL" />
-      <updated>1783232638899</updated>
     </task>
     <task id="LOCAL-00724" summary="candidates for partial blockmove">
       <option name="closed" value="true" />
@@ -470,7 +461,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783496943714</updated>
     </task>
-    <option name="localTasksCounter" value="772" />
+    <task id="LOCAL-00772" summary="excel update">
+      <option name="closed" value="true" />
+      <created>1783578644991</created>
+      <option name="number" value="00772" />
+      <option name="presentableId" value="LOCAL-00772" />
+      <option name="project" value="LOCAL" />
+      <updated>1783578644991</updated>
+    </task>
+    <option name="localTasksCounter" value="773" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -498,7 +497,6 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="timeline small booking ipdate" />
     <MESSAGE value="timeline small booking update" />
-    <MESSAGE value="excel update" />
     <MESSAGE value="next step under blokke analyse debug" />
     <MESSAGE value="next step under blokke analyse" />
     <MESSAGE value="minor excel update" />
@@ -521,6 +519,7 @@
     <MESSAGE value="execute aktiv" />
     <MESSAGE value="execute aktiv layout systematiseret" />
     <MESSAGE value="status commit layout og execute virker" />
-    <option name="LAST_COMMIT_MESSAGE" value="status commit layout og execute virker" />
+    <MESSAGE value="excel update" />
+    <option name="LAST_COMMIT_MESSAGE" value="excel update" />
   </component>
 </project>
