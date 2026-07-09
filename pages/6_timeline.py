@@ -360,38 +360,40 @@ if not df.empty:
     plot_df["checkin_date"] = pd.to_datetime(plot_df["checkin_date"])
     plot_df["checkout_date"] = pd.to_datetime(plot_df["checkout_date"])
 
-    debug = st.checkbox("Debug timeline")
+#hvis der er brug for debug timeline fjern comment fra næste blok
 
-    if debug:
-        st.write("Antal rækker:", len(plot_df))
+    #debug = st.checkbox("Debug timeline")
 
-        st.write(
-            df[
-                ["id",
-                 "booking_number",
-                 "room_number"]
-            ].head(20)
-        )
+    # if debug:
+    #     st.write("Antal rækker:", len(plot_df))
+    #
+    #     st.write(
+    #         df[
+    #             ["id",
+    #              "booking_number",
+    #              "room_number"]
+    #         ].head(20)
+    #     )
+    #
+    #     st.write(
+    #         "Unikke værelser:",
+    #         sorted(
+    #             plot_df["room_number"]
+    #             .astype(str)
+    #             .unique()
+    #         )
+    #     )
 
-        st.write(
-            "Unikke værelser:",
-            sorted(
-                plot_df["room_number"]
-                .astype(str)
-                .unique()
-            )
-        )
-
-        st.write(
-            "Seneste bookinger:"
-        )
-
-        st.dataframe(
-            df.sort_values(
-                "id",
-                ascending=False
-            ).head(10)
-        )
+        # st.write(
+        #     "Seneste bookinger:"
+        # )
+        #
+        # st.dataframe(
+        #     df.sort_values(
+        #         "id",
+        #         ascending=False
+        #     ).head(10)
+        # )
     plot_df_display = plot_df.copy()
 
     if len(plot_df_display) > 0:
