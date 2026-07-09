@@ -564,7 +564,12 @@ if not df.empty:
         height=400
     )
 
-    fig.update_xaxes(
+    zoom_today = st.checkbox(
+        "Zoom omkring dags dato",
+        value=False
+    )
+
+    xaxis_settings = dict(
         rangeslider_visible=True,
         tickformat="%d-%m",
         showgrid=True,
@@ -572,6 +577,31 @@ if not df.empty:
         gridwidth=1,
         dtick="D7"
     )
+
+    if zoom_today:
+        xaxis_settings["range"] = [
+            pd.Timestamp.today() - pd.Timedelta(days=7),
+            pd.Timestamp.today() + pd.Timedelta(days=21)
+        ]
+
+    fig.update_xaxes(**xaxis_settings)
+    # fig.update_layout(
+    #     plot_bgcolor="white",
+    #     paper_bgcolor="white",
+    #     xaxis_title="Dato",
+    #     yaxis_title="",
+    #     showlegend=False,
+    #     height=400
+    # )
+    #
+    # fig.update_xaxes(
+    #     rangeslider_visible=True,
+    #     tickformat="%d-%m",
+    #     showgrid=True,
+    #     gridcolor="lightgray",
+    #     gridwidth=1,
+    #     dtick="D7"
+    # )
 
     st.plotly_chart(
         fig,
