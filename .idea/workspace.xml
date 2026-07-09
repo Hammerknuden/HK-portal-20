@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="dummy reduced og vær 7 til temp vær 6 pvt" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="big change fra vær6 og 7 nye navne nye labels">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,14 +77,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00728" summary="test partal block move">
-      <option name="closed" value="true" />
-      <created>1783238509661</created>
-      <option name="number" value="00728" />
-      <option name="presentableId" value="LOCAL-00728" />
-      <option name="project" value="LOCAL" />
-      <updated>1783238509661</updated>
     </task>
     <task id="LOCAL-00729" summary="test partal block move">
       <option name="closed" value="true" />
@@ -467,7 +462,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783581302115</updated>
     </task>
-    <option name="localTasksCounter" value="777" />
+    <task id="LOCAL-00777" summary="big change fra vær6 og 7 nye navne nye labels">
+      <option name="closed" value="true" />
+      <created>1783581979821</created>
+      <option name="number" value="00777" />
+      <option name="presentableId" value="LOCAL-00777" />
+      <option name="project" value="LOCAL" />
+      <updated>1783581979821</updated>
+    </task>
+    <option name="localTasksCounter" value="778" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -493,7 +496,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="minor excel update" />
     <MESSAGE value="partiel block test" />
     <MESSAGE value="candidates for partial blockmove" />
     <MESSAGE value="oprydning" />
@@ -518,6 +520,7 @@
     <MESSAGE value="zoom på timeline" />
     <MESSAGE value="debug commet" />
     <MESSAGE value="dummy reduced og vær 7 til temp vær 6 pvt" />
-    <option name="LAST_COMMIT_MESSAGE" value="dummy reduced og vær 7 til temp vær 6 pvt" />
+    <MESSAGE value="big change fra vær6 og 7 nye navne nye labels" />
+    <option name="LAST_COMMIT_MESSAGE" value="big change fra vær6 og 7 nye navne nye labels" />
   </component>
 </project>

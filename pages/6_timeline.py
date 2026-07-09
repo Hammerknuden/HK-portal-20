@@ -410,6 +410,7 @@ if not df.empty:
         text="booking_number",
         color_discrete_sequence=px.colors.qualitative.Dark24
     )
+
     room_order = [
         "Værelse 1",
         "Værelse 2",
@@ -457,17 +458,6 @@ if not df.empty:
             font=dict(size=10, color="gray")
         )
 
-
-    # Periodemarkeringer
-    # fig.add_vrect(
-    #     x0="2026-05-22",
-    #     x1="2026-05-25",
-    #     fillcolor="lightgray",
-    #     opacity=0.25,
-    #     line_width=0,
-    #     annotation_text="Pinse",
-    #     annotation_position="bottom left"
-    # )
     # Tving rækkefølgen på værelserne
 
     room_order = [
@@ -476,9 +466,14 @@ if not df.empty:
         "Værelse 3",
         "Værelse 4",
         "Værelse 5",
-        "Værelse 6",
-        "Værelse 7",
+        "Privat",
+        "Temporary",
     ]
+
+    fig.update_yaxes(
+        categoryorder="array",
+        categoryarray=room_order[::-1]
+    )
 
     # Hent kalender-events fra Supabase
     events_result = (
