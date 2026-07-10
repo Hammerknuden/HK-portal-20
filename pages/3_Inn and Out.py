@@ -13,7 +13,8 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib import colors
 
 st.set_page_config(page_title="Inns and Outs", layout="wide")
-#require_login()
+
+require_login()
 
 st.subheader("De næste dages ankomster og afrejser ")
 # Date inputs fra Streamlit
