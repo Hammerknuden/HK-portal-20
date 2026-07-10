@@ -73,7 +73,7 @@ if st.button("Gem"):
     st.success(f"{new_year} gemt!")
 
 st.header("Administrer events")
-st.write("brug blue til events som wonder, FM , brug Green til familie, brug grey til hellingdage ")
+st.write("Brug farven 'blue' til events som wonder, FM , brug 'green' til familie og brug 'grey' til helligdage ")
 
 
 # -------------------------------------------------
