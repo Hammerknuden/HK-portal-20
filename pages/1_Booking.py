@@ -739,6 +739,7 @@ if edit:
             supabase
             .table("hk_dtb")
             .select("*")
+            .eq("season", int(year))
             .execute()
         )
 
