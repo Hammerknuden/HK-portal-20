@@ -2,9 +2,22 @@ import pandas as pd
 import streamlit as st
 from datetime import date
 from auth import require_login, require_admin
+from supabase import create_client
+
+
 st.set_page_config(page_title="Setup", layout="wide")
 require_login()
 require_admin()
+
+SUPABASE_URL = st.secrets["SUPABASE_URL"]
+SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
+
+supabase = create_client(
+    SUPABASE_URL,
+    SUPABASE_KEY
+)
+
+st.success("Forbindelse til Supabase OK")
 
 st.title("Setup ⚙️")
 
