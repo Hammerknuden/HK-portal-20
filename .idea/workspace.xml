@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="filter 2027 fra 2026 downloads">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="og in på inn and outs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/5_cleaning.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/5_breakfirst.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +58,8 @@
     "Python.databaseopslag.executor": "Run",
     "Python.level2_optimizer.executor": "Run",
     "Python.streamlit_app.executor": "Run",
-    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/pages/7_setup.py",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/pages/5_cleaning.py",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
@@ -76,22 +78,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00737" summary="level 2 execute options">
-      <option name="closed" value="true" />
-      <created>1783320311969</created>
-      <option name="number" value="00737" />
-      <option name="presentableId" value="LOCAL-00737" />
-      <option name="project" value="LOCAL" />
-      <updated>1783320311969</updated>
-    </task>
-    <task id="LOCAL-00738" summary="Add Level 2 optimizer UI and prepare execute data">
-      <option name="closed" value="true" />
-      <created>1783321598793</created>
-      <option name="number" value="00738" />
-      <option name="presentableId" value="LOCAL-00738" />
-      <option name="project" value="LOCAL" />
-      <updated>1783321598794</updated>
     </task>
     <task id="LOCAL-00739" summary="small edit i booking editor">
       <option name="closed" value="true" />
@@ -469,7 +455,23 @@
       <option name="project" value="LOCAL" />
       <updated>1783687492916</updated>
     </task>
-    <option name="localTasksCounter" value="786" />
+    <task id="LOCAL-00786" summary="excel 2027 update">
+      <option name="closed" value="true" />
+      <created>1783697828587</created>
+      <option name="number" value="00786" />
+      <option name="presentableId" value="LOCAL-00786" />
+      <option name="project" value="LOCAL" />
+      <updated>1783697828588</updated>
+    </task>
+    <task id="LOCAL-00787" summary="og in på inn and outs">
+      <option name="closed" value="true" />
+      <created>1783698273219</created>
+      <option name="number" value="00787" />
+      <option name="presentableId" value="LOCAL-00787" />
+      <option name="project" value="LOCAL" />
+      <updated>1783698273219</updated>
+    </task>
+    <option name="localTasksCounter" value="788" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -495,8 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="level 2 layout" />
-    <MESSAGE value="level 2 execute options" />
     <MESSAGE value="Add Level 2 optimizer UI and prepare execute data" />
     <MESSAGE value="small edit i booking editor" />
     <MESSAGE value="time line info" />
@@ -520,6 +520,8 @@
     <MESSAGE value="status timeline name update test ok" />
     <MESSAGE value="rediger events" />
     <MESSAGE value="filter 2027 fra 2026 downloads" />
-    <option name="LAST_COMMIT_MESSAGE" value="filter 2027 fra 2026 downloads" />
+    <MESSAGE value="excel 2027 update" />
+    <MESSAGE value="og in på inn and outs" />
+    <option name="LAST_COMMIT_MESSAGE" value="og in på inn and outs" />
   </component>
 </project>
