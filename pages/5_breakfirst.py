@@ -210,13 +210,13 @@ if not df.empty:
 
         breakfast_df = pd.DataFrame(breakfast_rows)
 
-        st.subheader("Morgenmadsoversigt")
-
-        st.dataframe(
-            breakfast_df,
-            hide_index=True,
-            use_container_width=True
-        )
+        # st.subheader("Morgenmadsoversigt")
+        #
+        # st.dataframe(
+        #     breakfast_df,
+        #     hide_index=True,
+        #     use_container_width=True
+        # )
         buffer = BytesIO()
 
         doc = SimpleDocTemplate(buffer)
