@@ -15,7 +15,8 @@ from reportlab.platypus import (
     SimpleDocTemplate,
     Table,
     TableStyle,
-    Paragraph
+    Paragraph,
+    Spacer
 )
 
 st.set_page_config(page_title="Cleaning plan", layout="wide")
@@ -141,6 +142,9 @@ if not df.empty:
             f"{check_dato_slut.strftime('%d-%m-%Y')}",
             styles["Normal"]
         )
+    )
+    elements.append(
+        Spacer(1, 12)
     )
      # elements.append(
      #     Paragraph(
