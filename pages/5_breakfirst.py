@@ -142,14 +142,14 @@ if not df.empty:
             styles["Normal"]
         )
     )
-    # elements.append(
-    #     Paragraph(
-    #         "<b>Morgenmadsoversigt</b>",
-    #         styles["Heading1"]
-    #     )
-    # )
-    #
-    # table_data = [["Dato", "Morgenmadsgæster"]]
+     elements.append(
+         Paragraph(
+             "<b>Morgenmadsoversigt</b>",
+             styles["Heading1"]
+         )
+     )
+
+     table_data = [["Dato", "Morgenmadsgæster"]]
 
     # for _, row in breakfast_df.iterrows():
     #     table_data.append([
