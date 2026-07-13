@@ -127,26 +127,6 @@ if not df.empty:
         )
     )
 
-    # elements.append(
-    #     Paragraph(
-    #         "<b>Morgenmadsoversigt</b>",
-    #         styles["Heading1"]
-    #     )
-    # )
-    #
-    # elements.append(
-    #     Paragraph(
-    #         f"Periode: "
-    #         f"{check_dato_start.strftime('%d-%m-%Y')} "
-    #         f"til "
-    #         f"{check_dato_slut.strftime('%d-%m-%Y')}",
-    #         styles["Normal"]
-    #     )
-    # )
-    # elements.append(
-    #     Spacer(1, 24)
-    # )
-
     check_dato_slut = check_dato_start + timedelta(days=antal_dage)
 
     # Hent data fra Supabase
@@ -210,13 +190,6 @@ if not df.empty:
 
         breakfast_df = pd.DataFrame(breakfast_rows)
 
-        # st.subheader("Morgenmadsoversigt")
-        #
-        # st.dataframe(
-        #     breakfast_df,
-        #     hide_index=True,
-        #     use_container_width=True
-        # )
         buffer = BytesIO()
 
         doc = SimpleDocTemplate(buffer)
@@ -251,12 +224,6 @@ if not df.empty:
         elements.append(
             Spacer(1, 24)
         )
-        # elements.append(
-        #     Paragraph(
-        #         "<b>Morgenmadsoversigt</b>",
-        #         styles["Heading1"]
-        #     )
-        # )
 
         table_data = [["Dato", "Morgenmadsgæster"]]
 
