@@ -142,22 +142,22 @@ if not df.empty:
             styles["Normal"]
         )
     )
-     elements.append(
-         Paragraph(
-             "<b>Morgenmadsoversigt</b>",
-             styles["Heading1"]
-         )
-     )
+     # elements.append(
+     #     Paragraph(
+     #         "<b>Morgenmadsoversigt</b>",
+     #         styles["Heading1"]
+     #     )
+     # )
 
      table_data = [["Dato", "Morgenmadsgæster"]]
 
-    # for _, row in breakfast_df.iterrows():
-    #     table_data.append([
-    #         row["Dato"].strftime("%d-%m-%Y"),
-    #         str(row["Morgenmadsgæster"])
-    #     ])
+     for _, row in breakfast_df.iterrows():
+         table_data.append([
+             row["Dato"].strftime("%d-%m-%Y"),
+             str(row["Morgenmadsgæster"])
+         ])
 
-    #table = Table(table_data)
+    table = Table(table_data)
 
     table.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), colors.lightgrey),

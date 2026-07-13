@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="pdf til bf">
-      <change beforePath="$PROJECT_DIR$/pages/5_breakfirst.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/5_breakfirst.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="pdf til bf" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,38 +75,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00745" summary="time line info">
-      <option name="closed" value="true" />
-      <created>1783359083326</created>
-      <option name="number" value="00745" />
-      <option name="presentableId" value="LOCAL-00745" />
-      <option name="project" value="LOCAL" />
-      <updated>1783359083326</updated>
-    </task>
-    <task id="LOCAL-00746" summary="time line info">
-      <option name="closed" value="true" />
-      <created>1783359142322</created>
-      <option name="number" value="00746" />
-      <option name="presentableId" value="LOCAL-00746" />
-      <option name="project" value="LOCAL" />
-      <updated>1783359142322</updated>
-    </task>
-    <task id="LOCAL-00747" summary="time line info">
-      <option name="closed" value="true" />
-      <created>1783359364248</created>
-      <option name="number" value="00747" />
-      <option name="presentableId" value="LOCAL-00747" />
-      <option name="project" value="LOCAL" />
-      <updated>1783359364248</updated>
-    </task>
-    <task id="LOCAL-00748" summary="time line info">
-      <option name="closed" value="true" />
-      <created>1783360141442</created>
-      <option name="number" value="00748" />
-      <option name="presentableId" value="LOCAL-00748" />
-      <option name="project" value="LOCAL" />
-      <updated>1783360141442</updated>
     </task>
     <task id="LOCAL-00749" summary="time line info">
       <option name="closed" value="true" />
@@ -470,7 +436,39 @@
       <option name="project" value="LOCAL" />
       <updated>1783928968426</updated>
     </task>
-    <option name="localTasksCounter" value="794" />
+    <task id="LOCAL-00794" summary="pdf til bf">
+      <option name="closed" value="true" />
+      <created>1783929402338</created>
+      <option name="number" value="00794" />
+      <option name="presentableId" value="LOCAL-00794" />
+      <option name="project" value="LOCAL" />
+      <updated>1783929402339</updated>
+    </task>
+    <task id="LOCAL-00795" summary="pdf til bf">
+      <option name="closed" value="true" />
+      <created>1783929491034</created>
+      <option name="number" value="00795" />
+      <option name="presentableId" value="LOCAL-00795" />
+      <option name="project" value="LOCAL" />
+      <updated>1783929491034</updated>
+    </task>
+    <task id="LOCAL-00796" summary="pdf til bf">
+      <option name="closed" value="true" />
+      <created>1783929518283</created>
+      <option name="number" value="00796" />
+      <option name="presentableId" value="LOCAL-00796" />
+      <option name="project" value="LOCAL" />
+      <updated>1783929518283</updated>
+    </task>
+    <task id="LOCAL-00797" summary="pdf til bf">
+      <option name="closed" value="true" />
+      <created>1783929622607</created>
+      <option name="number" value="00797" />
+      <option name="presentableId" value="LOCAL-00797" />
+      <option name="project" value="LOCAL" />
+      <updated>1783929622607</updated>
+    </task>
+    <option name="localTasksCounter" value="798" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
