@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="inn out kommentar">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="pdf til bf">
+      <change beforePath="$PROJECT_DIR$/pages/5_breakfirst.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/5_breakfirst.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,14 +77,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00744" summary="time line info">
-      <option name="closed" value="true" />
-      <created>1783357276915</created>
-      <option name="number" value="00744" />
-      <option name="presentableId" value="LOCAL-00744" />
-      <option name="project" value="LOCAL" />
-      <updated>1783357276915</updated>
     </task>
     <task id="LOCAL-00745" summary="time line info">
       <option name="closed" value="true" />
@@ -470,7 +462,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783927433947</updated>
     </task>
-    <option name="localTasksCounter" value="793" />
+    <task id="LOCAL-00793" summary="pdf til bf">
+      <option name="closed" value="true" />
+      <created>1783928968426</created>
+      <option name="number" value="00793" />
+      <option name="presentableId" value="LOCAL-00793" />
+      <option name="project" value="LOCAL" />
+      <updated>1783928968426</updated>
+    </task>
+    <option name="localTasksCounter" value="794" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -496,7 +496,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="tilføjelse af week nr." />
     <MESSAGE value="dtb til events på kallender" />
     <MESSAGE value="events w color on" />
     <MESSAGE value="header chang subheader" />
@@ -521,6 +520,7 @@
     <MESSAGE value="excel update" />
     <MESSAGE value="overskrift morgenmad" />
     <MESSAGE value="inn out kommentar" />
-    <option name="LAST_COMMIT_MESSAGE" value="inn out kommentar" />
+    <MESSAGE value="pdf til bf" />
+    <option name="LAST_COMMIT_MESSAGE" value="pdf til bf" />
   </component>
 </project>

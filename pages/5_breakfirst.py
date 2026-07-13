@@ -121,12 +121,35 @@ if not df.empty:
 
     elements.append(
         Paragraph(
+            "<b>Hammerknuden</b>",
+            styles["Title"]
+        )
+    )
+
+    elements.append(
+        Paragraph(
             "<b>Morgenmadsoversigt</b>",
             styles["Heading1"]
         )
     )
 
-    table_data = [["Dato", "Morgenmadsgæster"]]
+    elements.append(
+        Paragraph(
+            f"Periode: "
+            f"{check_dato_start.strftime('%d-%m-%Y')} "
+            f"til "
+            f"{check_dato_slut.strftime('%d-%m-%Y')}",
+            styles["Normal"]
+        )
+    )
+    # elements.append(
+    #     Paragraph(
+    #         "<b>Morgenmadsoversigt</b>",
+    #         styles["Heading1"]
+    #     )
+    # )
+    #
+    # table_data = [["Dato", "Morgenmadsgæster"]]
 
     for _, row in breakfast_df.iterrows():
         table_data.append([
