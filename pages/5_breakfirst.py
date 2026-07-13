@@ -12,7 +12,7 @@ from supabase import create_client
 st.set_page_config(page_title="Cleaning plan", layout="wide")
 require_login()
 
-st.subheader("suspended - under cunstruktion ")
+st.subheader("Antal personer til morgenmad ")
 
 load_dotenv()
 
