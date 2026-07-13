@@ -143,9 +143,9 @@ if not df.empty:
     #         styles["Normal"]
     #     )
     # )
-    elements.append(
-        Spacer(1, 24)
-    )
+    # elements.append(
+    #     Spacer(1, 24)
+    # )
 
     check_dato_slut = check_dato_start + timedelta(days=antal_dage)
 
@@ -247,6 +247,9 @@ if not df.empty:
                 f"{check_dato_slut.strftime('%d-%m-%Y')}",
                 styles["Normal"]
             )
+        )
+        elements.append(
+            Spacer(1, 24)
         )
         # elements.append(
         #     Paragraph(
