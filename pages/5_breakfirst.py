@@ -127,22 +127,22 @@ if not df.empty:
         )
     )
 
-    elements.append(
-        Paragraph(
-            "<b>Morgenmadsoversigt</b>",
-            styles["Heading1"]
-        )
-    )
-
-    elements.append(
-        Paragraph(
-            f"Periode: "
-            f"{check_dato_start.strftime('%d-%m-%Y')} "
-            f"til "
-            f"{check_dato_slut.strftime('%d-%m-%Y')}",
-            styles["Normal"]
-        )
-    )
+    # elements.append(
+    #     Paragraph(
+    #         "<b>Morgenmadsoversigt</b>",
+    #         styles["Heading1"]
+    #     )
+    # )
+    #
+    # elements.append(
+    #     Paragraph(
+    #         f"Periode: "
+    #         f"{check_dato_start.strftime('%d-%m-%Y')} "
+    #         f"til "
+    #         f"{check_dato_slut.strftime('%d-%m-%Y')}",
+    #         styles["Normal"]
+    #     )
+    # )
     elements.append(
         Spacer(1, 12)
     )
