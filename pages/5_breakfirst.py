@@ -157,7 +157,7 @@ if not df.empty:
     #         str(row["Morgenmadsgæster"])
     #     ])
 
-    table = Table(table_data)
+    #table = Table(table_data)
 
     table.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), colors.lightgrey),
