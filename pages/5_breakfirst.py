@@ -8,6 +8,15 @@ from datetime import date, timedelta
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 from dotenv import load_dotenv
 from supabase import create_client
+from io import BytesIO
+from reportlab.lib import colors
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.platypus import (
+    SimpleDocTemplate,
+    Table,
+    TableStyle,
+    Paragraph
+)
 
 st.set_page_config(page_title="Cleaning plan", layout="wide")
 require_login()
@@ -101,6 +110,51 @@ if not df.empty:
         breakfast_df,
         hide_index=True,
         use_container_width=True
+    )
+    buffer = BytesIO()
+
+    doc = SimpleDocTemplate(buffer)
+
+    styles = getSampleStyleSheet()
+
+    elements = []
+
+    elements.append(
+        Paragraph(
+            "<b>Morgenmadsoversigt</b>",
+            styles["Heading1"]
+        )
+    )
+
+    table_data = [["Dato", "Morgenmadsgæster"]]
+
+    for _, row in breakfast_df.iterrows():
+        table_data.append([
+            row["Dato"].strftime("%d-%m-%Y"),
+            str(row["Morgenmadsgæster"])
+        ])
+
+    table = Table(table_data)
+
+    table.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), colors.lightgrey),
+        ("GRID", (0, 0), (-1, -1), 0.5, colors.black),
+        ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+        ("ALIGN", (1, 1), (-1, -1), "CENTER"),
+        ("BOTTOMPADDING", (0, 0), (-1, 0), 8),
+    ]))
+
+    elements.append(table)
+
+    doc.build(elements)
+
+    buffer.seek(0)
+
+    st.download_button(
+        "📄 Download morgenmadsoversigt (PDF)",
+        data=buffer,
+        file_name="morgenmadsoversigt.pdf",
+        mime="application/pdf"
     )
 
 else:
