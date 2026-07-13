@@ -80,6 +80,7 @@ if not df_ankomst.empty:
             "bed",
             "enkelt",
             "known",
+            "comments",
         ]
     ].rename(
         columns={
@@ -92,6 +93,7 @@ if not df_ankomst.empty:
             "bed": "Seng",
             "enkelt": "Enkelt",
             "known": "Kendt",
+            "comments": "Kommentar",
         }
     )
 

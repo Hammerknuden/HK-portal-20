@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="breakfirst page fra tidligere cleaning">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="overskrift morgenmad">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,7 +58,7 @@
     "Python.level2_optimizer.executor": "Run",
     "Python.streamlit_app.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/pages/5_cleaning.py",
+    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/pages/5_breakfirst.py",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
@@ -77,22 +77,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00740" summary="small edit i booking editor">
-      <option name="closed" value="true" />
-      <created>1783325329927</created>
-      <option name="number" value="00740" />
-      <option name="presentableId" value="LOCAL-00740" />
-      <option name="project" value="LOCAL" />
-      <updated>1783325329927</updated>
-    </task>
-    <task id="LOCAL-00741" summary="small edit i booking editor">
-      <option name="closed" value="true" />
-      <created>1783339727968</created>
-      <option name="number" value="00741" />
-      <option name="presentableId" value="LOCAL-00741" />
-      <option name="project" value="LOCAL" />
-      <updated>1783339727968</updated>
     </task>
     <task id="LOCAL-00742" summary="small edit i booking editor">
       <option name="closed" value="true" />
@@ -470,7 +454,23 @@
       <option name="project" value="LOCAL" />
       <updated>1783752720359</updated>
     </task>
-    <option name="localTasksCounter" value="789" />
+    <task id="LOCAL-00789" summary="excel update">
+      <option name="closed" value="true" />
+      <created>1783923773963</created>
+      <option name="number" value="00789" />
+      <option name="presentableId" value="LOCAL-00789" />
+      <option name="project" value="LOCAL" />
+      <updated>1783923773963</updated>
+    </task>
+    <task id="LOCAL-00790" summary="overskrift morgenmad">
+      <option name="closed" value="true" />
+      <created>1783924136848</created>
+      <option name="number" value="00790" />
+      <option name="presentableId" value="LOCAL-00790" />
+      <option name="project" value="LOCAL" />
+      <updated>1783924136848</updated>
+    </task>
+    <option name="localTasksCounter" value="791" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -496,7 +496,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="small edit i booking editor" />
     <MESSAGE value="time line info" />
     <MESSAGE value="tilføjelse af week nr." />
     <MESSAGE value="dtb til events på kallender" />
@@ -508,7 +507,6 @@
     <MESSAGE value="execute aktiv" />
     <MESSAGE value="execute aktiv layout systematiseret" />
     <MESSAGE value="status commit layout og execute virker" />
-    <MESSAGE value="excel update" />
     <MESSAGE value="fjerne fig.add_vrect fra pinse" />
     <MESSAGE value="zoom på timeline" />
     <MESSAGE value="debug commet" />
@@ -521,6 +519,8 @@
     <MESSAGE value="excel 2027 update" />
     <MESSAGE value="og in på inn and outs" />
     <MESSAGE value="breakfirst page fra tidligere cleaning" />
-    <option name="LAST_COMMIT_MESSAGE" value="breakfirst page fra tidligere cleaning" />
+    <MESSAGE value="excel update" />
+    <MESSAGE value="overskrift morgenmad" />
+    <option name="LAST_COMMIT_MESSAGE" value="overskrift morgenmad" />
   </component>
 </project>
