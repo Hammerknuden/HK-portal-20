@@ -146,19 +146,6 @@ if not df.empty:
     elements.append(
         Spacer(1, 12)
     )
-     # elements.append(
-     #     Paragraph(
-     #         "<b>Morgenmadsoversigt</b>",
-     #         styles["Heading1"]
-     #     )
-     # )
-    # check_dato_start = date.today()
-    #
-    # antal_dage = st.selectbox(
-    #     "Vis udcheckninger de næste dage",
-    #     [3, 5, 7, 9, 14],
-    #     index=0
-    # )
 
     check_dato_slut = check_dato_start + timedelta(days=antal_dage)
 
