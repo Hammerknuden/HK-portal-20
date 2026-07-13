@@ -144,7 +144,7 @@ if not df.empty:
     #     )
     # )
     elements.append(
-        Spacer(1, 12)
+        Spacer(1, 24)
     )
 
     check_dato_slut = check_dato_start + timedelta(days=antal_dage)

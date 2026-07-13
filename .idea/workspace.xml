@@ -32,34 +32,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Python.1_Booking.executor": "Run",
-    "Python.2_Setup.executor": "Run",
-    "Python.2_databaseopslag.executor": "Run",
-    "Python.2_setup.executor": "Run",
-    "Python.3_Ankomster.executor": "Run",
-    "Python.3_Inn and Out.executor": "Run",
-    "Python.3_ankomster.executor": "Run",
-    "Python.4_Booking_C_link.executor": "Run",
-    "Python.5_cleaning.executor": "Run",
-    "Python.6_callender.executor": "Run",
-    "Python.6_timeline.executor": "Run",
-    "Python.8_statestik.executor": "Run",
-    "Python.8_timelinenew.executor": "Run",
-    "Python.app.executor": "Run",
-    "Python.auth.executor": "Run",
-    "Python.common.executor": "Run",
-    "Python.config_prices.executor": "Run",
-    "Python.databaseopslag.executor": "Run",
-    "Python.level2_optimizer.executor": "Run",
-    "Python.streamlit_app.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/pages/5_breakfirst.py",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python.1_Booking.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2_Setup.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2_databaseopslag.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2_setup.executor&quot;: &quot;Run&quot;,
+    &quot;Python.3_Ankomster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.3_Inn and Out.executor&quot;: &quot;Run&quot;,
+    &quot;Python.3_ankomster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.4_Booking_C_link.executor&quot;: &quot;Run&quot;,
+    &quot;Python.5_cleaning.executor&quot;: &quot;Run&quot;,
+    &quot;Python.6_callender.executor&quot;: &quot;Run&quot;,
+    &quot;Python.6_timeline.executor&quot;: &quot;Run&quot;,
+    &quot;Python.8_statestik.executor&quot;: &quot;Run&quot;,
+    &quot;Python.8_timelinenew.executor&quot;: &quot;Run&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.auth.executor&quot;: &quot;Run&quot;,
+    &quot;Python.common.executor&quot;: &quot;Run&quot;,
+    &quot;Python.config_prices.executor&quot;: &quot;Run&quot;,
+    &quot;Python.databaseopslag.executor&quot;: &quot;Run&quot;,
+    &quot;Python.level2_optimizer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.streamlit_app.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/finnj/-repo hk20/hk_portal_20/pages/5_breakfirst.py&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -75,30 +75,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00753" summary="tilføjelse af week nr.">
-      <option name="closed" value="true" />
-      <created>1783368155711</created>
-      <option name="number" value="00753" />
-      <option name="presentableId" value="LOCAL-00753" />
-      <option name="project" value="LOCAL" />
-      <updated>1783368155711</updated>
-    </task>
-    <task id="LOCAL-00754" summary="tilføjelse af week nr.">
-      <option name="closed" value="true" />
-      <created>1783411204732</created>
-      <option name="number" value="00754" />
-      <option name="presentableId" value="LOCAL-00754" />
-      <option name="project" value="LOCAL" />
-      <updated>1783411204733</updated>
-    </task>
-    <task id="LOCAL-00755" summary="dtb til events på kallender">
-      <option name="closed" value="true" />
-      <created>1783411445414</created>
-      <option name="number" value="00755" />
-      <option name="presentableId" value="LOCAL-00755" />
-      <option name="project" value="LOCAL" />
-      <updated>1783411445414</updated>
     </task>
     <task id="LOCAL-00756" summary="events w color on">
       <option name="closed" value="true" />
@@ -468,7 +444,31 @@
       <option name="project" value="LOCAL" />
       <updated>1783930748361</updated>
     </task>
-    <option name="localTasksCounter" value="802" />
+    <task id="LOCAL-00802" summary="pdf til bf">
+      <option name="closed" value="true" />
+      <created>1783967174136</created>
+      <option name="number" value="00802" />
+      <option name="presentableId" value="LOCAL-00802" />
+      <option name="project" value="LOCAL" />
+      <updated>1783967174137</updated>
+    </task>
+    <task id="LOCAL-00803" summary="pdf til bf">
+      <option name="closed" value="true" />
+      <created>1783967249448</created>
+      <option name="number" value="00803" />
+      <option name="presentableId" value="LOCAL-00803" />
+      <option name="project" value="LOCAL" />
+      <updated>1783967249448</updated>
+    </task>
+    <task id="LOCAL-00804" summary="pdf til bf">
+      <option name="closed" value="true" />
+      <created>1783967489421</created>
+      <option name="number" value="00804" />
+      <option name="presentableId" value="LOCAL-00804" />
+      <option name="project" value="LOCAL" />
+      <updated>1783967489421</updated>
+    </task>
+    <option name="localTasksCounter" value="805" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
