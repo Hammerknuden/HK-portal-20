@@ -148,14 +148,129 @@ if not df.empty:
      #         styles["Heading1"]
      #     )
      # )
+    check_dato_start = date.today()
 
-     table_data = [["Dato", "Morgenmadsgæster"]]
+    antal_dage = st.selectbox(
+        "Vis udcheckninger de næste dage",
+        [3, 5, 7, 9, 14],
+        index=0
+    )
 
-     for _, row in breakfast_df.iterrows():
-         table_data.append([
-             row["Dato"].strftime("%d-%m-%Y"),
-             str(row["Morgenmadsgæster"])
-         ])
+    check_dato_slut = check_dato_start + timedelta(days=antal_dage)
+
+    # Hent data fra Supabase
+    result = (
+        supabase
+        .table("hk_dtb")
+        .select(
+            "checkin_date, checkout_date, numb_guests, morgenmad, web"
+        )
+        .neq("web", "cansl")
+        .execute()
+    )
+
+    df = pd.DataFrame(result.data or [])
+
+    if not df.empty:
+
+        df["checkin_date"] = pd.to_datetime(
+            df["checkin_date"],
+            errors="coerce"
+        ).dt.date
+
+        df["checkout_date"] = pd.to_datetime(
+            df["checkout_date"],
+            errors="coerce"
+        ).dt.date
+
+        df["numb_guests"] = pd.to_numeric(
+            df["numb_guests"],
+            errors="coerce"
+        ).fillna(0)
+
+        df["morgenmad"] = (
+            df["morgenmad"]
+            .fillna("")
+            .astype(str)
+            .str.strip()
+            .str.upper()
+        )
+
+        breakfast_rows = []
+
+        for d in pd.date_range(
+                check_dato_start,
+                check_dato_slut,
+                freq="D"
+        ):
+            dato = d.date()
+
+            antal = df.loc[
+                (df["morgenmad"] == "Y")
+                & (df["checkin_date"] < dato)
+                & (df["checkout_date"] >= dato),
+                "numb_guests"
+            ].sum()
+
+            breakfast_rows.append({
+                "Dato": dato,
+                "Morgenmadsgæster": int(antal)
+            })
+
+        breakfast_df = pd.DataFrame(breakfast_rows)
+
+        st.subheader("Morgenmadsoversigt")
+
+        st.dataframe(
+            breakfast_df,
+            hide_index=True,
+            use_container_width=True
+        )
+        buffer = BytesIO()
+
+        doc = SimpleDocTemplate(buffer)
+
+        styles = getSampleStyleSheet()
+
+        elements = []
+
+        elements.append(
+            Paragraph(
+                "<b>Hammerknuden</b>",
+                styles["Title"]
+            )
+        )
+
+        elements.append(
+            Paragraph(
+                "<b>Morgenmadsoversigt</b>",
+                styles["Heading1"]
+            )
+        )
+
+        elements.append(
+            Paragraph(
+                f"Periode: "
+                f"{check_dato_start.strftime('%d-%m-%Y')} "
+                f"til "
+                f"{check_dato_slut.strftime('%d-%m-%Y')}",
+                styles["Normal"]
+            )
+        )
+        # elements.append(
+        #     Paragraph(
+        #         "<b>Morgenmadsoversigt</b>",
+        #         styles["Heading1"]
+        #     )
+        # )
+
+        table_data = [["Dato", "Morgenmadsgæster"]]
+
+        for _, row in breakfast_df.iterrows():
+            table_data.append([
+                row["Dato"].strftime("%d-%m-%Y"),
+                str(row["Morgenmadsgæster"])
+            ])
 
     table = Table(table_data)
 
