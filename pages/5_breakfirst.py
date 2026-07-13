@@ -151,11 +151,11 @@ if not df.empty:
     #
     # table_data = [["Dato", "Morgenmadsgæster"]]
 
-    for _, row in breakfast_df.iterrows():
-        table_data.append([
-            row["Dato"].strftime("%d-%m-%Y"),
-            str(row["Morgenmadsgæster"])
-        ])
+    # for _, row in breakfast_df.iterrows():
+    #     table_data.append([
+    #         row["Dato"].strftime("%d-%m-%Y"),
+    #         str(row["Morgenmadsgæster"])
+    #     ])
 
     table = Table(table_data)
 
