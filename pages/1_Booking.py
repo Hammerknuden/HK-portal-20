@@ -3,7 +3,7 @@ from auth import require_login
 import pandas as pd
 import openpyxl
 import requests
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 import sys
 from pathlib import Path
 import numpy as np
@@ -65,7 +65,8 @@ st.title("Reservation")
 year = st.selectbox("booking år", ["2026", "2027"])
 
 bruger = "Finn"
-network = st.selectbox("vælg lokal eller web ", options=["local", "URL"])
+network = "local"
+#network = st.selectbox("vælg lokal eller web ", options=["local", "URL"])
 
 now = st.date_input("booking dato")#, key='reservation_date')
 
