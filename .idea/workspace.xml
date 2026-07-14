@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="network fjernet fra booking">
-      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="nyt layout booking" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,14 +75,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00764" summary="indentifiser de blokke der skal byttes med">
-      <option name="closed" value="true" />
-      <created>1783458997056</created>
-      <option name="number" value="00764" />
-      <option name="presentableId" value="LOCAL-00764" />
-      <option name="project" value="LOCAL" />
-      <updated>1783458997056</updated>
     </task>
     <task id="LOCAL-00765" summary="indentifiser de blokke der skal byttes med">
       <option name="closed" value="true" />
@@ -470,7 +460,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784039909197</updated>
     </task>
-    <option name="localTasksCounter" value="813" />
+    <task id="LOCAL-00813" summary="nyt layout booking">
+      <option name="closed" value="true" />
+      <created>1784040080166</created>
+      <option name="number" value="00813" />
+      <option name="presentableId" value="LOCAL-00813" />
+      <option name="project" value="LOCAL" />
+      <updated>1784040080167</updated>
+    </task>
+    <option name="localTasksCounter" value="814" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -496,7 +494,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="1 test af execute funktionen" />
     <MESSAGE value="indentifiser de blokke der skal byttes med" />
     <MESSAGE value="execute aktiv" />
     <MESSAGE value="execute aktiv layout systematiseret" />
@@ -521,6 +518,7 @@
     <MESSAGE value="links updated DB" />
     <MESSAGE value="links updated Dinero" />
     <MESSAGE value="network fjernet fra booking" />
-    <option name="LAST_COMMIT_MESSAGE" value="network fjernet fra booking" />
+    <MESSAGE value="nyt layout booking" />
+    <option name="LAST_COMMIT_MESSAGE" value="nyt layout booking" />
   </component>
 </project>
