@@ -66,10 +66,6 @@ edit = st.checkbox(
     "Rediger eksisterende booking",
     key="edit_existing_booking_v2"
 )
-    # edit = st.checkbox(
-    #     "Edit eksisterende booking",
-    #     key="edit_existing_booking"
-    # )
 
 if edit:
     with st.expander("Se alle bookinger"):
@@ -244,7 +240,10 @@ if checkout_date <= checkin_date:
     st.warning("Checkout skal være efter checkin.")
     st.stop()
 
-single_room = st.checkbox("Enkeltværelse")
+single_room = st.checkbox(
+    "Enkeltværelse",
+    key="new_booking_single_room"
+)
 
 if checkin_date and checkout_date:
     days = (checkout_date - checkin_date).days
@@ -252,11 +251,7 @@ else:
     days = 0
 
 st.markdown(f"**Antal dage denne booking** {days}")
-#source = st.radio(
-#    "Datakilde",
-#    ["Supabase", "Excel"],
-#    horizontal=True
-#)
+
 st.text("Skema viser ikke udchecksdagen da den er irelevant i forbindelse med reservation")
 
 if year == '2026':
@@ -378,10 +373,6 @@ st.markdown(
     f"**Antal ledige rum:** {ledige_rum}"
 )
 
-#st.write(
-#    "Ledige værelser:",
-#    sorted(available_rooms)
-#)
 ledige_rum_supabase = len(
     available_rooms
 )
@@ -507,9 +498,20 @@ if year == '2027':
 
 Sprog = st.selectbox("Sprog - email confirmation dk uk D", options=["DK", "UK", "D"])
 
-breakfast = st.checkbox("Morgenmad")
-breakfast_alt = st.checkbox("begrænset morgenmad bestilles direkte ved ankomst mod beregning  ")
-breakfast_rabat = st.checkbox("Der beregnes ikke rabat på morgenmad")
+breakfast = st.checkbox(
+    "Morgenmad",
+    key="new_booking_breakfast"
+)
+
+breakfast_alt = st.checkbox(
+    "Begrænset morgenmad bestilles direkte ved ankomst mod beregning",
+    key="new_booking_breakfast_alt"
+)
+
+breakfast_rabat = st.checkbox(
+    "Der beregnes ikke rabat på morgenmad",
+    key="new_booking_breakfast_no_discount"
+)
 
 if breakfast:
     br_f = int(bf_price * int(num_guests) * int(days))#.days))
