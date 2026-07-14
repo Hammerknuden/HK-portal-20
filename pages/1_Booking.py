@@ -80,6 +80,9 @@ with col1:
 with col2:
     checkout_date = st.date_input("Checkout dato", key="reservation_checkout_date"
     )
+if checkout_date <= checkin_date:
+    st.warning("Checkout skal være efter checkin.")
+    st.stop()
 
 single_room = st.checkbox("Enkeltværelse")
 
