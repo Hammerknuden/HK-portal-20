@@ -50,7 +50,6 @@ def init_session():
 
 #byt evt init og login
 
-
 require_login()
 init_session()
 
