@@ -220,6 +220,8 @@ bruger = "Finn"
 network = "local"
 #network = st.selectbox("vælg lokal eller web ", options=["local", "URL"])
 
+st.subheader("Ny Booking")
+
 now = st.date_input("booking dato")#, key='reservation_date')
 
 booking_number = st.text_input("booking_nummer ", key="reservation_number")
