@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="network fjernet fra booking">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="nyt layout booking edit flyttet op på siden">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,34 +35,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Python.1_Booking.executor": "Run",
-    "Python.2_Setup.executor": "Run",
-    "Python.2_databaseopslag.executor": "Run",
-    "Python.2_setup.executor": "Run",
-    "Python.3_Ankomster.executor": "Run",
-    "Python.3_Inn and Out.executor": "Run",
-    "Python.3_ankomster.executor": "Run",
-    "Python.4_Booking_C_link.executor": "Run",
-    "Python.5_cleaning.executor": "Run",
-    "Python.6_callender.executor": "Run",
-    "Python.6_timeline.executor": "Run",
-    "Python.8_statestik.executor": "Run",
-    "Python.8_timelinenew.executor": "Run",
-    "Python.app.executor": "Run",
-    "Python.auth.executor": "Run",
-    "Python.common.executor": "Run",
-    "Python.config_prices.executor": "Run",
-    "Python.databaseopslag.executor": "Run",
-    "Python.level2_optimizer.executor": "Run",
-    "Python.streamlit_app.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/pages/1_Booking.py",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python.1_Booking.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2_Setup.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2_databaseopslag.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2_setup.executor&quot;: &quot;Run&quot;,
+    &quot;Python.3_Ankomster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.3_Inn and Out.executor&quot;: &quot;Run&quot;,
+    &quot;Python.3_ankomster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.4_Booking_C_link.executor&quot;: &quot;Run&quot;,
+    &quot;Python.5_cleaning.executor&quot;: &quot;Run&quot;,
+    &quot;Python.6_callender.executor&quot;: &quot;Run&quot;,
+    &quot;Python.6_timeline.executor&quot;: &quot;Run&quot;,
+    &quot;Python.8_statestik.executor&quot;: &quot;Run&quot;,
+    &quot;Python.8_timelinenew.executor&quot;: &quot;Run&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.auth.executor&quot;: &quot;Run&quot;,
+    &quot;Python.common.executor&quot;: &quot;Run&quot;,
+    &quot;Python.config_prices.executor&quot;: &quot;Run&quot;,
+    &quot;Python.databaseopslag.executor&quot;: &quot;Run&quot;,
+    &quot;Python.level2_optimizer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.streamlit_app.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/finnj/-repo hk20/hk_portal_20/pages/1_Booking.py&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -77,94 +78,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00762" summary="1 test af execute funktionen">
-      <option name="closed" value="true" />
-      <created>1783452886221</created>
-      <option name="number" value="00762" />
-      <option name="presentableId" value="LOCAL-00762" />
-      <option name="project" value="LOCAL" />
-      <updated>1783452886221</updated>
-    </task>
-    <task id="LOCAL-00763" summary="1 test af execute funktionen">
-      <option name="closed" value="true" />
-      <created>1783453090721</created>
-      <option name="number" value="00763" />
-      <option name="presentableId" value="LOCAL-00763" />
-      <option name="project" value="LOCAL" />
-      <updated>1783453090721</updated>
-    </task>
-    <task id="LOCAL-00764" summary="indentifiser de blokke der skal byttes med">
-      <option name="closed" value="true" />
-      <created>1783458997056</created>
-      <option name="number" value="00764" />
-      <option name="presentableId" value="LOCAL-00764" />
-      <option name="project" value="LOCAL" />
-      <updated>1783458997056</updated>
-    </task>
-    <task id="LOCAL-00765" summary="indentifiser de blokke der skal byttes med">
-      <option name="closed" value="true" />
-      <created>1783459297383</created>
-      <option name="number" value="00765" />
-      <option name="presentableId" value="LOCAL-00765" />
-      <option name="project" value="LOCAL" />
-      <updated>1783459297383</updated>
-    </task>
-    <task id="LOCAL-00766" summary="indentifiser de blokke der skal byttes med">
-      <option name="closed" value="true" />
-      <created>1783459995085</created>
-      <option name="number" value="00766" />
-      <option name="presentableId" value="LOCAL-00766" />
-      <option name="project" value="LOCAL" />
-      <updated>1783459995085</updated>
-    </task>
-    <task id="LOCAL-00767" summary="execute aktiv">
-      <option name="closed" value="true" />
-      <created>1783493659757</created>
-      <option name="number" value="00767" />
-      <option name="presentableId" value="LOCAL-00767" />
-      <option name="project" value="LOCAL" />
-      <updated>1783493659758</updated>
-    </task>
-    <task id="LOCAL-00768" summary="execute aktiv layout systematiseret">
-      <option name="closed" value="true" />
-      <created>1783496129410</created>
-      <option name="number" value="00768" />
-      <option name="presentableId" value="LOCAL-00768" />
-      <option name="project" value="LOCAL" />
-      <updated>1783496129410</updated>
-    </task>
-    <task id="LOCAL-00769" summary="execute aktiv layout systematiseret">
-      <option name="closed" value="true" />
-      <created>1783496493696</created>
-      <option name="number" value="00769" />
-      <option name="presentableId" value="LOCAL-00769" />
-      <option name="project" value="LOCAL" />
-      <updated>1783496493696</updated>
-    </task>
-    <task id="LOCAL-00770" summary="execute aktiv layout systematiseret">
-      <option name="closed" value="true" />
-      <created>1783496823270</created>
-      <option name="number" value="00770" />
-      <option name="presentableId" value="LOCAL-00770" />
-      <option name="project" value="LOCAL" />
-      <updated>1783496823270</updated>
-    </task>
-    <task id="LOCAL-00771" summary="status commit layout og execute virker">
-      <option name="closed" value="true" />
-      <created>1783496943714</created>
-      <option name="number" value="00771" />
-      <option name="presentableId" value="LOCAL-00771" />
-      <option name="project" value="LOCAL" />
-      <updated>1783496943714</updated>
-    </task>
-    <task id="LOCAL-00772" summary="excel update">
-      <option name="closed" value="true" />
-      <created>1783578644991</created>
-      <option name="number" value="00772" />
-      <option name="presentableId" value="LOCAL-00772" />
-      <option name="project" value="LOCAL" />
-      <updated>1783578644991</updated>
     </task>
     <task id="LOCAL-00773" summary="fjerne fig.add_vrect fra pinse">
       <option name="closed" value="true" />
@@ -470,7 +383,95 @@
       <option name="project" value="LOCAL" />
       <updated>1784013784452</updated>
     </task>
-    <option name="localTasksCounter" value="811" />
+    <task id="LOCAL-00811" summary="network fjernet fra booking">
+      <option name="closed" value="true" />
+      <created>1784038680343</created>
+      <option name="number" value="00811" />
+      <option name="presentableId" value="LOCAL-00811" />
+      <option name="project" value="LOCAL" />
+      <updated>1784038680343</updated>
+    </task>
+    <task id="LOCAL-00812" summary="network fjernet fra booking">
+      <option name="closed" value="true" />
+      <created>1784039909196</created>
+      <option name="number" value="00812" />
+      <option name="presentableId" value="LOCAL-00812" />
+      <option name="project" value="LOCAL" />
+      <updated>1784039909197</updated>
+    </task>
+    <task id="LOCAL-00813" summary="nyt layout booking">
+      <option name="closed" value="true" />
+      <created>1784040080166</created>
+      <option name="number" value="00813" />
+      <option name="presentableId" value="LOCAL-00813" />
+      <option name="project" value="LOCAL" />
+      <updated>1784040080167</updated>
+    </task>
+    <task id="LOCAL-00814" summary="nyt layout booking">
+      <option name="closed" value="true" />
+      <created>1784047043819</created>
+      <option name="number" value="00814" />
+      <option name="presentableId" value="LOCAL-00814" />
+      <option name="project" value="LOCAL" />
+      <updated>1784047043819</updated>
+    </task>
+    <task id="LOCAL-00815" summary="nyt layout booking">
+      <option name="closed" value="true" />
+      <created>1784047148718</created>
+      <option name="number" value="00815" />
+      <option name="presentableId" value="LOCAL-00815" />
+      <option name="project" value="LOCAL" />
+      <updated>1784047148719</updated>
+    </task>
+    <task id="LOCAL-00816" summary="nyt layout booking">
+      <option name="closed" value="true" />
+      <created>1784047280316</created>
+      <option name="number" value="00816" />
+      <option name="presentableId" value="LOCAL-00816" />
+      <option name="project" value="LOCAL" />
+      <updated>1784047280316</updated>
+    </task>
+    <task id="LOCAL-00817" summary="nyt layout booking">
+      <option name="closed" value="true" />
+      <created>1784047554681</created>
+      <option name="number" value="00817" />
+      <option name="presentableId" value="LOCAL-00817" />
+      <option name="project" value="LOCAL" />
+      <updated>1784047554681</updated>
+    </task>
+    <task id="LOCAL-00818" summary="nyt layout booking edit flyttet op på siden">
+      <option name="closed" value="true" />
+      <created>1784048062949</created>
+      <option name="number" value="00818" />
+      <option name="presentableId" value="LOCAL-00818" />
+      <option name="project" value="LOCAL" />
+      <updated>1784048062949</updated>
+    </task>
+    <task id="LOCAL-00819" summary="nyt layout booking edit flyttet op på siden">
+      <option name="closed" value="true" />
+      <created>1784048333242</created>
+      <option name="number" value="00819" />
+      <option name="presentableId" value="LOCAL-00819" />
+      <option name="project" value="LOCAL" />
+      <updated>1784048333242</updated>
+    </task>
+    <task id="LOCAL-00820" summary="nyt layout booking edit flyttet op på siden">
+      <option name="closed" value="true" />
+      <created>1784048889796</created>
+      <option name="number" value="00820" />
+      <option name="presentableId" value="LOCAL-00820" />
+      <option name="project" value="LOCAL" />
+      <updated>1784048889796</updated>
+    </task>
+    <task id="LOCAL-00821" summary="nyt layout booking edit flyttet op på siden">
+      <option name="closed" value="true" />
+      <created>1784049476521</created>
+      <option name="number" value="00821" />
+      <option name="presentableId" value="LOCAL-00821" />
+      <option name="project" value="LOCAL" />
+      <updated>1784049476521</updated>
+    </task>
+    <option name="localTasksCounter" value="822" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -496,8 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="1 test af execute funktionen" />
-    <MESSAGE value="indentifiser de blokke der skal byttes med" />
     <MESSAGE value="execute aktiv" />
     <MESSAGE value="execute aktiv layout systematiseret" />
     <MESSAGE value="status commit layout og execute virker" />
@@ -521,6 +520,8 @@
     <MESSAGE value="links updated DB" />
     <MESSAGE value="links updated Dinero" />
     <MESSAGE value="network fjernet fra booking" />
-    <option name="LAST_COMMIT_MESSAGE" value="network fjernet fra booking" />
+    <MESSAGE value="nyt layout booking" />
+    <MESSAGE value="nyt layout booking edit flyttet op på siden" />
+    <option name="LAST_COMMIT_MESSAGE" value="nyt layout booking edit flyttet op på siden" />
   </component>
 </project>

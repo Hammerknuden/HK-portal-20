@@ -22,7 +22,7 @@ import os
 from dotenv import load_dotenv
 from supabase import create_client
 
-
+st.set_page_config(page_title="Booking", layout="wide")
 load_dotenv()
 
 SUPABASE_URL = st.secrets["SUPABASE_URL"]
@@ -31,8 +31,6 @@ SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 st.success("Forbindelse OK")
-
-st.set_page_config(page_title="Booking", layout="wide")
 
 
 def init_session():
@@ -62,7 +60,11 @@ if "prices" not in st.session_state:
 st.title("Reservation")
 
 year = st.selectbox("booking år", ["2026", "2027"])
-edit = st.checkbox("Edit eksisterende booking")
+
+edit = st.checkbox(
+    "Rediger eksisterende booking",
+    key="edit_existing_booking_v2"
+)
 
 if edit:
     with st.expander("Se alle bookinger"):
@@ -219,6 +221,8 @@ bruger = "Finn"
 network = "local"
 #network = st.selectbox("vælg lokal eller web ", options=["local", "URL"])
 
+st.subheader("Ny Booking")
+
 now = st.date_input("booking dato")#, key='reservation_date')
 
 booking_number = st.text_input("booking_nummer ", key="reservation_number")
@@ -235,7 +239,10 @@ if checkout_date <= checkin_date:
     st.warning("Checkout skal være efter checkin.")
     st.stop()
 
-single_room = st.checkbox("Enkeltværelse")
+single_room = st.checkbox(
+    "Enkeltværelse",
+    key="new_booking_single_room"
+)
 
 if checkin_date and checkout_date:
     days = (checkout_date - checkin_date).days
@@ -243,11 +250,7 @@ else:
     days = 0
 
 st.markdown(f"**Antal dage denne booking** {days}")
-#source = st.radio(
-#    "Datakilde",
-#    ["Supabase", "Excel"],
-#    horizontal=True
-#)
+
 st.text("Skema viser ikke udchecksdagen da den er irelevant i forbindelse med reservation")
 
 if year == '2026':
@@ -369,10 +372,6 @@ st.markdown(
     f"**Antal ledige rum:** {ledige_rum}"
 )
 
-#st.write(
-#    "Ledige værelser:",
-#    sorted(available_rooms)
-#)
 ledige_rum_supabase = len(
     available_rooms
 )
@@ -498,9 +497,20 @@ if year == '2027':
 
 Sprog = st.selectbox("Sprog - email confirmation dk uk D", options=["DK", "UK", "D"])
 
-breakfast = st.checkbox("Morgenmad")
-breakfast_alt = st.checkbox("begrænset morgenmad bestilles direkte ved ankomst mod beregning  ")
-breakfast_rabat = st.checkbox("Der beregnes ikke rabat på morgenmad")
+breakfast = st.checkbox(
+    "Morgenmad",
+    key="new_booking_breakfast"
+)
+
+breakfast_alt = st.checkbox(
+    "Begrænset morgenmad bestilles direkte ved ankomst mod beregning",
+    key="new_booking_breakfast_alt"
+)
+
+breakfast_rabat = st.checkbox(
+    "Der beregnes ikke rabat på morgenmad",
+    key="new_booking_breakfast_no_discount"
+)
 
 if breakfast:
     br_f = int(bf_price * int(num_guests) * int(days))#.days))
@@ -886,159 +896,6 @@ if send_data:
 else:
     st.markdown("Data mail ikke sendt")
 
-edit = st.checkbox("Edit eksisterende booking")
-
-if edit:
-    with st.expander("Se alle bookinger"):
-        result = (
-            supabase
-            .table("hk_dtb")
-            .select("*")
-            .eq("season", int(year))
-            .execute()
-        )
-
-        df_supabase = pd.DataFrame(result.data)
-
-        if "room_number" in df_supabase.columns:
-            df_supabase["room_number"] = (
-                pd.to_numeric(
-                    df_supabase["room_number"],
-                    errors="coerce"
-                )
-                .astype("Int64")
-            )
-
-        if "season" in df_supabase.columns:
-            df_supabase["season"] = (
-                pd.to_numeric(
-                    df_supabase["season"],
-                    errors="coerce"
-                )
-                .astype("Int64")
-            )
-
-        st.dataframe(
-            df_supabase,
-            use_container_width=True
-        )
-
-    booking_lookup = df_supabase.set_index("id")
-
-    booking_id = st.selectbox(
-        "Vælg booking",
-        df_supabase["id"],
-        format_func=lambda x: (
-            f"Booking: {booking_lookup.loc[x, 'booking_number']} | "
-            f"Værelse: {booking_lookup.loc[x, 'room_number']} | "
-            f"{booking_lookup.loc[x, 'navn']}"
-        )
-    )
-
-    booking = booking_lookup.loc[booking_id]
-
-    new_booking_number = st.text_input(
-        "Bookingnummer",
-        value=str(booking["booking_number"]),
-        key=f"booking_number_{booking_id}"
-    )
-
-    new_email = st.text_input(
-        "email",
-        value="" if pd.isna(booking["email"]) else str(booking["email"]),
-        key=f"email_{booking_id}"
-    )
-
-    new_phone = st.text_input(
-        "Telefon",
-        value="" if pd.isna(booking["telefon"]) else str(booking["telefon"]),
-        key=f"telefon_{booking_id}"
-    )
-
-    new_checkin = st.date_input(
-        "Checkin",
-        value=pd.to_datetime(
-            booking["checkin_date"]
-        ).date()
-    )
-
-    new_checkout = st.date_input(
-        "Checkout",
-        value=pd.to_datetime(
-            booking["checkout_date"]
-        ).date()
-    )
-
-    new_nation = st.text_input(
-        "nation",
-        value=str(booking["nation"])
-    )
-
-    new_web = st.text_input(
-        "web",
-        value=str(booking["web"])
-    )
-    new_ankomst = st.text_input(
-        "ankomst",
-        value=str(booking["ankomst"])
-
-    )
-
-    new_bed = st.text_input(
-        "Bed",
-        value=str(booking["bed"])
-    )
-
-    new_room_number = st.text_input(
-        "room_number",
-        value=str(booking["room_number"])
-    )
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-        if st.button("Gem ændringer"):
-
-            try:
-                result = (
-                    supabase
-                    .table("hk_dtb")
-                    .update({
-                        "booking_number": new_booking_number,
-                        "email": new_email,
-                        "telefon": new_phone,
-                        "checkin_date": new_checkin.isoformat(),
-                        "checkout_date": new_checkout.isoformat(),
-                        "nation": new_nation,
-                        "web": new_web,
-                        "ankomst": new_ankomst,
-                        "bed": new_bed,
-                        "room_number": new_room_number,
-                        "season": year,
-                    })
-                    .eq("id", booking_id)
-                    .execute()
-                )
-
-                st.success("Ændringer gemt")
-                st.write(result.data)
-
-                st.rerun()
-
-            except Exception as e:
-                st.error(f"Fejl ved opdatering: {e}")
-
-    with col2:
-
-        if st.button("Slet booking"):
-            supabase.table("hk_dtb").delete().eq(
-                "id",
-                booking_id
-            ).execute()
-
-            st.success("Booking slettet")
-            st.rerun()
-    # vis samlet overblik over alle indtastede bookinger
 
 
 
