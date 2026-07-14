@@ -63,6 +63,7 @@ if "prices" not in st.session_state:
 st.title("Reservation")
 
 year = st.selectbox("booking år", ["2026", "2027"])
+
 edit = st.checkbox("Edit eksisterende booking")
 
 if edit:
