@@ -76,22 +76,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00765" summary="indentifiser de blokke der skal byttes med">
-      <option name="closed" value="true" />
-      <created>1783459297383</created>
-      <option name="number" value="00765" />
-      <option name="presentableId" value="LOCAL-00765" />
-      <option name="project" value="LOCAL" />
-      <updated>1783459297383</updated>
-    </task>
-    <task id="LOCAL-00766" summary="indentifiser de blokke der skal byttes med">
-      <option name="closed" value="true" />
-      <created>1783459995085</created>
-      <option name="number" value="00766" />
-      <option name="presentableId" value="LOCAL-00766" />
-      <option name="project" value="LOCAL" />
-      <updated>1783459995085</updated>
-    </task>
     <task id="LOCAL-00767" summary="execute aktiv">
       <option name="closed" value="true" />
       <created>1783493659757</created>
@@ -468,7 +452,23 @@
       <option name="project" value="LOCAL" />
       <updated>1784040080167</updated>
     </task>
-    <option name="localTasksCounter" value="814" />
+    <task id="LOCAL-00814" summary="nyt layout booking">
+      <option name="closed" value="true" />
+      <created>1784047043819</created>
+      <option name="number" value="00814" />
+      <option name="presentableId" value="LOCAL-00814" />
+      <option name="project" value="LOCAL" />
+      <updated>1784047043819</updated>
+    </task>
+    <task id="LOCAL-00815" summary="nyt layout booking">
+      <option name="closed" value="true" />
+      <created>1784047148718</created>
+      <option name="number" value="00815" />
+      <option name="presentableId" value="LOCAL-00815" />
+      <option name="project" value="LOCAL" />
+      <updated>1784047148719</updated>
+    </task>
+    <option name="localTasksCounter" value="816" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
