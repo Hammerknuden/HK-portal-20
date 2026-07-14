@@ -32,34 +32,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Python.1_Booking.executor": "Run",
-    "Python.2_Setup.executor": "Run",
-    "Python.2_databaseopslag.executor": "Run",
-    "Python.2_setup.executor": "Run",
-    "Python.3_Ankomster.executor": "Run",
-    "Python.3_Inn and Out.executor": "Run",
-    "Python.3_ankomster.executor": "Run",
-    "Python.4_Booking_C_link.executor": "Run",
-    "Python.5_cleaning.executor": "Run",
-    "Python.6_callender.executor": "Run",
-    "Python.6_timeline.executor": "Run",
-    "Python.8_statestik.executor": "Run",
-    "Python.8_timelinenew.executor": "Run",
-    "Python.app.executor": "Run",
-    "Python.auth.executor": "Run",
-    "Python.common.executor": "Run",
-    "Python.config_prices.executor": "Run",
-    "Python.databaseopslag.executor": "Run",
-    "Python.level2_optimizer.executor": "Run",
-    "Python.streamlit_app.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/pages/1_Booking.py",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python.1_Booking.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2_Setup.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2_databaseopslag.executor&quot;: &quot;Run&quot;,
+    &quot;Python.2_setup.executor&quot;: &quot;Run&quot;,
+    &quot;Python.3_Ankomster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.3_Inn and Out.executor&quot;: &quot;Run&quot;,
+    &quot;Python.3_ankomster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.4_Booking_C_link.executor&quot;: &quot;Run&quot;,
+    &quot;Python.5_cleaning.executor&quot;: &quot;Run&quot;,
+    &quot;Python.6_callender.executor&quot;: &quot;Run&quot;,
+    &quot;Python.6_timeline.executor&quot;: &quot;Run&quot;,
+    &quot;Python.8_statestik.executor&quot;: &quot;Run&quot;,
+    &quot;Python.8_timelinenew.executor&quot;: &quot;Run&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.auth.executor&quot;: &quot;Run&quot;,
+    &quot;Python.common.executor&quot;: &quot;Run&quot;,
+    &quot;Python.config_prices.executor&quot;: &quot;Run&quot;,
+    &quot;Python.databaseopslag.executor&quot;: &quot;Run&quot;,
+    &quot;Python.level2_optimizer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.streamlit_app.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/finnj/-repo hk20/hk_portal_20/pages/1_Booking.py&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -75,14 +75,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00771" summary="status commit layout og execute virker">
-      <option name="closed" value="true" />
-      <created>1783496943714</created>
-      <option name="number" value="00771" />
-      <option name="presentableId" value="LOCAL-00771" />
-      <option name="project" value="LOCAL" />
-      <updated>1783496943714</updated>
     </task>
     <task id="LOCAL-00772" summary="excel update">
       <option name="closed" value="true" />
@@ -468,7 +460,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784048333242</updated>
     </task>
-    <option name="localTasksCounter" value="820" />
+    <task id="LOCAL-00820" summary="nyt layout booking edit flyttet op på siden">
+      <option name="closed" value="true" />
+      <created>1784048889796</created>
+      <option name="number" value="00820" />
+      <option name="presentableId" value="LOCAL-00820" />
+      <option name="project" value="LOCAL" />
+      <updated>1784048889796</updated>
+    </task>
+    <option name="localTasksCounter" value="821" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

@@ -63,9 +63,13 @@ st.title("Reservation")
 year = st.selectbox("booking år", ["2026", "2027"])
 
 edit = st.checkbox(
-    "Edit eksisterende booking",
-    key="edit_existing_booking"
+    "Rediger eksisterende booking",
+    key="edit_existing_booking_v2"
 )
+    # edit = st.checkbox(
+    #     "Edit eksisterende booking",
+    #     key="edit_existing_booking"
+    # )
 
 if edit:
     with st.expander("Se alle bookinger"):
