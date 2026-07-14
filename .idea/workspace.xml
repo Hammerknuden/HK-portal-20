@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="nyt layout booking edit flyttet op på siden">
-      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="nyt layout booking edit flyttet op på siden" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,14 +75,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00770" summary="execute aktiv layout systematiseret">
-      <option name="closed" value="true" />
-      <created>1783496823270</created>
-      <option name="number" value="00770" />
-      <option name="presentableId" value="LOCAL-00770" />
-      <option name="project" value="LOCAL" />
-      <updated>1783496823270</updated>
     </task>
     <task id="LOCAL-00771" summary="status commit layout og execute virker">
       <option name="closed" value="true" />
@@ -470,7 +460,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784048062949</updated>
     </task>
-    <option name="localTasksCounter" value="819" />
+    <task id="LOCAL-00819" summary="nyt layout booking edit flyttet op på siden">
+      <option name="closed" value="true" />
+      <created>1784048333242</created>
+      <option name="number" value="00819" />
+      <option name="presentableId" value="LOCAL-00819" />
+      <option name="project" value="LOCAL" />
+      <updated>1784048333242</updated>
+    </task>
+    <option name="localTasksCounter" value="820" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
