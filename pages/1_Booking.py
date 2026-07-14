@@ -889,6 +889,7 @@ if send_data:
 else:
     st.markdown("Data mail ikke sendt")
 
+
 # edit = st.checkbox("Edit eksisterende booking")
 #
 # if edit:
