@@ -260,11 +260,7 @@ else:
         days = 0
 
     st.markdown(f"**Antal dage denne booking** {days}")
-    #source = st.radio(
-    #    "Datakilde",
-    #    ["Supabase", "Excel"],
-    #    horizontal=True
-    #)
+
     st.text("Skema viser ikke udchecksdagen da den er irelevant i forbindelse med reservation")
 
     if year == '2026':
@@ -386,13 +382,6 @@ else:
         f"**Antal ledige rum:** {ledige_rum}"
     )
 
-    #st.write(
-    #    "Ledige værelser:",
-    #    sorted(available_rooms)
-    #)
-    ledige_rum_supabase = len(
-        available_rooms
-    )
     col1, col2 = st.columns(2)
 
     with col1:
