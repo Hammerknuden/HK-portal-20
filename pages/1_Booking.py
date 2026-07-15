@@ -66,15 +66,18 @@ bruger = "Finn"
 network = "local"
 #network = st.selectbox("vælg lokal eller web ", options=["local", "URL"])
 mode = st.radio(
-    "",
+    "Bookingfunktion",
     [
         "➕ Ny booking",
         "✏️ Rediger booking"
     ],
-    horizontal=True
+    horizontal=True,
+    key="booking_mode",
+    label_visibility="collapsed"
 )
 if mode == "✏️ Rediger booking":
-    st.write("rediger ud fra booking nummer")
+    st.write("Rediger ud fra bookingnummer")
+
     with st.expander("Se alle bookinger"):
         result = (
             supabase
@@ -82,9 +85,9 @@ if mode == "✏️ Rediger booking":
             .select("*")
             .eq("season", int(year))
             .execute()
-            )
+        )
 
-        df_supabase = pd.DataFrame(result.data)
+        df_supabase = pd.DataFrame(result.data or [])
 
         if "room_number" in df_supabase.columns:
             df_supabase["room_number"] = (
@@ -108,6 +111,10 @@ if mode == "✏️ Rediger booking":
             df_supabase,
             use_container_width=True
         )
+
+    if df_supabase.empty:
+        st.info(f"Ingen bookinger fundet for {year}")
+        st.stop()
 
     booking_lookup = df_supabase.set_index("id")
 
