@@ -73,7 +73,7 @@ mode = st.radio(
     ],
     horizontal=True
 )
-if mode == "Rediger booking":
+if mode == "✏️ Rediger booking":
     st.write("rediger ud fra booking nummer")
     with st.expander("Se alle bookinger"):
         result = (

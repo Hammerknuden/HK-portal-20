@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="nyt layout booking edit flyttet op på siden">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="nyt layout booking edit flyttet op på siden og st radio intriduceres" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,14 +76,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00775" summary="debug commet">
-      <option name="closed" value="true" />
-      <created>1783580435008</created>
-      <option name="number" value="00775" />
-      <option name="presentableId" value="LOCAL-00775" />
-      <option name="project" value="LOCAL" />
-      <updated>1783580435008</updated>
     </task>
     <task id="LOCAL-00776" summary="dummy reduced og vær 7 til temp vær 6 pvt">
       <option name="closed" value="true" />
@@ -472,7 +461,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784095322469</updated>
     </task>
-    <option name="localTasksCounter" value="824" />
+    <task id="LOCAL-00824" summary="nyt layout booking edit flyttet op på siden og st radio intriduceres">
+      <option name="closed" value="true" />
+      <created>1784096404658</created>
+      <option name="number" value="00824" />
+      <option name="presentableId" value="LOCAL-00824" />
+      <option name="project" value="LOCAL" />
+      <updated>1784096404658</updated>
+    </task>
+    <option name="localTasksCounter" value="825" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -498,7 +495,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="execute aktiv" />
     <MESSAGE value="execute aktiv layout systematiseret" />
     <MESSAGE value="status commit layout og execute virker" />
     <MESSAGE value="fjerne fig.add_vrect fra pinse" />
@@ -523,6 +519,7 @@
     <MESSAGE value="network fjernet fra booking" />
     <MESSAGE value="nyt layout booking" />
     <MESSAGE value="nyt layout booking edit flyttet op på siden" />
-    <option name="LAST_COMMIT_MESSAGE" value="nyt layout booking edit flyttet op på siden" />
+    <MESSAGE value="nyt layout booking edit flyttet op på siden og st radio intriduceres" />
+    <option name="LAST_COMMIT_MESSAGE" value="nyt layout booking edit flyttet op på siden og st radio intriduceres" />
   </component>
 </project>
