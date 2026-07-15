@@ -113,12 +113,13 @@ if mode == "✏️ Rediger booking":
 
     booking_id = st.selectbox(
         "Vælg booking",
-        df_supabase["id"],
+        options=df_supabase["id"].tolist(),
         format_func=lambda x: (
             f"Booking: {booking_lookup.loc[x, 'booking_number']} | "
             f"Værelse: {booking_lookup.loc[x, 'room_number']} | "
             f"{booking_lookup.loc[x, 'navn']}"
-        )
+        ),
+        key="edit_booking_select"
     )
 
     booking = booking_lookup.loc[booking_id]
@@ -183,8 +184,10 @@ if mode == "✏️ Rediger booking":
     col1, col2 = st.columns(2)
 
     with col1:
-        if st.button("Gem ændringer"):
-
+        if st.button(
+                "Gem ændringer",
+                key=f"save_booking_{booking_id}"
+        ):
             try:
                 result = (
                     supabase
