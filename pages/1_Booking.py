@@ -65,7 +65,14 @@ year = st.selectbox("booking år", ["2026", "2027"])
 bruger = "Finn"
 network = "local"
 #network = st.selectbox("vælg lokal eller web ", options=["local", "URL"])
-
+mode = st.radio(
+    "",
+    [
+        "➕ Ny booking",
+        "✏️ Rediger booking"
+    ],
+    horizontal=True
+)
 now = st.date_input("booking dato")#, key='reservation_date')
 
 booking_number = st.text_input("booking_nummer ", key="reservation_number")
