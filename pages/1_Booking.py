@@ -393,8 +393,9 @@ else:
     with col2:
         st.metric(
             "Supabase",
-            ledige_rum_supabase
+            ledige_rum
         )
+
     st.markdown("### Værelsesstatus dtb")
 
     rooms = [1, 2, 3, 4, 5]
