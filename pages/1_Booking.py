@@ -183,6 +183,23 @@ if mode == "✏️ Rediger booking":
         value=str(booking["bed"])
     )
 
+    breakfast_options = ["Y", "N"]
+
+    current_breakfast = (
+        str(booking["morgenmad"]).strip().upper()
+        if pd.notna(booking["morgenmad"])
+        else "N"
+    )
+
+    if current_breakfast not in breakfast_options:
+        current_breakfast = "N"
+
+    new_breakfast = st.selectbox(
+        "Morgenmad",
+        breakfast_options,
+        index=breakfast_options.index(current_breakfast)
+    )
+
     new_room_number = st.text_input(
         "room_number",
         value=str(booking["room_number"])
@@ -209,6 +226,7 @@ if mode == "✏️ Rediger booking":
                         "web": new_web,
                         "ankomst": new_ankomst,
                         "bed": new_bed,
+                        "morgenmad": new_breakfast,
                         "room_number": new_room_number,
                         "season": year,
                     })
