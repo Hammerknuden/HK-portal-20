@@ -7,7 +7,7 @@ require_login()
 st.link_button("Booking_com", "https://account.booking.com")
 st.link_button("Mobil pay", "https://portal.vippsmobilepay.com/login")
 st.link_button("Zettle", "https://login.zettle.com/login?username=bonnevie%40mail.dk")
-st.link_button("Danske Bank", "https://shared-logon.danskebank.com/logon/default/index.html?clientId=District-DK")
+st.link_button("Danske Bank", "https://district.danskebank.dk/Logon#/" #https://shared-logon.danskebank.com/logon/default/index.html?clientId=District-DK")
 st.link_button("Dinero", "https://connect.visma.com/?returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_"
                          "id%3Ddinero%26redirect_uri%3Dhttps%253A%252F%252Fapp."
                          "dinero.dk%252Fsignin-oidc%26response_type%3Dcode%2520id_token%26scope%3Dopenid%2520profile%2520email%2520roles%26response"
