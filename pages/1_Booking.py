@@ -183,7 +183,7 @@ if mode == "✏️ Rediger booking":
         value=str(booking["bed"])
     )
 
-    breakfast_options = ["Y", "N"]
+    breakfast_options = ["Y", "N"]# udbyg evt med A for alternativ
 
     current_breakfast = (
         str(booking["morgenmad"]).strip().upper()
