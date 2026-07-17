@@ -205,7 +205,7 @@ if mode == "✏️ Rediger booking":
         value=str(booking["room_number"])
     )
 
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
 
     with col1:
         if st.button(
@@ -236,22 +236,56 @@ if mode == "✏️ Rediger booking":
 
                 st.success("Ændringer gemt")
                 st.write(result.data)
-
                 st.rerun()
 
             except Exception as e:
                 st.error(f"Fejl ved opdatering: {e}")
 
     with col2:
+        if st.button(
+                "Slet booking",
+                key=f"delete_booking_{booking_id}"
+        ):
+            try:
+                supabase.table("hk_dtb").delete().eq(
+                    "id",
+                    booking_id
+                ).execute()
 
-        if st.button("Slet booking"):
-            supabase.table("hk_dtb").delete().eq(
-                "id",
-                booking_id
-            ).execute()
+                st.success("Booking slettet")
+                st.rerun()
 
-            st.success("Booking slettet")
-            st.rerun()
+            except Exception as e:
+                st.error(f"Fejl ved sletning: {e}")
+
+    with col3:
+        if st.button(
+                "🔄 Byt værelse",
+                key=f"open_swap_{booking_id}"
+        ):
+            st.session_state["swap_open"] = True
+            st.session_state["swap_source_id"] = int(booking_id)
+
+    # Skal stå efter de tre kolonner
+    if (
+            st.session_state.get("swap_open")
+            and
+            st.session_state.get("swap_source_id") == int(booking_id)
+    ):
+        st.divider()
+        st.subheader("🔄 Byt værelse")
+
+        st.info(
+            f"Valgt booking: "
+            f"{booking['booking_number']} | "
+            f"Værelse {booking['room_number']}"
+        )
+
+        # Senere:
+        # - vælg booking B
+        # - vis begge bookinger
+        # - kontroller med can_swap_blocks()
+        # - separat knap: Udfør bytte
 
 else:
     now = st.date_input("booking dato")#, key='reservation_date')

@@ -1014,3 +1014,73 @@ def analyze_partial_block_move(
     return results
 
 
+def can_swap_blocks(block_a, block_b, all_bookings):
+
+    ids_a = block_a["booking_ids"]
+    ids_b = block_b["booking_ids"]
+
+    all_swap_ids = ids_a + ids_b
+
+    rows_a = all_bookings[
+        all_bookings["id"].isin(ids_a)
+    ].copy()
+
+    rows_b = all_bookings[
+        all_bookings["id"].isin(ids_b)
+    ].copy()
+
+    room_a = int(block_a["room_number"])
+    room_b = int(block_b["room_number"])
+
+    # Begge blokke fjernes fra kontrolgrundlaget
+    remaining_bookings = all_bookings[
+        ~all_bookings["id"].isin(all_swap_ids)
+    ]
+
+    def block_fits(block_rows, target_room):
+
+        room_bookings = remaining_bookings[
+            remaining_bookings["room_number"] == target_room
+        ]
+
+        for _, block_booking in block_rows.iterrows():
+
+            overlaps = room_bookings[
+                (
+                    room_bookings["checkin_date"]
+                    < block_booking["checkout_date"]
+                )
+                &
+                (
+                    room_bookings["checkout_date"]
+                    > block_booking["checkin_date"]
+                )
+            ]
+
+            if not overlaps.empty:
+                return False
+
+        return True
+
+    a_can_move = block_fits(
+        rows_a,
+        room_b
+    )
+
+    b_can_move = block_fits(
+        rows_b,
+        room_a
+    )
+
+    return {
+        "possible": a_can_move and b_can_move,
+        "block_a_ok": a_can_move,
+        "block_b_ok": b_can_move,
+        "room_a": room_a,
+        "room_b": room_b,
+        "booking_ids_a": [int(x) for x in ids_a],
+        "booking_ids_b": [int(x) for x in ids_b],
+    }
+
+
+
