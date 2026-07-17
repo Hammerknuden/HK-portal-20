@@ -765,7 +765,7 @@ if not df.empty:
             st.session_state.pop("timeline_swap_source_id", None)
             st.rerun()
 
-    # vis samlet overblik over alle indtastede bookinger
+    # vis samlet overblik over alle indtastede bookinger --
 
     with st.expander("Se alle bookinger"):
 

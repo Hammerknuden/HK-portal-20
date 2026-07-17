@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ændringer for swap i optimizer og booking med ny knap">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="swap tilknyttet timeline for større funktionalitet" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,14 +76,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00786" summary="excel 2027 update">
-      <option name="closed" value="true" />
-      <created>1783697828587</created>
-      <option name="number" value="00786" />
-      <option name="presentableId" value="LOCAL-00786" />
-      <option name="project" value="LOCAL" />
-      <updated>1783697828588</updated>
     </task>
     <task id="LOCAL-00787" summary="og in på inn and outs">
       <option name="closed" value="true" />
@@ -472,7 +461,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784273892961</updated>
     </task>
-    <option name="localTasksCounter" value="835" />
+    <task id="LOCAL-00835" summary="swap tilknyttet timeline for større funktionalitet">
+      <option name="closed" value="true" />
+      <created>1784275567364</created>
+      <option name="number" value="00835" />
+      <option name="presentableId" value="LOCAL-00835" />
+      <option name="project" value="LOCAL" />
+      <updated>1784275567364</updated>
+    </task>
+    <option name="localTasksCounter" value="836" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -498,7 +495,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="big change fra vær6 og 7 nye navne nye labels" />
     <MESSAGE value="editorial dobbel tekst" />
     <MESSAGE value="status timeline name update test ok" />
     <MESSAGE value="rediger events" />
@@ -523,6 +519,7 @@
     <MESSAGE value="edit BF tilføjet" />
     <MESSAGE value="status alt ok BF updated" />
     <MESSAGE value="ændringer for swap i optimizer og booking med ny knap" />
-    <option name="LAST_COMMIT_MESSAGE" value="ændringer for swap i optimizer og booking med ny knap" />
+    <MESSAGE value="swap tilknyttet timeline for større funktionalitet" />
+    <option name="LAST_COMMIT_MESSAGE" value="swap tilknyttet timeline for større funktionalitet" />
   </component>
 </project>
