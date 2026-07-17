@@ -701,25 +701,32 @@ if not df.empty:
         value=bool(booking.get("movable", True))
     )
 
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
 
     with col1:
-
-        if st.button("Gem ændringer", key="new_dtb"):
+        if st.button(
+                "Gem ændringer",
+                key=f"timeline_save_{booking_id}"
+        ):
             supabase.table("hk_dtb").update({
                 "room_number": new_room,
                 "checkin_date": new_start.isoformat(),
                 "checkout_date": new_end.isoformat(),
                 "booking_number": int(new_guest),
                 "movable": new_movable
-            }).eq("id", booking_id).execute()
+            }).eq(
+                "id",
+                booking_id
+            ).execute()
 
             st.success("Ændringer gemt")
             st.rerun()
 
     with col2:
-
-        if st.button("Slet booking", key="new dtb"):
+        if st.button(
+                "Slet booking",
+                key=f"timeline_delete_{booking_id}"
+        ):
             supabase.table("hk_dtb").delete().eq(
                 "id",
                 booking_id
@@ -727,7 +734,39 @@ if not df.empty:
 
             st.success("Booking slettet")
             st.rerun()
+
+    with col3:
+        if st.button(
+                "🔄 Byt værelse",
+                key=f"timeline_open_swap_{booking_id}"
+        ):
+            st.session_state["timeline_swap_open"] = True
+            st.session_state["timeline_swap_source_id"] = int(booking_id)
+
+
+    if (
+            st.session_state.get("timeline_swap_open")
+            and
+            st.session_state.get("timeline_swap_source_id") == int(booking_id)
+    ):
+        st.divider()
+        st.subheader("🔄 Byt værelse")
+
+        st.info(
+            f"Valgt booking: "
+            f"{booking['booking_number']} | "
+            f"Værelse {booking['room_number']}"
+        )
+        if st.button(
+                "Luk bytte",
+                key=f"timeline_close_swap_{booking_id}"
+        ):
+            st.session_state["timeline_swap_open"] = False
+            st.session_state.pop("timeline_swap_source_id", None)
+            st.rerun()
+
     # vis samlet overblik over alle indtastede bookinger
+
     with st.expander("Se alle bookinger"):
 
         st.dataframe(
