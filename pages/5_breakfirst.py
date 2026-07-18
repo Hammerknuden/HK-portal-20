@@ -230,8 +230,10 @@ st.subheader("Morgenmadsoversigt")
 st.dataframe(
     breakfast_df,
     hide_index=True,
-    use_container_width=True
-)
+    use_container_width=True,
+   )
+
+with st.expander("✏️ Rediger ekstra gæster og assistance"):
 
 # -------------------------
 # Opret PDF
