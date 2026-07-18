@@ -245,6 +245,25 @@ with st.expander(
         disabled=["Dato"],
         use_container_width=True
     )
+    if st.button("💾 Gem ændringer"):
+
+        for _, row in edit_df.iterrows():
+            (
+                supabase
+                .table("breakfast_notes")
+                .upsert(
+                    {
+                        "dato": row["Dato"].isoformat(),
+                        "ekstra_gæster": int(row["Ekstra gæster"]),
+                        "assistance": row["Assistance"]
+                    },
+                    on_conflict="dato"
+                )
+                .execute()
+            )
+
+        st.success("Ændringer gemt")
+        st.rerun()
 
 # -------------------------
 # Opret PDF
