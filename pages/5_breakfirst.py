@@ -239,9 +239,7 @@ if not df.empty:
             .str.upper()
         )
 
-
-
-        table_data = [["Dato", "Morgenmadsgæster"]]
+        table_data = [["Dato", "Morgenmadsgæster", "ekstra_gæster", "Assistance", "I alt"]]
 
         for _, row in breakfast_df.iterrows():
             table_data.append([
