@@ -756,6 +756,26 @@ if not df.empty:
             f"{booking['booking_number']} | "
             f"Værelse {booking['room_number']}"
         )
+        swap_candidates = df[
+            df["id"] != int(booking_id)
+            ].copy()
+
+        swap_target_id = st.selectbox(
+            "Vælg booking der skal byttes med",
+            options=swap_candidates["id"].tolist(),
+            format_func=lambda x: (
+                f"Booking {swap_candidates.loc[swap_candidates['id'] == x, 'booking_number'].iloc[0]} | "
+                f"Værelse {swap_candidates.loc[swap_candidates['id'] == x, 'room_number'].iloc[0]} | "
+                f"{swap_candidates.loc[swap_candidates['id'] == x, 'checkin_date'].iloc[0]} "
+                f"til {swap_candidates.loc[swap_candidates['id'] == x, 'checkout_date'].iloc[0]}"
+            ),
+            key=f"timeline_swap_target_{booking_id}"
+        )
+
+        target_booking = swap_candidates[
+            swap_candidates["id"] == swap_target_id
+            ].iloc[0]
+
         if st.button(
                 "Luk bytte",
                 key=f"timeline_close_swap_{booking_id}"
