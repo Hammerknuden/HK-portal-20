@@ -159,7 +159,7 @@ if not df.empty:
     breakfast_df = breakfast_df.rename(
         columns={
             "ekstra_gaester": "Ekstra gæster",
-            "assistance": "Køkkenhjælp"
+            "assistance": "Assistance"
         }
     )
 
