@@ -133,12 +133,12 @@ if not df.empty:
         )
 
     else:
-        breakfast_df["ekstra_gaester"] = 0
+        breakfast_df["ekstra_gæster"] = 0
         breakfast_df["assistance"] = ""
 
-    breakfast_df["ekstra_gaester"] = (
+    breakfast_df["ekstra_gæster"] = (
         pd.to_numeric(
-            breakfast_df["ekstra_gaester"],
+            breakfast_df["ekstra_gæster"],
             errors="coerce"
         )
         .fillna(0)
@@ -153,7 +153,7 @@ if not df.empty:
 
     breakfast_df["I alt"] = (
             breakfast_df["Morgenmadsgæster"]
-            + breakfast_df["ekstra_gaester"]
+            + breakfast_df["ekstra_gæster"]
     )
 
     breakfast_df = breakfast_df.rename(
@@ -202,15 +202,15 @@ if not df.empty:
     check_dato_slut = check_dato_start + timedelta(days=antal_dage)
 
     # Hent data fra Supabase
-    result = (
-        supabase
-        .table("hk_dtb")
-        .select(
-            "checkin_date, checkout_date, numb_guests, morgenmad, web"
-        )
-        .neq("web", "cansl")
-        .execute()
-    )
+    # result = (
+    #     supabase
+    #     .table("hk_dtb")
+    #     .select(
+    #         "checkin_date, checkout_date, numb_guests, morgenmad, web"
+    #     )
+    #     .neq("web", "cansl")
+    #     .execute()
+    # )
 
     df = pd.DataFrame(result.data or [])
 
