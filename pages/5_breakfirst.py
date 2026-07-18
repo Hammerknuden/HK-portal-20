@@ -233,7 +233,18 @@ st.dataframe(
     use_container_width=True,
    )
 
-with st.expander("✏️ Rediger ekstra gæster og assistance"):
+with st.expander(
+    "✏️ Rediger ekstra gæster og assistance",
+    expanded=False
+):
+    edit_df = st.data_editor(
+        breakfast_df[
+            ["Dato", "Ekstra gæster", "Assistance"]
+        ],
+        hide_index=True,
+        disabled=["Dato"],
+        use_container_width=True
+    )
 
 # -------------------------
 # Opret PDF
