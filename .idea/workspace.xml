@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="tilføj notes til morgenmad">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fjerner ekstra hent hk dtb">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/5_breakfirst.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/5_breakfirst.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,30 +79,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00793" summary="pdf til bf">
-      <option name="closed" value="true" />
-      <created>1783928968426</created>
-      <option name="number" value="00793" />
-      <option name="presentableId" value="LOCAL-00793" />
-      <option name="project" value="LOCAL" />
-      <updated>1783928968426</updated>
-    </task>
-    <task id="LOCAL-00794" summary="pdf til bf">
-      <option name="closed" value="true" />
-      <created>1783929402338</created>
-      <option name="number" value="00794" />
-      <option name="presentableId" value="LOCAL-00794" />
-      <option name="project" value="LOCAL" />
-      <updated>1783929402339</updated>
-    </task>
-    <task id="LOCAL-00795" summary="pdf til bf">
-      <option name="closed" value="true" />
-      <created>1783929491034</created>
-      <option name="number" value="00795" />
-      <option name="presentableId" value="LOCAL-00795" />
-      <option name="project" value="LOCAL" />
-      <updated>1783929491034</updated>
     </task>
     <task id="LOCAL-00796" summary="pdf til bf">
       <option name="closed" value="true" />
@@ -473,7 +448,31 @@
       <option name="project" value="LOCAL" />
       <updated>1784381555111</updated>
     </task>
-    <option name="localTasksCounter" value="842" />
+    <task id="LOCAL-00842" summary="tilføj notes til morgenmad">
+      <option name="closed" value="true" />
+      <created>1784382047171</created>
+      <option name="number" value="00842" />
+      <option name="presentableId" value="LOCAL-00842" />
+      <option name="project" value="LOCAL" />
+      <updated>1784382047171</updated>
+    </task>
+    <task id="LOCAL-00843" summary="tilføj notes til morgenmad">
+      <option name="closed" value="true" />
+      <created>1784382118470</created>
+      <option name="number" value="00843" />
+      <option name="presentableId" value="LOCAL-00843" />
+      <option name="project" value="LOCAL" />
+      <updated>1784382118471</updated>
+    </task>
+    <task id="LOCAL-00844" summary="fjerner ekstra hent hk dtb">
+      <option name="closed" value="true" />
+      <created>1784383079958</created>
+      <option name="number" value="00844" />
+      <option name="presentableId" value="LOCAL-00844" />
+      <option name="project" value="LOCAL" />
+      <updated>1784383079958</updated>
+    </task>
+    <option name="localTasksCounter" value="845" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -499,7 +498,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="og in på inn and outs" />
     <MESSAGE value="breakfirst page fra tidligere cleaning" />
     <MESSAGE value="excel update" />
     <MESSAGE value="overskrift morgenmad" />
@@ -524,6 +522,7 @@
     <MESSAGE value="timeline funktion byt show" />
     <MESSAGE value="funktion upgrade i timeline" />
     <MESSAGE value="tilføj notes til morgenmad" />
-    <option name="LAST_COMMIT_MESSAGE" value="tilføj notes til morgenmad" />
+    <MESSAGE value="fjerner ekstra hent hk dtb" />
+    <option name="LAST_COMMIT_MESSAGE" value="fjerner ekstra hent hk dtb" />
   </component>
 </project>

@@ -177,13 +177,13 @@ if not df.empty:
         .execute()
     )
 
-    st.subheader("Morgenmadsoversigt")
-
-    st.dataframe(
-        breakfast_df,
-        hide_index=True,
-        use_container_width=True
-    )
+    # st.subheader("Morgenmadsoversigt")
+    #
+    # st.dataframe(
+    #     breakfast_df,
+    #     hide_index=True,
+    #     use_container_width=True
+    # )
     buffer = BytesIO()
 
     doc = SimpleDocTemplate(buffer)
