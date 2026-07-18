@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="funktion upgrade i timeline">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="tilføj notes til morgenmad">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/5_breakfirst.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/5_breakfirst.py" afterDir="false" />
     </list>
@@ -47,6 +47,7 @@
     "Python.3_Inn and Out.executor": "Run",
     "Python.3_ankomster.executor": "Run",
     "Python.4_Booking_C_link.executor": "Run",
+    "Python.5_breakfirst.executor": "Run",
     "Python.5_cleaning.executor": "Run",
     "Python.6_callender.executor": "Run",
     "Python.6_timeline.executor": "Run",
@@ -79,22 +80,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00791" summary="inn out kommentar">
-      <option name="closed" value="true" />
-      <created>1783927243964</created>
-      <option name="number" value="00791" />
-      <option name="presentableId" value="LOCAL-00791" />
-      <option name="project" value="LOCAL" />
-      <updated>1783927243965</updated>
-    </task>
-    <task id="LOCAL-00792" summary="inn out kommentar">
-      <option name="closed" value="true" />
-      <created>1783927433947</created>
-      <option name="number" value="00792" />
-      <option name="presentableId" value="LOCAL-00792" />
-      <option name="project" value="LOCAL" />
-      <updated>1783927433947</updated>
     </task>
     <task id="LOCAL-00793" summary="pdf til bf">
       <option name="closed" value="true" />
@@ -472,7 +457,23 @@
       <option name="project" value="LOCAL" />
       <updated>1784357357528</updated>
     </task>
-    <option name="localTasksCounter" value="840" />
+    <task id="LOCAL-00840" summary="tilføj notes til morgenmad">
+      <option name="closed" value="true" />
+      <created>1784381422932</created>
+      <option name="number" value="00840" />
+      <option name="presentableId" value="LOCAL-00840" />
+      <option name="project" value="LOCAL" />
+      <updated>1784381422932</updated>
+    </task>
+    <task id="LOCAL-00841" summary="tilføj notes til morgenmad">
+      <option name="closed" value="true" />
+      <created>1784381555110</created>
+      <option name="number" value="00841" />
+      <option name="presentableId" value="LOCAL-00841" />
+      <option name="project" value="LOCAL" />
+      <updated>1784381555111</updated>
+    </task>
+    <option name="localTasksCounter" value="842" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -498,7 +499,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="excel 2027 update" />
     <MESSAGE value="og in på inn and outs" />
     <MESSAGE value="breakfirst page fra tidligere cleaning" />
     <MESSAGE value="excel update" />
@@ -523,6 +523,7 @@
     <MESSAGE value="edit and update no change" />
     <MESSAGE value="timeline funktion byt show" />
     <MESSAGE value="funktion upgrade i timeline" />
-    <option name="LAST_COMMIT_MESSAGE" value="funktion upgrade i timeline" />
+    <MESSAGE value="tilføj notes til morgenmad" />
+    <option name="LAST_COMMIT_MESSAGE" value="tilføj notes til morgenmad" />
   </component>
 </project>

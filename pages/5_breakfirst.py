@@ -108,17 +108,17 @@ if not df.empty:
     notes = (
         supabase
         .table("breakfast_notes")
-        .select("dato, ekstra_gaester, ")
+        .select("dato, ekstra_gaester, assistance")
         .execute()
     )
 
-    notes_df = pd.DataFrame(notes.data)
+    notes_df = pd.DataFrame(notes.data or [])
 
     if not notes_df.empty:
 
-        # Gør datoerne ens
         notes_df["dato"] = pd.to_datetime(
-            notes_df["dato"]
+            notes_df["dato"],
+            errors="coerce"
         ).dt.date
 
         breakfast_df = breakfast_df.merge(
@@ -128,7 +128,6 @@ if not df.empty:
             how="left"
         )
 
-        # Den ekstra datokolonne behøves ikke bagefter
         breakfast_df = breakfast_df.drop(
             columns=["dato"]
         )
@@ -137,7 +136,6 @@ if not df.empty:
         breakfast_df["ekstra_gaester"] = 0
         breakfast_df["assistance"] = ""
 
-    # Udfyld tomme værdier
     breakfast_df["ekstra_gaester"] = (
         pd.to_numeric(
             breakfast_df["ekstra_gaester"],
@@ -147,57 +145,39 @@ if not df.empty:
         .astype(int)
     )
 
-    breakfast_df["asssitance"] = (
+    breakfast_df["assistance"] = (
         breakfast_df["assistance"]
         .fillna("")
+        .astype(str)
     )
 
-    # Samlet antal spisende
     breakfast_df["I alt"] = (
             breakfast_df["Morgenmadsgæster"]
             + breakfast_df["ekstra_gaester"]
     )
 
+    breakfast_df = breakfast_df.rename(
+        columns={
+            "ekstra_gaester": "Ekstra gæster",
+            "assistance": "Køkkenhjælp"
+        }
+    )
+
     st.subheader("Morgenmadsoversigt")
-    # breakfast_rows = []
-    #
-    # for d in pd.date_range(
-    #     check_dato_start,
-    #     check_dato_slut,
-    #     freq="D"
-    # ):
-    #     dato = d.date()
-    #
-    #     antal = df.loc[
-    #         (df["morgenmad"] == "Y")
-    #         & (df["checkin_date"] < dato)
-    #         & (df["checkout_date"] >= dato),
-    #         "numb_guests"
-    #     ].sum()
-    #
-    #     breakfast_rows.append({
-    #         "Dato": dato,
-    #         "Morgenmadsgæster": int(antal)
-    #     })
-    #
-    # breakfast_df = pd.DataFrame(breakfast_rows)
-    #
-    # notes = (
-    #     supabase
-    #     .table("breakfast_notes")
-    #     .select("*")
-    #     .execute()
-    # )
-    #
-    # notes_df = pd.DataFrame(notes.data)
-    #
-    # breakfast_df = breakfast_df.merge(
-    #     notes_df,
-    #     on="dato",
-    #     how="left"
-    # )
-    #
-    # st.subheader("Morgenmadsoversigt")
+
+    st.dataframe(
+        breakfast_df,
+        hide_index=True,
+        use_container_width=True
+    )
+    notes = (
+        supabase
+        .table("breakfast_notes")
+        .select("dato, ekstra_gæster")
+        .execute()
+    )
+
+    st.subheader("Morgenmadsoversigt")
 
     st.dataframe(
         breakfast_df,
@@ -259,63 +239,7 @@ if not df.empty:
             .str.upper()
         )
 
-        # breakfast_rows = []
-        #
-        # for d in pd.date_range(
-        #         check_dato_start,
-        #         check_dato_slut,
-        #         freq="D"
-        # ):
-        #     dato = d.date()
-        #
-        #     antal = df.loc[
-        #         (df["morgenmad"] == "Y")
-        #         & (df["checkin_date"] < dato)
-        #         & (df["checkout_date"] >= dato),
-        #         "numb_guests"
-        #     ].sum()
-        #
-        #     breakfast_rows.append({
-        #         "Dato": dato,
-        #         "Morgenmadsgæster": int(antal)
-        #     })
-        #
-        # breakfast_df = pd.DataFrame(breakfast_rows)
-        #
-        # buffer = BytesIO()
-        #
-        # doc = SimpleDocTemplate(buffer)
-        #
-        # styles = getSampleStyleSheet()
-        #
-        # elements = []
-        #
-        # elements.append(
-        #     Paragraph(
-        #         "<b>Hammerknuden</b>",
-        #         styles["Title"]
-        #     )
-        # )
-        #
-        # elements.append(
-        #     Paragraph(
-        #         "<b>Morgenmadsoversigt</b>",
-        #         styles["Heading1"]
-        #     )
-        # )
-        #
-        # elements.append(
-        #     Paragraph(
-        #         f"Periode: "
-        #         f"{check_dato_start.strftime('%d-%m-%Y')} "
-        #         f"til "
-        #         f"{check_dato_slut.strftime('%d-%m-%Y')}",
-        #         styles["Normal"]
-        #     )
-        # )
-        # elements.append(
-        #     Spacer(1, 24)
-        # )
+
 
         table_data = [["Dato", "Morgenmadsgæster"]]
 
