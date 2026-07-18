@@ -743,7 +743,6 @@ if not df.empty:
             st.session_state["timeline_swap_open"] = True
             st.session_state["timeline_swap_source_id"] = int(booking_id)
 
-
     if (
             st.session_state.get("timeline_swap_open")
             and
