@@ -108,7 +108,7 @@ if not df.empty:
     notes = (
         supabase
         .table("breakfast_notes")
-        .select("dato, ekstra_gaester, koekkenhjaelp")
+        .select("dato, ekstra_gaester, ")
         .execute()
     )
 
