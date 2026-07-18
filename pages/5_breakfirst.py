@@ -85,9 +85,9 @@ if not df.empty:
     breakfast_rows = []
 
     for d in pd.date_range(
-        check_dato_start,
-        check_dato_slut,
-        freq="D"
+            check_dato_start,
+            check_dato_slut,
+            freq="D"
     ):
         dato = d.date()
 
@@ -105,7 +105,99 @@ if not df.empty:
 
     breakfast_df = pd.DataFrame(breakfast_rows)
 
+    notes = (
+        supabase
+        .table("breakfast_notes")
+        .select("dato, ekstra_gaester, koekkenhjaelp")
+        .execute()
+    )
+
+    notes_df = pd.DataFrame(notes.data)
+
+    if not notes_df.empty:
+
+        # Gør datoerne ens
+        notes_df["dato"] = pd.to_datetime(
+            notes_df["dato"]
+        ).dt.date
+
+        breakfast_df = breakfast_df.merge(
+            notes_df,
+            left_on="Dato",
+            right_on="dato",
+            how="left"
+        )
+
+        # Den ekstra datokolonne behøves ikke bagefter
+        breakfast_df = breakfast_df.drop(
+            columns=["dato"]
+        )
+
+    else:
+        breakfast_df["ekstra_gaester"] = 0
+        breakfast_df["assistance"] = ""
+
+    # Udfyld tomme værdier
+    breakfast_df["ekstra_gaester"] = (
+        pd.to_numeric(
+            breakfast_df["ekstra_gaester"],
+            errors="coerce"
+        )
+        .fillna(0)
+        .astype(int)
+    )
+
+    breakfast_df["asssitance"] = (
+        breakfast_df["assistance"]
+        .fillna("")
+    )
+
+    # Samlet antal spisende
+    breakfast_df["I alt"] = (
+            breakfast_df["Morgenmadsgæster"]
+            + breakfast_df["ekstra_gaester"]
+    )
+
     st.subheader("Morgenmadsoversigt")
+    # breakfast_rows = []
+    #
+    # for d in pd.date_range(
+    #     check_dato_start,
+    #     check_dato_slut,
+    #     freq="D"
+    # ):
+    #     dato = d.date()
+    #
+    #     antal = df.loc[
+    #         (df["morgenmad"] == "Y")
+    #         & (df["checkin_date"] < dato)
+    #         & (df["checkout_date"] >= dato),
+    #         "numb_guests"
+    #     ].sum()
+    #
+    #     breakfast_rows.append({
+    #         "Dato": dato,
+    #         "Morgenmadsgæster": int(antal)
+    #     })
+    #
+    # breakfast_df = pd.DataFrame(breakfast_rows)
+    #
+    # notes = (
+    #     supabase
+    #     .table("breakfast_notes")
+    #     .select("*")
+    #     .execute()
+    # )
+    #
+    # notes_df = pd.DataFrame(notes.data)
+    #
+    # breakfast_df = breakfast_df.merge(
+    #     notes_df,
+    #     on="dato",
+    #     how="left"
+    # )
+    #
+    # st.subheader("Morgenmadsoversigt")
 
     st.dataframe(
         breakfast_df,
@@ -167,63 +259,63 @@ if not df.empty:
             .str.upper()
         )
 
-        breakfast_rows = []
-
-        for d in pd.date_range(
-                check_dato_start,
-                check_dato_slut,
-                freq="D"
-        ):
-            dato = d.date()
-
-            antal = df.loc[
-                (df["morgenmad"] == "Y")
-                & (df["checkin_date"] < dato)
-                & (df["checkout_date"] >= dato),
-                "numb_guests"
-            ].sum()
-
-            breakfast_rows.append({
-                "Dato": dato,
-                "Morgenmadsgæster": int(antal)
-            })
-
-        breakfast_df = pd.DataFrame(breakfast_rows)
-
-        buffer = BytesIO()
-
-        doc = SimpleDocTemplate(buffer)
-
-        styles = getSampleStyleSheet()
-
-        elements = []
-
-        elements.append(
-            Paragraph(
-                "<b>Hammerknuden</b>",
-                styles["Title"]
-            )
-        )
-
-        elements.append(
-            Paragraph(
-                "<b>Morgenmadsoversigt</b>",
-                styles["Heading1"]
-            )
-        )
-
-        elements.append(
-            Paragraph(
-                f"Periode: "
-                f"{check_dato_start.strftime('%d-%m-%Y')} "
-                f"til "
-                f"{check_dato_slut.strftime('%d-%m-%Y')}",
-                styles["Normal"]
-            )
-        )
-        elements.append(
-            Spacer(1, 24)
-        )
+        # breakfast_rows = []
+        #
+        # for d in pd.date_range(
+        #         check_dato_start,
+        #         check_dato_slut,
+        #         freq="D"
+        # ):
+        #     dato = d.date()
+        #
+        #     antal = df.loc[
+        #         (df["morgenmad"] == "Y")
+        #         & (df["checkin_date"] < dato)
+        #         & (df["checkout_date"] >= dato),
+        #         "numb_guests"
+        #     ].sum()
+        #
+        #     breakfast_rows.append({
+        #         "Dato": dato,
+        #         "Morgenmadsgæster": int(antal)
+        #     })
+        #
+        # breakfast_df = pd.DataFrame(breakfast_rows)
+        #
+        # buffer = BytesIO()
+        #
+        # doc = SimpleDocTemplate(buffer)
+        #
+        # styles = getSampleStyleSheet()
+        #
+        # elements = []
+        #
+        # elements.append(
+        #     Paragraph(
+        #         "<b>Hammerknuden</b>",
+        #         styles["Title"]
+        #     )
+        # )
+        #
+        # elements.append(
+        #     Paragraph(
+        #         "<b>Morgenmadsoversigt</b>",
+        #         styles["Heading1"]
+        #     )
+        # )
+        #
+        # elements.append(
+        #     Paragraph(
+        #         f"Periode: "
+        #         f"{check_dato_start.strftime('%d-%m-%Y')} "
+        #         f"til "
+        #         f"{check_dato_slut.strftime('%d-%m-%Y')}",
+        #         styles["Normal"]
+        #     )
+        # )
+        # elements.append(
+        #     Spacer(1, 24)
+        # )
 
         table_data = [["Dato", "Morgenmadsgæster"]]
 

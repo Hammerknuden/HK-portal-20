@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="timeline funktion byt show">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="funktion upgrade i timeline">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/5_breakfirst.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/5_breakfirst.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,34 +36,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Python.1_Booking.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_Setup.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_databaseopslag.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_setup.executor&quot;: &quot;Run&quot;,
-    &quot;Python.3_Ankomster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.3_Inn and Out.executor&quot;: &quot;Run&quot;,
-    &quot;Python.3_ankomster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.4_Booking_C_link.executor&quot;: &quot;Run&quot;,
-    &quot;Python.5_cleaning.executor&quot;: &quot;Run&quot;,
-    &quot;Python.6_callender.executor&quot;: &quot;Run&quot;,
-    &quot;Python.6_timeline.executor&quot;: &quot;Run&quot;,
-    &quot;Python.8_statestik.executor&quot;: &quot;Run&quot;,
-    &quot;Python.8_timelinenew.executor&quot;: &quot;Run&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.auth.executor&quot;: &quot;Run&quot;,
-    &quot;Python.common.executor&quot;: &quot;Run&quot;,
-    &quot;Python.config_prices.executor&quot;: &quot;Run&quot;,
-    &quot;Python.databaseopslag.executor&quot;: &quot;Run&quot;,
-    &quot;Python.level2_optimizer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.streamlit_app.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/finnj/-repo hk20/hk_portal_20/modules/level2_optimizer.py&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.1_Booking.executor": "Run",
+    "Python.2_Setup.executor": "Run",
+    "Python.2_databaseopslag.executor": "Run",
+    "Python.2_setup.executor": "Run",
+    "Python.3_Ankomster.executor": "Run",
+    "Python.3_Inn and Out.executor": "Run",
+    "Python.3_ankomster.executor": "Run",
+    "Python.4_Booking_C_link.executor": "Run",
+    "Python.5_cleaning.executor": "Run",
+    "Python.6_callender.executor": "Run",
+    "Python.6_timeline.executor": "Run",
+    "Python.8_statestik.executor": "Run",
+    "Python.8_timelinenew.executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.auth.executor": "Run",
+    "Python.common.executor": "Run",
+    "Python.config_prices.executor": "Run",
+    "Python.databaseopslag.executor": "Run",
+    "Python.level2_optimizer.executor": "Run",
+    "Python.streamlit_app.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/pages/5_breakfirst.py",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -79,14 +79,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00790" summary="overskrift morgenmad">
-      <option name="closed" value="true" />
-      <created>1783924136848</created>
-      <option name="number" value="00790" />
-      <option name="presentableId" value="LOCAL-00790" />
-      <option name="project" value="LOCAL" />
-      <updated>1783924136848</updated>
     </task>
     <task id="LOCAL-00791" summary="inn out kommentar">
       <option name="closed" value="true" />
@@ -472,7 +464,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784356792750</updated>
     </task>
-    <option name="localTasksCounter" value="839" />
+    <task id="LOCAL-00839" summary="funktion upgrade i timeline">
+      <option name="closed" value="true" />
+      <created>1784357357528</created>
+      <option name="number" value="00839" />
+      <option name="presentableId" value="LOCAL-00839" />
+      <option name="project" value="LOCAL" />
+      <updated>1784357357528</updated>
+    </task>
+    <option name="localTasksCounter" value="840" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -498,7 +498,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="filter 2027 fra 2026 downloads" />
     <MESSAGE value="excel 2027 update" />
     <MESSAGE value="og in på inn and outs" />
     <MESSAGE value="breakfirst page fra tidligere cleaning" />
@@ -523,6 +522,7 @@
     <MESSAGE value="status commit både booking og timeline har fået tilføjet swap knap ikke fnktionalitet endnu" />
     <MESSAGE value="edit and update no change" />
     <MESSAGE value="timeline funktion byt show" />
-    <option name="LAST_COMMIT_MESSAGE" value="timeline funktion byt show" />
+    <MESSAGE value="funktion upgrade i timeline" />
+    <option name="LAST_COMMIT_MESSAGE" value="funktion upgrade i timeline" />
   </component>
 </project>
