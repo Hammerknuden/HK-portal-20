@@ -764,11 +764,25 @@ if not df.empty:
             "Vælg booking der skal byttes med",
             options=swap_candidates["id"].tolist(),
             format_func=lambda x: (
-                f"Booking {swap_candidates.loc[swap_candidates['id'] == x, 'booking_number'].iloc[0]} | "
-                f"Værelse {swap_candidates.loc[swap_candidates['id'] == x, 'room_number'].iloc[0]} | "
-                f"{swap_candidates.loc[swap_candidates['id'] == x, 'checkin_date'].iloc[0]} "
-                f"til {swap_candidates.loc[swap_candidates['id'] == x, 'checkout_date'].iloc[0]}"
+                f"Booking "
+                f"{swap_candidates.loc[swap_candidates['id'] == x, 'booking_number'].iloc[0]} | "
+                f"Værelse "
+                f"{swap_candidates.loc[swap_candidates['id'] == x, 'room_number'].iloc[0]} | "
+                f"{pd.to_datetime(
+                    swap_candidates.loc[
+                        swap_candidates['id'] == x,
+                        'checkin_date'
+                    ].iloc[0]
+                ).strftime('%d-%m-%Y')} "
+                f"til "
+                f"{pd.to_datetime(
+                    swap_candidates.loc[
+                        swap_candidates['id'] == x,
+                        'checkout_date'
+                    ].iloc[0]
+                ).strftime('%d-%m-%Y')}"
             ),
+
             key=f"timeline_swap_target_{booking_id}"
         )
 
