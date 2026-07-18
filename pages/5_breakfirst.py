@@ -248,14 +248,29 @@ with st.expander(
     if st.button("💾 Gem ændringer"):
 
         for _, row in edit_df.iterrows():
+
+            assistance = row["Assistance"]
+
+            if pd.isna(assistance):
+                assistance = ""
+            else:
+                assistance = str(assistance).strip()
+
+            ekstra_gaester = row["Ekstra gæster"]
+
+            if pd.isna(ekstra_gaester):
+                ekstra_gaester = 0
+            else:
+                ekstra_gaester = int(ekstra_gaester)
+
             (
                 supabase
                 .table("breakfast_notes")
                 .upsert(
                     {
                         "dato": row["Dato"].isoformat(),
-                        "ekstra_gæster": int(row["Ekstra gæster"]),
-                        "assistance": row["Assistance"]
+                        "ekstra_gæster": ekstra_gaester,
+                        "assistance": assistance,
                     },
                     on_conflict="dato"
                 )
