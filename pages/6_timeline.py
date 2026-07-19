@@ -889,7 +889,7 @@ if not df.empty:
 
                     st.success("Bytte udført")
 
-                    st.rerun()
+                    #st.rerun()
 
 
     # vis samlet overblik over alle indtastede bookinger --
