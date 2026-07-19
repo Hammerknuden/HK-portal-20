@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="klar til første swap test" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="klar til sidste test" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,14 +78,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00812" summary="network fjernet fra booking">
-      <option name="closed" value="true" />
-      <created>1784039909196</created>
-      <option name="number" value="00812" />
-      <option name="presentableId" value="LOCAL-00812" />
-      <option name="project" value="LOCAL" />
-      <updated>1784039909197</updated>
     </task>
     <task id="LOCAL-00813" summary="nyt layout booking">
       <option name="closed" value="true" />
@@ -471,7 +463,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784482324359</updated>
     </task>
-    <option name="localTasksCounter" value="861" />
+    <task id="LOCAL-00861" summary="klar til sidste test">
+      <option name="closed" value="true" />
+      <created>1784482725945</created>
+      <option name="number" value="00861" />
+      <option name="presentableId" value="LOCAL-00861" />
+      <option name="project" value="LOCAL" />
+      <updated>1784482725945</updated>
+    </task>
+    <option name="localTasksCounter" value="862" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -497,7 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="links updated Dinero" />
     <MESSAGE value="network fjernet fra booking" />
     <MESSAGE value="nyt layout booking" />
     <MESSAGE value="nyt layout booking edit flyttet op på siden" />
@@ -522,6 +521,7 @@
     <MESSAGE value="bytning mulig eller ej" />
     <MESSAGE value="room swap py oprettelse" />
     <MESSAGE value="klar til første swap test" />
-    <option name="LAST_COMMIT_MESSAGE" value="klar til første swap test" />
+    <MESSAGE value="klar til sidste test" />
+    <option name="LAST_COMMIT_MESSAGE" value="klar til sidste test" />
   </component>
 </project>
