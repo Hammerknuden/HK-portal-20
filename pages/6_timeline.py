@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 from supabase import create_client
 from importlib.metadata import version
 from modules.level2_optimizer import analyze_improvements
+from modules.level2_optimizer import can_swap_blocks
 # -------------------------
 # INIT
 # -------------------------
@@ -815,6 +816,47 @@ if not df.empty:
                 "til "
                 f"{pd.to_datetime(target_booking['checkout_date']).strftime('%d-%m-%Y')}"
             )
+
+        block_a = {
+            "booking_ids": [int(booking["id"])],
+            "room_number": int(booking["room_number"]),
+        }
+
+        block_b = {
+            "booking_ids": [int(target_booking["id"])],
+            "room_number": int(target_booking["room_number"]),
+        }
+
+        swap_result = can_swap_blocks(
+            block_a,
+            block_b,
+            df
+        )
+
+        st.markdown("#### Kontrol af bytte")
+
+        if swap_result["possible"]:
+            st.success(
+                f"🟢 Bytte muligt: "
+                f"Booking {booking['booking_number']} kan flyttes til værelse "
+                f"{swap_result['room_b']}, og booking "
+                f"{target_booking['booking_number']} kan flyttes til værelse "
+                f"{swap_result['room_a']}."
+            )
+        else:
+            st.error("🔴 Bytte ikke muligt")
+
+            if not swap_result["block_a_ok"]:
+                st.warning(
+                    f"Booking {booking['booking_number']} kan ikke flyttes "
+                    f"til værelse {swap_result['room_b']}."
+                )
+
+            if not swap_result["block_b_ok"]:
+                st.warning(
+                    f"Booking {target_booking['booking_number']} kan ikke flyttes "
+                    f"til værelse {swap_result['room_a']}."
+                )
 
         if st.button(
                 "Luk bytte",
