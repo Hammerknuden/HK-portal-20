@@ -30,7 +30,7 @@ def execute_room_swap(
 
     result_b = (
         supabase
-        .table(table_name)
+        .table("hk_dtb")
         .update({"room_number": room_a})
         .in_("id", booking_b_ids)
         .execute()
