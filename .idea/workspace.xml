@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="block byt layout">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="bytning mulig eller ej">
+      <change afterPath="$PROJECT_DIR$/pages/modules/     room_swap.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,14 +80,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00805" summary="pdf til bf">
-      <option name="closed" value="true" />
-      <created>1783967557784</created>
-      <option name="number" value="00805" />
-      <option name="presentableId" value="LOCAL-00805" />
-      <option name="project" value="LOCAL" />
-      <updated>1783967557784</updated>
     </task>
     <task id="LOCAL-00806" summary="pdf til bf">
       <option name="closed" value="true" />
@@ -473,7 +465,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784444071716</updated>
     </task>
-    <option name="localTasksCounter" value="854" />
+    <task id="LOCAL-00854" summary="bytning mulig eller ej">
+      <option name="closed" value="true" />
+      <created>1784444466613</created>
+      <option name="number" value="00854" />
+      <option name="presentableId" value="LOCAL-00854" />
+      <option name="project" value="LOCAL" />
+      <updated>1784444466613</updated>
+    </task>
+    <option name="localTasksCounter" value="855" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -499,7 +499,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="pdf til bf" />
     <MESSAGE value="pdf til bf status ok" />
     <MESSAGE value="links updated DB" />
     <MESSAGE value="links updated Dinero" />
@@ -524,6 +523,7 @@
     <MESSAGE value="redigering 1" />
     <MESSAGE value="redigering gem i supa" />
     <MESSAGE value="block byt layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="block byt layout" />
+    <MESSAGE value="bytning mulig eller ej" />
+    <option name="LAST_COMMIT_MESSAGE" value="bytning mulig eller ej" />
   </component>
 </project>
