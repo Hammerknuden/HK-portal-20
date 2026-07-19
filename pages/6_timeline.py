@@ -884,12 +884,19 @@ if not df.empty:
                         room_b=swap_result["room_b"],
                     )
 
+                    st.cache_data.clear()
+
                     st.session_state["timeline_swap_open"] = False
                     st.session_state.pop("timeline_swap_source_id", None)
 
                     st.success("Bytte udført")
+                    st.write("Booking A IDs:", swap_result["booking_ids_a"])
+                    st.write("Booking B IDs:", swap_result["booking_ids_b"])
+                    st.write("Værelse A:", swap_result["room_a"])
+                    st.write("Værelse B:", swap_result["room_b"])
 
                     #st.rerun()
+
 
 
     # vis samlet overblik over alle indtastede bookinger --
