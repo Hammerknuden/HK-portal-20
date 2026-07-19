@@ -14,6 +14,7 @@ from supabase import create_client
 from importlib.metadata import version
 from modules.level2_optimizer import analyze_improvements
 from modules.level2_optimizer import can_swap_blocks
+from modules.room_swap import execute_room_swap
 # -------------------------
 # INIT
 # -------------------------
@@ -858,13 +859,38 @@ if not df.empty:
                     f"til værelse {swap_result['room_a']}."
                 )
 
-        if st.button(
-                "Luk bytte",
-                key=f"timeline_close_swap_{booking_id}"
-        ):
-            st.session_state["timeline_swap_open"] = False
-            st.session_state.pop("timeline_swap_source_id", None)
-            st.rerun()
+        col1, col2 = st.columns(2)
+
+        with col1:
+            if st.button(
+                    "❌ Afbryd",
+                    key=f"timeline_close_swap_{booking_id}"
+            ):
+                st.session_state["timeline_swap_open"] = False
+                st.session_state.pop("timeline_swap_source_id", None)
+                st.rerun()
+
+        with col2:
+            if swap_result["possible"]:
+                if st.button(
+                        "🔄 Udfør bytte",
+                        key=f"timeline_execute_swap_{booking_id}"
+                ):
+                    swap_execution = execute_room_swap(
+                        supabase=supabase,
+                        booking_a_ids=swap_result["booking_ids_a"],
+                        booking_b_ids=swap_result["booking_ids_b"],
+                        room_a=swap_result["room_a"],
+                        room_b=swap_result["room_b"],
+                    )
+
+                    st.session_state["timeline_swap_open"] = False
+                    st.session_state.pop("timeline_swap_source_id", None)
+
+                    st.success("Bytte udført")
+
+                    st.rerun()
+
 
     # vis samlet overblik over alle indtastede bookinger --
 
