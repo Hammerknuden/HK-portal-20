@@ -790,6 +790,32 @@ if not df.empty:
             swap_candidates["id"] == swap_target_id
             ].iloc[0]
 
+        st.markdown("#### Valgte bookinger")
+
+        col_a, col_b = st.columns(2)
+
+        with col_a:
+            st.markdown("**Booking A**")
+            st.write(f"Bookingnummer: {booking['booking_number']}")
+            st.write(f"Værelse: {int(booking['room_number'])}")
+            st.write(
+                "Periode: "
+                f"{pd.to_datetime(booking['checkin_date']).strftime('%d-%m-%Y')} "
+                "til "
+                f"{pd.to_datetime(booking['checkout_date']).strftime('%d-%m-%Y')}"
+            )
+
+        with col_b:
+            st.markdown("**Booking B**")
+            st.write(f"Bookingnummer: {target_booking['booking_number']}")
+            st.write(f"Værelse: {int(target_booking['room_number'])}")
+            st.write(
+                "Periode: "
+                f"{pd.to_datetime(target_booking['checkin_date']).strftime('%d-%m-%Y')} "
+                "til "
+                f"{pd.to_datetime(target_booking['checkout_date']).strftime('%d-%m-%Y')}"
+            )
+
         if st.button(
                 "Luk bytte",
                 key=f"timeline_close_swap_{booking_id}"
