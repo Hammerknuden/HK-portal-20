@@ -241,7 +241,7 @@ with st.expander(
 ):
     edit_df = st.data_editor(
         breakfast_df[
-            ["Dato", "Ekstra gæster", "Assistance", "Kommentar"]
+            ["Dato", "Ekstra gæster", "Assistance", "comments"]
         ],
         hide_index=True,
         disabled=["Dato"],
