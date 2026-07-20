@@ -265,6 +265,13 @@ with st.expander(
             else:
                 ekstra_gaester = int(ekstra_gaester)
 
+            ekstra_kommentar = row["comments"]
+
+            if pd.isna(ekstra_kommentar):
+                ekstra_kommentar = 0
+            else:
+                ekstra_kommentar = (ekstra_kommentar)
+
             (
                 supabase
                 .table("breakfast_notes")
@@ -273,6 +280,7 @@ with st.expander(
                         "dato": row["Dato"].isoformat(),
                         "ekstra_gæster": ekstra_gaester,
                         "assistance": assistance,
+                        "comments": comments,
                     },
                     on_conflict="dato"
                 )
