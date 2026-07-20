@@ -241,7 +241,7 @@ with st.expander(
 ):
     edit_df = st.data_editor(
         breakfast_df[
-            ["Dato", "Ekstra gæster", "Assistance", "comments"]
+            ["Dato", "Ekstra gæster", "Assistance", "Kommentar"]
         ],
         hide_index=True,
         disabled=["Dato"],
@@ -265,7 +265,7 @@ with st.expander(
             else:
                 ekstra_gaester = int(ekstra_gaester)
 
-            ekstra_kommentar = row["comments"]
+            ekstra_kommentar = row["Kommentar"]
 
             if pd.isna(ekstra_kommentar):
                 ekstra_kommentar = ""
