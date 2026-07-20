@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="status enkelt byt på timeline running">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="inn and out editorial imports">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/3_Inn and Out.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/3_Inn and Out.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,14 +81,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00814" summary="nyt layout booking">
-      <option name="closed" value="true" />
-      <created>1784047043819</created>
-      <option name="number" value="00814" />
-      <option name="presentableId" value="LOCAL-00814" />
-      <option name="project" value="LOCAL" />
-      <updated>1784047043819</updated>
     </task>
     <task id="LOCAL-00815" summary="nyt layout booking">
       <option name="closed" value="true" />
@@ -473,7 +466,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784483920561</updated>
     </task>
-    <option name="localTasksCounter" value="863" />
+    <task id="LOCAL-00863" summary="inn and out editorial imports">
+      <option name="closed" value="true" />
+      <created>1784533964010</created>
+      <option name="number" value="00863" />
+      <option name="presentableId" value="LOCAL-00863" />
+      <option name="project" value="LOCAL" />
+      <updated>1784533964011</updated>
+    </task>
+    <option name="localTasksCounter" value="864" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -499,7 +500,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="nyt layout booking" />
     <MESSAGE value="nyt layout booking edit flyttet op på siden" />
     <MESSAGE value="nyt layout booking edit flyttet op på siden og st radio intriduceres" />
     <MESSAGE value="Booking page: split into New Booking and Edit Booking using radio buttons" />
@@ -524,6 +524,7 @@
     <MESSAGE value="klar til første swap test" />
     <MESSAGE value="klar til sidste test" />
     <MESSAGE value="status enkelt byt på timeline running" />
-    <option name="LAST_COMMIT_MESSAGE" value="status enkelt byt på timeline running" />
+    <MESSAGE value="inn and out editorial imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="inn and out editorial imports" />
   </component>
 </project>

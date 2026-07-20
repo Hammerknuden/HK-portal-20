@@ -122,10 +122,10 @@ result = (
 df_afrejse = pd.DataFrame(result.data)
 
 if not df_afrejse.empty:
-    df_afrejse["room_number"] = pd.to_numeric(df_afrejse["room_number"], errors="coerce")
-    df_afrejse["checkout_date"] = pd.to_datetime(df_afrejse["checkout_date"])
-    df_afrejse = df_afrejse.sort_values(["checkout_date", "room_number"])
-
+    df_afrejse["checkout_date"] = pd.to_datetime(
+        df_afrejse["checkout_date"],
+        errors="coerce"
+    ).dt.date
     df_afrejse_print = df_afrejse[
         [
             "checkout_date",
