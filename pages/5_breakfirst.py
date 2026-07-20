@@ -148,7 +148,7 @@ notes_result = (
     supabase
     .table("breakfast_notes")
     .select(
-        "dato, ekstra_gæster, assistance"
+        "dato, ekstra_gæster, assistance, comments"
     )
     .execute()
 )
@@ -207,6 +207,7 @@ breakfast_df = breakfast_df.rename(
     columns={
         "ekstra_gæster": "Ekstra gæster",
         "assistance": "Assistance",
+        "comments": "Kommentar",
     }
 )
 
@@ -218,6 +219,7 @@ breakfast_df = breakfast_df[
         "Ekstra gæster",
         "I alt",
         "Assistance",
+        "Kommentar",
     ]
 ]
 
@@ -239,7 +241,7 @@ with st.expander(
 ):
     edit_df = st.data_editor(
         breakfast_df[
-            ["Dato", "Ekstra gæster", "Assistance"]
+            ["Dato", "Ekstra gæster", "Assistance", "Kommentar"]
         ],
         hide_index=True,
         disabled=["Dato"],
