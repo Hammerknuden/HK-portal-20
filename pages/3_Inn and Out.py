@@ -4,13 +4,14 @@ import pandas as pd
 from pathlib import Path
 import sys
 from datetime import date, timedelta
-sys.path.append(str(Path(__file__).resolve().parents[1]))
 from dotenv import load_dotenv
 from supabase import create_client
 from io import BytesIO
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib import colors
+
+sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 st.set_page_config(page_title="Inns and Outs", layout="wide")
 
