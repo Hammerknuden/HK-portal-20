@@ -4,6 +4,7 @@ from auth import require_login
 st.set_page_config(page_title="link", layout="wide")
 require_login()
 
+
 st.link_button("Booking_com", "https://account.booking.com")
 st.link_button("Booking com fj", "https://admin.booking.com/?page=%2Fhotel%2Fhoteladmin%2"
                 "Fextranet_ng%2Fmanage%2Fbooking.html%3Fres_id%3D1543477585%26hotel_id%3D328920%26"
