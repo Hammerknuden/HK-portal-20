@@ -5,6 +5,10 @@ st.set_page_config(page_title="link", layout="wide")
 require_login()
 
 st.link_button("Booking_com", "https://account.booking.com")
+st.link_button("Booking com fj", "https://admin.booking.com/?page=%2Fhotel%2Fhoteladmin%2"
+                "Fextranet_ng%2Fmanage%2Fbooking.html%3Fres_id%3D1543477585%26hotel_id%3D328920%26"
+                "lang%3Dda%26from_confirmation_email%3D1%26_e%3D1534866833%26_s%3DjffCo9FdYR4wx%2BsVe6ZZO%2"
+                "F8cZgc6eyYQmZFqlwMirdQ&message=ERR100&lang=da")
 st.link_button("Mobil pay", "https://portal.vippsmobilepay.com/login")
 st.link_button("Zettle", "https://login.zettle.com/login?username=bonnevie%40mail.dk")
 st.link_button("Danske Bank", "https://district.danskebank.dk/Logon#/") #https://shared-logon.danskebank.com/logon/default/index.html?clientId=District-DK")
