@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="tilføj kommentar til breakfirst">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="fuld url BC link">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/8_statestik.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/8_statestik.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,36 +36,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Python.     room_swap.executor&quot;: &quot;Run&quot;,
-    &quot;Python.1_Booking.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_Setup.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_databaseopslag.executor&quot;: &quot;Run&quot;,
-    &quot;Python.2_setup.executor&quot;: &quot;Run&quot;,
-    &quot;Python.3_Ankomster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.3_Inn and Out.executor&quot;: &quot;Run&quot;,
-    &quot;Python.3_ankomster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.4_Booking_C_link.executor&quot;: &quot;Run&quot;,
-    &quot;Python.5_breakfirst.executor&quot;: &quot;Run&quot;,
-    &quot;Python.5_cleaning.executor&quot;: &quot;Run&quot;,
-    &quot;Python.6_callender.executor&quot;: &quot;Run&quot;,
-    &quot;Python.6_timeline.executor&quot;: &quot;Run&quot;,
-    &quot;Python.8_statestik.executor&quot;: &quot;Run&quot;,
-    &quot;Python.8_timelinenew.executor&quot;: &quot;Run&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.auth.executor&quot;: &quot;Run&quot;,
-    &quot;Python.common.executor&quot;: &quot;Run&quot;,
-    &quot;Python.config_prices.executor&quot;: &quot;Run&quot;,
-    &quot;Python.databaseopslag.executor&quot;: &quot;Run&quot;,
-    &quot;Python.level2_optimizer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.streamlit_app.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/finnj/-repo hk20/hk_portal_20/modules/room_swap.py&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.     room_swap.executor": "Run",
+    "Python.1_Booking.executor": "Run",
+    "Python.2_Setup.executor": "Run",
+    "Python.2_databaseopslag.executor": "Run",
+    "Python.2_setup.executor": "Run",
+    "Python.3_Ankomster.executor": "Run",
+    "Python.3_Inn and Out.executor": "Run",
+    "Python.3_ankomster.executor": "Run",
+    "Python.4_Booking_C_link.executor": "Run",
+    "Python.5_breakfirst.executor": "Run",
+    "Python.5_cleaning.executor": "Run",
+    "Python.6_callender.executor": "Run",
+    "Python.6_timeline.executor": "Run",
+    "Python.8_statestik.executor": "Run",
+    "Python.8_timelinenew.executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.auth.executor": "Run",
+    "Python.common.executor": "Run",
+    "Python.config_prices.executor": "Run",
+    "Python.databaseopslag.executor": "Run",
+    "Python.level2_optimizer.executor": "Run",
+    "Python.streamlit_app.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/finnj/-repo hk20/hk_portal_20/pages/8_statestik.py",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -80,22 +81,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00821" summary="nyt layout booking edit flyttet op på siden">
-      <option name="closed" value="true" />
-      <created>1784049476521</created>
-      <option name="number" value="00821" />
-      <option name="presentableId" value="LOCAL-00821" />
-      <option name="project" value="LOCAL" />
-      <updated>1784049476521</updated>
-    </task>
-    <task id="LOCAL-00822" summary="nyt layout booking edit flyttet op på siden">
-      <option name="closed" value="true" />
-      <created>1784053875548</created>
-      <option name="number" value="00822" />
-      <option name="presentableId" value="LOCAL-00822" />
-      <option name="project" value="LOCAL" />
-      <updated>1784053875552</updated>
     </task>
     <task id="LOCAL-00823" summary="nyt layout booking edit flyttet op på siden">
       <option name="closed" value="true" />
@@ -473,7 +458,23 @@
       <option name="project" value="LOCAL" />
       <updated>1784559716196</updated>
     </task>
-    <option name="localTasksCounter" value="870" />
+    <task id="LOCAL-00870" summary="tilføj kommentar til breakfirst">
+      <option name="closed" value="true" />
+      <created>1784634384917</created>
+      <option name="number" value="00870" />
+      <option name="presentableId" value="LOCAL-00870" />
+      <option name="project" value="LOCAL" />
+      <updated>1784634384917</updated>
+    </task>
+    <task id="LOCAL-00871" summary="fuld url BC link">
+      <option name="closed" value="true" />
+      <created>1784634417896</created>
+      <option name="number" value="00871" />
+      <option name="presentableId" value="LOCAL-00871" />
+      <option name="project" value="LOCAL" />
+      <updated>1784634417896</updated>
+    </task>
+    <option name="localTasksCounter" value="872" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -499,7 +500,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="nyt layout booking edit flyttet op på siden og st radio intriduceres" />
     <MESSAGE value="Booking page: split into New Booking and Edit Booking using radio buttons" />
     <MESSAGE value="fejl suoabase ledige rum rettelse" />
     <MESSAGE value="update" />
@@ -524,6 +524,7 @@
     <MESSAGE value="status enkelt byt på timeline running" />
     <MESSAGE value="inn and out editorial imports" />
     <MESSAGE value="tilføj kommentar til breakfirst" />
-    <option name="LAST_COMMIT_MESSAGE" value="tilføj kommentar til breakfirst" />
+    <MESSAGE value="fuld url BC link" />
+    <option name="LAST_COMMIT_MESSAGE" value="fuld url BC link" />
   </component>
 </project>

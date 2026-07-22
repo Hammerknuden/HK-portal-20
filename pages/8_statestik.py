@@ -234,6 +234,14 @@ st.plotly_chart(fig, use_container_width=True)
 
 st.subheader("Gennemsnitlig bookinglængde pr. måned")
 
+st.subheader("Gennemsnitlig bookinglængde pr. måned")
+
+selected_season = st.selectbox(
+    "Sæson",
+    [2026, 2027],
+    index=0
+)
+
 df_stats = df.copy()
 
 # Datoformat
@@ -243,6 +251,10 @@ df_stats["checkout_date"] = pd.to_datetime(df_stats["checkout_date"], errors="co
 # Fjern annullerede bookinger
 df_stats = df_stats[
     df_stats["web"].astype(str).str.lower() != "cansl"
+]
+# Kun valgt sæson
+df_stats = df_stats[
+    df_stats["season"] == int(selected_season)
 ]
 
 # Beregn bookinglængde i nætter
