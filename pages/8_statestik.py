@@ -234,8 +234,6 @@ st.plotly_chart(fig, use_container_width=True)
 
 st.subheader("Gennemsnitlig bookinglængde pr. måned")
 
-st.subheader("Gennemsnitlig bookinglængde pr. måned")
-
 selected_season = st.selectbox(
     "Sæson",
     [2026, 2027],
