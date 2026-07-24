@@ -456,6 +456,9 @@ if not df.empty:
             yshift=-18,
             font=dict(size=10, color="gray")
         )
+        fig.add_vline(
+            x=date.totday(), line_width=2,  line_colar="red"
+        )
 
     # Tving rækkefølgen på værelserne
 
