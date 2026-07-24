@@ -15,6 +15,7 @@ from importlib.metadata import version
 from modules.level2_optimizer import analyze_improvements
 from modules.level2_optimizer import can_swap_blocks
 from modules.room_swap import execute_room_swap
+from datetime import date
 # -------------------------
 # INIT
 # -------------------------
