@@ -13,7 +13,7 @@ from reportlab.lib import colors
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-st.set_page_config(page_title="Inns and Outs", layout="wide")
+st.set_page_config(page_title="Ins and Outs", layout="wide")
 
 require_login()
 
