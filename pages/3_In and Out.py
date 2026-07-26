@@ -125,22 +125,89 @@ if not df_afrejse.empty:
     df_afrejse["checkout_date"] = pd.to_datetime(
         df_afrejse["checkout_date"],
         errors="coerce"
-    ).dt.date
+    )
+
+    df["checkin_date"] = pd.to_datetime(
+        df["checkin_date"],
+        errors="coerce"
+    )
+
+    df["room_number"] = pd.to_numeric(
+        df["room_number"],
+        errors="coerce"
+    )
+
+    df_afrejse["room_number"] = pd.to_numeric(
+        df_afrejse["room_number"],
+        errors="coerce"
+    )
+
+    def find_next_checkin(row):
+        next_bookings = df[
+            (df["room_number"] == row["room_number"])
+            &
+            (df["checkin_date"] >= row["checkout_date"])
+            &
+            (df["web"].astype(str).str.lower() != "cansl")
+        ]
+
+        if next_bookings.empty:
+            return pd.NaT
+
+        return next_bookings["checkin_date"].min()
+
+    df_afrejse["next_checkin"] = df_afrejse.apply(
+        find_next_checkin,
+        axis=1
+    )
+
+    df_afrejse["checkout_date"] = (
+        df_afrejse["checkout_date"].dt.date
+    )
+
+    df_afrejse["next_checkin"] = (
+        df_afrejse["next_checkin"].dt.date
+    )
+
     df_afrejse_print = df_afrejse[
         [
             "checkout_date",
             "room_number",
             "booking_number",
+            "next_checkin",
         ]
     ].rename(
         columns={
             "checkout_date": "Udcheck",
             "room_number": "Værelse",
             "booking_number": "Booking nr.",
+            "next_checkin": "Næste indcheck",
         }
     )
 
     st.table(df_afrejse_print)
+# df_afrejse = pd.DataFrame(result.data)
+#
+# if not df_afrejse.empty:
+#     df_afrejse["checkout_date"] = pd.to_datetime(
+#         df_afrejse["checkout_date"],
+#         errors="coerce"
+#     ).dt.date
+#     df_afrejse_print = df_afrejse[
+#         [
+#             "checkout_date",
+#             "room_number",
+#             "booking_number",
+#         ]
+#     ].rename(
+#         columns={
+#             "checkout_date": "Udcheck",
+#             "room_number": "Værelse",
+#             "booking_number": "Booking nr.",
+#         }
+#     )
+#
+#     st.table(df_afrejse_print)
 
 else:
     df_afrejse_print = pd.DataFrame()
