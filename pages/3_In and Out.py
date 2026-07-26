@@ -109,40 +109,34 @@ else:
 
 st.subheader("Periodens afrejser")
 
+# Afrejser i den valgte periode
 result = (
     supabase.table("hk_dtb")
-    .select("booking_number, checkout_date, room_number, web")
+    .select("booking_number, checkout_date, room_number")
     .gte("checkout_date", str(check_dato_start))
     .lte("checkout_date", str(check_dato_slut))
     .neq("web", "cansl")
     .order("checkout_date")
     .execute()
 )
-# result = (
-#     supabase.table("hk_dtb")
-#     .select("booking_number, checkout_date, room_number, web")
-#     .gte("checkout_date", str(check_dato_start))
-#     .lte("checkout_date", str(check_dato_slut))
-#     .neq("web", "cansl")
-#     .order("checkout_date")
-#     .execute()
-# )
+
+# Alle kommende indcheck bruges til at finde næste booking pr. værelse
+checkin_result = (
+    supabase.table("hk_dtb")
+    .select("checkin_date, room_number")
+    .gte("checkin_date", str(check_dato_start))
+    .neq("web", "cansl")
+    .order("checkin_date")
+    .execute()
+)
 
 df_afrejse = pd.DataFrame(result.data)
+df_checkin = pd.DataFrame(checkin_result.data)
 
 if not df_afrejse.empty:
+
     df_afrejse["checkout_date"] = pd.to_datetime(
         df_afrejse["checkout_date"],
-        errors="coerce"
-    )
-
-    df["checkin_date"] = pd.to_datetime(
-        df["checkin_date"],
-        errors="coerce"
-    )
-
-    df["room_number"] = pd.to_numeric(
-        df["room_number"],
         errors="coerce"
     )
 
@@ -151,24 +145,37 @@ if not df_afrejse.empty:
         errors="coerce"
     )
 
-    def find_next_checkin(row):
-        next_bookings = df[
-            (df["room_number"] == row["room_number"])
-            &
-            (df["checkin_date"] >= row["checkout_date"])
-            &
-            (df["web"].astype(str).str.lower() != "cansl")
-        ]
+    if not df_checkin.empty:
 
-        if next_bookings.empty:
-            return pd.NaT
+        df_checkin["checkin_date"] = pd.to_datetime(
+            df_checkin["checkin_date"],
+            errors="coerce"
+        )
 
-        return next_bookings["checkin_date"].min()
+        df_checkin["room_number"] = pd.to_numeric(
+            df_checkin["room_number"],
+            errors="coerce"
+        )
 
-    df_afrejse["next_checkin"] = df_afrejse.apply(
-        find_next_checkin,
-        axis=1
-    )
+        def find_next_checkin(row):
+            next_bookings = df_checkin[
+                (df_checkin["room_number"] == row["room_number"])
+                &
+                (df_checkin["checkin_date"] >= row["checkout_date"])
+            ]
+
+            if next_bookings.empty:
+                return pd.NaT
+
+            return next_bookings["checkin_date"].min()
+
+        df_afrejse["next_checkin"] = df_afrejse.apply(
+            find_next_checkin,
+            axis=1
+        )
+
+    else:
+        df_afrejse["next_checkin"] = pd.NaT
 
     df_afrejse["checkout_date"] = (
         df_afrejse["checkout_date"].dt.date
@@ -195,33 +202,10 @@ if not df_afrejse.empty:
     )
 
     st.table(df_afrejse_print)
-# df_afrejse = pd.DataFrame(result.data)
-#
-# if not df_afrejse.empty:
-#     df_afrejse["checkout_date"] = pd.to_datetime(
-#         df_afrejse["checkout_date"],
-#         errors="coerce"
-#     ).dt.date
-#     df_afrejse_print = df_afrejse[
-#         [
-#             "checkout_date",
-#             "room_number",
-#             "booking_number",
-#         ]
-#     ].rename(
-#         columns={
-#             "checkout_date": "Udcheck",
-#             "room_number": "Værelse",
-#             "booking_number": "Booking nr.",
-#         }
-#     )
-#
-#     st.table(df_afrejse_print)
 
 else:
     df_afrejse_print = pd.DataFrame()
     st.info("Ingen udcheckninger i perioden.")
-
 
 # ---------- PDF-FUNKTION ----------
 
