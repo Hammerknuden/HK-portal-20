@@ -118,6 +118,15 @@ result = (
     .order("checkout_date")
     .execute()
 )
+# result = (
+#     supabase.table("hk_dtb")
+#     .select("booking_number, checkout_date, room_number, web")
+#     .gte("checkout_date", str(check_dato_start))
+#     .lte("checkout_date", str(check_dato_slut))
+#     .neq("web", "cansl")
+#     .order("checkout_date")
+#     .execute()
+# )
 
 df_afrejse = pd.DataFrame(result.data)
 
