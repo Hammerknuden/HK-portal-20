@@ -23,6 +23,8 @@ from dotenv import load_dotenv
 from supabase import create_client
 
 
+st.set_page_config(page_title="Booking", layout="wide")
+
 load_dotenv()
 
 SUPABASE_URL = st.secrets["SUPABASE_URL"]
@@ -31,8 +33,6 @@ SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 st.success("Forbindelse OK")
-
-st.set_page_config(page_title="Booking", layout="wide")
 
 
 def init_session():
