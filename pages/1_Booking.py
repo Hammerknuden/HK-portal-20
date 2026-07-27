@@ -608,30 +608,45 @@ else:
 
     days = checkout_date - checkin_date
 
-    high_season_days = high_season_end - high_season_start
-    high_booking = (checkin_date >= high_season_start) and (checkout_date <= high_season_end)
-    low_booking = (((checkin_date <= high_season_start) and (checkout_date < high_season_start)) or
-                   (checkin_date > high_season_end))
-    mixbooking_early = (checkin_date < high_season_start) and (checkout_date >= high_season_start)
-    mixbooking_end = (checkout_date >= high_season_end) and (high_season_start < checkin_date) and (checkin_date <=                                                                                               high_season_end)
+    total_nights = (checkout_date - checkin_date).days
 
-    high_season_days = high_season_end - high_season_start
-    mixearly = checkout_date - high_season_start
-    mixearly_b = high_season_start - checkin_date
-    mixend = high_season_end - checkin_date
-    mixend_b = checkout_date - high_season_end
+    high_start = max(checkin_date, high_season_start)
+    high_end = min(checkout_date, high_season_end)
+
+    high_nights = max(0, (high_end - high_start).days)
+    low_nights = total_nights - high_nights
 
     if web == "FM":
-        pris = (high_season_price * int(days.days)) * int(num_rooms)
+        pris = high_season_price * total_nights * num_rooms
     else:
-        if high_booking:
-            pris = (high_season_price * int(days.days)) * int(num_rooms)
-        if low_booking:
-            pris = (low_season_price * int(days.days)) * int(num_rooms)
-        if mixbooking_early:
-            pris = (((int(mixearly.days) * high_season_price) + (int(mixearly_b.days) * low_season_price)) * int(num_rooms))
-        if mixbooking_end:
-            pris = (high_season_price * (int(mixend.days)) + (int(mixend_b.days) * low_season_price)) * int(num_rooms)
+        pris = (
+                       high_nights * high_season_price
+                       + low_nights * low_season_price
+               ) * num_rooms
+    # high_season_days = high_season_end - high_season_start
+    # high_booking = (checkin_date >= high_season_start) and (checkout_date <= high_season_end)
+    # low_booking = (((checkin_date <= high_season_start) and (checkout_date < high_season_start)) or
+    #                (checkin_date > high_season_end))
+    # mixbooking_early = (checkin_date < high_season_start) and (checkout_date >= high_season_start)
+    # mixbooking_end = (checkout_date >= high_season_end) and (high_season_start < checkin_date) and (checkin_date <=                                                                                               high_season_end)
+    #
+    # high_season_days = high_season_end - high_season_start
+    # mixearly = checkout_date - high_season_start
+    # mixearly_b = high_season_start - checkin_date
+    # mixend = high_season_end - checkin_date
+    # mixend_b = checkout_date - high_season_end
+    #
+    # if web == "FM":
+    #     pris = (high_season_price * int(days.days)) * int(num_rooms)
+    # else:
+    #     if high_booking:
+    #         pris = (high_season_price * int(days.days)) * int(num_rooms)
+    #     if low_booking:
+    #         pris = (low_season_price * int(days.days)) * int(num_rooms)
+    #     if mixbooking_early:
+    #         pris = (((int(mixearly.days) * high_season_price) + (int(mixearly_b.days) * low_season_price)) * int(num_rooms))
+    #     if mixbooking_end:
+    #         pris = (high_season_price * (int(mixend.days)) + (int(mixend_b.days) * low_season_price)) * int(num_rooms)
 
     st.markdown(f"**Værelsespris** {pris:.2f} kr".replace(".", ","))
     print(pris)
