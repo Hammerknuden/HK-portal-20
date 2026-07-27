@@ -589,22 +589,62 @@ else:
             text_bf = "Breakfast can be purchased every day except Sunday. "
         if Sprog == "D":
             text_bf = "Frühstück kann täglich außer sonntags erworben werden."
-    if year == '2026':
-        high_season_start = datetime.strptime("28-06-26", _format := "%d-%m-%y").date()
-        high_season_end = datetime.strptime("15-08-26", _format := "%d-%m-%y").date()
-        col1, col2 = st.columns(2)
-        with col1:
-            st.markdown(f"**Højsæson starter** {high_season_start}")
-        with col2:
-            st.markdown(f"**Højsæson slutter** {high_season_end}")
-    if year == '2027':
-        high_season_start = datetime.strptime("22-06-27", _format := "%d-%m-%y").date()
-        high_season_end = datetime.strptime("17-08-27", _format := "%d-%m-%y").date()
-        col1, col2 = st.columns(2)
-        with col1:
-            st.markdown(f"**Højsæson starter** {high_season_start}")
-        with col2:
-            st.markdown(f"**Højsæson slutter** {high_season_end}")
+    season_result = (
+        supabase
+        .table("high_season")
+        .select("season, start_season, end_season")
+        .eq("season", int(year))
+        .limit(1)
+        .execute()
+    )
+
+    if not season_result.data:
+        st.error(f"Ingen højsæson er oprettet for {year}")
+        st.stop()
+
+    season_data = season_result.data[0]
+
+    try:
+        high_season_start = date.fromisoformat(
+            season_data["start_season"]
+        )
+        high_season_end = date.fromisoformat(
+            season_data["end_season"]
+        )
+    except (KeyError, TypeError, ValueError):
+        st.error(f"Ugyldige højsæsonsdatoer for {year}")
+        st.stop()
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown(
+            f"**Højsæson starter** "
+            f"{high_season_start.strftime('%d-%m-%Y')}"
+        )
+
+    with col2:
+        st.markdown(
+            f"**Højsæson slutter** "
+            f"{high_season_end.strftime('%d-%m-%Y')}"
+        )
+
+    # if year == '2026':
+    #     high_season_start = datetime.strptime("28-06-26", _format := "%d-%m-%y").date()
+    #     high_season_end = datetime.strptime("15-08-26", _format := "%d-%m-%y").date()
+    #     col1, col2 = st.columns(2)
+    #     with col1:
+    #         st.markdown(f"**Højsæson starter** {high_season_start}")
+    #     with col2:
+    #         st.markdown(f"**Højsæson slutter** {high_season_end}")
+    # if year == '2027':
+    #     high_season_start = datetime.strptime("22-06-27", _format := "%d-%m-%y").date()
+    #     high_season_end = datetime.strptime("17-08-27", _format := "%d-%m-%y").date()
+    #     col1, col2 = st.columns(2)
+    #     with col1:
+    #         st.markdown(f"**Højsæson starter** {high_season_start}")
+    #     with col2:
+    #         st.markdown(f"**Højsæson slutter** {high_season_end}")
 
     days = checkout_date - checkin_date
 

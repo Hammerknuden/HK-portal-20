@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="chat gbt new if for booking periods" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excel update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,14 +80,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00838" summary="timeline funktion byt show">
-      <option name="closed" value="true" />
-      <created>1784356792750</created>
-      <option name="number" value="00838" />
-      <option name="presentableId" value="LOCAL-00838" />
-      <option name="project" value="LOCAL" />
-      <updated>1784356792750</updated>
     </task>
     <task id="LOCAL-00839" summary="funktion upgrade i timeline">
       <option name="closed" value="true" />
@@ -471,7 +465,15 @@
       <option name="project" value="LOCAL" />
       <updated>1785162040374</updated>
     </task>
-    <option name="localTasksCounter" value="887" />
+    <task id="LOCAL-00887" summary="excel update">
+      <option name="closed" value="true" />
+      <created>1785162612453</created>
+      <option name="number" value="00887" />
+      <option name="presentableId" value="LOCAL-00887" />
+      <option name="project" value="LOCAL" />
+      <updated>1785162612453</updated>
+    </task>
+    <option name="localTasksCounter" value="888" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -497,7 +499,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="status commit både booking og timeline har fået tilføjet swap knap ikke fnktionalitet endnu" />
     <MESSAGE value="edit and update no change" />
     <MESSAGE value="timeline funktion byt show" />
     <MESSAGE value="funktion upgrade i timeline" />
@@ -522,6 +523,7 @@
     <MESSAGE value="chat gbt change i booking py" />
     <MESSAGE value="chat gbt change editoriel" />
     <MESSAGE value="chat gbt new if for booking periods" />
-    <option name="LAST_COMMIT_MESSAGE" value="chat gbt new if for booking periods" />
+    <MESSAGE value="excel update" />
+    <option name="LAST_COMMIT_MESSAGE" value="excel update" />
   </component>
 </project>
