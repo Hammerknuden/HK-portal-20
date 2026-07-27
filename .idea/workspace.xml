@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ny kolonne i afrejse" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="chat gbt change i booking py">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,22 +80,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00834" summary="ændringer for swap i optimizer og booking med ny knap">
-      <option name="closed" value="true" />
-      <created>1784273892960</created>
-      <option name="number" value="00834" />
-      <option name="presentableId" value="LOCAL-00834" />
-      <option name="project" value="LOCAL" />
-      <updated>1784273892961</updated>
-    </task>
-    <task id="LOCAL-00835" summary="swap tilknyttet timeline for større funktionalitet">
-      <option name="closed" value="true" />
-      <created>1784275567364</created>
-      <option name="number" value="00835" />
-      <option name="presentableId" value="LOCAL-00835" />
-      <option name="project" value="LOCAL" />
-      <updated>1784275567364</updated>
     </task>
     <task id="LOCAL-00836" summary="status commit både booking og timeline har fået tilføjet swap knap ikke fnktionalitet endnu">
       <option name="closed" value="true" />
@@ -471,7 +457,23 @@
       <option name="project" value="LOCAL" />
       <updated>1785071762087</updated>
     </task>
-    <option name="localTasksCounter" value="883" />
+    <task id="LOCAL-00883" summary="ny kolonne i afrejse">
+      <option name="closed" value="true" />
+      <created>1785071976139</created>
+      <option name="number" value="00883" />
+      <option name="presentableId" value="LOCAL-00883" />
+      <option name="project" value="LOCAL" />
+      <updated>1785071976140</updated>
+    </task>
+    <task id="LOCAL-00884" summary="chat gbt change i booking py">
+      <option name="closed" value="true" />
+      <created>1785132832052</created>
+      <option name="number" value="00884" />
+      <option name="presentableId" value="LOCAL-00884" />
+      <option name="project" value="LOCAL" />
+      <updated>1785132832052</updated>
+    </task>
+    <option name="localTasksCounter" value="885" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -497,7 +499,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="status alt ok BF updated" />
     <MESSAGE value="ændringer for swap i optimizer og booking med ny knap" />
     <MESSAGE value="swap tilknyttet timeline for større funktionalitet" />
     <MESSAGE value="status commit både booking og timeline har fået tilføjet swap knap ikke fnktionalitet endnu" />
@@ -522,6 +523,7 @@
     <MESSAGE value="red date line" />
     <MESSAGE value="red date line works" />
     <MESSAGE value="ny kolonne i afrejse" />
-    <option name="LAST_COMMIT_MESSAGE" value="ny kolonne i afrejse" />
+    <MESSAGE value="chat gbt change i booking py" />
+    <option name="LAST_COMMIT_MESSAGE" value="chat gbt change i booking py" />
   </component>
 </project>

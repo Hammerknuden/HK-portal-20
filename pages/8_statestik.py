@@ -3,7 +3,6 @@ import pandas as pd
 from pathlib import Path
 import streamlit_authenticator as stauth
 import datetime
-import plotly.express as px
 from auth import require_login
 from common import init_session
 import plotly.express as px
