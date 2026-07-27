@@ -16,7 +16,6 @@ from common import init_session
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 import base64
-from config.prices import DEFAULT_PRICES
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 import os
 from dotenv import load_dotenv
@@ -51,12 +50,6 @@ def init_session():
 
 require_login()
 init_session()
-
-# ✅ Init KUN hvis ikke findes
-
-
-if "prices" not in st.session_state:
-    st.session_state.prices = DEFAULT_PRICES.copy()
 
 st.title("Reservation")
 
@@ -465,7 +458,6 @@ else:
             else:
                 st.error("Optaget")
 
-
     col1, col2, = st.columns(2)
     with col1:
         num_rooms = st.number_input("Antal rum", value=1, step=1)
@@ -474,7 +466,6 @@ else:
             num_guests = st.number_input("max en gæst", value=1, step=0)
         else:
             num_guests = st.number_input("Antal gæster", value=2, step=1)
-
 
     col1, col2, col3 = st.columns(3)
     with col1:
@@ -492,68 +483,47 @@ else:
     else:
         procent = 0
 
-    if year == '2026':
-        if single_room and (web == 'bc' or web == 'web'):
-            high_season_price = st.session_state.prices["Sing-Room-HS-26"] #975  #2026 975
-            low_season_price = st.session_state.prices["Sing-Room-LS-26"] #2026 850
-            single_room = "Y"
-            print(low_season_price)
-            print(high_season_price)
-        else:
-            low_season_price = st.session_state.prices["Dobb-Room-LS-26"] #950
-            high_season_price = st.session_state.prices["Dobb-Room-HS-26"] #1075
-            if web == "FM":
-                high_season_price = st.session_state.prices["Dobb-Room-HS-26"] #1075  #2026 1075
-                low_season_price = st.session_state.prices["Dobb-Room-HS-26"] #1075   #2026 1075
-                single_room = "N"
-                print(low_season_price)
-                print(high_season_price)
-            else:
-                high_season_price = st.session_state.prices["Dobb-Room-HS-26"] #1075   #2026 1075
-                low_season_price = st.session_state.prices["Dobb-Room-LS-26"] #950     #2026 950
-                single_room = "N"
-                print(low_season_price)
-                print(high_season_price)
-            col1, col2 = st.columns(2)
-            with col1:
-                st.markdown(f"**High season** {high_season_price} kr")
-            with col2:
-                st.markdown(f"**Low season** {low_season_price} kr")
-        st.markdown('year 2026')
+    season_result = (
+        supabase
+        .table("high_season")
+        .select(
+            "season, start_season, end_season, "
+            "enk_low, enk_high, dobb_low, dobb_high, pris_morgenmad"
+        )
+        .eq("season", int(year))
+        .limit(1)
+        .execute()
+    )
 
-    if year == '2027':
-        if single_room and (web == 'bc' or web == 'web'):
-            high_season_price = st.session_state.prices["Sing-Room-HS-27"]
-            low_season_price = st.session_state.prices["Sing-Room-LS-27"]
-            single_room = "Y"
-            print(low_season_price)
-            print(high_season_price)
-        else:
-            low_season_price = st.session_state.prices["Dobb-Room-LS-27"]
-            high_season_price = st.session_state.prices["Dobb-Room-HS-27"]
-            if web == "FM":
-                high_season_price = st.session_state.prices["Dobb-Room-HS-27"]
-                low_season_price = st.session_state.prices["Dobb-Room-HS-27"]
-                single_room = "N"
-                print(low_season_price)
-                print(high_season_price)
-            else:
-                high_season_price = st.session_state.prices["Dobb-Room-HS-27"]
-                low_season_price = st.session_state.prices["Dobb-Room-LS-27"]
-                single_room = "N"
-                print(low_season_price)
-                print(high_season_price)
-                st.markdown('year 2027')
-            col1, col2, = st.columns(2)
-            with col1:
-                st.markdown(f"**High season** {high_season_price} kr")
-            with col2:
-                st.markdown(f"**Low season** {low_season_price} kr")
+    if not season_result.data:
+        st.error(f"Ingen sæsonopsætning er oprettet for {year}")
+        st.stop()
 
-    if year == '2026':
-        bf_price = st.session_state.prices["Breakfirst-26"]  #100
-    if year == '2027':
-        bf_price = st.session_state.prices["Breakfirst-27"] #100
+    season_data = season_result.data[0]
+
+    try:
+        bf_price = float(season_data["pris_morgenmad"])
+
+        if single_room and web in ("bc", "web"):
+            high_season_price = float(season_data["enk_high"])
+            low_season_price = float(season_data["enk_low"])
+            single_room = "Y"
+        else:
+            high_season_price = float(season_data["dobb_high"])
+            low_season_price = float(season_data["dobb_low"])
+            single_room = "N"
+
+            if web == "FM":
+                low_season_price = high_season_price
+    except (KeyError, TypeError, ValueError):
+        st.error(f"Ugyldige priser i sæsonopsætningen for {year}")
+        st.stop()
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown(f"**High season** {high_season_price:.2f} kr")
+    with col2:
+        st.markdown(f"**Low season** {low_season_price:.2f} kr")
 
     Sprog = st.selectbox("Sprog - email confirmation dk uk D", options=["DK", "UK", "D"])
 
@@ -589,21 +559,6 @@ else:
             text_bf = "Breakfast can be purchased every day except Sunday. "
         if Sprog == "D":
             text_bf = "Frühstück kann täglich außer sonntags erworben werden."
-    season_result = (
-        supabase
-        .table("high_season")
-        .select("season, start_season, end_season")
-        .eq("season", int(year))
-        .limit(1)
-        .execute()
-    )
-
-    if not season_result.data:
-        st.error(f"Ingen højsæson er oprettet for {year}")
-        st.stop()
-
-    season_data = season_result.data[0]
-
     try:
         high_season_start = date.fromisoformat(
             season_data["start_season"]
@@ -628,23 +583,6 @@ else:
             f"**Højsæson slutter** "
             f"{high_season_end.strftime('%d-%m-%Y')}"
         )
-
-    # if year == '2026':
-    #     high_season_start = datetime.strptime("28-06-26", _format := "%d-%m-%y").date()
-    #     high_season_end = datetime.strptime("15-08-26", _format := "%d-%m-%y").date()
-    #     col1, col2 = st.columns(2)
-    #     with col1:
-    #         st.markdown(f"**Højsæson starter** {high_season_start}")
-    #     with col2:
-    #         st.markdown(f"**Højsæson slutter** {high_season_end}")
-    # if year == '2027':
-    #     high_season_start = datetime.strptime("22-06-27", _format := "%d-%m-%y").date()
-    #     high_season_end = datetime.strptime("17-08-27", _format := "%d-%m-%y").date()
-    #     col1, col2 = st.columns(2)
-    #     with col1:
-    #         st.markdown(f"**Højsæson starter** {high_season_start}")
-    #     with col2:
-    #         st.markdown(f"**Højsæson slutter** {high_season_end}")
 
     days = checkout_date - checkin_date
 

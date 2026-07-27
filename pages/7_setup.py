@@ -23,54 +23,89 @@ st.title("Setup ⚙️")
 
 st.title("Pris modul setup")
 
-st.write("priser 2026-2027-2028")
-# Initialiser state første gang_
-
-st.write("priser 2026-2027-2028")
-
-from config.prices import DEFAULT_PRICES
-
-if "prices" not in st.session_state:
-    st.session_state.prices = DEFAULT_PRICES.copy()
-
-st.session_state.prices["Sing-Room-HS-26"] = st.number_input(
-    "Single room high season 2026",
-    value=st.session_state.prices["Sing-Room-HS-26"]
+price_result = (
+    supabase
+    .table("high_season")
+    .select(
+        "season, enk_low, enk_high, "
+        "dobb_low, dobb_high, pris_morgenmad"
+    )
+    .order("season")
+    .execute()
 )
 
-if "prices" not in st.session_state:
-    st.session_state.prices = {
-        "Sing-Room-HS-26": 975,
-        "Sing-Room-LS-26": 850,
-        "Dobb-Room-HS-26": 1075,
-        "Dobb-Room-LS-26": 950,
-        "Breakfirst-26": 100,
-        "Sing-Room-HS-27": 990,
-        "Sing-Room-LS-27": 875,
-        "Dobb-Room-HS-27": 1090,
-        "Dobb-Room-LS-27": 980,
-        "Breakfirst-27": 110,
+price_rows = price_result.data or []
+
+if not price_rows:
+    st.warning("Der er ingen sæsoner i high_season-tabellen")
+else:
+    prices_by_season = {
+        int(row["season"]): row
+        for row in price_rows
     }
 
-st.write("Rediger priser:")
-
-# Opdater priser direkte i session_state
-for produkt in st.session_state.prices:
-    st.session_state.prices[produkt] = st.number_input(
-        produkt,
-        value=float(st.session_state.prices[produkt]),
-        min_value=0.0,
-        step=5.0,
-        key=produkt
+    selected_price_season = st.selectbox(
+        "Vælg sæson",
+        options=list(prices_by_season)
     )
+    current_prices = prices_by_season[selected_price_season]
 
-# Vis aktuelle værdier
-st.write("### Nuværende priser")
-st.json(st.session_state.prices)
-# Eksempel:
-new_year = st.text_input("Tilføj nyt booking år")
-if st.button("Gem"):
-    st.success(f"{new_year} gemt!")
+    with st.form("season_prices_form"):
+        col1, col2 = st.columns(2)
+
+        with col1:
+            enk_low = st.number_input(
+                "Enkeltværelse – lavsæson",
+                value=float(current_prices["enk_low"]),
+                min_value=0.0,
+                step=5.0
+            )
+            enk_high = st.number_input(
+                "Enkeltværelse – højsæson",
+                value=float(current_prices["enk_high"]),
+                min_value=0.0,
+                step=5.0
+            )
+            breakfast_price = st.number_input(
+                "Morgenmad pr. gæst pr. nat",
+                value=float(current_prices["pris_morgenmad"]),
+                min_value=0.0,
+                step=5.0
+            )
+
+        with col2:
+            dobb_low = st.number_input(
+                "Dobbeltværelse – lavsæson",
+                value=float(current_prices["dobb_low"]),
+                min_value=0.0,
+                step=5.0
+            )
+            dobb_high = st.number_input(
+                "Dobbeltværelse – højsæson",
+                value=float(current_prices["dobb_high"]),
+                min_value=0.0,
+                step=5.0
+            )
+
+        save_prices = st.form_submit_button("Gem priser")
+
+    if save_prices:
+        (
+            supabase
+            .table("high_season")
+            .update({
+                "enk_low": enk_low,
+                "enk_high": enk_high,
+                "dobb_low": dobb_low,
+                "dobb_high": dobb_high,
+                "pris_morgenmad": breakfast_price
+            })
+            .eq("season", int(selected_price_season))
+            .execute()
+        )
+
+        st.success(f"Priser for {selected_price_season} er gemt")
+        st.rerun()
 
 st.header("Administrer events")
 st.write("Brug farven 'blue' til events som wonder, FM , brug 'green' til familie og brug 'grey' til helligdage ")
