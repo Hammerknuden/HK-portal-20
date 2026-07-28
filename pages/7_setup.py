@@ -1,7 +1,14 @@
+import sys
+from pathlib import Path
+
 import pandas as pd
 import streamlit as st
 from datetime import date
-from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
 from auth import require_login, require_admin
 from modules.price_sheet import create_price_sheet_pdf
 from supabase import create_client
