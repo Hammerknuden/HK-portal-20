@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="season dates from supabase">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="priser fra supabase">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,14 +80,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00840" summary="tilføj notes til morgenmad">
-      <option name="closed" value="true" />
-      <created>1784381422932</created>
-      <option name="number" value="00840" />
-      <option name="presentableId" value="LOCAL-00840" />
-      <option name="project" value="LOCAL" />
-      <updated>1784381422932</updated>
     </task>
     <task id="LOCAL-00841" summary="tilføj notes til morgenmad">
       <option name="closed" value="true" />
@@ -474,7 +465,15 @@
       <option name="project" value="LOCAL" />
       <updated>1785163556391</updated>
     </task>
-    <option name="localTasksCounter" value="889" />
+    <task id="LOCAL-00889" summary="priser fra supabase">
+      <option name="closed" value="true" />
+      <created>1785177819798</created>
+      <option name="number" value="00889" />
+      <option name="presentableId" value="LOCAL-00889" />
+      <option name="project" value="LOCAL" />
+      <updated>1785177819799</updated>
+    </task>
+    <option name="localTasksCounter" value="890" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -500,7 +499,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="timeline funktion byt show" />
     <MESSAGE value="funktion upgrade i timeline" />
     <MESSAGE value="tilføj notes til morgenmad" />
     <MESSAGE value="fjerner ekstra hent hk dtb" />
@@ -525,6 +523,7 @@
     <MESSAGE value="chat gbt new if for booking periods" />
     <MESSAGE value="excel update" />
     <MESSAGE value="season dates from supabase" />
-    <option name="LAST_COMMIT_MESSAGE" value="season dates from supabase" />
+    <MESSAGE value="priser fra supabase" />
+    <option name="LAST_COMMIT_MESSAGE" value="priser fra supabase" />
   </component>
 </project>

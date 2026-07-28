@@ -1,7 +1,9 @@
 import pandas as pd
 import streamlit as st
 from datetime import date
+from pathlib import Path
 from auth import require_login, require_admin
+from modules.price_sheet import create_price_sheet_pdf
 from supabase import create_client
 
 
@@ -28,7 +30,8 @@ price_result = (
     .table("high_season")
     .select(
         "season, enk_low, enk_high, "
-        "dobb_low, dobb_high, pris_morgenmad"
+        "dobb_low, dobb_high, pris_morgenmad, "
+        "start_season, end_season"
     )
     .order("season")
     .execute()
@@ -106,6 +109,22 @@ else:
 
         st.success(f"Priser for {selected_price_season} er gemt")
         st.rerun()
+
+    try:
+        price_sheet_pdf = create_price_sheet_pdf(
+            current_prices,
+            logo_path=Path(__file__).resolve().parents[1] / "logo2.jpg"
+        )
+        st.download_button(
+            "🖨️ Print prisskema (PDF)",
+            data=price_sheet_pdf,
+            file_name=f"prisskema_{selected_price_season}.pdf",
+            mime="application/pdf",
+            help="Hent det senest gemte prisskema som en printklar PDF."
+        )
+        st.caption("PDF'en indeholder de senest gemte priser.")
+    except (KeyError, TypeError, ValueError) as error:
+        st.warning(f"Prisskemaet kunne ikke dannes: {error}")
 
 st.header("Administrer events")
 st.write("Brug farven 'blue' til events som wonder, FM , brug 'green' til familie og brug 'grey' til helligdage ")
