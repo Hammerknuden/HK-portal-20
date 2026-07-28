@@ -12,3 +12,4 @@ supabase~=2.30.1
 dotenv~=0.9.9
 python-dotenv~=1.2.2
 reportlab
+xlrd>=2.0.1

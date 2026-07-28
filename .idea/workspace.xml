@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="priser print version">
-      <change afterPath="$PROJECT_DIR$/modules/price_sheet.py" afterDir="false" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="priser print version chg 1">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,14 +80,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00842" summary="tilføj notes til morgenmad">
-      <option name="closed" value="true" />
-      <created>1784382047171</created>
-      <option name="number" value="00842" />
-      <option name="presentableId" value="LOCAL-00842" />
-      <option name="project" value="LOCAL" />
-      <updated>1784382047171</updated>
     </task>
     <task id="LOCAL-00843" summary="tilføj notes til morgenmad">
       <option name="closed" value="true" />
@@ -473,7 +465,15 @@
       <option name="project" value="LOCAL" />
       <updated>1785220322061</updated>
     </task>
-    <option name="localTasksCounter" value="891" />
+    <task id="LOCAL-00891" summary="priser print version chg 1">
+      <option name="closed" value="true" />
+      <created>1785220492661</created>
+      <option name="number" value="00891" />
+      <option name="presentableId" value="LOCAL-00891" />
+      <option name="project" value="LOCAL" />
+      <updated>1785220492661</updated>
+    </task>
+    <option name="localTasksCounter" value="892" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -499,7 +499,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="tilføj notes til morgenmad" />
     <MESSAGE value="fjerner ekstra hent hk dtb" />
     <MESSAGE value="samlet ny verson af bf. py" />
     <MESSAGE value="redigering 1" />
@@ -524,6 +523,7 @@
     <MESSAGE value="season dates from supabase" />
     <MESSAGE value="priser fra supabase" />
     <MESSAGE value="priser print version" />
-    <option name="LAST_COMMIT_MESSAGE" value="priser print version" />
+    <MESSAGE value="priser print version chg 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="priser print version chg 1" />
   </component>
 </project>
