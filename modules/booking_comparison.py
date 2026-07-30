@@ -80,8 +80,44 @@ def prepare_booking_com(frame):
 
 
 def prepare_database(frame):
-    """Convert hk_dtb rows to the common comparison format."""
-    return _canonicalize(frame, DB_COLUMNS, "hk_dtb")
+    """Convert hk_dtb rows and combine all room rows for the same booking."""
+    database = _canonicalize(frame, DB_COLUMNS, "hk_dtb")
+    if database.empty:
+        return database
+
+    grouped_bookings = []
+    database = database.copy()
+    database["_group_key"] = [
+        f"reference:{reference}" if reference else f"row:{index}"
+        for index, reference in zip(database.index, database["reference"])
+    ]
+
+    for _, room_rows in database.groupby("_group_key", sort=False):
+        # The master row normally contains booking date, guest count, and name.
+        # Sorting puts that row first while still supporting older/manual rows.
+        master_candidates = room_rows.assign(
+            _master_score=(
+                room_rows[["name", "checkin", "checkout", "booked", "guests"]]
+                .notna()
+                .sum(axis=1)
+                + room_rows["name"].ne("").astype(int)
+            )
+        ).sort_values("_master_score", ascending=False)
+        booking = master_candidates.iloc[0].copy()
+
+        for column in ("name", "name_key", "checkin", "checkout", "booked", "guests"):
+            values = room_rows[column].dropna()
+            if column in ("name", "name_key"):
+                values = values[values.ne("")]
+            if not values.empty:
+                booking[column] = values.iloc[0]
+
+        # Booking.com has one row per booking. In hk_dtb, every assigned room
+        # has its own row, so the row count is the comparable room quantity.
+        booking["rooms"] = len(room_rows)
+        grouped_bookings.append(booking[database.columns.drop("_group_key")])
+
+    return pd.DataFrame(grouped_bookings).reset_index(drop=True)
 
 
 def _unique_pairs(left, right, key_columns):
@@ -128,7 +164,12 @@ def _differences(bc_row, db_row):
             differences.append(label)
             continue
         if left != right:
-            differences.append(label)
+            if column == "rooms":
+                differences.append(
+                    f"værelser (Booking.com: {int(left)}, hk_dtb: {int(right)})"
+                )
+            else:
+                differences.append(label)
     return differences
 
 

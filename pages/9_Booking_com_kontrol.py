@@ -137,5 +137,7 @@ if uploaded_file is not None:
 
     st.caption(
         "Matchning bruger normaliseret navn og bookingdato først, derefter "
-        "navn og opholdsdatoer. Mulige matches skal altid kontrolleres manuelt."
+        "navn og opholdsdatoer. Flere hk_dtb-linjer med samme bookingnummer "
+        "tælles som flere værelser under én booking. Mulige matches skal altid "
+        "kontrolleres manuelt."
     )
