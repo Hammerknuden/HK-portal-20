@@ -227,7 +227,8 @@ with st.sidebar.form("booking_form_new"):
         value=datetime.date.today() + datetime.timedelta(days=2)
     )
 
-    name = st.text_input("booking_number")
+    booking_number = st.text_input("booking_number")
+    guest_name = st.text_input("navn")
 
     season = selected_season
 
@@ -281,7 +282,7 @@ with st.sidebar.form("booking_form_new"):
                     )
 
                 else:
-                    if not name:
+                    if not booking_number:
                         st.error("Booking nummer mangler")
                         st.stop()
 
@@ -289,7 +290,8 @@ with st.sidebar.form("booking_form_new"):
                         "room_number": int(room),
                         "checkin_date": start_date.isoformat(),
                         "checkout_date": end_date.isoformat(),
-                        "booking_number": int(name),
+                        "booking_number": int(booking_number),
+                        "navn": guest_name.strip(),
                         "season": int(selected_season),
                         "movable": True,
                         "web": "web",
@@ -301,7 +303,7 @@ with st.sidebar.form("booking_form_new"):
                         supabase
                         .table("hk_dtb")
                         .select("*")
-                        .eq("booking_number", int(name))
+                        .eq("booking_number", int(booking_number))
                         .execute()
                     )
 
@@ -702,6 +704,11 @@ if not df.empty:
         "Rediger booking_number",
         value=str(booking["booking_number"])
     )
+    current_name = booking.get("navn", "")
+    new_name = st.text_input(
+        "Rediger navn",
+        value="" if pd.isna(current_name) else str(current_name)
+    )
     new_movable = st.checkbox(
         "Kan flyttes af optimering",
         value=bool(booking.get("movable", True))
@@ -719,6 +726,7 @@ if not df.empty:
                 "checkin_date": new_start.isoformat(),
                 "checkout_date": new_end.isoformat(),
                 "booking_number": int(new_guest),
+                "navn": new_name.strip(),
                 "movable": new_movable
             }).eq(
                 "id",
