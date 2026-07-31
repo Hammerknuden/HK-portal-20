@@ -29,7 +29,7 @@ class BookingComparisonRoomTests(unittest.TestCase):
         for index in range(row_count):
             rows.append(
                 {
-                    "booking_number": "5490828207",
+                    "booking_number": "46",
                     "navn": "Anna Jensen",
                     "checkin_date": "2026-08-01",
                     "checkout_date": "2026-08-04",
@@ -91,9 +91,9 @@ class BookingComparisonRoomTests(unittest.TestCase):
                         "navn": "Henrik Tillebeck",
                         "checkin_date": "2026-07-06",
                         "checkout_date": "2026-07-09",
-                        "booking_date": "2026-01-01",
-                        "numb_rooms": 1,
-                        "numb_guests": 2,
+                        "booking_date": None,
+                        "numb_rooms": None,
+                        "numb_guests": None,
                     }
                 ]
             )

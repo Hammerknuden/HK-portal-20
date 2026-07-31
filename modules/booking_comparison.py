@@ -93,6 +93,14 @@ def prepare_database(frame):
     ]
 
     for _, room_rows in database.groupby("_group_key", sort=False):
+        has_master_data = bool(
+            (
+                room_rows["booked"].notna()
+                | room_rows["rooms"].notna()
+                | room_rows["guests"].notna()
+            ).any()
+        )
+
         # The master row normally contains booking date, guest count, and name.
         # Sorting puts that row first while still supporting older/manual rows.
         master_candidates = room_rows.assign(
@@ -115,18 +123,16 @@ def prepare_database(frame):
         # Booking.com has one row per booking. In hk_dtb, every assigned room
         # has its own row, so the row count is the comparable room quantity.
         booking["rooms"] = len(room_rows)
-        booking["is_booking_com_reference"] = bool(
-            re.fullmatch(r"\d{8,}", booking["reference"])
-        )
+        booking["is_master_booking"] = has_master_data
         output_columns = [
             *database.columns.drop("_group_key"),
-            "is_booking_com_reference",
+            "is_master_booking",
         ]
         grouped_bookings.append(booking[output_columns])
 
     if not grouped_bookings:
         result = database.drop(columns="_group_key").iloc[0:0].copy()
-        result["is_booking_com_reference"] = pd.Series(dtype=bool)
+        result["is_master_booking"] = pd.Series(dtype=bool)
         return result
 
     return pd.DataFrame(grouped_bookings).reset_index(drop=True)
@@ -208,9 +214,9 @@ def _display_row(row, difference="", source=None):
 def compare_bookings(booking_com, database):
     """Compare canonical Booking.com and hk_dtb frames without using booking IDs."""
     bc_remaining = booking_com.copy()
-    if "is_booking_com_reference" in database.columns:
-        db_auxiliary = database[~database["is_booking_com_reference"]].copy()
-        db_remaining = database[database["is_booking_com_reference"]].copy()
+    if "is_master_booking" in database.columns:
+        db_auxiliary = database[~database["is_master_booking"]].copy()
+        db_remaining = database[database["is_master_booking"]].copy()
     else:
         db_auxiliary = database.iloc[0:0].copy()
         db_remaining = database.copy()
