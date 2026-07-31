@@ -11,7 +11,7 @@ class BookingComparisonRoomTests(unittest.TestCase):
             pd.DataFrame(
                 [
                     {
-                        "Bookingnummer": "BC-123",
+                        "Bookingnummer": "5490828207",
                         "Gæstens navn": "Anna Jensen",
                         "Indtjekning": "2026-08-01",
                         "Udtjekning": "2026-08-04",
@@ -29,7 +29,7 @@ class BookingComparisonRoomTests(unittest.TestCase):
         for index in range(row_count):
             rows.append(
                 {
-                    "booking_number": "BC-123",
+                    "booking_number": "5490828207",
                     "navn": "Anna Jensen",
                     "checkin_date": "2026-08-01",
                     "checkout_date": "2026-08-04",
@@ -58,15 +58,16 @@ class BookingComparisonRoomTests(unittest.TestCase):
         self.assertEqual(result["changed"].iloc[0]["Værelser"], 2)
         self.assertTrue(result["only_db"].empty)
 
-    def test_orphan_manual_room_row_is_not_an_independent_booking(self):
-        database = prepare_database(
+    def test_internal_room_row_is_attached_by_stay_and_not_listed_separately(self):
+        master = self._database(1)
+        extra_room = prepare_database(
             pd.DataFrame(
                 [
                     {
                         "booking_number": "28",
                         "navn": "Alex Nielsen",
-                        "checkin_date": "2026-05-01",
-                        "checkout_date": "2026-05-03",
+                        "checkin_date": "2026-08-01",
+                        "checkout_date": "2026-08-04",
                         "booking_date": None,
                         "numb_rooms": None,
                         "numb_guests": None,
@@ -74,10 +75,32 @@ class BookingComparisonRoomTests(unittest.TestCase):
                 ]
             )
         )
+        database = pd.concat([master, extra_room], ignore_index=True)
+
+        result = compare_bookings(self._booking_com(2), database)
+
+        self.assertEqual(len(result["exact"]), 1)
+        self.assertTrue(result["only_db"].empty)
+
+    def test_internal_room_row_never_appears_as_only_database(self):
+        database = prepare_database(
+            pd.DataFrame(
+                [
+                    {
+                        "booking_number": "26",
+                        "navn": "Henrik Tillebeck",
+                        "checkin_date": "2026-07-06",
+                        "checkout_date": "2026-07-09",
+                        "booking_date": "2026-01-01",
+                        "numb_rooms": 1,
+                        "numb_guests": 2,
+                    }
+                ]
+            )
+        )
 
         result = compare_bookings(self._booking_com(1), database)
 
-        self.assertTrue(database.empty)
         self.assertTrue(result["only_db"].empty)
 
 

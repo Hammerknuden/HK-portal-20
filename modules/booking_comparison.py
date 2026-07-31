@@ -93,17 +93,6 @@ def prepare_database(frame):
     ]
 
     for _, room_rows in database.groupby("_group_key", sort=False):
-        has_master_row = (
-            room_rows["booked"].notna()
-            | room_rows["rooms"].notna()
-            | room_rows["guests"].notna()
-        ).any()
-        if not has_master_row:
-            # Rows added manually to place an extra room contain only the
-            # stay/name/room information. Without a master row in this data
-            # selection, they must not be compared as independent bookings.
-            continue
-
         # The master row normally contains booking date, guest count, and name.
         # Sorting puts that row first while still supporting older/manual rows.
         master_candidates = room_rows.assign(
@@ -126,10 +115,19 @@ def prepare_database(frame):
         # Booking.com has one row per booking. In hk_dtb, every assigned room
         # has its own row, so the row count is the comparable room quantity.
         booking["rooms"] = len(room_rows)
-        grouped_bookings.append(booking[database.columns.drop("_group_key")])
+        booking["is_booking_com_reference"] = bool(
+            re.fullmatch(r"\d{8,}", booking["reference"])
+        )
+        output_columns = [
+            *database.columns.drop("_group_key"),
+            "is_booking_com_reference",
+        ]
+        grouped_bookings.append(booking[output_columns])
 
     if not grouped_bookings:
-        return database.drop(columns="_group_key").iloc[0:0].copy()
+        result = database.drop(columns="_group_key").iloc[0:0].copy()
+        result["is_booking_com_reference"] = pd.Series(dtype=bool)
+        return result
 
     return pd.DataFrame(grouped_bookings).reset_index(drop=True)
 
@@ -210,7 +208,12 @@ def _display_row(row, difference="", source=None):
 def compare_bookings(booking_com, database):
     """Compare canonical Booking.com and hk_dtb frames without using booking IDs."""
     bc_remaining = booking_com.copy()
-    db_remaining = database.copy()
+    if "is_booking_com_reference" in database.columns:
+        db_auxiliary = database[~database["is_booking_com_reference"]].copy()
+        db_remaining = database[database["is_booking_com_reference"]].copy()
+    else:
+        db_auxiliary = database.iloc[0:0].copy()
+        db_remaining = database.copy()
     matched_pairs = []
 
     # The manually entered booking date is the strongest non-ID identity signal.
@@ -229,6 +232,21 @@ def compare_bookings(booking_com, database):
     exact = []
     changed = []
     for bc_row, db_row in matched_pairs:
+        expected_rooms = int(bc_row["rooms"]) if pd.notna(bc_row["rooms"]) else 1
+        registered_rooms = int(db_row["rooms"]) if pd.notna(db_row["rooms"]) else 1
+        missing_rooms = max(0, expected_rooms - registered_rooms)
+
+        if missing_rooms and not db_auxiliary.empty:
+            same_stay = (
+                db_auxiliary["checkin"].eq(bc_row["checkin"])
+                & db_auxiliary["checkout"].eq(bc_row["checkout"])
+            )
+            room_rows = db_auxiliary[same_stay].head(missing_rooms)
+            if not room_rows.empty:
+                db_row = db_row.copy()
+                db_row["rooms"] = registered_rooms + len(room_rows)
+                db_auxiliary = db_auxiliary.drop(index=room_rows.index)
+
         differences = _differences(bc_row, db_row)
         display = _display_row(
             bc_row,
