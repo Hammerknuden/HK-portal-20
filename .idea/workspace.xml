@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="mulighed for editering af navn i timeline" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ændring i booking com så bookinger med flere værlser håndteres korrekt">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,14 +80,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00846" summary="fjerner ekstra hent hk dtb">
-      <option name="closed" value="true" />
-      <created>1784391167106</created>
-      <option name="number" value="00846" />
-      <option name="presentableId" value="LOCAL-00846" />
-      <option name="project" value="LOCAL" />
-      <updated>1784391167106</updated>
     </task>
     <task id="LOCAL-00847" summary="fjerner ekstra hent hk dtb">
       <option name="closed" value="true" />
@@ -471,7 +465,15 @@
       <option name="project" value="LOCAL" />
       <updated>1785391344168</updated>
     </task>
-    <option name="localTasksCounter" value="895" />
+    <task id="LOCAL-00895" summary="ændring i booking com så bookinger med flere værlser håndteres korrekt">
+      <option name="closed" value="true" />
+      <created>1785392061621</created>
+      <option name="number" value="00895" />
+      <option name="presentableId" value="LOCAL-00895" />
+      <option name="project" value="LOCAL" />
+      <updated>1785392061621</updated>
+    </task>
+    <option name="localTasksCounter" value="896" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -497,7 +499,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="redigering 1" />
     <MESSAGE value="redigering gem i supa" />
     <MESSAGE value="block byt layout" />
     <MESSAGE value="bytning mulig eller ej" />
@@ -522,6 +523,7 @@
     <MESSAGE value="priser print version chg 1" />
     <MESSAGE value="afstemningsmodul bc" />
     <MESSAGE value="mulighed for editering af navn i timeline" />
-    <option name="LAST_COMMIT_MESSAGE" value="mulighed for editering af navn i timeline" />
+    <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt" />
+    <option name="LAST_COMMIT_MESSAGE" value="ændring i booking com så bookinger med flere værlser håndteres korrekt" />
   </component>
 </project>

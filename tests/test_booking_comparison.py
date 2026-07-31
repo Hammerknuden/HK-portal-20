@@ -58,6 +58,28 @@ class BookingComparisonRoomTests(unittest.TestCase):
         self.assertEqual(result["changed"].iloc[0]["Værelser"], 2)
         self.assertTrue(result["only_db"].empty)
 
+    def test_orphan_manual_room_row_is_not_an_independent_booking(self):
+        database = prepare_database(
+            pd.DataFrame(
+                [
+                    {
+                        "booking_number": "28",
+                        "navn": "Alex Nielsen",
+                        "checkin_date": "2026-05-01",
+                        "checkout_date": "2026-05-03",
+                        "booking_date": None,
+                        "numb_rooms": None,
+                        "numb_guests": None,
+                    }
+                ]
+            )
+        )
+
+        result = compare_bookings(self._booking_com(1), database)
+
+        self.assertTrue(database.empty)
+        self.assertTrue(result["only_db"].empty)
+
 
 if __name__ == "__main__":
     unittest.main()

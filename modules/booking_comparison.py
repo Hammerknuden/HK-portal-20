@@ -93,6 +93,17 @@ def prepare_database(frame):
     ]
 
     for _, room_rows in database.groupby("_group_key", sort=False):
+        has_master_row = (
+            room_rows["booked"].notna()
+            | room_rows["rooms"].notna()
+            | room_rows["guests"].notna()
+        ).any()
+        if not has_master_row:
+            # Rows added manually to place an extra room contain only the
+            # stay/name/room information. Without a master row in this data
+            # selection, they must not be compared as independent bookings.
+            continue
+
         # The master row normally contains booking date, guest count, and name.
         # Sorting puts that row first while still supporting older/manual rows.
         master_candidates = room_rows.assign(
@@ -116,6 +127,9 @@ def prepare_database(frame):
         # has its own row, so the row count is the comparable room quantity.
         booking["rooms"] = len(room_rows)
         grouped_bookings.append(booking[database.columns.drop("_group_key")])
+
+    if not grouped_bookings:
+        return database.drop(columns="_group_key").iloc[0:0].copy()
 
     return pd.DataFrame(grouped_bookings).reset_index(drop=True)
 
