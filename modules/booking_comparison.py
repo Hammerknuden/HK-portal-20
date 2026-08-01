@@ -18,6 +18,7 @@ BC_COLUMNS = {
 
 DB_COLUMNS = {
     "booking_number": "reference",
+    "season": "season",
     "navn": "name",
     "checkin_date": "checkin",
     "checkout_date": "checkout",
@@ -35,6 +36,7 @@ DISPLAY_COLUMNS = [
     "Værelser",
     "Personer",
     "Reference",
+    "hk_dtb bookingnr.",
     "Forskel",
 ]
 
@@ -65,6 +67,10 @@ def _canonicalize(frame, column_map, source):
 
     for column in ("rooms", "guests"):
         result[column] = pd.to_numeric(result[column], errors="coerce").astype("Int64")
+    if "season" in result.columns:
+        result["season"] = pd.to_numeric(
+            result["season"], errors="coerce"
+        ).astype("Int64")
 
     result["reference"] = result["reference"].fillna("").astype(str).str.strip()
     return result.reset_index(drop=True)
@@ -88,8 +94,16 @@ def prepare_database(frame):
     grouped_bookings = []
     database = database.copy()
     database["_group_key"] = [
-        f"reference:{reference}" if reference else f"row:{index}"
-        for index, reference in zip(database.index, database["reference"])
+        (
+            f"season:{season}:reference:{reference}"
+            if reference
+            else f"season:{season}:row:{index}"
+        )
+        for index, reference, season in zip(
+            database.index,
+            database["reference"],
+            database["season"],
+        )
     ]
 
     for _, room_rows in database.groupby("_group_key", sort=False):
@@ -191,7 +205,7 @@ def _differences(bc_row, db_row):
     return differences
 
 
-def _display_row(row, difference="", source=None):
+def _display_row(row, difference="", source=None, db_reference=""):
     def date_text(value):
         return value.strftime("%d-%m-%Y") if pd.notna(value) else ""
 
@@ -207,6 +221,7 @@ def _display_row(row, difference="", source=None):
         "Værelser": number(row["rooms"]),
         "Personer": number(row["guests"]),
         "Reference": row["reference"],
+        "hk_dtb bookingnr.": db_reference,
         "Forskel": difference,
     }
 
@@ -258,6 +273,7 @@ def compare_bookings(booking_com, database):
             bc_row,
             difference=", ".join(differences),
             source="Booking.com ↔ hk_dtb",
+            db_reference=db_row["reference"],
         )
         if differences:
             changed.append(display)
@@ -292,6 +308,7 @@ def compare_bookings(booking_com, database):
                     "Indtjekning hk_dtb": _display_row(db_row)["Indtjekning"],
                     "Udtjekning BC": _display_row(bc_row)["Udtjekning"],
                     "Udtjekning hk_dtb": _display_row(db_row)["Udtjekning"],
+                    "hk_dtb bookingnr.": db_row["reference"],
                     "Navnelighed": f"{best_score:.0%}",
                     "Bemærkning": "Kontrollér manuelt",
                 }
@@ -302,7 +319,11 @@ def compare_bookings(booking_com, database):
         for _, row in bc_remaining.iterrows()
     ]
     only_db = [
-        _display_row(row, "Findes ikke i den aktive Booking.com-fil")
+        _display_row(
+            row,
+            "Findes ikke i den aktive Booking.com-fil",
+            db_reference=row["reference"],
+        )
         for _, row in db_remaining.iterrows()
     ]
 

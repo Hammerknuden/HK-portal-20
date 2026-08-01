@@ -52,6 +52,16 @@ if uploaded_file is not None:
         st.warning("Filen indeholder ingen aktive bookinger.")
         st.stop()
 
+    seasons = sorted(
+        {
+            checkin.year
+            for checkin in booking_com["checkin"].dropna()
+        }
+    )
+    if not seasons:
+        st.error("Sæsonen kunne ikke findes ud fra indtjekningsdatoerne.")
+        st.stop()
+
     supabase = create_client(
         st.secrets["SUPABASE_URL"],
         st.secrets["SUPABASE_KEY"],
@@ -61,16 +71,18 @@ if uploaded_file is not None:
         database_result = (
             supabase.table("hk_dtb")
             .select(
-                "booking_number, navn, checkin_date, checkout_date, "
+                "booking_number, season, navn, checkin_date, checkout_date, "
                 "booking_date, numb_rooms, numb_guests, web"
             )
             .eq("web", "bc")
+            .in_("season", seasons)
             .execute()
         )
         database_raw = pd.DataFrame(
             database_result.data or [],
             columns=[
                 "booking_number",
+                "season",
                 "navn",
                 "checkin_date",
                 "checkout_date",
@@ -136,6 +148,7 @@ if uploaded_file is not None:
                 st.dataframe(frame, hide_index=True, use_container_width=True)
 
     st.caption(
+        f"DB-data er afgrænset til sæson: {', '.join(map(str, seasons))}. "
         "Matchning bruger normaliseret navn og bookingdato først, derefter "
         "navn og opholdsdatoer. Flere hk_dtb-linjer med samme bookingnummer "
         "tælles som flere værelser under én booking. Mulige matches skal altid "
