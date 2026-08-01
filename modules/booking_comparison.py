@@ -35,8 +35,8 @@ DISPLAY_COLUMNS = [
     "Bookingdato",
     "Værelser",
     "Personer",
-    "Reference",
-    "hk_dtb bookingnr.",
+    "Booking.com ref.",
+    "DB bookingnr.",
     "Forskel",
 ]
 
@@ -220,8 +220,10 @@ def _display_row(row, difference="", source=None, db_reference=""):
         "Bookingdato": date_text(row["booked"]),
         "Værelser": number(row["rooms"]),
         "Personer": number(row["guests"]),
-        "Reference": row["reference"],
-        "hk_dtb bookingnr.": db_reference,
+        "Booking.com ref.": (
+            row["reference"] if (source or row["source"]) != "hk_dtb" else ""
+        ),
+        "DB bookingnr.": db_reference,
         "Forskel": difference,
     }
 
@@ -308,7 +310,7 @@ def compare_bookings(booking_com, database):
                     "Indtjekning hk_dtb": _display_row(db_row)["Indtjekning"],
                     "Udtjekning BC": _display_row(bc_row)["Udtjekning"],
                     "Udtjekning hk_dtb": _display_row(db_row)["Udtjekning"],
-                    "hk_dtb bookingnr.": db_row["reference"],
+                    "DB bookingnr.": db_row["reference"],
                     "Navnelighed": f"{best_score:.0%}",
                     "Bemærkning": "Kontrollér manuelt",
                 }

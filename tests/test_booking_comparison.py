@@ -57,7 +57,8 @@ class BookingComparisonRoomTests(unittest.TestCase):
             "værelser (Booking.com: 2, hk_dtb: 1)",
         )
         self.assertEqual(result["changed"].iloc[0]["Værelser"], 2)
-        self.assertEqual(result["changed"].iloc[0]["hk_dtb bookingnr."], "46")
+        self.assertEqual(result["changed"].iloc[0]["Booking.com ref."], "5490828207")
+        self.assertEqual(result["changed"].iloc[0]["DB bookingnr."], "46")
         self.assertTrue(result["only_db"].empty)
 
     def test_internal_room_row_is_attached_by_stay_and_not_listed_separately(self):
