@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ændring i booking com så bookinger med flere værlser håndteres korrekt version 5">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/booking_comparison.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/booking_comparison.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_booking_comparison.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_booking_comparison.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ændring i booking com så bookinger med flere værlser håndteres korrekt version 6" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,14 +78,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00851" summary="redigering gem i supa">
-      <option name="closed" value="true" />
-      <created>1784398487937</created>
-      <option name="number" value="00851" />
-      <option name="presentableId" value="LOCAL-00851" />
-      <option name="project" value="LOCAL" />
-      <updated>1784398487938</updated>
     </task>
     <task id="LOCAL-00852" summary="redigering gem i supa">
       <option name="closed" value="true" />
@@ -475,7 +463,15 @@
       <option name="project" value="LOCAL" />
       <updated>1785563330487</updated>
     </task>
-    <option name="localTasksCounter" value="900" />
+    <task id="LOCAL-00900" summary="ændring i booking com så bookinger med flere værlser håndteres korrekt version 6">
+      <option name="closed" value="true" />
+      <created>1785564272613</created>
+      <option name="number" value="00900" />
+      <option name="presentableId" value="LOCAL-00900" />
+      <option name="project" value="LOCAL" />
+      <updated>1785564272615</updated>
+    </task>
+    <option name="localTasksCounter" value="901" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -501,7 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="klar til første swap test" />
     <MESSAGE value="klar til sidste test" />
     <MESSAGE value="status enkelt byt på timeline running" />
     <MESSAGE value="inn and out editorial imports" />
@@ -526,6 +521,7 @@
     <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 3" />
     <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 4" />
     <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 5" />
-    <option name="LAST_COMMIT_MESSAGE" value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 5" />
+    <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 6" />
+    <option name="LAST_COMMIT_MESSAGE" value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 6" />
   </component>
 </project>
