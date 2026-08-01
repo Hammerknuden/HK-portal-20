@@ -312,7 +312,6 @@ else:
             "Gem ændringer"
         )
 
-
     if save_event:
 
         if not edit_event_name.strip():

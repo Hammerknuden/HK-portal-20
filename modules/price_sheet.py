@@ -102,7 +102,9 @@ def create_price_sheet_pdf(price_row, logo_path=None):
 
     elements = []
     if logo_path and Path(logo_path).is_file():
-        logo = Image(str(logo_path), width=38 * mm, height=25 * mm)
+        logo = Image(str(logo_path))
+        logo.drawWidth = 75 * mm
+        logo.drawHeight = logo.drawWidth * logo.imageHeight / logo.imageWidth
         logo.hAlign = "LEFT"
         elements.extend([logo, Spacer(1, 4 * mm)])
 
