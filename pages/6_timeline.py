@@ -82,6 +82,13 @@ def load_bookings():
         df["checkin_date"] = pd.to_datetime(df["checkin_date"])
         df["checkout_date"] = pd.to_datetime(df["checkout_date"])
 
+        season_start = pd.Timestamp(selected_season, 1, 1)
+        next_season_start = pd.Timestamp(selected_season + 1, 1, 1)
+        df = df[
+            (df["checkin_date"] < next_season_start)
+            & (df["checkout_date"] >= season_start)
+        ]
+
         if "web" in df.columns:
             df = df[
                 df["web"]
@@ -372,6 +379,11 @@ if not df.empty:
     plot_df["checkin_date"] = pd.to_datetime(plot_df["checkin_date"])
     plot_df["checkout_date"] = pd.to_datetime(plot_df["checkout_date"])
 
+    season_start = pd.Timestamp(selected_season, 1, 1)
+    next_season_start = pd.Timestamp(selected_season + 1, 1, 1)
+    timeline_start = max(plot_df["checkin_date"].min(), season_start)
+    timeline_end = min(plot_df["checkout_date"].max(), next_season_start)
+
     plot_df["room_number"] = (
         plot_df["room_sort"]
         .astype(int)
@@ -459,8 +471,13 @@ if not df.empty:
             yshift=-18,
             font=dict(size=10, color="gray")
         )
+
+    today = pd.Timestamp(date.today())
+    if timeline_start <= today <= timeline_end:
         fig.add_vline(
-            x=date.today(), line_width=1,  line_color="red"
+            x=today,
+            line_width=1,
+            line_color="red"
         )
 
     # Tving rækkefølgen på værelserne
@@ -561,7 +578,8 @@ if not df.empty:
         showgrid=True,
         gridcolor="lightgray",
         gridwidth=1,
-        dtick="D7"
+        dtick="D7",
+        range=[timeline_start, timeline_end]
     )
 
     if zoom_today:
