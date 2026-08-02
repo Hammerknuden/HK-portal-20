@@ -79,7 +79,7 @@ try:
     else:
         highest_booking_number = int(booking_numbers.max())
         st.info(
-            f"DB: Højeste bookingnummer for sæson {year} er "
+            f"DB: Højeste registrerede bookingnummer  {year} er "
             f"{highest_booking_number}"
         )
 except Exception as error:

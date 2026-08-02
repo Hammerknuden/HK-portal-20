@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="timeline 2027 justering">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="info boks i booking for latest booking nummer" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,14 +78,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00856" summary="room swap py oprettelse">
-      <option name="closed" value="true" />
-      <created>1784478394315</created>
-      <option name="number" value="00856" />
-      <option name="presentableId" value="LOCAL-00856" />
-      <option name="project" value="LOCAL" />
-      <updated>1784478394315</updated>
     </task>
     <task id="LOCAL-00857" summary="klar til første swap test">
       <option name="closed" value="true" />
@@ -473,7 +463,15 @@
       <option name="project" value="LOCAL" />
       <updated>1785689516055</updated>
     </task>
-    <option name="localTasksCounter" value="905" />
+    <task id="LOCAL-00905" summary="info boks i booking for latest booking nummer">
+      <option name="closed" value="true" />
+      <created>1785698374907</created>
+      <option name="number" value="00905" />
+      <option name="presentableId" value="LOCAL-00905" />
+      <option name="project" value="LOCAL" />
+      <updated>1785698374907</updated>
+    </task>
+    <option name="localTasksCounter" value="906" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -499,7 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="tilføj kommentar til breakfirst" />
     <MESSAGE value="fuld url BC link" />
     <MESSAGE value="booking længde sat til sæson" />
     <MESSAGE value="red date line" />
@@ -524,6 +521,7 @@
     <MESSAGE value="logo i setup pris trukket til normal" />
     <MESSAGE value="fjenelse af nan fra pdf downl i in and out" />
     <MESSAGE value="timeline 2027 justering" />
-    <option name="LAST_COMMIT_MESSAGE" value="timeline 2027 justering" />
+    <MESSAGE value="info boks i booking for latest booking nummer" />
+    <option name="LAST_COMMIT_MESSAGE" value="info boks i booking for latest booking nummer" />
   </component>
 </project>
