@@ -209,6 +209,15 @@ else:
 
 # ---------- PDF-FUNKTION ----------
 
+def pdf_table_data(df):
+    rows = [df.columns.tolist()]
+    rows.extend(
+        ["" if pd.isna(value) else str(value) for value in row]
+        for row in df.itertuples(index=False, name=None)
+    )
+    return rows
+
+
 def lav_pdf(df_ankomst_print, df_afrejse_print):
     buffer = BytesIO()
 
@@ -222,7 +231,7 @@ def lav_pdf(df_ankomst_print, df_afrejse_print):
     if not df_ankomst_print.empty:
         story.append(Paragraph("Ankomster", styles["Heading2"]))
 
-        data = [df_ankomst_print.columns.tolist()] + df_ankomst_print.astype(str).values.tolist()
+        data = pdf_table_data(df_ankomst_print)
 
         table = Table(data)
         table.setStyle(TableStyle([
@@ -236,7 +245,7 @@ def lav_pdf(df_ankomst_print, df_afrejse_print):
     if not df_afrejse_print.empty:
         story.append(Paragraph("Afrejser", styles["Heading2"]))
 
-        data = [df_afrejse_print.columns.tolist()] + df_afrejse_print.astype(str).values.tolist()
+        data = pdf_table_data(df_afrejse_print)
 
         table = Table(data)
         table.setStyle(TableStyle([
