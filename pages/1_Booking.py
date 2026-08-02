@@ -55,6 +55,36 @@ st.title("Reservation")
 
 year = st.selectbox("booking år", ["2026", "2027"])
 
+try:
+    booking_number_result = (
+        supabase
+        .table("hk_dtb")
+        .select("booking_number")
+        .eq("season", int(year))
+        .execute()
+    )
+    booking_numbers = pd.to_numeric(
+        pd.Series(
+            [
+                row.get("booking_number")
+                for row in (booking_number_result.data or [])
+            ],
+            dtype="object",
+        ),
+        errors="coerce",
+    ).dropna()
+
+    if booking_numbers.empty:
+        st.info(f"DB: Ingen bookingnumre fundet for sæson {year}")
+    else:
+        highest_booking_number = int(booking_numbers.max())
+        st.info(
+            f"DB: Højeste bookingnummer for sæson {year} er "
+            f"{highest_booking_number}"
+        )
+except Exception as error:
+    st.warning(f"Kunne ikke hente højeste bookingnummer fra DB: {error}")
+
 bruger = "Finn"
 network = "local"
 #network = st.selectbox("vælg lokal eller web ", options=["local", "URL"])
