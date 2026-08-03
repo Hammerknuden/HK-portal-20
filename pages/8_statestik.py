@@ -4,12 +4,11 @@ from pathlib import Path
 import streamlit_authenticator as stauth
 import datetime
 from auth import require_login
-from common import init_session
+from common import init_session, exclude_cancelled_bookings
 import plotly.express as px
 import os
 from dotenv import load_dotenv
 from supabase import create_client
-from modules.booking_filters import exclude_cancelled_bookings
 # -------------------------
 # INIT
 # -------------------------

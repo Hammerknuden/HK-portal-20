@@ -6,7 +6,7 @@ from pathlib import Path
 import streamlit_authenticator as stauth
 import plotly.express as px
 from auth import require_login
-from common import init_session
+from common import init_session, exclude_cancelled_bookings
 import re
 import os
 from dotenv import load_dotenv
@@ -15,7 +15,6 @@ from importlib.metadata import version
 from modules.level2_optimizer import analyze_improvements
 from modules.level2_optimizer import can_swap_blocks
 from modules.room_swap import execute_room_swap
-from modules.booking_filters import exclude_cancelled_bookings
 from datetime import date
 # -------------------------
 # INIT

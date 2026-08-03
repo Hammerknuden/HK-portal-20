@@ -12,7 +12,7 @@ from config.confirmation_email import (admin_email,
     send_english_confirmation_email,
     send_german_confirmation_email)
 from config.data_email import add_data, send_data_email
-from common import init_session
+from common import init_session, exclude_cancelled_bookings
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 import base64
@@ -20,7 +20,6 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 import os
 from dotenv import load_dotenv
 from supabase import create_client
-from modules.booking_filters import exclude_cancelled_bookings
 
 
 st.set_page_config(page_title="Booking", layout="wide")

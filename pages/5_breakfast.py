@@ -22,7 +22,7 @@ sys.path.append(
 )
 
 from auth import require_login
-from modules.booking_filters import exclude_cancelled_bookings
+from common import exclude_cancelled_bookings
 
 
 st.set_page_config(

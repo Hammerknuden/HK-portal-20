@@ -13,7 +13,7 @@ from reportlab.lib import colors
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from modules.booking_filters import exclude_cancelled_bookings
+from common import exclude_cancelled_bookings
 
 st.set_page_config(page_title="Ins and Outs", layout="wide")
 
