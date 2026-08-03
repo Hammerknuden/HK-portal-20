@@ -20,6 +20,7 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 import os
 from dotenv import load_dotenv
 from supabase import create_client
+from modules.booking_filters import exclude_cancelled_bookings
 
 
 st.set_page_config(page_title="Booking", layout="wide")
@@ -430,11 +431,10 @@ else:
         .select("*")
         .lt("checkin_date", checkout_date.isoformat())
         .gt("checkout_date", checkin_date.isoformat())
-        .neq("web", "cansl")
         .execute()
     )
 
-    bookings = pd.DataFrame(result.data or [])
+    bookings = exclude_cancelled_bookings(pd.DataFrame(result.data or []))
 
     if "room_number" in bookings.columns:
         occupied_rooms = set(

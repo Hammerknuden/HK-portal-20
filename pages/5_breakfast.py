@@ -22,6 +22,7 @@ sys.path.append(
 )
 
 from auth import require_login
+from modules.booking_filters import exclude_cancelled_bookings
 
 
 st.set_page_config(
@@ -74,11 +75,10 @@ result = (
         "morgenmad, "
         "web"
     )
-    .neq("web", "cansl")
     .execute()
 )
 
-df = pd.DataFrame(result.data or [])
+df = exclude_cancelled_bookings(pd.DataFrame(result.data or []))
 
 if df.empty:
     st.info("Ingen bookinger fundet")

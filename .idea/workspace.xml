@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="info boks i booking for latest booking nummer">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="timeline hovercontrol">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/3_In and Out.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/3_In and Out.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/5_breakfast.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/5_breakfast.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/8_statestik.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/8_statestik.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,14 +86,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00858" summary="klar til første swap test">
-      <option name="closed" value="true" />
-      <created>1784481145647</created>
-      <option name="number" value="00858" />
-      <option name="presentableId" value="LOCAL-00858" />
-      <option name="project" value="LOCAL" />
-      <updated>1784481145647</updated>
     </task>
     <task id="LOCAL-00859" summary="klar til første swap test">
       <option name="closed" value="true" />
@@ -473,7 +471,15 @@
       <option name="project" value="LOCAL" />
       <updated>1785698514129</updated>
     </task>
-    <option name="localTasksCounter" value="907" />
+    <task id="LOCAL-00907" summary="timeline hovercontrol">
+      <option name="closed" value="true" />
+      <created>1785737497274</created>
+      <option name="number" value="00907" />
+      <option name="presentableId" value="LOCAL-00907" />
+      <option name="project" value="LOCAL" />
+      <updated>1785737497275</updated>
+    </task>
+    <option name="localTasksCounter" value="908" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -499,7 +505,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fuld url BC link" />
     <MESSAGE value="booking længde sat til sæson" />
     <MESSAGE value="red date line" />
     <MESSAGE value="red date line works" />
@@ -524,6 +529,7 @@
     <MESSAGE value="fjenelse af nan fra pdf downl i in and out" />
     <MESSAGE value="timeline 2027 justering" />
     <MESSAGE value="info boks i booking for latest booking nummer" />
-    <option name="LAST_COMMIT_MESSAGE" value="info boks i booking for latest booking nummer" />
+    <MESSAGE value="timeline hovercontrol" />
+    <option name="LAST_COMMIT_MESSAGE" value="timeline hovercontrol" />
   </component>
 </project>

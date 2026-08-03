@@ -15,6 +15,7 @@ from importlib.metadata import version
 from modules.level2_optimizer import analyze_improvements
 from modules.level2_optimizer import can_swap_blocks
 from modules.room_swap import execute_room_swap
+from modules.booking_filters import exclude_cancelled_bookings
 from datetime import date
 # -------------------------
 # INIT
@@ -89,15 +90,7 @@ def load_bookings():
             & (df["checkout_date"] >= season_start)
         ]
 
-        if "web" in df.columns:
-            df = df[
-                df["web"]
-                .fillna("")
-                .astype(str)
-                .str.strip()
-                .str.lower()
-                != "cansl"
-            ]
+        df = exclude_cancelled_bookings(df)
 
         if "room_number" in df.columns:
             df["room_number"] = (
@@ -257,13 +250,16 @@ with st.sidebar.form("booking_form_new"):
                     .table("hk_dtb")
                     .select("*")
                     .eq("room_number", int(room))
-                    .neq("web", "cansl")
                     .execute()
+                )
+
+                existing_bookings = exclude_cancelled_bookings(
+                    pd.DataFrame(existing.data or [])
                 )
 
                 overlap = False
 
-                for booking in existing.data:
+                for booking in existing_bookings.to_dict("records"):
 
                     existing_checkin = pd.to_datetime(
                         booking["checkin_date"]

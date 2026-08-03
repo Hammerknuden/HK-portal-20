@@ -9,6 +9,7 @@ import plotly.express as px
 import os
 from dotenv import load_dotenv
 from supabase import create_client
+from modules.booking_filters import exclude_cancelled_bookings
 # -------------------------
 # INIT
 # -------------------------
@@ -45,14 +46,7 @@ try:
     df = pd.DataFrame(all_rows)
 
     # Fjern annullerede bookinger
-    df = df[
-        df["web"]
-        .fillna("")
-        .astype(str)
-        .str.strip()
-        .str.upper()
-        != "CANSL"
-        ]
+    df = exclude_cancelled_bookings(df)
 
     # Beregn antal nætter
     df["checkin_date"] = pd.to_datetime(df["checkin_date"])
@@ -246,9 +240,7 @@ df_stats["checkin_date"] = pd.to_datetime(df_stats["checkin_date"], errors="coer
 df_stats["checkout_date"] = pd.to_datetime(df_stats["checkout_date"], errors="coerce")
 
 # Fjern annullerede bookinger
-df_stats = df_stats[
-    df_stats["web"].astype(str).str.lower() != "cansl"
-]
+df_stats = exclude_cancelled_bookings(df_stats)
 # Kun valgt sæson
 df_stats = df_stats[
     df_stats["season"] == int(selected_season)

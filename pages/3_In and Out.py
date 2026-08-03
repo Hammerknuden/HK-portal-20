@@ -13,6 +13,8 @@ from reportlab.lib import colors
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
+from modules.booking_filters import exclude_cancelled_bookings
+
 st.set_page_config(page_title="Ins and Outs", layout="wide")
 
 require_login()
@@ -50,19 +52,18 @@ check_dato_slut = check_dato_start + timedelta(days=antal_dage)
 result = (
     supabase.table("hk_dtb")
     .select(
-        "booking_number, navn, checkin_date, ankomst, bed, known, room_number, nation, enkelt, comments"
+        "booking_number, navn, checkin_date, ankomst, bed, known, room_number, nation, enkelt, comments, web"
     )
     .gte("checkin_date", str(check_dato_start))
     .lte("checkin_date", str(check_dato_slut))
-    .neq("web", "cansl")
     .order("room_number")
     .execute()
 )
 
-df = pd.DataFrame(result.data)
+df = exclude_cancelled_bookings(pd.DataFrame(result.data))
 # ---------- ANKOMSTER ----------
 
-df_ankomst = pd.DataFrame(result.data)
+df_ankomst = df.copy()
 
 st.subheader("Periodens ankomster")
 
@@ -112,10 +113,9 @@ st.subheader("Periodens afrejser")
 # Afrejser i den valgte periode
 result = (
     supabase.table("hk_dtb")
-    .select("booking_number, checkout_date, room_number")
+    .select("booking_number, checkout_date, room_number, web")
     .gte("checkout_date", str(check_dato_start))
     .lte("checkout_date", str(check_dato_slut))
-    .neq("web", "cansl")
     .order("checkout_date")
     .execute()
 )
@@ -123,15 +123,14 @@ result = (
 # Alle kommende indcheck bruges til at finde næste booking pr. værelse
 checkin_result = (
     supabase.table("hk_dtb")
-    .select("checkin_date, room_number")
+    .select("checkin_date, room_number, web")
     .gte("checkin_date", str(check_dato_start))
-    .neq("web", "cansl")
     .order("checkin_date")
     .execute()
 )
 
-df_afrejse = pd.DataFrame(result.data)
-df_checkin = pd.DataFrame(checkin_result.data)
+df_afrejse = exclude_cancelled_bookings(pd.DataFrame(result.data))
+df_checkin = exclude_cancelled_bookings(pd.DataFrame(checkin_result.data))
 
 if not df_afrejse.empty:
 
