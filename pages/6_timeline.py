@@ -421,6 +421,13 @@ if not df.empty:
         y="room_number",
         color="booking_number",
         hover_name="booking_number",
+        hover_data={
+            "navn": True,
+            "morgenmad": True,
+            "room_number": True,
+            "checkin_date": "|%d-%m-%Y",
+            "checkout_date": "|%d-%m-%Y",
+        },
         text="booking_number",
         color_discrete_sequence=px.colors.qualitative.Dark24
     )

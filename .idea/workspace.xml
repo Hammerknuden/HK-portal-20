@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="info boks i booking for latest booking nummer" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="info boks i booking for latest booking nummer">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,14 +80,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00857" summary="klar til første swap test">
-      <option name="closed" value="true" />
-      <created>1784480946952</created>
-      <option name="number" value="00857" />
-      <option name="presentableId" value="LOCAL-00857" />
-      <option name="project" value="LOCAL" />
-      <updated>1784480946953</updated>
     </task>
     <task id="LOCAL-00858" summary="klar til første swap test">
       <option name="closed" value="true" />
@@ -471,7 +465,15 @@
       <option name="project" value="LOCAL" />
       <updated>1785698374907</updated>
     </task>
-    <option name="localTasksCounter" value="906" />
+    <task id="LOCAL-00906" summary="info boks i booking for latest booking nummer">
+      <option name="closed" value="true" />
+      <created>1785698514128</created>
+      <option name="number" value="00906" />
+      <option name="presentableId" value="LOCAL-00906" />
+      <option name="project" value="LOCAL" />
+      <updated>1785698514129</updated>
+    </task>
+    <option name="localTasksCounter" value="907" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
