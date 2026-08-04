@@ -958,7 +958,7 @@ else:
             "known": known,
             "comments": comments,
             "room_number": 7,
-            "season": year,
+            "season": int(year),
             "movable": True
         }).execute()
 
