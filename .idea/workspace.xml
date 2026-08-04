@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="timeline hovercontrol">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ordet cansl beskyttet for trykfejl ved import så alle bliver beteragtet som cnl med småt modules rettet til eller fjernet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/1_Booking.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/1_Booking.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/3_In and Out.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/3_In and Out.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/5_breakfast.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/5_breakfast.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/6_timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/6_timeline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/8_statestik.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/8_statestik.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,22 +80,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00859" summary="klar til første swap test">
-      <option name="closed" value="true" />
-      <created>1784481538447</created>
-      <option name="number" value="00859" />
-      <option name="presentableId" value="LOCAL-00859" />
-      <option name="project" value="LOCAL" />
-      <updated>1784481538448</updated>
-    </task>
-    <task id="LOCAL-00860" summary="klar til første swap test">
-      <option name="closed" value="true" />
-      <created>1784482324359</created>
-      <option name="number" value="00860" />
-      <option name="presentableId" value="LOCAL-00860" />
-      <option name="project" value="LOCAL" />
-      <updated>1784482324359</updated>
     </task>
     <task id="LOCAL-00861" summary="klar til sidste test">
       <option name="closed" value="true" />
@@ -479,7 +457,23 @@
       <option name="project" value="LOCAL" />
       <updated>1785737497275</updated>
     </task>
-    <option name="localTasksCounter" value="908" />
+    <task id="LOCAL-00908" summary="ordet cansl beskyttet for trykfejl ved import så alle bliver beteragtet som cnl med småt">
+      <option name="closed" value="true" />
+      <created>1785777258399</created>
+      <option name="number" value="00908" />
+      <option name="presentableId" value="LOCAL-00908" />
+      <option name="project" value="LOCAL" />
+      <updated>1785777258399</updated>
+    </task>
+    <task id="LOCAL-00909" summary="ordet cansl beskyttet for trykfejl ved import så alle bliver beteragtet som cnl med småt modules rettet til eller fjernet">
+      <option name="closed" value="true" />
+      <created>1785777857297</created>
+      <option name="number" value="00909" />
+      <option name="presentableId" value="LOCAL-00909" />
+      <option name="project" value="LOCAL" />
+      <updated>1785777857297</updated>
+    </task>
+    <option name="localTasksCounter" value="910" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -505,8 +499,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="booking længde sat til sæson" />
-    <MESSAGE value="red date line" />
     <MESSAGE value="red date line works" />
     <MESSAGE value="ny kolonne i afrejse" />
     <MESSAGE value="chat gbt change i booking py" />
@@ -530,6 +522,8 @@
     <MESSAGE value="timeline 2027 justering" />
     <MESSAGE value="info boks i booking for latest booking nummer" />
     <MESSAGE value="timeline hovercontrol" />
-    <option name="LAST_COMMIT_MESSAGE" value="timeline hovercontrol" />
+    <MESSAGE value="ordet cansl beskyttet for trykfejl ved import så alle bliver beteragtet som cnl med småt" />
+    <MESSAGE value="ordet cansl beskyttet for trykfejl ved import så alle bliver beteragtet som cnl med småt modules rettet til eller fjernet" />
+    <option name="LAST_COMMIT_MESSAGE" value="ordet cansl beskyttet for trykfejl ved import så alle bliver beteragtet som cnl med småt modules rettet til eller fjernet" />
   </component>
 </project>
