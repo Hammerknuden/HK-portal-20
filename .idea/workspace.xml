@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ordet cansl beskyttet for trykfejl ved import så alle bliver beteragtet som cnl med småt modules rettet til eller fjernet">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="timeline hover update web" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,30 +78,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00861" summary="klar til sidste test">
-      <option name="closed" value="true" />
-      <created>1784482725945</created>
-      <option name="number" value="00861" />
-      <option name="presentableId" value="LOCAL-00861" />
-      <option name="project" value="LOCAL" />
-      <updated>1784482725945</updated>
-    </task>
-    <task id="LOCAL-00862" summary="status enkelt byt på timeline running">
-      <option name="closed" value="true" />
-      <created>1784483920561</created>
-      <option name="number" value="00862" />
-      <option name="presentableId" value="LOCAL-00862" />
-      <option name="project" value="LOCAL" />
-      <updated>1784483920561</updated>
-    </task>
-    <task id="LOCAL-00863" summary="inn and out editorial imports">
-      <option name="closed" value="true" />
-      <created>1784533964010</created>
-      <option name="number" value="00863" />
-      <option name="presentableId" value="LOCAL-00863" />
-      <option name="project" value="LOCAL" />
-      <updated>1784533964011</updated>
     </task>
     <task id="LOCAL-00864" summary="inn and out editorial imports">
       <option name="closed" value="true" />
@@ -473,7 +447,31 @@
       <option name="project" value="LOCAL" />
       <updated>1785777857297</updated>
     </task>
-    <option name="localTasksCounter" value="910" />
+    <task id="LOCAL-00910" summary="excel update">
+      <option name="closed" value="true" />
+      <created>1785826818774</created>
+      <option name="number" value="00910" />
+      <option name="presentableId" value="LOCAL-00910" />
+      <option name="project" value="LOCAL" />
+      <updated>1785826818775</updated>
+    </task>
+    <task id="LOCAL-00911" summary="timeline hover update web">
+      <option name="closed" value="true" />
+      <created>1785826878246</created>
+      <option name="number" value="00911" />
+      <option name="presentableId" value="LOCAL-00911" />
+      <option name="project" value="LOCAL" />
+      <updated>1785826878247</updated>
+    </task>
+    <task id="LOCAL-00912" summary="timeline hover update web">
+      <option name="closed" value="true" />
+      <created>1785826889320</created>
+      <option name="number" value="00912" />
+      <option name="presentableId" value="LOCAL-00912" />
+      <option name="project" value="LOCAL" />
+      <updated>1785826889320</updated>
+    </task>
+    <option name="localTasksCounter" value="913" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -499,7 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="red date line works" />
     <MESSAGE value="ny kolonne i afrejse" />
     <MESSAGE value="chat gbt change i booking py" />
     <MESSAGE value="chat gbt change editoriel" />
@@ -516,7 +513,6 @@
     <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 4" />
     <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 5" />
     <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 6" />
-    <MESSAGE value="excel update" />
     <MESSAGE value="logo i setup pris trukket til normal" />
     <MESSAGE value="fjenelse af nan fra pdf downl i in and out" />
     <MESSAGE value="timeline 2027 justering" />
@@ -524,6 +520,8 @@
     <MESSAGE value="timeline hovercontrol" />
     <MESSAGE value="ordet cansl beskyttet for trykfejl ved import så alle bliver beteragtet som cnl med småt" />
     <MESSAGE value="ordet cansl beskyttet for trykfejl ved import så alle bliver beteragtet som cnl med småt modules rettet til eller fjernet" />
-    <option name="LAST_COMMIT_MESSAGE" value="ordet cansl beskyttet for trykfejl ved import så alle bliver beteragtet som cnl med småt modules rettet til eller fjernet" />
+    <MESSAGE value="excel update" />
+    <MESSAGE value="timeline hover update web" />
+    <option name="LAST_COMMIT_MESSAGE" value="timeline hover update web" />
   </component>
 </project>

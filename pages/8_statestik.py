@@ -58,6 +58,7 @@ try:
     df["overnatninger"] = (
         df["numb_guests"] * df["nights"]
     )
+    bookings_df = df.copy()
     df["nation"] = (
         df["nation"]
         .fillna("")
@@ -224,7 +225,7 @@ st.write(
 )
 st.plotly_chart(fig, use_container_width=True)
 
-st.subheader("Gennemsnitlig bookinglængde pr. måned")
+st.subheader("Sæsonstatistik")
 
 selected_season = st.selectbox(
     "Sæson",
@@ -232,7 +233,7 @@ selected_season = st.selectbox(
     index=0
 )
 
-df_stats = df.copy()
+df_stats = bookings_df.copy()
 
 # Datoformat
 df_stats["checkin_date"] = pd.to_datetime(df_stats["checkin_date"], errors="coerce")
@@ -260,8 +261,120 @@ df_stats = df_stats[
 ]
 
 # Måned ud fra check-in dato
+st.subheader("Indcheckninger fordelt på ugedage")
+
+if df_stats.empty:
+    st.info("Der er ingen aktive bookinger med gyldige datoer i den valgte sæson.")
+else:
+    period_start = df_stats["checkin_date"].min().date()
+    period_end = df_stats["checkin_date"].max().date()
+    default_middle_start = max(
+        period_start,
+        min(datetime.date(selected_season, 6, 27), period_end),
+    )
+    default_middle_end = max(
+        default_middle_start,
+        min(datetime.date(selected_season, 8, 10), period_end),
+    )
+
+    date_col1, date_col2 = st.columns(2)
+    with date_col1:
+        middle_start = st.date_input(
+            "Midterperiode fra",
+            value=default_middle_start,
+            min_value=period_start,
+            max_value=period_end,
+            key=f"checkin_weekday_middle_start_{selected_season}",
+        )
+    with date_col2:
+        middle_end = st.date_input(
+            "Midterperiode til",
+            value=default_middle_end,
+            min_value=period_start,
+            max_value=period_end,
+            key=f"checkin_weekday_middle_end_{selected_season}",
+        )
+
+    if middle_start > middle_end:
+        st.error("Startdatoen for midterperioden skal være før slutdatoen.")
+    else:
+        checkins = df_stats.dropna(subset=["checkin_date"]).copy()
+        if "booking_number" in checkins.columns:
+            checkins = checkins.drop_duplicates(
+                subset=["booking_number", "checkin_date"]
+            )
+        checkins["checkin_day"] = checkins["checkin_date"].dt.date
+
+        weekday_order = [
+            "Mandag", "Tirsdag", "Onsdag", "Torsdag",
+            "Fredag", "Lørdag", "Søndag",
+        ]
+
+        def weekday_distribution(period_df):
+            counts = (
+                period_df["checkin_date"].dt.dayofweek
+                .value_counts()
+                .reindex(range(7), fill_value=0)
+            )
+            total = int(counts.sum())
+            percentages = counts / total * 100 if total else counts.astype(float)
+            return pd.DataFrame({
+                "Ugedag": weekday_order,
+                "Antal": counts.to_numpy(),
+                "Procent": percentages.to_numpy(),
+            }), total
+
+        periods = [
+            (
+                f"Før: {period_start:%d-%m-%Y} – "
+                f"{middle_start - datetime.timedelta(days=1):%d-%m-%Y}",
+                checkins[checkins["checkin_day"] < middle_start],
+            ),
+            (
+                f"Midt: {middle_start:%d-%m-%Y} – {middle_end:%d-%m-%Y}",
+                checkins[
+                    (checkins["checkin_day"] >= middle_start)
+                    & (checkins["checkin_day"] <= middle_end)
+                ],
+            ),
+            (
+                f"Efter: {middle_end + datetime.timedelta(days=1):%d-%m-%Y} – "
+                f"{period_end:%d-%m-%Y}",
+                checkins[checkins["checkin_day"] > middle_end],
+            ),
+        ]
+
+        for column, (period_title, period_df) in zip(st.columns(3), periods):
+            distribution, total = weekday_distribution(period_df)
+            with column:
+                st.markdown(f"**{period_title}**")
+                st.caption(f"{total} indcheckninger")
+                chart = px.bar(
+                    distribution,
+                    x="Ugedag",
+                    y="Procent",
+                    text=distribution["Procent"].map(lambda value: f"{value:.1f}%"),
+                    hover_data={"Antal": True, "Procent": ":.1f"},
+                    category_orders={"Ugedag": weekday_order},
+                )
+                chart.update_traces(textposition="outside")
+                chart.update_layout(
+                    showlegend=False,
+                    xaxis_title="",
+                    yaxis_title="Procent",
+                    yaxis_range=[0, 100],
+                )
+                st.plotly_chart(chart, use_container_width=True)
+                st.dataframe(
+                    distribution.style.format({"Procent": "{:.1f}%"}),
+                    hide_index=True,
+                    use_container_width=True,
+                )
+
 df_stats["month"] = df_stats["checkin_date"].dt.month
 df_stats["month_name"] = df_stats["checkin_date"].dt.strftime("%b")
+
+st.subheader("Gennemsnitlig bookinglængde pr. måned")
 
 avg_length = (
     df_stats
