@@ -8,6 +8,7 @@ from common import init_session, exclude_cancelled_bookings
 import plotly.express as px
 import os
 import reportlab
+import math
 from io import BytesIO
 from dotenv import load_dotenv
 from reportlab.lib import colors
@@ -16,6 +17,8 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.graphics.charts.barcharts import VerticalBarChart
+from reportlab.graphics.shapes import Drawing
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from supabase import create_client
 
@@ -74,8 +77,44 @@ def create_checkin_weekday_pdf(season, middle_start, middle_end, pdf_periods):
         ),
     ]
 
+    highest_percentage = max(
+        (float(distribution["Procent"].max()) for _, distribution, _ in pdf_periods),
+        default=0,
+    )
+    chart_axis_max = max(
+        10,
+        min(100, math.ceil(highest_percentage * 1.15 / 10) * 10),
+    )
+
     cards = []
     for period_title, distribution, total in pdf_periods:
+        chart_drawing = Drawing(74 * mm, 42 * mm)
+        bar_chart = VerticalBarChart()
+        bar_chart.x = 9 * mm
+        bar_chart.y = 8 * mm
+        bar_chart.width = 61 * mm
+        bar_chart.height = 29 * mm
+        bar_chart.data = [distribution["Procent"].tolist()]
+        bar_chart.categoryAxis.categoryNames = [
+            "Man", "Tir", "Ons", "Tor", "Fre", "Lør", "Søn"
+        ]
+        bar_chart.categoryAxis.labels.fontName = "Vera"
+        bar_chart.categoryAxis.labels.fontSize = 7
+        bar_chart.valueAxis.valueMin = 0
+        bar_chart.valueAxis.valueMax = chart_axis_max
+        bar_chart.valueAxis.valueStep = max(5, chart_axis_max / 5)
+        bar_chart.valueAxis.labels.fontName = "Vera"
+        bar_chart.valueAxis.labels.fontSize = 6.5
+        bar_chart.valueAxis.labelTextFormat = "%d%%"
+        bar_chart.valueAxis.visibleGrid = True
+        bar_chart.valueAxis.gridStrokeColor = colors.HexColor("#D7E0E7")
+        bar_chart.valueAxis.gridStrokeWidth = 0.4
+        bar_chart.bars[0].fillColor = colors.HexColor("#2C7DA0")
+        bar_chart.bars[0].strokeColor = colors.HexColor("#1B5F7A")
+        bar_chart.barSpacing = 2
+        bar_chart.groupSpacing = 4
+        chart_drawing.add(bar_chart)
+
         rows = [["Ugedag", "Antal", "Procent"]]
         rows.extend([
             [
@@ -105,6 +144,7 @@ def create_checkin_weekday_pdf(season, middle_start, middle_end, pdf_periods):
             [Paragraph(period_title, card_title_style)],
             [Paragraph(f"<b>{total}</b> indcheckninger", styles["BodyText"])],
             [Spacer(1, 2 * mm)],
+            [chart_drawing],
             [data_table],
         ], colWidths=[80 * mm])
         card.setStyle(TableStyle([
