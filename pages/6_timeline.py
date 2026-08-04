@@ -420,6 +420,7 @@ if not df.empty:
             "navn": True,
             "morgenmad": True,
             "room_number": True,
+            "web": True
             "checkin_date": "|%d-%m-%Y",
             "checkout_date": "|%d-%m-%Y",
         },
