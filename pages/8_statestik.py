@@ -7,8 +7,128 @@ from auth import require_login
 from common import init_session, exclude_cancelled_bookings
 import plotly.express as px
 import os
+import reportlab
+from io import BytesIO
 from dotenv import load_dotenv
+from reportlab.lib import colors
+from reportlab.lib.pagesizes import A4, landscape
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.units import mm
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from supabase import create_client
+
+
+def create_checkin_weekday_pdf(season, middle_start, middle_end, pdf_periods):
+    reportlab_fonts = Path(reportlab.__file__).resolve().parent / "fonts"
+    if "Vera" not in pdfmetrics.getRegisteredFontNames():
+        pdfmetrics.registerFont(TTFont("Vera", reportlab_fonts / "Vera.ttf"))
+        pdfmetrics.registerFont(TTFont("VeraBd", reportlab_fonts / "VeraBd.ttf"))
+
+    buffer = BytesIO()
+    document = SimpleDocTemplate(
+        buffer,
+        pagesize=landscape(A4),
+        rightMargin=14 * mm,
+        leftMargin=14 * mm,
+        topMargin=12 * mm,
+        bottomMargin=12 * mm,
+        title=f"Indcheckninger pr. ugedag - sæson {season}",
+    )
+    styles = getSampleStyleSheet()
+    title_style = ParagraphStyle(
+        "CheckinTitle",
+        parent=styles["Title"],
+        fontName="VeraBd",
+        fontSize=18,
+        leading=22,
+        textColor=colors.HexColor("#16324F"),
+        spaceAfter=5 * mm,
+    )
+    subtitle_style = ParagraphStyle(
+        "CheckinSubtitle",
+        parent=styles["Normal"],
+        fontSize=9,
+        leading=12,
+        textColor=colors.HexColor("#4B5563"),
+        spaceAfter=5 * mm,
+    )
+    card_title_style = ParagraphStyle(
+        "CheckinCardTitle",
+        parent=styles["Heading3"],
+        fontName="VeraBd",
+        fontSize=10,
+        leading=13,
+        textColor=colors.HexColor("#16324F"),
+        alignment=1,
+    )
+
+    story = [
+        Paragraph(f"Indcheckninger pr. ugedag - sæson {season}", title_style),
+        Paragraph(
+            "Midterperiode: "
+            f"{middle_start:%d-%m-%Y} - {middle_end:%d-%m-%Y}. "
+            "Procenterne beregnes separat inden for hver periode.",
+            subtitle_style,
+        ),
+    ]
+
+    cards = []
+    for period_title, distribution, total in pdf_periods:
+        rows = [["Ugedag", "Antal", "Procent"]]
+        rows.extend([
+            [
+                row["Ugedag"],
+                str(int(row["Antal"])),
+                f'{row["Procent"]:.1f}%',
+            ]
+            for _, row in distribution.iterrows()
+        ])
+        data_table = Table(rows, colWidths=[34 * mm, 18 * mm, 22 * mm])
+        data_table.setStyle(TableStyle([
+            ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#16324F")),
+            ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+            ("FONTNAME", (0, 0), (-1, 0), "VeraBd"),
+            ("FONTNAME", (0, 1), (-1, -1), "Vera"),
+            ("FONTSIZE", (0, 0), (-1, -1), 8.5),
+            ("ALIGN", (1, 0), (-1, -1), "RIGHT"),
+            ("ROWBACKGROUNDS", (0, 1), (-1, -1), [
+                colors.white,
+                colors.HexColor("#F3F6F8"),
+            ]),
+            ("GRID", (0, 0), (-1, -1), 0.35, colors.HexColor("#CBD5E1")),
+            ("TOPPADDING", (0, 0), (-1, -1), 4),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+        ]))
+        card = Table([
+            [Paragraph(period_title, card_title_style)],
+            [Paragraph(f"<b>{total}</b> indcheckninger", styles["BodyText"])],
+            [Spacer(1, 2 * mm)],
+            [data_table],
+        ], colWidths=[80 * mm])
+        card.setStyle(TableStyle([
+            ("BOX", (0, 0), (-1, -1), 0.7, colors.HexColor("#CBD5E1")),
+            ("BACKGROUND", (0, 0), (-1, 1), colors.HexColor("#EAF1F5")),
+            ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+            ("VALIGN", (0, 0), (-1, -1), "TOP"),
+            ("LEFTPADDING", (0, 0), (-1, -1), 3 * mm),
+            ("RIGHTPADDING", (0, 0), (-1, -1), 3 * mm),
+            ("TOPPADDING", (0, 0), (-1, -1), 3 * mm),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 3 * mm),
+        ]))
+        cards.append(card)
+
+    overview = Table([cards], colWidths=[86 * mm] * 3, hAlign="CENTER")
+    overview.setStyle(TableStyle([
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 2 * mm),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 2 * mm),
+    ]))
+    story.append(overview)
+    document.build(story)
+    buffer.seek(0)
+    return buffer.getvalue()
 # -------------------------
 # INIT
 # -------------------------
@@ -344,8 +464,10 @@ else:
             ),
         ]
 
+        pdf_periods = []
         for column, (period_title, period_df) in zip(st.columns(3), periods):
             distribution, total = weekday_distribution(period_df)
+            pdf_periods.append((period_title, distribution.copy(), total))
             with column:
                 st.markdown(f"**{period_title}**")
                 st.caption(f"{total} indcheckninger")
@@ -370,6 +492,20 @@ else:
                     hide_index=True,
                     use_container_width=True,
                 )
+
+        checkin_pdf = create_checkin_weekday_pdf(
+            selected_season,
+            middle_start,
+            middle_end,
+            pdf_periods,
+        )
+        st.download_button(
+            "Download indcheckningsstatistik som PDF",
+            data=checkin_pdf,
+            file_name=f"indcheckningsstatistik_{selected_season}.pdf",
+            mime="application/pdf",
+            use_container_width=True,
+        )
 
 df_stats["month"] = df_stats["checkin_date"].dt.month
 df_stats["month_name"] = df_stats["checkin_date"].dt.strftime("%b")
