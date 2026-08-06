@@ -72,7 +72,7 @@ if uploaded_file is not None:
             supabase.table("hk_dtb")
             .select(
                 "booking_number, season, navn, checkin_date, checkout_date, "
-                "booking_date, numb_rooms, numb_guests, web"
+                "booking_date, numb_rooms, numb_guests, room_number, web"
             )
             .eq("web", "bc")
             .in_("season", seasons)
@@ -89,6 +89,7 @@ if uploaded_file is not None:
                 "booking_date",
                 "numb_rooms",
                 "numb_guests",
+                "room_number",
                 "web",
             ],
         )
@@ -100,11 +101,12 @@ if uploaded_file is not None:
     result = compare_bookings(booking_com, database)
     differences = combined_differences(result)
 
-    col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3, col4, col5 = st.columns(5)
     col1.metric("Præcise matches", len(result["exact"]))
-    col2.metric("Ændrede", len(result["changed"]))
-    col3.metric("Kun Booking.com", len(result["only_bc"]))
-    col4.metric("Kun hk_dtb", len(result["only_db"]))
+    col2.metric("Ikke placeret", len(result["unplaced"]))
+    col3.metric("Ændrede", len(result["changed"]))
+    col4.metric("Kun Booking.com", len(result["only_bc"]))
+    col5.metric("Kun hk_dtb", len(result["only_db"]))
 
     if differences.empty:
         st.success("Ingen forskelle fundet.")
@@ -119,6 +121,7 @@ if uploaded_file is not None:
 
     tabs = st.tabs(
         [
+            "Værelse 7 / temp",
             "Ændrede",
             "Kun Booking.com",
             "Kun hk_dtb",
@@ -127,6 +130,7 @@ if uploaded_file is not None:
         ]
     )
     tab_data = [
+        result["unplaced"],
         result["changed"],
         result["only_bc"],
         result["only_db"],
@@ -134,6 +138,7 @@ if uploaded_file is not None:
         result["exact"],
     ]
     empty_messages = [
+        "Ingen bookinger mangler endelig placering.",
         "Ingen ændrede bookinger.",
         "Ingen bookinger mangler i hk_dtb.",
         "Ingen ekstra bc-bookinger i hk_dtb.",
@@ -152,5 +157,6 @@ if uploaded_file is not None:
         "Matchning bruger normaliseret navn og bookingdato først, derefter "
         "navn og opholdsdatoer. Flere hk_dtb-linjer med samme bookingnummer "
         "tælles som flere værelser under én booking. Mulige matches skal altid "
-        "kontrolleres manuelt."
+        "kontrolleres manuelt. Bookinger på værelse 7 matches fortsat, men "
+        "vises særskilt som ikke endeligt placeret."
     )

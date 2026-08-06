@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ugedags statestik nu med pdf tilføjet grafer">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="oprydning season int year">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,14 +80,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00867" summary="tilføj kommentar til breakfirst">
-      <option name="closed" value="true" />
-      <created>1784558155957</created>
-      <option name="number" value="00867" />
-      <option name="presentableId" value="LOCAL-00867" />
-      <option name="project" value="LOCAL" />
-      <updated>1784558155957</updated>
     </task>
     <task id="LOCAL-00868" summary="tilføj kommentar til breakfirst">
       <option name="closed" value="true" />
@@ -473,7 +465,15 @@
       <option name="project" value="LOCAL" />
       <updated>1785839636682</updated>
     </task>
-    <option name="localTasksCounter" value="916" />
+    <task id="LOCAL-00916" summary="oprydning season int year">
+      <option name="closed" value="true" />
+      <created>1785854940382</created>
+      <option name="number" value="00916" />
+      <option name="presentableId" value="LOCAL-00916" />
+      <option name="project" value="LOCAL" />
+      <updated>1785854940382</updated>
+    </task>
+    <option name="localTasksCounter" value="917" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -499,7 +499,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="chat gbt new if for booking periods" />
     <MESSAGE value="season dates from supabase" />
     <MESSAGE value="priser fra supabase" />
     <MESSAGE value="priser print version" />
@@ -524,6 +523,7 @@
     <MESSAGE value="ugedags statestik" />
     <MESSAGE value="ugedags statestik nu med pdf" />
     <MESSAGE value="ugedags statestik nu med pdf tilføjet grafer" />
-    <option name="LAST_COMMIT_MESSAGE" value="ugedags statestik nu med pdf tilføjet grafer" />
+    <MESSAGE value="oprydning season int year" />
+    <option name="LAST_COMMIT_MESSAGE" value="oprydning season int year" />
   </component>
 </project>

@@ -138,6 +138,35 @@ class BookingComparisonRoomTests(unittest.TestCase):
 
         self.assertEqual(len(database), 2)
 
+    def test_room_seven_booking_is_matched_but_flagged_as_unplaced(self):
+        database = prepare_database(
+            pd.DataFrame(
+                [
+                    {
+                        "booking_number": "143",
+                        "season": 2026,
+                        "navn": "Anna Jensen",
+                        "checkin_date": "2026-08-01",
+                        "checkout_date": "2026-08-04",
+                        "booking_date": "2026-07-01",
+                        "numb_rooms": 1,
+                        "numb_guests": 4,
+                        "room_number": 7,
+                    }
+                ]
+            )
+        )
+
+        result = compare_bookings(self._booking_com(1), database)
+
+        self.assertEqual(len(result["unplaced"]), 1)
+        self.assertTrue(result["exact"].empty)
+        self.assertTrue(result["changed"].empty)
+        self.assertTrue(result["only_bc"].empty)
+        self.assertTrue(result["only_db"].empty)
+        self.assertEqual(result["unplaced"].iloc[0]["DB bookingnr."], "143")
+        self.assertIn("værelse 7", result["unplaced"].iloc[0]["Forskel"])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -25,6 +25,7 @@ DB_COLUMNS = {
     "booking_date": "booked",
     "numb_rooms": "rooms",
     "numb_guests": "guests",
+    "room_number": "room_number",
 }
 
 DISPLAY_COLUMNS = [
@@ -65,7 +66,9 @@ def _canonicalize(frame, column_map, source):
     for column in ("checkin", "checkout", "booked"):
         result[column] = pd.to_datetime(result[column], errors="coerce").dt.date
 
-    for column in ("rooms", "guests"):
+    for column in ("rooms", "guests", "room_number"):
+        if column not in result.columns:
+            continue
         result[column] = pd.to_numeric(result[column], errors="coerce").astype("Int64")
     if "season" in result.columns:
         result["season"] = pd.to_numeric(
@@ -87,7 +90,10 @@ def prepare_booking_com(frame):
 
 def prepare_database(frame):
     """Convert hk_dtb rows and combine all room rows for the same booking."""
-    database = _canonicalize(frame, DB_COLUMNS, "hk_dtb")
+    source = frame.copy()
+    if "room_number" not in source.columns:
+        source["room_number"] = pd.NA
+    database = _canonicalize(source, DB_COLUMNS, "hk_dtb")
     if database.empty:
         return database
 
@@ -138,15 +144,18 @@ def prepare_database(frame):
         # has its own row, so the row count is the comparable room quantity.
         booking["rooms"] = len(room_rows)
         booking["is_master_booking"] = has_master_data
+        booking["has_temp_room"] = bool(room_rows["room_number"].eq(7).any())
         output_columns = [
             *database.columns.drop("_group_key"),
             "is_master_booking",
+            "has_temp_room",
         ]
         grouped_bookings.append(booking[output_columns])
 
     if not grouped_bookings:
         result = database.drop(columns="_group_key").iloc[0:0].copy()
         result["is_master_booking"] = pd.Series(dtype=bool)
+        result["has_temp_room"] = pd.Series(dtype=bool)
         return result
 
     return pd.DataFrame(grouped_bookings).reset_index(drop=True)
@@ -254,6 +263,7 @@ def compare_bookings(booking_com, database):
 
     exact = []
     changed = []
+    unplaced = []
     for bc_row, db_row in matched_pairs:
         expected_rooms = int(bc_row["rooms"]) if pd.notna(bc_row["rooms"]) else 1
         registered_rooms = int(db_row["rooms"]) if pd.notna(db_row["rooms"]) else 1
@@ -268,16 +278,25 @@ def compare_bookings(booking_com, database):
             if not room_rows.empty:
                 db_row = db_row.copy()
                 db_row["rooms"] = registered_rooms + len(room_rows)
+                db_row["has_temp_room"] = bool(
+                    db_row.get("has_temp_room", False)
+                    or room_rows["has_temp_room"].any()
+                )
                 db_auxiliary = db_auxiliary.drop(index=room_rows.index)
 
         differences = _differences(bc_row, db_row)
+        has_temp_room = bool(db_row.get("has_temp_room", False))
+        if has_temp_room:
+            differences.append("midlertidigt placeret på værelse 7")
         display = _display_row(
             bc_row,
             difference=", ".join(differences),
             source="Booking.com ↔ hk_dtb",
             db_reference=db_row["reference"],
         )
-        if differences:
+        if has_temp_room:
+            unplaced.append(display)
+        elif differences:
             changed.append(display)
         else:
             exact.append(display)
@@ -323,7 +342,12 @@ def compare_bookings(booking_com, database):
     only_db = [
         _display_row(
             row,
-            "Findes ikke i den aktive Booking.com-fil",
+            (
+                "Findes ikke i den aktive Booking.com-fil, "
+                "midlertidigt placeret på værelse 7"
+                if bool(row.get("has_temp_room", False))
+                else "Findes ikke i den aktive Booking.com-fil"
+            ),
             db_reference=row["reference"],
         )
         for _, row in db_remaining.iterrows()
@@ -335,6 +359,7 @@ def compare_bookings(booking_com, database):
     return {
         "exact": frame(exact),
         "changed": frame(changed),
+        "unplaced": frame(unplaced),
         "only_bc": frame(only_bc),
         "only_db": frame(only_db),
         "possible": pd.DataFrame(possible),
@@ -344,6 +369,7 @@ def compare_bookings(booking_com, database):
 def combined_differences(result):
     frames = []
     for category, key in (
+        ("Ikke endeligt placeret", "unplaced"),
         ("Ændret", "changed"),
         ("Kun Booking.com", "only_bc"),
         ("Kun hk_dtb", "only_db"),
