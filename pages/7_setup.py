@@ -10,6 +10,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from auth import require_login, require_admin
+from modules.price_development import PRICE_FIELDS, build_price_development
 from modules.price_sheet import create_price_sheet_pdf
 from supabase import create_client
 
@@ -60,44 +61,86 @@ else:
     )
     current_prices = prices_by_season[selected_price_season]
 
-    with st.form("season_prices_form"):
-        col1, col2 = st.columns(2)
+    col1, col2 = st.columns(2)
 
-        with col1:
-            enk_low = st.number_input(
-                "Enkeltværelse – lavsæson",
-                value=float(current_prices["enk_low"]),
-                min_value=0.0,
-                step=5.0
-            )
-            enk_high = st.number_input(
-                "Enkeltværelse – højsæson",
-                value=float(current_prices["enk_high"]),
-                min_value=0.0,
-                step=5.0
-            )
-            breakfast_price = st.number_input(
-                "Morgenmad pr. gæst pr. nat",
-                value=float(current_prices["pris_morgenmad"]),
-                min_value=0.0,
-                step=5.0
-            )
+    with col1:
+        enk_low = st.number_input(
+            "Enkeltværelse – lavsæson",
+            value=float(current_prices["enk_low"]),
+            min_value=0.0,
+            step=5.0,
+            key=f"enk_low_{selected_price_season}",
+        )
+        enk_high = st.number_input(
+            "Enkeltværelse – højsæson",
+            value=float(current_prices["enk_high"]),
+            min_value=0.0,
+            step=5.0,
+            key=f"enk_high_{selected_price_season}",
+        )
+        breakfast_price = st.number_input(
+            "Morgenmad pr. gæst pr. nat",
+            value=float(current_prices["pris_morgenmad"]),
+            min_value=0.0,
+            step=5.0,
+            key=f"breakfast_{selected_price_season}",
+        )
 
-        with col2:
-            dobb_low = st.number_input(
-                "Dobbeltværelse – lavsæson",
-                value=float(current_prices["dobb_low"]),
-                min_value=0.0,
-                step=5.0
-            )
-            dobb_high = st.number_input(
-                "Dobbeltværelse – højsæson",
-                value=float(current_prices["dobb_high"]),
-                min_value=0.0,
-                step=5.0
-            )
+    with col2:
+        dobb_low = st.number_input(
+            "Dobbeltværelse – lavsæson",
+            value=float(current_prices["dobb_low"]),
+            min_value=0.0,
+            step=5.0,
+            key=f"dobb_low_{selected_price_season}",
+        )
+        dobb_high = st.number_input(
+            "Dobbeltværelse – højsæson",
+            value=float(current_prices["dobb_high"]),
+            min_value=0.0,
+            step=5.0,
+            key=f"dobb_high_{selected_price_season}",
+        )
 
-        save_prices = st.form_submit_button("Gem priser")
+    draft_prices = {
+        "enk_low": enk_low,
+        "enk_high": enk_high,
+        "dobb_low": dobb_low,
+        "dobb_high": dobb_high,
+        "pris_morgenmad": breakfast_price,
+    }
+
+    st.subheader("Prisudvikling år for år")
+    development = build_price_development(
+        price_rows,
+        draft_season=selected_price_season,
+        draft_prices=draft_prices,
+    )
+    price_columns = {
+        "År": st.column_config.NumberColumn("År", format="%d"),
+    }
+    for label in PRICE_FIELDS.values():
+        price_columns[label] = st.column_config.NumberColumn(
+            label,
+            format="%.0f kr",
+        )
+        price_columns[f"{label} ændring"] = st.column_config.NumberColumn(
+            "Ændring",
+            format="%.1f %%",
+            help="Ændring i forhold til året før.",
+        )
+    st.dataframe(
+        development,
+        hide_index=True,
+        use_container_width=True,
+        column_config=price_columns,
+    )
+    st.caption(
+        f"Tallene for {selected_price_season} opdateres straks, mens du ændrer "
+        "priserne. De gemmes først, når du trykker på knappen nedenfor."
+    )
+
+    save_prices = st.button("Gem priser", type="primary")
 
     if save_prices:
         (
