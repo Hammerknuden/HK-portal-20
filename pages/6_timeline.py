@@ -730,6 +730,17 @@ if not df.empty:
         "Rediger navn",
         value="" if pd.isna(current_name) else str(current_name)
     )
+    current_comments = booking.get("comments", "")
+    new_comments = st.text_area(
+        "Kommentar",
+        value=(
+            ""
+            if pd.isna(current_comments)
+            else str(current_comments)
+        ),
+        key=f"timeline_comments_{booking_id}",
+        help="Kommentaren gemmes i hk_dtb-feltet comments.",
+    )
     new_movable = st.checkbox(
         "Kan flyttes af optimering",
         value=bool(booking.get("movable", True))
@@ -748,6 +759,7 @@ if not df.empty:
                 "checkout_date": new_end.isoformat(),
                 "booking_number": int(new_guest),
                 "navn": new_name.strip(),
+                "comments": new_comments.strip(),
                 "movable": new_movable
             }).eq(
                 "id",
