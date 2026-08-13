@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="new layout pdf for in and out med logo og dato">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="kommentar tilføjet editor i timeline">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,14 +80,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00871" summary="fuld url BC link">
-      <option name="closed" value="true" />
-      <created>1784634417896</created>
-      <option name="number" value="00871" />
-      <option name="presentableId" value="LOCAL-00871" />
-      <option name="project" value="LOCAL" />
-      <updated>1784634417896</updated>
     </task>
     <task id="LOCAL-00872" summary="booking længde sat til sæson">
       <option name="closed" value="true" />
@@ -473,7 +465,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786290893154</updated>
     </task>
-    <option name="localTasksCounter" value="920" />
+    <task id="LOCAL-00920" summary="kommentar tilføjet editor i timeline">
+      <option name="closed" value="true" />
+      <created>1786345771496</created>
+      <option name="number" value="00920" />
+      <option name="presentableId" value="LOCAL-00920" />
+      <option name="project" value="LOCAL" />
+      <updated>1786345771496</updated>
+    </task>
+    <option name="localTasksCounter" value="921" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -499,7 +499,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="priser print version chg 1" />
     <MESSAGE value="afstemningsmodul bc" />
     <MESSAGE value="mulighed for editering af navn i timeline" />
     <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt" />
@@ -524,6 +523,7 @@
     <MESSAGE value="booking com vær 7 placeres særskilt" />
     <MESSAGE value="procent beregning prisudvikling i setup" />
     <MESSAGE value="new layout pdf for in and out med logo og dato" />
-    <option name="LAST_COMMIT_MESSAGE" value="new layout pdf for in and out med logo og dato" />
+    <MESSAGE value="kommentar tilføjet editor i timeline" />
+    <option name="LAST_COMMIT_MESSAGE" value="kommentar tilføjet editor i timeline" />
   </component>
 </project>

@@ -385,6 +385,25 @@ st.write(
 )
 st.plotly_chart(fig, use_container_width=True)
 
+# Morgenmadsomsætning: personer med BF=Y gange antal overnatninger.
+breakfast_bookings = bookings_df[
+    bookings_df["morgenmad"]
+    .fillna("")
+    .astype(str)
+    .str.strip()
+    .str.upper()
+    .eq("Y")
+].copy()
+breakfast_guests = pd.to_numeric(
+    breakfast_bookings["numb_guests"], errors="coerce"
+).fillna(0)
+breakfast_nights = pd.to_numeric(
+    breakfast_bookings["nights"], errors="coerce"
+).fillna(0).clip(lower=0)
+breakfast_revenue = int((breakfast_guests * breakfast_nights).sum())
+
+st.metric("Morgenmadsomsætning", f"{breakfast_revenue:,}".replace(",", "."))
+
 st.subheader("Sæsonstatistik")
 
 selected_season = st.selectbox(
