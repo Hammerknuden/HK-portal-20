@@ -385,9 +385,33 @@ st.write(
 )
 st.plotly_chart(fig, use_container_width=True)
 
-# Morgenmadsomsætning: personer med BF=Y gange antal overnatninger.
+st.subheader("Morgenmadsomsætning")
+
+selected_season = st.selectbox(
+    "Sæson",
+    [2026, 2027],
+    index=0
+)
+
+breakfast_price_result = (
+    supabase.table("high_season")
+    .select("pris_morgenmad")
+    .eq("season", selected_season)
+    .limit(1)
+    .execute()
+)
+breakfast_price_rows = breakfast_price_result.data or []
+breakfast_price = pd.to_numeric(
+    breakfast_price_rows[0].get("pris_morgenmad") if breakfast_price_rows else 0,
+    errors="coerce",
+)
+breakfast_price = 0 if pd.isna(breakfast_price) else float(breakfast_price)
+
+# Morgenmadsomsætning: personer med BF=Y gange nætter og sæsonpris.
+booking_seasons = pd.to_numeric(bookings_df["season"], errors="coerce")
 breakfast_bookings = bookings_df[
-    bookings_df["morgenmad"]
+    booking_seasons.eq(selected_season)
+    & bookings_df["morgenmad"]
     .fillna("")
     .astype(str)
     .str.strip()
@@ -400,17 +424,19 @@ breakfast_guests = pd.to_numeric(
 breakfast_nights = pd.to_numeric(
     breakfast_bookings["nights"], errors="coerce"
 ).fillna(0).clip(lower=0)
-breakfast_revenue = int((breakfast_guests * breakfast_nights).sum())
+breakfast_servings = int((breakfast_guests * breakfast_nights).sum())
+breakfast_revenue = breakfast_servings * breakfast_price
 
-st.metric("Morgenmadsomsætning", f"{breakfast_revenue:,}".replace(",", "."))
+st.metric(
+    "Omsætning",
+    f"{breakfast_revenue:,.2f} kr".replace(",", "X").replace(".", ",").replace("X", "."),
+    help=(
+        f"{breakfast_servings:,} morgenmåltider × {breakfast_price:,.2f} kr"
+        .replace(",", "X").replace(".", ",").replace("X", ".")
+    ),
+)
 
 st.subheader("Sæsonstatistik")
-
-selected_season = st.selectbox(
-    "Sæson",
-    [2026, 2027],
-    index=0
-)
 
 df_stats = bookings_df.copy()
 
