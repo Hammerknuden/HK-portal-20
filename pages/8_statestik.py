@@ -386,6 +386,7 @@ st.write(
 st.plotly_chart(fig, use_container_width=True)
 
 st.subheader("Morgenmadsomsætning")
+st.write("Morgenmadsomsætning er prebooked morgenmad fratrukket rabat og moms")
 
 selected_season = st.selectbox(
     "Sæson",
