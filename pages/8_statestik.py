@@ -424,16 +424,96 @@ breakfast_guests = pd.to_numeric(
 breakfast_nights = pd.to_numeric(
     breakfast_bookings["nights"], errors="coerce"
 ).fillna(0).clip(lower=0)
-breakfast_servings = int((breakfast_guests * breakfast_nights).sum())
-breakfast_revenue = breakfast_servings * breakfast_price
+breakfast_bookings["numb_guests"] = breakfast_guests
+breakfast_bookings["nights"] = breakfast_nights
+
+# Rabat er historisk gemt som tekst eller decimaltal. Både 0,10, 10 og 10% tolkes som 10%.
+discount_text = (
+    breakfast_bookings["rabat"]
+    .fillna("0")
+    .astype(str)
+    .str.strip()
+    .str.replace(",", ".", regex=False)
+    .str.extract(r"(-?\d+(?:\.\d+)?)", expand=False)
+)
+discount_rate = pd.to_numeric(discount_text, errors="coerce").fillna(0)
+discount_rate = discount_rate.where(discount_rate.abs() <= 1, discount_rate / 100)
+discount_rate = discount_rate.clip(lower=0, upper=1)
+
+# Kun egne webbookinger får rabat. FM-værdien er et tillæg, ikke en rabat.
+booking_channel = (
+    breakfast_bookings["web"].fillna("").astype(str).str.strip().str.lower()
+)
+breakfast_bookings["discount_rate"] = discount_rate.where(
+    booking_channel.eq("web"), 0
+)
+
+# En række pr. overnatningsdato giver korrekt fordeling ved månedsskifte.
+breakfast_bookings["breakfast_date"] = breakfast_bookings.apply(
+    lambda row: pd.date_range(
+        start=row["checkin_date"],
+        periods=int(row["nights"]),
+        freq="D",
+    ) if pd.notna(row["checkin_date"]) and row["nights"] > 0 else [],
+    axis=1,
+)
+breakfast_by_night = breakfast_bookings.explode("breakfast_date")
+breakfast_by_night = breakfast_by_night.dropna(subset=["breakfast_date"])
+breakfast_by_night["breakfast_date"] = pd.to_datetime(
+    breakfast_by_night["breakfast_date"], errors="coerce"
+)
+breakfast_by_night["gross_revenue"] = (
+    breakfast_by_night["numb_guests"] * breakfast_price
+)
+breakfast_by_night["net_revenue"] = (
+    breakfast_by_night["gross_revenue"]
+    * (1 - breakfast_by_night["discount_rate"])
+    / 1.25
+)
+
+month_names = {
+    1: "Januar", 2: "Februar", 3: "Marts", 4: "April",
+    5: "Maj", 6: "Juni", 7: "Juli", 8: "August",
+    9: "September", 10: "Oktober", 11: "November", 12: "December",
+}
+if breakfast_by_night.empty:
+    breakfast_monthly = pd.DataFrame(
+        columns=["Måned", "Morgenmåltider", "Nettoomsætning"]
+    )
+else:
+    breakfast_by_night["month"] = breakfast_by_night["breakfast_date"].dt.month
+    breakfast_monthly = (
+        breakfast_by_night.groupby("month", as_index=False)
+        .agg(
+            Morgenmåltider=("numb_guests", "sum"),
+            Nettoomsætning=("net_revenue", "sum"),
+        )
+        .sort_values("month")
+    )
+    breakfast_monthly["Måned"] = breakfast_monthly["month"].map(month_names)
+    breakfast_monthly = breakfast_monthly[
+        ["Måned", "Morgenmåltider", "Nettoomsætning"]
+    ]
+
+breakfast_servings = breakfast_monthly["Morgenmåltider"].sum()
+breakfast_revenue = breakfast_monthly["Nettoomsætning"].sum()
 
 st.metric(
     "Omsætning",
     f"{breakfast_revenue:,.2f} kr".replace(",", "X").replace(".", ",").replace("X", "."),
     help=(
-        f"{breakfast_servings:,} morgenmåltider × {breakfast_price:,.2f} kr"
+        f"{breakfast_servings:,.0f} morgenmåltider til {breakfast_price:,.2f} kr, "
+        "efter rabat og ekskl. 25% moms"
         .replace(",", "X").replace(".", ",").replace("X", ".")
     ),
+)
+st.dataframe(
+    breakfast_monthly.style.format({
+        "Morgenmåltider": "{:,.0f}",
+        "Nettoomsætning": "{:,.2f} kr",
+    }),
+    hide_index=True,
+    use_container_width=True,
 )
 
 st.subheader("Sæsonstatistik")

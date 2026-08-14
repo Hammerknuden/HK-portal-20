@@ -506,7 +506,7 @@ else:
     if web == "web":
         rabat = st.number_input(" rabat i procent ", value=10, step=1)
         procent = rabat / 100
-    if web == "FM":
+    elif web == "FM":
         FM_add = st.number_input(" Folkemøde tillæg i procent ", value=0, step=5)
         procent = FM_add / 100
     else:
