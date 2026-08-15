@@ -2,8 +2,12 @@ from datetime import date
 import streamlit as st
 
 
-def exclude_cancelled_bookings(df, column="web"):
-    """Remove bookings whose status is a variant of 'cansl'."""
+def exclude_cancelled_bookings(
+    df,
+    column="web",
+    booking_column="booking_number",
+):
+    """Remove cancelled rows and every row belonging to their booking."""
     if df.empty or column not in df.columns:
         return df
 
@@ -14,7 +18,23 @@ def exclude_cancelled_bookings(df, column="web"):
         .str.lower()
         .str.replace(r"[^a-z0-9]", "", regex=True)
     )
-    return df[normalized_status != "cansl"].copy()
+    cancelled_rows = normalized_status == "cansl"
+
+    if booking_column not in df.columns:
+        return df[~cancelled_rows].copy()
+
+    booking_keys = (
+        df[booking_column]
+        .fillna("")
+        .astype(str)
+        .str.strip()
+        .str.replace(r"\.0+$", "", regex=True)
+    )
+    cancelled_booking_keys = booking_keys[cancelled_rows & booking_keys.ne("")]
+
+    return df[
+        ~cancelled_rows & ~booking_keys.isin(cancelled_booking_keys)
+    ].copy()
 
 
 def init_session():

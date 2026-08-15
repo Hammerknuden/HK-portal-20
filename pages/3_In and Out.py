@@ -120,7 +120,7 @@ result = (
 # Alle kommende indcheck bruges til at finde næste booking pr. værelse
 checkin_result = (
     supabase.table("hk_dtb")
-    .select("checkin_date, room_number, web")
+    .select("booking_number, checkin_date, room_number, web")
     .gte("checkin_date", str(check_dato_start))
     .order("checkin_date")
     .execute()
