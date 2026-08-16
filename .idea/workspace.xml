@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="omsætning morgenmad rettet til netto og med given rabat" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="håndtering af cansl opdateret">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,14 +81,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00876" summary="red date line">
-      <option name="closed" value="true" />
-      <created>1784918253273</created>
-      <option name="number" value="00876" />
-      <option name="presentableId" value="LOCAL-00876" />
-      <option name="project" value="LOCAL" />
-      <updated>1784918253273</updated>
     </task>
     <task id="LOCAL-00877" summary="red date line">
       <option name="closed" value="true" />
@@ -471,7 +466,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786689130258</updated>
     </task>
-    <option name="localTasksCounter" value="925" />
+    <task id="LOCAL-00925" summary="håndtering af cansl opdateret">
+      <option name="closed" value="true" />
+      <created>1786776657262</created>
+      <option name="number" value="00925" />
+      <option name="presentableId" value="LOCAL-00925" />
+      <option name="project" value="LOCAL" />
+      <updated>1786776657262</updated>
+    </task>
+    <option name="localTasksCounter" value="926" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -497,7 +500,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 2" />
     <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 3" />
     <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 4" />
     <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 5" />
@@ -522,6 +524,7 @@
     <MESSAGE value="omsætning morgenmad tiføjet" />
     <MESSAGE value="omsætning morgenmad tiføjet rettet" />
     <MESSAGE value="omsætning morgenmad rettet til netto og med given rabat" />
-    <option name="LAST_COMMIT_MESSAGE" value="omsætning morgenmad rettet til netto og med given rabat" />
+    <MESSAGE value="håndtering af cansl opdateret" />
+    <option name="LAST_COMMIT_MESSAGE" value="håndtering af cansl opdateret" />
   </component>
 </project>
