@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="håndtering af cansl opdateret">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excel update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,14 +80,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00877" summary="red date line">
-      <option name="closed" value="true" />
-      <created>1784918446692</created>
-      <option name="number" value="00877" />
-      <option name="presentableId" value="LOCAL-00877" />
-      <option name="project" value="LOCAL" />
-      <updated>1784918446692</updated>
     </task>
     <task id="LOCAL-00878" summary="red date line">
       <option name="closed" value="true" />
@@ -474,7 +465,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786776657262</updated>
     </task>
-    <option name="localTasksCounter" value="926" />
+    <task id="LOCAL-00926" summary="excel update">
+      <option name="closed" value="true" />
+      <created>1786893329174</created>
+      <option name="number" value="00926" />
+      <option name="presentableId" value="LOCAL-00926" />
+      <option name="project" value="LOCAL" />
+      <updated>1786893329174</updated>
+    </task>
+    <option name="localTasksCounter" value="927" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -511,7 +510,6 @@
     <MESSAGE value="timeline hovercontrol" />
     <MESSAGE value="ordet cansl beskyttet for trykfejl ved import så alle bliver beteragtet som cnl med småt" />
     <MESSAGE value="ordet cansl beskyttet for trykfejl ved import så alle bliver beteragtet som cnl med småt modules rettet til eller fjernet" />
-    <MESSAGE value="excel update" />
     <MESSAGE value="timeline hover update web" />
     <MESSAGE value="ugedags statestik" />
     <MESSAGE value="ugedags statestik nu med pdf" />
@@ -525,6 +523,7 @@
     <MESSAGE value="omsætning morgenmad tiføjet rettet" />
     <MESSAGE value="omsætning morgenmad rettet til netto og med given rabat" />
     <MESSAGE value="håndtering af cansl opdateret" />
-    <option name="LAST_COMMIT_MESSAGE" value="håndtering af cansl opdateret" />
+    <MESSAGE value="excel update" />
+    <option name="LAST_COMMIT_MESSAGE" value="excel update" />
   </component>
 </project>
