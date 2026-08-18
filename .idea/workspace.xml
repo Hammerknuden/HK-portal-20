@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excel update">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excel update og fjern omsætning" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,14 +78,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00878" summary="red date line">
-      <option name="closed" value="true" />
-      <created>1784918487723</created>
-      <option name="number" value="00878" />
-      <option name="presentableId" value="LOCAL-00878" />
-      <option name="project" value="LOCAL" />
-      <updated>1784918487723</updated>
     </task>
     <task id="LOCAL-00879" summary="red date line">
       <option name="closed" value="true" />
@@ -473,7 +463,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786893329174</updated>
     </task>
-    <option name="localTasksCounter" value="927" />
+    <task id="LOCAL-00927" summary="excel update og fjern omsætning">
+      <option name="closed" value="true" />
+      <created>1786986025440</created>
+      <option name="number" value="00927" />
+      <option name="presentableId" value="LOCAL-00927" />
+      <option name="project" value="LOCAL" />
+      <updated>1786986025441</updated>
+    </task>
+    <option name="localTasksCounter" value="928" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -499,7 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 3" />
     <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 4" />
     <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 5" />
     <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 6" />
@@ -524,6 +521,7 @@
     <MESSAGE value="omsætning morgenmad rettet til netto og med given rabat" />
     <MESSAGE value="håndtering af cansl opdateret" />
     <MESSAGE value="excel update" />
-    <option name="LAST_COMMIT_MESSAGE" value="excel update" />
+    <MESSAGE value="excel update og fjern omsætning" />
+    <option name="LAST_COMMIT_MESSAGE" value="excel update og fjern omsætning" />
   </component>
 </project>

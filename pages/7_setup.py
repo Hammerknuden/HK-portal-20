@@ -265,6 +265,7 @@ if create_event:
 
     else:
         supabase.table("Events").insert({
+            "season": int(new_start_date.year),
             "event": new_event.strip(),
             "start_date": new_start_date.isoformat(),
             "end_date": new_end_date.isoformat(),
@@ -368,6 +369,7 @@ else:
                 supabase
                 .table("Events")
                 .update({
+                    "season": int(edit_start_date.year),
                     "event": edit_event_name.strip(),
                     "start_date": edit_start_date.isoformat(),
                     "end_date": edit_end_date.isoformat(),
