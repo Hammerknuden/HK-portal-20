@@ -65,7 +65,10 @@ df_ankomst = df.copy()
 st.subheader("Periodens ankomster")
 
 if not df_ankomst.empty:
-    df_ankomst["room_number"] = pd.to_numeric(df_ankomst["room_number"], errors="coerce")
+    df_ankomst["room_number"] = pd.to_numeric(
+        df_ankomst["room_number"],
+        errors="coerce",
+    ).astype("Int64")
     df_ankomst = df_ankomst.sort_values(["checkin_date", "room_number"])
 
     df_ankomst_print = df_ankomst[
@@ -139,7 +142,7 @@ if not df_afrejse.empty:
     df_afrejse["room_number"] = pd.to_numeric(
         df_afrejse["room_number"],
         errors="coerce"
-    )
+    ).astype("Int64")
 
     if not df_checkin.empty:
 
@@ -151,7 +154,7 @@ if not df_afrejse.empty:
         df_checkin["room_number"] = pd.to_numeric(
             df_checkin["room_number"],
             errors="coerce"
-        )
+        ).astype("Int64")
 
         def find_next_checkin(row):
             next_bookings = df_checkin[
