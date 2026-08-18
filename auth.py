@@ -4,6 +4,7 @@ import streamlit_authenticator as stauth
 names = ['Finn', 'Naja', 'Admin']
 usernames = ['finn', 'naja', 'admin']
 passwords = ['pc0012', 'pc0012nb', '0012']
+ADMIN_USERNAMES = {"admin", "finn"}
 
 hashed_passwords = [stauth.Hasher().hash(pw) for pw in passwords]
 
@@ -71,7 +72,8 @@ def require_admin():
         st.error("Ikke logget ind")
         st.stop()
 
-    if st.session_state.get("username") != "admin":
+    username = str(st.session_state.get("username") or "").lower()
+    if username not in ADMIN_USERNAMES:
         st.error("Kun admin har adgang til denne side")
         st.stop()
 

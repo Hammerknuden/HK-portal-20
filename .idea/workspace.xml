@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excel update og fjern omsætning" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="in and out værelse nr. heltal">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,22 +80,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00879" summary="red date line">
-      <option name="closed" value="true" />
-      <created>1784918590398</created>
-      <option name="number" value="00879" />
-      <option name="presentableId" value="LOCAL-00879" />
-      <option name="project" value="LOCAL" />
-      <updated>1784918590398</updated>
-    </task>
-    <task id="LOCAL-00880" summary="red date line works">
-      <option name="closed" value="true" />
-      <created>1784919226762</created>
-      <option name="number" value="00880" />
-      <option name="presentableId" value="LOCAL-00880" />
-      <option name="project" value="LOCAL" />
-      <updated>1784919226763</updated>
     </task>
     <task id="LOCAL-00881" summary="ny kolonne i afrejse">
       <option name="closed" value="true" />
@@ -471,7 +457,23 @@
       <option name="project" value="LOCAL" />
       <updated>1786986025441</updated>
     </task>
-    <option name="localTasksCounter" value="928" />
+    <task id="LOCAL-00928" summary="excel update og event retting tilføjet season">
+      <option name="closed" value="true" />
+      <created>1787033805384</created>
+      <option name="number" value="00928" />
+      <option name="presentableId" value="LOCAL-00928" />
+      <option name="project" value="LOCAL" />
+      <updated>1787033805385</updated>
+    </task>
+    <task id="LOCAL-00929" summary="in and out værelse nr. heltal">
+      <option name="closed" value="true" />
+      <created>1787035004563</created>
+      <option name="number" value="00929" />
+      <option name="presentableId" value="LOCAL-00929" />
+      <option name="project" value="LOCAL" />
+      <updated>1787035004563</updated>
+    </task>
+    <option name="localTasksCounter" value="930" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -497,8 +499,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 4" />
-    <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 5" />
     <MESSAGE value="ændring i booking com så bookinger med flere værlser håndteres korrekt version 6" />
     <MESSAGE value="logo i setup pris trukket til normal" />
     <MESSAGE value="fjenelse af nan fra pdf downl i in and out" />
@@ -522,6 +522,8 @@
     <MESSAGE value="håndtering af cansl opdateret" />
     <MESSAGE value="excel update" />
     <MESSAGE value="excel update og fjern omsætning" />
-    <option name="LAST_COMMIT_MESSAGE" value="excel update og fjern omsætning" />
+    <MESSAGE value="excel update og event retting tilføjet season" />
+    <MESSAGE value="in and out værelse nr. heltal" />
+    <option name="LAST_COMMIT_MESSAGE" value="in and out værelse nr. heltal" />
   </component>
 </project>
