@@ -48,7 +48,7 @@ if st.button("Søg"):
 
         result = (
             supabase
-            .table("historie")
+            .table("historie_new")
             .select("*")
             .eq("Familienavn", familie_navn)
             .execute()
