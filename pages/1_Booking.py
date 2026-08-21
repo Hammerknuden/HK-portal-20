@@ -744,7 +744,7 @@ else:
                 .table("historie_new")
                 .select(
                     "season, booking_nr, navn, familie_navn, "
-                    "indcheck, udcheck, email, phone"
+                    "indcheck, email, phone, spouse, comments"
                 )
                 .ilike("email", email_search)
                 .lt("udcheck", date.today().isoformat())
@@ -767,7 +767,7 @@ else:
                 .table("historie_new")
                 .select(
                     "season, booking_nr, navn, familie_navn, "
-                    "indcheck, udcheck, email, phone, spouse, comments"
+                    "indcheck, email, phone, spouse, comments"
                 )
                 .in_("phone", phone_variants)
                 .lt("udcheck", date.today().isoformat())
