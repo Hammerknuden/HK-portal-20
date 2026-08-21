@@ -60,7 +60,7 @@ if st.button("Søg"):
 
         result = (
             supabase
-            .table("historie")
+            .table("historie_new")
             .select("*")
             .eq("telefon", telefon)
             .execute()
@@ -73,7 +73,7 @@ if st.button("Søg"):
         try:
             result = (
                 supabase
-                .table("historie")
+                .table("historie_new")
                 .select("*")
                 .eq("Email", email)
                 .execute()
@@ -89,7 +89,7 @@ if st.button("Søg"):
 
         result = (
             supabase
-            .table("historie")
+            .table("historie_new")
             .select("*")
             .eq("booking", int(booking))
             .execute()
