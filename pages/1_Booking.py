@@ -349,90 +349,8 @@ else:
 
     st.text("Skema viser ikke udchecksdagen da den er irelevant i forbindelse med reservation")
 
-    if year == '2026':
-        if bruger == "Finn" and network == "local":
-            BASE_DIR = Path.cwd()
-            file_path = BASE_DIR / "data" / "2026_BOOKING 10.xlsx"
-            #file_name = "data/2026_BOOKING 10.xlsx"
-        elif bruger == "Finn" and network == "URL":
-            file_path = 'http://gofile.me/2UxBN/PTz0N4NfV'
-        else:
-            st.text("file nor found")
-
-    if year == '2027':
-        if bruger == "Finn" and network == "local":
-            BASE_DIR = Path.cwd()
-            file_path = BASE_DIR / "data" / "2027_BOOKING 10.xlsx"
-        elif bruger == "Finn" and network == "URL":
-            file_path = 'http://gofile.me/2UxBN/PTz0N4NfV'
-        else:
-            st.text("file nor found")
-
-    df = pd.read_excel(file_path, sheet_name='book_simp')
-    new_data = df[(df['dato'].dt.date >= checkin_date) & (df['dato'].dt.date < checkout_date)]
-    unique_values = new_data["1-I"].unique()
-
-    counts_1 = new_data["1-I"].value_counts()
-    counts_2 = new_data["2-I"].value_counts()
-    counts_3 = new_data["3-I"].value_counts()
-    counts_4 = new_data["4-I"].value_counts()
-    counts_5 = new_data["5-I"].value_counts()
-    # chat
-    print(f"Counts 1: {counts_1}")
-    print(f"Counts 2: {counts_2}")
-    print(f"Counts 3: {counts_3}")
-    print(f"Counts 4: {counts_4}")
-    print(f"Counts 5: {counts_5}")
-
-    room_1 = (counts_1.get("va", 0))
-    room_2 = (counts_2.get("va", 0))
-    room_3 = (counts_3.get("va", 0))
-    room_4 = (counts_4.get("va", 0))
-    room_5 = (counts_5.get("va", 0))
-    # chat
-    print(f"Room 1: {room_1}")
-    print(f"Room 2: {room_2}")
-    print(f"Room 3: {room_3}")
-    print(f"Room 4: {room_4}")
-    print(f"Room 5: {room_5}")
-
-    if room_1 == days: #days:
-        ledige_rum_1 = 1
-    else:
-        ledige_rum_1 = 0
-    if room_2 == days: #.days:
-        ledige_rum_2 = 1
-    else:
-        ledige_rum_2 = 0
-    if room_3 == days:#.days:
-        ledige_rum_3 = 1
-    else:
-        ledige_rum_3 = 0
-    if room_4 == days:#.days:
-        ledige_rum_4 = 1
-    else:
-        ledige_rum_4 = 0
-    if room_5 == days:#.days:
-        ledige_rum_5 = 1
-    else:
-        ledige_rum_5 = 0
-    ledige_rum = ledige_rum_1 + ledige_rum_2 + ledige_rum_3 + ledige_rum_4 + ledige_rum_5
-    print(unique_values)
-    st.markdown(f"**Antal ledige rum**  {ledige_rum}")  # "ledige} rum ", {ledige_rum})
-    print(df)
-
-
-    def highlight_cells(val):
-
-        color = 'background-color: #66FF66' if val == 'va' else ''  # Grøn for 'va'
-        return color
-
-
-    styled_data = new_data[['dato', 'week_event', '1-I', '2-I', '3-I', '4-I', '5-I']].style.map(highlight_cells)
-    st.dataframe(styled_data)
-
-    ledige_rum_excel = ledige_rum
-    #supabase
+    # Det tidligere Excel-opslag for ledige værelser er midlertidigt
+    # deaktiveret. Tilgængeligheden beregnes nu kun fra Supabase nedenfor.
 
     #year = season
     result = (
@@ -467,19 +385,7 @@ else:
         f"**Antal ledige rum:** {ledige_rum}"
     )
 
-    col1, col2 = st.columns(2)
-
-    with col1:
-        st.metric(
-            "Excel",
-            ledige_rum_excel
-        )
-
-    with col2:
-        st.metric(
-            "Supabase",
-            ledige_rum
-        )
+    st.metric("Supabase", ledige_rum)
 
     st.markdown("### Værelsesstatus dtb")
 

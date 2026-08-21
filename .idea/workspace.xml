@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ny historie dtb nu også i booking søgning efter known" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="ny historie dtb nu også i booking søgning efter known">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/2026_BOOKING 10.xlsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,14 +81,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00887" summary="excel update">
-      <option name="closed" value="true" />
-      <created>1785162612453</created>
-      <option name="number" value="00887" />
-      <option name="presentableId" value="LOCAL-00887" />
-      <option name="project" value="LOCAL" />
-      <updated>1785162612453</updated>
     </task>
     <task id="LOCAL-00888" summary="season dates from supabase">
       <option name="closed" value="true" />
@@ -471,7 +466,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787326714196</updated>
     </task>
-    <option name="localTasksCounter" value="936" />
+    <task id="LOCAL-00936" summary="ny historie dtb nu også i booking søgning efter known">
+      <option name="closed" value="true" />
+      <created>1787327025087</created>
+      <option name="number" value="00936" />
+      <option name="presentableId" value="LOCAL-00936" />
+      <option name="project" value="LOCAL" />
+      <updated>1787327025088</updated>
+    </task>
+    <option name="localTasksCounter" value="937" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
