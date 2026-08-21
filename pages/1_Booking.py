@@ -16,6 +16,7 @@ from common import init_session, exclude_cancelled_bookings
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 import base64
+import re
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 import os
 from dotenv import load_dotenv
@@ -32,6 +33,16 @@ SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 st.success("Forbindelse OK")
+
+
+def normalize_phone(value):
+    """Returner telefonnummer som cifre med landekode uden + eller 00."""
+    digits = re.sub(r"\D", "", str(value or ""))
+    if digits.startswith("00"):
+        digits = digits[2:]
+    if len(digits) == 8:
+        digits = f"45{digits}"
+    return digits
 
 
 def init_session():
@@ -719,32 +730,72 @@ else:
     nationalitet = st.text_input("Nationalitet - DK S N NL etc")
 
     known_guest = st.checkbox("check for known person")
-    if known_guest and 'local':
-        BASE_DIR = Path.cwd()
-        file_path = BASE_DIR / "data" / 'Database hammerknuden.xlsx'
-        df = pd.read_excel(file_path, sheet_name='Dtb', dtype={'familienavn': str})
-        search_value = fam_name
-        pd.set_option("display.max_columns", None, )
-        rows1 = df[df['Familienavn'] == search_value]
-        df = pd.read_excel(file_path, sheet_name='Dtb', dtype={'telefon': str})
-        search_value = telefon
-        pd.set_option("display.max_columns", None,)
-        rows2 = df[df['telefon'] == search_value]
-        df = pd.read_excel(file_path, sheet_name="Dtb", dtype={'Email': str})
-        search_value = email_address
-        pd.set_option("display.max_columns", None)
-        rows3 = df[df['Email'] == search_value]
+    known = "N"
+    previous_bookings = []
 
-        if fam_name:
-            st.dataframe(rows1)
-        if telefon:
-            st.dataframe(rows2)
-            known = "Y"
-        elif email_address:
-            st.dataframe(rows3)
-            known = "YY"
-    else:
-        known = "N"
+    if known_guest:
+        email_search = email_address.strip()
+        phone_search = normalize_phone(telefon)
+
+        # E-mail er det stærkeste match og har altid første prioritet.
+        if email_search:
+            result = (
+                supabase
+                .table("historie_new")
+                .select(
+                    "season, booking_nr, navn, familie_navn, "
+                    "indcheck, udcheck, email, phone"
+                )
+                .ilike("email", email_search)
+                .lt("udcheck", date.today().isoformat())
+                .order("udcheck", desc=True)
+                .execute()
+            )
+            previous_bookings = result.data or []
+            if previous_bookings:
+                known = "YY"
+
+        # Telefon slås kun op, hvis e-mail ikke gav et match.
+        if known == "N" and phone_search:
+            phone_variants = [phone_search]
+            if phone_search.startswith("45") and len(phone_search) == 10:
+                # Historikken indeholder også ældre danske numre uden 45.
+                phone_variants.append(phone_search[2:])
+
+            result = (
+                supabase
+                .table("historie_new")
+                .select(
+                    "season, booking_nr, navn, familie_navn, "
+                    "indcheck, udcheck, email, phone"
+                )
+                .in_("phone", phone_variants)
+                .lt("udcheck", date.today().isoformat())
+                .order("udcheck", desc=True)
+                .execute()
+            )
+            previous_bookings = result.data or []
+            if previous_bookings:
+                known = "Y"
+
+        if previous_bookings:
+            st.success(
+                f"Tidligere gæst fundet: {len(previous_bookings)} booking(er) "
+                f"({known})"
+            )
+            st.dataframe(
+                pd.DataFrame(previous_bookings),
+                use_container_width=True,
+            )
+        elif email_search or phone_search:
+            st.info("Ingen tidligere bookinger fundet på e-mail eller telefon.")
+        elif fam_name.strip():
+            st.info(
+                "Navnet bruges ikke alene til automatisk match. "
+                "Indtast e-mail eller telefon."
+            )
+        else:
+            st.info("Indtast e-mail eller telefon for at søge efter tidligere gæst.")
 
     spouse = st.text_input("Spouce  ")
     comments = st.text_input("yderligere info til Dtb  ")

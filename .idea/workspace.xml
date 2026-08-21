@@ -79,14 +79,6 @@
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
     </task>
-    <task id="LOCAL-00884" summary="chat gbt change i booking py">
-      <option name="closed" value="true" />
-      <created>1785132832052</created>
-      <option name="number" value="00884" />
-      <option name="presentableId" value="LOCAL-00884" />
-      <option name="project" value="LOCAL" />
-      <updated>1785132832052</updated>
-    </task>
     <task id="LOCAL-00885" summary="chat gbt change editoriel">
       <option name="closed" value="true" />
       <created>1785155373707</created>
@@ -471,7 +463,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787309881373</updated>
     </task>
-    <option name="localTasksCounter" value="933" />
+    <task id="LOCAL-00933" summary="ny historie dtb">
+      <option name="closed" value="true" />
+      <created>1787310632243</created>
+      <option name="number" value="00933" />
+      <option name="presentableId" value="LOCAL-00933" />
+      <option name="project" value="LOCAL" />
+      <updated>1787310632243</updated>
+    </task>
+    <option name="localTasksCounter" value="934" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
