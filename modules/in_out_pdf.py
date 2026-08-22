@@ -103,15 +103,15 @@ def create_in_out_pdf(
         "InOutHeader",
         parent=styles["Normal"],
         fontName="Helvetica-Bold",
-        fontSize=7.5,
-        leading=9,
+        fontSize=8.5,
+        leading=10.5,
     )
     cell_style = ParagraphStyle(
         "InOutCell",
         parent=styles["Normal"],
         fontName="Helvetica",
-        fontSize=7.2,
-        leading=9,
+        fontSize=8.5,
+        leading=10.5,
     )
 
     story = []
@@ -140,16 +140,16 @@ def create_in_out_pdf(
         arrival_widths = None
         if len(arrivals.columns) == 10:
             arrival_widths = [
-                19 * mm,
-                24 * mm,
+                21 * mm,
+                30 * mm,
+                18 * mm,
+                45 * mm,
                 15 * mm,
-                35 * mm,
-                13 * mm,
-                20 * mm,
+                25 * mm,
+                18 * mm,
+                17 * mm,
                 16 * mm,
-                15 * mm,
-                14 * mm,
-                92 * mm,
+                66 * mm,
             ]
         story.append(
             _styled_table(arrivals, header_style, cell_style, arrival_widths)
