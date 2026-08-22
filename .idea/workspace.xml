@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="scaner til gæsteregistrering">
-      <change afterPath="$PROJECT_DIR$/modules/guest_scan.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_guest_scan.py" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="justering af pdf in and out font størrelse" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,22 +78,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00892" summary="priser print version chg 1">
-      <option name="closed" value="true" />
-      <created>1785225492031</created>
-      <option name="number" value="00892" />
-      <option name="presentableId" value="LOCAL-00892" />
-      <option name="project" value="LOCAL" />
-      <updated>1785225492031</updated>
-    </task>
-    <task id="LOCAL-00893" summary="afstemningsmodul bc">
-      <option name="closed" value="true" />
-      <created>1785229382860</created>
-      <option name="number" value="00893" />
-      <option name="presentableId" value="LOCAL-00893" />
-      <option name="project" value="LOCAL" />
-      <updated>1785229382860</updated>
     </task>
     <task id="LOCAL-00894" summary="mulighed for editering af navn i timeline">
       <option name="closed" value="true" />
@@ -474,7 +455,23 @@
       <option name="project" value="LOCAL" />
       <updated>1787383948522</updated>
     </task>
-    <option name="localTasksCounter" value="941" />
+    <task id="LOCAL-00941" summary="scaner til gæsteregistrering">
+      <option name="closed" value="true" />
+      <created>1787384226470</created>
+      <option name="number" value="00941" />
+      <option name="presentableId" value="LOCAL-00941" />
+      <option name="project" value="LOCAL" />
+      <updated>1787384226470</updated>
+    </task>
+    <task id="LOCAL-00942" summary="justering af pdf in and out font størrelse">
+      <option name="closed" value="true" />
+      <created>1787394037443</created>
+      <option name="number" value="00942" />
+      <option name="presentableId" value="LOCAL-00942" />
+      <option name="project" value="LOCAL" />
+      <updated>1787394037443</updated>
+    </task>
+    <option name="localTasksCounter" value="943" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -500,7 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ordet cansl beskyttet for trykfejl ved import så alle bliver beteragtet som cnl med småt modules rettet til eller fjernet" />
     <MESSAGE value="timeline hover update web" />
     <MESSAGE value="ugedags statestik" />
     <MESSAGE value="ugedags statestik nu med pdf" />
@@ -525,6 +521,7 @@
     <MESSAGE value="created at fjernet fra db opslag" />
     <MESSAGE value="optimeret søgning og registrering i booking vedr known" />
     <MESSAGE value="scaner til gæsteregistrering" />
-    <option name="LAST_COMMIT_MESSAGE" value="scaner til gæsteregistrering" />
+    <MESSAGE value="justering af pdf in and out font størrelse" />
+    <option name="LAST_COMMIT_MESSAGE" value="justering af pdf in and out font størrelse" />
   </component>
 </project>
