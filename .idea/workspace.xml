@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="avail room nu based på supabase only">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="created at fjernet fra db opslag">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/2_databaseopslag.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/2_databaseopslag.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,14 +81,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00889" summary="priser fra supabase">
-      <option name="closed" value="true" />
-      <created>1785177819798</created>
-      <option name="number" value="00889" />
-      <option name="presentableId" value="LOCAL-00889" />
-      <option name="project" value="LOCAL" />
-      <updated>1785177819799</updated>
     </task>
     <task id="LOCAL-00890" summary="priser print version">
       <option name="closed" value="true" />
@@ -473,7 +466,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787332465724</updated>
     </task>
-    <option name="localTasksCounter" value="938" />
+    <task id="LOCAL-00938" summary="created at fjernet fra db opslag">
+      <option name="closed" value="true" />
+      <created>1787382621332</created>
+      <option name="number" value="00938" />
+      <option name="presentableId" value="LOCAL-00938" />
+      <option name="project" value="LOCAL" />
+      <updated>1787382621333</updated>
+    </task>
+    <option name="localTasksCounter" value="939" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -499,7 +500,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="info boks i booking for latest booking nummer" />
     <MESSAGE value="timeline hovercontrol" />
     <MESSAGE value="ordet cansl beskyttet for trykfejl ved import så alle bliver beteragtet som cnl med småt" />
     <MESSAGE value="ordet cansl beskyttet for trykfejl ved import så alle bliver beteragtet som cnl med småt modules rettet til eller fjernet" />
@@ -524,6 +524,7 @@
     <MESSAGE value="ny historie dtb" />
     <MESSAGE value="ny historie dtb nu også i booking søgning efter known" />
     <MESSAGE value="avail room nu based på supabase only" />
-    <option name="LAST_COMMIT_MESSAGE" value="avail room nu based på supabase only" />
+    <MESSAGE value="created at fjernet fra db opslag" />
+    <option name="LAST_COMMIT_MESSAGE" value="created at fjernet fra db opslag" />
   </component>
 </project>

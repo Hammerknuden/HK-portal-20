@@ -642,6 +642,7 @@ else:
     if known_guest:
         email_search = email_address.strip()
         phone_search = normalize_phone(telefon)
+        family_name_search = fam_name.strip()
 
         # E-mail er det stærkeste match og har altid første prioritet.
         if email_search:
@@ -684,24 +685,53 @@ else:
             if previous_bookings:
                 known = "Y"
 
-        if previous_bookings:
-            st.success(
-                f"Tidligere gæst fundet: {len(previous_bookings)} booking(er) "
-                f"({known})"
+        # Familienavn kan bruges til at finde kontaktoplysninger, men er ikke
+        # entydigt nok til automatisk at markere gæsten som kendt.
+        if known == "N" and not previous_bookings and family_name_search:
+            result = (
+                supabase
+                .table("historie_new")
+                .select(
+                    "season, booking_nr, navn, familie_navn, "
+                    "indcheck, email, phone, spouse, comments"
+                )
+                .ilike("familie_navn", family_name_search)
+                .lt("udcheck", date.today().isoformat())
+                .order("udcheck", desc=True)
+                .execute()
             )
+            previous_bookings = result.data or []
+
+        manual_known = st.checkbox(
+            "Jeg kender gæsten og vil markere bookingen som kendt",
+            key="manual_known_guest",
+        )
+        if manual_known:
+            known = "Y"
+
+        if previous_bookings:
+            if known == "N":
+                st.info(
+                    f"Mulige match fundet: {len(previous_bookings)} booking(er). "
+                    "Kontrollér oplysningerne og markér gæsten manuelt, hvis du "
+                    "kender personen."
+                )
+            else:
+                st.success(
+                    f"Tidligere gæst fundet: {len(previous_bookings)} booking(er) "
+                    f"({known})"
+                )
             st.dataframe(
                 pd.DataFrame(previous_bookings),
                 use_container_width=True,
             )
-        elif email_search or phone_search:
-            st.info("Ingen tidligere bookinger fundet på e-mail eller telefon.")
-        elif fam_name.strip():
-            st.info(
-                "Navnet bruges ikke alene til automatisk match. "
-                "Indtast e-mail eller telefon."
-            )
+        elif email_search or phone_search or family_name_search:
+            st.info("Ingen tidligere bookinger fundet.")
         else:
-            st.info("Indtast e-mail eller telefon for at søge efter tidligere gæst.")
+            st.info(
+                "Indtast e-mail, telefon eller familienavn for at søge efter "
+                "tidligere gæst."
+            )
 
     spouse = st.text_input("Spouce  ")
     comments = st.text_input("yderligere info til Dtb  ")
