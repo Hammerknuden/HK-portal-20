@@ -15,7 +15,15 @@ from modules.booking_comparison import (
     prepare_booking_com,
     prepare_database,
 )
+from modules.guest_scan import (
+    build_storage_path,
+    camera_image_to_pdf,
+    validate_pdf,
+)
 from supabase import create_client
+
+
+TEST_STORAGE_BUCKET = "test bucket"
 
 
 st.set_page_config(page_title="Booking.com-kontrol", layout="wide")
@@ -23,6 +31,74 @@ require_login()
 require_admin()
 
 st.title("Booking.com-kontrol")
+
+supabase = create_client(
+    st.secrets["SUPABASE_URL"],
+    st.secrets["SUPABASE_KEY"],
+)
+
+with st.expander("Test: Scan gæsteregistrering til Supabase Storage"):
+    st.warning(
+        "Bucket'en er offentlig under testen. Brug kun et testdokument uden "
+        "rigtige personoplysninger."
+    )
+    st.caption(
+        "Tag et billede med mobilkameraet, eller vælg en eksisterende PDF. "
+        "Kamerabilledet gemmes som en enkeltsidet A4-PDF."
+    )
+
+    scan_season = st.number_input(
+        "Sæson",
+        min_value=2022,
+        max_value=2100,
+        value=2026,
+        step=1,
+        key="scan_season",
+    )
+    scan_booking_number = st.text_input(
+        "Bookingnummer",
+        key="scan_booking_number",
+    )
+    camera_file = st.camera_input(
+        "Tag billede af den enkeltsidede registrering",
+        key="guest_registration_camera",
+    )
+    pdf_file = st.file_uploader(
+        "Eller vælg en eksisterende PDF",
+        type=["pdf"],
+        key="guest_registration_pdf",
+    )
+
+    if st.button("Upload testregistrering", type="primary"):
+        if camera_file is not None and pdf_file is not None:
+            st.error("Vælg enten kamera eller PDF - ikke begge dele.")
+        elif camera_file is None and pdf_file is None:
+            st.error("Tag et billede eller vælg en PDF først.")
+        else:
+            try:
+                storage_path = build_storage_path(
+                    scan_season,
+                    scan_booking_number,
+                )
+                if camera_file is not None:
+                    pdf_bytes = camera_image_to_pdf(camera_file.getvalue())
+                else:
+                    pdf_bytes = pdf_file.getvalue()
+
+                validate_pdf(pdf_bytes)
+                supabase.storage.from_(TEST_STORAGE_BUCKET).upload(
+                    path=storage_path,
+                    file=pdf_bytes,
+                    file_options={
+                        "content-type": "application/pdf",
+                        "upsert": "false",
+                    },
+                )
+                st.success("Testregistreringen er uploadet til Supabase Storage.")
+                st.code(f"{TEST_STORAGE_BUCKET}/{storage_path}")
+            except Exception as error:
+                st.error(f"Upload mislykkedes: {error}")
+
 st.write(
     "Upload listen over aktive bookinger fra Booking.com. "
     "Filen sammenlignes med bookinger i hk_dtb, hvor web er sat til bc."
@@ -61,11 +137,6 @@ if uploaded_file is not None:
     if not seasons:
         st.error("Sæsonen kunne ikke findes ud fra indtjekningsdatoerne.")
         st.stop()
-
-    supabase = create_client(
-        st.secrets["SUPABASE_URL"],
-        st.secrets["SUPABASE_KEY"],
-    )
 
     try:
         database_result = (
