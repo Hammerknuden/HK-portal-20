@@ -42,13 +42,14 @@ def validate_pdf(pdf_bytes):
 
 def build_storage_path(season, booking_number, timestamp=None, unique_id=None):
     """Build a PII-free and collision-resistant path for Storage."""
-    booking_number = str(booking_number).strip()
-    if not re.fullmatch(r"\d+", booking_number):
+    booking_number_text = str(booking_number).strip()
+    if not re.fullmatch(r"\d+", booking_number_text):
         raise ValueError("Bookingnummer skal bestå af cifre.")
+    booking_number_text = f"{int(booking_number_text):03d}"
 
     timestamp = timestamp or datetime.now()
     unique_id = unique_id or uuid4().hex[:8]
     filename = (
         f"gaesteregistrering_{timestamp:%Y%m%d_%H%M%S}_{unique_id}.pdf"
     )
-    return f"test-scans/{int(season)}/{booking_number}/{filename}"
+    return f"test-scans/{int(season)}/{booking_number_text}/{filename}"

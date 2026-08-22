@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="justering af pdf in and out font størrelse" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="upload funktion justeret for tekst" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,22 +78,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00894" summary="mulighed for editering af navn i timeline">
-      <option name="closed" value="true" />
-      <created>1785391344167</created>
-      <option name="number" value="00894" />
-      <option name="presentableId" value="LOCAL-00894" />
-      <option name="project" value="LOCAL" />
-      <updated>1785391344168</updated>
-    </task>
-    <task id="LOCAL-00895" summary="ændring i booking com så bookinger med flere værlser håndteres korrekt">
-      <option name="closed" value="true" />
-      <created>1785392061621</created>
-      <option name="number" value="00895" />
-      <option name="presentableId" value="LOCAL-00895" />
-      <option name="project" value="LOCAL" />
-      <updated>1785392061621</updated>
     </task>
     <task id="LOCAL-00896" summary="ændring i booking com så bookinger med flere værlser håndteres korrekt version 2">
       <option name="closed" value="true" />
@@ -471,7 +455,23 @@
       <option name="project" value="LOCAL" />
       <updated>1787394037443</updated>
     </task>
-    <option name="localTasksCounter" value="943" />
+    <task id="LOCAL-00943" summary="justering af pdf in and out font størrelse">
+      <option name="closed" value="true" />
+      <created>1787398597160</created>
+      <option name="number" value="00943" />
+      <option name="presentableId" value="LOCAL-00943" />
+      <option name="project" value="LOCAL" />
+      <updated>1787398597160</updated>
+    </task>
+    <task id="LOCAL-00944" summary="upload funktion justeret for tekst">
+      <option name="closed" value="true" />
+      <created>1787398652125</created>
+      <option name="number" value="00944" />
+      <option name="presentableId" value="LOCAL-00944" />
+      <option name="project" value="LOCAL" />
+      <updated>1787398652125</updated>
+    </task>
+    <option name="localTasksCounter" value="945" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -497,7 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="timeline hover update web" />
     <MESSAGE value="ugedags statestik" />
     <MESSAGE value="ugedags statestik nu med pdf" />
     <MESSAGE value="ugedags statestik nu med pdf tilføjet grafer" />
@@ -522,6 +521,7 @@
     <MESSAGE value="optimeret søgning og registrering i booking vedr known" />
     <MESSAGE value="scaner til gæsteregistrering" />
     <MESSAGE value="justering af pdf in and out font størrelse" />
-    <option name="LAST_COMMIT_MESSAGE" value="justering af pdf in and out font størrelse" />
+    <MESSAGE value="upload funktion justeret for tekst" />
+    <option name="LAST_COMMIT_MESSAGE" value="upload funktion justeret for tekst" />
   </component>
 </project>

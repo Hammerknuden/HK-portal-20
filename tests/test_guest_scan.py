@@ -40,6 +40,16 @@ class GuestScanTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "cifre"):
             build_storage_path(2026, "113/test")
 
+    def test_short_booking_number_is_zero_padded(self):
+        path = build_storage_path(
+            2026,
+            13,
+            timestamp=datetime(2026, 8, 22, 14, 30, 5),
+            unique_id="abc12345",
+        )
+
+        self.assertIn("test-scans/2026/013/", path)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -517,35 +517,31 @@ if not df.empty:
         events_df["end_date"] = pd.to_datetime(events_df["end_date"])
 
         for _, event in events_df.iterrows():
-            events_df["start_date"] = pd.to_datetime(events_df["start_date"])
-            events_df["end_date"] = pd.to_datetime(events_df["end_date"])
+            fig.add_vrect(
+                x0=event["start_date"],
+                x1=event["end_date"],
+                fillcolor=event["color"],
+                opacity=(
+                    float(event["opacity"])
+                    if pd.notna(event["opacity"])
+                    else 0.10
+                ),
+                line_width=0
+            )
 
-            for _, event in events_df.iterrows():
-                fig.add_vrect(
-                    x0=event["start_date"],
-                    x1=event["end_date"],
-                    fillcolor=event["color"],
-                    opacity=(
-                        float(event["opacity"])
-                        if pd.notna(event["opacity"])
-                        else 0.10
-                    ),
-                    line_width=0
-                )
-
-                fig.add_annotation(
-                    x=event["start_date"],
-                    y=-0.08,
-                    xref="x",
-                    yref="paper",
-                    text=event["event"],
-                    showarrow=False,
-                    xanchor="left",
-                    bgcolor="white",
-                    bordercolor="lightgray",
-                    borderwidth=1,
-                    font=dict(size=8)
-                )
+            fig.add_annotation(
+                x=event["start_date"],
+                y=-0.08,
+                xref="x",
+                yref="paper",
+                text=event["event"],
+                showarrow=False,
+                xanchor="left",
+                bgcolor="white",
+                bordercolor="lightgray",
+                borderwidth=1,
+                font=dict(size=8)
+            )
 
         #ugenumre
     fig.update_xaxes(
