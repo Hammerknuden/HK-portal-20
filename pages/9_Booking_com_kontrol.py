@@ -55,8 +55,13 @@ with st.expander("Test: Scan gæsteregistrering til Supabase Storage"):
         step=1,
         key="scan_season",
     )
-    scan_booking_number = st.text_input(
+    scan_booking_number = st.number_input(
         "Bookingnummer",
+        min_value=1,
+        max_value=99999,
+        value=None,
+        step=1,
+        placeholder="Eksempel: 13 gemmes som 013",
         key="scan_booking_number",
     )
     camera_file = st.camera_input(
@@ -70,7 +75,9 @@ with st.expander("Test: Scan gæsteregistrering til Supabase Storage"):
     )
 
     if st.button("Upload testregistrering", type="primary"):
-        if camera_file is not None and pdf_file is not None:
+        if scan_booking_number is None:
+            st.error("Indtast bookingnummer først.")
+        elif camera_file is not None and pdf_file is not None:
             st.error("Vælg enten kamera eller PDF - ikke begge dele.")
         elif camera_file is None and pdf_file is None:
             st.error("Tag et billede eller vælg en PDF først.")
