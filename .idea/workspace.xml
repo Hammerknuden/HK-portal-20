@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="optimeret søgning og registrering i booking vedr known" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="scaner til gæsteregistrering">
+      <change afterPath="$PROJECT_DIR$/modules/guest_scan.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_guest_scan.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,14 +81,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00891" summary="priser print version chg 1">
-      <option name="closed" value="true" />
-      <created>1785220492661</created>
-      <option name="number" value="00891" />
-      <option name="presentableId" value="LOCAL-00891" />
-      <option name="project" value="LOCAL" />
-      <updated>1785220492661</updated>
     </task>
     <task id="LOCAL-00892" summary="priser print version chg 1">
       <option name="closed" value="true" />
@@ -471,7 +466,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787383087104</updated>
     </task>
-    <option name="localTasksCounter" value="940" />
+    <task id="LOCAL-00940" summary="scaner til gæsteregistrering">
+      <option name="closed" value="true" />
+      <created>1787383948522</created>
+      <option name="number" value="00940" />
+      <option name="presentableId" value="LOCAL-00940" />
+      <option name="project" value="LOCAL" />
+      <updated>1787383948522</updated>
+    </task>
+    <option name="localTasksCounter" value="941" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -497,7 +500,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ordet cansl beskyttet for trykfejl ved import så alle bliver beteragtet som cnl med småt" />
     <MESSAGE value="ordet cansl beskyttet for trykfejl ved import så alle bliver beteragtet som cnl med småt modules rettet til eller fjernet" />
     <MESSAGE value="timeline hover update web" />
     <MESSAGE value="ugedags statestik" />
@@ -522,6 +524,7 @@
     <MESSAGE value="avail room nu based på supabase only" />
     <MESSAGE value="created at fjernet fra db opslag" />
     <MESSAGE value="optimeret søgning og registrering i booking vedr known" />
-    <option name="LAST_COMMIT_MESSAGE" value="optimeret søgning og registrering i booking vedr known" />
+    <MESSAGE value="scaner til gæsteregistrering" />
+    <option name="LAST_COMMIT_MESSAGE" value="scaner til gæsteregistrering" />
   </component>
 </project>
