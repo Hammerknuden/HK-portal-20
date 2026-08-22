@@ -91,7 +91,8 @@ if st.button("Søg"):
             st.stop()
 
         if result.data:
-            st.dataframe(pd.DataFrame(result.data), use_container_width=True)
+            dataframe = pd.DataFrame(result.data).drop(columns=["created_at"], errors="ignore")
+            st.dataframe(dataframe, use_container_width=True)
         else:
             st.info("Ingen bookinger fundet.")
     except Exception as e:
