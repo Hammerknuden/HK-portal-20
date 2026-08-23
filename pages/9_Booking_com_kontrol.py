@@ -18,6 +18,7 @@ from modules.booking_comparison import (
 from modules.guest_scan import (
     build_storage_path,
     camera_image_to_pdf,
+    normalize_pdf_to_a4,
     validate_pdf,
 )
 from supabase import create_client
@@ -44,7 +45,7 @@ with st.expander("Test: Scan gæsteregistrering til Supabase Storage"):
     )
     st.caption(
         "Tag et billede med mobilkameraet, eller vælg en eksisterende PDF. "
-        "Kamerabilledet gemmes som en enkeltsidet A4-PDF."
+        "Kamerabilledet og uploadede PDF-sider gemmes i A4-format."
     )
 
     scan_season = st.number_input(
@@ -90,7 +91,7 @@ with st.expander("Test: Scan gæsteregistrering til Supabase Storage"):
                 if camera_file is not None:
                     pdf_bytes = camera_image_to_pdf(camera_file.getvalue())
                 else:
-                    pdf_bytes = pdf_file.getvalue()
+                    pdf_bytes = normalize_pdf_to_a4(pdf_file.getvalue())
 
                 validate_pdf(pdf_bytes)
                 supabase.storage.from_(TEST_STORAGE_BUCKET).upload(

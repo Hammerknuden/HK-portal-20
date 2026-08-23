@@ -3,10 +3,12 @@ from io import BytesIO
 import unittest
 
 from PIL import Image
+from pypdf import PdfReader, PdfWriter
 
 from modules.guest_scan import (
     build_storage_path,
     camera_image_to_pdf,
+    normalize_pdf_to_a4,
     validate_pdf,
 )
 
@@ -49,6 +51,18 @@ class GuestScanTests(unittest.TestCase):
         )
 
         self.assertIn("test-scans/2026/013/", path)
+
+    def test_a5_pdf_is_scaled_to_a4(self):
+        source = BytesIO()
+        writer = PdfWriter()
+        writer.add_blank_page(width=419.5276, height=595.2756)
+        writer.write(source)
+
+        normalized = normalize_pdf_to_a4(source.getvalue())
+        page = PdfReader(BytesIO(normalized)).pages[0]
+
+        self.assertAlmostEqual(float(page.mediabox.width), 595.2756, places=2)
+        self.assertAlmostEqual(float(page.mediabox.height), 841.8898, places=2)
 
 
 if __name__ == "__main__":
