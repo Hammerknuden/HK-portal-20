@@ -15,7 +15,7 @@ from modules.guest_scan import (
 
 class GuestScanTests(unittest.TestCase):
     def test_camera_image_is_converted_to_pdf(self):
-        image = Image.new("RGB", (800, 1200), "white")
+        image = Image.new("RGB", (300, 450), "black")
         source = BytesIO()
         image.save(source, format="JPEG")
 
@@ -23,6 +23,15 @@ class GuestScanTests(unittest.TestCase):
 
         self.assertTrue(pdf.startswith(b"%PDF-"))
         validate_pdf(pdf)
+
+        rendered_page = PdfReader(BytesIO(pdf)).pages[0].images[0].image
+        non_white = rendered_page.convert("RGB").point(
+            lambda value: 0 if value > 245 else 255
+        )
+        content_box = non_white.getbbox()
+        self.assertIsNotNone(content_box)
+        self.assertGreater(content_box[2] - content_box[0], 1000)
+        self.assertGreater(content_box[3] - content_box[1], 1600)
 
     def test_storage_path_contains_no_guest_name(self):
         path = build_storage_path(

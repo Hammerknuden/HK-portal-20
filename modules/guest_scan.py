@@ -22,7 +22,15 @@ def camera_image_to_pdf(image_bytes):
             A4_SIZE_150_DPI[0] - (2 * A4_MARGIN_PX),
             A4_SIZE_150_DPI[1] - (2 * A4_MARGIN_PX),
         )
-        image.thumbnail(available_size, Image.Resampling.LANCZOS)
+        scale = min(
+            available_size[0] / image.width,
+            available_size[1] / image.height,
+        )
+        scaled_size = (
+            max(1, round(image.width * scale)),
+            max(1, round(image.height * scale)),
+        )
+        image = image.resize(scaled_size, Image.Resampling.LANCZOS)
 
         page = Image.new("RGB", A4_SIZE_150_DPI, "white")
         position = (
