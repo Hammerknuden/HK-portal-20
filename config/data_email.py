@@ -16,7 +16,8 @@ admin_email = 'reservation@hammerknuden.dk'
 logo_path = Path("logo2.jpg")
 
 
-def add_data(year=None, booking_number=None, name=None, checkin_date=None, checkout_date=None, now=None,
+def add_data(year=None, booking_number=None, name=None, family_name=None,
+             checkin_date=None, checkout_date=None, now=None,
              nationalitet=None, web=None, ankomst=None, seng=None, rabat_a=None, num_rooms=None,
              num_guests=None, email_address=None, telefon=None, spouse=None, single_room=None,
              BF=None, formatted_pristotal=None, known=None, comments=None):
@@ -24,6 +25,7 @@ def add_data(year=None, booking_number=None, name=None, checkin_date=None, check
     book_data = {
         'book nr': [booking_number],
         'navn': [name],
+        'familie_navn': [family_name],
         'Checkin': [checkin_date],
         'checkout': [checkout_date],
         'booking dato': [now],

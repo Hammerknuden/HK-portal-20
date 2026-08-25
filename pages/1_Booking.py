@@ -171,6 +171,15 @@ if mode == "✏️ Rediger booking":
         key=f"booking_number_{booking_id}"
     )
 
+    current_family_name = booking.get("familie_navn", "")
+    new_family_name = st.text_input(
+        "Familienavn",
+        value=(
+            "" if pd.isna(current_family_name) else str(current_family_name)
+        ),
+        key=f"familie_navn_{booking_id}"
+    )
+
     new_email = st.text_input(
         "email",
         value="" if pd.isna(booking["email"]) else str(booking["email"]),
@@ -252,6 +261,7 @@ if mode == "✏️ Rediger booking":
                     .table("hk_dtb")
                     .update({
                         "booking_number": new_booking_number,
+                        "familie_navn": new_family_name.strip(),
                         "email": new_email,
                         "telefon": new_phone,
                         "checkin_date": new_checkin.isoformat(),
@@ -629,7 +639,10 @@ else:
     st.subheader("Kontakt information")
 
     name = st.text_input("Navn", key='reservation_name')
-    fam_name = st.text_input("Efternavn (kun til søgning ellers blank)  ")
+    fam_name = st.text_input(
+        "Familienavn",
+        help="Gemmes på bookingen og bruges også til opslag i historikken.",
+    )
     telefon = st.text_input(" Kontakt telefon")
     email_address = st.text_input("email")
 
@@ -878,6 +891,7 @@ else:
             year=year,
             booking_number=booking_number,
             name=name,
+            family_name=fam_name.strip(),
             checkin_date=checkin_date,
             checkout_date=checkout_date,
             now=now,
@@ -926,6 +940,7 @@ else:
         supabase.table("hk_dtb").insert({
             "booking_number": booking_number,
             "navn": name,
+            "familie_navn": fam_name.strip(),
             "checkin_date": checkin_date.isoformat(),
             "checkout_date": checkout_date.isoformat(),
             "booking_date": now.isoformat(),
