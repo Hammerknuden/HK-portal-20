@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="excel" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="justering af input tl statestik til at være 2026 tal" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,14 +78,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00901" summary="excel update">
-      <option name="closed" value="true" />
-      <created>1785585814277</created>
-      <option name="number" value="00901" />
-      <option name="presentableId" value="LOCAL-00901" />
-      <option name="project" value="LOCAL" />
-      <updated>1785585814277</updated>
     </task>
     <task id="LOCAL-00902" summary="logo i setup pris trukket til normal">
       <option name="closed" value="true" />
@@ -471,7 +463,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787736803190</updated>
     </task>
-    <option name="localTasksCounter" value="950" />
+    <task id="LOCAL-00950" summary="justering af input tl statestik til at være 2026 tal">
+      <option name="closed" value="true" />
+      <created>1787737346213</created>
+      <option name="number" value="00950" />
+      <option name="presentableId" value="LOCAL-00950" />
+      <option name="project" value="LOCAL" />
+      <updated>1787737346214</updated>
+    </task>
+    <option name="localTasksCounter" value="951" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -497,7 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="booking com vær 7 placeres særskilt" />
     <MESSAGE value="procent beregning prisudvikling i setup" />
     <MESSAGE value="new layout pdf for in and out med logo og dato" />
     <MESSAGE value="kommentar tilføjet editor i timeline" />
@@ -522,6 +521,7 @@
     <MESSAGE value="A4 og A5 gæsteregistrering" />
     <MESSAGE value="familienavn oprette i hk dtb" />
     <MESSAGE value="excel" />
-    <option name="LAST_COMMIT_MESSAGE" value="excel" />
+    <MESSAGE value="justering af input tl statestik til at være 2026 tal" />
+    <option name="LAST_COMMIT_MESSAGE" value="justering af input tl statestik til at være 2026 tal" />
   </component>
 </project>
