@@ -213,10 +213,20 @@ try:
 
     df["nights"] = (
         df["checkout_date"] - df["checkin_date"]
-    ).dt.days
+    ).dt.days.clip(lower=0)
+
+    # En række repræsenterer ét solgt værelse. Summen af nights er derfor
+    # solgte værelsesnætter (i modsætning til gæsteovernatninger nedenfor).
+    booking_seasons = pd.to_numeric(df["season"], errors="coerce")
+    sold_room_nights_2026 = int(
+        pd.to_numeric(
+            df.loc[booking_seasons.eq(2026), "nights"], errors="coerce"
+        ).fillna(0).sum()
+    )
 
     df["overnatninger"] = (
-        df["numb_guests"] * df["nights"]
+        pd.to_numeric(df["numb_guests"], errors="coerce").fillna(0)
+        * df["nights"]
     )
     bookings_df = df.copy()
     df["nation"] = (
@@ -260,13 +270,22 @@ except Exception as e:
     st.error(f"Fejl: {e}")
 
 st.subheader("Rapport til Danmarks Statistik")
+st.caption(
+    "Annullerede bookinger (web = cansl) er filtreret fra i alle tal på siden."
+)
+st.metric(
+    "Solgte værelsesnætter i 2026",
+    f"{sold_room_nights_2026:,}".replace(",", "."),
+)
 st.dataframe(rapport)
 
 st.subheader("Booking com bookings")
 
 # Bookingkanaler
 
-kanal_df = df.copy()
+# Brug alle aktive bookinger. Landefilteret til Danmarks Statistik må ikke
+# fjerne bookinger uden landekode fra kanalfordelingen.
+kanal_df = bookings_df.copy()
 
 kanal_df["kanal"] = kanal_df["web"].str.upper().str.strip()
 
