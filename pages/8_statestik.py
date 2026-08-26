@@ -279,15 +279,18 @@ st.metric(
 )
 st.dataframe(rapport)
 
-st.subheader("Booking com bookings")
+st.subheader("Fordeling af solgte værelsesnætter i 2026")
 
 # Bookingkanaler
 
-# Brug alle aktive bookinger. Landefilteret til Danmarks Statistik må ikke
-# fjerne bookinger uden landekode fra kanalfordelingen.
-kanal_df = bookings_df.copy()
+# Brug samme år og samme definition som totalen ovenfor. Landefilteret til
+# Danmarks Statistik må ikke fjerne bookinger uden landekode herfra.
+kanal_seasons = pd.to_numeric(bookings_df["season"], errors="coerce")
+kanal_df = bookings_df[kanal_seasons.eq(2026)].copy()
 
-kanal_df["kanal"] = kanal_df["web"].str.upper().str.strip()
+kanal_df["kanal"] = (
+    kanal_df["web"].fillna("").astype(str).str.upper().str.strip()
+)
 
 kanal_df["kanal"] = kanal_df["kanal"].apply(
     lambda x: "Booking.com" if x == "BC" else "Egne bookinger"
@@ -296,7 +299,7 @@ kanal_df["kanal"] = kanal_df["kanal"].apply(
 kanal_stats = (
     kanal_df.groupby("kanal")
     .agg(
-        overnatninger=("overnatninger", "sum")
+        solgte_værelsesnætter=("nights", "sum")
     )
     .reset_index()
 )
@@ -305,8 +308,8 @@ st.write(kanal_stats)
 fig = px.pie(
     kanal_stats,
     names="kanal",
-    values="overnatninger",
-    title="Andel af overnatninger fra Booking.com"
+    values="solgte_værelsesnætter",
+    title="Andel af solgte værelsesnætter fra Booking.com i 2026"
 )
 
 st.plotly_chart(fig, use_container_width=True)
