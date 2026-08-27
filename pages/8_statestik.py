@@ -312,7 +312,7 @@ egne_bookinger["kendt_status"] = (
     .str.upper()
     .str.strip()
     .isin(["Y", "YY"])
-    .map({True: "Known = Y eller YY", False: "Øvrige egne bookinger"})
+    .map({True: "Tidligere besøgende", False: "Øvrige egne bookinger"})
 )
 
 # Brug solgte værelsesnætter ligesom i kanalfordelingen, så de to grafer
@@ -346,7 +346,7 @@ with known_col:
             values="solgte_værelsesnætter",
             title=(
                 "Andel af egne solgte værelsesnætter med "
-                "tidligere besøgende før 2026"
+                "tidligere besøgende "
             ),
         )
         st.plotly_chart(known_fig, use_container_width=True)
