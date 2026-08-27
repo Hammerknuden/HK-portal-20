@@ -315,13 +315,11 @@ egne_bookinger["kendt_status"] = (
     .map({True: "Known = Y eller YY", False: "Øvrige egne bookinger"})
 )
 
-# En booking kan bestå af flere værelsesrækker. Tæl derfor hvert
-# bookingnummer én gang, når andelen af kendte egne bookinger beregnes.
+# Brug solgte værelsesnætter ligesom i kanalfordelingen, så de to grafer
+# viser samme måleenhed og kan sammenlignes direkte.
 egne_booking_stats = (
-    egne_bookinger.drop_duplicates(subset="booking_number")
-    .groupby("kendt_status")
-    .size()
-    .rename("antal_bookinger")
+    egne_bookinger.groupby("kendt_status")
+    .agg(solgte_værelsesnætter=("nights", "sum"))
     .reset_index()
 )
 
@@ -345,8 +343,11 @@ with known_col:
         known_fig = px.pie(
             egne_booking_stats,
             names="kendt_status",
-            values="antal_bookinger",
-            title="Andel af egne bookinger med known = Y eller YY i 2026",
+            values="solgte_værelsesnætter",
+            title=(
+                "Andel af egne solgte værelsesnætter med "
+                "known = Y eller YY i 2026"
+            ),
         )
         st.plotly_chart(known_fig, use_container_width=True)
 
