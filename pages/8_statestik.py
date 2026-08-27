@@ -341,6 +341,7 @@ with known_col:
     if egne_booking_stats.empty:
         st.info("Der er ingen egne bookinger i 2026.")
     else:
+        st.write(egne_booking_stats)
         known_fig = px.pie(
             egne_booking_stats,
             names="kendt_status",
