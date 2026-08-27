@@ -323,14 +323,45 @@ response = (
 )
 
 pace_df = pd.DataFrame(response.data)
-fig = px.line(
-    pace_df,
-    x="week_number",
-    y="sold_nights",
-    color="season_year",
-    #markers=True
-)
-st.plotly_chart(fig, use_container_width=True)
+if pace_df.empty:
+    st.info("Der er ingen booking pace-data at vise.")
+else:
+    pace_df["week_number"] = pd.to_numeric(
+        pace_df["week_number"], errors="coerce"
+    )
+    pace_df["season_year"] = pd.to_numeric(
+        pace_df["season_year"], errors="coerce"
+    )
+    pace_df["sold_nights"] = pd.to_numeric(
+        pace_df["sold_nights"], errors="coerce"
+    )
+    pace_df = pace_df.dropna(
+        subset=["week_number", "season_year", "sold_nights"]
+    )
+
+    # Supabase garanterer ikke rækkefølgen uden en eksplicit sortering.
+    # Behold den senest indsatte række, hvis samme sæson/uge forekommer flere gange.
+    if "id" in pace_df.columns:
+        pace_df["id"] = pd.to_numeric(pace_df["id"], errors="coerce")
+        pace_df = pace_df.sort_values("id", na_position="first")
+    pace_df = pace_df.drop_duplicates(
+        subset=["season_year", "week_number"], keep="last"
+    )
+    pace_df = pace_df.sort_values(["season_year", "week_number"])
+    pace_df["season_year"] = pace_df["season_year"].astype(int).astype(str)
+
+    fig = px.line(
+        pace_df,
+        x="week_number",
+        y="sold_nights",
+        color="season_year",
+        labels={
+            "week_number": "Ugenummer",
+            "sold_nights": "Solgte værelsesnætter",
+            "season_year": "Sæson",
+        },
+    )
+    st.plotly_chart(fig, use_container_width=True)
 
 # st.subheader(" Omsætning inkl. moms")
 #
