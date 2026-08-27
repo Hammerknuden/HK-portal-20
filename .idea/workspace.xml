@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="Egne booking sorteret med known gengangere" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="Egne booking sorteret med known gengangere - justeret" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,22 +78,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00906" summary="info boks i booking for latest booking nummer">
-      <option name="closed" value="true" />
-      <created>1785698514128</created>
-      <option name="number" value="00906" />
-      <option name="presentableId" value="LOCAL-00906" />
-      <option name="project" value="LOCAL" />
-      <updated>1785698514129</updated>
-    </task>
-    <task id="LOCAL-00907" summary="timeline hovercontrol">
-      <option name="closed" value="true" />
-      <created>1785737497274</created>
-      <option name="number" value="00907" />
-      <option name="presentableId" value="LOCAL-00907" />
-      <option name="project" value="LOCAL" />
-      <updated>1785737497275</updated>
     </task>
     <task id="LOCAL-00908" summary="ordet cansl beskyttet for trykfejl ved import så alle bliver beteragtet som cnl med småt">
       <option name="closed" value="true" />
@@ -471,7 +455,23 @@
       <option name="project" value="LOCAL" />
       <updated>1787839703693</updated>
     </task>
-    <option name="localTasksCounter" value="955" />
+    <task id="LOCAL-00955" summary="Egne booking sorteret med known gengangere - justeret">
+      <option name="closed" value="true" />
+      <created>1787839864907</created>
+      <option name="number" value="00955" />
+      <option name="presentableId" value="LOCAL-00955" />
+      <option name="project" value="LOCAL" />
+      <updated>1787839864907</updated>
+    </task>
+    <task id="LOCAL-00956" summary="Egne booking sorteret med known gengangere - justeret">
+      <option name="closed" value="true" />
+      <created>1787842236043</created>
+      <option name="number" value="00956" />
+      <option name="presentableId" value="LOCAL-00956" />
+      <option name="project" value="LOCAL" />
+      <updated>1787842236044</updated>
+    </task>
+    <option name="localTasksCounter" value="957" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -497,7 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="kommentar tilføjet editor i timeline" />
     <MESSAGE value="omsætning morgenmad tiføjet" />
     <MESSAGE value="omsætning morgenmad tiføjet rettet" />
     <MESSAGE value="omsætning morgenmad rettet til netto og med given rabat" />
@@ -522,6 +521,7 @@
     <MESSAGE value="justering af input tl statestik til at være 2026 tal" />
     <MESSAGE value="Booking pace graf justeret og excel update med statestik tilpasset" />
     <MESSAGE value="Egne booking sorteret med known gengangere" />
-    <option name="LAST_COMMIT_MESSAGE" value="Egne booking sorteret med known gengangere" />
+    <MESSAGE value="Egne booking sorteret med known gengangere - justeret" />
+    <option name="LAST_COMMIT_MESSAGE" value="Egne booking sorteret med known gengangere - justeret" />
   </component>
 </project>

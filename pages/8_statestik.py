@@ -346,7 +346,7 @@ with known_col:
             values="solgte_værelsesnætter",
             title=(
                 "Andel af egne solgte værelsesnætter med "
-                "known = Y eller YY i 2026"
+                "tidligere besøgende før 2026"
             ),
         )
         st.plotly_chart(known_fig, use_container_width=True)
