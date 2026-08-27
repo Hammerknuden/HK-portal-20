@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="justering af input tl statestik til at være 2026 tal">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="Booking pace graf justeret og excel update med statestik tilpasset">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,22 +80,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00903" summary="fjenelse af nan fra pdf downl i in and out">
-      <option name="closed" value="true" />
-      <created>1785653895371</created>
-      <option name="number" value="00903" />
-      <option name="presentableId" value="LOCAL-00903" />
-      <option name="project" value="LOCAL" />
-      <updated>1785653895371</updated>
-    </task>
-    <task id="LOCAL-00904" summary="timeline 2027 justering">
-      <option name="closed" value="true" />
-      <created>1785689516055</created>
-      <option name="number" value="00904" />
-      <option name="presentableId" value="LOCAL-00904" />
-      <option name="project" value="LOCAL" />
-      <updated>1785689516055</updated>
     </task>
     <task id="LOCAL-00905" summary="info boks i booking for latest booking nummer">
       <option name="closed" value="true" />
@@ -473,7 +457,23 @@
       <option name="project" value="LOCAL" />
       <updated>1787737482707</updated>
     </task>
-    <option name="localTasksCounter" value="952" />
+    <task id="LOCAL-00952" summary="Booking pace graf justeret og excel update med statestik tilpasset">
+      <option name="closed" value="true" />
+      <created>1787817436977</created>
+      <option name="number" value="00952" />
+      <option name="presentableId" value="LOCAL-00952" />
+      <option name="project" value="LOCAL" />
+      <updated>1787817436978</updated>
+    </task>
+    <task id="LOCAL-00953" summary="Booking pace graf justeret og excel update med statestik tilpasset">
+      <option name="closed" value="true" />
+      <created>1787831944414</created>
+      <option name="number" value="00953" />
+      <option name="presentableId" value="LOCAL-00953" />
+      <option name="project" value="LOCAL" />
+      <updated>1787831944415</updated>
+    </task>
+    <option name="localTasksCounter" value="954" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -499,7 +499,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="procent beregning prisudvikling i setup" />
     <MESSAGE value="new layout pdf for in and out med logo og dato" />
     <MESSAGE value="kommentar tilføjet editor i timeline" />
     <MESSAGE value="omsætning morgenmad tiføjet" />
@@ -524,6 +523,7 @@
     <MESSAGE value="familienavn oprette i hk dtb" />
     <MESSAGE value="excel" />
     <MESSAGE value="justering af input tl statestik til at være 2026 tal" />
-    <option name="LAST_COMMIT_MESSAGE" value="justering af input tl statestik til at være 2026 tal" />
+    <MESSAGE value="Booking pace graf justeret og excel update med statestik tilpasset" />
+    <option name="LAST_COMMIT_MESSAGE" value="Booking pace graf justeret og excel update med statestik tilpasset" />
   </component>
 </project>

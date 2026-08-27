@@ -304,15 +304,50 @@ kanal_stats = (
     .reset_index()
 )
 
-st.write(kanal_stats)
-fig = px.pie(
-    kanal_stats,
-    names="kanal",
-    values="solgte_værelsesnætter",
-    title="Andel af solgte værelsesnætter fra Booking.com i 2026"
+egne_bookinger = kanal_df[kanal_df["kanal"].eq("Egne bookinger")].copy()
+egne_bookinger["kendt_status"] = (
+    egne_bookinger["known"]
+    .fillna("")
+    .astype(str)
+    .str.upper()
+    .str.strip()
+    .isin(["Y", "YY"])
+    .map({True: "Known = Y eller YY", False: "Øvrige egne bookinger"})
 )
 
-st.plotly_chart(fig, use_container_width=True)
+# En booking kan bestå af flere værelsesrækker. Tæl derfor hvert
+# bookingnummer én gang, når andelen af kendte egne bookinger beregnes.
+egne_booking_stats = (
+    egne_bookinger.drop_duplicates(subset="booking_number")
+    .groupby("kendt_status")
+    .size()
+    .rename("antal_bookinger")
+    .reset_index()
+)
+
+kanal_col, known_col = st.columns(2)
+
+with kanal_col:
+    st.write(kanal_stats)
+    kanal_fig = px.pie(
+        kanal_stats,
+        names="kanal",
+        values="solgte_værelsesnætter",
+        title="Andel af solgte værelsesnætter fra Booking.com i 2026",
+    )
+    st.plotly_chart(kanal_fig, use_container_width=True)
+
+with known_col:
+    if egne_booking_stats.empty:
+        st.info("Der er ingen egne bookinger i 2026.")
+    else:
+        known_fig = px.pie(
+            egne_booking_stats,
+            names="kendt_status",
+            values="antal_bookinger",
+            title="Andel af egne bookinger med known = Y eller YY i 2026",
+        )
+        st.plotly_chart(known_fig, use_container_width=True)
 
 st.subheader("Booking pace")
 
