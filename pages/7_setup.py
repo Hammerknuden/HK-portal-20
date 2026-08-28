@@ -304,12 +304,14 @@ else:
     selected_event = events_df[
         events_df["id"] == selected_event_id
     ].iloc[0]
+    edit_key_suffix = int(selected_event_id)
 
-    with st.form("edit_event_form"):
+    with st.form(f"edit_event_form_{edit_key_suffix}"):
 
         edit_event_name = st.text_input(
             "Eventnavn",
-            value=str(selected_event["event"])
+            value=str(selected_event["event"]),
+            key=f"edit_event_name_{edit_key_suffix}"
         )
 
         col1, col2 = st.columns(2)
@@ -318,14 +320,14 @@ else:
             edit_start_date = st.date_input(
                 "Startdato",
                 value=selected_event["start_date"],
-                key="edit_event_start"
+                key=f"edit_event_start_{edit_key_suffix}"
             )
 
         with col2:
             edit_end_date = st.date_input(
                 "Slutdato",
                 value=selected_event["end_date"],
-                key="edit_event_end"
+                key=f"edit_event_end_{edit_key_suffix}"
             )
 
         edit_color = st.text_input(
@@ -334,7 +336,8 @@ else:
                 str(selected_event["color"])
                 if pd.notna(selected_event.get("color"))
                 else "lightgray"
-            )
+            ),
+            key=f"edit_event_color_{edit_key_suffix}"
         )
 
         current_opacity = (
@@ -349,7 +352,7 @@ else:
             max_value=1.0,
             value=current_opacity,
             step=0.05,
-            key="edit_event_opacity"
+            key=f"edit_event_opacity_{edit_key_suffix}"
         )
 
         save_event = st.form_submit_button(
