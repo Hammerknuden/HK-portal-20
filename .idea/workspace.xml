@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="Egne booking sorteret med known gengangere - justeret">
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="event edit opdateret excel opdateret">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,14 +80,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00910" summary="excel update">
-      <option name="closed" value="true" />
-      <created>1785826818774</created>
-      <option name="number" value="00910" />
-      <option name="presentableId" value="LOCAL-00910" />
-      <option name="project" value="LOCAL" />
-      <updated>1785826818775</updated>
     </task>
     <task id="LOCAL-00911" summary="timeline hover update web">
       <option name="closed" value="true" />
@@ -473,7 +465,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787844204708</updated>
     </task>
-    <option name="localTasksCounter" value="959" />
+    <task id="LOCAL-00959" summary="event edit opdateret excel opdateret">
+      <option name="closed" value="true" />
+      <created>1787931745426</created>
+      <option name="number" value="00959" />
+      <option name="presentableId" value="LOCAL-00959" />
+      <option name="project" value="LOCAL" />
+      <updated>1787931745426</updated>
+    </task>
+    <option name="localTasksCounter" value="960" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -499,7 +499,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="omsætning morgenmad tiføjet" />
     <MESSAGE value="omsætning morgenmad tiføjet rettet" />
     <MESSAGE value="omsætning morgenmad rettet til netto og med given rabat" />
     <MESSAGE value="håndtering af cansl opdateret" />
@@ -524,6 +523,7 @@
     <MESSAGE value="Booking pace graf justeret og excel update med statestik tilpasset" />
     <MESSAGE value="Egne booking sorteret med known gengangere" />
     <MESSAGE value="Egne booking sorteret med known gengangere - justeret" />
-    <option name="LAST_COMMIT_MESSAGE" value="Egne booking sorteret med known gengangere - justeret" />
+    <MESSAGE value="event edit opdateret excel opdateret" />
+    <option name="LAST_COMMIT_MESSAGE" value="event edit opdateret excel opdateret" />
   </component>
 </project>

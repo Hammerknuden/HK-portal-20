@@ -1,4 +1,3 @@
-from datetime import datetime
 from io import BytesIO
 import unittest
 
@@ -34,32 +33,22 @@ class GuestScanTests(unittest.TestCase):
         self.assertGreater(content_box[3] - content_box[1], 1600)
 
     def test_storage_path_contains_no_guest_name(self):
-        path = build_storage_path(
-            2026,
-            "113",
-            timestamp=datetime(2026, 8, 22, 14, 30, 5),
-            unique_id="abc12345",
-        )
+        path = build_storage_path(2026, "113")
 
-        self.assertEqual(
-            path,
-            "test-scans/2026/113/"
-            "gaesteregistrering_20260822_143005_abc12345.pdf",
-        )
+        self.assertEqual(path, "2026/2026-113.pdf")
 
     def test_storage_path_rejects_non_numeric_booking_number(self):
         with self.assertRaisesRegex(ValueError, "cifre"):
             build_storage_path(2026, "113/test")
 
     def test_short_booking_number_is_zero_padded(self):
-        path = build_storage_path(
-            2026,
-            13,
-            timestamp=datetime(2026, 8, 22, 14, 30, 5),
-            unique_id="abc12345",
-        )
+        path = build_storage_path(2026, 13)
 
-        self.assertIn("test-scans/2026/013/", path)
+        self.assertEqual(path, "2026/2026-013.pdf")
+
+    def test_storage_path_rejects_invalid_season(self):
+        with self.assertRaisesRegex(ValueError, "firecifret"):
+            build_storage_path("26", 113)
 
     def test_a5_pdf_is_scaled_to_a4(self):
         source = BytesIO()

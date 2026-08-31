@@ -24,7 +24,7 @@ from modules.guest_scan import (
 from supabase import create_client
 
 
-TEST_STORAGE_BUCKET = "test bucket"
+GUEST_REGISTRATION_BUCKET = "guest-registrations"
 
 
 st.set_page_config(page_title="Booking.com-kontrol", layout="wide")
@@ -38,10 +38,10 @@ supabase = create_client(
     st.secrets["SUPABASE_KEY"],
 )
 
-with st.expander("Test: Scan gæsteregistrering til Supabase Storage"):
-    st.warning(
-        "Bucket'en er offentlig under testen. Brug kun et testdokument uden "
-        "rigtige personoplysninger."
+with st.expander("Scan gæsteregistrering til privat Supabase Storage"):
+    st.info(
+        "Dokumentet gemmes i den private bucket guest-registrations med "
+        "sæson og bookingnummer som filnavn."
     )
     st.caption(
         "Tag et billede med mobilkameraet, eller vælg en eksisterende PDF. "
@@ -69,19 +69,19 @@ with st.expander("Test: Scan gæsteregistrering til Supabase Storage"):
         "Tag billede af den enkeltsidede registrering",
         key="guest_registration_camera",
     )
-    pdf_file = st.file_uploader(
-        "Eller vælg en eksisterende PDF",
-        type=["pdf"],
-        key="guest_registration_pdf",
+    uploaded_registration = st.file_uploader(
+        "Eller vælg en eksisterende PDF eller billedfil",
+        type=["pdf", "jpg", "jpeg", "png"],
+        key="guest_registration_file",
     )
 
-    if st.button("Upload testregistrering", type="primary"):
+    if st.button("Upload gæsteregistrering", type="primary"):
         if scan_booking_number is None:
             st.error("Indtast bookingnummer først.")
-        elif camera_file is not None and pdf_file is not None:
-            st.error("Vælg enten kamera eller PDF - ikke begge dele.")
-        elif camera_file is None and pdf_file is None:
-            st.error("Tag et billede eller vælg en PDF først.")
+        elif camera_file is not None and uploaded_registration is not None:
+            st.error("Vælg enten kamera eller fil-upload - ikke begge dele.")
+        elif camera_file is None and uploaded_registration is None:
+            st.error("Tag et billede eller vælg en fil først.")
         else:
             try:
                 storage_path = build_storage_path(
@@ -90,11 +90,17 @@ with st.expander("Test: Scan gæsteregistrering til Supabase Storage"):
                 )
                 if camera_file is not None:
                     pdf_bytes = camera_image_to_pdf(camera_file.getvalue())
+                elif uploaded_registration.type == "application/pdf":
+                    pdf_bytes = normalize_pdf_to_a4(
+                        uploaded_registration.getvalue()
+                    )
                 else:
-                    pdf_bytes = normalize_pdf_to_a4(pdf_file.getvalue())
+                    pdf_bytes = camera_image_to_pdf(
+                        uploaded_registration.getvalue()
+                    )
 
                 validate_pdf(pdf_bytes)
-                supabase.storage.from_(TEST_STORAGE_BUCKET).upload(
+                supabase.storage.from_(GUEST_REGISTRATION_BUCKET).upload(
                     path=storage_path,
                     file=pdf_bytes,
                     file_options={
@@ -102,8 +108,8 @@ with st.expander("Test: Scan gæsteregistrering til Supabase Storage"):
                         "upsert": "false",
                     },
                 )
-                st.success("Testregistreringen er uploadet til Supabase Storage.")
-                st.code(f"{TEST_STORAGE_BUCKET}/{storage_path}")
+                st.success("Gæsteregistreringen er uploadet til privat Storage.")
+                st.code(f"{GUEST_REGISTRATION_BUCKET}/{storage_path}")
             except Exception as error:
                 st.error(f"Upload mislykkedes: {error}")
 

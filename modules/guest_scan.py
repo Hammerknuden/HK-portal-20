@@ -1,7 +1,5 @@
 import re
-from datetime import datetime
 from io import BytesIO
-from uuid import uuid4
 
 from PIL import Image, ImageOps
 from pypdf import PageObject, PdfReader, PdfWriter, Transformation
@@ -95,16 +93,15 @@ def normalize_pdf_to_a4(pdf_bytes):
     return normalized
 
 
-def build_storage_path(season, booking_number, timestamp=None, unique_id=None):
-    """Build a PII-free and collision-resistant path for Storage."""
+def build_storage_path(season, booking_number):
+    """Build the canonical PDF path for one guest registration per booking."""
+    season_text = str(season).strip()
+    if not re.fullmatch(r"\d{4}", season_text):
+        raise ValueError("Sæson skal være et firecifret årstal.")
+
     booking_number_text = str(booking_number).strip()
     if not re.fullmatch(r"\d+", booking_number_text):
         raise ValueError("Bookingnummer skal bestå af cifre.")
     booking_number_text = f"{int(booking_number_text):03d}"
 
-    timestamp = timestamp or datetime.now()
-    unique_id = unique_id or uuid4().hex[:8]
-    filename = (
-        f"gaesteregistrering_{timestamp:%Y%m%d_%H%M%S}_{unique_id}.pdf"
-    )
-    return f"test-scans/{int(season)}/{booking_number_text}/{filename}"
+    return f"{season_text}/{season_text}-{booking_number_text}.pdf"
