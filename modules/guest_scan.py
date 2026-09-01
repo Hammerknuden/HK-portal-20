@@ -1,24 +1,30 @@
 import re
 from io import BytesIO
 
-from PIL import Image, ImageOps
+from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 from pypdf import PageObject, PdfReader, PdfWriter, Transformation
 
 
 MAX_PDF_BYTES = 10 * 1024 * 1024
-A4_SIZE_150_DPI = (1240, 1754)
-A4_MARGIN_PX = 60
+A4_RENDER_DPI = 300
+A4_SIZE_PX = (2480, 3508)
+A4_MARGIN_PX = 100
 A4_SIZE_POINTS = (595.2756, 841.8898)
 A4_MARGIN_POINTS = 24
 
 
 def camera_image_to_pdf(image_bytes):
-    """Convert a camera image to a single-page, portrait A4 PDF."""
+    """Enhance a camera image and convert it to a 300 DPI portrait A4 PDF."""
     with Image.open(BytesIO(image_bytes)) as source:
         image = ImageOps.exif_transpose(source).convert("RGB")
+        image = ImageOps.autocontrast(image, cutoff=1)
+        image = ImageEnhance.Contrast(image).enhance(1.12)
+        image = image.filter(
+            ImageFilter.UnsharpMask(radius=1.2, percent=130, threshold=3)
+        )
         available_size = (
-            A4_SIZE_150_DPI[0] - (2 * A4_MARGIN_PX),
-            A4_SIZE_150_DPI[1] - (2 * A4_MARGIN_PX),
+            A4_SIZE_PX[0] - (2 * A4_MARGIN_PX),
+            A4_SIZE_PX[1] - (2 * A4_MARGIN_PX),
         )
         scale = min(
             available_size[0] / image.width,
@@ -30,15 +36,15 @@ def camera_image_to_pdf(image_bytes):
         )
         image = image.resize(scaled_size, Image.Resampling.LANCZOS)
 
-        page = Image.new("RGB", A4_SIZE_150_DPI, "white")
+        page = Image.new("RGB", A4_SIZE_PX, "white")
         position = (
-            (A4_SIZE_150_DPI[0] - image.width) // 2,
-            (A4_SIZE_150_DPI[1] - image.height) // 2,
+            (A4_SIZE_PX[0] - image.width) // 2,
+            (A4_SIZE_PX[1] - image.height) // 2,
         )
         page.paste(image, position)
 
         output = BytesIO()
-        page.save(output, format="PDF", resolution=150.0)
+        page.save(output, format="PDF", resolution=A4_RENDER_DPI, quality=95)
         return output.getvalue()
 
 

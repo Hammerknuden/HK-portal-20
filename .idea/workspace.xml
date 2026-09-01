@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="event edit opdateret excel opdateret">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="registrerings scan updateret" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,14 +78,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00911" summary="timeline hover update web">
-      <option name="closed" value="true" />
-      <created>1785826878246</created>
-      <option name="number" value="00911" />
-      <option name="presentableId" value="LOCAL-00911" />
-      <option name="project" value="LOCAL" />
-      <updated>1785826878247</updated>
     </task>
     <task id="LOCAL-00912" summary="timeline hover update web">
       <option name="closed" value="true" />
@@ -473,7 +463,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787931745426</updated>
     </task>
-    <option name="localTasksCounter" value="960" />
+    <task id="LOCAL-00960" summary="registrerings scan updateret">
+      <option name="closed" value="true" />
+      <created>1788175626945</created>
+      <option name="number" value="00960" />
+      <option name="presentableId" value="LOCAL-00960" />
+      <option name="project" value="LOCAL" />
+      <updated>1788175626946</updated>
+    </task>
+    <option name="localTasksCounter" value="961" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -499,7 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="omsætning morgenmad tiføjet rettet" />
     <MESSAGE value="omsætning morgenmad rettet til netto og med given rabat" />
     <MESSAGE value="håndtering af cansl opdateret" />
     <MESSAGE value="excel update" />
@@ -524,6 +521,7 @@
     <MESSAGE value="Egne booking sorteret med known gengangere" />
     <MESSAGE value="Egne booking sorteret med known gengangere - justeret" />
     <MESSAGE value="event edit opdateret excel opdateret" />
-    <option name="LAST_COMMIT_MESSAGE" value="event edit opdateret excel opdateret" />
+    <MESSAGE value="registrerings scan updateret" />
+    <option name="LAST_COMMIT_MESSAGE" value="registrerings scan updateret" />
   </component>
 </project>
