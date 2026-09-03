@@ -771,7 +771,7 @@ else:
             else:
                 text_bed = " - "
     with col3:
-        st.text("Vælg tekst til kunde vedr. valg af seng")
+        st.text("Vælg tekst til kunde fri tekst")
         text_free = st.checkbox("Skriv ekstra tekst - husk sprog  ")
         if text_free:
             text_free = st.text_input("skriv add tekst ")
