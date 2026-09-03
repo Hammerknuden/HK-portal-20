@@ -247,7 +247,7 @@ try:
         .reset_index()
     )
 
-    hovedlande = ["DK", "D", "S", "N", "NL"]
+    hovedlande = ["DK", "DE", "SE", "NO", "NL"]
 
     stats["nation"] = stats["nation"].fillna("").str.upper()
 
