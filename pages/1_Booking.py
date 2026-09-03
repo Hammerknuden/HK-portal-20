@@ -481,7 +481,7 @@ else:
     with col2:
         st.markdown(f"**Low season** {low_season_price:.2f} kr")
 
-    Sprog = st.selectbox("Sprog - email confirmation dk uk D", options=["DK", "UK", "D"])
+    Sprog = st.selectbox("Sprog - email confirmation DK UK DE", options=["DK", "UK", "DE"])
 
     breakfast = st.checkbox("Morgenmad")
     breakfast_alt = st.checkbox("begrænset morgenmad bestilles direkte ved ankomst mod beregning  ")
@@ -494,7 +494,7 @@ else:
             text_bf = "Morgenmad er inkluderet i prisen"
         if Sprog == "UK":
             text_bf = "Breakfast is included "
-        if Sprog == "D":
+        if Sprog == "DE":
             text_bf = "Das Frühstück ist im Preis inbegriffen"
     else:
         br_f = 0
@@ -503,7 +503,7 @@ else:
             text_bf = "Morgenmad er ikke inkluderet i prisen"
         if Sprog == "UK":
             text_bf = " Breakfast is not included "
-        if Sprog == "D":
+        if Sprog == "DE":
             text_bf = "Frühstück ist nicht mit enthalten"
 
     if breakfast and breakfast_alt:
@@ -513,7 +513,7 @@ else:
             text_bf = "Morgenmad kan tilkøbes alle dage undtagen Søndag"
         if Sprog == "UK":
             text_bf = "Breakfast can be purchased every day except Sunday. "
-        if Sprog == "D":
+        if Sprog == "DE":
             text_bf = "Frühstück kann täglich außer sonntags erworben werden."
     try:
         high_season_start = date.fromisoformat(
@@ -557,31 +557,7 @@ else:
                        high_nights * high_season_price
                        + low_nights * low_season_price
                ) * num_rooms
-    # high_season_days = high_season_end - high_season_start
-    # high_booking = (checkin_date >= high_season_start) and (checkout_date <= high_season_end)
-    # low_booking = (((checkin_date <= high_season_start) and (checkout_date < high_season_start)) or
-    #                (checkin_date > high_season_end))
-    # mixbooking_early = (checkin_date < high_season_start) and (checkout_date >= high_season_start)
-    # mixbooking_end = (checkout_date >= high_season_end) and (high_season_start < checkin_date) and (checkin_date <=                                                                                               high_season_end)
-    #
-    # high_season_days = high_season_end - high_season_start
-    # mixearly = checkout_date - high_season_start
-    # mixearly_b = high_season_start - checkin_date
-    # mixend = high_season_end - checkin_date
-    # mixend_b = checkout_date - high_season_end
-    #
-    # if web == "FM":
-    #     pris = (high_season_price * int(days.days)) * int(num_rooms)
-    # else:
-    #     if high_booking:
-    #         pris = (high_season_price * int(days.days)) * int(num_rooms)
-    #     if low_booking:
-    #         pris = (low_season_price * int(days.days)) * int(num_rooms)
-    #     if mixbooking_early:
-    #         pris = (((int(mixearly.days) * high_season_price) + (int(mixearly_b.days) * low_season_price)) * int(num_rooms))
-    #     if mixbooking_end:
-    #         pris = (high_season_price * (int(mixend.days)) + (int(mixend_b.days) * low_season_price)) * int(num_rooms)
-
+    
     st.markdown(f"**Værelsespris** {pris:.2f} kr".replace(".", ","))
     print(pris)
 
@@ -768,7 +744,7 @@ else:
             else:
                 text_ank = " - "
 
-        if Sprog == 'D':
+        if Sprog == 'DE':
             if text_ank:
                 text_ank = ("Da die Rezeption nicht rund um die Uhr besetzt ist, informieren Sie uns bitte über Ihre "
                             "Ankunftszeit,um Zimmerschlüssel erhalten.")
@@ -789,7 +765,7 @@ else:
             else:
                 text_bed = " - "
 
-        if Sprog == 'D':
+        if Sprog == 'DE':
             if text_bed:
                 text_bed = "Anfragen für ein Doppel- oder Einzelbett können vor der Anreise per E-Mail gesendet werden"
             else:
@@ -820,7 +796,7 @@ else:
         text_web = "Any discount in connection with this booking is."
         justering = rabat_t
         formatted_justering = f"{justering:.2f}".replace(".", ",")
-    elif web == "web" and Sprog == "D":
+    elif web == "web" and Sprog == "DE":
         text_web = f"Der Rabatt im Zusammenhang mit dieser Buchung beträgt."
         justering = rabat_t
         formatted_justering = f"{justering:.2f}".replace(".", ",")
@@ -847,7 +823,7 @@ else:
                                         checkin_date, checkout_date, text_bf, formatted_prismed, text_web, formatted_justering,
                                         formatted_pristotal, text_ank, text_bed, text_free, email_address, telefon)
         st.markdown('engelsk email er sendt')
-    elif Sprog == "D" and booking_submitted:
+    elif Sprog == "DE" and booking_submitted:
         send_german_confirmation_email(to_addr, confirmation_password, name, num_rooms, num_guests, booking_number,
                                        checkin_date, checkout_date, text_bf, formatted_prismed, text_web, formatted_justering,
                                        formatted_pristotal, text_ank, text_bed, text_free, email_address, telefon)
