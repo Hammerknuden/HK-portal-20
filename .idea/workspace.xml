@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="scan kvalitet forbedret" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="Landekode ISO format" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,22 +78,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00913" summary="ugedags statestik">
-      <option name="closed" value="true" />
-      <created>1785836772651</created>
-      <option name="number" value="00913" />
-      <option name="presentableId" value="LOCAL-00913" />
-      <option name="project" value="LOCAL" />
-      <updated>1785836772652</updated>
-    </task>
-    <task id="LOCAL-00914" summary="ugedags statestik nu med pdf">
-      <option name="closed" value="true" />
-      <created>1785837525050</created>
-      <option name="number" value="00914" />
-      <option name="presentableId" value="LOCAL-00914" />
-      <option name="project" value="LOCAL" />
-      <updated>1785837525050</updated>
     </task>
     <task id="LOCAL-00915" summary="ugedags statestik nu med pdf tilføjet grafer">
       <option name="closed" value="true" />
@@ -471,7 +455,23 @@
       <option name="project" value="LOCAL" />
       <updated>1788245862329</updated>
     </task>
-    <option name="localTasksCounter" value="962" />
+    <task id="LOCAL-00962" summary="ny in out pdf">
+      <option name="closed" value="true" />
+      <created>1788416657210</created>
+      <option name="number" value="00962" />
+      <option name="presentableId" value="LOCAL-00962" />
+      <option name="project" value="LOCAL" />
+      <updated>1788416657212</updated>
+    </task>
+    <task id="LOCAL-00963" summary="Landekode ISO format">
+      <option name="closed" value="true" />
+      <created>1788450336833</created>
+      <option name="number" value="00963" />
+      <option name="presentableId" value="LOCAL-00963" />
+      <option name="project" value="LOCAL" />
+      <updated>1788450336833</updated>
+    </task>
+    <option name="localTasksCounter" value="964" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -497,8 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="håndtering af cansl opdateret" />
-    <MESSAGE value="excel update" />
     <MESSAGE value="excel update og fjern omsætning" />
     <MESSAGE value="excel update og event retting tilføjet season" />
     <MESSAGE value="in and out værelse nr. heltal" />
@@ -522,6 +520,8 @@
     <MESSAGE value="event edit opdateret excel opdateret" />
     <MESSAGE value="registrerings scan updateret" />
     <MESSAGE value="scan kvalitet forbedret" />
-    <option name="LAST_COMMIT_MESSAGE" value="scan kvalitet forbedret" />
+    <MESSAGE value="ny in out pdf" />
+    <MESSAGE value="Landekode ISO format" />
+    <option name="LAST_COMMIT_MESSAGE" value="Landekode ISO format" />
   </component>
 </project>

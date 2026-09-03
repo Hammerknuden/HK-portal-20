@@ -646,7 +646,7 @@ else:
     telefon = st.text_input(" Kontakt telefon")
     email_address = st.text_input("email")
 
-    nationalitet = st.text_input("Nationalitet - DK S N NL etc")
+    nationalitet = st.text_input("Nationalitet - DK SE NO NL etc - ISO format")
 
     known_guest = st.checkbox("check for known person")
     known = "N"
