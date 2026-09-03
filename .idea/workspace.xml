@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="registrerings scan updateret" />
+    <list default="true" id="3eb6e16c-a79f-447b-a8a3-b146da3103f1" name="Changes" comment="scan kvalitet forbedret" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,14 +78,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1776349201573</updated>
-    </task>
-    <task id="LOCAL-00912" summary="timeline hover update web">
-      <option name="closed" value="true" />
-      <created>1785826889320</created>
-      <option name="number" value="00912" />
-      <option name="presentableId" value="LOCAL-00912" />
-      <option name="project" value="LOCAL" />
-      <updated>1785826889320</updated>
     </task>
     <task id="LOCAL-00913" summary="ugedags statestik">
       <option name="closed" value="true" />
@@ -471,7 +463,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788175626946</updated>
     </task>
-    <option name="localTasksCounter" value="961" />
+    <task id="LOCAL-00961" summary="scan kvalitet forbedret">
+      <option name="closed" value="true" />
+      <created>1788245862329</created>
+      <option name="number" value="00961" />
+      <option name="presentableId" value="LOCAL-00961" />
+      <option name="project" value="LOCAL" />
+      <updated>1788245862329</updated>
+    </task>
+    <option name="localTasksCounter" value="962" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -497,7 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="omsætning morgenmad rettet til netto og med given rabat" />
     <MESSAGE value="håndtering af cansl opdateret" />
     <MESSAGE value="excel update" />
     <MESSAGE value="excel update og fjern omsætning" />
@@ -522,6 +521,7 @@
     <MESSAGE value="Egne booking sorteret med known gengangere - justeret" />
     <MESSAGE value="event edit opdateret excel opdateret" />
     <MESSAGE value="registrerings scan updateret" />
-    <option name="LAST_COMMIT_MESSAGE" value="registrerings scan updateret" />
+    <MESSAGE value="scan kvalitet forbedret" />
+    <option name="LAST_COMMIT_MESSAGE" value="scan kvalitet forbedret" />
   </component>
 </project>

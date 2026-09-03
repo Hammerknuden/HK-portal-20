@@ -20,6 +20,61 @@ from reportlab.platypus import (
 BLUE = colors.HexColor("#2F75B5")
 
 
+def build_turnover_table(departures, arrivals):
+    """Keep each departure and add details from its room's next arrival."""
+    columns = ["Udcheck", "Værelse", "Booking nr.", "Næste indcheck", "Land", "Seng", "Enkelt"]
+    if departures.empty:
+        return pd.DataFrame(columns=columns)
+    outgoing = departures.copy()
+    incoming = arrivals.copy()
+    outgoing["checkout_date"] = pd.to_datetime(outgoing["checkout_date"], errors="coerce")
+    outgoing["room_number"] = pd.to_numeric(outgoing["room_number"], errors="coerce").astype("Int64")
+    if not incoming.empty:
+        incoming["checkin_date"] = pd.to_datetime(incoming["checkin_date"], errors="coerce")
+        incoming["room_number"] = pd.to_numeric(incoming["room_number"], errors="coerce").astype("Int64")
+        incoming = incoming.sort_values("checkin_date", kind="stable")
+    rows = []
+    for _, departure in outgoing.sort_values(["checkout_date", "room_number"]).iterrows():
+        details = [pd.NaT, "", "", ""]
+        if not incoming.empty:
+            matches = incoming[
+                (incoming["room_number"] == departure["room_number"])
+                & (incoming["checkin_date"] >= departure["checkout_date"])
+            ]
+            if not matches.empty:
+                next_arrival = matches.iloc[0]
+                details = [next_arrival.get(key, "") for key in ("checkin_date", "nation", "bed", "enkelt")]
+        rows.append([departure["checkout_date"], departure["room_number"], departure["booking_number"], *details])
+    return pd.DataFrame(rows, columns=columns)
+
+
+def create_turnover_pdf(frame, period_start, period_end):
+    """Large-print room turnover list; never shrink text to fit more rows."""
+    buffer = BytesIO()
+    document = SimpleDocTemplate(
+        buffer, pagesize=landscape(A4),
+        leftMargin=12 * mm, rightMargin=12 * mm,
+        topMargin=10 * mm, bottomMargin=10 * mm,
+        title="Værelsesskift - stor skrift",
+        author="Hammerknuden Sommerpension",
+    )
+    styles = getSampleStyleSheet()
+    cell = ParagraphStyle("TurnoverCell", fontName="Helvetica", fontSize=14, leading=17)
+    header = ParagraphStyle("TurnoverHeader", parent=cell, fontName="Helvetica-Bold")
+    story = [
+        Paragraph("Værelsesskift - afrejse og næste ankomst", styles["Heading1"]),
+        Paragraph(f"Periode: {period_start:%d-%m-%Y} - {period_end:%d-%m-%Y}", styles["Normal"]),
+        Paragraph("Booking nr. gælder den afrejsende. Land, seng og enkelt gælder den næste ankommende.", styles["Normal"]),
+        Spacer(1, 5 * mm),
+    ]
+    if frame.empty:
+        story.append(Paragraph("Ingen udcheckninger i perioden.", cell))
+    else:
+        story.append(_styled_table(frame, header, cell, [width * mm for width in (36, 25, 46, 43, 33, 46, 38)]))
+    document.build(story)
+    return buffer.getvalue()
+
+
 def _cell_text(value):
     if pd.isna(value):
         return ""

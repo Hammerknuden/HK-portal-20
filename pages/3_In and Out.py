@@ -10,7 +10,7 @@ from supabase import create_client
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from common import exclude_cancelled_bookings
-from modules.in_out_pdf import create_in_out_pdf
+from modules.in_out_pdf import build_turnover_table, create_in_out_pdf, create_turnover_pdf
 
 st.set_page_config(page_title="Ins and Outs", layout="wide")
 
@@ -123,7 +123,7 @@ result = (
 # Alle kommende indcheck bruges til at finde næste booking pr. værelse
 checkin_result = (
     supabase.table("hk_dtb")
-    .select("booking_number, checkin_date, room_number, web")
+    .select("booking_number, checkin_date, room_number, nation, bed, enkelt, web")
     .gte("checkin_date", str(check_dato_start))
     .order("checkin_date")
     .execute()
@@ -131,6 +131,7 @@ checkin_result = (
 
 df_afrejse = exclude_cancelled_bookings(pd.DataFrame(result.data))
 df_checkin = exclude_cancelled_bookings(pd.DataFrame(checkin_result.data))
+df_turnover_print = build_turnover_table(df_afrejse, df_checkin)
 
 if not df_afrejse.empty:
 
@@ -221,6 +222,13 @@ st.download_button(
     "📄 Download rapport",
     data=pdf_bytes,
     file_name=f"in_out_{check_dato_start.isoformat()}.pdf",
+    mime="application/pdf",
+)
+
+st.download_button(
+    "📄 Download værelsesskift – stor skrift (14 pt)",
+    data=create_turnover_pdf(df_turnover_print, check_dato_start, check_dato_slut),
+    file_name=f"vaerelsesskift_{check_dato_start.isoformat()}.pdf",
     mime="application/pdf",
 )
 
