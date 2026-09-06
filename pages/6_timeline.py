@@ -10,7 +10,7 @@ from common import init_session, exclude_cancelled_bookings
 import re
 import os
 from dotenv import load_dotenv
-from supabase import create_client
+from portal_access import get_database_client
 from importlib.metadata import version
 from modules.level2_optimizer import analyze_improvements
 from modules.level2_optimizer import can_swap_blocks
@@ -27,10 +27,7 @@ require_login()
 st.write(version("streamlit-authenticator"))
 load_dotenv()
 
-supabase = create_client(
-    st.secrets["SUPABASE_URL"],
-    st.secrets["SUPABASE_KEY"]
-)
+supabase = get_database_client()
 
 #####
 # new database

@@ -20,7 +20,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.graphics.charts.barcharts import VerticalBarChart
 from reportlab.graphics.shapes import Drawing
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
-from supabase import create_client
+from portal_access import get_database_client
 
 
 def create_checkin_weekday_pdf(season, middle_start, middle_end, pdf_periods):
@@ -178,10 +178,7 @@ require_login()
 
 load_dotenv()
 
-supabase = create_client(
-    st.secrets["SUPABASE_URL"],
-    st.secrets["SUPABASE_KEY"]
-)
+supabase = get_database_client()
 
 try:
     all_rows = []

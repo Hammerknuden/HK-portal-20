@@ -15,7 +15,7 @@ from reportlab.platypus import (
     Paragraph,
     Spacer,
 )
-from supabase import create_client
+from portal_access import get_database_client
 
 sys.path.append(
     str(Path(__file__).resolve().parents[1])
@@ -36,13 +36,8 @@ st.subheader("Antal personer til morgenmad")
 
 load_dotenv()
 
-SUPABASE_URL = st.secrets["SUPABASE_URL"]
-SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 
-supabase = create_client(
-    SUPABASE_URL,
-    SUPABASE_KEY
-)
+supabase = get_database_client()
 
 # -------------------------
 # Vælg periode

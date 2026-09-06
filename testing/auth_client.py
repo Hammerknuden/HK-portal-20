@@ -23,6 +23,14 @@ def is_test_admin(user, admin_ids):
     return bool(user and user.get("id") in admin_ids)
 
 
+def resolve_role(user, admin_ids, user_ids):
+    if is_test_admin(user, admin_ids):
+        return "admin"
+    if user and user.get("id") in user_ids:
+        return "user"
+    return None
+
+
 class AuthClient:
     def __init__(self, url, key):
         self.rest_url = url.rstrip("/") + "/rest/v1"

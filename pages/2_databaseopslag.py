@@ -2,7 +2,7 @@ import streamlit as st
 from auth import require_login
 import pandas as pd
 from dotenv import load_dotenv
-from supabase import create_client
+from portal_access import get_database_client
 
 
 TABLE_NAME = "historie_new"
@@ -12,10 +12,7 @@ require_login()
 
 load_dotenv()
 
-supabase = create_client(
-    st.secrets["SUPABASE_URL"],
-    st.secrets["SUPABASE_KEY"]
-)
+supabase = get_database_client()
 
 try:
     supabase.table(TABLE_NAME).select("id").limit(1).execute()

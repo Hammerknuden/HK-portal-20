@@ -5,7 +5,7 @@ from pathlib import Path
 import sys
 from datetime import date, timedelta
 from dotenv import load_dotenv
-from supabase import create_client
+from portal_access import get_database_client
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
@@ -26,10 +26,8 @@ st.subheader("De næste dages ankomster og afrejser ")
 
 load_dotenv()
 
-SUPABASE_URL = st.secrets["SUPABASE_URL"]
-SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+supabase = get_database_client()
 
 st.success("Forbindelse OK")
 

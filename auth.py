@@ -27,6 +27,10 @@ authenticator = stauth.Authenticate(
 
 
 def require_login():
+    from portal_access import uses_supabase_auth, require_test_user
+    if uses_supabase_auth():
+        require_test_user()
+        return
 
     defaults = {
         "authentication_status": None,
@@ -68,6 +72,10 @@ def require_login():
 
 
 def require_admin():
+    from portal_access import uses_supabase_auth, require_test_user
+    if uses_supabase_auth():
+        require_test_user(admin=True)
+        return
     if not st.session_state.get("authentication_status"):
         st.error("Ikke logget ind")
         st.stop()

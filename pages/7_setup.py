@@ -12,20 +12,15 @@ if str(PROJECT_ROOT) not in sys.path:
 from auth import require_login, require_admin
 from modules.price_development import PRICE_FIELDS, build_price_development
 from modules.price_sheet import create_price_sheet_pdf
-from supabase import create_client
+from portal_access import get_database_client
 
 
 st.set_page_config(page_title="Setup", layout="wide")
 require_login()
 require_admin()
 
-SUPABASE_URL = st.secrets["SUPABASE_URL"]
-SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 
-supabase = create_client(
-    SUPABASE_URL,
-    SUPABASE_KEY
-)
+supabase = get_database_client()
 
 st.success("Forbindelse til Supabase OK")
 

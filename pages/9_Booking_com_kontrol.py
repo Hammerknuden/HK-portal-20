@@ -21,7 +21,7 @@ from modules.guest_scan import (
     normalize_pdf_to_a4,
     validate_pdf,
 )
-from supabase import create_client
+from portal_access import get_database_client
 
 
 GUEST_REGISTRATION_BUCKET = "guest-registrations"
@@ -33,10 +33,7 @@ require_admin()
 
 st.title("Booking.com-kontrol")
 
-supabase = create_client(
-    st.secrets["SUPABASE_URL"],
-    st.secrets["SUPABASE_KEY"],
-)
+supabase = get_database_client()
 
 with st.expander("Scan gæsteregistrering til privat Supabase Storage"):
     st.info(

@@ -20,17 +20,15 @@ import re
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 import os
 from dotenv import load_dotenv
-from supabase import create_client
+from portal_access import get_database_client
 
 
 st.set_page_config(page_title="Booking", layout="wide")
 
 load_dotenv()
 
-SUPABASE_URL = st.secrets["SUPABASE_URL"]
-SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+supabase = get_database_client()
 
 st.success("Forbindelse OK")
 
@@ -809,6 +807,10 @@ else:
     else:
         to_addr = [admin_email]
     #to_addr = "finnjorg@mail.dk"
+    from portal_access import uses_supabase_auth
+    if uses_supabase_auth():
+        st.info("Mailafsendelse og eksport er ikke aktiveret i testmiljøet.")
+        st.stop()
     confirmation_password = st.text_input("Admin kodeord")
     booking_submitted = st.button("Send booking mail")
 

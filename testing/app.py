@@ -1,6 +1,12 @@
 """Separate Streamlit entrypoint: no import of production auth or pages."""
+import sys
+import runpy
+from pathlib import Path
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 import streamlit as st
-from auth_client import AuthClient, TEST_TABLES, is_test_admin, validate_config
+from testing.auth_client import AuthClient, TEST_TABLES, resolve_role, validate_config
 
 st.set_page_config(page_title="HK – logintest", page_icon="🧪")
 st.title("HK – testmiljø")
@@ -18,9 +24,10 @@ except (KeyError, ValueError, FileNotFoundError):
     st.info("Udfyld testappens Secrets efter testing/secrets.example.toml.")
     st.stop()
 
+user_ids = st.secrets.get("TEST_USER_IDS", [])
 client = AuthClient(url, key)
 token_key = "test_auth_access_token"
-context = (url, key, tuple(sorted(admin_ids)))
+context = (url, key, tuple(sorted(admin_ids)), tuple(sorted(user_ids)))
 if st.session_state.get("test_auth_context") != context:
     st.session_state.pop(token_key, None)
     st.session_state["test_auth_context"] = context
@@ -38,7 +45,9 @@ if token_key not in st.session_state:
                 result = client.sign_in(email.strip(), password)
                 token = result["access_token"]
                 user = client.get_user(token)
-                if is_test_admin(user, admin_ids):
+                if resolve_role(user, admin_ids, user_ids):
+                    st.session_state.clear()
+                    st.session_state["test_auth_context"] = context
                     st.session_state[token_key] = token
                     st.rerun()
                 else:
@@ -46,7 +55,7 @@ if token_key not in st.session_state:
                         client.sign_out(token)
                     except Exception:
                         pass
-                    st.error("Brugeren har ikke administratoradgang til testappen.")
+                    st.error("Brugeren har ikke adgang til testappen.")
             except Exception:
                 st.error("Login kunne ikke gennemføres. Kontrollér oplysningerne og forbindelsen.")
     st.stop()
@@ -59,16 +68,20 @@ except Exception:
     st.button("Til login", on_click=lambda: None)
     st.stop()
 
-if not is_test_admin(user, admin_ids):
+role = resolve_role(user, admin_ids, user_ids)
+if not role:
     st.session_state.pop(token_key, None)
-    st.error("Ingen administratoradgang til testappen.")
+    st.error("Ingen adgang til testappen.")
     st.stop()
 
-st.success("Login bekræftet – du er testadministrator.")
+st.success("Login bekræftet – " + ("testadministrator" if role == "admin" else "almindelig testbruger"))
 st.write("E-mail:", user.get("email", ""))
 st.write("User UID:", user["id"])
 st.info("Rollen gælder kun denne testapp. Databasens adgangspolitikker er ikke ændret.")
-if st.button("Log ud"):
+if st.sidebar.button("Log ud"):
+    for session_key in list(st.session_state):
+        if session_key != token_key:
+            del st.session_state[session_key]
     token = st.session_state.pop(token_key)
     try:
         client.sign_out(token)
@@ -76,6 +89,28 @@ if st.button("Log ud"):
         st.warning("Du er logget ud lokalt, men serverens session kunne ikke afsluttes.")
         st.stop()
     st.rerun()
+
+st.sidebar.caption("TESTMILJØ · Læsetilstand")
+pages = {
+    "Adgangstest": None,
+    "Booking": "1_Booking.py",
+    "Databaseopslag": "2_databaseopslag.py",
+    "In and Out": "3_In and Out.py",
+    "Links": "4_Links.py",
+    "Breakfast": "5_breakfast.py",
+    "Timeline": "6_timeline.py",
+    "Statistik": "8_statestik.py",
+}
+if role == "admin":
+    pages.update({"Setup": "7_setup.py", "Booking.com-afstemning": "9_Booking_com_kontrol.py"})
+selected_page = st.sidebar.selectbox("Side", list(pages))
+if pages[selected_page]:
+    st.info("Testmiljøet er i læsetilstand. Lagring, sletning og mailafsendelse er ikke aktiveret.")
+    try:
+        runpy.run_path(str(ROOT / "pages" / pages[selected_page]), run_name="__test_page__")
+    except Exception:
+        st.error("Siden kunne ikke gennemføres. Kontrollér læseadgang på Adgangstest. Skrivehandlinger er blokeret i testmiljøet.")
+    st.stop()
 
 st.subheader("Test databaseadgang")
 st.caption("Tester public-tabeller med din indloggede bruger. Ingen data ændres.")
