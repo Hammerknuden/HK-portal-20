@@ -33,6 +33,39 @@ class TestIsolatedAuth(unittest.TestCase):
         self.assertEqual(kwargs["headers"]["Authorization"], "Bearer user-token")
         response.raise_for_status.assert_called_once()
 
+    @patch("testing.auth_client.requests.request")
+    def test_probe_uses_user_session_and_does_not_return_data(self, request):
+        request.return_value = Mock(status_code=200)
+        request.return_value.json.return_value = [{"navn": "Private guest"}]
+        result = AuthClient("https://example.supabase.co", "sb_publishable_test").probe_table("hk_dtb", "user-token")
+        args, kwargs = request.call_args
+        self.assertEqual(args[0], "GET")
+        self.assertEqual(kwargs["params"]["limit"], "1")
+        self.assertEqual(kwargs["headers"]["Authorization"], "Bearer user-token")
+        self.assertNotIn("Private guest", str(result))
+        self.assertIn("bekræftet", result["Resultat"])
+
+    @patch("testing.auth_client.requests.request")
+    def test_empty_probe_does_not_claim_access_denied(self, request):
+        request.return_value = Mock(status_code=200)
+        request.return_value.json.return_value = []
+        result = AuthClient("https://example.supabase.co", "sb_publishable_test").probe_table("historie_new", "token")
+        self.assertIn("tom eller filtreret", result["Resultat"])
+
+    @patch("testing.auth_client.requests.request")
+    def test_denied_probe(self, request):
+        request.return_value = Mock(status_code=403)
+        result = AuthClient("https://example.supabase.co", "sb_publishable_test").probe_table("hk_dtb", "token")
+        self.assertIn("afvist", result["Resultat"])
+
+    @patch("testing.auth_client.requests.request")
+    def test_probe_rejects_unknown_table_and_missing_session(self, request):
+        client = AuthClient("https://example.supabase.co", "sb_publishable_test")
+        for table, token in [("auth/users", "token"), ("hk_dtb", "")]:
+            with self.assertRaises(ValueError):
+                client.probe_table(table, token)
+        request.assert_not_called()
+
 
 if __name__ == "__main__":
     unittest.main()

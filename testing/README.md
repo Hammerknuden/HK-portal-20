@@ -2,7 +2,11 @@
 
 Denne selvstændige app tester e-mail/adgangskode og en serverstyret liste over
 testadministratorer. Den importerer ikke produktionsappens auth.py eller pages/.
-Den læser eller ændrer ikke bookingtabeller eller Storage. Auth-login og logout
+Den kan teste læseadgang til public-tabeller med brugerens session via knappen
+Test læseadgang. Højst én række hentes pr. tabel, og kun status vises, aldrig
+gæsteoplysninger. Tomme svar kan skyldes enten tomme tabeller eller RLS-filtrering.
+Testen beviser ikke skriveadgang eller adgang til alle rækker. Den ændrer ikke
+bookingtabeller, adgangspolitikker eller Storage. Auth-login og logout
 opretter og afslutter dog sessioner i det valgte Supabase-projekt.
 
 ## Streamlit Cloud

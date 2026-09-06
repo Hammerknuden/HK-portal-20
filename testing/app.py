@@ -1,10 +1,10 @@
 """Separate Streamlit entrypoint: no import of production auth or pages."""
 import streamlit as st
-from auth_client import AuthClient, is_test_admin, validate_config
+from auth_client import AuthClient, TEST_TABLES, is_test_admin, validate_config
 
 st.set_page_config(page_title="HK – logintest", page_icon="🧪")
 st.title("HK – testmiljø")
-st.caption("Test af Supabase-login. Bookingdata og dokumenter er ikke tilkoblet.")
+st.caption("Test af Supabase-login og læseadgang til databasen.")
 
 try:
     if st.secrets.get("APP_ENV") != "test":
@@ -76,3 +76,19 @@ if st.button("Log ud"):
         st.warning("Du er logget ud lokalt, men serverens session kunne ikke afsluttes.")
         st.stop()
     st.rerun()
+
+st.subheader("Test databaseadgang")
+st.caption("Tester public-tabeller med din indloggede bruger. Ingen data ændres.")
+st.write("Supabase-projekt:", url)
+selected_tables = st.multiselect("Tabeller", TEST_TABLES, default=list(TEST_TABLES))
+if st.button("Test læseadgang", disabled=not selected_tables):
+    with st.spinner("Kontrollerer adgang …"):
+        results = [client.probe_table(table, st.session_state[token_key])
+                   for table in selected_tables]
+    st.dataframe(results, hide_index=True, use_container_width=True)
+    st.info(
+        "Ingen synlige rækker er ikke bevis for manglende adgang: tabellen kan være tom, "
+        "eller RLS kan skjule rækkerne. En synlig række bekræfter kun læseadgang til "
+        "mindst én række, ikke alle rækker eller adgang til at skrive og slette."
+    )
+    st.caption("Der hentes højst én række pr. tabel. Gæsteoplysninger vises ikke.")

@@ -1,8 +1,10 @@
-"""Isolated Auth-only client. Never uses the portal's privileged database key."""
+"""Isolated test client. Never uses the portal's privileged database key."""
 from urllib.parse import urlparse
 from uuid import UUID
 
 import requests
+
+TEST_TABLES = ("hk_dtb", "historie_new", "bookin_pace", "high_season", "breakfast_notes", "Events")
 
 
 def validate_config(url, key, admin_ids):
@@ -23,6 +25,7 @@ def is_test_admin(user, admin_ids):
 
 class AuthClient:
     def __init__(self, url, key):
+        self.rest_url = url.rstrip("/") + "/rest/v1"
         self.url = url.rstrip("/") + "/auth/v1"
         self.key = key
 
@@ -46,3 +49,31 @@ class AuthClient:
 
     def sign_out(self, token):
         return self._request("POST", "/logout?scope=local", token=token)
+
+    def probe_table(self, table, token):
+        """Read at most one visible row; never return guest data or raw errors."""
+        if table not in TEST_TABLES or not token:
+            raise ValueError("Vælg en kendt tabel og log ind først.")
+        try:
+            response = requests.request(
+                "GET", self.rest_url + "/" + table,
+                headers={"apikey": self.key, "Authorization": "Bearer " + token,
+                         "Accept-Profile": "public"},
+                params={"select": "*", "limit": "1"}, timeout=15,
+            )
+            status = response.status_code
+            if status == 200:
+                rows = response.json()
+                if not isinstance(rows, list):
+                    return {"Tabel": table, "HTTP": status, "Resultat": "Uventet svar"}
+                message = ("Læseadgang bekræftet: mindst én synlig række" if rows else
+                           "Ingen synlige rækker: tabellen kan være tom eller filtreret af RLS")
+            elif status in (401, 403):
+                message = "Adgang afvist eller session ugyldig"
+            elif status == 404:
+                message = "Tabel ikke fundet eller ikke tilgængelig via API"
+            else:
+                message = "Forespørgslen fejlede; adgang er ikke afklaret"
+            return {"Tabel": table, "HTTP": status, "Resultat": message}
+        except (requests.RequestException, ValueError):
+            return {"Tabel": table, "HTTP": "–", "Resultat": "Forbindelsesfejl eller ugyldigt svar; prøv igen"}
