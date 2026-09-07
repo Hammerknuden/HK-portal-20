@@ -71,6 +71,16 @@ def require_login():
 #    authenticator.logout('Logout', 'sidebar')
 
 
+def is_admin():
+    from portal_access import uses_supabase_auth, require_test_user
+    if uses_supabase_auth():
+        user = require_test_user()
+        return user["id"] in st.secrets.get("TEST_ADMIN_USER_IDS", [])
+    return bool(st.session_state.get("authentication_status")) and str(
+        st.session_state.get("username") or ""
+    ).lower() in ADMIN_USERNAMES
+
+
 def require_admin():
     from portal_access import uses_supabase_auth, require_test_user
     if uses_supabase_auth():

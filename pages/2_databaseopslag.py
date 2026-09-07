@@ -1,5 +1,6 @@
 import streamlit as st
-from auth import require_login
+from auth import require_login, require_admin, is_admin
+from modules.guest_document import download_registration
 import pandas as pd
 from dotenv import load_dotenv
 from portal_access import get_database_client
@@ -39,7 +40,11 @@ season = st.number_input(
     help="Sæson bruges kun, når du søger på bookingnummer.",
 )
 
+search_values = (familie_navn, telefon, email, booking, int(season))
 if st.button("Søg"):
+    st.session_state["history_active_search"] = search_values
+
+if st.session_state.get("history_active_search") == search_values:
     try:
         if familie_navn.strip():
             result = (
@@ -90,6 +95,22 @@ if st.button("Søg"):
         if result.data:
             dataframe = pd.DataFrame(result.data).drop(columns=["created_at"], errors="ignore")
             st.dataframe(dataframe, use_container_width=True)
+            if is_admin():
+                for index, row in enumerate(result.data):
+                    path = row.get("storage_path")
+                    if not path:
+                        continue
+                    label = f"Gæsteregistrering – {row.get('season')} / booking {row.get('booking_nr')}"
+                    if st.button(label, key=f"guest_document_{index}"):
+                        try:
+                            filename, pdf = download_registration(supabase, path, require_admin)
+                            st.download_button(
+                                "Åbn / download PDF", data=pdf,
+                                file_name=filename, mime="application/pdf",
+                                key=f"guest_document_download_{index}", on_click="ignore",
+                            )
+                        except Exception:
+                            st.error("Dokumentet kunne ikke hentes. Kontrollér filstien og din Storage-adgang.")
         else:
             st.info("Ingen bookinger fundet.")
     except Exception as e:
