@@ -76,7 +76,8 @@ def build_booking_pace(legacy, history, live, seasons, today=None):
         if archived and rows.empty:
             messages.append(f"{year}: sæsonen er afsluttet, men historikken mangler.")
             continue
-        values = pd.Series(dtype=float)
+        # Keep a date index even when an open season has no bookings.
+        values = pd.Series(dtype=float, index=pd.DatetimeIndex([]))
         if not rows.empty:
             key = "booking_nr" if archived else "booking_number"
             rows = exclude_cancelled_bookings(rows, booking_column=key)

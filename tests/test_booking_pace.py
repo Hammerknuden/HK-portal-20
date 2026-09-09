@@ -32,6 +32,20 @@ class BookingPaceTests(unittest.TestCase):
         self.assertEqual(result.iloc[-1].sold_nights, 8)
         self.assertEqual(len(messages), 2)
 
+    def test_open_season_without_bookings_shows_zero_curve(self):
+        result, messages = self.build()
+        self.assertFalse(result.empty)
+        self.assertTrue(result.sold_nights.eq(0).all())
+        self.assertEqual(messages, [])
+
+    def test_future_empty_season_does_not_break_other_seasons(self):
+        result, messages = build_booking_pace([], [], [live(2027)],
+            [dict(season=2027, pace_archived=False),
+             dict(season=2028, pace_archived=False)], today=date(2027, 2, 1))
+        self.assertEqual(result[result.season_year.eq("2027")].iloc[-1].sold_nights, 3)
+        self.assertEqual(result[result.season_year.eq("2028")].sold_nights.tolist(), [0])
+        self.assertEqual(messages, [])
+
     def test_future_season_opening_balance_and_rollover(self):
         rows = [live(2027), live(2027, 2, booked='2027-01-15T12:00:00Z')]
         before, _ = self.build(current=rows, today=date(2026, 12, 31))
