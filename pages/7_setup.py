@@ -171,10 +171,12 @@ else:
     except (KeyError, TypeError, ValueError) as error:
         st.warning(f"Prisskemaet kunne ikke dannes: {error}")
 
-st.header("Booking pace – sæsonstatus")
+st.header("Afslut sæson")
 st.caption(
-    "Markér først sæsonen som afsluttet, når bookingerne er overført til historikken "
-    "og afstemt. Valget skifter datakilden; det kopierer eller sletter ingen bookinger."
+    "Afslutningen overfører sæsonens bookinger til historikken og skifter booking pace "
+    "til den afsluttede historik. Eksisterende historik opdateres med de endelige "
+    "bookingdatoer og værelsesnætter; gæstedokumenter bevares. "
+    "Bookingerne bliver også liggende i hk_dtb."
 )
 try:
     pace_status_rows = (
@@ -183,32 +185,27 @@ try:
     )
     pace_status_rows = [r for r in pace_status_rows if int(r["season"]) >= 2026]
     if pace_status_rows:
-        pace_year = st.selectbox("Sæson for booking pace", [int(r["season"]) for r in pace_status_rows])
+        pace_year = st.selectbox("Sæson der skal afsluttes", [int(r["season"]) for r in pace_status_rows])
         pace_current = next(r for r in pace_status_rows if int(r["season"]) == pace_year)
-        pace_archived = st.checkbox(
-            "Afsluttet – brug den afstemte historik",
-            value=bool(pace_current["pace_archived"]), key=f"pace_archived_{pace_year}",
-        )
-        st.caption("Åbne sæsoner beregnes dynamisk. Nye sæsoner starter som åbne.")
-        if st.button("Gem sæsonstatus"):
-            has_history = (
-                supabase.table("historie_new").select("id")
-                .eq("season", pace_year).limit(1).execute().data
-            ) if pace_archived else True
-            if not has_history:
-                st.error("Sæsonen kan ikke afsluttes: der er ingen bookinger i historikken.")
-            else:
-                supabase.table("high_season").update(
-                    {"pace_archived": pace_archived}
-                ).eq("season", pace_year).execute()
-                st.success(f"Booking pace-status for {pace_year} er gemt.")
+        if pace_current["pace_archived"]:
+            st.success(f"Sæson {pace_year} er afsluttet. Booking pace bruger historikken.")
+        else:
+            st.info(f"Sæson {pace_year} er åben. Booking pace bruger aktuelle bookinger.")
+            ready_to_close = st.checkbox(
+                f"Sæson {pace_year} er færdig og klar til arkivering",
+                key=f"ready_to_close_{pace_year}",
+            )
+            if st.button("Afslut sæson og overfør til historik", disabled=not ready_to_close):
+                try:
+                    with st.spinner("Overfører og afstemmer sæsonen …"):
+                        result = supabase.rpc("close_booking_season", {"p_season": pace_year}).execute()
+                    st.rerun()
+                except Exception as error:
+                    st.error(f"Sæsonafslutningen blev ikke bekræftet. Genindlæs siden for status. {error}")
     else:
         st.info("Der er ingen sæsoner fra 2026 i sæsonopsætningen.")
 except Exception:
-    st.warning(
-        "Booking pace-status kunne ikke læses eller gemmes. Kontrollér databaseadgang "
-        "og at migrationen 20260909_booking_pace_season_status.sql er kørt."
-    )
+    st.warning("Sæsonstatus kunne ikke hentes. Kontrollér databaseadgang og sæsonmigrationerne.")
 
 st.header("Administrer events")
 st.write("Brug farven 'blue' til events som wonder, FM , brug 'green' til familie og brug 'grey' til helligdage ")
