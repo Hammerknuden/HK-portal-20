@@ -21,7 +21,7 @@ from reportlab.graphics.charts.barcharts import VerticalBarChart
 from reportlab.graphics.shapes import Drawing
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from portal_access import get_database_client
-from modules.booking_pace import build_booking_pace, fetch_pace_rows
+from modules.booking_pace import build_booking_pace, fetch_pace_rows, normalize_season_rows
 
 
 def create_checkin_weekday_pdf(season, middle_start, middle_end, pdf_periods):
@@ -354,6 +354,9 @@ st.subheader("Booking pace")
 pace_step = "Hent sæsonstatus fra high_season"
 try:
     pace_seasons = supabase.table("high_season").select("season, pace_archived").execute().data or []
+    pace_seasons, season_warnings = normalize_season_rows(pace_seasons, "Sæsonopsætning")
+    for message in season_warnings:
+        st.warning(message)
     pace_step = "Hent historiske pace-tal fra bookin_pace"
     pace_legacy = fetch_pace_rows(supabase, "bookin_pace", "*")
     pace_history = []

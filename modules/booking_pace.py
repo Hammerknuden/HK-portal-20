@@ -6,6 +6,24 @@ import pandas as pd
 from common import exclude_cancelled_bookings
 
 
+def normalize_season_rows(rows, source):
+    """Keep valid integral years without mutating database rows or guessing years."""
+    valid, invalid = [], 0
+    for row in rows:
+        value = row.get("season")
+        try:
+            year = float(value)
+            if isinstance(value, bool) or not year.is_integer() or not 1 <= year <= 9999:
+                raise ValueError("Invalid season")
+        except (TypeError, ValueError, OverflowError):
+            invalid += 1
+            continue
+        valid.append({**row, "season": int(year)})
+    messages = ([f"{source}: {invalid} rækker uden gyldigt sæsonår er udeladt."]
+                if invalid else [])
+    return valid, messages
+
+
 def fetch_pace_rows(client, table, columns, **filters):
     rows = []
     while True:
@@ -27,6 +45,12 @@ def build_booking_pace(legacy, history, live, seasons, today=None):
     """
     today = today or date.today()
     messages, frames = [], []
+    seasons, warnings = normalize_season_rows(seasons, "Sæsonopsætning")
+    messages.extend(warnings)
+    history, warnings = normalize_season_rows(history, "Historik")
+    messages.extend(warnings)
+    live, warnings = normalize_season_rows(live, "Aktuelle bookinger")
+    messages.extend(warnings)
     old = pd.DataFrame(legacy)
     if not old.empty:
         for col in ("season_year", "week_number", "sold_nights"):

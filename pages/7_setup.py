@@ -13,6 +13,7 @@ from auth import require_login, require_admin
 from modules.price_development import PRICE_FIELDS, build_price_development
 from modules.price_sheet import create_price_sheet_pdf
 from portal_access import get_database_client
+from modules.booking_pace import normalize_season_rows
 
 
 st.set_page_config(page_title="Setup", layout="wide")
@@ -40,7 +41,9 @@ price_result = (
     .execute()
 )
 
-price_rows = price_result.data or []
+price_rows, season_warnings = normalize_season_rows(price_result.data or [], "Sæsonopsætning")
+for message in season_warnings:
+    st.warning(message)
 
 if not price_rows:
     st.warning("Der er ingen sæsoner i high_season-tabellen")
@@ -183,6 +186,9 @@ try:
         supabase.table("high_season").select("season, pace_archived")
         .order("season").execute().data or []
     )
+    pace_status_rows, season_warnings = normalize_season_rows(pace_status_rows, "Sæsonopsætning")
+    for message in season_warnings:
+        st.warning(message)
     pace_status_rows = [r for r in pace_status_rows if int(r["season"]) >= 2026]
     if pace_status_rows:
         pace_year = st.selectbox("Sæson der skal afsluttes", [int(r["season"]) for r in pace_status_rows])

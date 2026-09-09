@@ -15,6 +15,23 @@ class BookingPaceTests(unittest.TestCase):
         return build_booking_pace([], history or [], current or [],
                                   [dict(season=2027, pace_archived=archived)], today)
 
+    def test_missing_season_does_not_break_valid_live_curve(self):
+        for bad_year in (None, "", "unknown", float("nan"), 2027.5):
+            with self.subTest(year=bad_year):
+                invalid = {**live(2027), "season": bad_year}
+                result, messages = self.build(current=[live(2027), invalid])
+                self.assertEqual(result.iloc[-1].sold_nights, 3)
+                self.assertTrue(any("sæsonår" in m for m in messages))
+
+    def test_missing_season_in_history_and_settings(self):
+        history = [dict(season=2027, booking_nr=1, web="web",
+                        booking_date="2026-12-10T12:00:00Z", room_nights=8),
+                   dict(season=None)]
+        result, messages = build_booking_pace([], history, [],
+            [dict(season=None, pace_archived=True), dict(season="2027", pace_archived=True)])
+        self.assertEqual(result.iloc[-1].sold_nights, 8)
+        self.assertEqual(len(messages), 2)
+
     def test_future_season_opening_balance_and_rollover(self):
         rows = [live(2027), live(2027, 2, booked='2027-01-15T12:00:00Z')]
         before, _ = self.build(current=rows, today=date(2026, 12, 31))
