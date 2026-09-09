@@ -351,33 +351,41 @@ with known_col:
 
 st.subheader("Booking pace")
 
+pace_step = "Hent sæsonstatus fra high_season"
 try:
     pace_seasons = supabase.table("high_season").select("season, pace_archived").execute().data or []
+    pace_step = "Hent historiske pace-tal fra bookin_pace"
     pace_legacy = fetch_pace_rows(supabase, "bookin_pace", "*")
     pace_history = []
     for season in pace_seasons:
         if int(season["season"]) >= 2026 and season["pace_archived"]:
+            pace_step = f"Hent historik for {season['season']} fra historie_new"
             pace_history.extend(fetch_pace_rows(
                 supabase, "historie_new",
                 "id, season, booking_nr, booking_date, room_nights, web",
                 season=int(season["season"]),
             ))
+    pace_step = "Hent aktuelle bookinger fra hk_dtb"
     pace_live = fetch_pace_rows(
         supabase, "hk_dtb",
         "id, season, booking_number, booking_date, checkin_date, checkout_date, web",
     )
+    pace_step = "Beregn booking pace"
     pace_df, pace_messages = build_booking_pace(
         pace_legacy, pace_history, pace_live, pace_seasons,
     )
     for message in pace_messages:
         st.warning(message)
-except Exception:
+except Exception as error:
     pace_df = pd.DataFrame()
     st.error(
         "Booking pace kunne ikke hentes. Kontrollér databaseadgang og at "
         "migrationen 20260909_booking_pace_season_status.sql er kørt, "
         "samt at historikken har booking_date og room_nights."
     )
+    st.caption(f"Fejlen opstod ved: {pace_step}")
+    with st.expander("Tekniske fejldetaljer"):
+        st.text(f"{type(error).__name__}: {getattr(error, 'message', str(error))}")
 
 if pace_df.empty:
     st.info("Der er ingen booking pace-data at vise.")
