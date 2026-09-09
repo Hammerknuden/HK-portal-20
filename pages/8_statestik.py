@@ -21,6 +21,7 @@ from reportlab.graphics.charts.barcharts import VerticalBarChart
 from reportlab.graphics.shapes import Drawing
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from portal_access import get_database_client
+from modules.booking_pace import build_booking_pace, fetch_pace_rows
 
 
 def create_checkin_weekday_pdf(season, middle_start, middle_end, pdf_periods):
@@ -350,40 +351,43 @@ with known_col:
 
 st.subheader("Booking pace")
 
-response = (
-    supabase.table("bookin_pace")
-    .select("*")
-    .execute()
-)
+try:
+    pace_seasons = supabase.table("high_season").select("season, pace_archived").execute().data or []
+    pace_legacy = fetch_pace_rows(supabase, "bookin_pace", "*")
+    pace_history = []
+    for season in pace_seasons:
+        if int(season["season"]) >= 2026 and season["pace_archived"]:
+            pace_history.extend(fetch_pace_rows(
+                supabase, "historie_new",
+                "id, season, booking_nr, booking_date, room_nights, web",
+                season=int(season["season"]),
+            ))
+    pace_live = fetch_pace_rows(
+        supabase, "hk_dtb",
+        "id, season, booking_number, booking_date, checkin_date, checkout_date, web",
+    )
+    pace_df, pace_messages = build_booking_pace(
+        pace_legacy, pace_history, pace_live, pace_seasons,
+    )
+    for message in pace_messages:
+        st.warning(message)
+except Exception:
+    pace_df = pd.DataFrame()
+    st.error(
+        "Booking pace kunne ikke hentes. Kontrollér databaseadgang og at "
+        "migrationen 20260909_booking_pace_season_status.sql er kørt, "
+        "samt at historikken har booking_date og room_nights."
+    )
 
-pace_df = pd.DataFrame(response.data)
 if pace_df.empty:
     st.info("Der er ingen booking pace-data at vise.")
 else:
-    pace_df["week_number"] = pd.to_numeric(
-        pace_df["week_number"], errors="coerce"
+    st.caption(
+        "Til og med 2025: historiske pace-tal. Fra 2026: afsluttede sæsoner "
+        "fra historikken og åbne sæsoner fra aktuelle bookinger. "
+        "Annulleringer fjernes fra hele den åbne sæsons kurve. "
+        "Uge 0 viser bookinger fra før sæsonåret; fremtidige sæsoner viser saldoen pr. i dag."
     )
-    pace_df["season_year"] = pd.to_numeric(
-        pace_df["season_year"], errors="coerce"
-    )
-    pace_df["sold_nights"] = pd.to_numeric(
-        pace_df["sold_nights"], errors="coerce"
-    )
-    pace_df = pace_df.dropna(
-        subset=["week_number", "season_year", "sold_nights"]
-    )
-
-    # Supabase garanterer ikke rækkefølgen uden en eksplicit sortering.
-    # Behold den senest indsatte række, hvis samme sæson/uge forekommer flere gange.
-    if "id" in pace_df.columns:
-        pace_df["id"] = pd.to_numeric(pace_df["id"], errors="coerce")
-        pace_df = pace_df.sort_values("id", na_position="first")
-    pace_df = pace_df.drop_duplicates(
-        subset=["season_year", "week_number"], keep="last"
-    )
-    pace_df = pace_df.sort_values(["season_year", "week_number"])
-    pace_df["season_year"] = pace_df["season_year"].astype(int).astype(str)
-
     fig = px.line(
         pace_df,
         x="week_number",

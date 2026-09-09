@@ -171,6 +171,45 @@ else:
     except (KeyError, TypeError, ValueError) as error:
         st.warning(f"Prisskemaet kunne ikke dannes: {error}")
 
+st.header("Booking pace – sæsonstatus")
+st.caption(
+    "Markér først sæsonen som afsluttet, når bookingerne er overført til historikken "
+    "og afstemt. Valget skifter datakilden; det kopierer eller sletter ingen bookinger."
+)
+try:
+    pace_status_rows = (
+        supabase.table("high_season").select("season, pace_archived")
+        .order("season").execute().data or []
+    )
+    pace_status_rows = [r for r in pace_status_rows if int(r["season"]) >= 2026]
+    if pace_status_rows:
+        pace_year = st.selectbox("Sæson for booking pace", [int(r["season"]) for r in pace_status_rows])
+        pace_current = next(r for r in pace_status_rows if int(r["season"]) == pace_year)
+        pace_archived = st.checkbox(
+            "Afsluttet – brug den afstemte historik",
+            value=bool(pace_current["pace_archived"]), key=f"pace_archived_{pace_year}",
+        )
+        st.caption("Åbne sæsoner beregnes dynamisk. Nye sæsoner starter som åbne.")
+        if st.button("Gem sæsonstatus"):
+            has_history = (
+                supabase.table("historie_new").select("id")
+                .eq("season", pace_year).limit(1).execute().data
+            ) if pace_archived else True
+            if not has_history:
+                st.error("Sæsonen kan ikke afsluttes: der er ingen bookinger i historikken.")
+            else:
+                supabase.table("high_season").update(
+                    {"pace_archived": pace_archived}
+                ).eq("season", pace_year).execute()
+                st.success(f"Booking pace-status for {pace_year} er gemt.")
+    else:
+        st.info("Der er ingen sæsoner fra 2026 i sæsonopsætningen.")
+except Exception:
+    st.warning(
+        "Booking pace-status kunne ikke læses eller gemmes. Kontrollér databaseadgang "
+        "og at migrationen 20260909_booking_pace_season_status.sql er kørt."
+    )
+
 st.header("Administrer events")
 st.write("Brug farven 'blue' til events som wonder, FM , brug 'green' til familie og brug 'grey' til helligdage ")
 
