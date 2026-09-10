@@ -1,10 +1,8 @@
 import streamlit as st
 import pandas as pd
 from pathlib import Path
-import streamlit_authenticator as stauth
 import datetime
 from auth import require_login
-from common import init_session, exclude_cancelled_bookings
 import plotly.express as px
 import os
 import reportlab
@@ -21,6 +19,7 @@ from reportlab.graphics.charts.barcharts import VerticalBarChart
 from reportlab.graphics.shapes import Drawing
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from portal_access import get_database_client
+from modules.season_statistics import (MONTH_NAMES, read_statistics_history, season_reports, weekday_distribution)
 from modules.booking_pace import build_booking_pace, fetch_pace_rows, normalize_season_rows
 
 
@@ -181,173 +180,80 @@ load_dotenv()
 
 supabase = get_database_client()
 
+st.title("Statistik")
 try:
-    all_rows = []
-    offset = 0
-    page_size = 1000
+    season_settings = supabase.table("high_season").select("season, pace_archived").order("season").execute().data or []
+    season_settings, season_warnings = normalize_season_rows(season_settings, "Sæsonopsætning")
+    for message in season_warnings:
+        st.warning(message)
+    statistics_history = read_statistics_history(supabase)
+except Exception as error:
+    st.error("Statistik kunne ikke hentes. Kontrollér databaseadgang og at statistikmigrationerne er kørt.")
+    st.text(str(error))
+    st.stop()
 
-    while True:
-        response = (
-            supabase.table("hk_dtb")
-            .select("*")
-            .range(offset, offset + page_size - 1)
-            .execute()
-        )
+status_by_year = {int(r["season"]): bool(r["pace_archived"]) for r in season_settings if int(r["season"]) >= 2026}
+available_years = sorted(set(status_by_year) | {int(r["season"]) for r in statistics_history})
+if not available_years:
+    st.info("Der er ingen sæsoner at vise.")
+    st.stop()
+open_years = sorted(y for y, archived in status_by_year.items() if not archived)
+active_year = open_years[0] if open_years else available_years[-1]
+selected_season = st.selectbox("Vis sæson", available_years, index=available_years.index(active_year))
+selected_archived = status_by_year.get(selected_season, True)
+st.caption(f"{selected_season}: " + ("Historiske, gemte tal." if selected_archived else "Aktuelle tal – opdateres med bookingerne."))
+report_cache = {}
 
-        if not response.data:
-            break
 
-        all_rows.extend(response.data)
-        offset += page_size
+def get_reports(year):
+    if year not in report_cache:
+        report_cache[year] = season_reports(supabase, year, status_by_year.get(year, True), statistics_history)
+    return report_cache[year]
 
-    df = pd.DataFrame(all_rows)
 
-    # Fjern annullerede bookinger
-    df = exclude_cancelled_bookings(df)
+try:
+    reports, report_metadata = get_reports(selected_season)
+except Exception as error:
+    st.error("Statistikberegningen kunne ikke hentes. Kør 20260910_statistics_season_archive.sql i Supabase.")
+    st.text(str(error))
+    st.stop()
 
-    # Beregn antal nætter
-    df["checkin_date"] = pd.to_datetime(df["checkin_date"])
-    df["checkout_date"] = pd.to_datetime(df["checkout_date"])
 
-    df["nights"] = (
-        df["checkout_date"] - df["checkin_date"]
-    ).dt.days.clip(lower=0)
+def selected_report(name):
+    result = reports.get(name)
+    if result is None:
+        st.info(f"Denne opgørelse er ikke gemt for {selected_season}." +
+                (" Gem sæsonstatistikken i Setup." if selected_season >= 2026 else ""))
+    return result
 
-    # En række repræsenterer ét solgt værelse. Summen af nights er derfor
-    # solgte værelsesnætter (i modsætning til gæsteovernatninger nedenfor).
-    booking_seasons = pd.to_numeric(df["season"], errors="coerce")
-    sold_room_nights_2026 = int(
-        pd.to_numeric(
-            df.loc[booking_seasons.eq(2026), "nights"], errors="coerce"
-        ).fillna(0).sum()
-    )
 
-    df["overnatninger"] = (
-        pd.to_numeric(df["numb_guests"], errors="coerce").fillna(0)
-        * df["nights"]
-    )
-    bookings_df = df.copy()
-    df["nation"] = (
-        df["nation"]
-        .fillna("")
-        .astype(str)
-        .str.strip()
-    )
-
-    df = df[df["nation"] != ""]
-    # Statistik pr. land
-    stats = (
-        df.groupby("nation")
-        .agg(
-            ankomster=("numb_guests", "sum"),
-            overnatninger=("overnatninger", "sum")
-        )
-        .reset_index()
-    )
-
-    hovedlande = ["DK", "DE", "SE", "NO", "NL"]
-
-    stats["nation"] = stats["nation"].fillna("").str.upper()
-
-    stats["gruppe"] = stats["nation"].apply(
-        lambda x: x if x in hovedlande else "ANDRE"
-    )
-
-    rapport = (
-        stats.groupby("gruppe")
-        .agg({
-            "ankomster": "sum",
-            "overnatninger": "sum"
-        })
-        .reset_index()
-    )
-
-    st.success("Forbindelse OK")
-
-except Exception as e:
-    st.error(f"Fejl: {e}")
+quality = report_metadata.get("room_nights", {})
+if quality.get("invalid_rows", 0):
+    st.warning(f"{quality['invalid_rows']} rækker har ugyldige statistikoplysninger. Ret data før sæsonafslutning.")
+if quality.get("missing_country_rows", 0):
+    st.warning(f"{quality['missing_country_rows']} rækker mangler landekode og er udeladt af landefordelingen, men indgår i øvrige tal.")
 
 st.subheader("Rapport til Danmarks Statistik")
-st.caption(
-    "Annullerede bookinger (web = cansl) er filtreret fra i alle tal på siden."
-)
-st.metric(
-    "Solgte værelsesnætter i 2026",
-    f"{sold_room_nights_2026:,}".replace(",", "."),
-)
-st.dataframe(rapport)
+st.caption("Annullerede bookinger er filtreret fra. Alle tal i denne opgørelse gælder den valgte sæson.")
+room_nights_report = selected_report("room_nights")
+if room_nights_report is not None:
+    st.metric(f"Solgte værelsesnætter i {selected_season}", f"{int(room_nights_report['room_nights'].sum()):,}".replace(",", "."))
+country_report = selected_report("danmarks_statistik")
+if country_report is not None:
+    st.dataframe(country_report.rename(columns={"country_group": "Land", "arrivals": "Ankomster", "guest_nights": "Overnatninger"}), hide_index=True)
 
-st.subheader("Fordeling af solgte værelsesnætter i 2026")
-
-# Bookingkanaler
-
-# Brug samme år og samme definition som totalen ovenfor. Landefilteret til
-# Danmarks Statistik må ikke fjerne bookinger uden landekode herfra.
-kanal_seasons = pd.to_numeric(bookings_df["season"], errors="coerce")
-kanal_df = bookings_df[kanal_seasons.eq(2026)].copy()
-
-kanal_df["kanal"] = (
-    kanal_df["web"].fillna("").astype(str).str.upper().str.strip()
-)
-
-kanal_df["kanal"] = kanal_df["kanal"].apply(
-    lambda x: "Booking.com" if x == "BC" else "Egne bookinger"
-)
-
-kanal_stats = (
-    kanal_df.groupby("kanal")
-    .agg(
-        solgte_værelsesnætter=("nights", "sum")
-    )
-    .reset_index()
-)
-
-egne_bookinger = kanal_df[kanal_df["kanal"].eq("Egne bookinger")].copy()
-egne_bookinger["kendt_status"] = (
-    egne_bookinger["known"]
-    .fillna("")
-    .astype(str)
-    .str.upper()
-    .str.strip()
-    .isin(["Y", "YY"])
-    .map({True: "Tidligere besøgende", False: "Øvrige egne bookinger"})
-)
-
-# Brug solgte værelsesnætter ligesom i kanalfordelingen, så de to grafer
-# viser samme måleenhed og kan sammenlignes direkte.
-egne_booking_stats = (
-    egne_bookinger.groupby("kendt_status")
-    .agg(solgte_værelsesnætter=("nights", "sum"))
-    .reset_index()
-)
-
+st.subheader(f"Fordeling af solgte værelsesnætter i {selected_season}")
 kanal_col, known_col = st.columns(2)
-
 with kanal_col:
-    st.write(kanal_stats)
-    kanal_fig = px.pie(
-        kanal_stats,
-        names="kanal",
-        values="solgte_værelsesnætter",
-        title="Andel af solgte værelsesnætter fra Booking.com i 2026",
-    )
-    st.plotly_chart(kanal_fig, use_container_width=True)
-
+    channels = selected_report("booking_channels")
+    if channels is not None and not channels.empty:
+        st.dataframe(channels.rename(columns={"channel": "Kanal", "room_nights": "Værelsesnætter"}), hide_index=True)
+        st.plotly_chart(px.pie(channels, names="channel", values="room_nights", title=f"Bookingkanaler i {selected_season}"), use_container_width=True)
 with known_col:
-    if egne_booking_stats.empty:
-        st.info("Der er ingen egne bookinger i 2026.")
-    else:
-        st.write(egne_booking_stats)
-        known_fig = px.pie(
-            egne_booking_stats,
-            names="kendt_status",
-            values="solgte_værelsesnætter",
-            title=(
-                "Andel af egne solgte værelsesnætter med "
-                "tidligere besøgende "
-            ),
-        )
-        st.plotly_chart(known_fig, use_container_width=True)
+    returning = selected_report("returning_guests")
+    if returning is not None and not returning.empty:
+        st.dataframe(returning.rename(columns={"guest_group": "Gæstegruppe", "room_nights": "Værelsesnætter"}), hide_index=True)
+        st.plotly_chart(px.pie(returning, names="guest_group", values="room_nights", title="Tidligere besøgende blandt egne bookinger"), use_container_width=True)
 
 st.subheader("Booking pace")
 
@@ -428,253 +334,56 @@ else:
     )
     st.plotly_chart(fig, use_container_width=True)
 
-oms = st.checkbox("brutoomsætning")
+if st.checkbox("Bruttoomsætning"):
+    st.subheader("Omsætning pr. måned inkl. moms – alle sæsoner")
+    st.caption("Omsætningen fordeles efter udcheckningsmåned. Afsluttede sæsoner vises med gemte tal; åbne sæsoner opdateres løbende. Ukendte historiske måneder vises som tomme felter.")
+    revenue_frames = []
+    for year in available_years:
+        try:
+            year_reports, _ = get_reports(year)
+            monthly = year_reports.get("gross_revenue_monthly")
+            if monthly is None:
+                st.warning(f"Omsætning for {year} er endnu ikke gemt.")
+                continue
+            monthly = monthly.copy()
+            monthly["season"] = str(year)
+            revenue_frames.append(monthly)
+        except Exception as error:
+            st.warning(f"Omsætning for {year} kunne ikke hentes: {error}")
+    if revenue_frames:
+        revenues = pd.concat(revenue_frames, ignore_index=True)
+        revenue_table = revenues.pivot(index="season", columns="month", values="gross_revenue").reindex(columns=range(1, 13))
+        st.dataframe(revenue_table.rename(columns=MONTH_NAMES).rename_axis("Sæson").style.format("{:,.2f}", na_rep="–"))
+        revenues["Måned"] = revenues["month"].map(MONTH_NAMES)
+        st.plotly_chart(px.bar(revenues, x="Måned", y="gross_revenue", color="season", barmode="group",
+                              category_orders={"Måned": list(MONTH_NAMES.values())},
+                              labels={"gross_revenue": "Bruttoomsætning (kr.)", "season": "Sæson"}), use_container_width=True)
 
-if oms:
-    st.subheader(" Omsætning inkl. moms")
+st.subheader(f"Morgenmadsomsætning – {selected_season}")
+st.caption("Prebooked morgenmad fratrukket rabat og moms, fordelt på overnatningsdato.")
+breakfast = selected_report("breakfast_monthly")
+if breakfast is not None:
+    st.metric("Omsætning ekskl. moms", f"{breakfast['net_revenue'].sum():,.2f} kr".replace(",", "X").replace(".", ",").replace("X", "."))
+    st.caption(f"{int(breakfast['servings'].sum())} morgenmåltider")
+    breakfast = breakfast.copy()
+    breakfast["month"] = breakfast["month"].map(MONTH_NAMES)
+    st.dataframe(breakfast.rename(columns={"month": "Måned", "servings": "Morgenmåltider", "net_revenue": "Nettoomsætning"}), hide_index=True)
 
-    historik_df = pd.DataFrame({
-         "year": [2024, 2025],
-         "maj": [86980, 78599],
-         "juni": [143719, 121385],
-         "juli": [151706, 146531],
-         "aug": [146913, 159691],
-         "sep": [107810, 104591]
-    })
-    df["checkin_date"] = pd.to_datetime(df["checkin_date"])
+st.subheader(f"Sæsonstatistik – {selected_season}")
+checkin_report = selected_report("checkins_daily")
+checkins = pd.DataFrame(columns=["checkin_date", "checkins"])
+if checkin_report is not None:
+    checkins = checkin_report.rename(columns={"date": "checkin_date"}).copy()
+checkins["checkin_date"] = pd.to_datetime(checkins["checkin_date"])
+checkins["checkin_day"] = checkins["checkin_date"].dt.date
 
-    df["year"] = df["checkout_date"].dt.year
-    df["month"] = df["checkout_date"].dt.month
-
-    df["pris"] = (
-         df["pris"]
-         .astype(str)
-         .str.replace(",", ".", regex=False)
-    )
-
-    df["pris"] = pd.to_numeric(
-         df["pris"],
-         errors="coerce"
-    )
-    oms_2026 = (
-         df[df["year"] == 2026]
-         .groupby("month")
-         .agg(
-             revenue=("pris", "sum")
-         )
-    )
-    df["month"] = df["checkout_date"].dt.month
-
-    ny_række = pd.DataFrame({
-         "year": [2026],
-         "maj": [oms_2026.loc[5, "revenue"] if 5 in oms_2026.index else 0],
-         "juni": [oms_2026.loc[6, "revenue"] if 6 in oms_2026.index else 0],
-         "juli": [oms_2026.loc[7, "revenue"] if 7 in oms_2026.index else 0],
-         "aug": [oms_2026.loc[8, "revenue"] if 8 in oms_2026.index else 0],
-         "sep": [oms_2026.loc[9, "revenue"] if 9 in oms_2026.index else 0],
-    })
-    historik_df = pd.concat(
-         [historik_df, ny_række],
-         ignore_index=True
-    )
-    st.subheader("Omsætning pr. måned med moms")
-
-    st.dataframe(historik_df)
-    historik_long = historik_df.melt(
-         id_vars="year",
-         var_name="month",
-         value_name="revenue"
-    )
-    historik_long["year"] = historik_long["year"].astype(str)
-
-    fig = px.bar(
-         historik_long,
-         x="month",
-         y="revenue",
-         color="year",
-         barmode="group",  # side om side
-         title="Omsætning pr. måned inkl moms"
-    )
-    st.write(df["pris"].sum())
-    st.write(df["pris"].describe())
-    st.write(
-         df.groupby("month")
-           .agg(
-               bookinger=("pris", "count"),
-               omsaetning=("pris", "sum")
-           )
-    )
-    st.plotly_chart(fig, use_container_width=True)
-
-st.subheader("Morgenmadsomsætning")
-st.write("Morgenmadsomsætning er prebooked morgenmad fratrukket rabat og moms")
-
-selected_season = st.selectbox(
-    "Sæson",
-    [2026, 2027],
-    index=0
-)
-
-breakfast_price_result = (
-    supabase.table("high_season")
-    .select("pris_morgenmad")
-    .eq("season", selected_season)
-    .limit(1)
-    .execute()
-)
-breakfast_price_rows = breakfast_price_result.data or []
-breakfast_price = pd.to_numeric(
-    breakfast_price_rows[0].get("pris_morgenmad") if breakfast_price_rows else 0,
-    errors="coerce",
-)
-breakfast_price = 0 if pd.isna(breakfast_price) else float(breakfast_price)
-
-# Morgenmadsomsætning: personer med BF=Y gange nætter og sæsonpris.
-booking_seasons = pd.to_numeric(bookings_df["season"], errors="coerce")
-breakfast_bookings = bookings_df[
-    booking_seasons.eq(selected_season)
-    & bookings_df["morgenmad"]
-    .fillna("")
-    .astype(str)
-    .str.strip()
-    .str.upper()
-    .eq("Y")
-].copy()
-breakfast_guests = pd.to_numeric(
-    breakfast_bookings["numb_guests"], errors="coerce"
-).fillna(0)
-breakfast_nights = pd.to_numeric(
-    breakfast_bookings["nights"], errors="coerce"
-).fillna(0).clip(lower=0)
-breakfast_bookings["numb_guests"] = breakfast_guests
-breakfast_bookings["nights"] = breakfast_nights
-
-# Rabat er historisk gemt som tekst eller decimaltal. Både 0,10, 10 og 10% tolkes som 10%.
-discount_text = (
-    breakfast_bookings["rabat"]
-    .fillna("0")
-    .astype(str)
-    .str.strip()
-    .str.replace(",", ".", regex=False)
-    .str.extract(r"(-?\d+(?:\.\d+)?)", expand=False)
-)
-discount_rate = pd.to_numeric(discount_text, errors="coerce").fillna(0)
-discount_rate = discount_rate.where(discount_rate.abs() <= 1, discount_rate / 100)
-discount_rate = discount_rate.clip(lower=0, upper=1)
-
-# Kun egne webbookinger får rabat. FM-værdien er et tillæg, ikke en rabat.
-booking_channel = (
-    breakfast_bookings["web"].fillna("").astype(str).str.strip().str.lower()
-)
-breakfast_bookings["discount_rate"] = discount_rate.where(
-    booking_channel.eq("web"), 0
-)
-
-# En række pr. overnatningsdato giver korrekt fordeling ved månedsskifte.
-breakfast_bookings["breakfast_date"] = breakfast_bookings.apply(
-    lambda row: pd.date_range(
-        start=row["checkin_date"],
-        periods=int(row["nights"]),
-        freq="D",
-    ) if pd.notna(row["checkin_date"]) and row["nights"] > 0 else [],
-    axis=1,
-)
-breakfast_by_night = breakfast_bookings.explode("breakfast_date")
-breakfast_by_night = breakfast_by_night.dropna(subset=["breakfast_date"])
-breakfast_by_night["breakfast_date"] = pd.to_datetime(
-    breakfast_by_night["breakfast_date"], errors="coerce"
-)
-breakfast_by_night["gross_revenue"] = (
-    breakfast_by_night["numb_guests"] * breakfast_price
-)
-breakfast_by_night["net_revenue"] = (
-    breakfast_by_night["gross_revenue"]
-    * (1 - breakfast_by_night["discount_rate"])
-    / 1.25
-)
-
-month_names = {
-    1: "Januar", 2: "Februar", 3: "Marts", 4: "April",
-    5: "Maj", 6: "Juni", 7: "Juli", 8: "August",
-    9: "September", 10: "Oktober", 11: "November", 12: "December",
-}
-if breakfast_by_night.empty:
-    breakfast_monthly = pd.DataFrame(
-        columns=["Måned", "Morgenmåltider", "Nettoomsætning"]
-    )
-else:
-    breakfast_by_night["month"] = breakfast_by_night["breakfast_date"].dt.month
-    breakfast_monthly = (
-        breakfast_by_night.groupby("month", as_index=False)
-        .agg(
-            Morgenmåltider=("numb_guests", "sum"),
-            Nettoomsætning=("net_revenue", "sum"),
-        )
-        .sort_values("month")
-    )
-    breakfast_monthly["Måned"] = breakfast_monthly["month"].map(month_names)
-    breakfast_monthly = breakfast_monthly[
-        ["Måned", "Morgenmåltider", "Nettoomsætning"]
-    ]
-
-breakfast_servings = breakfast_monthly["Morgenmåltider"].sum()
-breakfast_revenue = breakfast_monthly["Nettoomsætning"].sum()
-
-st.metric(
-    "Omsætning",
-    f"{breakfast_revenue:,.2f} kr".replace(",", "X").replace(".", ",").replace("X", "."),
-    help=(
-        f"{breakfast_servings:,.0f} morgenmåltider til {breakfast_price:,.2f} kr, "
-        "efter rabat og ekskl. 25% moms"
-        .replace(",", "X").replace(".", ",").replace("X", ".")
-    ),
-)
-st.dataframe(
-    breakfast_monthly.style.format({
-        "Morgenmåltider": "{:,.0f}",
-        "Nettoomsætning": "{:,.2f} kr",
-    }),
-    hide_index=True,
-    use_container_width=True,
-)
-
-st.subheader("Sæsonstatistik")
-
-df_stats = bookings_df.copy()
-
-# Datoformat
-df_stats["checkin_date"] = pd.to_datetime(df_stats["checkin_date"], errors="coerce")
-df_stats["checkout_date"] = pd.to_datetime(df_stats["checkout_date"], errors="coerce")
-
-# Fjern annullerede bookinger
-df_stats = exclude_cancelled_bookings(df_stats)
-# Kun valgt sæson
-df_stats = df_stats[
-    df_stats["season"] == int(selected_season)
-]
-
-# Beregn bookinglængde i nætter
-df_stats["booking_length"] = (
-    df_stats["checkout_date"] - df_stats["checkin_date"]
-).dt.days
-
-# Fjern fejl / tomme datoer
-df_stats = df_stats[
-    df_stats["booking_length"].notna()
-]
-
-df_stats = df_stats[
-    df_stats["booking_length"] > 0
-]
-
-# Måned ud fra check-in dato
 st.subheader("Indcheckninger fordelt på ugedage")
 
-if df_stats.empty:
+if checkins.empty:
     st.info("Der er ingen aktive bookinger med gyldige datoer i den valgte sæson.")
 else:
-    period_start = df_stats["checkin_date"].min().date()
-    period_end = df_stats["checkin_date"].max().date()
+    period_start = checkins["checkin_date"].min().date()
+    period_end = checkins["checkin_date"].max().date()
     default_middle_start = max(
         period_start,
         min(datetime.date(selected_season, 6, 27), period_end),
@@ -705,31 +414,10 @@ else:
     if middle_start > middle_end:
         st.error("Startdatoen for midterperioden skal være før slutdatoen.")
     else:
-        checkins = df_stats.dropna(subset=["checkin_date"]).copy()
-        if "booking_number" in checkins.columns:
-            checkins = checkins.drop_duplicates(
-                subset=["booking_number", "checkin_date"]
-            )
-        checkins["checkin_day"] = checkins["checkin_date"].dt.date
-
         weekday_order = [
             "Mandag", "Tirsdag", "Onsdag", "Torsdag",
             "Fredag", "Lørdag", "Søndag",
         ]
-
-        def weekday_distribution(period_df):
-            counts = (
-                period_df["checkin_date"].dt.dayofweek
-                .value_counts()
-                .reindex(range(7), fill_value=0)
-            )
-            total = int(counts.sum())
-            percentages = counts / total * 100 if total else counts.astype(float)
-            return pd.DataFrame({
-                "Ugedag": weekday_order,
-                "Antal": counts.to_numpy(),
-                "Procent": percentages.to_numpy(),
-            }), total
 
         periods = [
             (
@@ -794,38 +482,13 @@ else:
             use_container_width=True,
         )
 
-df_stats["month"] = df_stats["checkin_date"].dt.month
-df_stats["month_name"] = df_stats["checkin_date"].dt.strftime("%b")
-
 st.subheader("Gennemsnitlig bookinglængde pr. måned")
-
-avg_length = (
-    df_stats
-    .groupby(["month", "month_name"])["booking_length"]
-    .mean()
-    .reset_index()
-    .sort_values("month")
-)
-
-fig = px.bar(
-    avg_length,
-    x="month_name",
-    y="booking_length",
-    text=avg_length["booking_length"].round(1),
-    labels={
-        "month_name": "Måned",
-        "booking_length": "Gennemsnitlig bookinglængde"
-    },
-    title="Gennemsnitlig bookinglængde pr. måned"
-)
-
-fig.update_traces(
-    textposition="outside"
-)
-
-fig.update_layout(
-    yaxis_title="Nætter",
-    xaxis_title="Måned"
-)
-
-st.plotly_chart(fig, use_container_width=True)
+lengths = selected_report("booking_length_monthly")
+if lengths is not None and not lengths.empty:
+    lengths = lengths.copy()
+    lengths["Måned"] = lengths["month"].map(MONTH_NAMES)
+    lengths["Nætter"] = lengths["total_nights"] / lengths["stay_count"].replace(0, float("nan"))
+    fig = px.bar(lengths, x="Måned", y="Nætter", text=lengths["Nætter"].round(1),
+                 category_orders={"Måned": list(MONTH_NAMES.values())})
+    fig.update_traces(textposition="outside")
+    st.plotly_chart(fig, use_container_width=True)
