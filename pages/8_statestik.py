@@ -399,8 +399,24 @@ else:
         "Annulleringer fjernes fra hele den åbne sæsons kurve. "
         "Uge 0 viser bookinger fra før sæsonåret; fremtidige sæsoner viser saldoen pr. i dag."
     )
+    show_all_pace_years = st.checkbox("Vis alle år", key="pace_show_all_years")
+    pace_years = pd.to_numeric(pace_df["season_year"], errors="coerce")
+    # The earliest open season stays active until explicitly archived.
+    # Creating next year's season must not move the comparison window early.
+    open_pace_years = [
+        int(row["season"]) for row in pace_seasons
+        if int(row["season"]) >= 2026 and not row["pace_archived"]
+        and pace_years.eq(int(row["season"])).any()
+    ]
+    active_pace_year = min(open_pace_years) if open_pace_years else int(pace_years.max())
+    if show_all_pace_years:
+        visible_pace = pace_df
+    else:
+        first_pace_year = active_pace_year - 5
+        visible_pace = pace_df[pace_years.between(first_pace_year, active_pace_year)]
+        st.caption(f"Viser {first_pace_year}–{active_pace_year}: aktiv sæson og de fem foregående sæsoner.")
     fig = px.line(
-        pace_df,
+        visible_pace,
         x="week_number",
         y="sold_nights",
         color="season_year",
