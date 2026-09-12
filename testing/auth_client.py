@@ -1,5 +1,5 @@
 """Isolated test client. Never uses the portal's privileged database key."""
-from urllib.parse import urlparse
+from urllib.parse import urlparse, quote
 from uuid import UUID
 
 import requests
@@ -54,6 +54,25 @@ class AuthClient:
 
     def get_user(self, token):
         return self._request("GET", "/user", token=token)
+
+    def request_password_reset(self, email, redirect_url):
+        parsed = urlparse(redirect_url)
+        if parsed.scheme != "https" or not parsed.hostname or parsed.query or parsed.fragment:
+            raise ValueError("Recovery URL must be an HTTPS app address.")
+        return self._request("POST", "/recover?redirect_to=" + quote(redirect_url, safe=""),
+                             payload={"email": email.strip()})
+
+    def verify_recovery(self, token_hash):
+        if not token_hash:
+            raise ValueError("Missing recovery token")
+        return self._request("POST", "/verify", payload={
+            "token_hash": token_hash, "type": "recovery",
+        })
+
+    def update_password(self, token, password):
+        if not token or len(password) < 12:
+            raise ValueError("Use at least 12 characters.")
+        return self._request("PUT", "/user", token=token, payload={"password": password})
 
     def sign_out(self, token):
         return self._request("POST", "/logout?scope=local", token=token)

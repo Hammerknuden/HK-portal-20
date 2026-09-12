@@ -7,6 +7,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 import streamlit as st
 from testing.auth_client import AuthClient, TEST_TABLES, resolve_role, validate_config
+from testing.password_recovery import render_recovery, render_forgot_password
 
 st.set_page_config(page_title="HK – logintest", page_icon="🧪")
 st.title("HK – testmiljø")
@@ -31,6 +32,8 @@ context = (url, key, tuple(sorted(admin_ids)), tuple(sorted(user_ids)))
 if st.session_state.get("test_auth_context") != context:
     st.session_state.pop(token_key, None)
     st.session_state["test_auth_context"] = context
+
+render_recovery(client, admin_ids, user_ids)
 
 if token_key not in st.session_state:
     with st.form("test_login", clear_on_submit=True):
@@ -58,6 +61,7 @@ if token_key not in st.session_state:
                     st.error("Brugeren har ikke adgang til testappen.")
             except Exception:
                 st.error("Login kunne ikke gennemføres. Kontrollér oplysningerne og forbindelsen.")
+    render_forgot_password(client)
     st.stop()
 
 try:

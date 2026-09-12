@@ -34,3 +34,10 @@ Test:
 - `python -m unittest discover -s tests -p test_booking_pace.py`
 - `node tests/statistics_archive.mjs /sti/til/pglite/dist/index.js`
   (lokal PostgreSQL-testmotor; kræver PGlite, ingen Supabase-forbindelse).
+
+NULL-felter på delte bookinger:
+Kør `20260910_statistics_season_null_values.sql` efter den oprindelige statistikmigration.
+NULL pris tæller ikke med i summen og er tilladt. NULL gæsteantal er tilladt på
+underrækker uden bookingdato; hovedrækker med bookingdato skal have gæsteantal.
+Udfyldte ugyldige værdier og negative gæsteantal bliver fortsat fanget.
+Gemte historiske opgørelser ændres ikke af rettelsen.

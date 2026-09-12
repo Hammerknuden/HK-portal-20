@@ -15,7 +15,7 @@ create table hk_dtb (
  email text, telefon text, spouse text, comments text
 );
 `);
-for (const name of ['20260820_create_historie.sql','20260905_add_booking_pace_fields_to_historie_new.sql','20260909_booking_pace_season_status.sql','20260910_close_booking_season.sql','20260910_create_statistik_historik.sql','20260910_statistics_season_archive.sql']) {
+for (const name of ['20260820_create_historie.sql','20260905_add_booking_pace_fields_to_historie_new.sql','20260909_booking_pace_season_status.sql','20260910_close_booking_season.sql','20260910_create_statistik_historik.sql','20260910_statistics_season_archive.sql','20260910_statistics_season_null_values.sql']) {
   await db.exec(fs.readFileSync('supabase/migrations/'+name,'utf8'));
 }
 const rows = async (q) => (await db.query(q)).rows;
@@ -68,6 +68,32 @@ assert.equal((await rows("select jsonb_array_length(data) as n from statistik_hi
 // Running the migration twice must not modify frozen reports or legacy data.
 await db.exec(fs.readFileSync('supabase/migrations/20260910_statistics_season_archive.sql','utf8'));
 assert.deepEqual(await rows('select * from statistik_historik where season=2026 order by report_type'),frozen);
+// Reapply latest migration after explicitly testing the previous migration's retry.
+await db.exec(fs.readFileSync('supabase/migrations/20260910_statistics_season_null_values.sql','utf8'));
+await db.exec(`
+insert into high_season values (2031,100,false);
+insert into hk_dtb (season,booking_number,navn,checkin_date,checkout_date,booking_date,nation,web,morgenmad,pris,numb_guests)
+values
+(2031,1,'Test','2031-06-01','2031-06-03','2031-01-01','DK','web','N','1200',4),
+(2031,1,'Test','2031-06-01','2031-06-03',null,'DK','web','N',null,null),
+(2031,2,'Test','2031-06-01','2031-06-03','2031-01-01','DK','web','N',null,1);
+`);
+const companion = await rows('select * from calculate_season_statistics(2031)');
+assert.equal(companion[0].metadata.invalid_rows,0);
+assert.equal(companion.find(r=>r.report_type==='room_nights').data[0].room_nights,6);
+assert.equal(companion.find(r=>r.report_type==='gross_revenue_monthly').data.find(r=>r.month===6).gross_revenue,1200);
+assert.equal(companion.find(r=>r.report_type==='danmarks_statistik').data[0].arrivals,5);
+assert.equal(companion.find(r=>r.report_type==='danmarks_statistik').data[0].guest_nights,10);
+for (const change of ["pris='bad'", "numb_guests=-1", "numb_guests=null"]) {
+    await db.exec(`begin; update hk_dtb set ${change} where season=2031 and booking_number=2;`);
+    const invalid = await rows('select * from calculate_season_statistics(2031)');
+    assert.equal(invalid[0].metadata.invalid_rows,1);
+    await assert.rejects(db.query('select close_booking_season(2031)'));
+    await db.exec('rollback');
+}
+await db.query('select close_booking_season(2031)');
+assert.equal((await rows('select count(*)::int as n from statistik_historik where season=2031'))[0].n,8);
+console.log('NULL companion checks passed: no double counting, NULL price accepted, malformed amounts/negative guests/missing main guests still rejected, season closes.');
 await db.exec('set role anon');
 await assert.rejects(db.query('select * from calculate_season_statistics(2026)'));
 await db.exec('reset role');
