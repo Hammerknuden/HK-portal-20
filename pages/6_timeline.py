@@ -15,6 +15,7 @@ from importlib.metadata import version
 from modules.level2_optimizer import analyze_improvements
 from modules.level2_optimizer import can_swap_blocks
 from modules.room_swap import execute_room_swap
+from modules.timeline_colors import booking_color
 from datetime import date
 # -------------------------
 # INIT
@@ -319,6 +320,10 @@ with st.sidebar.form("booking_form_new"):
 # TIMELINE
 # -------------------------
 st.subheader("Belægningsplan")
+st.caption(
+    "Farver: web = grøn · bc = blå · FM = orange · Låst = rød (overstyrer typen) · "
+    "Øvrige = grå. Bookingnummeret bestemmer nuancen."
+)
 
 if not df.empty:
 
@@ -406,14 +411,25 @@ if not df.empty:
                 ignore_index=True
             )
 
+    plot_df_display["booking_color"] = plot_df_display.apply(
+        lambda row: (
+            "rgba(0,0,0,0)"
+            if str(row["booking_number"]).startswith("DUMMY_")
+            else booking_color(row["booking_number"], row.get("web"), row.get("movable", True))
+        ),
+        axis=1,
+    )
+
     fig = px.timeline(
         plot_df_display,
         x_start="checkin_date",
         x_end="checkout_date",
         y="room_number",
-        color="booking_number",
+        color="booking_color",
         hover_name="booking_number",
         hover_data={
+            "booking_color": False,
+            "movable": True,
             "navn": True,
             "morgenmad": True,
             "room_number": True,
@@ -422,7 +438,7 @@ if not df.empty:
             "checkout_date": "|%d-%m-%Y",
         },
         text="booking_number",
-        color_discrete_sequence=px.colors.qualitative.Dark24
+        color_discrete_map={color: color for color in plot_df_display["booking_color"].unique()}
     )
 
     room_order = [
