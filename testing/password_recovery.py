@@ -1,6 +1,6 @@
 """Recovery sessions never become portal login sessions."""
 import streamlit as st
-from testing.auth_client import resolve_role
+from testing.auth_client import resolve_role, valid_new_password, PASSWORD_REQUIREMENT
 
 
 def render_recovery(client, admin_ids, user_ids):
@@ -50,14 +50,14 @@ def render_recovery(client, admin_ids, user_ids):
 
     st.write("Konto:", st.session_state.get("recovery_email", ""))
     with st.form("new_password", clear_on_submit=True):
-        password = st.text_input("Ny adgangskode (mindst 12 tegn)", type="password")
+        password = st.text_input("Ny adgangskode", type="password", help=PASSWORD_REQUIREMENT)
         confirmation = st.text_input("Gentag ny adgangskode", type="password")
         submitted = st.form_submit_button("Gem ny adgangskode")
     if submitted:
         if password != confirmation:
             st.error("Adgangskoderne er ikke ens.")
-        elif len(password) < 12:
-            st.error("Brug mindst 12 tegn.")
+        elif not valid_new_password(password):
+            st.error(PASSWORD_REQUIREMENT)
         else:
             token = st.session_state["recovery_access"]
             try:

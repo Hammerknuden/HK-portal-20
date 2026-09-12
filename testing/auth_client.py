@@ -6,6 +6,15 @@ import requests
 
 TEST_TABLES = ("hk_dtb", "historie_new", "bookin_pace", "high_season", "breakfast_notes", "Events")
 
+PASSWORD_REQUIREMENT = "Brug mindst 8 tegn med store og små bogstaver (A-Z/a-z) samt tal (0-9)."
+
+
+def valid_new_password(password):
+    return (len(password) >= 8
+            and any("A" <= char <= "Z" for char in password)
+            and any("a" <= char <= "z" for char in password)
+            and any("0" <= char <= "9" for char in password))
+
 
 def validate_config(url, key, admin_ids):
     parsed = urlparse(url)
@@ -70,8 +79,8 @@ class AuthClient:
         })
 
     def update_password(self, token, password):
-        if not token or len(password) < 12:
-            raise ValueError("Use at least 12 characters.")
+        if not token or not valid_new_password(password):
+            raise ValueError(PASSWORD_REQUIREMENT)
         return self._request("PUT", "/user", token=token, payload={"password": password})
 
     def sign_out(self, token):

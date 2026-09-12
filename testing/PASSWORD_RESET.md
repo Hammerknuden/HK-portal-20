@@ -23,7 +23,8 @@ PASSWORD_RESET_URL = "https://9jxcncqxdwbyxextrknuzr.streamlit.app/"
 
 Appen fjerner token fra adresselinjen og verificerer først efter klik på Fortsæt.
 Recovery-token giver ingen portalnavigation. Kontoen skal stadig være på en
-godkendt UID-liste. Nyt password kræver mindst 12 tegn; Supabases yderligere
+godkendt UID-liste. Nyt password kræver mindst 8 tegn med mindst ét stort bogstav
+(A-Z), ét lille bogstav (a-z) og ét tal (0-9). Specialtegn er tilladt, men ikke påkrævet. Supabases yderligere
 passwordkrav gælder stadig. UID og adgangsrettigheder ændres ikke.
 
 Test levering, link, to ens nye koder, nyt login og afvisning af den gamle kode.

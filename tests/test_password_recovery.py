@@ -29,13 +29,15 @@ class TestPasswordRecovery(unittest.TestCase):
 
     @patch.object(AuthClient, "_request")
     def test_update_uses_recovered_user_token(self, request):
-        self.client.update_password("recovery-session", "long-new-password")
+        self.client.update_password("recovery-session", "Abcdefg1")
         request.assert_called_once_with("PUT", "/user", token="recovery-session",
-                                        payload={"password": "long-new-password"})
+                                        payload={"password": "Abcdefg1"})
 
     @patch.object(AuthClient, "_request")
     def test_missing_token_or_short_password_cannot_update(self, request):
-        for token, password in [("", "long-new-password"), ("token", "short")]:
+        for token, password in [("", "Abcdefg1"), ("token", "Abcdef1"),
+                                ("token", "abcdefgh1"), ("token", "ABCDEFGH1"),
+                                ("token", "Abcdefgh"), ("token", "abcdefgh!")]:
             with self.assertRaises(ValueError):
                 self.client.update_password(token, password)
         request.assert_not_called()
