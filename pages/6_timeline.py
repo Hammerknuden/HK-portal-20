@@ -739,6 +739,13 @@ if not df.empty:
         "Rediger navn",
         value="" if pd.isna(current_name) else str(current_name)
     )
+    current_web = booking.get("web", "")
+    new_web = st.text_input(
+        "Rediger web",
+        value="" if pd.isna(current_web) else str(current_web),
+        key=f"timeline_web_{booking_id}",
+        help="Brug eksempelvis bc for et ekstra værelse fra Booking.com.",
+    )
     current_comments = booking.get("comments", "")
     new_comments = st.text_area(
         "Kommentar",
@@ -768,6 +775,7 @@ if not df.empty:
                 "checkout_date": new_end.isoformat(),
                 "booking_number": int(new_guest),
                 "navn": new_name.strip(),
+                "web": new_web.strip(),
                 "comments": new_comments.strip(),
                 "movable": new_movable
             }).eq(
