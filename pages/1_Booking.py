@@ -425,7 +425,7 @@ else:
     with col1:
         web = st.selectbox("booking via web bc eller FM folkemøde ( ikke mulighed for enk rum)", options=["web", "bc", "FM"])
     with col2:
-        ankomst = st.text_input("Angiv ankomsts tidspunkt hvis haves, kan efterlades blankt ")
+        ankomst = st.text_input("Angiv ankomsts tidspunkt hvis haves, kan ellers efterlades blankt ")
     with col3:
         seng = st.text_input(" type af seng der ønskes hvis det vides f.eks. dobb, sing, evt opredning ")
     if web == "web":
