@@ -427,7 +427,7 @@ else:
     with col2:
         ankomst = st.text_input("Angiv ankomsts tidspunkt hvis haves, kan efterlades blankt ")
     with col3:
-        seng = st.text_input(" type af seng der ønskes hvis det vides f.eks. Dobb, Sing, OPred, OPIN ")
+        seng = st.text_input(" type af seng der ønskes hvis det vides f.eks. dobb, sing, evt opredning ")
     if web == "web":
         rabat = st.number_input(" rabat i procent ", value=10, step=1)
         procent = rabat / 100
