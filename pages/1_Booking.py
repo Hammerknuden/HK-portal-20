@@ -355,7 +355,7 @@ else:
 
     st.markdown(f"**Antal dage denne booking** {days}")
 
-    st.text("Skema viser ikke udchecksdagen da den er irelevant i forbindelse med reservation")
+    #st.text("Skema viser ikke udchecksdagen da den er irelevant i forbindelse med reservation")
 
     # Det tidligere Excel-opslag for ledige værelser er midlertidigt
     # deaktiveret. Tilgængeligheden beregnes nu kun fra Supabase nedenfor.
