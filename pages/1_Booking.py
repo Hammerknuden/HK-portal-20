@@ -393,7 +393,7 @@ else:
         f"**Antal ledige rum:** {ledige_rum}"
     )
 
-    st.metric("**Ledige i Kalender**", ledige_rum)
+    #st.metric("**Ledige i Kalender**", ledige_rum)
 
     #st.markdown("### Værelsesstatus dtb")
 
