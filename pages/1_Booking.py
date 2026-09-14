@@ -393,7 +393,7 @@ else:
         f"**Antal ledige rum:** {ledige_rum}"
     )
 
-    st.metric("Supabase", ledige_rum)
+    st.metric("Kallender", ledige_rum)
 
     st.markdown("### Værelsesstatus dtb")
 
