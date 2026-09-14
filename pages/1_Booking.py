@@ -395,7 +395,7 @@ else:
 
     st.metric("**Ledige i Kalender**", ledige_rum)
 
-    st.markdown("### Værelsesstatus dtb")
+    #st.markdown("### Værelsesstatus dtb")
 
     rooms = [1, 2, 3, 4, 5]
 
