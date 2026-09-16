@@ -430,7 +430,7 @@ else:
         seng = st.text_input(" type af seng der ønskes hvis det vides f.eks. dobb, sing, evt opredning ")
     if web == "web":
         rabat = st.number_input(" rabat i procent ", value=10, step=1)
-        procent = rabat / 100
+        procent = rabat / 100s
     elif web == "FM":
         FM_add = st.number_input(" Folkemøde tillæg i procent ", value=0, step=5)
         procent = FM_add / 100

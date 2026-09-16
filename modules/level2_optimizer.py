@@ -1,6 +1,7 @@
 import pandas as pd
 from datetime import date
 import streamlit as st
+from modules.optimizer_search import search_improvements
 # =============== ===========================================
 # LEVEL 2 OPTIMIZER - DESIGN PRINCIPLES
 #
@@ -18,207 +19,65 @@ import streamlit as st
 # ==========================================================
 
 
-def analyze_improvements(bookings, season):
-
-    today = date.today()
-
-    season_bookings = bookings[
-        bookings["season"] == season
-    ].copy()
-
-    season_bookings["checkin_date"] = pd.to_datetime(
-        season_bookings["checkin_date"]
-    )
-    season_bookings["checkout_date"] = pd.to_datetime(
-        season_bookings["checkout_date"]
-    )
-    movable = season_bookings[
-        season_bookings["movable"] == True
-    ]
-
-    checked_in = season_bookings[
-        season_bookings["checkin_date"].dt.date <= today
-    ]
-
-    eligible = season_bookings[
-        (season_bookings["movable"] == True)
-        &
-        (season_bookings["checkin_date"].dt.date > today)
-    ]
-
-    groupby_result = (
-        eligible
-        .groupby("room_number")
-        .size()
+def movable_booking_mask(bookings):
+    """Only explicitly movable bookings arriving after today may move."""
+    arrivals = pd.to_datetime(bookings["checkin_date"], errors="coerce")
+    return (
+        bookings["movable"].eq(True).fillna(False)
+        & (arrivals.dt.date > date.today())
     )
 
-    room_distribution = {
-        str(int(room)): int(count)
-        for room, count in groupby_result.items()
-    }
-    room7_suggestions = find_room7_move_options(
-        candidates=eligible,
-        all_bookings=season_bookings
+
+def can_move_booking_ids(bookings, booking_ids):
+    """Fail closed if any requested row is missing, duplicated or locked."""
+    ids = set(booking_ids)
+    rows = bookings[bookings["id"].isin(ids)]
+    return bool(
+        ids
+        and len(rows) == len(ids)
+        and rows["id"].nunique() == len(ids)
+        and movable_booking_mask(rows).all()
     )
 
-    room7_blockers = find_room7_blockers(
-        candidates=eligible,
-        all_bookings=season_bookings
-    )
-    room_blocks = {
-        str(room): find_connected_blocks(
-            season_bookings,
-            room
-        )
-        for room in [1, 2, 3, 4, 5]
-    }
 
-    room7_blocker_move_options = []
+def validate_rearrangement(bookings, candidate_id, target_room, block_ids,
+                           destination_room, blocking_blocks):
+    """Check the complete final placement, including the temporary booking."""
+    if target_room not in range(1, 6) or destination_room not in range(1, 6):
+        return False
+    if target_room == destination_room:
+        return False
+    moves = [(candidate_id, 7, target_room)]
+    moves.extend((i, target_room, destination_room) for i in block_ids)
+    for block in blocking_blocks:
+        moves.extend((i, destination_room, target_room) for i in block["booking_ids"])
+    ids = [i for i, _, _ in moves]
+    if len(ids) != len(set(ids)) or not can_move_booking_ids(bookings, ids):
+        return False
+    after = bookings.copy(deep=True)
+    for column in ("checkin_date", "checkout_date"):
+        after[column] = pd.to_datetime(after[column], errors="coerce")
+    for identifier, source, destination in moves:
+        row = after["id"] == identifier
+        if not after.loc[row, "room_number"].eq(source).all():
+            return False
+        after.loc[row, "room_number"] = destination
+    affected = after[after["room_number"].isin([target_room, destination_room])]
+    if affected[["checkin_date", "checkout_date"]].isna().any().any():
+        return False
+    if (affected["checkout_date"] <= affected["checkin_date"]).any():
+        return False
+    for _, rows in affected.groupby("room_number"):
+        end = None
+        for _, row in rows.sort_values("checkin_date").iterrows():
+            if end is not None and row["checkin_date"] < end:
+                return False
+            end = row["checkout_date"]
+    return True
 
-    for item in room7_blockers:
-        options = find_block_relocation_options(
-            candidate=item,
-            blockers=item["blockers"],
-            all_bookings=season_bookings
-        )
 
-        room7_blocker_move_options.extend(options)
-
-    coverage = []
-
-    room7_bookings = eligible[
-        eligible["room_number"] == 7
-        ]
-
-    for _, candidate in room7_bookings.iterrows():
-        coverage_item = analyze_period_coverage(
-            candidate,
-            season_bookings
-        )
-
-        coverage_item["target_room_scores"] = choose_target_rooms(
-            coverage_item
-        )
-
-        coverage_item["missing_day_analysis"] = analyze_missing_days(
-            coverage_item
-        )
-
-        coverage.append(coverage_item)
-
-    target_blocks = []
-
-    for coverage_item in coverage:
-        target_blocks.append(
-            find_target_block(
-                coverage_item,
-                room_blocks
-            )
-        )
-
-    block_move_options = []
-
-    for target in target_blocks:
-
-        if target is None:
-            continue
-
-        options = can_block_move(
-            target_block=target["block"],
-            all_bookings=season_bookings
-        )
-
-        block_move_options.append({
-            "booking_number": target["booking_number"],
-            "target_room": target["target_room"],
-            "block_move_options": options
-        })
-
-    destination_periods = []
-
-    for target in target_blocks:
-
-        if target is None:
-            continue
-
-        destination_periods.append({
-            "candidate_id": target["candidate_id"],
-            "booking_number": target["booking_number"],
-            "target_room": target["target_room"],
-            "target_block": target["block"],
-            "destination_periods": analyze_destination_periods(
-                target["block"],
-                room_blocks
-            )
-        })
-
-    partial_block_candidates = []
-
-    for target in target_blocks:
-
-        if target is None:
-            continue
-
-        partial_block_candidates.append({
-            "candidate_id": target["candidate_id"],
-            "booking_number": target["booking_number"],
-            "candidates": build_incremental_block_candidates(
-                target["block"],
-                direction="forward"
-            )
-        })
-
-    partial_block_move_tests = []
-
-    coverage_lookup = {
-        item["candidate_id"]: item
-        for item in coverage
-    }
-
-    for block in partial_block_candidates:
-
-        coverage_item = coverage_lookup.get(
-            block["candidate_id"]
-        )
-
-        if coverage_item is None:
-            continue
-
-        missing = coverage_item["missing_day_analysis"]
-
-        if missing is None:
-            continue
-
-        first_missing_day = missing["missing_days"][0]
-
-        valid_rooms = coverage_item["daily_free_rooms"][
-            first_missing_day
-        ]
-
-        for candidate in block["candidates"]:
-            partial_block_move_tests.append({
-                "booking_number": block["booking_number"],
-                "candidate_bookings": candidate["booking_numbers"],
-                "valid_rooms": valid_rooms,
-                "results": analyze_partial_block_move(
-                    candidate=candidate,
-                    all_bookings=season_bookings,
-                    valid_rooms=valid_rooms
-                )
-            })
-
-    recommendations = build_recommendations(
-        coverage,
-        target_blocks,
-        destination_periods
-    )
-    #st.write(partial_block_move_tests)
-
-    return {
-        "recommendations": recommendations,
-        #"partial_block_candidates": partial_block_candidates,
-        #"partial_block_move_tests": partial_block_move_tests
-    }
+def analyze_improvements(bookings, season, **search_limits):
+    return search_improvements(bookings, season, date.today(), **search_limits)
 
 
 def calculate_gaps(bookings):
@@ -274,7 +133,8 @@ def find_room7_move_options(candidates, all_bookings):
     suggestions = []
 
     room7_bookings = candidates[
-        candidates["room_number"] == source_room
+        (candidates["room_number"] == source_room)
+        & movable_booking_mask(candidates)
     ].sort_values("checkin_date")
 
     for _, candidate in room7_bookings.iterrows():
@@ -374,13 +234,13 @@ def find_block_relocation_options(candidate, blockers, all_bookings):
         if not room_blockers:
             continue
 
-        if not all(b["movable"] for b in room_blockers):
-            continue
-
         blocker_ids = [
             b["id"]
             for b in room_blockers
         ]
+
+        if not can_move_booking_ids(all_bookings, blocker_ids):
+            continue
 
         blocker_rows = all_bookings[
             all_bookings["id"].isin(blocker_ids)
@@ -533,10 +393,7 @@ def find_connected_blocks(bookings, room_number):
         block_start = block[0]["checkin_date"]
         block_end = block[-1]["checkout_date"]
 
-        block_movable = all(
-            bool(row["movable"])
-            for row in block
-        )
+        block_movable = can_move_booking_ids(bookings, block_ids)
 
         result.append({
             "room_number": int(room_number),
@@ -649,6 +506,9 @@ def can_block_move(target_block, all_bookings):
 
     block_ids = target_block["booking_ids"]
 
+    if not can_move_booking_ids(all_bookings, block_ids):
+        return []
+
     block_rows = all_bookings[
         all_bookings["id"].isin(block_ids)
     ]
@@ -753,7 +613,8 @@ def analyze_destination_periods(
 def build_recommendations(
         coverage,
         target_blocks,
-        destination_periods
+        destination_periods,
+        all_bookings
 ):
 
     recommendations = []
@@ -773,6 +634,8 @@ def build_recommendations(
 
         candidate_id = coverage_item["candidate_id"]
         booking_number = coverage_item["booking_number"]
+        if not can_move_booking_ids(all_bookings, [candidate_id]):
+            continue
         if not coverage_item["period_possible"]:
             recommendations.append({
                 "candidate_id": candidate_id,
@@ -807,6 +670,18 @@ def build_recommendations(
 
         destination_item = destination_lookup.get(candidate_id)
 
+        if not can_move_booking_ids(
+            all_bookings, target_block["block"]["booking_ids"]
+        ):
+            recommendations.append({
+                "candidate_id": candidate_id,
+                "booking_number": booking_number,
+                "status": "impossible",
+                "status_text": "Ingen flyttemulighed fundet",
+                "reason": "Den valgte blok indeholder låste eller påbegyndte ophold"
+            })
+            continue
+
         missing = coverage_item["missing_day_analysis"]
 
         valid_rooms = set(
@@ -835,6 +710,19 @@ def build_recommendations(
             if destination["room"] not in valid_rooms:
                 continue
 
+            if not all(
+                can_move_booking_ids(all_bookings, block["booking_ids"])
+                for block in destination["blocking_blocks"]
+            ):
+                continue
+
+            if not validate_rearrangement(
+                all_bookings, candidate_id, target_block["target_room"],
+                target_block["block"]["booking_ids"], destination["room"],
+                destination["blocking_blocks"],
+            ):
+                continue
+
             destination_options.append({
                 "room": destination["room"],
                 "score": destination["score"],
@@ -849,8 +737,11 @@ def build_recommendations(
         recommendations.append({
             "booking_number": booking_number,
             "candidate_id": candidate_id,
-            "status": "rearrangement",
-            "status_text": "Kræver omrokering",
+            "status": "rearrangement" if destination_options else "impossible",
+            "status_text": (
+                "Kræver omrokering" if destination_options
+                else "Ingen flyttemulighed fundet"
+            ),
 
             "source_room": target_block["block"]["room_number"],
             "target_room": target_block["target_room"],
@@ -964,6 +855,9 @@ def analyze_partial_block_move(
 
     candidate_ids = candidate["booking_ids"]
 
+    if not can_move_booking_ids(all_bookings, candidate_ids):
+        return []
+
     candidate_rows = all_bookings[
         all_bookings["id"].isin(candidate_ids)
     ]
@@ -1062,12 +956,12 @@ def can_swap_blocks(block_a, block_b, all_bookings):
 
         return True
 
-    a_can_move = block_fits(
+    a_can_move = can_move_booking_ids(all_bookings, ids_a) and block_fits(
         rows_a,
         room_b
     )
 
-    b_can_move = block_fits(
+    b_can_move = can_move_booking_ids(all_bookings, ids_b) and block_fits(
         rows_b,
         room_a
     )

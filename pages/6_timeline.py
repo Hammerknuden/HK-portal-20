@@ -973,109 +973,102 @@ else:
     )
 
 st.subheader("Niveau 2 optimering")
+st.caption(
+    "Find placeringer fra værelse 7 til værelse 1–5. Alle ophold flyttes samlet. "
+    "Forslagene er alternativer og ændrer ingen bookinger."
+)
+
+
+def load_optimizer_bookings():
+    # All seasons are needed to check stays crossing a season boundary.
+    rows = []
+    offset = 0
+    while True:
+        result = (
+            supabase.table("hk_dtb")
+            .select("id,booking_number,season,room_number,checkin_date,checkout_date,movable,web")
+            .order("id").range(offset, offset + 999).execute()
+        )
+        rows.extend(result.data)
+        if len(result.data) < 1000:
+            break
+        offset += 1000
+    return pd.DataFrame(rows)
+
 
 if st.button("🔍 Undersøg optimeringsmuligheder"):
-    st.session_state["optimizer_suggestions"] = analyze_improvements(
-        bookings=df,
-        season=selected_season
-    )
+    st.session_state.pop("optimizer_suggestions", None)
+    try:
+        with st.spinner("Undersøger målværelser, skæringspunkter og flyttekæder …"):
+            st.session_state["optimizer_suggestions"] = analyze_improvements(
+                bookings=load_optimizer_bookings(), season=selected_season
+            )
+    except Exception:
+        st.error("Analysen kunne ikke gennemføres. Hent bookingdata igen og prøv på ny.")
 
 suggestions = st.session_state.get("optimizer_suggestions")
+if suggestions and suggestions.get("schema_version") != 3:
+    st.session_state.pop("optimizer_suggestions", None)
+    suggestions = None
+    st.info("Kør analysen igen for at få forslag fra den nye søgning.")
 
 if suggestions:
-
-    recommendations = suggestions.get(
-        "recommendations",
-        []
+    st.caption(f"Analyseret med dags dato: {suggestions['analysis_date']}")
+    st.caption(f"Kun bookinger fra sæson {selected_season} kan flyttes. Andre sæsoner forbliver faste.")
+    st.caption(
+        "Søgningen prøver korte kæder med op til 3 andre bookinger samt længere bytter "
+        "mellem to værelser ved hele bookinggrænser. Op til 25 alternativer vises pr. målværelse."
     )
-
-    st.subheader("Optimeringsforslag")
-
-    if not recommendations:
-        st.info("Ingen forslag fundet")
-
+    for error in suggestions.get("errors", []):
+        st.error(error)
+    recommendations = suggestions.get("recommendations", [])
+    if not recommendations and not suggestions.get("errors"):
+        st.info("Ingen fremtidige, flytbare bookinger på værelse 7 i den valgte sæson.")
+    st.info(
+        "Hvert forslag gælder alene. Forslag til forskellige bookinger kan bruge den samme plads. "
+        "Kør analysen igen efter ændringer i bookingerne."
+    )
     for rec in recommendations:
-
-        booking_number = rec.get("booking_number")
-        status = rec.get("status")
-
         with st.container(border=True):
-
-            st.markdown(f"### Booking {booking_number}")
-
-            if status == "ready":
-                st.success("🟢 Klar til flytning")
+            st.markdown(f"### Booking {rec['booking_number']}")
+            st.write(f"Værelse 7 · {rec['checkin_date']} → {rec['checkout_date']}")
+            if rec["status"] == "no_capacity":
+                st.warning("Ingen ledig kapacitet på værelse 1–5: " + ", ".join(rec["no_capacity_dates"]))
                 continue
-
-            elif status == "rearrangement":
-                st.info("🔵 Kræver omrokering")
-
+            options = rec["options"]
+            if options:
+                st.success(f"{len(options)} kontrollerede muligheder fundet")
             else:
-                st.error("🔴 Ingen flyttemulighed")
-                continue
-
-            target_room = rec.get("target_room")
-            options = rec.get("options", [])
-
-            st.success(
-                f"Mulig placering på værelse {target_room}"
-            )
-
-            if not options:
-                st.info("Ingen flyttemuligheder fundet")
-                continue
-
-            for i, option in enumerate(options, start=1):
-
-                move_to_room = option["flyt_blok_til"]
-                blockers = option["blokeringer"]
-                score = option["score"]
-
-                with st.expander(
-                    f"Mulighed {i}: Flyt blok til værelse {move_to_room}",
-                    expanded=(i == 1)
-                ):
-                    st.write(
-                        f"Booking {booking_number} placeres på værelse {target_room}"
+                st.info("Ingen løsning fundet i den udførte søgning.")
+            limited_rooms = [str(r["room"]) for r in rec["target_results"] if r["limited"]]
+            if limited_rooms:
+                st.caption(
+                    "Søgningen er begrænset for værelse " + ", ".join(limited_rooms)
+                    + ". Flere eller længere flyttekæder kan give yderligere løsninger."
+                )
+            omitted = sum(r["omitted_options"] for r in rec["target_results"])
+            if omitted:
+                st.caption(f"{omitted} yderligere fundne alternativer er udeladt; de korteste vises først.")
+            locked_rooms = [str(r["room"]) for r in rec["target_results"] if r["locked_blocker_ids"]]
+            if locked_rooms:
+                st.caption("Låste eller påbegyndte bookinger spærrer på værelse " + ", ".join(locked_rooms) + ".")
+            for index, plan in enumerate(options, start=1):
+                title = (
+                    f"Mulighed {index}: 7 → {plan['target_room']} · "
+                    f"{plan['moved_existing']} andre bookinger flyttes"
+                )
+                with st.expander(title, expanded=(index == 1)):
+                    if plan["window"]:
+                        st.write("Bytte mellem bookinggrænser: " + " → ".join(plan["window"]))
+                    if plan["missing_dates"]:
+                        st.write("Frigør nætterne: " + ", ".join(plan["missing_dates"]))
+                    table = pd.DataFrame(plan["moves"]).rename(columns={
+                        "id": "Database-ID", "booking_number": "Booking",
+                        "from_room": "Fra værelse", "to_room": "Til værelse",
+                        "checkin_date": "Ankomst", "checkout_date": "Afrejse",
+                    })
+                    st.dataframe(table, hide_index=True, use_container_width=True)
+                    st.caption(
+                        "Alle viste flytninger hører sammen. Rækkefølgen i tabellen er ikke en "
+                        "udførelsesrækkefølge. Ingen bookinger er ændret."
                     )
-                    st.write(
-                        f"Blok flyttes til værelse {move_to_room}"
-                    )
-                    st.write(f"Blokeringer: {blockers}")
-                    st.write(f"Score: {score}")
-
-                    if st.button(
-                            f"Udfør mulighed {i}",
-                            key=f"execute_{booking_number}_{i}"
-                    ):
-
-                        block_ids = rec.get("block_booking_ids")
-                        source_room = rec.get("source_room")
-                        move_to_room = option["flyt_blok_til"]
-                        blocking_blocks = option.get("blocking_blocks", [])
-
-                        # 1. Flyt blokerende blokke fra modtager-rummet tilbage til source_room
-                        for blocking_block in blocking_blocks:
-                            blocking_ids = blocking_block["booking_ids"]
-
-                            supabase.table("hk_dtb").update({
-                                "room_number": int(source_room)
-                            }).in_(
-                                "id",
-                                blocking_ids
-                            ).execute()
-
-                        # 2. Flyt target-blokken til valgt værelse
-                        supabase.table("hk_dtb").update({
-                            "room_number": int(move_to_room)
-                        }).in_(
-                            "id",
-                            block_ids
-                        ).execute()
-
-                        # 3. Ryd optimizer-session
-                        st.session_state.pop("optimizer_suggestions", None)
-
-                        st.success("Flytning udført - kør analysen igen")
-
-                        st.rerun()
