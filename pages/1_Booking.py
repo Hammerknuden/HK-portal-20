@@ -221,8 +221,14 @@ if mode == "✏️ Rediger booking":
 
     new_bed = st.text_input(
         "Bed",
-        value=str(booking["bed"])
+        value=str(booking["bed"]),
+        key=f"edit_bed_{booking_id}"
     )
+    if new_bed.strip().lower() == "sing":
+        st.markdown(
+            f"<style>.st-key-edit_bed_{booking_id} input {{font-style: italic;}}</style>",
+            unsafe_allow_html=True,
+        )
 
     breakfast_options = ["Y", "N"]# udbyg evt med A for alternativ
 
@@ -427,10 +433,23 @@ else:
     with col2:
         ankomst = st.text_input("Angiv ankomsts tidspunkt hvis haves, kan ellers efterlades blankt ")
     with col3:
-        seng = st.text_input(" type af seng der ønskes hvis det vides f.eks. dobb, sing, evt opredning ")
+        is_single_room = single_room and web in ("bc", "web")
+        # Udfyld kun ved skift til enkeltværelse, så manuelle rettelser bevares.
+        if is_single_room and not st.session_state.get("bed_was_single_room", False):
+            st.session_state["reservation_bed"] = "sing"
+        st.session_state["bed_was_single_room"] = is_single_room
+        seng = st.text_input(
+            " type af seng der ønskes hvis det vides f.eks. dobb, sing, evt opredning ",
+            key="reservation_bed",
+        )
+        if seng.strip().lower() == "sing":
+            st.markdown(
+                "<style>.st-key-reservation_bed input {font-style: italic;}</style>",
+                unsafe_allow_html=True,
+            )
     if web == "web":
         rabat = st.number_input(" rabat i procent ", value=10, step=1)
-        procent = rabat / 100s
+        procent = rabat / 100
     elif web == "FM":
         FM_add = st.number_input(" Folkemøde tillæg i procent ", value=0, step=5)
         procent = FM_add / 100
