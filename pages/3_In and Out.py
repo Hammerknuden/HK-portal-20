@@ -97,7 +97,18 @@ if not df_ankomst.empty:
         }
     )
 
-    st.table(df_ankomst_print)
+    # Formater kun visningen; behold den oprindelige sengetype i data.
+    df_ankomst_display = df_ankomst_print.copy()
+    df_ankomst_display["Seng"] = df_ankomst_display.apply(
+        lambda row: "*sing*"
+        if (
+            str(row["Seng"]).strip().lower() == "sing"
+            and str(row["Enkelt"]).strip().upper() == "Y"
+        )
+        else row["Seng"],
+        axis=1,
+    )
+    st.table(df_ankomst_display)
 
 else:
     df_ankomst_print = pd.DataFrame()

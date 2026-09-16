@@ -224,7 +224,10 @@ if mode == "✏️ Rediger booking":
         value=str(booking["bed"]),
         key=f"edit_bed_{booking_id}"
     )
-    if new_bed.strip().lower() == "sing":
+    if (
+        new_bed.strip().lower() == "sing"
+        and str(booking.get("enkelt", "N")).strip().upper() == "Y"
+    ):
         st.markdown(
             f"<style>.st-key-edit_bed_{booking_id} input {{font-style: italic;}}</style>",
             unsafe_allow_html=True,
@@ -442,7 +445,7 @@ else:
             " type af seng der ønskes hvis det vides f.eks. dobb, sing, evt opredning ",
             key="reservation_bed",
         )
-        if seng.strip().lower() == "sing":
+        if is_single_room and seng.strip().lower() == "sing":
             st.markdown(
                 "<style>.st-key-reservation_bed input {font-style: italic;}</style>",
                 unsafe_allow_html=True,
