@@ -13,15 +13,35 @@ def preview_figure(preview):
     figure = px.timeline(
         frame, x_start="checkin_date", x_end="checkout_date", y="Værelse",
         color="Ændring", text="Booking", facet_row="Visning",
+        facet_row_spacing=0.18,
         category_orders={"Visning": ["Før", "Efter (forslag)"],
                          "Værelse": [f"Værelse {r}" for r in (1, 2, 3, 4, 5, 7)]},
         color_discrete_map={"Flyttes": "#d97706", "Uændret": "#94a3b8"},
         hover_data={"id": True, "Booking": True, "checkin_date": True, "checkout_date": True},
-        height=650,
+        height=760,
     )
-    figure.update_yaxes(autorange="reversed", title=None)
-    figure.update_xaxes(tickformat="%d-%m-%Y", title=None)
-    figure.for_each_annotation(lambda a: a.update(text=a.text.replace("Visning=", "")))
+    figure.update_layout(
+        plot_bgcolor="white",
+        margin=dict(l=95, r=30, t=70, b=55),
+        legend=dict(title=None, orientation="h", y=1.10, x=0),
+    )
+    # Keep the shared room/date scales, with a visible frame around each panel.
+    figure.update_yaxes(
+        autorange="reversed", title=None, showline=True, mirror=True,
+        linewidth=1, linecolor="#94a3b8", showgrid=True, gridcolor="#e2e8f0",
+    )
+    figure.update_xaxes(
+        tickformat="%d-%m-%Y", title=None, showticklabels=True,
+        showline=True, mirror=True, linewidth=1, linecolor="#94a3b8",
+        showgrid=True, gridcolor="#e2e8f0", ticks="outside",
+    )
+    for annotation in figure.layout.annotations:
+        before = annotation.text == "Visning=Før"
+        annotation.update(
+            text="<b>FØR – nuværende placering</b>" if before else "<b>EFTER – valgt forslag</b>",
+            textangle=0, x=0, xanchor="left", yanchor="bottom", yshift=10,
+            font=dict(size=17, color="#334155" if before else "#0f766e"),
+        )
     return figure
 
 
