@@ -16,7 +16,8 @@ from modules.level2_optimizer import analyze_improvements
 from modules.level2_optimizer import can_swap_blocks
 from modules.room_swap import execute_room_swap
 from modules.timeline_colors import booking_color
-from modules.optimizer_preview import select_plan
+from modules.optimizer_preview import select_plan, booking_today
+from modules.optimizer_state import booking_signature, invalidate_analysis
 from modules.optimizer_workflow import clear_selection, render_selected_solution
 from datetime import date
 # -------------------------
@@ -1005,12 +1006,29 @@ def load_optimizer_bookings():
     return pd.DataFrame(rows)
 
 
+optimizer_rows = None
+if (st.session_state.get("optimizer_suggestions") or st.session_state.get("optimizer_choice")) and not pending_save:
+    try:
+        optimizer_rows = load_optimizer_bookings()
+        signature = booking_signature(optimizer_rows, selected_season, booking_today())
+    except Exception:
+        invalidate_analysis(st.session_state, None)
+        st.error("De gemte forslag kunne ikke kontrolleres mod aktuelle bookinger og er derfor ryddet. Kør analysen igen.")
+    else:
+        if invalidate_analysis(st.session_state, signature):
+            st.info("Bookingdata eller dags dato er ændret. Den tidligere analyse og forhåndsvisning er ryddet. Kør analysen igen.")
+
 if st.button("🔍 Undersøg optimeringsmuligheder", disabled=bool(st.session_state.get("optimizer_choice"))):
     st.session_state.pop("optimizer_suggestions", None)
     try:
         with st.spinner("Undersøger målværelser, skæringspunkter og flyttekæder …"):
+            if optimizer_rows is None:
+                optimizer_rows = load_optimizer_bookings()
             st.session_state["optimizer_suggestions"] = analyze_improvements(
-                bookings=load_optimizer_bookings(), season=selected_season
+                bookings=optimizer_rows, season=selected_season
+            )
+            st.session_state["optimizer_suggestions"]["data_signature"] = booking_signature(
+                optimizer_rows, selected_season, booking_today()
             )
     except Exception:
         st.error("Analysen kunne ikke gennemføres. Hent bookingdata igen og prøv på ny.")
