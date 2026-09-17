@@ -10,12 +10,14 @@ from common import init_session, exclude_cancelled_bookings
 import re
 import os
 from dotenv import load_dotenv
-from portal_access import get_database_client
+from portal_access import get_database_client, uses_supabase_auth
 from importlib.metadata import version
 from modules.level2_optimizer import analyze_improvements
 from modules.level2_optimizer import can_swap_blocks
 from modules.room_swap import execute_room_swap
 from modules.timeline_colors import booking_color
+from modules.optimizer_preview import select_plan
+from modules.optimizer_workflow import clear_selection, render_selected_solution
 from datetime import date
 # -------------------------
 # INIT
@@ -973,9 +975,16 @@ else:
     )
 
 st.subheader("Niveau 2 optimering")
+saved_message = st.session_state.pop("optimizer_saved_message", None)
+if saved_message:
+    st.success(saved_message)
+choice = st.session_state.get("optimizer_choice")
+pending_save = st.session_state.get("optimizer_preview", {}).get("save_pending", False)
+if choice and choice["season"] != selected_season and not pending_save:
+    clear_selection(st.session_state)
 st.caption(
     "Find placeringer fra værelse 7 til værelse 1–5. Alle ophold flyttes samlet. "
-    "Forslagene er alternativer og ændrer ingen bookinger."
+    "Vælg en løsning og se den på timeline. Først Gem ændringer opdaterer bookingerne."
 )
 
 
@@ -996,7 +1005,7 @@ def load_optimizer_bookings():
     return pd.DataFrame(rows)
 
 
-if st.button("🔍 Undersøg optimeringsmuligheder"):
+if st.button("🔍 Undersøg optimeringsmuligheder", disabled=bool(st.session_state.get("optimizer_choice"))):
     st.session_state.pop("optimizer_suggestions", None)
     try:
         with st.spinner("Undersøger målværelser, skæringspunkter og flyttekæder …"):
@@ -1012,7 +1021,7 @@ if suggestions and suggestions.get("schema_version") != 3:
     suggestions = None
     st.info("Kør analysen igen for at få forslag fra den nye søgning.")
 
-if suggestions:
+if suggestions and not st.session_state.get("optimizer_choice"):
     st.caption(f"Analyseret med dags dato: {suggestions['analysis_date']}")
     st.caption(f"Kun bookinger fra sæson {selected_season} kan flyttes. Andre sæsoner forbliver faste.")
     st.caption(
@@ -1072,3 +1081,14 @@ if suggestions:
                         "Alle viste flytninger hører sammen. Rækkefølgen i tabellen er ikke en "
                         "udførelsesrækkefølge. Ingen bookinger er ændret."
                     )
+                    if st.button(
+                        "Vælg denne løsning", key=f"optimizer_choose_{rec['candidate_id']}_{index}",
+                        disabled=bool(st.session_state.get("optimizer_choice")),
+                    ):
+                        st.session_state["optimizer_choice"] = select_plan(plan, selected_season)
+                        st.session_state.pop("optimizer_preview", None)
+                        st.rerun()
+
+render_selected_solution(
+    st, supabase, selected_season, load_optimizer_bookings, read_only=uses_supabase_auth()
+)

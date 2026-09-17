@@ -4,6 +4,8 @@ Dato: 15. september 2026.
 
 ## Aktuel status – 16. september 2026
 
+**Nyere status 17. september:** Valg, forhåndsvisning og Gem/Fortryd er nu implementeret lokalt. Se `OPTIMERING_GEM_OG_FORTRYD.md` for brugerforløb, tests og den nødvendige Supabase-migration. Beskrivelsen af ren analysevisning nedenfor er den tidligere cloudversion. Gemmefunktionen er ikke installeret i cloud som del af dette arbejde.
+
 Sæsonafgrænsning er nu håndhævet: En analyse af 2026 må kun flytte bookingrækker med sæson 2026. Andre sæsoner er faste overlapbegrænsninger, også når deres `movable` er sand. Byttevinduer dannes kun fra den valgte sæsons bookinggrænser. Eksemplet med booking 300/146 må derfor ikke trække booking 502 fra maj 2027 med. Genvalideringen håndhæver samme regel, og gamle gemte forslag skal genberegnes. Efter denne rettelse består alle **54 tests**.
 
 Den udvidede søgning er nu implementeret lokalt i `modules/optimizer_search.py` og kaldes fra `analyze_improvements`. Den tidligere beskrivelse af manglende sammenkobling nedenfor er historisk.

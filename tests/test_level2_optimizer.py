@@ -20,9 +20,13 @@ except ModuleNotFoundError as exc:
     with patch.dict(sys.modules, {"streamlit": ModuleType("streamlit")}):
         from modules import level2_optimizer as optimizer
         from modules import optimizer_search as search
+        from modules import optimizer_preview as preview
+        from modules import optimizer_workflow as workflow
 else:
     from modules import level2_optimizer as optimizer
     from modules import optimizer_search as search
+    from modules import optimizer_preview as preview
+    from modules import optimizer_workflow as workflow
 
 
 class FixedDate(date):

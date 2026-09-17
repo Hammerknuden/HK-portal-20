@@ -9,7 +9,7 @@ import unittest
 
 import pandas as pd
 
-from test_level2_optimizer import booking, optimizer, FixedDate
+from test_level2_optimizer import booking, optimizer, FixedDate, preview, workflow
 
 
 class FakeUI:
@@ -25,10 +25,12 @@ class FakeUI:
     def __exit__(self, *args):
         return False
 
-    def button(self, label):
+    def button(self, label, **kwargs):
+        if label == "Vælg denne løsning":
+            return False
         if label != "🔍 Undersøg optimeringsmuligheder":
-            raise AssertionError("An execution button must not appear in analysis.")
-        return self.clicked
+            raise AssertionError("Save must not appear before selecting and previewing.")
+        return self.clicked and not kwargs.get("disabled", False)
 
     def dataframe(self, data, **kwargs):
         self.tables.append(data.copy())
@@ -80,7 +82,10 @@ class OptimizerViewTests(unittest.TestCase):
                      and node.value.args[0].value == "Niveau 2 optimering")
         section = ast.Module(body=tree.body[start:], type_ignores=[])
         scope = {"st": ui, "pd": pd, "supabase": database,
-                 "selected_season": 2026, "analyze_improvements": optimizer.analyze_improvements}
+                 "selected_season": 2026, "analyze_improvements": optimizer.analyze_improvements,
+                 "select_plan": preview.select_plan, "clear_selection": workflow.clear_selection,
+                 "render_selected_solution": workflow.render_selected_solution,
+                 "uses_supabase_auth": lambda: False}
         with patch.object(optimizer, "date", FixedDate):
             exec(compile(section, "optimizer_ui", "exec"), scope)
         return scope
