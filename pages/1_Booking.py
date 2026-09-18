@@ -735,7 +735,7 @@ else:
                 "tidligere gæst."
             )
 
-    spouse = st.text_input("Spouce  ")
+    spouse = st.text_input("Spouse  ")
     comments = st.text_input("yderligere info til Dtb  ")
 
     col1, col2, col3 = st.columns(3)
