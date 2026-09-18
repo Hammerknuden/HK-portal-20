@@ -20,6 +20,18 @@ from reportlab.platypus import (
 BLUE = colors.HexColor("#2F75B5")
 
 
+def format_bed_labels(frame):
+    """Show legacy single-room beds as enk without changing stored data."""
+    result = frame.copy()
+    if {"Seng", "Enkelt"}.issubset(result.columns):
+        single_beds = (
+            result["Seng"].astype(str).str.strip().str.lower().eq("sing")
+            & result["Enkelt"].astype(str).str.strip().str.upper().eq("Y")
+        )
+        result.loc[single_beds, "Seng"] = "enk"
+    return result
+
+
 def build_turnover_table(departures, arrivals):
     """Keep each departure and add details from its room's next arrival."""
     columns = ["Udcheck", "Værelse", "Booking nr.", "Næste indcheck", "Land", "Seng", "Enkelt"]
@@ -84,6 +96,7 @@ def _cell_text(value):
 
 
 def _table_data(frame, header_style, cell_style):
+    frame = format_bed_labels(frame)
     rows = [[Paragraph(str(column), header_style) for column in frame.columns]]
     for row in frame.itertuples(index=False, name=None):
         rows.append([Paragraph(_cell_text(value), cell_style) for value in row])

@@ -10,7 +10,7 @@ from portal_access import get_database_client
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from common import exclude_cancelled_bookings
-from modules.in_out_pdf import build_turnover_table, create_in_out_pdf, create_turnover_pdf
+from modules.in_out_pdf import build_turnover_table, create_in_out_pdf, create_turnover_pdf, format_bed_labels
 
 st.set_page_config(page_title="Ins and Outs", layout="wide")
 
@@ -97,18 +97,7 @@ if not df_ankomst.empty:
         }
     )
 
-    # Formater kun visningen; behold den oprindelige sengetype i data.
-    df_ankomst_display = df_ankomst_print.copy()
-    df_ankomst_display["Seng"] = df_ankomst_display.apply(
-        lambda row: "*sing*"
-        if (
-            str(row["Seng"]).strip().lower() == "sing"
-            and str(row["Enkelt"]).strip().upper() == "Y"
-        )
-        else row["Seng"],
-        axis=1,
-    )
-    st.table(df_ankomst_display)
+    st.table(format_bed_labels(df_ankomst_print))
 
 else:
     df_ankomst_print = pd.DataFrame()
