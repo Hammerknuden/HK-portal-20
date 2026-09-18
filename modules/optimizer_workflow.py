@@ -28,6 +28,8 @@ def preview_figure(preview):
     # Keep the shared room/date scales, with a visible frame around each panel.
     figure.update_yaxes(
         autorange="reversed", title=None, showline=True, mirror=True,
+        categoryorder="array",
+        categoryarray=[f"Værelse {r}" for r in (1, 2, 3, 4, 5, 7)],
         linewidth=1, linecolor="#94a3b8", showgrid=True, gridcolor="#e2e8f0",
     )
     figure.update_xaxes(
