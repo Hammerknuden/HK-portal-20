@@ -14,6 +14,7 @@ from modules.price_development import PRICE_FIELDS, build_price_development
 from modules.price_sheet import create_price_sheet_pdf
 from portal_access import get_database_client
 from modules.booking_pace import normalize_season_rows
+from modules.season_backup_view import render_season_backup
 
 
 st.set_page_config(page_title="Setup", layout="wide")
@@ -173,6 +174,8 @@ else:
         st.caption("PDF'en indeholder de senest gemte priser.")
     except (KeyError, TypeError, ValueError) as error:
         st.warning(f"Prisskemaet kunne ikke dannes: {error}")
+
+render_season_backup(st)
 
 st.header("Afslut sæson")
 st.caption(
