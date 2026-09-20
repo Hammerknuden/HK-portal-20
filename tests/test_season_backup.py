@@ -3,10 +3,10 @@ import io
 import json
 from pathlib import Path
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 from zipfile import ZipFile
 
-from modules.season_backup import BackupError, create_backup, database_environment, storage_inventory
+from modules.season_backup import BackupError, create_backup, database_environment, storage_inventory, run_database_tool
 
 
 SETTINGS = {"SUPABASE_URL": "https://example.supabase.co",
@@ -45,6 +45,21 @@ def fake_dump(args, env):
 
 
 class BackupTests(unittest.TestCase):
+    def test_tool_errors_are_classified_without_exposing_stderr(self):
+        cases = [(b"password authentication failed", "Database-login"),
+                 (b"server version mismatch", "for gammel"),
+                 (b"permission denied", "rettigheder"),
+                 (b"Tenant or user not found", "Pooleren"),
+                 (b"connection refused", "netværksforbindelse"),
+                 (b"unexpected failure", "ukendt årsag")]
+        for raw, expected in cases:
+            with self.subTest(raw=raw), patch("modules.season_backup.subprocess.run",
+                    return_value=Mock(returncode=1, stderr=raw + b" secret-password")):
+                with self.assertRaises(BackupError) as caught:
+                    run_database_tool(["pg_dump", "--no-password"], {})
+                self.assertIn(expected, str(caught.exception))
+                self.assertNotIn("secret-password", str(caught.exception))
+
     def test_malformed_connection_has_safe_actionable_error(self):
         for password in ("private#secret", "[YOUR-PASSWORD]", "private/secret", "private%secret"):
             url = SETTINGS["SUPABASE_BACKUP_DB_URL"].replace("private%21", password)

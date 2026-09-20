@@ -91,9 +91,25 @@ def run_database_tool(args, env):
     except (OSError, subprocess.TimeoutExpired):
         raise BackupError("Databasebackup kunne ikke gennemføres. Kontrollér serverværktøjer og forbindelse.") from None
     if result.returncode:
-        if b"server version mismatch" in result.stderr:
-            raise BackupError("Serverens pg_dump er for gammel. Installér PostgreSQL-klient i samme eller nyere hovedversion som Supabase.")
-        raise BackupError("Databasebackup fejlede. Kontrollér databaseadgang, værktøjsversion og ledig plads. Ingen backup er frigivet.")
+        # Classify locally; never expose raw stderr (it may contain credentials).
+        detail = result.stderr.lower()
+        reasons = [
+            ((b"server version mismatch",), "PostgreSQL-klienten på Streamlit er for gammel. Installér samme eller nyere hovedversion som Supabase."),
+            ((b"password authentication failed", b"sasl authentication failed"), "Database-login blev afvist. Kontrollér databasebrugernavn og databaseadgangskode i SUPABASE_BACKUP_DB_URL."),
+            ((b"tenant or user not found",), "Pooleren genkender ikke projekt eller bruger. Kopiér Session pooler-adressen fra det rigtige Supabase-projekt."),
+            ((b"permission denied", b"must be superuser"), "Databasebrugeren mangler rettigheder til backup. Det er en adgangsfejl, ikke en formatfejl i adgangskoden."),
+            ((b"could not translate host name", b"name or service not known"), "Databaseserverens navn kunne ikke findes. Kontrollér værtsnavnet i Session pooler-adressen."),
+            ((b"connection refused", b"network is unreachable", b"connection timed out", b"timeout expired"), "Streamlit kunne ikke få netværksforbindelse til databasen. Kontrollér projektstatus og Session pooler-forbindelsen."),
+            ((b"no space left on device",), "Streamlit-serveren har ikke nok ledig diskplads til backup."),
+            ((b"ssl", b"certificate verify failed"), "Den krypterede databaseforbindelse fejlede. Serverens TLS-forbindelse skal undersøges."),
+        ]
+        reason = next((message for patterns, message in reasons
+                       if any(pattern in detail for pattern in patterns)),
+                      "Databaseværktøjet fejlede af en endnu ukendt årsag. Fejlen beviser ikke, at adgangskoden er forkert.")
+        tool = Path(args[0]).name
+        if tool not in ("pg_dump", "pg_dumpall", "pg_restore"):
+            tool = "databaseværktøj"
+        raise BackupError(f"{tool}: {reason} Ingen ny backup er frigivet.")
 
 
 def storage_inventory(client):
