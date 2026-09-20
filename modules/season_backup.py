@@ -3,6 +3,7 @@ import base64
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import shutil
 import subprocess
@@ -23,7 +24,24 @@ class BackupError(RuntimeError):
 
 def database_environment(db_url, project_url):
     """Keep passwords out of process arguments, logs and downloaded files."""
-    db, project = urlsplit(db_url), urlsplit(project_url)
+    invalid_uri = (
+        "SUPABASE_BACKUP_DB_URL kunne ikke læses som en databaseadresse. "
+        "Kopiér Session pooler-adressen igen, og erstat hele [YOUR-PASSWORD]. "
+        "Specialtegn i selve adgangskoden skal URL-kodes, fx # → %23, @ → %40 "
+        "og % → %25. Behold resten af adressen uændret."
+    )
+    try:
+        if not isinstance(db_url, str) or not isinstance(project_url, str):
+            raise ValueError
+        db, project = urlsplit(db_url.strip()), urlsplit(project_url.strip())
+        port = db.port
+        # A raw # or / in a password can move credentials into other URL fields.
+        if (db.fragment or db.path not in ("", "/postgres")
+                or "[" in (db.password or "") or "]" in (db.password or "")
+                or re.search(r"%(?![0-9a-fA-F]{2})", db.password or "")):
+            raise ValueError
+    except (ValueError, TypeError):
+        raise BackupError(invalid_uri) from None
     ref = (project.hostname or "").removesuffix(".supabase.co")
     username = unquote(db.username or "")
     same_project = (db.hostname == f"db.{ref}.supabase.co" and username == "postgres") or (
@@ -31,11 +49,11 @@ def database_environment(db_url, project_url):
         and username == f"postgres.{ref}"
     )
     if (db.scheme not in ("postgres", "postgresql") or not db.password
-            or not same_project or db.port not in (None, 5432) or project.scheme != "https"):
+            or not same_project or port not in (None, 5432) or project.scheme != "https"):
         raise BackupError("Databaseforbindelsen skal pege på samme Supabase-projekt "
                           "og bruge Direct connection eller Session pooler (port 5432).")
     env = os.environ.copy()
-    env.update(PGHOST=db.hostname, PGPORT=str(db.port or 5432),
+    env.update(PGHOST=db.hostname, PGPORT=str(port or 5432),
                PGUSER=username, PGPASSWORD=unquote(db.password),
                PGDATABASE=unquote(db.path.lstrip("/") or "postgres"),
                PGSSLMODE="require", PGCONNECT_TIMEOUT="20",
@@ -118,6 +136,7 @@ def storage_inventory(client):
 
 
 def create_backup(settings, client, season, phase, progress=lambda message: None):
+    progress("Kontrollerer backupopsætning og databaseadresse …")
     missing = prerequisites(settings)
     if missing:
         raise BackupError("Backup er ikke konfigureret: " + "; ".join(missing))

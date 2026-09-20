@@ -45,6 +45,15 @@ def fake_dump(args, env):
 
 
 class BackupTests(unittest.TestCase):
+    def test_malformed_connection_has_safe_actionable_error(self):
+        for password in ("private#secret", "[YOUR-PASSWORD]", "private/secret", "private%secret"):
+            url = SETTINGS["SUPABASE_BACKUP_DB_URL"].replace("private%21", password)
+            with self.subTest(password=password):
+                with self.assertRaises(BackupError) as caught:
+                    database_environment(url, SETTINGS["SUPABASE_URL"])
+                self.assertIn("URL-kodes", str(caught.exception))
+                self.assertNotIn("private", str(caught.exception))
+
     def test_connection_password_not_in_arguments_and_project_match(self):
         env = database_environment(SETTINGS["SUPABASE_BACKUP_DB_URL"], SETTINGS["SUPABASE_URL"])
         self.assertEqual(env["PGPASSWORD"], "private!")

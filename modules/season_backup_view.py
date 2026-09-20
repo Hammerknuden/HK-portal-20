@@ -32,19 +32,26 @@ def render_season_backup(st):
     if st.button("Opret backup", disabled=not quiet, key="create_season_backup"):
         st.session_state.pop("season_backup_download", None)
         require_admin()
+        stage = "Opretter forbindelse til Supabase"
         try:
             from supabase import create_client
             client = create_client(st.secrets["SUPABASE_URL"], st.secrets["SUPABASE_BACKUP_KEY"])
             with st.status("Opretter backup …", expanded=True) as status:
+                def report_progress(message):
+                    nonlocal stage
+                    stage = message
+                    status.write(message)
+
                 result = create_backup(st.secrets, client, year,
-                                       "foer" if phase.startswith("Før") else "efter", status.write)
+                                       "foer" if phase.startswith("Før") else "efter", report_progress)
                 status.update(label="Backupfil kontrolleret og klar til download", state="complete")
             st.session_state["season_backup_download"] = result
         except BackupError as error:
             st.error(str(error))
         except Exception:
-            st.error("Backuppen kunne ikke gennemføres. Kontrollér database- og Storage-adgang. "
-                     "Ingen ny backup er frigivet.")
+            st.error(f"Backuppen stoppede ved: {stage}. "
+                     "Ingen ny backup er frigivet. Send denne trinbesked til fejlsøgning; "
+                     "send ikke adgangskoder eller nøgler.")
     result = st.session_state.get("season_backup_download")
     if result:
         name, content, count = result
