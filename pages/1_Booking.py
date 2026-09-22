@@ -20,7 +20,7 @@ import re
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 import os
 from dotenv import load_dotenv
-from portal_access import get_database_client
+from portal_access import get_database_client, is_restore_test
 
 
 st.set_page_config(page_title="Booking", layout="wide")
@@ -826,7 +826,11 @@ else:
     if uses_supabase_auth():
         st.info("Mailafsendelse og eksport er ikke aktiveret i testmiljøet.")
         st.stop()
-    confirmation_password = st.text_input("Admin kodeord")
+    if is_restore_test():
+        confirmation_password = ""
+        st.info("TEST: Mailfunktioner kan afprøves uden mailkodeord. Ingen mails sendes.")
+    else:
+        confirmation_password = st.text_input("Admin kodeord")
     booking_submitted = st.button("Send booking mail")
 
 
@@ -926,7 +930,7 @@ else:
             excel_file
         )
 
-        st.success("Data mail sendt")
+        st.success("TEST: Data mail simuleret — ingen mail sendt" if is_restore_test() else "Data mail sendt")
 
 
         # Gem booking i Supabase
