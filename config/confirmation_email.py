@@ -15,6 +15,9 @@ logo_path = Path("logo2.jpg")
 
 
 def send_email(confirmation_password, email):
+    from portal_access import suppress_test_email
+    if suppress_test_email():
+        return
     context = ssl.create_default_context()
     # Send the message via local SMTP server.
     with smtplib.SMTP(smtp_server, port) as server:

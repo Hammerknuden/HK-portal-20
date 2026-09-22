@@ -6,14 +6,14 @@ from modules.season_backup import BackupError, DESTINATION, create_backup, prere
 
 def render_season_backup(st):
     from auth import require_admin
-    from portal_access import uses_supabase_auth
+    from portal_access import uses_supabase_auth, is_restore_test
 
     require_admin()
     st.header("Backup ved sæsonafslutning")
     st.write("Opret en samlet ZIP-fil med database, struktur, roller og dokumenter. "
              "Backuppen omfatter alle sæsoner. Tag gerne en kopi både før og efter sæsonafslutning.")
     st.caption(f"Gem den downloadede ZIP-fil i {DESTINATION}, og kontrollér derefter, at den findes på NAS’en.")
-    if uses_supabase_auth():
+    if uses_supabase_auth() or is_restore_test():
         st.info("Backup er ikke aktiveret i testmiljøet.")
         return
     missing = prerequisites(st.secrets)

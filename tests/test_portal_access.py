@@ -35,6 +35,47 @@ class TestPortalAccess(unittest.TestCase):
         self.access.get_database_client()
         self.sdk.create_client.assert_called_once_with("legacy-url", "legacy-key")
 
+    def configure_restore(self):
+        self.st.secrets = {"APP_ENV": "restore_test", "AUTH_MODE": "legacy",
+                           "SUPABASE_URL": self.access.RESTORE_TEST_URL,
+                           "SUPABASE_KEY": "test-only", "RESTORE_TEST_COOKIE_KEY": "separate-cookie"}
+
+    def test_restore_uses_only_fixed_test_project(self):
+        self.configure_restore()
+        self.access.get_database_client()
+        self.sdk.create_client.assert_called_once_with(self.access.RESTORE_TEST_URL, "test-only")
+
+    def test_restore_rejects_production_and_wrong_auth_mode(self):
+        for name, value in (("SUPABASE_URL", "https://production.supabase.co"),
+                            ("AUTH_MODE", "supabase"), ("RESTORE_TEST_COOKIE_KEY", "")):
+            self.configure_restore()
+            self.st.secrets[name] = value
+            with self.assertRaises(Stopped):
+                self.access.get_database_client()
+        self.sdk.create_client.assert_not_called()
+
+    def test_restore_entrypoint_requires_explicit_environment(self):
+        with self.assertRaises(Stopped):
+            self.access.validate_restore_test(required=True)
+
+    def test_mail_suppressed_only_in_restore_test(self):
+        self.assertFalse(self.access.suppress_test_email())
+        self.configure_restore()
+        self.assertTrue(self.access.suppress_test_email())
+
+    def test_both_mail_functions_skip_smtp_in_restore_test(self):
+        import ast
+        self.configure_restore()
+        for filename in ("data_email.py", "confirmation_email.py"):
+            tree = ast.parse((Path(__file__).parents[1] / "config" / filename).read_text(encoding="utf-8"))
+            function = next(node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name == "send_email")
+            smtp = Mock()
+            namespace = {"smtplib": smtp, "ssl": Mock(), "smtp_server": "unused", "port": 587, "admin_email": "unused"}
+            with patch.dict(sys.modules, {"portal_access": self.access}):
+                exec(compile(ast.Module(body=[function], type_ignores=[]), filename, "exec"), namespace)
+                namespace["send_email"]("unused-password", Mock())
+            smtp.SMTP.assert_not_called()
+
     def test_unknown_mode_stops(self):
         self.st.secrets = {"AUTH_MODE": "typo"}
         with self.assertRaises(Stopped):

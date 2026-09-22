@@ -1,5 +1,8 @@
 import streamlit as st
 import streamlit_authenticator as stauth
+from portal_access import is_restore_test, validate_restore_test
+
+validate_restore_test()
 
 names = ['Finn', 'Naja', 'Admin']
 usernames = ['finn', 'naja', 'admin']
@@ -20,8 +23,8 @@ credentials = {
 
 authenticator = stauth.Authenticate(
     credentials,
-    'hk_portal2',
-    'hammerknudenportal',
+    'hk_restore_test' if is_restore_test() else 'hk_portal2',
+    st.secrets['RESTORE_TEST_COOKIE_KEY'] if is_restore_test() else 'hammerknudenportal',
     cookie_expiry_days=30
 )
 

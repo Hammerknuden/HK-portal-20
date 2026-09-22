@@ -64,6 +64,9 @@ def add_data(year=None, booking_number=None, name=None, family_name=None,
 
 
 def send_email(confirmation_password, email):
+    from portal_access import suppress_test_email
+    if suppress_test_email():
+        return
     context = ssl.create_default_context()
     # Send the message via local SMTP server.
     with smtplib.SMTP(smtp_server, port) as server:

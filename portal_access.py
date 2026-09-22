@@ -1,6 +1,34 @@
 """Shared access boundary; production defaults to the existing legacy path."""
 import streamlit as st
 
+RESTORE_TEST_URL = "https://ycasinssaffzpsyhgzgf.supabase.co"
+
+
+def is_restore_test():
+    return st.secrets.get("APP_ENV") == "restore_test"
+
+
+def validate_restore_test(required=False):
+    if not is_restore_test():
+        if required:
+            st.error("Testappen kræver APP_ENV = restore_test i sine egne Secrets.")
+            st.stop()
+        return
+    if (st.secrets.get("AUTH_MODE", "legacy") != "legacy"
+            or st.secrets.get("SUPABASE_URL", "").rstrip("/") != RESTORE_TEST_URL
+            or not st.secrets.get("SUPABASE_KEY")
+            or not st.secrets.get("RESTORE_TEST_COOKIE_KEY")):
+        st.error("Testappen kræver legacy-login, backup-testprojektets URL og nøgle samt RESTORE_TEST_COOKIE_KEY.")
+        st.stop()
+
+
+def suppress_test_email():
+    if is_restore_test():
+        validate_restore_test()
+        st.info("TEST: Mailafsendelse sprunget over. Ingen mail er sendt.")
+        return True
+    return False
+
 
 def uses_supabase_auth():
     mode = st.secrets.get("AUTH_MODE", "legacy")
@@ -30,6 +58,7 @@ def require_test_user(admin=False):
 
 
 def get_database_client():
+    validate_restore_test()
     from supabase import create_client, ClientOptions
     if not uses_supabase_auth():
         return create_client(st.secrets["SUPABASE_URL"], st.secrets["SUPABASE_KEY"])
