@@ -6,6 +6,41 @@ TEST_BOOKING = 99999
 TEST_NAME = "AUTH WRITE TEST - NOT A GUEST"
 
 
+def is_scoped_comment_patch(method, path, params, payload):
+    """Allow only a comment PATCH targeting the reserved booking and one row ID."""
+    if method != "PATCH" or path != "/rest/v1/hk_dtb" or not isinstance(payload, dict):
+        return False
+    if set(payload) != {"comments"}:
+        return False
+    comment = payload["comments"]
+    if not isinstance(comment, str) or not comment.strip() or len(comment) > 500:
+        return False
+    required = {"season": "eq.2099", "booking_number": "eq.99999",
+                "navn": "eq." + TEST_NAME, "web": "eq.cansl"}
+    if any(params.get(key) != [value] for key, value in required.items()):
+        return False
+    row_id = params.get("id", [])
+    if len(row_id) != 1 or not row_id[0].startswith("eq.") or not row_id[0][3:].isdigit():
+        return False
+    return set(params).issubset({*required, "id", "comments", "select"})
+
+
+def save_booking_test_comment(client, row_id, previous_comment, comment):
+    if not isinstance(comment, str) or not comment.strip() or len(comment) > 500:
+        raise ValueError("Brug 1–500 tegn.")
+    def scope(query):
+        return (query.eq("id", int(row_id)).eq("season", TEST_SEASON)
+                .eq("booking_number", TEST_BOOKING).eq("navn", TEST_NAME).eq("web", "cansl"))
+    query = scope(client.table("hk_dtb").update({"comments": comment}))
+    query = query.is_("comments", "null") if previous_comment is None else query.eq("comments", previous_comment)
+    result = query.execute()
+    if not result.data or len(result.data) != 1:
+        raise ValueError("Ingen ændring bekræftet. Genindlæs booking og kontrollér rettigheder.")
+    verified = scope(client.table("hk_dtb").select("id,comments")).execute()
+    if len(verified.data or []) != 1 or verified.data[0].get("comments") != comment:
+        raise ValueError("Ændringen kunne ikke genlæses.")
+
+
 class BookingWriteProbe:
     def __init__(self, auth_client, token, admin_ids):
         self.auth = auth_client

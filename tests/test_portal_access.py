@@ -116,6 +116,32 @@ class TestPortalAccess(unittest.TestCase):
         self.assertEqual(resolve_role({"id": "admin"}, ["admin"], []), "admin")
         self.assertIsNone(resolve_role({"id": "stranger", "user_metadata": {"role": "admin"}}, ["admin"], []))
 
+    @patch("testing.auth_client.AuthClient.get_user")
+    def test_comment_exception_requires_admin_flag_and_explicit_client_option(self, get_user):
+        import json
+        from urllib.parse import urlencode
+        from testing.write_probe import TEST_NAME
+        self.configure_test()
+        self.st.secrets["ENABLE_BOOKING_WRITE_PROBE"] = True
+        query = urlencode({"id": "eq.217", "season": "eq.2099", "booking_number": "eq.99999",
+                           "navn": "eq." + TEST_NAME, "web": "eq.cansl"}).encode()
+        request = Mock(method="PATCH", content=json.dumps({"comments": "Test"}).encode())
+        request.url.path = "/rest/v1/hk_dtb"
+        request.url.query = query
+        for uid, flag, option, permitted in [("admin", True, True, True),
+                                            ("ordinary", True, True, False),
+                                            ("admin", False, True, False),
+                                            ("admin", True, False, False)]:
+            get_user.return_value = {"id": uid, "email": "user@example.com"}
+            self.st.secrets["ENABLE_BOOKING_WRITE_PROBE"] = flag
+            self.access.get_database_client(allow_booking_comment=option)
+            hook = self.httpx.Client.call_args.kwargs["event_hooks"]["request"][0]
+            if permitted:
+                hook(request)
+            else:
+                with self.assertRaises(RuntimeError):
+                    hook(request)
+
 
 if __name__ == "__main__":
     unittest.main()

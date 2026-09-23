@@ -57,16 +57,36 @@ def require_test_user(admin=False):
     return user
 
 
-def get_database_client():
+def booking_comment_test_enabled():
+    if (st.secrets.get("APP_ENV") != "test" or not uses_supabase_auth()
+            or st.secrets.get("ENABLE_BOOKING_WRITE_PROBE") is not True):
+        return False
+    user = require_test_user()
+    return user["id"] in st.secrets.get("TEST_ADMIN_USER_IDS", [])
+
+
+def get_database_client(allow_booking_comment=False):
     validate_restore_test()
     from supabase import create_client, ClientOptions
     if not uses_supabase_auth():
         return create_client(st.secrets["SUPABASE_URL"], st.secrets["SUPABASE_KEY"])
     require_test_user()
     import httpx
+    comment_test = allow_booking_comment and booking_comment_test_enabled()
 
     def read_only(request):
         if request.method not in ("GET", "HEAD", "OPTIONS"):
+            if comment_test:
+                import json
+                from urllib.parse import parse_qs
+                from testing.write_probe import is_scoped_comment_patch
+                try:
+                    params = parse_qs(request.url.query.decode("utf-8"), keep_blank_values=True)
+                    payload = json.loads(request.content)
+                    if is_scoped_comment_patch(request.method, request.url.path, params, payload):
+                        return
+                except (ValueError, UnicodeError):
+                    pass
             raise RuntimeError("Testmiljøet er i læsetilstand. Ændringer er ikke aktiveret.")
 
     token = st.session_state["test_auth_access_token"]

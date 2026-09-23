@@ -115,7 +115,7 @@ if selected_page == "Skrivetest":
     render_write_probe(client, st.session_state[token_key], admin_ids)
     st.stop()
 if pages[selected_page]:
-    st.info("Testmiljøet er i læsetilstand. Lagring, sletning og mailafsendelse er ikke aktiveret.")
+    st.info("Portalsiderne er i læsetilstand. Administratorer med aktiveret skrivetest kan dog gemme en testkommentar i Booking, sæson 2099.")
     try:
         runpy.run_path(str(ROOT / "pages" / pages[selected_page]), run_name="__test_page__")
     except Exception:

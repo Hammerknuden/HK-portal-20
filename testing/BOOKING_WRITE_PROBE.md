@@ -1,5 +1,18 @@
 # Første skrivetest med Supabase-login
 
+## Kommentarændring gennem Booking-siden
+
+Efter oprettelse i Skrivetest kan administratorer med ENABLE_BOOKING_WRITE_PROBE
+vælge 2099 på Booking-siden. Siden viser kun Rediger booking for denne sæson.
+Vælg booking 99999, indtast Ny testkommentar og klik Gem ændringer. Den benytter
+portalens Supabase-klient med brugerens JWT, og genlæser kommentaren efter PATCH.
+Klientens skriveblokering tillader kun comments, når forespørgslen indeholder
+det præcise testnummer, sæson, navn, cansl og et enkelt række-ID. Alle andre
+skrivehandlinger forbliver blokeret. Legacy viser ikke 2099. Timeline er uændret,
+da den annullerede booking fortsat skal filtreres fra.
+Dette tester en begrænset redigeringsfunktion, ikke hele bookingformularens
+almindelige gemmeforløb. Der kræves ingen nye Secrets eller SQL-politikker.
+
 Den oprindelige testapp bruger produktionsdatabasen. Derfor testes kun én
 syntetisk, annulleret booking i sæson 2099 med nummer 99999, uden gæster,
 kontaktoplysninger eller mails. Almindelige bookinger og sider er fortsat
