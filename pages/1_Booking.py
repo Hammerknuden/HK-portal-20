@@ -20,7 +20,7 @@ import re
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 import os
 from dotenv import load_dotenv
-from portal_access import get_database_client, is_restore_test, booking_comment_test_enabled
+from portal_access import get_database_client, is_restore_test, booking_comment_test_enabled, booking_300_test_enabled
 
 
 st.set_page_config(page_title="Booking", layout="wide")
@@ -164,7 +164,7 @@ if mode == "✏️ Rediger booking":
 
     booking = booking_lookup.loc[booking_id]
 
-    october_test = (comment_test_enabled and st.secrets.get("ENABLE_BOOKING_300_TEST") is True
+    october_test = (booking_300_test_enabled()
                     and year == "2026" and int(booking["booking_number"]) == 300
                     and booking["navn"] == "NN")
     if october_test:

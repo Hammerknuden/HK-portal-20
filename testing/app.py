@@ -115,11 +115,16 @@ if selected_page == "Skrivetest":
     render_write_probe(client, st.session_state[token_key], admin_ids)
     st.stop()
 if pages[selected_page]:
-    st.info("Portalsiderne er som udgangspunkt i læsetilstand. Aktiverede administratortests tillader en kommentar i sæson 2099 og, med ENABLE_BOOKING_300_TEST, ændringer af booking 300, NN, i oktober 2026.")
+    st.info("Portalsiderne er som udgangspunkt i læsetilstand. Aktiverede tests tillader administratorer at ændre en kommentar i sæson 2099. Med ENABLE_BOOKING_300_TEST kan godkendte brugere redigere booking 300, NN, i oktober 2026.")
     try:
         runpy.run_path(str(ROOT / "pages" / pages[selected_page]), run_name="__test_page__")
-    except Exception:
-        st.error("Siden kunne ikke gennemføres. Kontrollér læseadgang på Adgangstest. Skrivehandlinger er blokeret i testmiljøet.")
+    except Exception as error:
+        import traceback
+        st.error("Siden kunne ikke gennemføres. Fejlen nedenfor kan bruges til at finde årsagen.")
+        # Show only exception type and code locations, never tokens, data or exception text.
+        frames = traceback.extract_tb(error.__traceback__)
+        locations = " → ".join(f"{Path(frame.filename).name}:{frame.lineno}" for frame in frames[-5:])
+        st.code(f"{type(error).__name__} | {locations}", language=None)
     st.stop()
 
 st.subheader("Test databaseadgang")

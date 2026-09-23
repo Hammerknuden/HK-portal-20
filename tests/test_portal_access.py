@@ -123,6 +123,7 @@ class TestPortalAccess(unittest.TestCase):
         from testing.write_probe import TEST_NAME
         self.configure_test()
         self.st.secrets["ENABLE_BOOKING_WRITE_PROBE"] = True
+        self.st.secrets["ENABLE_BOOKING_300_TEST"] = True
         query = urlencode({"id": "eq.217", "season": "eq.2099", "booking_number": "eq.99999",
                            "navn": "eq." + TEST_NAME, "web": "eq.cansl"}).encode()
         request = Mock(method="PATCH", content=json.dumps({"comments": "Test"}).encode())
@@ -141,6 +142,43 @@ class TestPortalAccess(unittest.TestCase):
             else:
                 with self.assertRaises(RuntimeError):
                     hook(request)
+
+
+    @patch("testing.auth_client.AuthClient.get_user")
+    def test_booking_300_allows_approved_users_only_with_flags_and_page_opt_in(self, get_user):
+        import json
+        from urllib.parse import urlencode
+        self.configure_test()
+        payload = dict.fromkeys(["booking_number", "familie_navn", "email", "telefon",
+            "checkin_date", "checkout_date", "nation", "web", "ankomst", "bed",
+            "morgenmad", "room_number", "season"], "")
+        payload.update(booking_number="300", season="2026",
+                       checkin_date="2026-10-01", checkout_date="2026-10-04")
+        request = Mock(method="PATCH", content=json.dumps(payload).encode())
+        request.url.path = "/rest/v1/hk_dtb"
+        request.url.query = urlencode({"id": "eq.218", "season": "eq.2026",
+            "booking_number": "eq.300", "navn": "eq.NN"}).encode()
+        for uid, probe, october, option, permitted in [
+            ("ordinary", True, True, True, True), ("admin", True, True, True, True),
+            ("ordinary", False, True, True, False), ("ordinary", True, False, True, False),
+            ("ordinary", True, True, False, False)]:
+            with self.subTest(uid=uid, probe=probe, october=october, option=option):
+                get_user.return_value = {"id": uid, "email": "user@example.com"}
+                self.st.secrets.update(ENABLE_BOOKING_WRITE_PROBE=probe,
+                                       ENABLE_BOOKING_300_TEST=october)
+                self.access.get_database_client(allow_booking_comment=option)
+                hook = self.httpx.Client.call_args.kwargs["event_hooks"]["request"][0]
+                if permitted:
+                    hook(request)
+                    for method in ("POST", "DELETE"):
+                        with self.assertRaises(RuntimeError):
+                            hook(Mock(method=method, url=request.url, content=request.content))
+                else:
+                    with self.assertRaises(RuntimeError):
+                        hook(request)
+        get_user.return_value = {"id": "stranger", "email": "user@example.com"}
+        with self.assertRaises(Stopped):
+            self.access.get_database_client(allow_booking_comment=True)
 
 
 if __name__ == "__main__":
