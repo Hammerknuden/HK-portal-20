@@ -6,6 +6,29 @@ TEST_BOOKING = 99999
 TEST_NAME = "AUTH WRITE TEST - NOT A GUEST"
 
 
+def is_booking_300_patch(method, path, params, payload):
+    """Only the ordinary edit form for the agreed October test booking."""
+    from datetime import date
+    fields = {"booking_number", "familie_navn", "email", "telefon", "checkin_date",
+              "checkout_date", "nation", "web", "ankomst", "bed", "morgenmad",
+              "room_number", "season"}
+    required = {"season": ["eq.2026"], "booking_number": ["eq.300"], "navn": ["eq.NN"]}
+    if (method != "PATCH" or path != "/rest/v1/hk_dtb"
+            or not isinstance(payload, dict) or set(payload) != fields
+            or any(params.get(k) != v for k, v in required.items())
+            or not set(params).issubset({*required, "id", "select"})):
+        return False
+    ids = params.get("id", [])
+    if len(ids) != 1 or not ids[0].startswith("eq.") or not ids[0][3:].isdigit():
+        return False
+    try:
+        return (str(payload["season"]) == "2026" and str(payload["booking_number"]) == "300"
+                and date(2026, 10, 1) <= date.fromisoformat(payload["checkin_date"])
+                < date.fromisoformat(payload["checkout_date"]) <= date(2026, 11, 1))
+    except (ValueError, TypeError):
+        return False
+
+
 def is_scoped_comment_patch(method, path, params, payload):
     """Allow only a comment PATCH targeting the reserved booking and one row ID."""
     if method != "PATCH" or path != "/rest/v1/hk_dtb" or not isinstance(payload, dict):

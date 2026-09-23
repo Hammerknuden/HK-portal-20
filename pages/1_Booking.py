@@ -164,6 +164,12 @@ if mode == "✏️ Rediger booking":
 
     booking = booking_lookup.loc[booking_id]
 
+    october_test = (comment_test_enabled and st.secrets.get("ENABLE_BOOKING_300_TEST") is True
+                    and year == "2026" and int(booking["booking_number"]) == 300
+                    and booking["navn"] == "NN")
+    if october_test:
+        st.info("Skrivetest: Booking 300, NN. Gem ændringer kan testes med datoer i oktober 2026. Bookingnummeret skal forblive 300.")
+
     if year == "2099" and comment_test_enabled:
         from testing.write_probe import TEST_BOOKING, TEST_NAME, save_booking_test_comment
         if (int(booking["booking_number"]) != TEST_BOOKING
@@ -285,7 +291,7 @@ if mode == "✏️ Rediger booking":
                 key=f"save_booking_{booking_id}"
         ):
             try:
-                result = (
+                update_query = (
                     supabase
                     .table("hk_dtb")
                     .update({
@@ -304,8 +310,12 @@ if mode == "✏️ Rediger booking":
                         "season": year,
                     })
                     .eq("id", booking_id)
-                    .execute()
                 )
+                if october_test:
+                    update_query = update_query.eq("season", 2026).eq("booking_number", 300).eq("navn", "NN")
+                result = update_query.execute()
+                if not result.data or len(result.data) != 1:
+                    raise ValueError("Ingen ændring bekræftet. Genindlæs og kontrollér skriveadgang.")
 
                 st.success("Ændringer gemt")
                 st.write(result.data)

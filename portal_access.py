@@ -79,11 +79,14 @@ def get_database_client(allow_booking_comment=False):
             if comment_test:
                 import json
                 from urllib.parse import parse_qs
-                from testing.write_probe import is_scoped_comment_patch
+                from testing.write_probe import is_scoped_comment_patch, is_booking_300_patch
                 try:
                     params = parse_qs(request.url.query.decode("utf-8"), keep_blank_values=True)
                     payload = json.loads(request.content)
                     if is_scoped_comment_patch(request.method, request.url.path, params, payload):
+                        return
+                    if (st.secrets.get("ENABLE_BOOKING_300_TEST") is True
+                            and is_booking_300_patch(request.method, request.url.path, params, payload)):
                         return
                 except (ValueError, UnicodeError):
                     pass
