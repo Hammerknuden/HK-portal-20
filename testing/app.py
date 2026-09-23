@@ -107,7 +107,13 @@ pages = {
 }
 if role == "admin":
     pages.update({"Setup": "7_setup.py", "Booking.com-afstemning": "9_Booking_com_kontrol.py"})
+    if st.secrets.get("ENABLE_BOOKING_WRITE_PROBE") is True:
+        pages["Skrivetest"] = None
 selected_page = st.sidebar.selectbox("Side", list(pages))
+if selected_page == "Skrivetest":
+    from testing.write_probe import render_write_probe
+    render_write_probe(client, st.session_state[token_key], admin_ids)
+    st.stop()
 if pages[selected_page]:
     st.info("Testmiljøet er i læsetilstand. Lagring, sletning og mailafsendelse er ikke aktiveret.")
     try:
