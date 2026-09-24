@@ -40,3 +40,11 @@ og test af alle portalsider er næste fase. Produktionskoden er ikke omlagt endn
 Lokalt: installer testing/requirements.txt og kør
 `streamlit run testing/app.py --server.port 8502` fra repository-roden.
 Lokale test-Secrets placeres i `.streamlit/secrets.toml` (ignoreret af Git).
+
+
+## Afsluttede skrivetests
+
+SQL-filer og vejledninger for testbooking 300, 301 og 2099/99999 er flyttet til
+[arkivet](archive/booking_write_tests/README.md). Oprydning i testrettigheder
+ligger i [cleanup_booking_write_tests.sql](cleanup_booking_write_tests.sql).
+Python-filerne bruges stadig af appen. Fuld Supabase-skriveadgang er endnu ikke åbnet.

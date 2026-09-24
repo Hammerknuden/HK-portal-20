@@ -1,6 +1,8 @@
+> Arkiveret vejledning fra afsluttet skrivetest. Se README.md i denne mappe.
+
 # Booking 301 creation test
 
-Run testing/enable_booking_301_test.sql once in the original Supabase project.
+Run testing/archive/booking_write_tests/enable_booking_301_test.sql once in the original Supabase project.
 It requires RLS, the three existing users, and no booking 301 in season 2026.
 It adds a bounded INSERT policy and partial unique index, preventing concurrent duplicates.
 Existing SELECT policies provide readback. No booking is created by this SQL.
