@@ -74,6 +74,15 @@ def booking_300_test_enabled():
     return True
 
 
+def booking_301_test_enabled():
+    if (st.secrets.get("APP_ENV") != "test" or not uses_supabase_auth()
+            or st.secrets.get("ENABLE_BOOKING_WRITE_PROBE") is not True
+            or st.secrets.get("ENABLE_BOOKING_301_TEST") is not True):
+        return False
+    require_test_user()
+    return True
+
+
 def get_database_client(allow_booking_comment=False, allow_timeline_test=False):
     validate_restore_test()
     from supabase import create_client, ClientOptions
@@ -84,15 +93,19 @@ def get_database_client(allow_booking_comment=False, allow_timeline_test=False):
     comment_test = allow_booking_comment and booking_comment_test_enabled()
     october_test = (allow_booking_comment or allow_timeline_test) and booking_300_test_enabled()
 
+    create_test = allow_booking_comment and booking_301_test_enabled()
+
     def read_only(request):
         if request.method not in ("GET", "HEAD", "OPTIONS"):
-            if comment_test or october_test:
+            if comment_test or october_test or create_test:
                 import json
                 from urllib.parse import parse_qs
-                from testing.write_probe import is_scoped_comment_patch, is_booking_300_patch
+                from testing.write_probe import is_scoped_comment_patch, is_booking_300_patch, is_booking_301_insert
                 try:
                     params = parse_qs(request.url.query.decode("utf-8"), keep_blank_values=True)
                     payload = json.loads(request.content)
+                    if create_test and is_booking_301_insert(request.method, request.url.path, params, payload):
+                        return
                     if comment_test and is_scoped_comment_patch(request.method, request.url.path, params, payload):
                         return
                     if (october_test

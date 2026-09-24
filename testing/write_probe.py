@@ -176,3 +176,37 @@ def render_write_probe(auth_client, token, admin_ids):
             st.write("Ny gemt kommentar:", updated["comments"])
         except Exception:
             st.error("Ændringen kunne ikke bekræftes. Brug 1–500 tegn, kontrollér SQL-opsætningen og genindlæs.")
+
+
+BOOKING_301_FIELDS = {"booking_number", "navn", "familie_navn", "checkin_date",
+    "checkout_date", "booking_date", "nation", "web", "ankomst", "bed", "rabat",
+    "numb_rooms", "numb_guests", "email", "telefon", "spouse", "enkelt",
+    "morgenmad", "pris", "known", "comments", "room_number", "season", "movable"}
+
+
+def is_booking_301_insert(method, path, params, payload):
+    return (method == "POST" and path == "/rest/v1/hk_dtb" and not params
+            and isinstance(payload, dict) and set(payload) == BOOKING_301_FIELDS
+            and str(payload["booking_number"]) == "301" and payload["navn"] == "AA"
+            and payload["season"] == 2026 and payload["checkin_date"] == "2026-10-02"
+            and payload["checkout_date"] == "2026-10-06" and payload["numb_rooms"] == 1
+            and payload["room_number"] == 7)
+
+
+def create_booking_301(client, payload):
+    if not is_booking_301_insert("POST", "/rest/v1/hk_dtb", {}, payload):
+        raise ValueError("Brug booking 301, AA, 2.–6. oktober 2026 og ét værelse.")
+    def lookup():
+        return (client.table("hk_dtb").select("*").eq("season", 2026)
+                .eq("booking_number", 301).execute().data or [])
+    if lookup():
+        raise ValueError("Booking 301 findes allerede. Der oprettes ikke en kopi.")
+    rows = client.table("hk_dtb").insert(payload).execute().data or []
+    verified = lookup()
+    if (len(rows) != 1 or len(verified) != 1
+            or rows[0].get("id") is None or verified[0].get("id") != rows[0]["id"]
+            or verified[0].get("navn") != "AA"
+            or verified[0].get("checkin_date") != "2026-10-02"
+            or verified[0].get("checkout_date") != "2026-10-06"):
+        raise ValueError("Oprettelsen kunne ikke genlæses. Kontrollér booking 301 før et nyt forsøg.")
+    return verified[0]["id"]

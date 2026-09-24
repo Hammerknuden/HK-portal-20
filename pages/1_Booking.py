@@ -858,7 +858,41 @@ else:
     #to_addr = "finnjorg@mail.dk"
     from portal_access import uses_supabase_auth
     if uses_supabase_auth():
-        st.info("Mailafsendelse og eksport er ikke aktiveret i testmiljøet.")
+        from portal_access import booking_301_test_enabled
+        st.info("Oprettelsestest: booking 301, AA, 2.–6. oktober 2026, ét værelse. Der sendes ingen mail.")
+        if booking_301_test_enabled() and st.button("Opret testbooking 301"):
+            from testing.write_probe import create_booking_301
+            try:
+                test_payload = {
+            "booking_number": booking_number,
+            "navn": name,
+            "familie_navn": fam_name.strip(),
+            "checkin_date": checkin_date.isoformat(),
+            "checkout_date": checkout_date.isoformat(),
+            "booking_date": now.isoformat(),
+            "nation": nationalitet,
+            "web": web,
+            "ankomst": ankomst,
+            "bed": seng,
+            "rabat": procent,
+            "numb_rooms": num_rooms,
+            "numb_guests": num_guests,
+            "email": email_address,
+            "telefon": telefon,
+            "spouse": spouse,
+            "enkelt": single_room,
+            "morgenmad": BF,
+            "pris": pristotal,
+            "known": known,
+            "comments": comments,
+            "room_number": 7,
+            "season": int(year),
+            "movable": True
+        }
+                new_id = create_booking_301(supabase, test_payload)
+                st.success(f"Booking 301 oprettet og genlæst fra databasen. ID: {new_id}.")
+            except Exception as error:
+                st.error(f"Oprettelse ikke bekræftet: {error}")
         st.stop()
     if is_restore_test():
         confirmation_password = ""

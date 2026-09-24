@@ -215,5 +215,35 @@ class TestPortalAccess(unittest.TestCase):
             self.access.get_database_client(allow_timeline_test=True)
 
 
+    @patch("testing.auth_client.AuthClient.get_user")
+    def test_booking_301_requires_enabled_booking_page_and_approved_user(self, get_user):
+        import json
+        from testing.write_probe import BOOKING_301_FIELDS
+        self.configure_test()
+        payload = dict.fromkeys(BOOKING_301_FIELDS, "")
+        payload.update(booking_number="301", navn="AA", season=2026,
+                       checkin_date="2026-10-02", checkout_date="2026-10-06", numb_rooms=1, room_number=7)
+        request = Mock(method="POST", content=json.dumps(payload).encode())
+        request.url.path = "/rest/v1/hk_dtb"
+        request.url.query = b""
+        for uid, probe, enabled, option, permitted in [
+            ("ordinary", True, True, True, True), ("admin", True, True, True, True),
+            ("ordinary", False, True, True, False), ("ordinary", True, False, True, False),
+            ("ordinary", True, True, False, False)]:
+            get_user.return_value = {"id": uid, "email": "user@example.com"}
+            self.st.secrets.update(ENABLE_BOOKING_WRITE_PROBE=probe, ENABLE_BOOKING_301_TEST=enabled)
+            self.access.get_database_client(allow_booking_comment=option)
+            hook = self.httpx.Client.call_args.kwargs["event_hooks"]["request"][0]
+            if permitted:
+                hook(request)
+            else:
+                with self.assertRaises(RuntimeError): hook(request)
+        self.access.get_database_client(allow_timeline_test=True)
+        hook = self.httpx.Client.call_args.kwargs["event_hooks"]["request"][0]
+        with self.assertRaises(RuntimeError): hook(request)
+        get_user.return_value = {"id": "stranger"}
+        with self.assertRaises(Stopped): self.access.get_database_client(allow_booking_comment=True)
+
+
 if __name__ == "__main__":
     unittest.main()
