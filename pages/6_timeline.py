@@ -10,7 +10,7 @@ from common import init_session, exclude_cancelled_bookings
 import re
 import os
 from dotenv import load_dotenv
-from portal_access import get_database_client, uses_supabase_auth
+from portal_access import get_database_client, uses_supabase_auth, booking_300_test_enabled
 from importlib.metadata import version
 from modules.level2_optimizer import analyze_improvements
 from modules.level2_optimizer import can_swap_blocks
@@ -31,7 +31,10 @@ require_login()
 st.write(version("streamlit-authenticator"))
 load_dotenv()
 
-supabase = get_database_client()
+supabase = get_database_client(allow_timeline_test=True)
+timeline_test_enabled = booking_300_test_enabled()
+if message := st.session_state.pop("timeline_edit_saved", None):
+    st.success(message)
 
 #####
 # new database
@@ -699,6 +702,12 @@ if not df.empty:
     )
 
     booking = df[df["id"] == booking_id].iloc[0]
+    scoped_test = (timeline_test_enabled and int(booking["season"]) == 2026
+                   and int(booking["booking_number"]) == 300 and booking["navn"] == "NN")
+    edit_blocked = uses_supabase_auth() and not scoped_test
+    if uses_supabase_auth():
+        st.info("Skrivetest: Kun booking 300, NN, kan redigeres. Behold navn og bookingnummer, og brug datoer i oktober 2026.")
+
 
     room_text = str(booking["room_number"])
 
@@ -770,29 +779,42 @@ if not df.empty:
     with col1:
         if st.button(
                 "Gem ændringer",
-                key=f"timeline_save_{booking_id}"
+                key=f"timeline_save_{booking_id}", disabled=edit_blocked
         ):
-            supabase.table("hk_dtb").update({
-                "room_number": new_room,
-                "checkin_date": new_start.isoformat(),
-                "checkout_date": new_end.isoformat(),
-                "booking_number": int(new_guest),
-                "navn": new_name.strip(),
-                "web": new_web.strip(),
-                "comments": new_comments.strip(),
-                "movable": new_movable
-            }).eq(
-                "id",
-                booking_id
-            ).execute()
-
-            st.success("Ændringer gemt")
-            st.rerun()
+            try:
+                payload = {
+                    "room_number": new_room,
+                    "checkin_date": new_start.isoformat(),
+                    "checkout_date": new_end.isoformat(),
+                    "booking_number": int(new_guest),
+                    "navn": new_name.strip(),
+                    "web": new_web.strip(),
+                    "comments": new_comments.strip(),
+                    "movable": new_movable
+                }
+                query = supabase.table("hk_dtb").update(payload).eq("id", booking_id)
+                if scoped_test:
+                    query = query.eq("season", 2026).eq("booking_number", 300).eq("navn", "NN")
+                result = query.execute()
+                if len(result.data or []) != 1:
+                    raise ValueError("Ingen ændring bekræftet. Genindlæs og kontrollér skriveadgang.")
+                if scoped_test:
+                    verified = (supabase.table("hk_dtb").select(",".join(payload))
+                                .eq("id", booking_id).eq("season", 2026)
+                                .eq("booking_number", 300).eq("navn", "NN").execute())
+                    if (len(verified.data or []) != 1
+                            or any(verified.data[0].get(k) != v for k, v in payload.items())):
+                        raise ValueError("Ændringen kunne ikke genlæses. Kontrollér bookingen før næste forsøg.")
+                st.session_state["timeline_edit_saved"] = "Ændringer gemt" + (" og genlæst fra databasen." if scoped_test else ".")
+            except Exception as error:
+                st.error(f"Fejl ved opdatering: {error}")
+            else:
+                st.rerun()
 
     with col2:
         if st.button(
                 "Slet booking",
-                key=f"timeline_delete_{booking_id}"
+                key=f"timeline_delete_{booking_id}", disabled=uses_supabase_auth()
         ):
             supabase.table("hk_dtb").delete().eq(
                 "id",
@@ -805,7 +827,7 @@ if not df.empty:
     with col3:
         if st.button(
                 "🔄 Byt værelse",
-                key=f"timeline_open_swap_{booking_id}"
+                key=f"timeline_open_swap_{booking_id}", disabled=uses_supabase_auth()
         ):
             st.session_state["timeline_swap_open"] = True
             st.session_state["timeline_swap_source_id"] = int(booking_id)

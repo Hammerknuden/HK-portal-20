@@ -6,12 +6,15 @@ TEST_BOOKING = 99999
 TEST_NAME = "AUTH WRITE TEST - NOT A GUEST"
 
 
-def is_booking_300_patch(method, path, params, payload):
+def is_booking_300_patch(method, path, params, payload, *, timeline=False):
     """Only the ordinary edit form for the agreed October test booking."""
     from datetime import date
     fields = {"booking_number", "familie_navn", "email", "telefon", "checkin_date",
               "checkout_date", "nation", "web", "ankomst", "bed", "morgenmad",
               "room_number", "season"}
+    if timeline:
+        fields = {"room_number", "checkin_date", "checkout_date", "booking_number",
+                  "navn", "web", "comments", "movable"}
     required = {"season": ["eq.2026"], "booking_number": ["eq.300"], "navn": ["eq.NN"]}
     if (method != "PATCH" or path != "/rest/v1/hk_dtb"
             or not isinstance(payload, dict) or set(payload) != fields
@@ -22,7 +25,8 @@ def is_booking_300_patch(method, path, params, payload):
     if len(ids) != 1 or not ids[0].startswith("eq.") or not ids[0][3:].isdigit():
         return False
     try:
-        return (str(payload["season"]) == "2026" and str(payload["booking_number"]) == "300"
+        return ((not timeline or payload["navn"] == "NN")
+                and str(payload.get("season", 2026)) == "2026" and str(payload["booking_number"]) == "300"
                 and date(2026, 10, 1) <= date.fromisoformat(payload["checkin_date"])
                 < date.fromisoformat(payload["checkout_date"]) <= date(2026, 11, 1))
     except (ValueError, TypeError):

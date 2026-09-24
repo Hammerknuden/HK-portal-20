@@ -30,3 +30,20 @@ class Booking300ScopeTests(unittest.TestCase):
     def test_extra_column_rejected(self):
         self.payload['id']=1
         self.assertFalse(self.allowed())
+
+class TimelineScopeTests(unittest.TestCase):
+    def test_timeline_payload_scope_and_identity(self):
+        params = {'id':['eq.218'], 'season':['eq.2026'], 'booking_number':['eq.300'], 'navn':['eq.NN']}
+        payload = dict(room_number=7, checkin_date='2026-10-01', checkout_date='2026-10-04',
+                       booking_number=300, navn='NN', web='dir', comments='Test', movable=True)
+        def allowed():
+            return is_booking_300_patch('PATCH','/rest/v1/hk_dtb',params,payload,timeline=True)
+        self.assertTrue(allowed())
+        self.assertFalse(is_booking_300_patch('PATCH','/rest/v1/hk_dtb',params,payload))
+        for key, value in [('navn','Guest'), ('booking_number',301), ('checkout_date','2026-11-02')]:
+            old=payload[key]
+            payload[key]=value
+            self.assertFalse(allowed())
+            payload[key]=old
+        params['booking_number']=['eq.301']
+        self.assertFalse(allowed())

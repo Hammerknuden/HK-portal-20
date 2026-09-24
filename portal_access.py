@@ -74,7 +74,7 @@ def booking_300_test_enabled():
     return True
 
 
-def get_database_client(allow_booking_comment=False):
+def get_database_client(allow_booking_comment=False, allow_timeline_test=False):
     validate_restore_test()
     from supabase import create_client, ClientOptions
     if not uses_supabase_auth():
@@ -82,7 +82,7 @@ def get_database_client(allow_booking_comment=False):
     require_test_user()
     import httpx
     comment_test = allow_booking_comment and booking_comment_test_enabled()
-    october_test = allow_booking_comment and booking_300_test_enabled()
+    october_test = (allow_booking_comment or allow_timeline_test) and booking_300_test_enabled()
 
     def read_only(request):
         if request.method not in ("GET", "HEAD", "OPTIONS"):
@@ -96,7 +96,8 @@ def get_database_client(allow_booking_comment=False):
                     if comment_test and is_scoped_comment_patch(request.method, request.url.path, params, payload):
                         return
                     if (october_test
-                            and is_booking_300_patch(request.method, request.url.path, params, payload)):
+                            and is_booking_300_patch(request.method, request.url.path, params, payload,
+                                                     timeline=allow_timeline_test)):
                         return
                 except (ValueError, UnicodeError):
                     pass

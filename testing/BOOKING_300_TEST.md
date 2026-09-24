@@ -8,7 +8,7 @@ Original Supabase Auth test app, shared production database. Legacy remains unch
 4. Reboot the test app after deployment (legacy too if it reports a stale import).
 5. As Finn or Naja, select Booking, 2026, Rediger booking, booking 300 / NN. Change breakfast or arrival time and save. Reload and verify persisted values, also using the other admin account.
 
-Dates must stay within October 2026, checkout at latest November 1. Booking number stays 300 and name NN. The original setup grants UPDATE to administrators; the additional ordinary-user setup is described below. This enables the normal edit form only, not creation, deletion, room swapping, uploads or other tables. The database policy permits UPDATE of the captured test row; the app additionally restricts columns to the edit form. Changes affect live occupancy/statistics.
+Dates must stay within October 2026, checkout at latest November 1. Booking number stays 300 and name NN. The original setup grants UPDATE to administrators; the additional ordinary-user setup is described below. This enables the normal edit form only, not creation, deletion, room swapping, uploads or other tables. Timeline editing is now covered below. The database policy permits UPDATE of the captured test row; the app additionally restricts columns to the edit form. Changes affect live occupancy/statistics.
 
 After testing, set ENABLE_BOOKING_300_TEST = false and run:
 
@@ -29,5 +29,15 @@ is granted. Keep both existing feature flags true, and the UID in TEST_USER_IDS.
 Deploy portal_access.py, pages/1_Booking.py and testing/app.py together, then reboot.
 Test saving and reloading booking 300 as this user; verify Setup, Booking.com and
 private document download remain unavailable. The 2099 probe remains admin only.
-Creation and Timeline writes are separate, still unfinished tests.
+Creation remains unfinished. Timeline editing is now covered below.
 For cleanup also run `DROP POLICY auth_booking_300_user_update ON public.hk_dtb;`.
+
+## Timeline editing
+
+Timeline now uses the existing booking-300 policies and both existing flags.
+No additional SQL is required. Approved ordinary users and admins can edit booking
+300 / NN via Administrer bookinger. Keep the name and number; dates stay in October.
+Test comments, room and dates, then save. The app checks one updated row, reads back
+all submitted fields, and preserves the success message across reruns.
+Other bookings, deletion, room swaps and optimizer writes remain blocked in this
+Supabase test. Legacy follows its existing access path.

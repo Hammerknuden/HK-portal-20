@@ -180,6 +180,40 @@ class TestPortalAccess(unittest.TestCase):
         with self.assertRaises(Stopped):
             self.access.get_database_client(allow_booking_comment=True)
 
+    @patch("testing.auth_client.AuthClient.get_user")
+    def test_timeline_300_allows_approved_users_only_with_flags_and_page_opt_in(self, get_user):
+        import json
+        from urllib.parse import urlencode
+        self.configure_test()
+        payload = {"room_number": 7, "checkin_date": "2026-10-01",
+                   "checkout_date": "2026-10-04", "booking_number": 300,
+                   "navn": "NN", "web": "dir", "comments": "Test", "movable": True}
+        request = Mock(method="PATCH", content=json.dumps(payload).encode())
+        request.url.path = "/rest/v1/hk_dtb"
+        request.url.query = urlencode({"id": "eq.218", "season": "eq.2026",
+            "booking_number": "eq.300", "navn": "eq.NN"}).encode()
+        for uid, probe, october, option, permitted in [
+            ("ordinary", True, True, True, True), ("admin", True, True, True, True),
+            ("ordinary", False, True, True, False), ("ordinary", True, False, True, False),
+            ("ordinary", True, True, False, False)]:
+            with self.subTest(uid=uid, probe=probe, october=october, option=option):
+                get_user.return_value = {"id": uid, "email": "user@example.com"}
+                self.st.secrets.update(ENABLE_BOOKING_WRITE_PROBE=probe,
+                                       ENABLE_BOOKING_300_TEST=october)
+                self.access.get_database_client(allow_timeline_test=option)
+                hook = self.httpx.Client.call_args.kwargs["event_hooks"]["request"][0]
+                if permitted:
+                    hook(request)
+                    for method in ("POST", "DELETE"):
+                        with self.assertRaises(RuntimeError):
+                            hook(Mock(method=method, url=request.url, content=request.content))
+                else:
+                    with self.assertRaises(RuntimeError):
+                        hook(request)
+        get_user.return_value = {"id": "stranger", "email": "user@example.com"}
+        with self.assertRaises(Stopped):
+            self.access.get_database_client(allow_timeline_test=True)
+
 
 if __name__ == "__main__":
     unittest.main()
