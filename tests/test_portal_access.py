@@ -265,5 +265,24 @@ class TestPortalAccess(unittest.TestCase):
         with self.assertRaises(Stopped): self.access.get_database_client(allow_booking_writes=True)
 
 
+    @patch("testing.auth_client.AuthClient.get_user")
+    def test_statistics_rpc_is_read_only_exception(self, get_user):
+        import json
+        self.configure_test()
+        get_user.return_value = {"id": "ordinary", "email": "user@example.com"}
+        self.access.get_database_client()
+        hook = self.httpx.Client.call_args.kwargs["event_hooks"]["request"][0]
+        request = Mock(method="POST", content=json.dumps({"p_season": 2027}).encode())
+        request.url.path = "/rest/v1/rpc/calculate_season_statistics"
+        hook(request)
+        for payload in ({"p_season": True}, {"p_season": "2027"}, {"p_season": 0},
+                        {"p_season": 2027, "write": True}, []):
+            request.content = json.dumps(payload).encode()
+            with self.assertRaises(RuntimeError): hook(request)
+        request.content = json.dumps({"p_season": 2027}).encode()
+        request.url.path = "/rest/v1/rpc/close_booking_season"
+        with self.assertRaises(RuntimeError): hook(request)
+
+
 if __name__ == "__main__":
     unittest.main()

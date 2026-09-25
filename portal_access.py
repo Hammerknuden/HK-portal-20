@@ -100,6 +100,18 @@ def get_database_client(allow_booking_comment=False, allow_timeline_test=False, 
 
     def read_only(request):
         if request.method not in ("GET", "HEAD", "OPTIONS"):
+            # The statistics RPC is STABLE/SECURITY INVOKER and only reads source rows.
+            if (request.method == "POST"
+                    and request.url.path == "/rest/v1/rpc/calculate_season_statistics"):
+                import json
+                try:
+                    payload = json.loads(request.content)
+                    if (isinstance(payload, dict) and set(payload) == {"p_season"}
+                            and type(payload["p_season"]) is int
+                            and 1900 <= payload["p_season"] <= 9999):
+                        return
+                except (ValueError, UnicodeError):
+                    pass
             if allow_booking_writes and request.url.path == "/rest/v1/hk_dtb":
                 if request.method in ("POST", "PATCH"):
                     return
