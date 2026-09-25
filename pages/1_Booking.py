@@ -864,7 +864,7 @@ else:
     #to_addr = "finnjorg@mail.dk"
     from portal_access import uses_supabase_auth
     if uses_supabase_auth():
-        st.info("Gem booking direkte i databasen. Mail og eksport er endnu ikke aktiveret i Supabase-sporet.")
+        st.info("Gem booking med Opret booking. Mailknapperne nedenfor sender kun mail og opretter ikke en booking.")
         if st.button("Opret booking"):
             from modules.booking_write import create_booking
             try:
@@ -898,32 +898,35 @@ else:
                 st.success(f"Booking oprettet og genlæst. ID: {new_id}.")
             except Exception as error:
                 st.error(f"Oprettelse ikke bekræftet: {error}")
-        st.stop()
     if is_restore_test():
         confirmation_password = ""
         st.info("TEST: Mailfunktioner kan afprøves uden mailkodeord. Ingen mails sendes.")
     else:
-        confirmation_password = st.text_input("Admin kodeord")
+        confirmation_password = st.text_input("Mailkodeord", type="password")
     booking_submitted = st.button("Send booking mail")
 
 
-    if Sprog == "DK" and booking_submitted:
-        send_danish_confirmation_email(to_addr, confirmation_password, name, num_rooms, num_guests, booking_number,
-                                       checkin_date, checkout_date, text_bf, formatted_prismed, text_web, formatted_justering,
-                                       formatted_pristotal, text_ank, text_bed, text_free, email_address, telefon)
-        st.markdown('dansk email er sendt')
-    elif Sprog == "UK" and booking_submitted:
-        send_english_confirmation_email(to_addr, confirmation_password, name, num_rooms, num_guests, booking_number,
-                                        checkin_date, checkout_date, text_bf, formatted_prismed, text_web, formatted_justering,
-                                        formatted_pristotal, text_ank, text_bed, text_free, email_address, telefon)
-        st.markdown('engelsk email er sendt')
-    elif Sprog == "DE" and booking_submitted:
-        send_german_confirmation_email(to_addr, confirmation_password, name, num_rooms, num_guests, booking_number,
-                                       checkin_date, checkout_date, text_bf, formatted_prismed, text_web, formatted_justering,
-                                       formatted_pristotal, text_ank, text_bed, text_free, email_address, telefon)
-        st.markdown('tysk email er sendt')
-    else:
-        st.markdown('Booking mail er ikke sendt ')
+    try:
+        if Sprog == "DK" and booking_submitted:
+            send_danish_confirmation_email(to_addr, confirmation_password, name, num_rooms, num_guests, booking_number,
+                                           checkin_date, checkout_date, text_bf, formatted_prismed, text_web, formatted_justering,
+                                           formatted_pristotal, text_ank, text_bed, text_free, email_address, telefon)
+            st.markdown('dansk email er sendt')
+        elif Sprog == "UK" and booking_submitted:
+            send_english_confirmation_email(to_addr, confirmation_password, name, num_rooms, num_guests, booking_number,
+                                            checkin_date, checkout_date, text_bf, formatted_prismed, text_web, formatted_justering,
+                                            formatted_pristotal, text_ank, text_bed, text_free, email_address, telefon)
+            st.markdown('engelsk email er sendt')
+        elif Sprog == "DE" and booking_submitted:
+            send_german_confirmation_email(to_addr, confirmation_password, name, num_rooms, num_guests, booking_number,
+                                           checkin_date, checkout_date, text_bf, formatted_prismed, text_web, formatted_justering,
+                                           formatted_pristotal, text_ank, text_bed, text_free, email_address, telefon)
+            st.markdown('tysk email er sendt')
+        else:
+            st.markdown('Booking mail er ikke sendt ')
+
+    except Exception:
+        st.error("Mailafsendelsen kunne ikke bekræftes. Kontrollér mailkodeord og forbindelse. En allerede gemt booking bevares. Kontrollér modtagelsen før genafsendelse.")
 
     send_data = st.button("send data fil")
     #send_data = st.checkbox("Data - mail til admin")
@@ -957,84 +960,90 @@ else:
             )
             st.stop()
 
-        excel_file = add_data(
-            year=year,
-            booking_number=booking_number,
-            name=name,
-            family_name=fam_name.strip(),
-            checkin_date=checkin_date,
-            checkout_date=checkout_date,
-            now=now,
-            nationalitet=nationalitet,
-            web=web,
-            ankomst=ankomst,
-            seng=seng,
-            rabat_a=rabat_a,
-            num_rooms=num_rooms,
-            num_guests=num_guests,
-            email_address=email_address,
-            telefon=telefon,
-            spouse=spouse,
-            single_room=single_room,
-            BF=BF,
-            formatted_pristotal=formatted_pristotal,
-            known=known,
-            comments=comments
-        )
+        try:
+            excel_file = add_data(
+                year=year,
+                booking_number=booking_number,
+                name=name,
+                family_name=fam_name.strip(),
+                checkin_date=checkin_date,
+                checkout_date=checkout_date,
+                now=now,
+                nationalitet=nationalitet,
+                web=web,
+                ankomst=ankomst,
+                seng=seng,
+                rabat_a=rabat_a,
+                num_rooms=num_rooms,
+                num_guests=num_guests,
+                email_address=email_address,
+                telefon=telefon,
+                spouse=spouse,
+                single_room=single_room,
+                BF=BF,
+                formatted_pristotal=formatted_pristotal,
+                known=known,
+                comments=comments
+            )
 
-        send_data_email(
-            to_addr_1,
-            confirmation_password,
-            booking_number,
-            name,
-            checkin_date,
-            checkout_date,
-            num_rooms,
-            now,
-            nationalitet,
-            web,
-            ankomst,
-            seng,
-            procent,
-            num_guests,
-            email_address,
-            telefon,
-            formatted_pristotal,
-            excel_file
-        )
+            send_data_email(
+                to_addr_1,
+                confirmation_password,
+                booking_number,
+                name,
+                checkin_date,
+                checkout_date,
+                num_rooms,
+                now,
+                nationalitet,
+                web,
+                ankomst,
+                seng,
+                procent,
+                num_guests,
+                email_address,
+                telefon,
+                formatted_pristotal,
+                excel_file
+            )
 
-        st.success("TEST: Data mail simuleret — ingen mail sendt" if is_restore_test() else "Data mail sendt")
+            st.success("TEST: Data mail simuleret — ingen mail sendt" if is_restore_test() else "Data mail sendt")
 
 
-        # Gem booking i Supabase
-        supabase.table("hk_dtb").insert({
-            "booking_number": booking_number,
-            "navn": name,
-            "familie_navn": fam_name.strip(),
-            "checkin_date": checkin_date.isoformat(),
-            "checkout_date": checkout_date.isoformat(),
-            "booking_date": now.isoformat(),
-            "nation": nationalitet,
-            "web": web,
-            "ankomst": ankomst,
-            "bed": seng,
-            "rabat": procent,
-            "numb_rooms": num_rooms,
-            "numb_guests": num_guests,
-            "email": email_address,
-            "telefon": telefon,
-            "spouse": spouse,
-            "enkelt": single_room,
-            "morgenmad": BF,
-            "pris": pristotal,
-            "known": known,
-            "comments": comments,
-            "room_number": 7,
-            "season": int(year),
-            "movable": True
-        }).execute()
+        except Exception:
+            st.error("Datafil/mail kunne ikke bekræftes. En allerede gemt booking bevares. Kontrollér modtagelsen før genafsendelse.")
+            st.stop()
 
-        st.success("Booking gemt i Supabase")
+        if not uses_supabase_auth():
+            # Gem booking i Supabase
+            supabase.table("hk_dtb").insert({
+                "booking_number": booking_number,
+                "navn": name,
+                "familie_navn": fam_name.strip(),
+                "checkin_date": checkin_date.isoformat(),
+                "checkout_date": checkout_date.isoformat(),
+                "booking_date": now.isoformat(),
+                "nation": nationalitet,
+                "web": web,
+                "ankomst": ankomst,
+                "bed": seng,
+                "rabat": procent,
+                "numb_rooms": num_rooms,
+                "numb_guests": num_guests,
+                "email": email_address,
+                "telefon": telefon,
+                "spouse": spouse,
+                "enkelt": single_room,
+                "morgenmad": BF,
+                "pris": pristotal,
+                "known": known,
+                "comments": comments,
+                "room_number": 7,
+                "season": int(year),
+                "movable": True
+            }).execute()
+
+            st.success("Booking gemt i Supabase")
     else:
         st.markdown("Data mail ikke sendt")
 
