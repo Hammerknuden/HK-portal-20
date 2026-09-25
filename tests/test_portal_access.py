@@ -284,5 +284,28 @@ class TestPortalAccess(unittest.TestCase):
         with self.assertRaises(RuntimeError): hook(request)
 
 
+    @patch("testing.auth_client.AuthClient.get_user")
+    def test_guest_upload_admin_only_scoped_and_no_overwrite(self, get_user):
+        self.configure_test()
+        good = "/storage/v1/object/guest-registrations/2026/2026-001.pdf"
+        for uid, opted_in in (("admin", True), ("admin", False), ("ordinary", True)):
+            get_user.return_value = {"id": uid, "email": "user@example.com"}
+            self.access.get_database_client(allow_guest_upload=opted_in)
+            hook = self.httpx.Client.call_args.kwargs["event_hooks"]["request"][0]
+            for method, path, upsert in [("POST", good, "false"), ("POST", good, "true"),
+                ("PUT", good, "false"), ("DELETE", good, "false"),
+                ("POST", good.replace("guest-registrations", "other"), "false"),
+                ("POST", good.replace("2026-001", "2025-001"), "false"),
+                ("POST", good.replace(".pdf", ".jpg"), "false"),
+                ("POST", "/rest/v1/hk_dtb", "false")]:
+                request = Mock(method=method, headers={"x-upsert": upsert})
+                request.url.path = path
+                allowed = uid == "admin" and opted_in and method == "POST" and path == good and upsert == "false"
+                if allowed:
+                    hook(request)
+                else:
+                    with self.assertRaises(RuntimeError): hook(request)
+
+
 if __name__ == "__main__":
     unittest.main()

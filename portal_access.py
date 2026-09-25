@@ -85,7 +85,7 @@ def booking_301_test_enabled():
     return True
 
 
-def get_database_client(allow_booking_comment=False, allow_timeline_test=False, allow_booking_writes=False):
+def get_database_client(allow_booking_comment=False, allow_timeline_test=False, allow_booking_writes=False, allow_guest_upload=False):
     validate_restore_test()
     from supabase import create_client, ClientOptions
     if not uses_supabase_auth():
@@ -100,6 +100,11 @@ def get_database_client(allow_booking_comment=False, allow_timeline_test=False, 
 
     def read_only(request):
         if request.method not in ("GET", "HEAD", "OPTIONS"):
+            if allow_guest_upload and booking_admin and request.method == "POST":
+                import re
+                if (re.fullmatch(r"/storage/v1/object/guest-registrations/([0-9]{4})/\1-[0-9]+[.]pdf", request.url.path)
+                        and request.headers.get("x-upsert", "false").lower() == "false"):
+                    return
             # The statistics RPC is STABLE/SECURITY INVOKER and only reads source rows.
             if (request.method == "POST"
                     and request.url.path == "/rest/v1/rpc/calculate_season_statistics"):
@@ -134,7 +139,7 @@ def get_database_client(allow_booking_comment=False, allow_timeline_test=False, 
                         return
                 except (ValueError, UnicodeError):
                     pass
-            raise RuntimeError("TestmiljÃ¸et er i lÃ¦setilstand. Ã†ndringer er ikke aktiveret.")
+            raise RuntimeError("Denne skrivehandling er ikke aktiveret for din adgang.")
 
     token = st.session_state["test_auth_access_token"]
     return create_client(

@@ -33,7 +33,7 @@ require_admin()
 
 st.title("Booking.com-kontrol")
 
-supabase = get_database_client()
+supabase = get_database_client(allow_guest_upload=True)
 
 with st.expander("Scan gæsteregistrering til privat Supabase Storage"):
     st.info(
@@ -107,6 +107,8 @@ with st.expander("Scan gæsteregistrering til privat Supabase Storage"):
                 )
                 st.success("Gæsteregistreringen er uploadet til privat Storage.")
                 st.code(f"{GUEST_REGISTRATION_BUCKET}/{storage_path}")
+                if int(scan_season) in (2025, 2026):
+                    st.caption("Automatisk parring til historikken sker normalt inden for fem minutter, når booking og fil matcher entydigt.")
             except Exception as error:
                 st.error(f"Upload mislykkedes: {error}")
 
