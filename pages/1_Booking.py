@@ -151,14 +151,19 @@ if mode == "✏️ Rediger booking":
 
     booking_lookup = df_supabase.set_index("id")
 
+    def booking_option_label(row_id):
+        row = booking_lookup.loc[row_id]
+        room = row.get("room_number")
+        cancelled = str(row.get("web") or "").strip().lower() == "cansl"
+        room_label = ""
+        if not cancelled and pd.notna(room) and str(room).strip():
+            room_label = f"Værelse: {int(room)}"
+        return f"Booking: {row['booking_number']} | {row['navn']} | {room_label}"
+
     booking_id = st.selectbox(
         "Vælg booking",
         options=df_supabase["id"].tolist(),
-        format_func=lambda x: (
-            f"Booking: {booking_lookup.loc[x, 'booking_number']} | "
-            f"Værelse: {booking_lookup.loc[x, 'room_number']} | "
-            f"{booking_lookup.loc[x, 'navn']}"
-        ),
+        format_func=booking_option_label,
         key="edit_booking_select"
     )
 
