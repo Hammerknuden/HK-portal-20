@@ -245,5 +245,25 @@ class TestPortalAccess(unittest.TestCase):
         with self.assertRaises(Stopped): self.access.get_database_client(allow_booking_comment=True)
 
 
+    @patch("testing.auth_client.AuthClient.get_user")
+    def test_operational_booking_boundary(self, get_user):
+        self.configure_test()
+        for uid in ("admin", "ordinary"):
+            get_user.return_value = {"id": uid, "email": "user@example.com"}
+            self.access.get_database_client(allow_booking_writes=True)
+            hook = self.httpx.Client.call_args.kwargs["event_hooks"]["request"][0]
+            for path in ("/rest/v1/hk_dtb", "/rest/v1/high_season", "/rest/v1/rpc/close_booking_season", "/storage/v1/object/guest-registrations/x"):
+                for method in ("POST", "PATCH", "DELETE", "PUT"):
+                    request = Mock(method=method)
+                    request.url.path = path
+                    allowed = path == "/rest/v1/hk_dtb" and (method in ("POST", "PATCH") or method == "DELETE" and uid == "admin")
+                    if allowed:
+                        hook(request)
+                    else:
+                        with self.assertRaises(RuntimeError): hook(request)
+        get_user.return_value = {"id": "stranger"}
+        with self.assertRaises(Stopped): self.access.get_database_client(allow_booking_writes=True)
+
+
 if __name__ == "__main__":
     unittest.main()

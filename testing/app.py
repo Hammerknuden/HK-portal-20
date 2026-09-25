@@ -94,7 +94,7 @@ if st.sidebar.button("Log ud"):
         st.stop()
     st.rerun()
 
-st.sidebar.caption("TESTMILJØ · Læsetilstand")
+st.sidebar.caption("SUPABASE · Bookingadgang")
 pages = {
     "Adgangstest": None,
     "Booking": "1_Booking.py",
@@ -115,7 +115,7 @@ if selected_page == "Skrivetest":
     render_write_probe(client, st.session_state[token_key], admin_ids)
     st.stop()
 if pages[selected_page]:
-    st.info("Portalsiderne er som udgangspunkt i læsetilstand. Aktiverede tests tillader administratorer at ændre en kommentar i sæson 2099. Med ENABLE_BOOKING_300_TEST kan godkendte brugere redigere booking 300, NN, i oktober 2026.")
+    st.info("Booking og Timeline: opret, rediger og annuller med cansl. Permanent sletning kræver administrator. Andre skrivefunktioner er endnu ikke åbnet.")
     try:
         runpy.run_path(str(ROOT / "pages" / pages[selected_page]), run_name="__test_page__")
     except Exception as error:

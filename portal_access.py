@@ -11,14 +11,14 @@ def is_restore_test():
 def validate_restore_test(required=False):
     if not is_restore_test():
         if required:
-            st.error("Testappen kræver APP_ENV = restore_test i sine egne Secrets.")
+            st.error("Testappen krÃ¦ver APP_ENV = restore_test i sine egne Secrets.")
             st.stop()
         return
     if (st.secrets.get("AUTH_MODE", "legacy") != "legacy"
             or st.secrets.get("SUPABASE_URL", "").rstrip("/") != RESTORE_TEST_URL
             or not st.secrets.get("SUPABASE_KEY")
             or not st.secrets.get("RESTORE_TEST_COOKIE_KEY")):
-        st.error("Testappen kræver legacy-login, backup-testprojektets URL og nøgle samt RESTORE_TEST_COOKIE_KEY.")
+        st.error("Testappen krÃ¦ver legacy-login, backup-testprojektets URL og nÃ¸gle samt RESTORE_TEST_COOKIE_KEY.")
         st.stop()
 
 
@@ -41,7 +41,7 @@ def uses_supabase_auth():
 def require_test_user(admin=False):
     from testing.auth_client import AuthClient, resolve_role
     if st.secrets.get("APP_ENV") != "test":
-        st.error("Supabase-sporet er foreløbig kun til testmiljøet.")
+        st.error("Supabase-sporet er forelÃ¸big kun til testmiljÃ¸et.")
         st.stop()
     token = st.session_state.get("test_auth_access_token")
     try:
@@ -83,12 +83,13 @@ def booking_301_test_enabled():
     return True
 
 
-def get_database_client(allow_booking_comment=False, allow_timeline_test=False):
+def get_database_client(allow_booking_comment=False, allow_timeline_test=False, allow_booking_writes=False):
     validate_restore_test()
     from supabase import create_client, ClientOptions
     if not uses_supabase_auth():
         return create_client(st.secrets["SUPABASE_URL"], st.secrets["SUPABASE_KEY"])
-    require_test_user()
+    user = require_test_user()
+    booking_admin = user["id"] in st.secrets.get("TEST_ADMIN_USER_IDS", [])
     import httpx
     comment_test = allow_booking_comment and booking_comment_test_enabled()
     october_test = (allow_booking_comment or allow_timeline_test) and booking_300_test_enabled()
@@ -97,6 +98,11 @@ def get_database_client(allow_booking_comment=False, allow_timeline_test=False):
 
     def read_only(request):
         if request.method not in ("GET", "HEAD", "OPTIONS"):
+            if allow_booking_writes and request.url.path == "/rest/v1/hk_dtb":
+                if request.method in ("POST", "PATCH"):
+                    return
+                if request.method == "DELETE" and booking_admin:
+                    return
             if comment_test or october_test or create_test:
                 import json
                 from urllib.parse import parse_qs
@@ -114,7 +120,7 @@ def get_database_client(allow_booking_comment=False, allow_timeline_test=False):
                         return
                 except (ValueError, UnicodeError):
                     pass
-            raise RuntimeError("Testmiljøet er i læsetilstand. Ændringer er ikke aktiveret.")
+            raise RuntimeError("TestmiljÃ¸et er i lÃ¦setilstand. Ã†ndringer er ikke aktiveret.")
 
     token = st.session_state["test_auth_access_token"]
     return create_client(

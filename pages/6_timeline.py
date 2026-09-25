@@ -5,7 +5,7 @@ from datetime import timedelta
 from pathlib import Path
 import streamlit_authenticator as stauth
 import plotly.express as px
-from auth import require_login
+from auth import require_login, is_admin, require_admin
 from common import init_session, exclude_cancelled_bookings
 import re
 import os
@@ -31,8 +31,8 @@ require_login()
 st.write(version("streamlit-authenticator"))
 load_dotenv()
 
-supabase = get_database_client(allow_timeline_test=True)
-timeline_test_enabled = booking_300_test_enabled()
+supabase = get_database_client(allow_booking_writes=True)
+timeline_test_enabled = False
 if message := st.session_state.pop("timeline_edit_saved", None):
     st.success(message)
 
@@ -704,9 +704,9 @@ if not df.empty:
     booking = df[df["id"] == booking_id].iloc[0]
     scoped_test = (timeline_test_enabled and int(booking["season"]) == 2026
                    and int(booking["booking_number"]) == 300 and booking["navn"] == "NN")
-    edit_blocked = uses_supabase_auth() and not scoped_test
+    edit_blocked = False
     if uses_supabase_auth():
-        st.info("Skrivetest: Kun booking 300, NN, kan redigeres. Behold navn og bookingnummer, og brug datoer i oktober 2026.")
+        st.info("Godkendte brugere kan redigere og annullere med web = cansl. Permanent sletning kræver administrator.")
 
 
     room_text = str(booking["room_number"])
@@ -814,8 +814,9 @@ if not df.empty:
     with col2:
         if st.button(
                 "Slet booking",
-                key=f"timeline_delete_{booking_id}", disabled=uses_supabase_auth()
+                key=f"timeline_delete_{booking_id}", disabled=not is_admin()
         ):
+            require_admin()
             supabase.table("hk_dtb").delete().eq(
                 "id",
                 booking_id

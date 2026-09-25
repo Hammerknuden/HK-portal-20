@@ -1,5 +1,5 @@
 import streamlit as st
-from auth import require_login
+from auth import require_login, is_admin, require_admin
 import pandas as pd
 import openpyxl
 import requests
@@ -28,7 +28,7 @@ st.set_page_config(page_title="Booking", layout="wide")
 load_dotenv()
 
 
-supabase = get_database_client(allow_booking_comment=True)
+supabase = get_database_client(allow_booking_writes=True)
 
 st.success("Forbindelse OK")
 
@@ -62,7 +62,7 @@ init_session()
 
 st.title("Reservation")
 
-comment_test_enabled = booking_comment_test_enabled()
+comment_test_enabled = False
 year = st.selectbox("booking år", ["2026", "2027"] + (["2099"] if comment_test_enabled else []))
 
 try:
@@ -164,7 +164,7 @@ if mode == "✏️ Rediger booking":
 
     booking = booking_lookup.loc[booking_id]
 
-    october_test = (booking_300_test_enabled()
+    october_test = (False
                     and year == "2026" and int(booking["booking_number"]) == 300
                     and booking["navn"] == "NN")
     if october_test:
@@ -327,9 +327,10 @@ if mode == "✏️ Rediger booking":
     with col2:
         if st.button(
                 "Slet booking",
-                key=f"delete_booking_{booking_id}"
+                key=f"delete_booking_{booking_id}", disabled=not is_admin()
         ):
             try:
+                require_admin()
                 supabase.table("hk_dtb").delete().eq(
                     "id",
                     booking_id
@@ -858,12 +859,11 @@ else:
     #to_addr = "finnjorg@mail.dk"
     from portal_access import uses_supabase_auth
     if uses_supabase_auth():
-        from portal_access import booking_301_test_enabled
-        st.info("Oprettelsestest: booking 301, AA, 2.–6. oktober 2026, ét værelse. Der sendes ingen mail.")
-        if booking_301_test_enabled() and st.button("Opret testbooking 301"):
-            from testing.write_probe import create_booking_301
+        st.info("Gem booking direkte i databasen. Mail og eksport er endnu ikke aktiveret i Supabase-sporet.")
+        if st.button("Opret booking"):
+            from modules.booking_write import create_booking
             try:
-                test_payload = {
+                payload = {
             "booking_number": booking_number,
             "navn": name,
             "familie_navn": fam_name.strip(),
@@ -889,8 +889,8 @@ else:
             "season": int(year),
             "movable": True
         }
-                new_id = create_booking_301(supabase, test_payload)
-                st.success(f"Booking 301 oprettet og genlæst fra databasen. ID: {new_id}.")
+                new_id = create_booking(supabase, payload)
+                st.success(f"Booking oprettet og genlæst. ID: {new_id}.")
             except Exception as error:
                 st.error(f"Oprettelse ikke bekræftet: {error}")
         st.stop()
