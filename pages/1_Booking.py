@@ -904,6 +904,10 @@ else:
     else:
         confirmation_password = st.text_input("Mailkodeord", type="password")
     booking_submitted = st.button("Send booking mail")
+    if booking_submitted and not str(booking_number or "").strip():
+        st.warning("Check data - mangler: booking nummer. Ingen mail er sendt.")
+        st.stop()
+
 
 
     try:
@@ -941,7 +945,7 @@ else:
 
         missing_fields = []
 
-        if not booking_number:
+        if not str(booking_number or "").strip():
             missing_fields.append("booking nummer")
 
         #if not name:
