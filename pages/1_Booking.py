@@ -28,6 +28,7 @@ st.set_page_config(page_title="Booking", layout="wide")
 load_dotenv()
 
 
+require_login()
 supabase = get_database_client(allow_booking_writes=True)
 
 st.success("Forbindelse OK")
@@ -57,7 +58,6 @@ def init_session():
             st.session_state[key] = value
 
 
-require_login()
 init_session()
 
 st.title("Reservation")

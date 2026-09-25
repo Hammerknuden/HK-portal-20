@@ -31,6 +31,12 @@ authenticator = stauth.Authenticate(
 
 def require_login():
     from portal_access import uses_supabase_auth, require_test_user
+    if st.secrets.get("AUTH_MODE") == "dual":
+        from modules.portal_login import choose_login, supabase_login
+        choose_login(authenticator)
+        if uses_supabase_auth():
+            supabase_login()
+            return
     if uses_supabase_auth():
         require_test_user()
         return

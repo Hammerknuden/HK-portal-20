@@ -32,6 +32,8 @@ def suppress_test_email():
 
 def uses_supabase_auth():
     mode = st.secrets.get("AUTH_MODE", "legacy")
+    if mode == "dual":
+        mode = st.session_state.get("portal_login_method", "legacy")
     if mode not in ("legacy", "supabase"):
         st.error("Ukendt AUTH_MODE.")
         st.stop()
@@ -40,7 +42,7 @@ def uses_supabase_auth():
 
 def require_test_user(admin=False):
     from testing.auth_client import AuthClient, resolve_role
-    if st.secrets.get("APP_ENV") != "test":
+    if st.secrets.get("APP_ENV") != "test" and st.secrets.get("AUTH_MODE") != "dual":
         st.error("Supabase-sporet er forelÃ¸big kun til testmiljÃ¸et.")
         st.stop()
     token = st.session_state.get("test_auth_access_token")
