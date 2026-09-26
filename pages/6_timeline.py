@@ -828,7 +828,7 @@ if not df.empty:
     with col3:
         if st.button(
                 "🔄 Byt værelse",
-                key=f"timeline_open_swap_{booking_id}", disabled=uses_supabase_auth()
+                key=f"timeline_open_swap_{booking_id}"
         ):
             st.session_state["timeline_swap_open"] = True
             st.session_state["timeline_swap_source_id"] = int(booking_id)
@@ -964,22 +964,26 @@ if not df.empty:
                         "🔄 Udfør bytte",
                         key=f"timeline_execute_swap_{booking_id}"
                 ):
-                    swap_execution = execute_room_swap(
-                        supabase=supabase,
-                        booking_a_ids=swap_result["booking_ids_a"],
-                        booking_b_ids=swap_result["booking_ids_b"],
-                        room_a=swap_result["room_a"],
-                        room_b=swap_result["room_b"],
-                    )
+                    try:
+                        swap_execution = execute_room_swap(
+                            supabase=supabase,
+                            booking_a_ids=swap_result["booking_ids_a"],
+                            booking_b_ids=swap_result["booking_ids_b"],
+                            room_a=swap_result["room_a"],
+                            room_b=swap_result["room_b"],
+                        )
 
-                    st.cache_data.clear()
+                        st.cache_data.clear()
 
-                    st.session_state["timeline_swap_open"] = False
-                    st.session_state.pop("timeline_swap_source_id", None)
+                        st.session_state["timeline_swap_open"] = False
+                        st.session_state.pop("timeline_swap_source_id", None)
 
-                    st.success("Bytte udført")
+                        st.session_state["timeline_edit_saved"] = "Bytte udført. Begge bookinger er flyttet."
 
-                    st.rerun()
+                        st.rerun()
+                    except Exception as error:
+                        st.error(f"Bytte kunne ikke bekræftes: {error}")
+
 
 
 

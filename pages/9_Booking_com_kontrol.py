@@ -107,8 +107,7 @@ with st.expander("Scan gæsteregistrering til privat Supabase Storage"):
                 )
                 st.success("Gæsteregistreringen er uploadet til privat Storage.")
                 st.code(f"{GUEST_REGISTRATION_BUCKET}/{storage_path}")
-                if int(scan_season) in (2025, 2026):
-                    st.caption("Automatisk parring til historikken sker normalt inden for fem minutter, når booking og fil matcher entydigt.")
+                st.caption("Dokumentet kobles automatisk, når bookingen findes i historikken, fx efter sæsonafslutning. Parringen kører hvert femte minut.")
             except Exception as error:
                 st.error(f"Upload mislykkedes: {error}")
 

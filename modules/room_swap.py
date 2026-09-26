@@ -20,6 +20,16 @@ def execute_room_swap(
     room_a = int(room_a)
     room_b = int(room_b)
 
+    from portal_access import uses_supabase_auth
+    if uses_supabase_auth():
+        response = supabase.rpc("swap_booking_rooms", {
+            "p_a": booking_a_ids, "p_b": booking_b_ids,
+            "p_room_a": room_a, "p_room_b": room_b,
+        }).execute()
+        if not isinstance(response.data, dict) or response.data.get("success") is not True:
+            raise ValueError("Byttet kunne ikke bekræftes. Genindlæs bookingerne.")
+        return response.data
+
     result_a = (
         supabase
         .table("hk_dtb")
