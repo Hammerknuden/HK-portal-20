@@ -105,6 +105,16 @@ class OptimizerPreviewTests(unittest.TestCase):
         self.assertIn("optimizer_saved_message", self.st.session_state)
         self.st.cache_data.clear.assert_called_once()
 
+    def test_supabase_save_uses_authenticated_endpoint_and_same_request_id(self):
+        self.prepare_preview()
+        prepared = self.st.session_state["optimizer_preview"]
+        self.client.rpc.return_value.execute.return_value.data = self.saved_response()
+        for _ in range(2):
+            preview.save_preview(self.client, prepared, rpc_name="apply_optimizer_plan_authenticated")
+        self.assertEqual(self.client.rpc.call_args_list[0], self.client.rpc.call_args_list[1])
+        self.assertEqual(self.client.rpc.call_args.args[0], "apply_optimizer_plan_authenticated")
+        self.client.table.assert_not_called()
+
     def test_network_failure_keeps_request_and_disables_cancel_until_retry(self):
         self.prepare_preview()
         self.client.rpc.return_value.execute.side_effect = TimeoutError()

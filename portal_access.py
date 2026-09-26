@@ -118,7 +118,8 @@ def get_database_client(allow_booking_comment=False, allow_timeline_test=False, 
                 except (ValueError, UnicodeError):
                     pass
             if (allow_booking_writes and request.method == "POST"
-                    and request.url.path == "/rest/v1/rpc/swap_booking_rooms"):
+                    and request.url.path in ("/rest/v1/rpc/swap_booking_rooms",
+                                            "/rest/v1/rpc/apply_optimizer_plan_authenticated")):
                 return
             if allow_booking_writes and request.url.path == "/rest/v1/hk_dtb":
                 if request.method in ("POST", "PATCH"):

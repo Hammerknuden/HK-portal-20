@@ -1135,5 +1135,6 @@ if suggestions and not st.session_state.get("optimizer_choice"):
                         st.rerun()
 
 render_selected_solution(
-    st, supabase, selected_season, load_optimizer_bookings, read_only=uses_supabase_auth()
+    st, supabase, selected_season, load_optimizer_bookings,
+    rpc_name="apply_optimizer_plan_authenticated" if uses_supabase_auth() else "apply_optimizer_plan"
 )

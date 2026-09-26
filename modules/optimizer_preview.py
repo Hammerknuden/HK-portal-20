@@ -50,10 +50,10 @@ def build_preview(bookings, choice, today=None):
             "preview_date": today.isoformat()}
 
 
-def save_preview(client, preview):
+def save_preview(client, preview, *, rpc_name="apply_optimizer_plan"):
     """Retry the same request ID after uncertain outcomes; never do row updates."""
     plan = preview["plan"]
-    result = client.rpc("apply_optimizer_plan", {
+    result = client.rpc(rpc_name, {
         "p_request_id": preview["request_id"],
         "p_season": preview["season"],
         "p_candidate_id": int(plan["candidate_id"]),

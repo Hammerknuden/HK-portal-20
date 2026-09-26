@@ -47,7 +47,7 @@ def preview_figure(preview):
     return figure
 
 
-def render_selected_solution(st, client, season, load_bookings, *, read_only=False):
+def render_selected_solution(st, client, season, load_bookings, *, read_only=False, rpc_name="apply_optimizer_plan"):
     state = st.session_state
     choice = state.get("optimizer_choice")
     if not choice:
@@ -96,7 +96,7 @@ def render_selected_solution(st, client, season, load_bookings, *, read_only=Fal
     if st.button("Gem ændringer", key="optimizer_save", disabled=read_only):
         preview["save_pending"] = True
         try:
-            save_preview(client, preview)
+            save_preview(client, preview, rpc_name=rpc_name)
         except Exception as exc:
             code = str(getattr(exc, "code", ""))
             # These server rejections guarantee no committed transaction.

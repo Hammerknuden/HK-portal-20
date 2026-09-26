@@ -307,5 +307,25 @@ class TestPortalAccess(unittest.TestCase):
                     with self.assertRaises(RuntimeError): hook(request)
 
 
+    @patch("testing.auth_client.AuthClient.get_user")
+    def test_optimizer_rpc_requires_approved_user_and_write_client(self, get_user):
+        self.configure_test()
+        for uid in ("admin", "ordinary"):
+            get_user.return_value = {"id": uid, "email": "user@example.com"}
+            for enabled in (False, True):
+                self.access.get_database_client(allow_booking_writes=enabled)
+                hook = self.httpx.Client.call_args.kwargs["event_hooks"]["request"][0]
+                request = Mock(method="POST")
+                request.url.path = "/rest/v1/rpc/apply_optimizer_plan_authenticated"
+                if enabled:
+                    hook(request)
+                else:
+                    with self.assertRaises(RuntimeError): hook(request)
+                request.url.path = "/rest/v1/rpc/apply_optimizer_plan"
+                with self.assertRaises(RuntimeError): hook(request)
+        get_user.return_value = {"id": "stranger"}
+        with self.assertRaises(Stopped): self.access.get_database_client(allow_booking_writes=True)
+
+
 if __name__ == "__main__":
     unittest.main()
