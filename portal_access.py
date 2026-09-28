@@ -85,7 +85,7 @@ def booking_301_test_enabled():
     return True
 
 
-def get_database_client(allow_booking_comment=False, allow_timeline_test=False, allow_booking_writes=False, allow_guest_upload=False, allow_setup_writes=False):
+def get_database_client(allow_booking_comment=False, allow_timeline_test=False, allow_booking_writes=False, allow_guest_upload=False, allow_setup_writes=False, allow_breakfast_writes=False):
     validate_restore_test()
     from supabase import create_client, ClientOptions
     if not uses_supabase_auth():
@@ -100,6 +100,16 @@ def get_database_client(allow_booking_comment=False, allow_timeline_test=False, 
 
     def read_only(request):
         if request.method not in ("GET", "HEAD", "OPTIONS"):
+            if (allow_breakfast_writes and request.method in ("POST", "PATCH")
+                    and request.url.path == "/rest/v1/breakfast_notes"):
+                import json
+                try:
+                    data = json.loads(request.content)
+                    fields = {"dato", "ekstra_gæster", "assistance", "comments"}
+                    if isinstance(data, dict) and data and set(data) <= fields:
+                        return
+                except (ValueError, UnicodeError):
+                    pass
             if allow_setup_writes and booking_admin:
                 if request.url.path == "/rest/v1/high_season" and request.method == "PATCH":
                     import json

@@ -37,7 +37,7 @@ st.subheader("Antal personer til morgenmad")
 load_dotenv()
 
 
-supabase = get_database_client()
+supabase = get_database_client(allow_breakfast_writes=True)
 
 # -------------------------
 # Vælg periode

@@ -154,6 +154,31 @@ class TestPortalAccess(unittest.TestCase):
                 with self.assertRaises(RuntimeError):
                     hook(request)
 
+    @patch("testing.auth_client.AuthClient.get_user")
+    def test_breakfast_writes_are_explicit_and_scoped_for_both_roles(self, get_user):
+        import json
+        for uid in ("admin", "ordinary"):
+            for enabled in (False, True):
+                self.configure_test()
+                get_user.return_value = {"id": uid, "email": "user@example.com"}
+                self.access.get_database_client(allow_breakfast_writes=enabled)
+                hook = self.httpx.Client.call_args.kwargs["event_hooks"]["request"][0]
+                for method, endpoint, payload, valid in (
+                    ("POST", "breakfast_notes", {"dato": "2026-10-01", "ekstra_gæster": 2, "assistance": "Test", "comments": "Note"}, True),
+                    ("PATCH", "breakfast_notes", {"comments": "Changed"}, True),
+                    ("DELETE", "breakfast_notes", {}, False),
+                    ("POST", "hk_dtb", {"comments": "Wrong table"}, False),
+                    ("PATCH", "breakfast_notes", {"id": 12}, False),
+                ):
+                    request = Mock(method=method, content=json.dumps(payload).encode())
+                    request.url.path = "/rest/v1/" + endpoint
+                    with self.subTest(uid=uid, enabled=enabled, method=method, endpoint=endpoint, payload=payload):
+                        if enabled and valid:
+                            hook(request)
+                        else:
+                            with self.assertRaises(RuntimeError):
+                                hook(request)
+
     def test_only_explicit_users_have_roles(self):
         self.assertEqual(resolve_role({"id": "ordinary"}, ["admin"], ["ordinary"]), "user")
         self.assertEqual(resolve_role({"id": "admin"}, ["admin"], []), "admin")
