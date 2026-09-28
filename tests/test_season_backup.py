@@ -3,7 +3,7 @@ import io
 import json
 from pathlib import Path
 import unittest
-from unittest.mock import patch, Mock
+from unittest.mock import patch, Mock, MagicMock
 from zipfile import ZipFile
 
 from modules.season_backup import BackupError, create_backup, database_environment, storage_inventory, run_database_tool
@@ -42,6 +42,30 @@ class Storage:
 def fake_dump(args, env):
     if "--file" in args:
         Path(args[args.index("--file") + 1]).write_bytes(b"database test payload")
+
+
+class BackupAccessTests(unittest.TestCase):
+    def test_backup_available_to_dual_login_admin_but_not_test_apps(self):
+        import sys
+        from modules.season_backup_view import render_season_backup
+        for mode, supabase_auth, restore, available in (
+            ("dual", True, False, True),
+            ("legacy", False, False, True),
+            ("supabase", True, False, False),
+            ("legacy", False, True, False),
+        ):
+            st = MagicMock()
+            st.secrets = {"AUTH_MODE": mode}
+            auth = Mock()
+            access = Mock()
+            access.uses_supabase_auth.return_value = supabase_auth
+            access.is_restore_test.return_value = restore
+            with self.subTest(mode=mode, restore=restore), patch.dict(sys.modules, {
+                "auth": auth, "portal_access": access,
+            }), patch("modules.season_backup_view.prerequisites", return_value=["Missing test configuration"]) as prerequisites:
+                render_season_backup(st)
+                auth.require_admin.assert_called_once()
+                self.assertEqual(prerequisites.called, available)
 
 
 class BackupTests(unittest.TestCase):

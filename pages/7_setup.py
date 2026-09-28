@@ -12,7 +12,7 @@ if str(PROJECT_ROOT) not in sys.path:
 from auth import require_login, require_admin
 from modules.price_development import PRICE_FIELDS, build_price_development
 from modules.price_sheet import create_price_sheet_pdf
-from portal_access import get_database_client
+from portal_access import get_database_client, uses_supabase_auth
 from modules.booking_pace import normalize_season_rows
 from modules.season_backup_view import render_season_backup
 
@@ -22,7 +22,9 @@ require_login()
 require_admin()
 
 
-supabase = get_database_client()
+supabase = get_database_client(allow_setup_writes=True)
+if message := st.session_state.pop("setup_saved_message", None):
+    st.success(message)
 
 st.success("Forbindelse til Supabase OK")
 
@@ -142,7 +144,8 @@ else:
     save_prices = st.button("Gem priser", type="primary")
 
     if save_prices:
-        (
+        require_admin()
+        result = (
             supabase
             .table("high_season")
             .update({
@@ -156,7 +159,10 @@ else:
             .execute()
         )
 
-        st.success(f"Priser for {selected_price_season} er gemt")
+        if len(result.data or []) != 1:
+            st.error("Prisændringen kunne ikke bekræftes. Genindlæs og kontrollér adgang og sæson.")
+            st.stop()
+        st.session_state["setup_saved_message"] = f"Priser for {selected_price_season} er gemt"
         st.rerun()
 
     try:
@@ -214,7 +220,10 @@ try:
             if st.button(label, disabled=not ready_to_close):
                 try:
                     with st.spinner("Gemmer og afstemmer sæsonen …"):
-                        supabase.rpc("close_booking_season", {"p_season": pace_year}).execute()
+                        require_admin()
+                        rpc_name = "close_booking_season_authenticated" if uses_supabase_auth() else "close_booking_season"
+                        supabase.rpc(rpc_name, {"p_season": pace_year}).execute()
+                    st.session_state["setup_saved_message"] = f"Sæson {pace_year} er afsluttet."
                     st.rerun()
                 except Exception as error:
                     st.error(f"Sæsonafslutningen blev ikke bekræftet. Genindlæs siden for status. {error}")
@@ -312,7 +321,8 @@ if create_event:
         st.error("Slutdato må ikke ligge før startdato")
 
     else:
-        supabase.table("Events").insert({
+        require_admin()
+        result = supabase.table("Events").insert({
             "season": int(new_start_date.year),
             "event": new_event.strip(),
             "start_date": new_start_date.isoformat(),
@@ -321,7 +331,10 @@ if create_event:
             "opacity": float(new_opacity)
         }).execute()
 
-        st.success("Event oprettet")
+        if len(result.data or []) != 1:
+            st.error("Oprettelsen kunne ikke bekræftes. Genindlæs før næste forsøg.")
+            st.stop()
+        st.session_state["setup_saved_message"] = "Event oprettet"
         st.rerun()
 
 
@@ -416,7 +429,8 @@ else:
             st.error("Slutdato må ikke ligge før startdato")
 
         else:
-            (
+            require_admin()
+            result = (
                 supabase
                 .table("Events")
                 .update({
@@ -431,7 +445,10 @@ else:
                 .execute()
             )
 
-            st.success("Event opdateret")
+            if len(result.data or []) != 1:
+                st.error("Opdateringen kunne ikke bekræftes. Genindlæs og kontrollér adgang.")
+                st.stop()
+            st.session_state["setup_saved_message"] = "Event opdateret"
             st.rerun()
 
 
@@ -450,7 +467,8 @@ else:
         type="secondary",
         disabled=not confirm_delete
     ):
-        (
+        require_admin()
+        result = (
             supabase
             .table("Events")
             .delete()
@@ -458,5 +476,8 @@ else:
             .execute()
         )
 
-        st.success("Event slettet")
+        if len(result.data or []) != 1:
+            st.error("Sletningen kunne ikke bekræftes. Genindlæs før næste forsøg.")
+            st.stop()
+        st.session_state["setup_saved_message"] = "Event slettet"
         st.rerun()

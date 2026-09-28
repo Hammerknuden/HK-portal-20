@@ -111,6 +111,49 @@ class TestPortalAccess(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 hook(Mock(method=method))
 
+    @patch("testing.auth_client.AuthClient.get_user")
+    def test_setup_writes_require_admin_and_explicit_client(self, get_user):
+        import json
+        allowed = [("PATCH", "high_season", {"enk_low": 650}),
+                   ("POST", "Events", {"event": "Test"}),
+                   ("PATCH", "Events", {"event": "Updated"}),
+                   ("DELETE", "Events", {}),
+                   ("POST", "rpc/close_booking_season_authenticated", {"p_season": 2027})]
+        for uid, enabled in (("admin", True), ("ordinary", True), ("admin", False)):
+            self.configure_test()
+            get_user.return_value = {"id": uid, "email": "user@example.com"}
+            self.access.get_database_client(allow_setup_writes=enabled)
+            hook = self.httpx.Client.call_args.kwargs["event_hooks"]["request"][0]
+            for method, endpoint, payload in allowed:
+                request = Mock(method=method, content=json.dumps(payload).encode())
+                request.url.path = "/rest/v1/" + endpoint
+                with self.subTest(uid=uid, enabled=enabled, endpoint=endpoint, method=method):
+                    if uid == "admin" and enabled:
+                        hook(request)
+                    else:
+                        with self.assertRaises(RuntimeError):
+                            hook(request)
+
+    @patch("testing.auth_client.AuthClient.get_user")
+    def test_setup_admin_cannot_write_history_or_archive_flag_directly(self, get_user):
+        import json
+        self.configure_test()
+        get_user.return_value = {"id": "admin", "email": "admin@example.com"}
+        self.access.get_database_client(allow_setup_writes=True)
+        hook = self.httpx.Client.call_args.kwargs["event_hooks"]["request"][0]
+        for method, endpoint, payload in (
+            ("PATCH", "high_season", {"enk_low": 650, "pace_archived": True}),
+            ("POST", "high_season", {"season": 2027}),
+            ("DELETE", "high_season", {}),
+            ("PATCH", "historie_new", {"season": 2027}),
+            ("POST", "rpc/close_booking_season", {"p_season": 2027}),
+        ):
+            request = Mock(method=method, content=json.dumps(payload).encode())
+            request.url.path = "/rest/v1/" + endpoint
+            with self.subTest(endpoint=endpoint, method=method):
+                with self.assertRaises(RuntimeError):
+                    hook(request)
+
     def test_only_explicit_users_have_roles(self):
         self.assertEqual(resolve_role({"id": "ordinary"}, ["admin"], ["ordinary"]), "user")
         self.assertEqual(resolve_role({"id": "admin"}, ["admin"], []), "admin")

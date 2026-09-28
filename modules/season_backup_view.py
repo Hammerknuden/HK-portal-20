@@ -13,7 +13,7 @@ def render_season_backup(st):
     st.write("Opret en samlet ZIP-fil med database, struktur, roller og dokumenter. "
              "Backuppen omfatter alle sæsoner. Tag gerne en kopi både før og efter sæsonafslutning.")
     st.caption(f"Gem den downloadede ZIP-fil i {DESTINATION}, og kontrollér derefter, at den findes på NAS’en.")
-    if uses_supabase_auth() or is_restore_test():
+    if is_restore_test() or (uses_supabase_auth() and str(st.secrets.get("AUTH_MODE", "")).lower() != "dual"):
         st.info("Backup er ikke aktiveret i testmiljøet.")
         return
     missing = prerequisites(st.secrets)

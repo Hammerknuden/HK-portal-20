@@ -85,7 +85,7 @@ def booking_301_test_enabled():
     return True
 
 
-def get_database_client(allow_booking_comment=False, allow_timeline_test=False, allow_booking_writes=False, allow_guest_upload=False):
+def get_database_client(allow_booking_comment=False, allow_timeline_test=False, allow_booking_writes=False, allow_guest_upload=False, allow_setup_writes=False):
     validate_restore_test()
     from supabase import create_client, ClientOptions
     if not uses_supabase_auth():
@@ -100,6 +100,20 @@ def get_database_client(allow_booking_comment=False, allow_timeline_test=False, 
 
     def read_only(request):
         if request.method not in ("GET", "HEAD", "OPTIONS"):
+            if allow_setup_writes and booking_admin:
+                if request.url.path == "/rest/v1/high_season" and request.method == "PATCH":
+                    import json
+                    try:
+                        data = json.loads(request.content)
+                        fields = {"enk_low", "enk_high", "dobb_low", "dobb_high", "pris_morgenmad"}
+                        if isinstance(data, dict) and data and set(data) <= fields:
+                            return
+                    except (ValueError, UnicodeError):
+                        pass
+                if request.url.path == "/rest/v1/Events" and request.method in ("POST", "PATCH", "DELETE"):
+                    return
+                if request.url.path == "/rest/v1/rpc/close_booking_season_authenticated" and request.method == "POST":
+                    return
             if allow_guest_upload and booking_admin and request.method == "POST":
                 import re
                 if (re.fullmatch(r"/storage/v1/object/guest-registrations/([0-9]{4})/\1-[0-9]+[.]pdf", request.url.path)
