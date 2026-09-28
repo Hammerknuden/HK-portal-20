@@ -145,16 +145,14 @@ else:
 
     if save_prices:
         require_admin()
+        if any(not float(value).is_integer() for value in draft_prices.values()):
+            st.error("Priser skal angives i hele kroner. Ingen priser er gemt.")
+            st.stop()
+        price_payload = {field: int(value) for field, value in draft_prices.items()}
         result = (
             supabase
             .table("high_season")
-            .update({
-                "enk_low": enk_low,
-                "enk_high": enk_high,
-                "dobb_low": dobb_low,
-                "dobb_high": dobb_high,
-                "pris_morgenmad": breakfast_price
-            })
+            .update(price_payload)
             .eq("season", int(selected_price_season))
             .execute()
         )
