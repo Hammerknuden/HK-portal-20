@@ -284,7 +284,6 @@ with st.expander(
 
         st.success("Ændringer gemt")
         st.rerun()
-
 # -------------------------
 # Opret PDF
 # -------------------------
