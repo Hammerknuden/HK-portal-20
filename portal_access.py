@@ -1,5 +1,6 @@
 """Shared access boundary; production defaults to the existing legacy path."""
 import streamlit as st
+from modules.auth_settings import auth_settings, access_token
 
 RESTORE_TEST_URL = "https://ycasinssaffzpsyhgzgf.supabase.co"
 
@@ -33,56 +34,43 @@ def suppress_test_email():
 def uses_supabase_auth():
     mode = st.secrets.get("AUTH_MODE", "legacy")
     if mode == "dual":
-        mode = st.session_state.get("portal_login_method", "legacy")
+        mode = st.session_state.get("portal_login_method", "supabase")
     if mode not in ("legacy", "supabase"):
         st.error("Ukendt AUTH_MODE.")
         st.stop()
     return mode == "supabase"
 
 
-def require_test_user(admin=False):
-    from testing.auth_client import AuthClient, resolve_role
-    if st.secrets.get("APP_ENV") != "test" and st.secrets.get("AUTH_MODE") != "dual":
-        st.error("Supabase-sporet er forelÃ¸big kun til testmiljÃ¸et.")
-        st.stop()
-    token = st.session_state.get("test_auth_access_token")
+def require_portal_user(admin=False):
+    from modules.auth_client import AuthClient, resolve_role
+    token = access_token(st.session_state)
     try:
-        client = AuthClient(st.secrets["SUPABASE_TEST_URL"], st.secrets["SUPABASE_TEST_PUBLISHABLE_KEY"])
+        client = AuthClient(auth_settings(st.secrets)["SUPABASE_AUTH_URL"], auth_settings(st.secrets)["SUPABASE_PUBLISHABLE_KEY"])
         user = client.get_user(token) if token else None
-        role = resolve_role(user, st.secrets["TEST_ADMIN_USER_IDS"], st.secrets.get("TEST_USER_IDS", []))
+        role = resolve_role(user, auth_settings(st.secrets)["ADMIN_USER_IDS"], auth_settings(st.secrets)["USER_IDS"])
     except Exception:
         user, role = None, None
     if not role or (admin and role != "admin"):
-        st.error("Ingen adgang. Log ind via testappens startside med en godkendt bruger.")
+        st.error("Ingen adgang. Log ind via appens startside med en godkendt bruger.")
         st.stop()
     st.session_state.update(authentication_status=True, username=user["email"], name=user["email"])
     return user
 
 
+# Compatibility for the separately deployed diagnostic app.
+require_test_user = require_portal_user
+
+# Retired diagnostic flags; kept as no-op imports for older diagnostic pages.
 def booking_comment_test_enabled():
-    if (st.secrets.get("APP_ENV") != "test" or not uses_supabase_auth()
-            or st.secrets.get("ENABLE_BOOKING_WRITE_PROBE") is not True):
-        return False
-    user = require_test_user()
-    return user["id"] in st.secrets.get("TEST_ADMIN_USER_IDS", [])
+    return False
 
 
 def booking_300_test_enabled():
-    if (st.secrets.get("APP_ENV") != "test" or not uses_supabase_auth()
-            or st.secrets.get("ENABLE_BOOKING_WRITE_PROBE") is not True
-            or st.secrets.get("ENABLE_BOOKING_300_TEST") is not True):
-        return False
-    require_test_user()
-    return True
+    return False
 
 
 def booking_301_test_enabled():
-    if (st.secrets.get("APP_ENV") != "test" or not uses_supabase_auth()
-            or st.secrets.get("ENABLE_BOOKING_WRITE_PROBE") is not True
-            or st.secrets.get("ENABLE_BOOKING_301_TEST") is not True):
-        return False
-    require_test_user()
-    return True
+    return False
 
 
 def get_database_client(allow_booking_comment=False, allow_timeline_test=False, allow_booking_writes=False, allow_guest_upload=False, allow_setup_writes=False, allow_breakfast_writes=False):
@@ -90,14 +78,9 @@ def get_database_client(allow_booking_comment=False, allow_timeline_test=False, 
     from supabase import create_client, ClientOptions
     if not uses_supabase_auth():
         return create_client(st.secrets["SUPABASE_URL"], st.secrets["SUPABASE_KEY"])
-    user = require_test_user()
-    booking_admin = user["id"] in st.secrets.get("TEST_ADMIN_USER_IDS", [])
+    user = require_portal_user()
+    booking_admin = user["id"] in auth_settings(st.secrets)["ADMIN_USER_IDS"]
     import httpx
-    comment_test = allow_booking_comment and booking_comment_test_enabled()
-    october_test = (allow_booking_comment or allow_timeline_test) and booking_300_test_enabled()
-
-    create_test = allow_booking_comment and booking_301_test_enabled()
-
     def read_only(request):
         if request.method not in ("GET", "HEAD", "OPTIONS"):
             if (allow_breakfast_writes and request.method in ("POST", "PATCH")
@@ -150,28 +133,11 @@ def get_database_client(allow_booking_comment=False, allow_timeline_test=False, 
                     return
                 if request.method == "DELETE" and booking_admin:
                     return
-            if comment_test or october_test or create_test:
-                import json
-                from urllib.parse import parse_qs
-                from testing.write_probe import is_scoped_comment_patch, is_booking_300_patch, is_booking_301_insert
-                try:
-                    params = parse_qs(request.url.query.decode("utf-8"), keep_blank_values=True)
-                    payload = json.loads(request.content)
-                    if create_test and is_booking_301_insert(request.method, request.url.path, params, payload):
-                        return
-                    if comment_test and is_scoped_comment_patch(request.method, request.url.path, params, payload):
-                        return
-                    if (october_test
-                            and is_booking_300_patch(request.method, request.url.path, params, payload,
-                                                     timeline=allow_timeline_test)):
-                        return
-                except (ValueError, UnicodeError):
-                    pass
             raise RuntimeError("Denne skrivehandling er ikke aktiveret for din adgang.")
 
-    token = st.session_state["test_auth_access_token"]
+    token = access_token(st.session_state)
     return create_client(
-        st.secrets["SUPABASE_TEST_URL"], st.secrets["SUPABASE_TEST_PUBLISHABLE_KEY"],
+        auth_settings(st.secrets)["SUPABASE_AUTH_URL"], auth_settings(st.secrets)["SUPABASE_PUBLISHABLE_KEY"],
         options=ClientOptions(
             headers={"Authorization": "Bearer " + token},
             persist_session=False, auto_refresh_token=False,

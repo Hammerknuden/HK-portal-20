@@ -30,7 +30,7 @@ authenticator = stauth.Authenticate(
 
 
 def require_login():
-    from portal_access import uses_supabase_auth, require_test_user
+    from portal_access import uses_supabase_auth, require_portal_user
     if st.secrets.get("AUTH_MODE") == "dual":
         from modules.portal_login import choose_login, supabase_login
         choose_login(authenticator)
@@ -38,7 +38,8 @@ def require_login():
             supabase_login()
             return
     if uses_supabase_auth():
-        require_test_user()
+        from modules.portal_login import supabase_login
+        supabase_login()
         return
 
     defaults = {
@@ -81,19 +82,20 @@ def require_login():
 
 
 def is_admin():
-    from portal_access import uses_supabase_auth, require_test_user
+    from portal_access import uses_supabase_auth, require_portal_user
     if uses_supabase_auth():
-        user = require_test_user()
-        return user["id"] in st.secrets.get("TEST_ADMIN_USER_IDS", [])
+        user = require_portal_user()
+        from modules.auth_settings import auth_settings
+        return user["id"] in auth_settings(st.secrets)["ADMIN_USER_IDS"]
     return bool(st.session_state.get("authentication_status")) and str(
         st.session_state.get("username") or ""
     ).lower() in ADMIN_USERNAMES
 
 
 def require_admin():
-    from portal_access import uses_supabase_auth, require_test_user
+    from portal_access import uses_supabase_auth, require_portal_user
     if uses_supabase_auth():
-        require_test_user(admin=True)
+        require_portal_user(admin=True)
         return
     if not st.session_state.get("authentication_status"):
         st.error("Ikke logget ind")

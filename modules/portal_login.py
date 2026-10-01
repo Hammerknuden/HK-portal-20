@@ -1,21 +1,27 @@
 """Dual-login transition UI; called on every protected portal page."""
 import streamlit as st
-from testing.auth_client import AuthClient, resolve_role, validate_config
+from modules.auth_client import AuthClient, resolve_role, validate_config
+from modules.auth_settings import auth_settings, access_token
+from modules.password_recovery import render_recovery, render_forgot_password
 
 
 def choose_login(authenticator):
-    current = st.session_state.get('portal_login_method', 'legacy')
-    choice = st.sidebar.radio('Log ind med', ['legacy', 'supabase'],
-        index=0 if current == 'legacy' else 1,
-        format_func=lambda value: 'Nuværende login' if value == 'legacy' else 'Supabase',
+    if st.query_params.get("token_hash") or any(
+            name in st.session_state for name in ("recovery_hash", "recovery_access", "recovery_invalid", "recovery_success")):
+        supabase_login()
+        return
+    current = st.session_state.get('portal_login_method', 'supabase')
+    choice = st.sidebar.radio('Log ind med', ['supabase', 'legacy'],
+        index=0 if current == 'supabase' else 1,
+        format_func=lambda value: 'Legacy login (reserve)' if value == 'legacy' else 'Secure login',
         key='portal_login_choice')
     if choice != current:
-        token = st.session_state.get('test_auth_access_token')
+        token = access_token(st.session_state)
         if current == 'legacy' and st.session_state.get('authentication_status'):
             authenticator.logout(location='unrendered')
         if token:
             try:
-                AuthClient(st.secrets['SUPABASE_TEST_URL'], st.secrets['SUPABASE_TEST_PUBLISHABLE_KEY']).sign_out(token)
+                AuthClient(auth_settings(st.secrets)['SUPABASE_AUTH_URL'], auth_settings(st.secrets)['SUPABASE_PUBLISHABLE_KEY']).sign_out(token)
             except Exception:
                 pass
         st.session_state.clear()
@@ -25,13 +31,14 @@ def choose_login(authenticator):
 
 
 def supabase_login():
-    from portal_access import require_test_user
-    url = st.secrets['SUPABASE_TEST_URL']
-    key = st.secrets['SUPABASE_TEST_PUBLISHABLE_KEY']
-    admins = validate_config(url, key, st.secrets['TEST_ADMIN_USER_IDS'])
-    users = st.secrets.get('TEST_USER_IDS', [])
+    from portal_access import require_portal_user
+    url = auth_settings(st.secrets)['SUPABASE_AUTH_URL']
+    key = auth_settings(st.secrets)['SUPABASE_PUBLISHABLE_KEY']
+    admins = validate_config(url, key, auth_settings(st.secrets)['ADMIN_USER_IDS'])
+    users = auth_settings(st.secrets)['USER_IDS']
     client = AuthClient(url, key)
-    if not st.session_state.get('test_auth_access_token'):
+    render_recovery(client, admins, users)
+    if not access_token(st.session_state):
         with st.form('portal_supabase_login', clear_on_submit=True):
             email = st.text_input('E-mail')
             password = st.text_input('Adgangskode', type='password')
@@ -48,13 +55,13 @@ def supabase_login():
             else:
                 st.session_state.clear()
                 st.session_state['portal_login_method'] = 'supabase'
-                st.session_state['test_auth_access_token'] = token
+                st.session_state['auth_access_token'] = token
                 st.rerun()
-        st.caption('Glemt adgangskode kan fortsat bruges i Supabase-testappen under overgangen.')
+        render_forgot_password(client)
         st.stop()
-    require_test_user()
-    if st.sidebar.button('Log ud af Supabase'):
-        token = st.session_state.get('test_auth_access_token')
+    require_portal_user()
+    if st.sidebar.button('Log ud af Secure login'):
+        token = access_token(st.session_state)
         try:
             client.sign_out(token)
         except Exception:

@@ -53,7 +53,7 @@ class TestPasswordRecovery(unittest.TestCase):
             pass
         st.rerun.side_effect = Rerun
         with patch.dict(sys.modules, {"streamlit": st}):
-            spec = importlib.util.spec_from_file_location("recovery_test_module", Path(__file__).parents[1] / "testing/password_recovery.py")
+            spec = importlib.util.spec_from_file_location("recovery_test_module", Path(__file__).parents[1] / "modules/password_recovery.py")
             module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(module)
             client = Mock()

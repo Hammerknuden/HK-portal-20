@@ -20,7 +20,7 @@ import re
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 import os
 from dotenv import load_dotenv
-from portal_access import get_database_client, is_restore_test, booking_comment_test_enabled, booking_300_test_enabled
+from portal_access import get_database_client, is_restore_test
 
 
 st.set_page_config(page_title="Booking", layout="wide")
@@ -62,8 +62,7 @@ init_session()
 
 st.title("Reservation")
 
-comment_test_enabled = False
-year = st.selectbox("booking år", ["2026", "2027"] + (["2099"] if comment_test_enabled else []))
+year = st.selectbox("booking år", ["2026", "2027"])
 
 try:
     booking_number_result = (
@@ -100,7 +99,7 @@ network = "local"
 #network = st.selectbox("vælg lokal eller web ", options=["local", "URL"])
 mode = st.radio(
     "Bookingfunktion",
-    (["✏️ Rediger booking"] if year == "2099" and comment_test_enabled else [
+    ([
         "➕ Ny booking",
         "✏️ Rediger booking"
     ]),
@@ -168,35 +167,6 @@ if mode == "✏️ Rediger booking":
     )
 
     booking = booking_lookup.loc[booking_id]
-
-    october_test = (False
-                    and year == "2026" and int(booking["booking_number"]) == 300
-                    and booking["navn"] == "NN")
-    if october_test:
-        st.info("Skrivetest: Booking 300, NN. Gem ændringer kan testes med datoer i oktober 2026. Bookingnummeret skal forblive 300.")
-
-    if year == "2099" and comment_test_enabled:
-        from testing.write_probe import TEST_BOOKING, TEST_NAME, save_booking_test_comment
-        if (int(booking["booking_number"]) != TEST_BOOKING
-                or booking["navn"] != TEST_NAME or booking["web"] != "cansl"):
-            st.error("Denne række er ikke den reserverede testbooking.")
-            st.stop()
-        st.info("Testsæson 2099: Kun kommentaren kan ændres. Bookingens status og datoer bevares.")
-        old_comment = booking.get("comments")
-        old_comment = None if pd.isna(old_comment) else str(old_comment)
-        st.write("Gemt kommentar:", old_comment or "")
-        with st.form(f"booking_comment_test_{booking_id}", clear_on_submit=True):
-            test_comment = st.text_input("Ny testkommentar", max_chars=500)
-            save_test_comment = st.form_submit_button("Gem ændringer")
-        if save_test_comment:
-            try:
-                save_booking_test_comment(supabase, booking_id, old_comment, test_comment)
-                st.success("UPDATE og genlæsning gennem Booking-siden bekræftet.")
-                st.write("Ny gemt kommentar:", test_comment)
-            except Exception:
-                st.error("Ændringen kunne ikke bekræftes. Brug 1–500 tegn, og genindlæs booking før nyt forsøg.")
-        st.button("Genindlæs testbooking")
-        st.stop()
 
     new_booking_number = st.text_input(
         "Bookingnummer",
@@ -316,8 +286,6 @@ if mode == "✏️ Rediger booking":
                     })
                     .eq("id", booking_id)
                 )
-                if october_test:
-                    update_query = update_query.eq("season", 2026).eq("booking_number", 300).eq("navn", "NN")
                 result = update_query.execute()
                 if not result.data or len(result.data) != 1:
                     raise ValueError("Ingen ændring bekræftet. Genindlæs og kontrollér skriveadgang.")

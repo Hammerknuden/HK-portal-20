@@ -10,7 +10,7 @@ from common import init_session, exclude_cancelled_bookings
 import re
 import os
 from dotenv import load_dotenv
-from portal_access import get_database_client, uses_supabase_auth, booking_300_test_enabled
+from portal_access import get_database_client, uses_supabase_auth
 from importlib.metadata import version
 from modules.level2_optimizer import analyze_improvements
 from modules.level2_optimizer import can_swap_blocks

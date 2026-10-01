@@ -55,7 +55,7 @@ class BackupAccessTests(unittest.TestCase):
             ("legacy", False, True, False),
         ):
             st = MagicMock()
-            st.secrets = {"AUTH_MODE": mode}
+            st.secrets = {"AUTH_MODE": mode, "APP_ENV": "test" if mode == "supabase" else "production"}
             auth = Mock()
             access = Mock()
             access.uses_supabase_auth.return_value = supabase_auth

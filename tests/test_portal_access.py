@@ -35,6 +35,25 @@ class TestPortalAccess(unittest.TestCase):
         self.access.get_database_client()
         self.sdk.create_client.assert_called_once_with("legacy-url", "legacy-key")
 
+    def test_dual_defaults_to_supabase_and_honours_explicit_legacy(self):
+        self.st.secrets = {"AUTH_MODE": "dual"}
+        self.assertTrue(self.access.uses_supabase_auth())
+        self.st.session_state["portal_login_method"] = "legacy"
+        self.assertFalse(self.access.uses_supabase_auth())
+
+    @patch("modules.auth_client.AuthClient.get_user")
+    def test_production_settings_and_session_use_user_token(self, get_user):
+        self.st.secrets = {"AUTH_MODE": "supabase", "APP_ENV": "production",
+                           "SUPABASE_AUTH_URL": "https://production.supabase.co",
+                           "SUPABASE_PUBLISHABLE_KEY": "sb_publishable_production",
+                           "ADMIN_USER_IDS": ["admin"], "USER_IDS": ["ordinary"]}
+        self.st.session_state = {"auth_access_token": "production-token"}
+        get_user.return_value = {"id": "ordinary", "email": "user@example.com"}
+        self.access.get_database_client()
+        get_user.assert_called_once_with("production-token")
+        self.assertEqual(self.sdk.ClientOptions.call_args.kwargs["headers"]["Authorization"], "Bearer production-token")
+        self.assertEqual(self.sdk.create_client.call_args.args, ("https://production.supabase.co", "sb_publishable_production"))
+
     def configure_restore(self):
         self.st.secrets = {"APP_ENV": "restore_test", "AUTH_MODE": "legacy",
                            "SUPABASE_URL": self.access.RESTORE_TEST_URL,
@@ -185,133 +204,20 @@ class TestPortalAccess(unittest.TestCase):
         self.assertIsNone(resolve_role({"id": "stranger", "user_metadata": {"role": "admin"}}, ["admin"], []))
 
     @patch("testing.auth_client.AuthClient.get_user")
-    def test_comment_exception_requires_admin_flag_and_explicit_client_option(self, get_user):
-        import json
-        from urllib.parse import urlencode
-        from testing.write_probe import TEST_NAME
+    def test_old_probe_flags_cannot_enable_writes(self, get_user):
         self.configure_test()
-        self.st.secrets["ENABLE_BOOKING_WRITE_PROBE"] = True
-        self.st.secrets["ENABLE_BOOKING_300_TEST"] = True
-        query = urlencode({"id": "eq.217", "season": "eq.2099", "booking_number": "eq.99999",
-                           "navn": "eq." + TEST_NAME, "web": "eq.cansl"}).encode()
-        request = Mock(method="PATCH", content=json.dumps({"comments": "Test"}).encode())
-        request.url.path = "/rest/v1/hk_dtb"
-        request.url.query = query
-        for uid, flag, option, permitted in [("admin", True, True, True),
-                                            ("ordinary", True, True, False),
-                                            ("admin", False, True, False),
-                                            ("admin", True, False, False)]:
-            get_user.return_value = {"id": uid, "email": "user@example.com"}
-            self.st.secrets["ENABLE_BOOKING_WRITE_PROBE"] = flag
-            self.access.get_database_client(allow_booking_comment=option)
-            hook = self.httpx.Client.call_args.kwargs["event_hooks"]["request"][0]
-            if permitted:
-                hook(request)
-            else:
-                with self.assertRaises(RuntimeError):
-                    hook(request)
-
-
-    @patch("testing.auth_client.AuthClient.get_user")
-    def test_booking_300_allows_approved_users_only_with_flags_and_page_opt_in(self, get_user):
-        import json
-        from urllib.parse import urlencode
-        self.configure_test()
-        payload = dict.fromkeys(["booking_number", "familie_navn", "email", "telefon",
-            "checkin_date", "checkout_date", "nation", "web", "ankomst", "bed",
-            "morgenmad", "room_number", "season"], "")
-        payload.update(booking_number="300", season="2026",
-                       checkin_date="2026-10-01", checkout_date="2026-10-04")
-        request = Mock(method="PATCH", content=json.dumps(payload).encode())
-        request.url.path = "/rest/v1/hk_dtb"
-        request.url.query = urlencode({"id": "eq.218", "season": "eq.2026",
-            "booking_number": "eq.300", "navn": "eq.NN"}).encode()
-        for uid, probe, october, option, permitted in [
-            ("ordinary", True, True, True, True), ("admin", True, True, True, True),
-            ("ordinary", False, True, True, False), ("ordinary", True, False, True, False),
-            ("ordinary", True, True, False, False)]:
-            with self.subTest(uid=uid, probe=probe, october=october, option=option):
-                get_user.return_value = {"id": uid, "email": "user@example.com"}
-                self.st.secrets.update(ENABLE_BOOKING_WRITE_PROBE=probe,
-                                       ENABLE_BOOKING_300_TEST=october)
-                self.access.get_database_client(allow_booking_comment=option)
-                hook = self.httpx.Client.call_args.kwargs["event_hooks"]["request"][0]
-                if permitted:
-                    hook(request)
-                    for method in ("POST", "DELETE"):
-                        with self.assertRaises(RuntimeError):
-                            hook(Mock(method=method, url=request.url, content=request.content))
-                else:
-                    with self.assertRaises(RuntimeError):
-                        hook(request)
-        get_user.return_value = {"id": "stranger", "email": "user@example.com"}
-        with self.assertRaises(Stopped):
-            self.access.get_database_client(allow_booking_comment=True)
-
-    @patch("testing.auth_client.AuthClient.get_user")
-    def test_timeline_300_allows_approved_users_only_with_flags_and_page_opt_in(self, get_user):
-        import json
-        from urllib.parse import urlencode
-        self.configure_test()
-        payload = {"room_number": 7, "checkin_date": "2026-10-01",
-                   "checkout_date": "2026-10-04", "booking_number": 300,
-                   "navn": "NN", "web": "dir", "comments": "Test", "movable": True}
-        request = Mock(method="PATCH", content=json.dumps(payload).encode())
-        request.url.path = "/rest/v1/hk_dtb"
-        request.url.query = urlencode({"id": "eq.218", "season": "eq.2026",
-            "booking_number": "eq.300", "navn": "eq.NN"}).encode()
-        for uid, probe, october, option, permitted in [
-            ("ordinary", True, True, True, True), ("admin", True, True, True, True),
-            ("ordinary", False, True, True, False), ("ordinary", True, False, True, False),
-            ("ordinary", True, True, False, False)]:
-            with self.subTest(uid=uid, probe=probe, october=october, option=option):
-                get_user.return_value = {"id": uid, "email": "user@example.com"}
-                self.st.secrets.update(ENABLE_BOOKING_WRITE_PROBE=probe,
-                                       ENABLE_BOOKING_300_TEST=october)
-                self.access.get_database_client(allow_timeline_test=option)
-                hook = self.httpx.Client.call_args.kwargs["event_hooks"]["request"][0]
-                if permitted:
-                    hook(request)
-                    for method in ("POST", "DELETE"):
-                        with self.assertRaises(RuntimeError):
-                            hook(Mock(method=method, url=request.url, content=request.content))
-                else:
-                    with self.assertRaises(RuntimeError):
-                        hook(request)
-        get_user.return_value = {"id": "stranger", "email": "user@example.com"}
-        with self.assertRaises(Stopped):
-            self.access.get_database_client(allow_timeline_test=True)
-
-
-    @patch("testing.auth_client.AuthClient.get_user")
-    def test_booking_301_requires_enabled_booking_page_and_approved_user(self, get_user):
-        import json
-        from testing.write_probe import BOOKING_301_FIELDS
-        self.configure_test()
-        payload = dict.fromkeys(BOOKING_301_FIELDS, "")
-        payload.update(booking_number="301", navn="AA", season=2026,
-                       checkin_date="2026-10-02", checkout_date="2026-10-06", numb_rooms=1, room_number=7)
-        request = Mock(method="POST", content=json.dumps(payload).encode())
-        request.url.path = "/rest/v1/hk_dtb"
-        request.url.query = b""
-        for uid, probe, enabled, option, permitted in [
-            ("ordinary", True, True, True, True), ("admin", True, True, True, True),
-            ("ordinary", False, True, True, False), ("ordinary", True, False, True, False),
-            ("ordinary", True, True, False, False)]:
-            get_user.return_value = {"id": uid, "email": "user@example.com"}
-            self.st.secrets.update(ENABLE_BOOKING_WRITE_PROBE=probe, ENABLE_BOOKING_301_TEST=enabled)
-            self.access.get_database_client(allow_booking_comment=option)
-            hook = self.httpx.Client.call_args.kwargs["event_hooks"]["request"][0]
-            if permitted:
-                hook(request)
-            else:
-                with self.assertRaises(RuntimeError): hook(request)
-        self.access.get_database_client(allow_timeline_test=True)
+        get_user.return_value = {"id": "admin", "email": "admin@example.com"}
+        self.st.secrets.update(ENABLE_BOOKING_WRITE_PROBE=True, ENABLE_BOOKING_300_TEST=True, ENABLE_BOOKING_301_TEST=True)
+        self.assertFalse(self.access.booking_comment_test_enabled())
+        self.assertFalse(self.access.booking_300_test_enabled())
+        self.assertFalse(self.access.booking_301_test_enabled())
+        self.access.get_database_client(allow_booking_comment=True, allow_timeline_test=True)
         hook = self.httpx.Client.call_args.kwargs["event_hooks"]["request"][0]
-        with self.assertRaises(RuntimeError): hook(request)
-        get_user.return_value = {"id": "stranger"}
-        with self.assertRaises(Stopped): self.access.get_database_client(allow_booking_comment=True)
-
+        for method in ("POST", "PATCH", "DELETE"):
+            request = Mock(method=method)
+            request.url.path = "/rest/v1/hk_dtb"
+            with self.assertRaises(RuntimeError):
+                hook(request)
 
     @patch("testing.auth_client.AuthClient.get_user")
     def test_operational_booking_boundary(self, get_user):
