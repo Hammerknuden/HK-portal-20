@@ -360,7 +360,11 @@ if st.checkbox("Bruttoomsætning"):
                               labels={"gross_revenue": "Bruttoomsætning (kr.)", "season": "Sæson"}), use_container_width=True)
 
 st.subheader(f"Morgenmadsomsætning – {selected_season}")
-st.caption("Prebooked morgenmad fratrukket rabat og moms, fordelt på overnatningsdato.")
+st.caption(
+    "Prebooked morgenmad fratrukket bookingens generelle rabat og 25 % moms, "
+    "fordelt på overnatningsdato. Rabatten trækkes ikke fra, når bookingen "
+    "er markeret med 'Rabatten gælder kun værelset'."
+)
 breakfast = selected_report("breakfast_monthly")
 if breakfast is not None:
     st.metric("Omsætning ekskl. moms", f"{breakfast['net_revenue'].sum():,.2f} kr".replace(",", "X").replace(".", ",").replace("X", "."))

@@ -253,6 +253,35 @@ if mode == "✏️ Rediger booking":
         index=breakfast_options.index(current_breakfast)
     )
 
+    current_discount = pd.to_numeric(
+        str(booking.get("rabat", 0)).replace(",", ".").replace("%", ""),
+        errors="coerce",
+    )
+    current_discount = 0 if pd.isna(current_discount) else float(current_discount)
+    if abs(current_discount) <= 1:
+        current_discount *= 100
+    new_discount = st.number_input(
+        "Rabat i procent",
+        min_value=0.0,
+        max_value=100.0,
+        value=current_discount,
+        step=1.0,
+        key=f"edit_discount_{booking_id}",
+    )
+    current_breakfast_discount_exempt = booking.get(
+        "breakfast_discount_exempt", False
+    )
+    current_breakfast_discount_exempt = (
+        bool(current_breakfast_discount_exempt)
+        if pd.notna(current_breakfast_discount_exempt)
+        else False
+    )
+    new_breakfast_discount_exempt = st.checkbox(
+        "Rabatten gælder kun værelset (ikke morgenmad)",
+        value=current_breakfast_discount_exempt,
+        key=f"edit_breakfast_discount_exempt_{booking_id}",
+    )
+
     new_room_number = st.text_input(
         "room_number",
         value=str(booking["room_number"])
@@ -281,6 +310,8 @@ if mode == "✏️ Rediger booking":
                         "ankomst": new_ankomst,
                         "bed": new_bed,
                         "morgenmad": new_breakfast,
+                        "rabat": new_discount / 100,
+                        "breakfast_discount_exempt": new_breakfast_discount_exempt,
                         "room_number": new_room_number,
                         "season": year,
                     })
@@ -506,7 +537,9 @@ else:
 
     breakfast = st.checkbox("Morgenmad")
     breakfast_alt = st.checkbox("begrænset morgenmad bestilles direkte ved ankomst mod beregning  ")
-    breakfast_rabat = st.checkbox("Der beregnes ikke rabat på morgenmad")
+    breakfast_rabat = st.checkbox(
+        "Rabatten gælder kun værelset (ikke morgenmad)"
+    )
 
     if breakfast:
         br_f = int(bf_price * int(num_guests) * int(days))#.days))
@@ -855,6 +888,7 @@ else:
             "spouse": spouse,
             "enkelt": single_room,
             "morgenmad": BF,
+            "breakfast_discount_exempt": breakfast_rabat,
             "pris": pristotal,
             "known": known,
             "comments": comments,
@@ -1007,6 +1041,7 @@ else:
                 "spouse": spouse,
                 "enkelt": single_room,
                 "morgenmad": BF,
+                "breakfast_discount_exempt": breakfast_rabat,
                 "pris": pristotal,
                 "known": known,
                 "comments": comments,

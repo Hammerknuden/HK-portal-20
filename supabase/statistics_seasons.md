@@ -41,3 +41,9 @@ NULL pris tæller ikke med i summen og er tilladt. NULL gæsteantal er tilladt p
 underrækker uden bookingdato; hovedrækker med bookingdato skal have gæsteantal.
 Udfyldte ugyldige værdier og negative gæsteantal bliver fortsat fanget.
 Gemte historiske opgørelser ændres ikke af rettelsen.
+
+Rabat på morgenmad:
+Kør `20261002_breakfast_discount_scope.sql` efter NULL-rettelsen og før den
+tilhørende applikationsændring tages i brug. Migrationen tilføjer
+`breakfast_discount_exempt`. Den generelle bookingrabat fratrækkes som standard
+morgenmaden; feltet sættes kun, når rabatten skal gælde værelset alene.

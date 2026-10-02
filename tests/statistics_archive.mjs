@@ -15,7 +15,7 @@ create table hk_dtb (
  email text, telefon text, spouse text, comments text
 );
 `);
-for (const name of ['20260820_create_historie.sql','20260905_add_booking_pace_fields_to_historie_new.sql','20260909_booking_pace_season_status.sql','20260910_close_booking_season.sql','20260910_create_statistik_historik.sql','20260910_statistics_season_archive.sql','20260910_statistics_season_null_values.sql']) {
+for (const name of ['20260820_create_historie.sql','20260905_add_booking_pace_fields_to_historie_new.sql','20260909_booking_pace_season_status.sql','20260910_close_booking_season.sql','20260910_create_statistik_historik.sql','20260910_statistics_season_archive.sql','20260910_statistics_season_null_values.sql','20261002_breakfast_discount_scope.sql']) {
   await db.exec(fs.readFileSync('supabase/migrations/'+name,'utf8'));
 }
 const rows = async (q) => (await db.query(q)).rows;
@@ -65,11 +65,23 @@ const empty = await rows('select * from calculate_season_statistics(2030)');
 assert.equal(empty.length,8);
 assert.equal(empty.find(r=>r.report_type==='room_nights').data[0].room_nights,0);
 assert.equal((await rows("select jsonb_array_length(data) as n from statistik_historik where season=2024"))[0].n,5);
+await db.exec(`
+insert into high_season values (2032,100,false);
+insert into hk_dtb (season,booking_number,navn,checkin_date,checkout_date,booking_date,nation,web,morgenmad,rabat,pris,numb_guests,breakfast_discount_exempt)
+values
+(2032,1,'Rabat på alt','2032-04-01','2032-04-02','2032-01-01','DK','web','Y','0.05','1000',1,false),
+(2032,2,'Rabat kun rum','2032-04-02','2032-04-03','2032-01-01','DK','web','Y','0.05','1000',1,true);
+`);
+const breakfastScope = await rows('select * from calculate_season_statistics(2032)');
+const aprilBreakfast = breakfastScope.find(r=>r.report_type==='breakfast_monthly').data.find(r=>r.month===4);
+assert.equal(aprilBreakfast.servings,2);
+assert.equal(aprilBreakfast.net_revenue,156);
 // Running the migration twice must not modify frozen reports or legacy data.
 await db.exec(fs.readFileSync('supabase/migrations/20260910_statistics_season_archive.sql','utf8'));
 assert.deepEqual(await rows('select * from statistik_historik where season=2026 order by report_type'),frozen);
 // Reapply latest migration after explicitly testing the previous migration's retry.
 await db.exec(fs.readFileSync('supabase/migrations/20260910_statistics_season_null_values.sql','utf8'));
+await db.exec(fs.readFileSync('supabase/migrations/20261002_breakfast_discount_scope.sql','utf8'));
 await db.exec(`
 insert into high_season values (2031,100,false);
 insert into hk_dtb (season,booking_number,navn,checkin_date,checkout_date,booking_date,nation,web,morgenmad,pris,numb_guests)
