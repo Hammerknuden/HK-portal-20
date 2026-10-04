@@ -134,6 +134,7 @@ class TestPortalAccess(unittest.TestCase):
     def test_setup_writes_require_admin_and_explicit_client(self, get_user):
         import json
         allowed = [("PATCH", "high_season", {"enk_low": 650}),
+                   ("PATCH", "high_season", {"start_season": "2027-06-01", "end_season": "2027-09-01"}),
                    ("POST", "Events", {"event": "Test"}),
                    ("PATCH", "Events", {"event": "Updated"}),
                    ("DELETE", "Events", {}),

@@ -98,7 +98,7 @@ def get_database_client(allow_booking_comment=False, allow_timeline_test=False, 
                     import json
                     try:
                         data = json.loads(request.content)
-                        fields = {"enk_low", "enk_high", "dobb_low", "dobb_high", "pris_morgenmad"}
+                        fields = {"enk_low", "enk_high", "dobb_low", "dobb_high", "pris_morgenmad", "start_season", "end_season"}
                         if isinstance(data, dict) and data and set(data) <= fields:
                             return
                     except (ValueError, UnicodeError):

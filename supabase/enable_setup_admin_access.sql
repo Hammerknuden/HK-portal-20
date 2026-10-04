@@ -24,7 +24,7 @@ BEGIN
  IF seq_name IS NOT NULL THEN EXECUTE format('GRANT USAGE ON SEQUENCE %s TO authenticated',seq_name); END IF;
 END $$;
 GRANT SELECT ON public.high_season, public."Events" TO authenticated;
-GRANT UPDATE (enk_low,enk_high,dobb_low,dobb_high,pris_morgenmad) ON public.high_season TO authenticated;
+GRANT UPDATE (enk_low,enk_high,dobb_low,dobb_high,pris_morgenmad,start_season,end_season) ON public.high_season TO authenticated;
 GRANT INSERT,UPDATE,DELETE ON public."Events" TO authenticated;
 
 DROP POLICY IF EXISTS portal_setup_high_season_select ON public."high_season";

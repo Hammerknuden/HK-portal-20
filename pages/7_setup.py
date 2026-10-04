@@ -62,6 +62,59 @@ else:
     )
     current_prices = prices_by_season[selected_price_season]
 
+    st.subheader("Højsæsonens datoer")
+    season_dates = {}
+    for field in ("start_season", "end_season"):
+        try:
+            season_dates[field] = date.fromisoformat(current_prices[field])
+        except (KeyError, TypeError, ValueError):
+            season_dates[field] = None
+
+    with st.form(f"high_season_dates_{selected_price_season}"):
+        start_col, end_col = st.columns(2)
+        with start_col:
+            start_season = st.date_input(
+                "Højsæson starter",
+                value=season_dates["start_season"],
+                format="DD-MM-YYYY",
+                key=f"start_season_{selected_price_season}",
+            )
+        with end_col:
+            end_season = st.date_input(
+                "Højsæson slutter",
+                value=season_dates["end_season"],
+                format="DD-MM-YYYY",
+                key=f"end_season_{selected_price_season}",
+            )
+        st.caption("Slutdatoen er den første dag, der igen beregnes med lavsæsonpris.")
+        save_season_dates = st.form_submit_button("Gem højsæsonens datoer")
+
+    if save_season_dates:
+        require_admin()
+        if start_season is None or end_season is None:
+            st.error("Angiv både start- og slutdato. Ingen datoer er gemt.")
+        elif end_season <= start_season:
+            st.error("Slutdato skal ligge efter startdato. Ingen datoer er gemt.")
+        else:
+            try:
+                result = (
+                    supabase.table("high_season")
+                    .update({
+                        "start_season": start_season.isoformat(),
+                        "end_season": end_season.isoformat(),
+                    })
+                    .eq("season", int(selected_price_season))
+                    .execute()
+                )
+            except Exception as error:
+                st.error(f"Datoændringen kunne ikke bekræftes. Genindlæs og kontrollér adgang. {error}")
+            else:
+                if len(result.data or []) != 1:
+                    st.error("Datoændringen kunne ikke bekræftes. Genindlæs og kontrollér adgang og sæson.")
+                else:
+                    st.session_state["setup_saved_message"] = f"Højsæsonens datoer for {selected_price_season} er gemt"
+                    st.rerun()
+
     col1, col2 = st.columns(2)
 
     with col1:
