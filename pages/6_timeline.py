@@ -16,6 +16,7 @@ from modules.level2_optimizer import analyze_improvements
 from modules.level2_optimizer import can_swap_blocks
 from modules.room_swap import execute_room_swap
 from modules.timeline_colors import booking_color
+from modules.timeline_edit import validate_timeline_edit
 from modules.optimizer_preview import select_plan, booking_today
 from modules.optimizer_state import booking_signature, invalidate_analysis
 from modules.optimizer_workflow import clear_selection, render_selected_solution
@@ -792,6 +793,7 @@ if not df.empty:
                     "comments": new_comments.strip(),
                     "movable": new_movable
                 }
+                validate_timeline_edit(supabase, booking_id, payload)
                 query = supabase.table("hk_dtb").update(payload).eq("id", booking_id)
                 if scoped_test:
                     query = query.eq("season", 2026).eq("booking_number", 300).eq("navn", "NN")
