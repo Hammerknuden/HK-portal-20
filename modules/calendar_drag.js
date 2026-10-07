@@ -61,8 +61,12 @@ export default function(component) {
                 const rect=svg.getBoundingClientRect(), y=e.clientY-rect.top, px=e.clientX-rect.left;
                 const room=Math.floor((y-40)/55)+1;
                 if(y>=40 && y<425 && px>=110 && px<=width && room!==b.room) {
-                    // Keep the accepted drop visible while Python processes the move.
-                    b.room=room;
+                    // Reject visible overlap immediately. Python also checks fresh
+                    // occupancy across seasons before accepting the draft.
+                    const occupied=data.items.some(other=>other.id!==b.id && other.room===room
+                        && Date.parse(other.start)<Date.parse(b.end)
+                        && Date.parse(other.end)>Date.parse(b.start));
+                    if (!occupied) b.room=room;
                     reset();
                     setTriggerValue('move',{id:b.id,room});
                 } else {

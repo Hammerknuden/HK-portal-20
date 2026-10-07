@@ -2,6 +2,8 @@ import unittest
 from contextlib import ExitStack
 from unittest.mock import MagicMock, patch
 
+import pandas as pd
+
 from streamlit.testing.v1 import AppTest
 
 
@@ -19,8 +21,8 @@ class CalendarPageTests(unittest.TestCase):
         # AppTest has no browser frontend for custom components. Test page flow
         # with its renderer stubbed; real mounting has a separate smoke check.
         self.render = self.stack.enter_context(patch("modules.calendar_drag.render_drag_calendar"))
-        self.stack.enter_context(patch("modules.calendar_save.load_calendar_rows",
-                                       return_value=__import__("pandas").DataFrame([self.row])))
+        self.load = self.stack.enter_context(patch("modules.calendar_save.load_calendar_rows",
+                                                  return_value=pd.DataFrame([self.row])))
         self.save = self.stack.enter_context(patch("modules.calendar_save.save_move_request"))
 
     def app(self, season=2027):
@@ -75,6 +77,38 @@ class CalendarPageTests(unittest.TestCase):
         self.assertFalse(app.session_state["calendar_save_pending"])
         self.assertEqual(app.session_state["calendar_moves_2027"], {"1": 3})
         self.assertTrue(app.error)
+
+    def test_preflight_overlap_restores_saved_position(self):
+        neighbour = {**self.row, "id": 2, "booking_number": 222, "room_number": 3}
+        self.load.return_value = pd.DataFrame([self.row, neighbour])
+        app = self.app()
+        self.save_button(app).click().run(timeout=30)
+        self.assertFalse(app.exception)
+        self.assertEqual(app.session_state["calendar_moves_2027"], {})
+        self.assertEqual(app.session_state["calendar_sources_2027"], {})
+        self.assertEqual(self.render.call_args.args[0].room_number.tolist(), [1])
+        self.assertTrue(app.error)
+        self.save.assert_not_called()
+
+    def test_database_rejection_restores_saved_position(self):
+        error = RuntimeError("Overlap at save")
+        error.code = "P0001"
+        self.save.side_effect = error
+        app = self.app()
+        self.save_button(app).click().run(timeout=30)
+        self.assertFalse(app.exception)
+        self.assertFalse(app.session_state["calendar_save_pending"])
+        self.assertEqual(app.session_state["calendar_moves_2027"], {})
+        self.assertEqual(self.render.call_args.args[0].room_number.tolist(), [1])
+        self.assertTrue(app.error)
+
+    def test_cancel_button_below_draft_restores_saved_position(self):
+        app = self.app()
+        next(b for b in app.button if b.label == "Annuller flytninger").click().run(timeout=30)
+        self.assertFalse(app.exception)
+        self.assertEqual(app.session_state["calendar_moves_2027"], {})
+        self.assertEqual(self.render.call_args.args[0].room_number.tolist(), [1])
+        self.save.assert_not_called()
 
 
 if __name__ == "__main__":

@@ -41,6 +41,33 @@ class CalendarDragTests(unittest.TestCase):
         payload = drag_data(self.rows.drop(columns="id"), "2026-01-01", "2027-01-01")
         self.assertTrue(all(b["locked"] for b in payload["items"]))
 
+    def test_overlap_rejected_and_previous_draft_unchanged(self):
+        moves = {"1": 3}
+        with self.assertRaises(ValueError):
+            accept_move(self.rows, moves, dict(id="1", room=2))
+        self.assertEqual(moves, {"1": 3})
+        self.assertEqual(preview_moves(self.rows, moves).room_number.tolist(), [3, 2])
+
+    def test_adjacent_stays_and_room_freed_by_draft(self):
+        rows = self.rows.copy()
+        rows.loc[1, "movable"] = True
+        moves = accept_move(rows, {}, dict(id="2", room=3))
+        self.assertEqual(accept_move(rows, moves, dict(id="1", room=2)), {"2": 3, "1": 2})
+        rows.loc[1, "checkin_date"] = pd.Timestamp("2026-06-05")
+        rows.loc[1, "checkout_date"] = pd.Timestamp("2026-06-07")
+        self.assertEqual(accept_move(rows, {}, dict(id="1", room=2)), {"1": 2})
+
+    def test_other_season_overlap_and_fresh_lock_rejected(self):
+        neighbour = self.rows.iloc[[1]].copy()
+        neighbour["id"] = 3
+        neighbour["room_number"] = 3
+        occupancy = pd.concat([self.rows, neighbour])
+        with self.assertRaises(ValueError):
+            accept_move(self.rows, {}, dict(id="1", room=3), occupancy=occupancy)
+        occupancy.loc[occupancy.id == 1, "movable"] = False
+        with self.assertRaises(ValueError):
+            accept_move(self.rows, {}, dict(id="1", room=7), occupancy=occupancy)
+
 
 if __name__ == "__main__":
     unittest.main()
