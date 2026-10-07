@@ -291,13 +291,14 @@ class TestPortalAccess(unittest.TestCase):
                 self.access.get_database_client(allow_booking_writes=enabled)
                 hook = self.httpx.Client.call_args.kwargs["event_hooks"]["request"][0]
                 request = Mock(method="POST")
-                request.url.path = "/rest/v1/rpc/apply_optimizer_plan_authenticated"
-                if enabled:
-                    hook(request)
-                else:
+                for name in ("apply_optimizer_plan", "apply_calendar_moves"):
+                    request.url.path = f"/rest/v1/rpc/{name}_authenticated"
+                    if enabled:
+                        hook(request)
+                    else:
+                        with self.assertRaises(RuntimeError): hook(request)
+                    request.url.path = f"/rest/v1/rpc/{name}"
                     with self.assertRaises(RuntimeError): hook(request)
-                request.url.path = "/rest/v1/rpc/apply_optimizer_plan"
-                with self.assertRaises(RuntimeError): hook(request)
         get_user.return_value = {"id": "stranger"}
         with self.assertRaises(Stopped): self.access.get_database_client(allow_booking_writes=True)
 
