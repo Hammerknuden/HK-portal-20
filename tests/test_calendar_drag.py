@@ -1,9 +1,11 @@
 import unittest
+from types import SimpleNamespace
+from unittest.mock import patch
 
 import pandas as pd
 
-from modules.calendar_drag import accept_move, drag_data, preview_moves
-from modules.calendar_view import prepare_bookings
+from modules.calendar_drag import accept_move, drag_data, preview_moves, render_drag_calendar
+from modules.calendar_view import build_calendar, prepare_bookings
 
 
 class CalendarDragTests(unittest.TestCase):
@@ -67,6 +69,44 @@ class CalendarDragTests(unittest.TestCase):
         occupancy.loc[occupancy.id == 1, "movable"] = False
         with self.assertRaises(ValueError):
             accept_move(self.rows, {}, dict(id="1", room=7), occupancy=occupancy)
+
+    def test_plotly_payload_keeps_dates_events_and_row_identity(self):
+        events = pd.DataFrame([dict(start_date="2026-06-02", end_date="2026-06-03",
+                                    event="Festival", color="orange")])
+        figure = build_calendar(self.rows, events, 2026)
+        original_range = list(figure.layout.xaxis.range)
+        state = {"chart": SimpleNamespace(viewport=dict(
+            view_key="2026:False", range=["2026-06-02", "2026-06-04"]))}
+        with patch("modules.calendar_drag.st.session_state", state), \
+                patch("modules.calendar_drag._drag_component") as renderer:
+            render_drag_calendar(self.rows, *original_range, key="chart", figure=figure,
+                                 view_key="2026:False")
+            data = renderer.call_args.kwargs["data"]
+        self.assertEqual(data["figure"]["layout"]["xaxis"]["range"],
+                         ["2026-06-02", "2026-06-04"])
+        self.assertEqual([pd.Timestamp(value) for value in data["default_range"]], original_range)
+        self.assertTrue(data["figure"]["layout"]["xaxis"]["rangeslider"]["visible"])
+        self.assertTrue(data["figure"]["layout"]["yaxis"]["fixedrange"])
+        self.assertTrue(any(a["text"] == "Festival" for a in data["figure"]["layout"]["annotations"]))
+        self.assertEqual({str(custom[0]) for trace in data["figure"]["data"]
+                          for custom in trace["customdata"]}, {"1", "2"})
+        for trace in data["figure"]["data"]:
+            self.assertEqual(trace["x"], [4 * 86400000])
+            self.assertEqual(trace["base"], ["2026-06-01T00:00:00"])
+        self.assertEqual(list(figure.layout.xaxis.range), original_range)
+
+    def test_changed_zoom_resets_view_and_pending_disables_drag(self):
+        figure = build_calendar(self.rows, pd.DataFrame(), 2026)
+        state = {"chart": SimpleNamespace(viewport=dict(
+            view_key="2026:False", range=["2026-06-02", "2026-06-04"]))}
+        with patch("modules.calendar_drag.st.session_state", state), \
+                patch("modules.calendar_drag._drag_component") as renderer:
+            render_drag_calendar(self.rows, *figure.layout.xaxis.range, key="chart", figure=figure,
+                                 view_key="2026:True", disabled=True)
+            data = renderer.call_args.kwargs["data"]
+        self.assertNotEqual(data["figure"]["layout"]["xaxis"]["range"],
+                            ["2026-06-02", "2026-06-04"])
+        self.assertTrue(all(item["locked"] for item in data["items"]))
 
 
 if __name__ == "__main__":

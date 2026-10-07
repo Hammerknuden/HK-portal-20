@@ -42,6 +42,15 @@ class CalendarPageTests(unittest.TestCase):
         self.assertTrue(self.save_button(app).disabled)
         self.save.assert_not_called()
 
+    def test_single_calendar_uses_shared_figure(self):
+        app = self.app()
+        self.assertEqual(len(app.get("plotly_chart")), 0)
+        self.assertEqual(self.render.call_count, 1)
+        figure = self.render.call_args.kwargs["figure"]
+        self.assertTrue(figure.layout.xaxis.rangeslider.visible)
+        self.assertEqual(figure.data[0].y[0], "Værelse 3")
+        self.assertFalse(any(title.value == "Afprøv værelsesflytning" for title in app.subheader))
+
     def test_success_clears_draft_after_readback(self):
         app = self.app()
         self.save_button(app).click().run(timeout=30)

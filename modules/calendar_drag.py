@@ -5,7 +5,6 @@ from pathlib import Path
 
 import pandas as pd
 import streamlit as st
-from plotly.offline import get_plotlyjs
 
 from modules.calendar_view import ROOMS
 from modules.timeline_colors import booking_color
@@ -92,7 +91,8 @@ def drag_data(bookings, start, end):
 
 _drag_component = st.components.v2.component(
     "calendar_room_drag", html='<div class="calendar-plot-wrap"><div class="calendar-plot"></div><div class="calendar-hit-layer"></div><div class="calendar-status" role="status"></div></div>',
-    js=get_plotlyjs() + "\n" + Path(__file__).with_name("calendar_drag.js").read_text(encoding="utf-8"),
+    js=(Path(__file__).parent / "vendor" / "plotly-basic-3.5.0.min.js").read_text(encoding="utf-8")
+       + "\n" + Path(__file__).with_name("calendar_drag.js").read_text(encoding="utf-8"),
     isolate_styles=False,
     css="""
     .calendar-plot-wrap {position:relative; width:100%;}
@@ -113,6 +113,11 @@ def render_drag_calendar(bookings, start, end, key, on_move=None, disabled=False
     data = drag_data(bookings, start, end)
     data["revision"] = revision
     data["figure"] = json.loads(figure.to_json())
+    data["default_range"] = list(data["figure"]["layout"]["xaxis"]["range"])
+    # Use plain durations and dates for the client's incremental bar updates.
+    for source, trace in zip(figure.data, data["figure"]["data"]):
+        trace["x"] = [int(value) for value in source.x]
+        trace["base"] = [pd.Timestamp(value).isoformat() for value in source.base]
     data["view_key"] = view_key
     state = st.session_state.get(key)
     viewport = getattr(state, "viewport", None)

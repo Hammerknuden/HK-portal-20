@@ -5,7 +5,8 @@ export default function(component) {
     const chart = host.querySelector('.calendar-plot');
     const layer = host.querySelector('.calendar-hit-layer');
     const status = host.querySelector('.calendar-status');
-    let disposed = false, dragging = false, observer;
+    status.textContent = '';
+    let disposed = false, dragging = false, updating = false, observer;
     const items = new Map(data.items.map(item => [item.id, item]));
 
     function targets() {
@@ -75,12 +76,20 @@ export default function(component) {
                     dragging = false;
                     hit.style.transform = `translateY(${ya.d2p(data.rooms[room])-ya.d2p(data.rooms[previousRoom])}px)`;
                     // Move the actual Plotly bar before Python accepts the draft.
-                    Plotly.restyle(chart, {y:[y]}, [traceIndex]).then(() => {
+                    updating = true;
+                    const range = Array.from(chart._fullLayout.xaxis.range);
+                    Plotly.update(chart, {y:[y]}, {
+                        'xaxis.type':'date', 'xaxis.range':range, 'xaxis.autorange':false,
+                        'yaxis.type':'category', 'yaxis.range':data.figure.layout.yaxis.range,
+                        'yaxis.fixedrange':true,
+                    }, [traceIndex]).then(() => {
+                        updating = false;
                         if (disposed) return;
                         reset(); targets();
                         status.textContent = 'Flytning i kladde – ikke gemt.';
                         setTriggerValue('move', {id:b.id, room});
                     }).catch(() => {
+                        updating = false;
                         b.room = previousRoom; reset(); targets();
                         status.textContent = 'Flytningen kunne ikke vises. Prøv igen.';
                     });
@@ -108,14 +117,22 @@ export default function(component) {
         });
     }
 
-    Plotly.newPlot(chart, data.figure.data, data.figure.layout,
-        {responsive:true, displaylogo:false, scrollZoom:true}).then(() => {
+    Plotly.newPlot(chart, data.figure.data, data.figure.layout, {
+        responsive:true, displaylogo:false, scrollZoom:true,
+        modeBarButtonsToRemove:['resetScale2d'],
+        modeBarButtonsToAdd:[{
+            name:'Nulstil zoom', icon:Plotly.Icons.autoscale,
+            click:graph => Plotly.relayout(graph, {
+                'xaxis.range':data.default_range, 'xaxis.autorange':false,
+            }),
+        }],
+    }).then(() => {
         if (disposed) {Plotly.purge(chart); return;}
         targets();
         chart.on('plotly_afterplot', targets);
         chart.on('plotly_relayout', event => {
             targets();
-            if (Object.keys(event).some(key => key.startsWith('xaxis.range') || key === 'xaxis.autorange')) {
+            if (!updating && Object.keys(event).some(key => key.startsWith('xaxis.range') || key === 'xaxis.autorange')) {
                 const range = Array.from(chart._fullLayout.xaxis.range);
                 setStateValue('viewport', {view_key:data.view_key, range});
             }
