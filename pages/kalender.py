@@ -54,14 +54,21 @@ st.subheader("Afprøv værelsesflytning")
 st.caption("Træk en booking op eller ned til et andet værelse. Datoerne er faste. "
            "Røde, låste bookinger kan ikke trækkes. Brug knapperne til zoom og rul vandret. "
            "Overlapkontrol og lagring kommer i trin 3.")
-result = render_drag_calendar(preview, *figure.layout.xaxis.range,
-                              key=f"calendar_drag_{season}")
-if result.move:
+drag_key = f"calendar_drag_{season}"
+
+
+def handle_room_move():
+    # Apply before the page reruns, so it never renders the old room on drop.
+    request = st.session_state[drag_key].move
     try:
-        st.session_state[moves_key] = accept_move(bookings, st.session_state[moves_key], result.move)
+        st.session_state[moves_key] = accept_move(bookings, st.session_state[moves_key], request)
     except ValueError as error:
-        st.error(str(error))
-    else:
-        st.rerun()
+        st.session_state["calendar_move_error"] = str(error)
+
+
+render_drag_calendar(preview, *figure.layout.xaxis.range,
+                     key=drag_key, on_move=handle_room_move)
+if "calendar_move_error" in st.session_state:
+    st.error(st.session_state.pop("calendar_move_error"))
 if st.session_state[moves_key]:
     st.info(f"{len(st.session_state[moves_key])} værelsesflytning(er) i kladde – ikke gemt.")

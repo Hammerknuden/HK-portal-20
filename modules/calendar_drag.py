@@ -77,6 +77,6 @@ _drag_component = st.components.v2.component(
 )
 
 
-def render_drag_calendar(bookings, start, end, key):
+def render_drag_calendar(bookings, start, end, key, on_move=None):
     return _drag_component(data=drag_data(bookings, start, end), key=key,
-                           on_move_change=lambda: None)
+                           on_move_change=on_move or (lambda: None))

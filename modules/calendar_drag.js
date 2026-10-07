@@ -60,9 +60,14 @@ export default function(component) {
                 if(!dragging)return;
                 const rect=svg.getBoundingClientRect(), y=e.clientY-rect.top, px=e.clientX-rect.left;
                 const room=Math.floor((y-40)/55)+1;
-                reset();
-                if(y>=40 && y<425 && px>=110 && px<=width && room!==b.room)
+                if(y>=40 && y<425 && px>=110 && px<=width && room!==b.room) {
+                    // Keep the accepted drop visible while Python processes the move.
+                    b.room=room;
+                    reset();
                     setTriggerValue('move',{id:b.id,room});
+                } else {
+                    reset();
+                }
             };
         }
     }
