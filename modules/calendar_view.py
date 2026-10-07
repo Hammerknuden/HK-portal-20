@@ -61,8 +61,9 @@ def build_calendar(bookings, events, season, zoom_today=False, today=None):
     for monday in pd.date_range(min(start, view_start), max(end, view_end), freq="W-MON"):
         fig.add_shape(type="line", x0=monday, x1=monday, y0=0, y1=1, yref="paper",
                       line=dict(color="gray", width=1, dash="dot"))
-        fig.add_annotation(x=monday, y=0, yref="paper", text=str(monday.isocalendar().week),
-                           showarrow=False, yshift=-18, font=dict(size=10, color="gray"))
+        fig.add_annotation(x=monday, y=1, yref="paper", text=str(monday.isocalendar().week),
+                           showarrow=False, yshift=34, yanchor="bottom",
+                           font=dict(size=10, color="gray"))
     if view_start <= today <= view_end:
         fig.add_shape(type="line", x0=today, x1=today, y0=0, y1=1, yref="paper",
                       line=dict(color="red", width=1))
@@ -85,6 +86,8 @@ def build_calendar(bookings, events, season, zoom_today=False, today=None):
                      range=[len(ROOMS) - 0.5, -0.5], title="")
     fig.update_xaxes(type="date", rangeslider_visible=True, tickformat="%d-%m",
                      showgrid=True, gridcolor="lightgray", gridwidth=1, dtick="D7",
-                     range=[view_start, view_end], title="Dato")
-    fig.update_layout(plot_bgcolor="white", paper_bgcolor="white", showlegend=False, height=400)
+                     range=[view_start, view_end], side="top", title="",
+                     tickfont=dict(size=11), tickangle=0, automargin=True)
+    fig.update_layout(plot_bgcolor="white", paper_bgcolor="white", showlegend=False,
+                      height=420, margin=dict(t=80, b=70, l=100, r=30))
     return fig
