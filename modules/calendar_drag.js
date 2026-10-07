@@ -9,6 +9,14 @@ export default function(component) {
     let disposed = false, dragging = false, updating = false, observer;
     const items = new Map(data.items.map(item => [item.id, item]));
 
+    function dateLabels() {
+        if (disposed || !chart._fullLayout) return;
+        const axis = chart._fullLayout.xaxis;
+        const days = Math.abs(Date.parse(axis.range[1]) - Date.parse(axis.range[0])) / 86400000;
+        const angle = axis._length / Math.max(days, 1) < 35 ? -90 : 0;
+        if (axis.tickangle !== angle) Plotly.relayout(chart, {'xaxis.tickangle':angle});
+    }
+
     function targets() {
         if (disposed || dragging || !chart._fullLayout) return;
         layer.replaceChildren();
@@ -129,7 +137,8 @@ export default function(component) {
     }).then(() => {
         if (disposed) {Plotly.purge(chart); return;}
         targets();
-        chart.on('plotly_afterplot', targets);
+        dateLabels();
+        chart.on('plotly_afterplot', () => {targets(); dateLabels();});
         chart.on('plotly_relayout', event => {
             targets();
             if (!updating && Object.keys(event).some(key => key.startsWith('xaxis.range') || key === 'xaxis.autorange')) {
