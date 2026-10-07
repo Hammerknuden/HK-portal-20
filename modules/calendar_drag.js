@@ -1,84 +1,132 @@
 export default function(component) {
-    const {data, parentElement, setTriggerValue} = component;
-    const host = parentElement.querySelector('#calendar-drag');
-    host.replaceChildren();
-    const toolbar = document.createElement('div');
-    host.append(toolbar);
-    const scroller = document.createElement('div');
-    scroller.className = 'scroll';
-    host.append(scroller);
-    const ns = 'http://www.w3.org/2000/svg';
-    const day = 86400000, start = Date.parse(data.start), end = Date.parse(data.end);
-    let scale = 24;
-    function draw() {
-        scroller.replaceChildren();
-        const width = Math.max(600, 110 + (end - start) / day * scale);
-        const svg = document.createElementNS(ns, 'svg');
-        svg.setAttribute('width', width); svg.setAttribute('height', 445);
-        scroller.append(svg);
-        function el(tag, attrs, text, parent=svg) {
-            const node = document.createElementNS(ns, tag);
-            for (const [k,v] of Object.entries(attrs)) node.setAttribute(k,v);
-            if (text !== undefined) node.textContent = text;
-            parent.append(node); return node;
-        }
-        const x = date => 110 + (Date.parse(date) - start) / day * scale;
-        for (let t=start; t<=end; t+=day) {
-            const d=new Date(t), pos=110+(t-start)/day*scale;
-            if (d.getUTCDay() === 1) {
-                const thursday=new Date(t); thursday.setUTCDate(d.getUTCDate()+3);
-                const week=Math.ceil(((thursday-new Date(Date.UTC(thursday.getUTCFullYear(),0,1)))/day+1)/7);
-                el('line',{x1:pos,x2:pos,y1:40,y2:425,stroke:'#ddd'});
-                el('text',{x:pos+2,y:15,fill:'#555'},`Uge ${week}`);
-                el('text',{x:pos+2,y:32,fill:'#555'},d.toISOString().slice(5,10));
-            }
-        }
-        for (const [room,label] of Object.entries(data.rooms)) {
-            const y=40+(Number(room)-1)*55;
-            el('rect',{x:0,y,width:110,height:55,fill:'#f4f4f4'});
-            el('text',{x:8,y:y+32,fill:'#222'},label);
-            el('line',{x1:0,x2:width,y1:y+55,y2:y+55,stroke:'#ddd'});
-        }
-        const today = new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Copenhagen'}).format(new Date());
-        if (x(today)>=110 && x(today)<=width) el('line',{x1:x(today),x2:x(today),y1:40,y2:425,stroke:'red'});
-        for (const b of data.items) {
-            if (Date.parse(b.end)<=start || Date.parse(b.start)>=end) continue;
-            const left=Math.max(110,x(b.start)), right=Math.min(width,x(b.end));
-            const g=el('g',{'data-booking':b.id,transform:`translate(0,${(b.room-1)*55})`,
-                style:`cursor:${b.locked?'not-allowed':'grab'}`});
-            el('rect',{x:left,y:49,width:Math.max(2,right-left),height:35,rx:3,fill:b.color},undefined,g);
-            if (right-left>25) el('text',{x:left+4,y:71,fill:'white','pointer-events':'none'},`${b.locked?'🔒 ':''}${b.label}`,g);
-            el('title',{},`${b.label} · ${b.name}\n${b.start} → ${b.end}${b.locked?' · Låst':''}`,g);
-            if (b.locked) continue;
-            let dragging=false, origin=0;
-            g.onpointerdown=e=>{if(e.button!==0)return;dragging=true;origin=e.clientY;g.setPointerCapture(e.pointerId);g.style.opacity='.65';};
-            g.onpointermove=e=>{if(dragging)g.setAttribute('transform',`translate(0,${(b.room-1)*55+e.clientY-origin})`);};
-            const reset=()=>{dragging=false;g.style.opacity='1';g.setAttribute('transform',`translate(0,${(b.room-1)*55})`);};
-            g.onpointercancel=reset;
-            g.onlostpointercapture=reset;
-            g.onpointerup=e=>{
-                if(!dragging)return;
-                const rect=svg.getBoundingClientRect(), y=e.clientY-rect.top, px=e.clientX-rect.left;
-                const room=Math.floor((y-40)/55)+1;
-                if(y>=40 && y<425 && px>=110 && px<=width && room!==b.room) {
-                    // Reject visible overlap immediately. Python also checks fresh
-                    // occupancy across seasons before accepting the draft.
-                    const occupied=data.items.some(other=>other.id!==b.id && other.room===room
-                        && Date.parse(other.start)<Date.parse(b.end)
-                        && Date.parse(other.end)>Date.parse(b.start));
-                    if (!occupied) b.room=room;
-                    reset();
-                    setTriggerValue('move',{id:b.id,room});
-                } else {
-                    reset();
+    const {data, parentElement, setTriggerValue, setStateValue} = component;
+    const Plotly = window.Plotly;
+    const host = parentElement.querySelector('.calendar-plot-wrap');
+    const chart = host.querySelector('.calendar-plot');
+    const layer = host.querySelector('.calendar-hit-layer');
+    const status = host.querySelector('.calendar-status');
+    let disposed = false, dragging = false, observer;
+    const items = new Map(data.items.map(item => [item.id, item]));
+
+    function targets() {
+        if (disposed || dragging || !chart._fullLayout) return;
+        layer.replaceChildren();
+        const xa = chart._fullLayout.xaxis, ya = chart._fullLayout.yaxis;
+        const rowHeight = Math.abs(ya.l2p(1) - ya.l2p(0));
+        const leftBound = xa._offset, rightBound = leftBound + xa._length;
+        const topBound = ya._offset, bottomBound = topBound + ya._length;
+        chart.data.forEach((trace, traceIndex) => {
+            (trace.customdata || []).forEach((custom, pointIndex) => {
+                const b = items.get(String(custom[0]));
+                if (!b) return;
+                const left = Math.max(leftBound, xa._offset + xa.d2p(b.start));
+                const right = Math.min(rightBound, xa._offset + xa.d2p(b.end));
+                const centre = ya._offset + ya.d2p(data.rooms[b.room]);
+                if (right <= left || centre < topBound || centre > bottomBound) return;
+                const hit = document.createElement('div');
+                hit.dataset.booking = b.id;
+                hit.setAttribute('aria-label', `Booking ${b.label}, ${data.rooms[b.room]}${b.locked ? ', låst' : ''}`);
+                hit.setAttribute('role', 'button'); hit.tabIndex = b.locked ? -1 : 0;
+                Object.assign(hit.style, {left:`${left}px`, top:`${centre-rowHeight*.4}px`,
+                    width:`${right-left}px`, height:`${rowHeight*.8}px`,
+                    cursor:b.locked?'not-allowed':'grab'});
+                layer.append(hit);
+                let origin = 0, previousRoom = b.room;
+                const reset = () => {
+                    dragging = false;
+                    hit.style.transform = '';
+                    hit.style.background = '';
+                    hit.style.opacity = '1';
+                    hit.textContent = '';
+                };
+                const hover = () => Plotly.Fx.hover(chart, [{curveNumber:traceIndex, pointNumber:pointIndex}]);
+                hit.onpointermove = e => {
+                    if (dragging) hit.style.transform = `translateY(${e.clientY-origin}px)`;
+                    else hover();
+                };
+                hit.onpointerleave = () => {if (!dragging) Plotly.Fx.unhover(chart);};
+                hit.onpointerdown = e => {
+                    e.stopPropagation();
+                    if (e.button !== 0 || b.locked || dragging) return;
+                    e.preventDefault();
+                    previousRoom = b.room; origin = e.clientY; dragging = true;
+                    Plotly.Fx.unhover(chart);
+                    hit.setPointerCapture(e.pointerId);
+                    hit.style.background = b.color;
+                    hit.style.opacity = '.85';
+                    hit.textContent = b.label;
+                    status.textContent = 'Flyt til et andet værelse – datoerne er faste.';
+                };
+                hit.onpointercancel = () => {reset(); targets();};
+                hit.onlostpointercapture = () => {if (dragging) {reset(); targets();}};
+                function move(room) {
+                    const occupied = data.items.some(other => other.id !== b.id && other.room === room
+                        && Date.parse(other.start) < Date.parse(b.end)
+                        && Date.parse(other.end) > Date.parse(b.start));
+                    if (occupied) {
+                        reset();
+                        status.textContent = 'Værelset er optaget. Bookingen bliver på sin tidligere plads.';
+                        setTriggerValue('move', {id:b.id, room});
+                        return;
+                    }
+                    b.room = room;
+                    const y = Array.from(chart.data[traceIndex].y);
+                    y[pointIndex] = data.rooms[room];
+                    dragging = false;
+                    hit.style.transform = `translateY(${ya.d2p(data.rooms[room])-ya.d2p(data.rooms[previousRoom])}px)`;
+                    // Move the actual Plotly bar before Python accepts the draft.
+                    Plotly.restyle(chart, {y:[y]}, [traceIndex]).then(() => {
+                        if (disposed) return;
+                        reset(); targets();
+                        status.textContent = 'Flytning i kladde – ikke gemt.';
+                        setTriggerValue('move', {id:b.id, room});
+                    }).catch(() => {
+                        b.room = previousRoom; reset(); targets();
+                        status.textContent = 'Flytningen kunne ikke vises. Prøv igen.';
+                    });
                 }
-            };
-        }
+                hit.onpointerup = e => {
+                    e.stopPropagation();
+                    if (!dragging) return;
+                    const rect = chart.getBoundingClientRect();
+                    const x = e.clientX - rect.left, y = e.clientY - rect.top;
+                    const index = Math.round(ya.p2l(y - ya._offset));
+                    const room = Number(Object.keys(data.rooms)[index]);
+                    if (x < leftBound || x > rightBound || y < topBound || y > bottomBound
+                            || !Number.isInteger(room) || !data.rooms[room] || room === previousRoom) {
+                        reset(); targets(); return;
+                    }
+                    move(room);
+                };
+                hit.onkeydown = e => {
+                    if (b.locked || dragging || !['ArrowUp','ArrowDown'].includes(e.key)) return;
+                    e.preventDefault(); e.stopPropagation();
+                    const room = b.room + (e.key === 'ArrowUp' ? -1 : 1);
+                    if (data.rooms[room]) {previousRoom = b.room; move(room);}
+                };
+            });
+        });
     }
-    for (const [label,value] of [['Årsoversigt',3],['Uger',24],['Dage',48]]) {
-        const button=document.createElement('button'); button.textContent=label;
-        button.onclick=()=>{scale=value;draw();}; toolbar.append(button);
-    }
-    draw();
-    return ()=>host.replaceChildren();
+
+    Plotly.newPlot(chart, data.figure.data, data.figure.layout,
+        {responsive:true, displaylogo:false, scrollZoom:true}).then(() => {
+        if (disposed) {Plotly.purge(chart); return;}
+        targets();
+        chart.on('plotly_afterplot', targets);
+        chart.on('plotly_relayout', event => {
+            targets();
+            if (Object.keys(event).some(key => key.startsWith('xaxis.range') || key === 'xaxis.autorange')) {
+                const range = Array.from(chart._fullLayout.xaxis.range);
+                setStateValue('viewport', {view_key:data.view_key, range});
+            }
+        });
+        observer = new ResizeObserver(() => {if (!disposed) Plotly.Plots.resize(chart);});
+        observer.observe(host);
+    }).catch(() => {if (!disposed) status.textContent = 'Kalenderen kunne ikke vises. Genindlæs siden.';});
+    return () => {
+        disposed = true;
+        observer?.disconnect();
+        layer.replaceChildren();
+        Plotly.purge(chart);
+    };
 }

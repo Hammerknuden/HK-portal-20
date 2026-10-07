@@ -1,9 +1,11 @@
-"""Session-only room moves. Database saving belongs to the next calendar step."""
+"""Drag fixed-date room moves directly on the shared Plotly calendar."""
 
+import json
 from pathlib import Path
 
 import pandas as pd
 import streamlit as st
+from plotly.offline import get_plotlyjs
 
 from modules.calendar_view import ROOMS
 from modules.timeline_colors import booking_color
@@ -89,22 +91,41 @@ def drag_data(bookings, start, end):
 
 
 _drag_component = st.components.v2.component(
-    "calendar_room_drag", html='<div id="calendar-drag"></div>',
-    js=Path(__file__).with_name("calendar_drag.js").read_text(encoding="utf-8"),
+    "calendar_room_drag", html='<div class="calendar-plot-wrap"><div class="calendar-plot"></div><div class="calendar-hit-layer"></div><div class="calendar-status" role="status"></div></div>',
+    js=get_plotlyjs() + "\n" + Path(__file__).with_name("calendar_drag.js").read_text(encoding="utf-8"),
+    isolate_styles=False,
     css="""
-    svg {font: 12px sans-serif; background: white; color: #222;}
-    .scroll {overflow-x:auto;}
-    button {margin:4px;}
-    [data-booking] {touch-action:none;}
+    .calendar-plot-wrap {position:relative; width:100%;}
+    .calendar-hit-layer {position:absolute; inset:0; pointer-events:none;}
+    .calendar-hit-layer [data-booking] {position:absolute; pointer-events:auto;
+      touch-action:none; box-sizing:border-box; border:0; border-radius:2px;
+      font:12px sans-serif; color:white; overflow:hidden; user-select:none;}
+    .calendar-hit-layer [data-booking]:focus-visible {outline:2px solid #222;}
+    .calendar-status {font:13px sans-serif; color:#555; min-height:20px;}
     """,
 )
 
 
-def render_drag_calendar(bookings, start, end, key, on_move=None, disabled=False, revision=0):
+def render_drag_calendar(bookings, start, end, key, on_move=None, disabled=False, revision=0,
+                         figure=None, view_key=None):
+    if figure is None:
+        raise ValueError("Den interaktive kalender kræver den fælles kalenderfigur.")
     data = drag_data(bookings, start, end)
     data["revision"] = revision
+    data["figure"] = json.loads(figure.to_json())
+    data["view_key"] = view_key
+    state = st.session_state.get(key)
+    viewport = getattr(state, "viewport", None)
+    if isinstance(viewport, dict) and viewport.get("view_key") == view_key:
+        view_range = viewport.get("range")
+        if isinstance(view_range, list) and len(view_range) == 2:
+            dates = pd.to_datetime(view_range, errors="coerce")
+            if dates.notna().all() and dates[0] < dates[1]:
+                data["figure"]["layout"]["xaxis"]["range"] = view_range
+    data["figure"]["layout"]["yaxis"]["fixedrange"] = True
     if disabled:
         for item in data["items"]:
             item["locked"] = True
     return _drag_component(data=data, key=key,
-                           on_move_change=on_move or (lambda: None))
+                           on_move_change=on_move or (lambda: None),
+                           on_viewport_change=lambda: None)

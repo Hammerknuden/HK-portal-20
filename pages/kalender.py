@@ -41,6 +41,10 @@ st.caption(
     "Øvrige = grå. Bookingnummeret bestemmer nuancen."
 )
 zoom = st.checkbox("Zoom omkring dags dato", key="calendar_zoom_today")
+st.caption("Træk en booking direkte i kalenderen op eller ned til et andet værelse. "
+           "Datoerne er faste; røde, låste bookinger bliver stående. "
+           "Zoom og tidslinjen nederst ændrer datovisningen. "
+           "Gem flytninger kontrollerer overlap og låse. Lagring er aktiveret for 2027.")
 if bookings.empty:
     st.info("Ingen bookinger at vise i den valgte sæson.")
 moves_key = f"calendar_moves_{season}"
@@ -65,12 +69,6 @@ st.button("Nulstil flytninger", disabled=pending or not st.session_state[moves_k
           on_click=cancel_room_moves)
 preview = preview_moves(bookings, st.session_state[moves_key])
 figure = build_calendar(preview, events, season, zoom)
-st.plotly_chart(figure, use_container_width=True,
-                key="calendar_chart")
-st.subheader("Afprøv værelsesflytning")
-st.caption("Træk en booking op eller ned til et andet værelse. Datoerne er faste. "
-           "Røde, låste bookinger kan ikke trækkes. Brug knapperne til zoom og rul vandret. "
-           "Gem flytninger kontrollerer overlap og låse. Lagring er kun aktiveret for 2027.")
 drag_key = f"calendar_drag_{season}"
 
 
@@ -99,7 +97,8 @@ def handle_room_move():
 
 render_drag_calendar(preview, *figure.layout.xaxis.range,
                      key=drag_key, on_move=handle_room_move, disabled=pending,
-                     revision=st.session_state.get("calendar_drag_revision", 0))
+                     revision=st.session_state.get("calendar_drag_revision", 0),
+                     figure=figure, view_key=f"{season}:{zoom}")
 if "calendar_move_error" in st.session_state:
     st.error(st.session_state.pop("calendar_move_error"))
 if st.session_state[moves_key]:

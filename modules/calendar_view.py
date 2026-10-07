@@ -44,11 +44,13 @@ def build_calendar(bookings, events, season, zoom_today=False, today=None):
             if field not in frame:
                 frame[field] = None
         frame["booking_number"] = frame.booking_number.astype(str)
+        frame["calendar_id"] = frame["id"].astype(str) if "id" in frame else ""
         frame["booking_color"] = frame.apply(
             lambda row: booking_color(row.booking_number, row.web, row.movable), axis=1)
         fig = px.timeline(
             frame, x_start="checkin_date", x_end="checkout_date", y="room_number",
             color="booking_color", hover_name="booking_number", text="booking_number",
+            custom_data=["calendar_id"],
             hover_data={"booking_color": False, "movable": True, "navn": True,
                         "morgenmad": True, "room_number": True, "web": True,
                         "checkin_date": "|%d-%m-%Y", "checkout_date": "|%d-%m-%Y"},
