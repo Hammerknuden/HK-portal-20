@@ -62,7 +62,7 @@ def build_calendar(bookings, events, season, zoom_today=False, today=None):
         fig.add_shape(type="line", x0=monday, x1=monday, y0=0, y1=1, yref="paper",
                       line=dict(color="gray", width=1, dash="dot"))
         fig.add_annotation(x=monday, y=1, yref="paper", text=str(monday.isocalendar().week),
-                           showarrow=False, yshift=6, yanchor="bottom",
+                           showarrow=False, yshift=28, yanchor="bottom",
                            font=dict(size=10, color="gray"))
     if view_start <= today <= view_end:
         fig.add_shape(type="line", x0=today, x1=today, y0=0, y1=1, yref="paper",
@@ -76,8 +76,9 @@ def build_calendar(bookings, events, season, zoom_today=False, today=None):
         fig.add_shape(type="rect", x0=event_start, x1=event_end, y0=0, y1=1, yref="paper",
                       fillcolor=event.get("color") or "lightgray",
                       opacity=float(opacity) if pd.notna(opacity) else 0.10, line_width=0)
-        fig.add_annotation(x=event_start, y=0, yshift=-65, xref="x", yref="paper",
-                           text=event.get("event", ""), showarrow=False, xanchor="left",
+        fig.add_annotation(x=event_start, y=1, yshift=4, xref="x", yref="paper",
+                           text=event.get("event", ""), showarrow=False,
+                           xanchor="left", yanchor="bottom",
                            bgcolor="white", bordercolor="lightgray", borderwidth=1,
                            font=dict(size=8))
     # Explicit ticks keep empty rooms visible without dummy bookings or hover labels.
@@ -91,5 +92,5 @@ def build_calendar(bookings, events, season, zoom_today=False, today=None):
                      tickangle=-90 if (view_end - view_start).days > 28 else 0,
                      automargin=True)
     fig.update_layout(plot_bgcolor="white", paper_bgcolor="white", showlegend=False,
-                      height=420, margin=dict(t=35, b=110, l=100, r=30))
+                      height=420, margin=dict(t=55, b=90, l=100, r=30))
     return fig
