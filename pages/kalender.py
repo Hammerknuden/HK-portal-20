@@ -8,6 +8,7 @@ from auth import require_login
 from modules.calendar_view import build_calendar, prepare_bookings
 from modules.calendar_drag import accept_move, preview_moves, render_drag_calendar
 from modules.calendar_save import active_rows, build_move_request, load_calendar_rows, save_move_request
+from modules.calendar_tools import render_booking_creation, render_booking_admin, render_calendar_optimizer
 from portal_access import get_database_client, uses_supabase_auth
 
 
@@ -16,8 +17,9 @@ require_login()
 load_dotenv()
 st.subheader("Kalender · Timeline 3.0")
 st.caption("Trin 3: Flyt mellem værelser med faste datoer. Lagring afprøves kun i sæson 2027.")
+optimizer_pending = st.session_state.get("calendar_tools_optimizer_preview", {}).get("save_pending", False)
 season = st.selectbox("Sæson", [2026, 2027, 2028], key="calendar_season",
-                      disabled=st.session_state.get("calendar_save_pending", False))
+                      disabled=st.session_state.get("calendar_save_pending", False) or optimizer_pending)
 client = get_database_client()
 
 try:
@@ -73,7 +75,7 @@ drag_key = f"calendar_drag_{season}"
 def handle_room_move():
     # Apply before the page reruns, so it never renders the old room on drop.
     request = st.session_state[drag_key].move
-    if st.session_state.get("calendar_save_pending"):
+    if st.session_state.get("calendar_save_pending") or st.session_state.get("calendar_tools_optimizer_choice"):
         return
     try:
         occupancy = active_rows(load_calendar_rows(client))
@@ -94,7 +96,8 @@ def handle_room_move():
 
 
 render_drag_calendar(preview, *figure.layout.xaxis.range,
-                     key=drag_key, on_move=handle_room_move, disabled=pending,
+                     key=drag_key, on_move=handle_room_move,
+                     disabled=pending or bool(st.session_state.get("calendar_tools_optimizer_choice")),
                      revision=st.session_state.get("calendar_drag_revision", 0),
                      figure=figure, view_key=f"{season}:{zoom}")
 reset_column, save_column = st.columns(2)
@@ -174,3 +177,16 @@ if save_clicked:
         st.session_state[sources_key] = {}
         st.session_state["calendar_saved_message"] = "Flytningerne er gemt og genlæst fra Supabase."
         st.rerun()
+
+# Use saved positions for the copied tools; drafts must be resolved first.
+if st.session_state[moves_key] or st.session_state.get("calendar_save_pending"):
+    st.info("Gem eller nulstil flytningerne, før du bruger bookingadministration og optimering.")
+else:
+    writer = get_database_client(allow_booking_writes=True)
+    optimizer_selected = bool(st.session_state.get("calendar_tools_optimizer_choice"))
+    if not optimizer_selected:
+        render_booking_creation(st, writer, season)
+        render_booking_admin(st, writer, bookings)
+    else:
+        st.info("Afslut den valgte optimering, før du redigerer bookinger eller flytter i kalenderen.")
+    render_calendar_optimizer(st, writer, season)
