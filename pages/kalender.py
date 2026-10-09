@@ -65,8 +65,6 @@ def cancel_room_moves():
     st.session_state["calendar_drag_revision"] = st.session_state.get("calendar_drag_revision", 0) + 1
 
 
-st.button("Nulstil flytninger", disabled=pending or not st.session_state[moves_key],
-          on_click=cancel_room_moves)
 preview = preview_moves(bookings, st.session_state[moves_key])
 figure = build_calendar(preview, events, season, zoom)
 drag_key = f"calendar_drag_{season}"
@@ -99,6 +97,13 @@ render_drag_calendar(preview, *figure.layout.xaxis.range,
                      key=drag_key, on_move=handle_room_move, disabled=pending,
                      revision=st.session_state.get("calendar_drag_revision", 0),
                      figure=figure, view_key=f"{season}:{zoom}")
+reset_column, save_column = st.columns(2)
+with reset_column:
+    st.button("Nulstil flytninger", disabled=pending or not st.session_state[moves_key],
+              on_click=cancel_room_moves)
+with save_column:
+    save_clicked = st.button("Gem flytninger i 2027", disabled=season != 2027 or
+                             (not st.session_state[moves_key] and not pending))
 if "calendar_move_error" in st.session_state:
     st.error(st.session_state.pop("calendar_move_error"))
 if st.session_state[moves_key]:
@@ -115,8 +120,7 @@ if st.session_state[moves_key]:
 if pending:
     st.warning("Gemningen er endnu ikke bekræftet. Prøv Gem flytninger igen for at afklare "
                "samme gemning. Kladden er fastholdt indtil da.")
-if st.button("Gem flytninger i 2027", disabled=season != 2027 or
-             (not st.session_state[moves_key] and not pending)):
+if save_clicked:
     try:
         writer = get_database_client(allow_booking_writes=True)
         if not pending:
