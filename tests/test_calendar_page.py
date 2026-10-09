@@ -119,6 +119,63 @@ class CalendarPageTests(unittest.TestCase):
         self.assertEqual(self.render.call_args.args[0].room_number.tolist(), [1])
         self.save.assert_not_called()
 
+    def clean_app(self):
+        app = AppTest.from_file("pages/kalender.py")
+        app.session_state["calendar_season"] = 2027
+        app.run(timeout=30)
+        self.assertFalse(app.exception)
+        return app
+
+    def test_booking_tools_present_without_what_if(self):
+        app = self.clean_app()
+        self.assertTrue(any(title.value == "Administrer bookinger" for title in app.subheader))
+        self.assertTrue(any(title.value == "Niveau 2 optimering" for title in app.subheader))
+        self.assertFalse(any("What if" in checkbox.label for checkbox in app.checkbox))
+        self.assertEqual(len(app.get("plotly_chart")), 0)
+        self.client.table.return_value.insert.assert_not_called()
+        self.client.table.return_value.update.assert_not_called()
+
+    def test_edit_rejection_does_not_write(self):
+        app = self.clean_app()
+        with patch("modules.calendar_tools.validate_timeline_edit", side_effect=ValueError("Overlap")):
+            app.button("calendar_admin_save_1").click().run(timeout=30)
+        self.assertFalse(app.exception)
+        self.assertTrue(any("Overlap" in error.value for error in app.error))
+        self.client.table.return_value.update.assert_not_called()
+
+    def test_removing_movable_saves_locked_booking(self):
+        table = self.client.table.return_value
+        table.select.return_value.order.return_value.range.return_value.execute.return_value.data = [self.row.copy()]
+        locked = {**self.row, "movable": False}
+        table.update.return_value.eq.return_value.execute.return_value.data = [locked]
+        app = self.clean_app()
+        app.checkbox("calendar_admin_movable_1").uncheck()
+        # The next page load reads the persisted lock from the database.
+        table.select.return_value.eq.return_value.execute.return_value.data = [locked]
+        app.button("calendar_admin_save_1").click().run(timeout=30)
+        self.assertFalse(app.exception)
+        self.assertFalse(app.error, [error.value for error in app.error])
+        table.update.assert_called_once()
+        self.assertIs(table.update.call_args.args[0]["movable"], False)
+        self.assertTrue(any("Ændringer gemt" in success.value for success in app.success))
+        self.assertFalse(self.render.call_args.args[0].iloc[0].movable)
+
+    def test_single_booking_swap_has_no_partner(self):
+        app = self.clean_app()
+        app.button("calendar_admin_open_swap_1").click().run(timeout=30)
+        self.assertFalse(app.exception)
+        self.assertTrue(any("Ingen anden booking" in info.value for info in app.info))
+        self.client.table.return_value.update.assert_not_called()
+
+    def test_optimizer_state_does_not_clear_timeline_selection(self):
+        from modules.calendar_tools import CalendarToolState
+        from modules.optimizer_workflow import clear_selection
+        original = {"optimizer_choice": {"source": "timeline"},
+                    "calendar_tools_optimizer_choice": {"source": "calendar"}}
+        clear_selection(CalendarToolState(original))
+        self.assertEqual(original["optimizer_choice"], {"source": "timeline"})
+        self.assertNotIn("calendar_tools_optimizer_choice", original)
+
 
 if __name__ == "__main__":
     unittest.main()

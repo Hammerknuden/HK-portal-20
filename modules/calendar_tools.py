@@ -67,8 +67,6 @@ def render_booking_creation(st, supabase, selected_season):
         booking_number = st.text_input("booking_number")
         guest_name = st.text_input("navn")
 
-        season = selected_season
-
         submitted = st.form_submit_button("Book nu")
 
         if submitted:
@@ -157,7 +155,6 @@ def render_booking_creation(st, supabase, selected_season):
 
 
 def render_booking_admin(st, supabase, df):
-    calendar_admin_test_enabled = False
     if df.empty:
         return
     if message := st.session_state.pop("calendar_admin_edit_saved", None):
@@ -185,9 +182,6 @@ def render_booking_admin(st, supabase, df):
     )
 
     booking = df[df["id"] == booking_id].iloc[0]
-    scoped_test = (calendar_admin_test_enabled and int(booking["season"]) == 2026
-                   and int(booking["booking_number"]) == 300 and booking["navn"] == "NN")
-    edit_blocked = False
     if uses_supabase_auth():
         st.info("Godkendte brugere kan redigere og annullere med web = cansl. Permanent sletning kræver administrator.")
 
@@ -208,31 +202,31 @@ def render_booking_admin(st, supabase, df):
     new_room = st.selectbox(
         "Edit room",
         room_options,
-        index=room_number
+        index=room_number, key=f"calendar_admin_room_{booking_id}"
     )
 
     new_start = st.date_input(
         "Rediger checkin_date",
         value=pd.to_datetime(
             booking["checkin_date"]
-        ).date()
+        ).date(), key=f"calendar_admin_start_{booking_id}"
     )
 
     new_end = st.date_input(
         "Rediger checkout_date",
         value=pd.to_datetime(
             booking["checkout_date"]
-        ).date()
+        ).date(), key=f"calendar_admin_end_{booking_id}"
     )
 
     new_guest = st.text_input(
         "Rediger booking_number",
-        value=str(booking["booking_number"])
+        value=str(booking["booking_number"]), key=f"calendar_admin_number_{booking_id}"
     )
     current_name = booking.get("navn", "")
     new_name = st.text_input(
         "Rediger navn",
-        value="" if pd.isna(current_name) else str(current_name)
+        value="" if pd.isna(current_name) else str(current_name), key=f"calendar_admin_name_{booking_id}"
     )
     current_web = booking.get("web", "")
     new_web = st.text_input(
@@ -254,7 +248,7 @@ def render_booking_admin(st, supabase, df):
     )
     new_movable = st.checkbox(
         "Kan flyttes af optimering",
-        value=bool(booking.get("movable", True))
+        value=bool(booking.get("movable", True)), key=f"calendar_admin_movable_{booking_id}"
     )
 
     col1, col2, col3 = st.columns(3)
@@ -262,7 +256,7 @@ def render_booking_admin(st, supabase, df):
     with col1:
         if st.button(
                 "Gem ændringer",
-                key=f"calendar_admin_save_{booking_id}", disabled=edit_blocked
+                key=f"calendar_admin_save_{booking_id}", disabled=False
         ):
             try:
                 payload = {
@@ -275,21 +269,12 @@ def render_booking_admin(st, supabase, df):
                     "comments": new_comments.strip(),
                     "movable": new_movable
                 }
-                validate_calendar_admin_edit(supabase, booking_id, payload)
+                validate_timeline_edit(supabase, booking_id, payload)
                 query = supabase.table("hk_dtb").update(payload).eq("id", booking_id)
-                if scoped_test:
-                    query = query.eq("season", 2026).eq("booking_number", 300).eq("navn", "NN")
                 result = query.execute()
                 if len(result.data or []) != 1:
                     raise ValueError("Ingen ændring bekræftet. Genindlæs og kontrollér skriveadgang.")
-                if scoped_test:
-                    verified = (supabase.table("hk_dtb").select(",".join(payload))
-                                .eq("id", booking_id).eq("season", 2026)
-                                .eq("booking_number", 300).eq("navn", "NN").execute())
-                    if (len(verified.data or []) != 1
-                            or any(verified.data[0].get(k) != v for k, v in payload.items())):
-                        raise ValueError("Ændringen kunne ikke genlæses. Kontrollér bookingen før næste forsøg.")
-                st.session_state["calendar_admin_edit_saved"] = "Ændringer gemt" + (" og genlæst fra databasen." if scoped_test else ".")
+                st.session_state["calendar_admin_edit_saved"] = "Ændringer gemt."
             except Exception as error:
                 st.error(f"Fejl ved opdatering: {error}")
             else:

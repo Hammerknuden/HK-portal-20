@@ -12,11 +12,11 @@ from modules.calendar_tools import render_booking_creation, render_booking_admin
 from portal_access import get_database_client, uses_supabase_auth
 
 
-st.set_page_config(page_title="Kalender · Timeline 3.0", layout="wide")
+st.set_page_config(page_title="Kalender", layout="wide")
 require_login()
 load_dotenv()
-st.subheader("Kalender · Timeline 3.0")
-st.caption("Trin 3: Flyt mellem værelser med faste datoer. Lagring afprøves kun i sæson 2027.")
+st.subheader("Kalender")
+st.caption("Flyt mellem værelser med faste datoer. Gemning af trækflytninger afprøves kun i sæson 2027.")
 optimizer_pending = st.session_state.get("calendar_tools_optimizer_preview", {}).get("save_pending", False)
 season = st.selectbox("Sæson", [2026, 2027, 2028], key="calendar_season",
                       disabled=st.session_state.get("calendar_save_pending", False) or optimizer_pending)
