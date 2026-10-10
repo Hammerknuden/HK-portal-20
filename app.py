@@ -1,4 +1,5 @@
 import streamlit as st
+from importlib.metadata import PackageNotFoundError, version
 from auth import require_login
 
 st.set_page_config(
@@ -29,7 +30,12 @@ def show_home():
     if not st.session_state.get("authentication_status"):
         st.stop()
 
-    st.text("version 2.1.1")
+    for package, label in (("streamlit", "Streamlit"), ("supabase", "Supabase Python")):
+        try:
+            installed_version = version(package)
+        except PackageNotFoundError:
+            installed_version = "ikke installeret"
+        st.text(f"{label}: {installed_version}")
     st.image("logo2.jpg")
 
     st.success(f"Velkommen {st.session_state.get('username')} 👋")
