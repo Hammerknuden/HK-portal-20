@@ -44,6 +44,7 @@ page = st.navigation([
     st.Page("pages/2_databaseopslag.py", title="Opslag"),
     st.Page("pages/3_In and Out.py", title="In & Out"),
     st.Page("pages/5_breakfast.py", title="Breakfast"),
+    st.Page("pages/4_Links.py", title="Links"),
     st.Page("pages/8_statestik.py", title="Statistik"),
     st.Page("pages/9_Booking_com_kontrol.py", title="Afstemning"),
     st.Page("pages/7_setup.py", title="Setup"),
