@@ -70,6 +70,11 @@ def cancel_room_moves():
 
 preview = preview_moves(bookings, st.session_state[moves_key])
 figure = build_calendar(preview, events, season, zoom)
+# Preserve manual zoom during edits, but discard a viewport from an older
+# zoom policy or a different initial booking/date window.
+view_key = "booking-window-v2:" + f"{season}:{zoom}:" + ":".join(
+    pd.Timestamp(value).isoformat() for value in figure.layout.xaxis.range
+)
 drag_key = f"calendar_drag_{season}"
 
 
@@ -100,7 +105,7 @@ render_drag_calendar(preview, *figure.layout.xaxis.range,
                      key=drag_key, on_move=handle_room_move,
                      disabled=pending or bool(st.session_state.get("calendar_tools_optimizer_choice")),
                      revision=st.session_state.get("calendar_drag_revision", 0),
-                     figure=figure, view_key=f"{season}:{zoom}")
+                     figure=figure, view_key=view_key)
 reset_column, save_column = st.columns(2)
 with reset_column:
     st.button("Nulstil flytninger", disabled=pending or not st.session_state[moves_key],
