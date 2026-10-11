@@ -42,7 +42,8 @@ st.caption(
     "Farver: web = grøn · bc = blå · FM = orange · Låst = rød (overstyrer typen) · "
     "Øvrige = grå. Bookingnummeret bestemmer nuancen."
 )
-zoom = st.checkbox("Zoom omkring dags dato", key="calendar_zoom_today")
+zoom = st.checkbox("Zoom til fire uger", value=True, key="calendar_zoom_today",
+                   help="Omkring dags dato i bookingperioden; ellers periodens første eller sidste fire uger.")
 st.caption("Træk en booking direkte i kalenderen op eller ned til et andet værelse. "
            "Datoerne er faste; røde, låste bookinger bliver stående. "
            "Zoom og tidslinjen nederst ændrer datovisningen. "

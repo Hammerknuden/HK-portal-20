@@ -56,8 +56,14 @@ def build_calendar(bookings, events, season, zoom_today=False, today=None):
                         "checkin_date": "|%d-%m-%Y", "checkout_date": "|%d-%m-%Y"},
             color_discrete_map={color: color for color in frame.booking_color.unique()},
         )
-    view_start, view_end = ((today - pd.Timedelta(days=7), today + pd.Timedelta(days=21))
-                            if zoom_today else (start, end))
+    view_start, view_end = start, end
+    if zoom_today:
+        if today < start:
+            view_start, view_end = start, start + pd.Timedelta(weeks=4)
+        elif today > end:
+            view_start, view_end = end - pd.Timedelta(weeks=4), end
+        else:
+            view_start, view_end = today - pd.Timedelta(days=7), today + pd.Timedelta(days=21)
     for monday in pd.date_range(min(start, view_start), max(end, view_end), freq="W-MON"):
         fig.add_shape(type="line", x0=monday, x1=monday, y0=0, y1=1, yref="paper",
                       line=dict(color="gray", width=1, dash="dot"))
