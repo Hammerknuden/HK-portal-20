@@ -1,4 +1,4 @@
-"""Timeline 3.0 with fixed-date room moves and scoped 2027 saving."""
+"""Calendar with fixed-date room moves and atomic saving."""
 
 import pandas as pd
 import streamlit as st
@@ -16,7 +16,7 @@ st.set_page_config(page_title="Kalender", layout="wide")
 require_login()
 load_dotenv()
 st.subheader("Kalender")
-st.caption("Flyt mellem værelser med faste datoer. Gemning af trækflytninger afprøves kun i sæson 2027.")
+st.caption("Flyt mellem værelser med faste datoer.")
 optimizer_pending = st.session_state.get("calendar_tools_optimizer_preview", {}).get("save_pending", False)
 season = st.selectbox("Sæson", [2026, 2027, 2028], key="calendar_season",
                       disabled=st.session_state.get("calendar_save_pending", False) or optimizer_pending)
@@ -47,7 +47,7 @@ zoom = st.checkbox("Zoom til fire uger", value=True, key="calendar_zoom_today",
 st.caption("Træk en booking direkte i kalenderen op eller ned til et andet værelse. "
            "Datoerne er faste; røde, låste bookinger bliver stående. "
            "Zoom og tidslinjen nederst ændrer datovisningen. "
-           "Gem flytninger kontrollerer overlap og låse. Lagring er aktiveret for 2027.")
+           "Gem flytninger kontrollerer overlap og låse.")
 if bookings.empty:
     st.info("Ingen bookinger at vise i den valgte sæson.")
 moves_key = f"calendar_moves_{season}"
@@ -111,8 +111,7 @@ with reset_column:
     st.button("Nulstil flytninger", disabled=pending or not st.session_state[moves_key],
               on_click=cancel_room_moves)
 with save_column:
-    save_clicked = st.button("Gem flytninger i 2027", disabled=season != 2027 or
-                             (not st.session_state[moves_key] and not pending))
+    save_clicked = st.button("Gem flytning", disabled=not st.session_state[moves_key] and not pending)
 if "calendar_move_error" in st.session_state:
     st.error(st.session_state.pop("calendar_move_error"))
 if st.session_state[moves_key]:

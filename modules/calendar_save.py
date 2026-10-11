@@ -31,8 +31,6 @@ def active_rows(rows):
 
 
 def build_move_request(rows, sources, moves, season, today=None):
-    if season != 2027:
-        raise ValueError("Lagring er kun aktiveret for testbookinger i 2027.")
     today = pd.Timestamp(today or booking_today())
     active = active_rows(rows)
     plan = []
@@ -42,7 +40,7 @@ def build_move_request(rows, sources, moves, season, today=None):
         if source is None or len(matches) != 1:
             raise ValueError("En booking er slettet eller annulleret. Nulstil og prøv igen.")
         current = matches.iloc[0]
-        if (current.season != 2027 or pd.isna(current.get("movable"))
+        if (current.season != season or pd.isna(current.get("movable"))
                 or current.get("movable") != True):
             raise ValueError("En booking er låst eller tilhører en anden sæson.")
         for field in ("room_number", "checkin_date", "checkout_date", "booking_number"):
@@ -75,12 +73,10 @@ def build_move_request(rows, sources, moves, season, today=None):
         if not overlap.empty:
             raise ValueError(f"Værelse {move['to_room']} overlapper booking "
                              f"{overlap.iloc[0].booking_number}. Ingen flytninger er gemt.")
-    return dict(p_request_id=str(uuid4()), p_season=2027, p_moves=plan)
+    return dict(p_request_id=str(uuid4()), p_season=int(season), p_moves=plan)
 
 
 def save_move_request(client, request, *, authenticated=False):
-    if request.get("p_season") != 2027:
-        raise ValueError("Lagring er kun aktiveret for 2027.")
     name = "apply_calendar_moves_authenticated" if authenticated else "apply_calendar_moves"
     result = client.rpc(name, request).execute().data
     if (not isinstance(result, dict) or result.get("status") != "saved"
@@ -94,7 +90,7 @@ def save_move_request(client, request, *, authenticated=False):
         if len(matches) != 1:
             raise RuntimeError("Gemningen kunne ikke genlæses. Prøv samme gemning igen.")
         row = matches.iloc[0]
-        if (row.season != 2027 or int(row.room_number) != move["to_room"]
+        if (row.season != request["p_season"] or int(row.room_number) != move["to_room"]
                 or any(pd.Timestamp(row[field]).date().isoformat() != move[field]
                        for field in ("checkin_date", "checkout_date"))):
             raise RuntimeError("Genlæsningen stemmer ikke med flytningen. Genkontrollér gemningen.")

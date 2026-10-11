@@ -27,6 +27,27 @@ class CalendarSaveTests(unittest.TestCase):
         self.assertEqual(request["p_moves"], [dict(id=1, from_room=1, to_room=3,
                          checkin_date="2027-06-01", checkout_date="2027-06-05")])
 
+    def test_save_and_readback_follow_selected_season(self):
+        for season in (2026, 2028, 2029):
+            with self.subTest(season=season):
+                rows = self.rows.copy()
+                rows["season"] = season
+                rows["checkin_date"] = f"{season}-06-01"
+                rows["checkout_date"] = f"{season}-06-05"
+                sources = {str(row["id"]): row for row in rows.to_dict("records")}
+                request = build_move_request(rows, sources, {"1": 3}, season, today="2025-01-01")
+                self.assertEqual(request["p_season"], season)
+                client = self.client(request)
+                saved = rows.copy()
+                saved.loc[0, "room_number"] = 3
+                query = client.table.return_value.select.return_value.order.return_value.range.return_value
+                query.execute.return_value.data = saved.to_dict("records")
+                save_move_request(client, request)
+                saved.loc[0, "season"] = season + 1
+                query.execute.return_value.data = saved.to_dict("records")
+                with self.assertRaises(RuntimeError):
+                    save_move_request(client, request)
+
     def test_overlap_across_seasons_and_atomic_swap(self):
         with self.assertRaises(ValueError):
             self.build(moves={"1": 2})

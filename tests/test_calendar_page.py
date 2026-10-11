@@ -35,11 +35,13 @@ class CalendarPageTests(unittest.TestCase):
         return app
 
     def save_button(self, app):
-        return next(button for button in app.button if button.label == "Gem flytninger i 2027")
+        return next(button for button in app.button if button.label == "Gem flytning")
 
-    def test_save_only_enabled_in_2027(self):
-        app = self.app(season=2026)
-        self.assertTrue(self.save_button(app).disabled)
+    def test_save_enabled_for_each_selected_season(self):
+        for season in (2026, 2027, 2028):
+            with self.subTest(season=season):
+                app = self.app(season=season)
+                self.assertFalse(self.save_button(app).disabled)
         self.save.assert_not_called()
 
     def test_single_calendar_uses_shared_figure(self):
