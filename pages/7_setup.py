@@ -10,7 +10,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from auth import require_login, require_admin
-from modules.price_development import PRICE_FIELDS, build_price_development
+from modules.price_development import PRICE_FIELDS, build_price_development, export_price_development_csv
 from modules.price_sheet import create_price_sheet_pdf
 from portal_access import get_database_client, uses_supabase_auth
 from modules.booking_pace import normalize_season_rows
@@ -188,6 +188,13 @@ else:
         hide_index=True,
         use_container_width=True,
         column_config=price_columns,
+    )
+    st.download_button(
+        "Download prisudvikling som CSV (Excel)",
+        data=export_price_development_csv(development),
+        file_name="prisudvikling.csv",
+        mime="text/csv",
+        help="Dansk Excel-format med semikolon, decimalkomma og procenter med én decimal.",
     )
     st.caption(
         f"Tallene for {selected_price_season} opdateres straks, mens du ændrer "

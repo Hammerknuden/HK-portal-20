@@ -44,3 +44,17 @@ def build_price_development(price_rows, draft_season=None, draft_prices=None):
         previous = values
 
     return pd.DataFrame(rows)
+
+
+def export_price_development_csv(development):
+    """Export Danish Excel-friendly prices and percentage values."""
+    export = development.copy()
+    for label in PRICE_FIELDS.values():
+        column = f"{label} ændring"
+        if column in export:
+            export[column] = export[column].map(
+                lambda value: "" if pd.isna(value) else f"{value:.1f}%".replace(".", ",")
+            )
+    return export.to_csv(
+        index=False, sep=";", decimal=",", float_format="%.0f", lineterminator="\r\n"
+    ).encode("utf-8-sig")
