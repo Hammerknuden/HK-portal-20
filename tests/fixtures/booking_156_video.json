@@ -1,0 +1,28 @@
+{
+  "source": "booking 156.mp4",
+  "scope": "Manually transcribed partial timeline before the move, around 184.9 seconds. Not a full database snapshot.",
+  "analysis_date": "2026-07-16",
+  "assumptions": [
+    "The analysis date is a test date before the stays; the actual recording date is not verified.",
+    "IDs are synthetic; booking numbers and dates are read from the video timeline.",
+    "All rows are assumed movable because the flags cannot be verified from the timeline.",
+    "Only selected visible bookings are included. Connected blocks may extend beyond these rows; this fixture cannot prove a complete relocation is valid."
+  ],
+  "bookings": [
+    {"id": 1, "booking_number": 156, "room_number": 7, "checkin_date": "2026-08-16", "checkout_date": "2026-08-18"},
+    {"id": 2, "booking_number": 23, "room_number": 1, "checkin_date": "2026-08-13", "checkout_date": "2026-08-16"},
+    {"id": 3, "booking_number": 26, "room_number": 1, "checkin_date": "2026-08-17", "checkout_date": "2026-08-21"},
+    {"id": 4, "booking_number": 65, "room_number": 1, "checkin_date": "2026-08-22", "checkout_date": "2026-08-25"},
+    {"id": 5, "booking_number": 46, "room_number": 2, "checkin_date": "2026-08-13", "checkout_date": "2026-08-17"},
+    {"id": 6, "booking_number": 133, "room_number": 2, "checkin_date": "2026-08-18", "checkout_date": "2026-08-20"},
+    {"id": 7, "booking_number": 54, "room_number": 2, "checkin_date": "2026-08-20", "checkout_date": "2026-08-23"},
+    {"id": 8, "booking_number": 120, "room_number": 2, "checkin_date": "2026-08-23", "checkout_date": "2026-08-26"},
+    {"id": 9, "booking_number": 121, "room_number": 3, "checkin_date": "2026-08-14", "checkout_date": "2026-08-16"},
+    {"id": 10, "booking_number": 52, "room_number": 3, "checkin_date": "2026-08-17", "checkout_date": "2026-08-21"},
+    {"id": 11, "booking_number": 51, "room_number": 4, "checkin_date": "2026-08-16", "checkout_date": "2026-08-21"},
+    {"id": 12, "booking_number": 4, "room_number": 5, "checkin_date": "2026-08-13", "checkout_date": "2026-08-16"},
+    {"id": 13, "booking_number": 21, "room_number": 5, "checkin_date": "2026-08-17", "checkout_date": "2026-08-22"},
+    {"id": 14, "booking_number": 25, "room_number": 5, "checkin_date": "2026-08-22", "checkout_date": "2026-08-27"},
+    {"id": 15, "booking_number": 35, "room_number": 5, "checkin_date": "2026-08-27", "checkout_date": "2026-08-31"}
+  ]
+}
