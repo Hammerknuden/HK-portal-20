@@ -31,7 +31,7 @@ st.set_page_config(page_title="Booking.com-kontrol", layout="wide")
 require_login()
 require_admin()
 
-st.title("Booking.com-kontrol")
+st.title("Upload af gæsteregistrering")
 
 supabase = get_database_client(allow_guest_upload=True)
 
@@ -110,6 +110,8 @@ with st.expander("Scan gæsteregistrering til privat Supabase Storage"):
                 st.caption("Dokumentet kobles automatisk, når bookingen findes i historikken, fx efter sæsonafslutning. Parringen kører hvert femte minut.")
             except Exception as error:
                 st.error(f"Upload mislykkedes: {error}")
+
+st.title("Afstemning af Booking.com")
 
 st.write(
     "Upload listen over aktive bookinger fra Booking.com. "
