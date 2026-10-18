@@ -285,7 +285,7 @@ price_result = (
     supabase
     .table("high_season")
     .select(
-        "season, enk_low, enk_high, "
+        "season, pace_archived, enk_low, enk_high, "
         "dobb_low, dobb_high, pris_morgenmad, "
         "start_season, end_season"
     )
@@ -305,9 +305,17 @@ else:
         for row in price_rows
     }
 
+    price_seasons = sorted(prices_by_season)
+    open_price_seasons = [
+        year for year in price_seasons
+        if year >= date.today().year and not prices_by_season[year].get("pace_archived", False)
+    ]
+    default_price_season = next(iter(open_price_seasons), price_seasons[-1])
+
     selected_price_season = st.selectbox(
         "Vælg sæson",
-        options=list(prices_by_season)
+        options=price_seasons,
+        index=price_seasons.index(default_price_season),
     )
     current_prices = prices_by_season[selected_price_season]
 
