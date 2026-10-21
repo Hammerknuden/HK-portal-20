@@ -1,109 +1,50 @@
+"""Supabase login for the portal; isolated secret-based login for restore testing."""
 import streamlit as st
-import streamlit_authenticator as stauth
 from portal_access import is_restore_test, validate_restore_test
 
-validate_restore_test()
 
-names = ['Finn', 'Naja', 'Admin']
-usernames = ['finn', 'naja', 'admin']
-passwords = ['pc0012', 'pc0012nb', '0012']
-ADMIN_USERNAMES = {"admin", "finn"}
-
-hashed_passwords = [stauth.Hasher().hash(pw) for pw in passwords]
-
-credentials = {
-    "usernames": {
-        usernames[i]: {
-            "name": names[i],
-            "password": hashed_passwords[i]
-        }
-        for i in range(len(usernames))
-    }
-}
-
-authenticator = stauth.Authenticate(
-    credentials,
-    'hk_restore_test' if is_restore_test() else 'hk_portal2',
-    st.secrets['RESTORE_TEST_COOKIE_KEY'] if is_restore_test() else 'hammerknudenportal',
-    cookie_expiry_days=30
-)
+def _restore_authenticator():
+    validate_restore_test(required=True)
+    import streamlit_authenticator as stauth
+    credentials = st.secrets.get("RESTORE_CREDENTIALS")
+    if not credentials or not credentials.get("usernames"):
+        st.error("Restore-testappen mangler RESTORE_CREDENTIALS i sine egne Secrets.")
+        st.stop()
+    # Convert nested Secrets mappings to ordinary dictionaries for the authenticator.
+    users = {username: dict(values) for username, values in credentials["usernames"].items()}
+    return stauth.Authenticate({"usernames": users}, "hk_restore_login_v2",
+                              st.secrets["RESTORE_TEST_COOKIE_KEY"], cookie_expiry_days=1)
 
 
 def require_login():
-    from portal_access import uses_supabase_auth, require_portal_user
-    if st.secrets.get("AUTH_MODE") == "dual":
-        from modules.portal_login import choose_login, supabase_login
-        choose_login(authenticator)
-        if uses_supabase_auth():
-            supabase_login()
-            return
-    if uses_supabase_auth():
+    if not is_restore_test():
         from modules.portal_login import supabase_login
         supabase_login()
         return
-
-    defaults = {
-        "authentication_status": None,
-        "name": None,
-        "username": None,
-        "logout": False,
-    }
-
-    for key, value in defaults.items():
-        st.session_state.setdefault(key, value)
-
+    authenticator = _restore_authenticator()
     authenticator.login(location="main")
-
-    status = st.session_state.get("authentication_status")
-
-    if status is None:
-        st.info("Indtast brugernavn og kode")
+    if st.session_state.get("authentication_status") is not True:
+        st.info("Log ind med restore-testappens bruger.")
         st.stop()
-
-    if status is False:
-        st.error("Forkert login")
-        st.stop()
-
-    authenticator.logout("Logout", "sidebar")
-#def require_login():
-#    authenticator.login(location="main")
-
-#    status = st.session_state.get("authentication_status")
-
-#    if status is None:
-#        st.info("Indtast brugernavn og kode")
-#        st.stop()
-
-#    if status is False:
-#        st.error("Forkert login")
-#        st.stop()
-
-#    authenticator.logout('Logout', 'sidebar')
+    authenticator.logout("Log ud", "sidebar")
 
 
 def is_admin():
-    from portal_access import uses_supabase_auth, require_portal_user
-    if uses_supabase_auth():
-        user = require_portal_user()
+    if not is_restore_test():
+        from portal_access import require_portal_user
         from modules.auth_settings import auth_settings
+        user = require_portal_user()
         return user["id"] in auth_settings(st.secrets)["ADMIN_USER_IDS"]
-    return bool(st.session_state.get("authentication_status")) and str(
-        st.session_state.get("username") or ""
-    ).lower() in ADMIN_USERNAMES
+    validate_restore_test(required=True)
+    return (st.session_state.get("authentication_status") is True
+            and st.session_state.get("username") in st.secrets.get("RESTORE_ADMIN_USERNAMES", []))
 
 
 def require_admin():
-    from portal_access import uses_supabase_auth, require_portal_user
-    if uses_supabase_auth():
+    if not is_restore_test():
+        from portal_access import require_portal_user
         require_portal_user(admin=True)
         return
-    if not st.session_state.get("authentication_status"):
-        st.error("Ikke logget ind")
+    if not is_admin():
+        st.error("Kun administratorer har adgang til denne side.")
         st.stop()
-
-    username = str(st.session_state.get("username") or "").lower()
-    if username not in ADMIN_USERNAMES:
-        st.error("Kun admin har adgang til denne side")
-        st.stop()
-
-

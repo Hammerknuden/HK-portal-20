@@ -30,16 +30,11 @@ class TestPortalAccess(unittest.TestCase):
     def tearDown(self):
         self.modules.stop()
 
-    def test_legacy_remains_default(self):
-        self.st.secrets = {"SUPABASE_URL": "legacy-url", "SUPABASE_KEY": "legacy-key"}
-        self.access.get_database_client()
-        self.sdk.create_client.assert_called_once_with("legacy-url", "legacy-key")
-
-    def test_dual_defaults_to_supabase_and_honours_explicit_legacy(self):
-        self.st.secrets = {"AUTH_MODE": "dual"}
-        self.assertTrue(self.access.uses_supabase_auth())
-        self.st.session_state["portal_login_method"] = "legacy"
-        self.assertFalse(self.access.uses_supabase_auth())
+    def test_production_always_uses_supabase(self):
+        for mode in (None, "legacy", "dual", "supabase"):
+            self.st.secrets = {} if mode is None else {"AUTH_MODE": mode}
+            self.st.session_state = {"portal_login_method": "legacy", "authentication_status": True}
+            self.assertTrue(self.access.uses_supabase_auth())
 
     @patch("modules.auth_client.AuthClient.get_user")
     def test_production_settings_and_session_use_user_token(self, get_user):
@@ -94,12 +89,6 @@ class TestPortalAccess(unittest.TestCase):
                 exec(compile(ast.Module(body=[function], type_ignores=[]), filename, "exec"), namespace)
                 namespace["send_email"]("unused-password", Mock())
             smtp.SMTP.assert_not_called()
-
-    def test_unknown_mode_stops(self):
-        self.st.secrets = {"AUTH_MODE": "typo"}
-        with self.assertRaises(Stopped):
-            self.access.get_database_client()
-        self.sdk.create_client.assert_not_called()
 
     def configure_test(self):
         self.st.secrets = {"AUTH_MODE": "supabase", "APP_ENV": "test",

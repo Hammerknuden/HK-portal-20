@@ -1,4 +1,4 @@
-"""Shared access boundary; production defaults to the existing legacy path."""
+"""Shared access boundary; production always uses Supabase authentication."""
 import streamlit as st
 from modules.auth_settings import auth_settings, access_token
 
@@ -32,13 +32,11 @@ def suppress_test_email():
 
 
 def uses_supabase_auth():
-    mode = st.secrets.get("AUTH_MODE", "legacy")
-    if mode == "dual":
-        mode = st.session_state.get("portal_login_method", "supabase")
-    if mode not in ("legacy", "supabase"):
-        st.error("Ukendt AUTH_MODE.")
-        st.stop()
-    return mode == "supabase"
+    if is_restore_test():
+        validate_restore_test(required=True)
+        return False
+    # Old AUTH_MODE and session values cannot reactivate legacy in production.
+    return True
 
 
 def require_portal_user(admin=False):

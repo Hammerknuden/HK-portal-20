@@ -5,31 +5,6 @@ from modules.auth_settings import auth_settings, access_token
 from modules.password_recovery import render_recovery, render_forgot_password
 
 
-def choose_login(authenticator):
-    if st.query_params.get("token_hash") or any(
-            name in st.session_state for name in ("recovery_hash", "recovery_access", "recovery_invalid", "recovery_success")):
-        supabase_login()
-        return
-    current = st.session_state.get('portal_login_method', 'supabase')
-    choice = st.sidebar.radio('Log ind med', ['supabase', 'legacy'],
-        index=0 if current == 'supabase' else 1,
-        format_func=lambda value: 'Legacy login (reserve)' if value == 'legacy' else 'Secure login',
-        key='portal_login_choice')
-    if choice != current:
-        token = access_token(st.session_state)
-        if current == 'legacy' and st.session_state.get('authentication_status'):
-            authenticator.logout(location='unrendered')
-        if token:
-            try:
-                AuthClient(auth_settings(st.secrets)['SUPABASE_AUTH_URL'], auth_settings(st.secrets)['SUPABASE_PUBLISHABLE_KEY']).sign_out(token)
-            except Exception:
-                pass
-        st.session_state.clear()
-        st.session_state['portal_login_method'] = choice
-        st.rerun()
-    st.session_state['portal_login_method'] = current
-
-
 def supabase_login():
     from portal_access import require_portal_user
     url = auth_settings(st.secrets)['SUPABASE_AUTH_URL']
