@@ -1,22 +1,31 @@
-"""Layout preview for future user administration; no account or database calls."""
+"""Read-only user directory with a preview of future editing controls."""
 
 
 def render_user_administration(st):
+    from auth import require_admin
+    from modules.user_directory import load_user_directory
+
+    require_admin()
     st.divider()
     st.header("Brugeradministration")
     st.info(
-        "Forhåndsvisning: Brugeradministrationen er ikke aktiveret endnu. "
-        "Brugerlisten indlæses ikke, og der oprettes eller ændres ingen brugere."
+        "Brugeroversigten kan læses. Invitationer og ændringer er endnu ikke aktiveret."
     )
-    st.caption("Denne sektion skal administrere Secure login. Legacy-login administreres separat.")
+    st.caption("Brugere til Secure login. Legacy-login administreres separat.")
 
     st.subheader("Brugeroversigt")
-    st.dataframe(
-        {"Navn": [], "E-mail": [], "Rolle": [], "Status": []},
-        hide_index=True,
-        use_container_width=True,
-    )
-    st.caption("Oversigten er endnu ikke tilkoblet. Den tomme liste viser ikke de nuværende brugere.")
+    try:
+        with st.spinner("Henter brugere …"):
+            users = load_user_directory()
+        if users:
+            st.dataframe(users, hide_index=True, use_container_width=True)
+        else:
+            st.info("Ingen brugere er angivet i portalens adgangsopsætning.")
+    except Exception:
+        st.warning("Brugeroversigten kunne ikke hentes. Kontrollér portalens bruger-ID'er, "
+                   "Supabase-adresser og servernøgle i Cloud Secrets.")
+    st.caption("Navn og e-mail hentes fra Supabase. Rollen viser portalens adgangsopsætning; "
+               "oversigten kontrollerer ikke hver enkelt databasepolitik.")
 
     create_column, edit_column = st.columns(2)
     with create_column:
