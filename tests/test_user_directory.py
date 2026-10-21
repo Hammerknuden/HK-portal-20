@@ -2,7 +2,7 @@ import unittest
 from types import SimpleNamespace
 from unittest.mock import Mock, patch
 
-from modules.user_directory import read_directory, load_user_directory
+from modules.user_directory import read_directory, load_user_directory, update_display_name, save_user_display_name
 
 UID = "c8fb3b6c-00ed-4883-a52f-ef182f10ec3e"
 
@@ -42,3 +42,30 @@ class DirectoryTests(unittest.TestCase):
         with patch.dict("sys.modules", {"auth": auth, "streamlit": Mock(), "portal_access": Mock(), "supabase": sdk}):
             with self.assertRaises(PermissionError): load_user_directory()
             sdk.create_client.assert_not_called()
+
+    def test_name_update_preserves_metadata_and_reads_back(self):
+        factory = Mock()
+        before = SimpleNamespace(id=UID, user_metadata={"display_name": "Old", "other": "keep"})
+        after = SimpleNamespace(id=UID, user_metadata={"display_name": "Finn", "other": "keep"})
+        factory.return_value.auth.admin.get_user_by_id.side_effect = [SimpleNamespace(user=before), SimpleNamespace(user=after)]
+        self.assertEqual(update_display_name(self.settings(), factory, UID, " Finn "), "Finn")
+        factory.return_value.auth.admin.update_user_by_id.assert_called_once_with(
+            UID, {"user_metadata": {"display_name": "Finn", "other": "keep"}})
+
+    def test_invalid_names_and_unknown_users_never_write(self):
+        for uid, name in [(UID, " "), (UID, "a" * 101), ("74acf117-be21-4460-877d-4f50993ac6da", "Test")]:
+            factory = Mock()
+            with self.assertRaises(ValueError): update_display_name(self.settings(), factory, uid, name)
+            factory.assert_not_called()
+
+    def test_save_requires_admin_again(self):
+        auth = Mock(); auth.require_admin.side_effect = PermissionError()
+        sdk = Mock()
+        with patch.dict("sys.modules", {"auth": auth, "streamlit": Mock(), "portal_access": Mock(), "supabase": sdk}):
+            with self.assertRaises(PermissionError): save_user_display_name(UID, "Finn")
+            sdk.create_client.assert_not_called()
+
+    def test_unconfirmed_update_is_not_reported_as_success(self):
+        factory = Mock()
+        factory.return_value.auth.admin.get_user_by_id.return_value.user = SimpleNamespace(id=UID, user_metadata={"display_name": "Old"})
+        with self.assertRaises(ValueError): update_display_name(self.settings(), factory, UID, "Finn")

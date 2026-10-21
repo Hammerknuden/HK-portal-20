@@ -3,22 +3,26 @@
 
 def render_user_administration(st):
     from auth import require_admin
-    from modules.user_directory import load_user_directory
+    from modules.user_directory import load_user_directory, save_user_display_name
 
     require_admin()
     st.divider()
     st.header("Brugeradministration")
     st.info(
-        "Brugeroversigten kan læses. Invitationer og ændringer er endnu ikke aktiveret."
+        "Du kan ændre brugernes visningsnavne. Invitationer og ændring af adgang er endnu ikke aktiveret."
     )
     st.caption("Brugere til Secure login. Legacy-login administreres separat.")
 
+    if message := st.session_state.pop("user_admin_saved", None):
+        st.success(message)
+    users = []
     st.subheader("Brugeroversigt")
     try:
         with st.spinner("Henter brugere …"):
-            users = load_user_directory()
+            users = load_user_directory(include_ids=True)
         if users:
-            st.dataframe(users, hide_index=True, use_container_width=True)
+            st.dataframe([{k: v for k, v in user.items() if k != "uid"} for user in users],
+                         hide_index=True, use_container_width=True)
         else:
             st.info("Ingen brugere er angivet i portalens adgangsopsætning.")
     except Exception:
@@ -41,19 +45,36 @@ def render_user_administration(st):
 
     with edit_column:
         st.subheader("Administrér bruger")
-        st.selectbox(
-            "Vælg bruger", ["Brugerlisten tilkobles senere"],
-            disabled=True, key="user_admin_selected",
-        )
-        st.selectbox(
-            "Brugerens rolle", ["Almindelig bruger", "Administrator"],
-            disabled=True, key="user_admin_edit_role",
-        )
+        if users:
+            by_id = {user["uid"]: user for user in users}
+            selected = st.selectbox(
+                "Vælg bruger", list(by_id),
+                format_func=lambda uid: f"{by_id[uid]['Navn']} · {by_id[uid]['E-mail']}",
+                key="user_admin_selected",
+            )
+            user = by_id[selected]
+            with st.form(f"user_admin_name_{selected}"):
+                name = st.text_input("Visningsnavn", value="" if user["Navn"] == "Navn mangler" else user["Navn"], max_chars=100)
+                st.text_input("E-mail", value=user["E-mail"], disabled=True)
+                st.text_input("Rolle", value=user["Rolle"], disabled=True)
+                submitted = st.form_submit_button("Gem navn")
+            if submitted:
+                if not name.strip():
+                    st.error("Indtast et navn.")
+                else:
+                    try:
+                        saved_name = save_user_display_name(selected, name)
+                    except Exception:
+                        st.error("Navneændringen kunne ikke bekræftes. Genindlæs oversigten før et nyt forsøg.")
+                    else:
+                        st.session_state["user_admin_saved"] = f"Navnet {saved_name} er gemt og genlæst fra Supabase."
+                        st.rerun()
+        else:
+            st.caption("Hent brugeroversigten for at redigere et navn.")
         st.selectbox(
             "Adgang", ["Aktiv", "Deaktiveret"],
             disabled=True, key="user_admin_edit_status",
         )
-        st.button("Gem ændringer", disabled=True, key="user_admin_save")
         st.button("Send nulstillingsmail", disabled=True, key="user_admin_reset")
 
     st.caption(
