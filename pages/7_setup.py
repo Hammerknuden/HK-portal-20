@@ -15,6 +15,7 @@ from modules.price_sheet import create_price_sheet_pdf
 from portal_access import get_database_client, uses_supabase_auth
 from modules.booking_pace import normalize_season_rows
 from modules.season_backup_view import render_season_backup
+from modules.user_admin_view import render_user_administration
 
 
 st.set_page_config(page_title="Setup", layout="wide")
@@ -547,3 +548,5 @@ try:
 except Exception as error:
     st.warning("Sæsonstatus kunne ikke hentes. Kontrollér databaseadgang og statistikmigrationerne.")
     st.text(str(error))
+
+render_user_administration(st)
