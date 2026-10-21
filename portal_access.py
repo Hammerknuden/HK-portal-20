@@ -42,7 +42,7 @@ def uses_supabase_auth():
 
 
 def require_portal_user(admin=False):
-    from modules.auth_client import AuthClient, resolve_role
+    from modules.auth_client import AuthClient, resolve_role, display_name
     token = access_token(st.session_state)
     try:
         client = AuthClient(auth_settings(st.secrets)["SUPABASE_AUTH_URL"], auth_settings(st.secrets)["SUPABASE_PUBLISHABLE_KEY"])
@@ -53,7 +53,7 @@ def require_portal_user(admin=False):
     if not role or (admin and role != "admin"):
         st.error("Ingen adgang. Log ind via appens startside med en godkendt bruger.")
         st.stop()
-    st.session_state.update(authentication_status=True, username=user["email"], name=user["email"])
+    st.session_state.update(authentication_status=True, username=user["email"], name=display_name(user))
     return user
 
 

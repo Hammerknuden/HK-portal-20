@@ -32,6 +32,17 @@ def is_test_admin(user, admin_ids):
     return bool(user and user.get("id") in admin_ids)
 
 
+def display_name(user):
+    """Use profile names for presentation only, never for access decisions."""
+    metadata = user.get("user_metadata")
+    if isinstance(metadata, dict):
+        for field in ("display_name", "full_name", "name"):
+            value = metadata.get(field)
+            if isinstance(value, str) and value.strip():
+                return value.strip()
+    return user.get("email", "")
+
+
 def resolve_role(user, admin_ids, user_ids):
     if is_test_admin(user, admin_ids):
         return "admin"

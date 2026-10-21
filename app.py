@@ -38,7 +38,8 @@ def show_home():
         st.text(f"{label}: {installed_version}")
     st.image("logo2.jpg")
 
-    st.success(f"Velkommen {st.session_state.get('username')} 👋")
+    name = st.session_state.get("name") or st.session_state.get("username") or ""
+    st.success(f"Velkommen {name} 👋")
     st.info("Brug menuen i venstre side 👈")
 
 
