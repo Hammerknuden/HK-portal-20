@@ -1,17 +1,18 @@
-"""Read-only user directory with a preview of future editing controls."""
+"""Administrator directory, display names and invitations awaiting access."""
 
 
 def render_user_administration(st):
     from auth import require_admin
     from modules.user_directory import load_user_directory, save_user_display_name
+    from modules.user_invitation import invite_portal_user, load_pending_invitations, InvitationInputError
 
     require_admin()
     st.divider()
     st.header("Brugeradministration")
     st.info(
-        "Du kan ændre brugernes visningsnavne. Invitationer og ændring af adgang er endnu ikke aktiveret."
+        "Du kan ændre navne og invitere nye brugere. Nye invitationer giver endnu ikke portaladgang."
     )
-    st.caption("Brugere til Secure login. Legacy-login administreres separat.")
+    st.caption("Brugere til Secure login.")
 
     if message := st.session_state.pop("user_admin_saved", None):
         st.success(message)
@@ -31,17 +32,38 @@ def render_user_administration(st):
     st.caption("Navn og e-mail hentes fra Supabase. Rollen viser portalens adgangsopsætning; "
                "oversigten kontrollerer ikke hver enkelt databasepolitik.")
 
+    st.subheader("Invitationer uden portaladgang")
+    try:
+        pending = load_pending_invitations()
+        if pending:
+            st.dataframe(pending, hide_index=True, use_container_width=True)
+        else:
+            st.caption("Ingen invitationer afventer portaladgang.")
+    except Exception:
+        st.warning("Invitationerne kunne ikke hentes. Genindlæs siden før et nyt forsøg.")
+
     create_column, edit_column = st.columns(2)
     with create_column:
         st.subheader("Invitér bruger")
-        st.text_input("Navn", disabled=True, key="user_admin_invite_name")
-        st.text_input("E-mail", disabled=True, key="user_admin_invite_email")
-        st.selectbox(
-            "Rolle", ["Almindelig bruger", "Administrator"],
-            disabled=True, key="user_admin_invite_role",
-        )
-        st.caption("Den kommende invitation skal lade brugeren vælge sin egen adgangskode.")
-        st.button("Send invitation", disabled=True, key="user_admin_invite", type="primary")
+        st.caption("Modtageren vælger selv sin adgangskode. Rolle og adgang tildeles senere.")
+        with st.form("user_admin_invite_form", clear_on_submit=False):
+            invite_name = st.text_input("Navn", max_chars=100, key="user_admin_invite_name")
+            invite_email = st.text_input("E-mail", max_chars=254, key="user_admin_invite_email")
+            send = st.form_submit_button("Send invitation", type="primary")
+        if send:
+            try:
+                invite_portal_user(invite_name, invite_email)
+            except InvitationInputError as error:
+                st.error(str(error))
+            except Exception:
+                st.error("Invitationen kunne ikke bekræftes. Genindlæs oversigten og kontrollér Supabase, "
+                         "før du prøver igen; kontoen kan allerede være oprettet.")
+            else:
+                st.session_state["user_admin_saved"] = (
+                    f"Supabase har accepteret invitationen til {invite_email.strip()}. "
+                    "Bed modtageren kontrollere sin indbakke og spammappe. Portaladgangen afventer aktivering."
+                )
+                st.rerun()
 
     with edit_column:
         st.subheader("Administrér bruger")

@@ -89,6 +89,13 @@ class AuthClient:
             "token_hash": token_hash, "type": "recovery",
         })
 
+    def verify_invitation(self, token_hash):
+        if not token_hash:
+            raise ValueError("Missing invitation token")
+        return self._request("POST", "/verify", payload={
+            "token_hash": token_hash, "type": "invite",
+        })
+
     def update_password(self, token, password):
         if not token or not valid_new_password(password):
             raise ValueError(PASSWORD_REQUIREMENT)

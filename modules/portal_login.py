@@ -3,6 +3,7 @@ import streamlit as st
 from modules.auth_client import AuthClient, resolve_role, validate_config
 from modules.auth_settings import auth_settings, access_token
 from modules.password_recovery import render_recovery, render_forgot_password
+from modules.user_invitation import render_invitation
 
 
 def supabase_login():
@@ -12,6 +13,7 @@ def supabase_login():
     admins = validate_config(url, key, auth_settings(st.secrets)['ADMIN_USER_IDS'])
     users = auth_settings(st.secrets)['USER_IDS']
     client = AuthClient(url, key)
+    render_invitation(st, client)
     render_recovery(client, admins, users)
     if not access_token(st.session_state):
         with st.form('portal_supabase_login', clear_on_submit=True):
