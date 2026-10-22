@@ -89,3 +89,20 @@ def save_user_display_name(uid, name):
     members = load_members()
     return update_display_name(st.secrets, lambda url, key: create_client(
         url, key, options=ClientOptions(persist_session=False, auto_refresh_token=False)), uid, name, members=members)
+
+
+def send_user_password_reset(uid):
+    """Send to the current account address after fresh admin/membership checks."""
+    import streamlit as st
+    from modules.auth_client import AuthClient
+
+    uid = str(UUID(uid))
+    # Includes require_admin and restore isolation; never trust a browser-supplied email.
+    users = load_user_directory(include_ids=True)
+    user = next((row for row in users if row["uid"] == uid), None)
+    if not user or user["membership"].get("active") is not True or not user["E-mail"]:
+        raise ValueError("An active portal account is required")
+    settings = auth_settings(st.secrets)
+    client = AuthClient(settings["SUPABASE_AUTH_URL"], settings["SUPABASE_PUBLISHABLE_KEY"])
+    client.request_password_reset(user["E-mail"], st.secrets.get("PASSWORD_RESET_URL", ""))
+    return user["E-mail"]

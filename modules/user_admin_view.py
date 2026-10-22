@@ -3,7 +3,7 @@
 
 def render_user_administration(st):
     from auth import require_admin
-    from modules.user_directory import load_user_directory, save_user_display_name
+    from modules.user_directory import load_user_directory, save_user_display_name, send_user_password_reset
     from modules.user_invitation import invite_portal_user, load_pending_invitations, InvitationInputError
 
     from modules.portal_roles import save_member
@@ -133,9 +133,20 @@ def render_user_administration(st):
                     st.rerun()
             else:
                 st.session_state[snapshot_key] = dict(member)
+            st.caption(f"Nulstillingsmail sendes til {user['E-mail']}. Brugeren vælger selv sin nye adgangskode.")
+            if st.button("Send nulstillingsmail", disabled=not member["active"], key="user_admin_reset"):
+                try:
+                    recipient = send_user_password_reset(selected)
+                except Exception:
+                    st.error("Nulstillingsmailen kunne ikke bekræftes. Kontrollér, at brugeren er aktiv, og vent et minut før et nyt forsøg.")
+                else:
+                    st.session_state["user_admin_saved"] = (
+                        f"Supabase har accepteret nulstillingsmailen til {recipient}. "
+                        "Bed brugeren kontrollere indbakken og spam. Adgangskoden ændres først, når brugeren vælger en ny."
+                    )
+                    st.rerun()
         else:
             st.caption("Hent brugeroversigten for at redigere et navn.")
-        st.button("Send nulstillingsmail", disabled=True, key="user_admin_reset")
 
     st.caption(
         "Almindelige brugere kan arbejde med bookinger og morgenmad. "

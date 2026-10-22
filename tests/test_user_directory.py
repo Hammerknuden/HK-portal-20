@@ -72,3 +72,22 @@ class DirectoryTests(unittest.TestCase):
         factory = Mock()
         factory.return_value.auth.admin.get_user_by_id.return_value.user = SimpleNamespace(id=UID, user_metadata={"display_name": "Old"})
         with self.assertRaises(ValueError): update_display_name(self.settings(), factory, UID, "Finn", members=self.members())
+
+    def test_reset_uses_fresh_account_email(self):
+        from modules.user_directory import send_user_password_reset
+        st = Mock(); st.secrets = {"SUPABASE_AUTH_URL": "https://example.supabase.co", "SUPABASE_PUBLISHABLE_KEY": "sb_publishable_test", "PASSWORD_RESET_URL": "https://portal.example.com/"}
+        rows = [{"uid": UID, "E-mail": "current@example.com", "membership": {"active": True}}]
+        with patch.dict("sys.modules", {"streamlit": st}), patch("modules.user_directory.load_user_directory", return_value=rows) as load, patch("modules.auth_client.AuthClient.request_password_reset") as send:
+            self.assertEqual(send_user_password_reset(UID), "current@example.com")
+            load.assert_called_once_with(include_ids=True)
+            send.assert_called_once_with("current@example.com", "https://portal.example.com/")
+
+    def test_reset_rejects_disabled_missing_or_unauthorized_user(self):
+        from modules.user_directory import send_user_password_reset
+        for rows in ([], [{"uid": UID, "E-mail": "user@example.com", "membership": {"active": False}}]):
+            with patch.dict("sys.modules", {"streamlit": Mock()}), patch("modules.user_directory.load_user_directory", return_value=rows), patch("modules.auth_client.AuthClient.request_password_reset") as send:
+                with self.assertRaises(ValueError): send_user_password_reset(UID)
+                send.assert_not_called()
+        with patch.dict("sys.modules", {"streamlit": Mock()}), patch("modules.user_directory.load_user_directory", side_effect=PermissionError()), patch("modules.auth_client.AuthClient.request_password_reset") as send:
+            with self.assertRaises(PermissionError): send_user_password_reset(UID)
+            send.assert_not_called()
