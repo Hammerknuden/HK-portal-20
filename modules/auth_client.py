@@ -16,14 +16,17 @@ def valid_new_password(password):
             and any("0" <= char <= "9" for char in password))
 
 
-def validate_config(url, key, admin_ids):
+def validate_config(url, key, admin_ids=None):
     parsed = urlparse(url)
     if parsed.scheme != "https" or not parsed.hostname or parsed.path not in ("", "/"):
         raise ValueError("SUPABASE_AUTH_URL skal være projektets https-adresse.")
     if not key.startswith("sb_publishable_"):
         raise ValueError("Brug en sb_publishable_-nøgle til login, ikke sb_secret_.")
+    # Lists are only retained for the separately deployed historical diagnostic app.
+    if admin_ids is None:
+        return frozenset()
     if not isinstance(admin_ids, (list, tuple)) or not admin_ids:
-        raise ValueError("ADMIN_USER_IDS skal indeholde mindst ét User UID.")
+        raise ValueError("Administrator IDs must be a list")
     return frozenset(str(UUID(value)) for value in admin_ids)
 
 
@@ -74,6 +77,21 @@ class AuthClient:
 
     def get_user(self, token):
         return self._request("GET", "/user", token=token)
+
+    def portal_rpc(self, name, token, payload=None):
+        if name not in {"portal_current_role", "portal_list_members", "portal_set_member"} or not token:
+            raise ValueError("Invalid role request")
+        response = requests.post(self.rest_url + "/rpc/" + name,
+            headers={"apikey": self.key, "Authorization": "Bearer " + token},
+            json=payload or {}, timeout=15)
+        response.raise_for_status()
+        return response.json()
+
+    def portal_role(self, token):
+        role = self.portal_rpc("portal_current_role", token)
+        if role not in (None, "admin", "user"):
+            raise ValueError("Unexpected portal role")
+        return role
 
     def request_password_reset(self, email, redirect_url):
         parsed = urlparse(redirect_url)

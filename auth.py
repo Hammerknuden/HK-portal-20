@@ -32,9 +32,8 @@ def require_login():
 def is_admin():
     if not is_restore_test():
         from portal_access import require_portal_user
-        from modules.auth_settings import auth_settings
         user = require_portal_user()
-        return user["id"] in auth_settings(st.secrets)["ADMIN_USER_IDS"]
+        return user["portal_role"] == "admin"
     validate_restore_test(required=True)
     return (st.session_state.get("authentication_status") is True
             and st.session_state.get("username") in st.secrets.get("RESTORE_ADMIN_USERNAMES", []))

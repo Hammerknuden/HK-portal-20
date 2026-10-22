@@ -23,11 +23,18 @@ class TestPortalAccess(unittest.TestCase):
             "streamlit": self.st, "supabase": self.sdk, "httpx": self.httpx,
         })
         self.modules.start()
+        def role_for_mock_user(token):
+            from modules.auth_client import AuthClient
+            user = AuthClient.get_user.return_value
+            return {"admin": "admin", "ordinary": "user"}.get(user.get("id"))
+        self.role_patch = patch("modules.auth_client.AuthClient.portal_role", side_effect=role_for_mock_user)
+        self.role_patch.start()
         spec = importlib.util.spec_from_file_location("access_under_test", Path(__file__).parents[1] / "portal_access.py")
         self.access = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(self.access)
 
     def tearDown(self):
+        self.role_patch.stop()
         self.modules.stop()
 
     def test_production_always_uses_supabase(self):
@@ -48,6 +55,22 @@ class TestPortalAccess(unittest.TestCase):
         get_user.assert_called_once_with("production-token")
         self.assertEqual(self.sdk.ClientOptions.call_args.kwargs["headers"]["Authorization"], "Bearer production-token")
         self.assertEqual(self.sdk.create_client.call_args.args, ("https://production.supabase.co", "sb_publishable_production"))
+
+    @patch("modules.auth_client.AuthClient.get_user")
+    def test_disabled_old_admin_is_denied_despite_old_secrets(self, get_user):
+        self.configure_test()
+        self.st.secrets["ADMIN_USER_IDS"] = ["admin"]
+        get_user.return_value = {"id": "admin", "email": "admin@example.com"}
+        with patch("modules.auth_client.AuthClient.portal_role", return_value=None):
+            with self.assertRaises(Stopped): self.access.require_portal_user()
+        self.sdk.create_client.assert_not_called()
+
+    @patch("modules.auth_client.AuthClient.get_user")
+    def test_database_promotion_not_secrets_controls_admin(self, get_user):
+        self.configure_test()
+        get_user.return_value = {"id": "new-person", "email": "new@example.com"}
+        with patch("modules.auth_client.AuthClient.portal_role", return_value="admin"):
+            self.assertEqual(self.access.require_portal_user(admin=True)["portal_role"], "admin")
 
     def configure_restore(self):
         self.st.secrets = {"APP_ENV": "restore_test", "AUTH_MODE": "legacy",

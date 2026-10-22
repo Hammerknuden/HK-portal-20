@@ -40,19 +40,19 @@ def uses_supabase_auth():
 
 
 def require_portal_user(admin=False):
-    from modules.auth_client import AuthClient, resolve_role, display_name
+    from modules.auth_client import AuthClient, display_name
     token = access_token(st.session_state)
     try:
         client = AuthClient(auth_settings(st.secrets)["SUPABASE_AUTH_URL"], auth_settings(st.secrets)["SUPABASE_PUBLISHABLE_KEY"])
         user = client.get_user(token) if token else None
-        role = resolve_role(user, auth_settings(st.secrets)["ADMIN_USER_IDS"], auth_settings(st.secrets)["USER_IDS"])
+        role = client.portal_role(token) if user else None
     except Exception:
         user, role = None, None
     if not role or (admin and role != "admin"):
         st.error("Ingen adgang. Log ind via appens startside med en godkendt bruger.")
         st.stop()
     st.session_state.update(authentication_status=True, username=user["email"], name=display_name(user))
-    return user
+    return {**user, "portal_role": role}
 
 
 # Compatibility for the separately deployed diagnostic app.
@@ -77,7 +77,7 @@ def get_database_client(allow_booking_comment=False, allow_timeline_test=False, 
     if not uses_supabase_auth():
         return create_client(st.secrets["SUPABASE_URL"], st.secrets["SUPABASE_KEY"])
     user = require_portal_user()
-    booking_admin = user["id"] in auth_settings(st.secrets)["ADMIN_USER_IDS"]
+    booking_admin = user["portal_role"] == "admin"
     import httpx
     def read_only(request):
         if request.method not in ("GET", "HEAD", "OPTIONS"):

@@ -4,18 +4,6 @@ from uuid import UUID
 from modules.auth_settings import auth_settings
 
 
-def configured_roles(secrets):
-    settings = auth_settings(secrets)
-    roles = {}
-    for setting, role in (("USER_IDS", "Almindelig bruger"), ("ADMIN_USER_IDS", "Administrator")):
-        values = settings[setting]
-        if not isinstance(values, (list, tuple)):
-            raise ValueError("User IDs must be lists")
-        for value in values:
-            roles[str(UUID(value))] = role
-    return roles
-
-
 def directory_client(secrets, client_factory):
     """Call only after require_admin; never expose the service client to pages."""
     settings = auth_settings(secrets)
@@ -25,13 +13,16 @@ def directory_client(secrets, client_factory):
     key = secrets.get("SUPABASE_KEY", "")
     if not key:
         raise ValueError("Server key missing")
-    roles = configured_roles(secrets)
+    roles = {}
     client = client_factory(url, key)
     return client, roles
 
 
-def read_directory(secrets, client_factory, include_ids=False):
-    client, roles = directory_client(secrets, client_factory)
+def read_directory(secrets, client_factory, include_ids=False, members=None):
+    client, _ = directory_client(secrets, client_factory)
+    if members is None:
+        raise ValueError("Database membership required")
+    roles = {uid: ("Administrator" if member["role"] == "admin" else "Almindelig bruger") for uid, member in members.items()}
     rows = []
     for uid, role in roles.items():
         user = client.auth.admin.get_user_by_id(uid).user
@@ -41,8 +32,10 @@ def read_directory(secrets, client_factory, include_ids=False):
         name = next((metadata[field].strip() for field in ("display_name", "full_name", "name")
                      if isinstance(metadata.get(field), str) and metadata[field].strip()), "Navn mangler")
         row = {"Navn": name, "E-mail": user.email or "", "Rolle": role}
+        row["Status"] = "Aktiv" if members[uid]["active"] else "Deaktiveret"
         if include_ids:
             row["uid"] = uid
+            row["membership"] = members[uid]
         rows.append(row)
     return sorted(rows, key=lambda row: (row["Navn"].casefold(), row["E-mail"].casefold()))
 
@@ -57,17 +50,19 @@ def load_user_directory(include_ids=False):
         raise ValueError("Directory is not enabled in restore testing")
     from supabase import create_client, ClientOptions
 
+    from modules.portal_roles import load_members
+    members = load_members()
     # A separate server client, never cached or shared with user-token clients.
     return read_directory(st.secrets, lambda url, key: create_client(
-        url, key, options=ClientOptions(persist_session=False, auto_refresh_token=False)), include_ids=include_ids)
+        url, key, options=ClientOptions(persist_session=False, auto_refresh_token=False)), include_ids=include_ids, members=members)
 
 
-def update_display_name(secrets, client_factory, uid, name):
+def update_display_name(secrets, client_factory, uid, name, members=None):
     if not isinstance(name, str) or not name.strip() or len(name.strip()) > 100:
         raise ValueError("Navnet skal være mellem 1 og 100 tegn.")
     name = name.strip()
     uid = str(UUID(uid))
-    if uid not in configured_roles(secrets):
+    if members is None or uid not in members:
         raise ValueError("Brugeren har ikke adgang til portalen.")
     client, _ = directory_client(secrets, client_factory)
     user = client.auth.admin.get_user_by_id(uid).user
@@ -90,5 +85,7 @@ def save_user_display_name(uid, name):
     if is_restore_test():
         raise ValueError("User administration is disabled in restore testing")
     from supabase import create_client, ClientOptions
+    from modules.portal_roles import load_members
+    members = load_members()
     return update_display_name(st.secrets, lambda url, key: create_client(
-        url, key, options=ClientOptions(persist_session=False, auto_refresh_token=False)), uid, name)
+        url, key, options=ClientOptions(persist_session=False, auto_refresh_token=False)), uid, name, members=members)

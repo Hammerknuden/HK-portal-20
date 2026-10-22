@@ -21,14 +21,18 @@ def list_auth_users(client):
     raise ValueError("User directory exceeds supported size")
 
 
-def pending_invitations(secrets, client_factory):
-    client, roles = directory_client(secrets, client_factory)
+def pending_invitations(secrets, client_factory, members=None):
+    if members is None:
+        raise ValueError("Database membership required")
+    client, _ = directory_client(secrets, client_factory)
+    roles = members
     rows = []
     for user in list_auth_users(client):
         if str(user.id) not in roles and user.invited_at:
             metadata = user.user_metadata or {}
             rows.append({"Navn": metadata.get("display_name") or "Navn mangler",
-                         "E-mail": user.email or "", "Status": "Afventer portaladgang"})
+                         "E-mail": user.email or "", "Status": "Afventer portaladgang",
+                         "uid": str(user.id), "confirmed": bool(user.email_confirmed_at)})
     return sorted(rows, key=lambda row: row["E-mail"].casefold())
 
 
@@ -73,7 +77,8 @@ def invite_portal_user(name, email):
 
 def load_pending_invitations():
     secrets, factory = _admin_context()
-    return pending_invitations(secrets, factory)
+    from modules.portal_roles import load_members
+    return pending_invitations(secrets, factory, members=load_members())
 
 
 def render_invitation(st, client):

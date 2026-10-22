@@ -3,7 +3,7 @@ import streamlit as st
 from modules.auth_client import resolve_role, valid_new_password, PASSWORD_REQUIREMENT
 
 
-def render_recovery(client, admin_ids, user_ids):
+def render_recovery(client, admin_ids, user_ids, role_check=None):
     incoming = st.query_params.get("token_hash")
     if incoming:
         recovery_type = st.query_params.get("type")
@@ -36,7 +36,7 @@ def render_recovery(client, admin_ids, user_ids):
                 result = client.verify_recovery(st.session_state.pop("recovery_hash"))
                 token = result["access_token"]
                 user = client.get_user(token)
-                if not resolve_role(user, admin_ids, user_ids):
+                if not (role_check(token) if role_check else resolve_role(user, admin_ids, user_ids)):
                     try:
                         client.sign_out(token)
                     finally:
@@ -62,7 +62,7 @@ def render_recovery(client, admin_ids, user_ids):
             token = st.session_state["recovery_access"]
             try:
                 user = client.get_user(token)
-                if not resolve_role(user, admin_ids, user_ids):
+                if not (role_check(token) if role_check else resolve_role(user, admin_ids, user_ids)):
                     raise ValueError("Not a portal user")
                 client.update_password(token, password)
             except Exception:

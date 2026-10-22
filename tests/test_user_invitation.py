@@ -65,11 +65,11 @@ class InvitationTests(unittest.TestCase):
     def test_pending_list_excludes_existing_portal_users_and_noninvited_accounts(self):
         factory = self.factory(); settings = self.settings(); settings["USER_IDS"] = [UID]
         factory.return_value.auth.admin.list_users.return_value = [
-            SimpleNamespace(id=UID, email="active@example.com", invited_at="date", user_metadata={}),
-            SimpleNamespace(id="pending", email="pending@example.com", invited_at="date", user_metadata={"display_name": "New"}),
+            SimpleNamespace(id=UID, email="active@example.com", invited_at="date", email_confirmed_at="date", user_metadata={}),
+            SimpleNamespace(id="pending", email="pending@example.com", invited_at="date", email_confirmed_at="date", user_metadata={"display_name": "New"}),
             SimpleNamespace(id="other", email="other@example.com", invited_at=None, user_metadata={}),
         ]
-        self.assertEqual(pending_invitations(settings, factory), [{"Navn": "New", "E-mail": "pending@example.com", "Status": "Afventer portaladgang"}])
+        self.assertEqual(pending_invitations(settings, factory, members={UID: {"role": "user", "active": True}}), [{"Navn": "New", "E-mail": "pending@example.com", "Status": "Afventer portaladgang", "uid": "pending", "confirmed": True}])
 
     def test_only_admin_can_send(self):
         auth = Mock(); auth.require_admin.side_effect = PermissionError()

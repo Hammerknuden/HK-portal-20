@@ -1,6 +1,6 @@
 """Dual-login transition UI; called on every protected portal page."""
 import streamlit as st
-from modules.auth_client import AuthClient, resolve_role, validate_config
+from modules.auth_client import AuthClient, validate_config
 from modules.auth_settings import auth_settings, access_token
 from modules.password_recovery import render_recovery, render_forgot_password
 from modules.user_invitation import render_invitation
@@ -10,11 +10,10 @@ def supabase_login():
     from portal_access import require_portal_user
     url = auth_settings(st.secrets)['SUPABASE_AUTH_URL']
     key = auth_settings(st.secrets)['SUPABASE_PUBLISHABLE_KEY']
-    admins = validate_config(url, key, auth_settings(st.secrets)['ADMIN_USER_IDS'])
-    users = auth_settings(st.secrets)['USER_IDS']
+    validate_config(url, key)
     client = AuthClient(url, key)
     render_invitation(st, client)
-    render_recovery(client, admins, users)
+    render_recovery(client, [], [], role_check=client.portal_role)
     if not access_token(st.session_state):
         with st.form('portal_supabase_login', clear_on_submit=True):
             email = st.text_input('E-mail')
@@ -24,7 +23,7 @@ def supabase_login():
             token = None
             try:
                 token = client.sign_in(email.strip(), password)['access_token']
-                if not resolve_role(client.get_user(token), admins, users):
+                if not client.portal_role(token):
                     client.sign_out(token)
                     raise ValueError('Not approved')
             except Exception:
