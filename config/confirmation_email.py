@@ -81,9 +81,10 @@ def danish_email_html_template(logo_cid, name, num_rooms, num_guests, booking_nu
                 </tr>
             </table>
             <hr>
-            <p> GDPR; Hammerknuden gemmer navn, adresse, email og telefon nummer som en del af den obligatoriske gæste 
-            registrering, oplysningerne anvendes herudover til statistisk brug, hvis dette ikke er acceptabelt 
-            skriv en email til admin@hammerknuden.dk </p>
+            <p> GDPR; Hammerknuden gemmer navn, adresse, email, telefon nummer som en del af den obligatoriske
+            gæste registrering. Gæsteregistringen bliver gemt i 2 år efter udcheck, inden sletning. oplysningerne med 
+            navn, telefon og email, anvendes herudover til statistisk og intern brug i 5 år inden sletning. Ingen 
+            oplysninger bliver anvendt til marketing </p>
             <p> {text_ank} </p
             <p> {text_bed} </p>
             <p> {text_free} </p>
