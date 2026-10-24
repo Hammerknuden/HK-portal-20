@@ -257,7 +257,7 @@ if mode == "✏️ Rediger booking":
         str(booking.get("rabat", 0)).replace(",", ".").replace("%", ""),
         errors="coerce",
     )
-    current_discount = 0 if pd.isna(current_discount) else float(current_discount)
+    current_discount = 0.0 if pd.isna(current_discount) else float(current_discount)
     if abs(current_discount) <= 1:
         current_discount *= 100
     new_discount = st.number_input(
