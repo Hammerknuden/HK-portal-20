@@ -7,7 +7,7 @@ class Stop(BaseException): pass
 
 class BookingMailTests(unittest.TestCase):
     def data_flow(self, supabase_mode=True, fail=False):
-        tree=ast.parse(Path('pages/1_Booking.py').read_text(encoding='utf-8'))
+        tree=ast.parse(Path('portal_pages/1_Booking.py').read_text(encoding='utf-8'))
         # Execute the real page's data-mail branch, with all I/O mocked.
         candidates=[n for n in ast.walk(tree) if isinstance(n,ast.If) and isinstance(n.test,ast.Name) and n.test.id=='send_data']
         node=next(n for n in candidates if any(isinstance(x,ast.Call) and isinstance(x.func,ast.Name) and x.func.id=='add_data' for x in ast.walk(n)))
@@ -35,7 +35,7 @@ class BookingMailTests(unittest.TestCase):
         env['supabase'].table.return_value.insert.assert_called_once()
 
     def test_empty_number_blocks_confirmation_in_all_languages(self):
-        tree=ast.parse(Path('pages/1_Booking.py').read_text(encoding='utf-8'))
+        tree=ast.parse(Path('portal_pages/1_Booking.py').read_text(encoding='utf-8'))
         parent=next(n for n in ast.walk(tree) if isinstance(n,ast.Assign)
                     and any(isinstance(t,ast.Name) and t.id=='booking_submitted' for t in n.targets))
         body=next(value for n in ast.walk(tree) for _,value in ast.iter_fields(n) if isinstance(value,list) and parent in value)

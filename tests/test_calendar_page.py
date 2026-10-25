@@ -26,7 +26,7 @@ class CalendarPageTests(unittest.TestCase):
         self.save = self.stack.enter_context(patch("modules.calendar_save.save_move_request"))
 
     def app(self, season=2027):
-        app = AppTest.from_file("pages/kalender.py")
+        app = AppTest.from_file("portal_pages/kalender.py")
         app.session_state["calendar_season"] = season
         app.session_state[f"calendar_moves_{season}"] = {"1": 3}
         app.session_state[f"calendar_sources_{season}"] = {"1": self.row.copy()}
@@ -122,7 +122,7 @@ class CalendarPageTests(unittest.TestCase):
         self.save.assert_not_called()
 
     def clean_app(self):
-        app = AppTest.from_file("pages/kalender.py")
+        app = AppTest.from_file("portal_pages/kalender.py")
         app.session_state["calendar_season"] = 2027
         app.run(timeout=30)
         self.assertFalse(app.exception)

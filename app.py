@@ -43,17 +43,19 @@ def show_home():
     st.info("Brug menuen i venstre side 👈")
 
 
-# Explicit navigation keeps the original Timeline source as a reserve.
+# Keep page scripts outside Streamlit's auto-discovered pages/ directory.
+# This ensures direct links also initialize this navigation before login.
+# The original Timeline source is kept as a reserve.
 page = st.navigation([
     st.Page(show_home, title="Start", default=True),
-    st.Page("pages/1_Booking.py", title="Booking"),
-    st.Page("pages/kalender.py", title="Kalender"),
-    st.Page("pages/2_databaseopslag.py", title="Opslag"),
-    st.Page("pages/3_In and Out.py", title="In & Out"),
-    st.Page("pages/5_breakfast.py", title="Breakfast"),
-    st.Page("pages/4_Links.py", title="Links"),
-    st.Page("pages/8_statestik.py", title="Statistik"),
-    st.Page("pages/9_Booking_com_kontrol.py", title="Afstemning"),
-    st.Page("pages/7_setup.py", title="Setup"),
+    st.Page("portal_pages/1_Booking.py", title="Booking"),
+    st.Page("portal_pages/kalender.py", title="Kalender"),
+    st.Page("portal_pages/2_databaseopslag.py", title="Opslag"),
+    st.Page("portal_pages/3_In and Out.py", title="In & Out"),
+    st.Page("portal_pages/5_breakfast.py", title="Breakfast"),
+    st.Page("portal_pages/4_Links.py", title="Links"),
+    st.Page("portal_pages/8_statestik.py", title="Statistik"),
+    st.Page("portal_pages/9_Booking_com_kontrol.py", title="Afstemning"),
+    st.Page("portal_pages/7_setup.py", title="Setup"),
 ])
 page.run()

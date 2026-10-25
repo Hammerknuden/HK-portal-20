@@ -86,7 +86,7 @@ class SeasonStatisticsTests(unittest.TestCase):
         auth = ModuleType('auth'); auth.require_login = lambda: None
         access = ModuleType('portal_access'); access.get_database_client = lambda: client
         with patch.dict('sys.modules', {'auth': auth, 'portal_access': access}):
-            app = AppTest.from_file('pages/8_statestik.py', default_timeout=30).run()
+            app = AppTest.from_file('portal_pages/8_statestik.py', default_timeout=30).run()
             self.assertEqual(len(app.exception), 0, str(app.exception))
             self.assertEqual(app.selectbox[0].value, 2027)
             self.assertEqual(app.metric[0].value, '4')
@@ -106,7 +106,7 @@ class SeasonStatisticsTests(unittest.TestCase):
         auth = ModuleType('auth'); auth.require_login = lambda: None
         access = ModuleType('portal_access'); access.get_database_client = lambda: client
         with patch.dict('sys.modules', {'auth': auth, 'portal_access': access}):
-            app = AppTest.from_file('pages/8_statestik.py', default_timeout=30).run()
+            app = AppTest.from_file('portal_pages/8_statestik.py', default_timeout=30).run()
             app.selectbox[0].select(2024).run()
             self.assertEqual(len(app.exception), 0, str(app.exception))
             self.assertTrue(any('ikke gemt' in i.value for i in app.info))

@@ -7,13 +7,13 @@ validate_restore_test(required=True)
 st.warning("TESTAPP – gendannet backup. Ændringer gælder kun testdata. Ingen mails sendes.")
 st.navigation([
     st.Page("app.py", title="Start", default=True),
-    st.Page("pages/1_Booking.py", title="Booking"),
-    st.Page("pages/2_databaseopslag.py", title="Databaseopslag"),
-    st.Page("pages/3_In and Out.py", title="In and Out"),
-    st.Page("pages/4_Links.py", title="Links"),
-    st.Page("pages/5_breakfast.py", title="Morgenmad"),
-    st.Page("pages/6_timeline.py", title="Timeline"),
-    st.Page("pages/7_setup.py", title="Setup"),
-    st.Page("pages/8_statestik.py", title="Statistik"),
-    st.Page("pages/9_Booking_com_kontrol.py", title="Booking.com-kontrol"),
+    st.Page("portal_pages/1_Booking.py", title="Booking"),
+    st.Page("portal_pages/2_databaseopslag.py", title="Databaseopslag"),
+    st.Page("portal_pages/3_In and Out.py", title="In and Out"),
+    st.Page("portal_pages/4_Links.py", title="Links"),
+    st.Page("portal_pages/5_breakfast.py", title="Morgenmad"),
+    st.Page("portal_pages/6_timeline.py", title="Timeline"),
+    st.Page("portal_pages/7_setup.py", title="Setup"),
+    st.Page("portal_pages/8_statestik.py", title="Statistik"),
+    st.Page("portal_pages/9_Booking_com_kontrol.py", title="Booking.com-kontrol"),
 ]).run()
