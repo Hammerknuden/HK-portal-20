@@ -1,0 +1,40 @@
+name: Guest registration retention
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+    inputs:
+      execute:
+        description: 'Delete expired registration PDFs (false = preview)'
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: guest-registration-retention
+  cancel-in-progress: false
+jobs:
+  retention:
+    if: github.event_name == 'workflow_dispatch' || vars.GUEST_RETENTION_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: guest-registration-retention
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r scripts/retention-requirements.txt
+      - name: Process registrations
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_RETENTION_KEY: ${{ secrets.SUPABASE_RETENTION_KEY }}
+          SUPABASE_RETENTION_DB_URL: ${{ secrets.SUPABASE_RETENTION_DB_URL }}
+          EXECUTE: ${{ github.event_name == 'schedule' || inputs.execute }}
+        shell: bash
+        run: |
+          if [ "$EXECUTE" = "true" ]; then
+            python scripts/purge_guest_registrations.py --execute
+          else
+            python scripts/purge_guest_registrations.py
+          fi

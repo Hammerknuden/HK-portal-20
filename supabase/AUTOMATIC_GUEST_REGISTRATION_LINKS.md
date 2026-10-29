@@ -26,9 +26,9 @@ SELECT cron.unschedule('hk-link-guest-registrations');
 
 SQL er gennemgået lokalt, ikke live-testet. Cron-runhistorik vokser med tiden;
 gennemgå opbevaring af joblogs som separat vedligeholdelse.
-Automatisk sletning af PDF'er er ikke implementeret. Før dette besluttes,
-aftales præcis periode og startdato (fx checkout), håndtering af storage_path
-og kopier i backup. Selve filen skal senere slettes gennem Storage API.
+Automatisk sletning af PDF'er efter indcheck + to kalenderår er forberedt i
+`GUEST_REGISTRATION_RETENTION.md`. Det kræver særskilt installation og aktivering;
+dokumentkoblingsjobbet her sletter fortsat ingen filer.
 
 ## Løbende upload og sæsonafslutning
 
