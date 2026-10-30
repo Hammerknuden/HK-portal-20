@@ -3,7 +3,8 @@
 ## Regel og afgrænsning
 
 PDF-filer i den private bucket `guest-registrations` slettes ved indcheck + to
-kalenderår, regnet ved midnat i Europe/Copenhagen. Jobbet kører hver time og
+kalenderår, regnet ved midnat i Europe/Copenhagen. Jobbet kører dagligt
+kl. 02:17 UTC (03:17 dansk vintertid / 04:17 sommertid) og
 behandler forfaldne filer ved første kørsel efter fristen. Fristen regnes aldrig
 fra upload, sæsonafslutning eller kundens senere ophold. Den 29. februar bliver
 til den 28. februar i et år uden skuddag.
@@ -55,7 +56,7 @@ udført som del af kodeændringen.
 5. Start manuelt med `execute=true` for den første rigtige kørsel. Det fjerner
    også allerede udløbne dokumenter permanent. Kontrollér resultatet i Storage
    og på historikrækkerne. Sæt derefter repository Actions-variablen
-   `GUEST_RETENTION_ENABLED` til `true` for at aktivere sletning hver time.
+   `GUEST_RETENTION_ENABLED` til `true` for at aktivere daglig sletning.
    Uden denne variabel udføres kun manuelt startede kørsler.
 
 Workflowet får ingen skriveadgang til GitHub. Servernøglen har privilegeret
