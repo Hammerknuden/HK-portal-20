@@ -12,8 +12,8 @@ til den 28. februar i et år uden skuddag.
 `historie_new.delete_at` er dokumentets planlagte slettefrist.
 `registration_deleted_at` er tidspunktet for bekræftet fjernelse eller konstateret
 fravær af dokumentet. `storage_path` tømmes først derefter. Selve bookingrækken,
-navne, kontaktoplysninger og statistik ændres ikke. Femårs-anonymisering er ikke
-en del af denne installation.
+navne, kontaktoplysninger og statistik ændres ikke af toårsjobbet. Femårsrydning
+kan installeres separat efter `HISTORY_PERSONAL_DATA_RETENTION.md`.
 
 Der slettes gennem Storage API; SQL-sletning af `storage.objects` er ikke nok.
 Jobbet kontrollerer bagefter, at metadata er væk. Ved API-fejl bevares referencen,

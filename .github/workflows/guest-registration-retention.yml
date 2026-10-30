@@ -8,6 +8,14 @@ on:
         description: 'Delete expired registration PDFs (false = preview)'
         type: boolean
         default: false
+      history_mode:
+        description: 'Five-year personal-field cleanup (separate from PDFs)'
+        type: choice
+        options:
+          - skip
+          - preview
+          - execute
+        default: skip
 permissions:
   contents: read
 concurrency:
@@ -37,4 +45,18 @@ jobs:
             python scripts/purge_guest_registrations.py --execute
           else
             python scripts/purge_guest_registrations.py
+          fi
+      - name: Process five-year history retention
+        if: (github.event_name == 'schedule' && vars.GUEST_HISTORY_RETENTION_ENABLED == 'true') || (github.event_name == 'workflow_dispatch' && inputs.history_mode != 'skip')
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_RETENTION_KEY: ${{ secrets.SUPABASE_RETENTION_KEY }}
+          SUPABASE_RETENTION_DB_URL: ${{ secrets.SUPABASE_RETENTION_DB_URL }}
+          EXECUTE_HISTORY: ${{ github.event_name == 'schedule' || inputs.history_mode == 'execute' }}
+        shell: bash
+        run: |
+          if [ "$EXECUTE_HISTORY" = "true" ]; then
+            python scripts/purge_guest_registrations.py --history-only --execute
+          else
+            python scripts/purge_guest_registrations.py --history-only
           fi

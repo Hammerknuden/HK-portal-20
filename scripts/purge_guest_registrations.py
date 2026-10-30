@@ -13,6 +13,8 @@ from modules.season_backup import database_environment, is_server_key
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--execute', action='store_true')
+    parser.add_argument('--history-only', action='store_true',
+                        help='Process five-year history fields instead of registration PDFs')
     args = parser.parse_args()
     try:
         import psycopg
@@ -29,9 +31,20 @@ def main():
                               connect_timeout=20, application_name='hk-registration-retention') as conn:
             # Bounded runs, with commits between batches and no OFFSET skipping.
             for _ in range(20):
-                counts = purge_batch(conn, client.storage, execute=args.execute)
+                if args.history_only:
+                    with conn.transaction():
+                        with conn.cursor() as cur:
+                            cur.execute("set local statement_timeout = '60s'")
+                            cur.execute('select public.clear_history_personal_data(%s, %s)',
+                                        (args.execute, 100))
+                            counts = cur.fetchone()[0]
+                    remaining = counts['history_eligible']
+                    processed = counts['history_processed']
+                else:
+                    counts = purge_batch(conn, client.storage, execute=args.execute)
+                    remaining, processed = counts['due'], counts['processed']
                 print(json.dumps(counts))
-                if not args.execute or counts['due'] <= counts['processed']:
+                if not args.execute or remaining <= processed:
                     return
             raise RuntimeError('Batch limit reached; another run is required')
     except Exception:
