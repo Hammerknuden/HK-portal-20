@@ -35,14 +35,14 @@ st.title("Upload af gæsteregistrering")
 
 supabase = get_database_client(allow_guest_upload=True)
 
-with st.expander("Scan gæsteregistrering til privat Supabase Storage"):
+with st.expander("Upload gæsteregistrering til privat Supabase Storage"):
     st.info(
         "Dokumentet gemmes i den private bucket guest-registrations med "
         "sæson og bookingnummer som filnavn."
     )
     st.caption(
-        "Tag et billede med mobilkameraet, eller vælg en eksisterende PDF. "
-        "Kamerabilledet og uploadede PDF-sider gemmes i A4-format."
+        "Upload en PDF fra OneDrive-scanneren. Ved behov kan du slå "
+        "kamera-scanneren til nedenfor. Dokumentet gemmes i A4-format."
     )
 
     scan_season = st.number_input(
@@ -62,15 +62,22 @@ with st.expander("Scan gæsteregistrering til privat Supabase Storage"):
         placeholder="Eksempel: 13 gemmes som 013",
         key="scan_booking_number",
     )
-    camera_file = st.camera_input(
-        "Tag billede af den enkeltsidede registrering",
-        key="guest_registration_camera",
-    )
     uploaded_registration = st.file_uploader(
-        "Eller vælg en eksisterende PDF eller billedfil",
+        "Vælg en PDF fra OneDrive-scanneren eller en billedfil",
         type=["pdf", "jpg", "jpeg", "png"],
         key="guest_registration_file",
     )
+    use_camera = st.checkbox(
+        "Brug kamera-scanneren i nødstilfælde",
+        value=False,
+        key="guest_registration_use_camera",
+    )
+    camera_file = None
+    if use_camera:
+        camera_file = st.camera_input(
+            "Tag billede af den enkeltsidede registrering",
+            key="guest_registration_camera",
+        )
 
     if st.button("Upload gæsteregistrering", type="primary"):
         if scan_booking_number is None:
