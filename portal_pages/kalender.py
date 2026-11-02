@@ -14,6 +14,23 @@ from portal_access import get_database_client, uses_supabase_auth
 
 st.set_page_config(page_title="Kalender", layout="wide")
 require_login()
+# Touch devices have no hover to reveal Streamlit's sidebar controls.
+st.markdown("""
+<style>
+[data-testid="stSidebarCollapseButton"],
+[data-testid="stSidebarCollapsedControl"],
+[data-testid="collapsedControl"] {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+[data-testid="stSidebarCollapseButton"] button,
+[data-testid="stSidebarCollapsedControl"] button,
+[data-testid="collapsedControl"] button {
+    min-width: 44px;
+    min-height: 44px;
+}
+</style>
+""", unsafe_allow_html=True)
 load_dotenv()
 st.subheader("Kalender")
 st.caption("Flyt mellem værelser med faste datoer.")
@@ -45,6 +62,7 @@ st.caption(
 zoom = st.checkbox("Zoom til fire uger", value=True, key="calendar_zoom_today",
                    help="Omkring dags dato i bookingperioden; ellers periodens første eller sidste fire uger.")
 st.caption("Træk en booking direkte i kalenderen op eller ned til et andet værelse. "
+           "Tryk kort på en booking for at se detaljer på iPad. "
            "Datoerne er faste; røde, låste bookinger bliver stående. "
            "Zoom og tidslinjen nederst ændrer datovisningen. "
            "Gem flytninger kontrollerer overlap og låse.")

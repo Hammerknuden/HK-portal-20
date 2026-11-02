@@ -40,7 +40,7 @@ export default function(component) {
                     width:`${right-left}px`, height:`${rowHeight*.8}px`,
                     cursor:b.locked?'not-allowed':'grab'});
                 layer.append(hit);
-                let origin = 0, previousRoom = b.room;
+                let origin = 0, originX = 0, previousRoom = b.room;
                 const reset = () => {
                     dragging = false;
                     hit.style.transform = '';
@@ -49,6 +49,8 @@ export default function(component) {
                     hit.textContent = '';
                 };
                 const hover = () => Plotly.Fx.hover(chart, [{curveNumber:traceIndex, pointNumber:pointIndex}]);
+                hit.onpointerenter = hover;
+                hit.onfocus = hover;
                 hit.onpointermove = e => {
                     if (dragging) hit.style.transform = `translateY(${e.clientY-origin}px)`;
                     else hover();
@@ -56,9 +58,10 @@ export default function(component) {
                 hit.onpointerleave = () => {if (!dragging) Plotly.Fx.unhover(chart);};
                 hit.onpointerdown = e => {
                     e.stopPropagation();
+                    hover();
                     if (e.button !== 0 || b.locked || dragging) return;
                     e.preventDefault();
-                    previousRoom = b.room; origin = e.clientY; dragging = true;
+                    previousRoom = b.room; origin = e.clientY; originX = e.clientX; dragging = true;
                     Plotly.Fx.unhover(chart);
                     hit.setPointerCapture(e.pointerId);
                     hit.style.background = b.color;
@@ -105,6 +108,12 @@ export default function(component) {
                 hit.onpointerup = e => {
                     e.stopPropagation();
                     if (!dragging) return;
+                    // A tap opens the same details as mouse hover, without a move.
+                    if (Math.hypot(e.clientX-originX, e.clientY-origin) < 10) {
+                        reset(); targets(); hover();
+                        status.textContent = '';
+                        return;
+                    }
                     const rect = chart.getBoundingClientRect();
                     const x = e.clientX - rect.left, y = e.clientY - rect.top;
                     const index = Math.round(ya.p2l(y - ya._offset));
@@ -116,6 +125,9 @@ export default function(component) {
                     move(room);
                 };
                 hit.onkeydown = e => {
+                    if (['Enter', ' '].includes(e.key)) {
+                        e.preventDefault(); hover(); return;
+                    }
                     if (b.locked || dragging || !['ArrowUp','ArrowDown'].includes(e.key)) return;
                     e.preventDefault(); e.stopPropagation();
                     const room = b.room + (e.key === 'ArrowUp' ? -1 : 1);
