@@ -35,7 +35,7 @@ export default function(component) {
                 const hit = document.createElement('div');
                 hit.dataset.booking = b.id;
                 hit.setAttribute('aria-label', `Booking ${b.label}, ${data.rooms[b.room]}${b.locked ? ', låst' : ''}`);
-                hit.setAttribute('role', 'button'); hit.tabIndex = b.locked ? -1 : 0;
+                hit.setAttribute('role', 'button'); hit.tabIndex = 0;
                 Object.assign(hit.style, {left:`${left}px`, top:`${centre-rowHeight*.4}px`,
                     width:`${right-left}px`, height:`${rowHeight*.8}px`,
                     cursor:b.locked?'not-allowed':'grab'});
@@ -51,6 +51,8 @@ export default function(component) {
                 const hover = () => Plotly.Fx.hover(chart, [{curveNumber:traceIndex, pointNumber:pointIndex}]);
                 hit.onpointerenter = hover;
                 hit.onfocus = hover;
+                // Locked bookings can still be selected for editing.
+                hit.onclick = () => {if (b.locked) setTriggerValue('select', {id:b.id});};
                 hit.onpointermove = e => {
                     if (dragging) hit.style.transform = `translateY(${e.clientY-origin}px)`;
                     else hover();
@@ -112,6 +114,7 @@ export default function(component) {
                     if (Math.hypot(e.clientX-originX, e.clientY-origin) < 10) {
                         reset(); targets(); hover();
                         status.textContent = '';
+                        setTriggerValue('select', {id:b.id});
                         return;
                     }
                     const rect = chart.getBoundingClientRect();
@@ -126,7 +129,8 @@ export default function(component) {
                 };
                 hit.onkeydown = e => {
                     if (['Enter', ' '].includes(e.key)) {
-                        e.preventDefault(); hover(); return;
+                        e.preventDefault(); hover();
+                        setTriggerValue('select', {id:b.id}); return;
                     }
                     if (b.locked || dragging || !['ArrowUp','ArrowDown'].includes(e.key)) return;
                     e.preventDefault(); e.stopPropagation();

@@ -119,8 +119,13 @@ def handle_room_move():
         st.session_state["calendar_drag_revision"] = st.session_state.get("calendar_drag_revision", 0) + 1
 
 
+def handle_booking_select():
+    st.session_state["calendar_clicked_booking"] = st.session_state[drag_key].select
+
+
 render_drag_calendar(preview, *figure.layout.xaxis.range,
                      key=drag_key, on_move=handle_room_move,
+                     on_select=handle_booking_select,
                      disabled=pending or bool(st.session_state.get("calendar_tools_optimizer_choice")),
                      revision=st.session_state.get("calendar_drag_revision", 0),
                      figure=figure, view_key=view_key)

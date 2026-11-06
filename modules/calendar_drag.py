@@ -107,7 +107,7 @@ _drag_component = st.components.v2.component(
 
 
 def render_drag_calendar(bookings, start, end, key, on_move=None, disabled=False, revision=0,
-                         figure=None, view_key=None):
+                         figure=None, view_key=None, on_select=None):
     if figure is None:
         raise ValueError("Den interaktive kalender kræver den fælles kalenderfigur.")
     data = drag_data(bookings, start, end)
@@ -133,4 +133,5 @@ def render_drag_calendar(bookings, start, end, key, on_move=None, disabled=False
             item["locked"] = True
     return _drag_component(data=data, key=key,
                            on_move_change=on_move or (lambda: None),
+                           on_select_change=on_select or (lambda: None),
                            on_viewport_change=lambda: None)

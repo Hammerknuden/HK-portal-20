@@ -155,8 +155,16 @@ def render_booking_creation(st, supabase, selected_season):
 
 
 def render_booking_admin(st, supabase, df):
+    clicked = st.session_state.pop("calendar_clicked_booking", None)
     if df.empty:
         return
+    selection_key = "calendar_admin_selected_booking"
+    if isinstance(clicked, dict) and "id" in clicked:
+        matches = df.loc[df["id"].astype(str) == str(clicked["id"]), "id"]
+        if len(matches) == 1:
+            st.session_state[selection_key] = matches.iloc[0]
+    if st.session_state.get(selection_key) not in df["id"].tolist():
+        st.session_state.pop(selection_key, None)
     if message := st.session_state.pop("calendar_admin_edit_saved", None):
         st.success(message)
     def room_label(room):
@@ -174,6 +182,7 @@ def render_booking_admin(st, supabase, df):
     booking_id = st.selectbox(
         "Vælg booking",
         df["id"],
+        key=selection_key,
         format_func=lambda x: (
             f"Booking {df[df['id'] == x].iloc[0]['booking_number']} | "
             f"{room_label(df[df['id'] == x].iloc[0]['room_number'])} | "

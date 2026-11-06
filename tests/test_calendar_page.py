@@ -18,6 +18,7 @@ class CalendarPageTests(unittest.TestCase):
         self.stack.enter_context(patch("auth.require_login"))
         self.stack.enter_context(patch("portal_access.get_database_client", return_value=self.client))
         self.stack.enter_context(patch("portal_access.uses_supabase_auth", return_value=False))
+        self.stack.enter_context(patch("modules.calendar_tools.is_admin", return_value=False))
         # AppTest has no browser frontend for custom components. Test page flow
         # with its renderer stubbed; real mounting has a separate smoke check.
         self.render = self.stack.enter_context(patch("modules.calendar_drag.render_drag_calendar"))
@@ -136,6 +137,28 @@ class CalendarPageTests(unittest.TestCase):
         self.assertEqual(len(app.get("plotly_chart")), 0)
         self.client.table.return_value.insert.assert_not_called()
         self.client.table.return_value.update.assert_not_called()
+
+    def test_calendar_click_selects_exact_room_and_manual_selection_remains(self):
+        second = {**self.row, "id": 2, "room_number": 2, "movable": False}
+        self.client.table.return_value.select.return_value.eq.return_value.execute.return_value.data = [self.row, second]
+        app = self.clean_app()
+        app.session_state["calendar_clicked_booking"] = {"id": "2"}
+        app.run(timeout=30)
+        self.assertFalse(app.exception)
+        self.assertEqual(app.selectbox("calendar_admin_selected_booking").value, 2)
+        self.assertEqual(app.selectbox("calendar_admin_room_2").value, 2)
+        app.selectbox("calendar_admin_selected_booking").select(1).run(timeout=30)
+        self.assertFalse(app.exception)
+        self.assertEqual(app.selectbox("calendar_admin_selected_booking").value, 1)
+        self.client.table.return_value.update.assert_not_called()
+        self.save.assert_not_called()
+
+    def test_stale_calendar_click_does_not_change_selection(self):
+        app = self.clean_app()
+        app.session_state["calendar_clicked_booking"] = {"id": "999"}
+        app.run(timeout=30)
+        self.assertFalse(app.exception)
+        self.assertEqual(app.selectbox("calendar_admin_selected_booking").value, 1)
 
     def test_edit_rejection_does_not_write(self):
         app = self.clean_app()
