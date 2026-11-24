@@ -6,7 +6,10 @@ from dotenv import load_dotenv
 from portal_access import get_database_client
 
 
-TABLE_NAME = "historie_new"
+BOOKING_SOURCES = (
+    ("hk_dtb", "Bookinger i reservationssystemet", "telefon", "booking_number"),
+    ("historie_new", "Historiske bookinger", "phone", "booking_nr"),
+)
 
 st.set_page_config(page_title="Database", layout="wide")
 require_login()
@@ -16,7 +19,8 @@ load_dotenv()
 supabase = get_database_client()
 
 try:
-    supabase.table(TABLE_NAME).select("id").limit(1).execute()
+    for table_name, _, _, booking_column in BOOKING_SOURCES:
+        supabase.table(table_name).select(booking_column).limit(1).execute()
 
     st.success("Forbindelse OK")
 
@@ -47,52 +51,38 @@ if st.button("Søg"):
 if st.session_state.get("history_active_search") == search_values:
     try:
         if familie_navn.strip():
-            result = (
-                supabase
-                .table(TABLE_NAME)
-                .select("*")
-                .ilike("familie_navn", familie_navn.strip())
-                .execute()
-            )
+            match_column, match_value = "familie_navn", familie_navn.strip()
         elif telefon.strip():
-            result = (
-                supabase
-                .table(TABLE_NAME)
-                .select("*")
-                .eq("phone", telefon.strip())
-                .execute()
-            )
+            match_column, match_value = "phone", telefon.strip()
         elif email.strip():
-            # E-mailopslag er ikke afgrænset af sæson og viser derfor
-            # alle bookinger med den pågældende adresse.
-            result = (
-                supabase
-                .table(TABLE_NAME)
-                .select("*")
-                .ilike("email", email.strip())
-                .execute()
-            )
+            match_column, match_value = "email", email.strip()
         elif booking.strip():
             try:
-                booking_nr = int(booking.strip())
+                match_value = int(booking.strip())
             except ValueError:
                 st.error("Bookingnummer skal være et helt tal.")
                 st.stop()
-
-            # Bookingnumre kan gentages i forskellige sæsoner.
-            result = (
-                supabase
-                .table(TABLE_NAME)
-                .select("*")
-                .eq("season", int(season))
-                .eq("booking_nr", booking_nr)
-                .execute()
-            )
+            match_column = "booking_nr"
         else:
             st.warning("Udfyld mindst ét søgefelt.")
             st.stop()
 
-        if result.data:
+        found_bookings = False
+        for table_name, heading, phone_column, booking_column in BOOKING_SOURCES:
+            query = supabase.table(table_name).select("*")
+            if match_column == "booking_nr":
+                query = query.eq("season", int(season)).eq(booking_column, match_value)
+            elif match_column == "phone":
+                query = query.eq(phone_column, match_value)
+            else:
+                query = query.ilike(match_column, match_value)
+
+            result = query.execute()
+            if not result.data:
+                continue
+
+            found_bookings = True
+            st.markdown(f"#### {heading}")
             dataframe = pd.DataFrame(result.data).drop(columns=["created_at"], errors="ignore")
             st.dataframe(dataframe, use_container_width=True)
             if is_admin():
@@ -100,18 +90,18 @@ if st.session_state.get("history_active_search") == search_values:
                     path = row.get("storage_path")
                     if not path:
                         continue
-                    label = f"Gæsteregistrering – {row.get('season')} / booking {row.get('booking_nr')}"
-                    if st.button(label, key=f"guest_document_{index}"):
+                    label = f"Gæsteregistrering – {row.get('season')} / booking {row.get(booking_column)}"
+                    if st.button(label, key=f"guest_document_{table_name}_{index}"):
                         try:
                             filename, pdf = download_registration(supabase, path, require_admin)
                             st.download_button(
                                 "Åbn / download PDF", data=pdf,
                                 file_name=filename, mime="application/pdf",
-                                key=f"guest_document_download_{index}", on_click="ignore",
+                                key=f"guest_document_download_{table_name}_{index}", on_click="ignore",
                             )
                         except Exception:
                             st.error("Dokumentet kunne ikke hentes. Kontrollér filstien og din Storage-adgang.")
-        else:
+        if not found_bookings:
             st.info("Ingen bookinger fundet.")
     except Exception as e:
         st.error(f"Opslaget kunne ikke gennemføres: {e}")
